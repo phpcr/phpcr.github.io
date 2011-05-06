@@ -1,0 +1,702 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+
+<html lang="en">
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="generator" content="PHPDoctor 2RC4 (http://peej.github.com/phpdoctor/)">
+<meta name="when" content="Fri, 06 May 2011 11:43:24 +0000">
+
+<link rel="stylesheet" type="text/css" href="../../stylesheet.css">
+<link rel="start" href="../../overview-summary.html">
+
+<title>PHPCR/WorkspaceInterface.php (PHPCR API)</title>
+
+</head>
+<body id="file" onload="parent.document.title=document.title;">
+
+<div class="header">
+<h1>PHPCR</h1>
+<ul>
+<li><a href="../../overview-summary.html">Overview</a></li>
+<li>Package</li><li>Class</li><li>Tree</li><li><a href="../../overview-files.html">Files</a></li>
+<li><a href="../../deprecated-list.html">Deprecated</a></li>
+<li><a href="../../todo-list.html">Todo</a></li>
+<li><a href="../../index-all.html">Index</a></li>
+</ul>
+</div>
+
+<div class="small_links">
+<a href="../../index.html" target="_top">Frames</a>
+<a href="../../source/phpcr/workspaceinterface.php.html" target="_top">No frames</a>
+</div>
+<hr>
+
+<h1>PHPCR/WorkspaceInterface.php</h1>
+<div class="comment" id="overview_description"><p>Interface to describe the contract to implement a Workspace.</p><p>This file was ported from the Java JCR API to PHP by
+Karsten Dambekalns <karsten@typo3.org> for the FLOW3 project.</p><p>It is free software; you can redistribute it and/or modify it under
+the terms of the GNU Lesser General Public License as published by the
+Free Software Foundation, either version 3 of the License, or (at your
+option) any later version. Alternatively, you may use the Simplified
+BSD License.</p><p>This script is distributed in the hope that it will be useful, but
+WITHOUT ANY WARRANTY; without even the implied warranty of MERCHAN-
+TABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser
+General Public License for more details.</p><p>You should have received a copy of the GNU Lesser General Public
+License along with the script.
+If not, see <code><a href="http://www.gnu.org/licenses/lgpl.html">http://www.gnu.org/licenses/lgpl.html</a></code>.</p><p>The TYPO3 project - inspiring people to share!</p></div>
+
+<hr>
+
+<a name="line1"></a><pre class="php" style="font-family:monospace;"><span style="color: #000000; font-weight: bold;">&lt;?php</span>
+<a name="line2"></a><span style="color: #009933; font-style: italic;">/**
+<a name="line3"></a> * Interface to describe the contract to implement a Workspace.
+<a name="line4"></a> *
+<a name="line5"></a> * This file was ported from the Java JCR API to PHP by
+<a name="line6"></a> * Karsten Dambekalns &lt;karsten@typo3.org&gt; for the FLOW3 project.
+<a name="line7"></a> *
+<a name="line8"></a> * It is free software; you can redistribute it and/or modify it under
+<a name="line9"></a> * the terms of the GNU Lesser General Public License as published by the
+<a name="line10"></a> * Free Software Foundation, either version 3 of the License, or (at your
+<a name="line11"></a> * option) any later version. Alternatively, you may use the Simplified
+<a name="line12"></a> * BSD License.
+<a name="line13"></a> *
+<a name="line14"></a> * This script is distributed in the hope that it will be useful, but
+<a name="line15"></a> * WITHOUT ANY WARRANTY; without even the implied warranty of MERCHAN-
+<a name="line16"></a> * TABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser
+<a name="line17"></a> * General Public License for more details.
+<a name="line18"></a> *
+<a name="line19"></a> * You should have received a copy of the GNU Lesser General Public
+<a name="line20"></a> * License along with the script.
+<a name="line21"></a> * If not, see {@link http://www.gnu.org/licenses/lgpl.html}.
+<a name="line22"></a> *
+<a name="line23"></a> * The TYPO3 project - inspiring people to share!
+<a name="line24"></a> *
+<a name="line25"></a> * @license http://www.gnu.org/licenses/lgpl.html GNU Lesser General Public License, version 3 or later
+<a name="line26"></a> * @license http://opensource.org/licenses/bsd-license.php Simplified BSD License
+<a name="line27"></a> *
+<a name="line28"></a> * @package phpcr
+<a name="line29"></a> * @subpackage interfaces
+<a name="line30"></a> */</span>
+<a name="line31"></a>&nbsp;
+<a name="line32"></a><span style="color: #000000; font-weight: bold;">declare</span><span style="color: #009900;">&#40;</span>ENCODING <span style="color: #339933;">=</span> <span style="color: #0000ff;">'utf-8'</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line33"></a><span style="color: #000000; font-weight: bold;">namespace</span> PHPCR<span style="color: #339933;">;</span>
+<a name="line34"></a>&nbsp;
+<a name="line35"></a><span style="color: #009933; font-style: italic;">/**
+<a name="line36"></a> * Interface representing a view onto a persistant workspace within a repository.
+<a name="line37"></a> *
+<a name="line38"></a> * A Workspace object represents a view onto a persistent workspace within a
+<a name="line39"></a> * repository. This view is defined by the authorization settings of the Session
+<a name="line40"></a> * object associated with the Workspace object. Each Workspace object is
+<a name="line41"></a> * associated one-to-one with a Session object. The Workspace object can be
+<a name="line42"></a> * acquired by calling Session.getWorkspace() on the associated Session object.
+<a name="line43"></a> *
+<a name="line44"></a> * @package phpcr
+<a name="line45"></a> * @subpackage interfaces
+<a name="line46"></a> * @api
+<a name="line47"></a> */</span>
+<a name="line48"></a><span style="color: #000000; font-weight: bold;">interface</span> WorkspaceInterface <span style="color: #009900;">&#123;</span>
+<a name="line49"></a>&nbsp;
+<a name="line50"></a>    <span style="color: #009933; font-style: italic;">/**#@+
+<a name="line51"></a>     * @var string
+<a name="line52"></a>     */</span>
+<a name="line53"></a>&nbsp;
+<a name="line54"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line55"></a>     * A constant for the name of the workspace root node.
+<a name="line56"></a>     * @api
+<a name="line57"></a>     */</span>
+<a name="line58"></a>    <span style="color: #000000; font-weight: bold;">const</span> NAME_WORKSPACE_ROOT <span style="color: #339933;">=</span> <span style="color: #0000ff;">''</span><span style="color: #339933;">;</span>
+<a name="line59"></a>&nbsp;
+<a name="line60"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line61"></a>     * A constant for the absolute path of the workspace root node.
+<a name="line62"></a>     * @api
+<a name="line63"></a>     */</span>
+<a name="line64"></a>    <span style="color: #000000; font-weight: bold;">const</span> PATH_WORKSPACE_ROOT <span style="color: #339933;">=</span> <span style="color: #0000ff;">'/'</span><span style="color: #339933;">;</span>
+<a name="line65"></a>&nbsp;
+<a name="line66"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line67"></a>     * A constant for the name of the system node.
+<a name="line68"></a>     * @api
+<a name="line69"></a>     */</span>
+<a name="line70"></a>    <span style="color: #000000; font-weight: bold;">const</span> NAME_SYSTEM_NODE <span style="color: #339933;">=</span> <span style="color: #0000ff;">'{http://www.jcp.org/jcr/1.0}system'</span><span style="color: #339933;">;</span>
+<a name="line71"></a>&nbsp;
+<a name="line72"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line73"></a>     * A constant for the absolute path of the system node.
+<a name="line74"></a>     * This is '/' . NAME_SYSTEM_NODE
+<a name="line75"></a>     * @api
+<a name="line76"></a>     */</span>
+<a name="line77"></a>    <span style="color: #000000; font-weight: bold;">const</span> PATH_SYSTEM_NODE <span style="color: #339933;">=</span> <span style="color: #0000ff;">'/{http://www.jcp.org/jcr/1.0}system'</span><span style="color: #339933;">;</span>
+<a name="line78"></a>&nbsp;
+<a name="line79"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line80"></a>     * A constant for the name of the node type definition storage node.
+<a name="line81"></a>     * @api
+<a name="line82"></a>     */</span>
+<a name="line83"></a>    <span style="color: #000000; font-weight: bold;">const</span> NAME_NODE_TYPES_NODE <span style="color: #339933;">=</span> <span style="color: #0000ff;">'{http://www.jcp.org/jcr/1.0}nodeTypes'</span><span style="color: #339933;">;</span>
+<a name="line84"></a>&nbsp;
+<a name="line85"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line86"></a>     * A constant for the absolute path of the node type definition storage node.
+<a name="line87"></a>     * This is PATH_SYSTEM_NODE . '/' . NAME_NODE_TYPES_NODE
+<a name="line88"></a>     * @api
+<a name="line89"></a>     */</span>
+<a name="line90"></a>    <span style="color: #000000; font-weight: bold;">const</span> PATH_NODE_TYPES_NODE <span style="color: #339933;">=</span> <span style="color: #0000ff;">'/{http://www.jcp.org/jcr/1.0}system/{http://www.jcp.org/jcr/1.0}nodeTypes'</span><span style="color: #339933;">;</span>
+<a name="line91"></a>&nbsp;
+<a name="line92"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line93"></a>     * A constant for the name of the version storage node.
+<a name="line94"></a>     * @api
+<a name="line95"></a>     */</span>
+<a name="line96"></a>    <span style="color: #000000; font-weight: bold;">const</span> NAME_VERSION_STORAGE_NODE <span style="color: #339933;">=</span> <span style="color: #0000ff;">'{http://www.jcp.org/jcr/1.0}versionStorage'</span><span style="color: #339933;">;</span>
+<a name="line97"></a>&nbsp;
+<a name="line98"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line99"></a>     * A constant for the absolute path of the version storage node.
+<a name="line100"></a>     * This is PATH_SYSTEM_NODE . '/' . NAME_VERSION_STORAGE_NODE
+<a name="line101"></a>     * @api
+<a name="line102"></a>     */</span>
+<a name="line103"></a>    <span style="color: #000000; font-weight: bold;">const</span> PATH_VERSION_STORAGE_NODE <span style="color: #339933;">=</span> <span style="color: #0000ff;">'/{http://www.jcp.org/jcr/1.0}system/{http://www.jcp.org/jcr/1.0}versionStorage'</span><span style="color: #339933;">;</span>
+<a name="line104"></a>&nbsp;
+<a name="line105"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line106"></a>     * A constant for the name of the activities node.
+<a name="line107"></a>     * @api
+<a name="line108"></a>     */</span>
+<a name="line109"></a>    <span style="color: #000000; font-weight: bold;">const</span> NAME_ACTIVITIES_NODE <span style="color: #339933;">=</span> <span style="color: #0000ff;">'{http://www.jcp.org/jcr/1.0}activities'</span><span style="color: #339933;">;</span>
+<a name="line110"></a>&nbsp;
+<a name="line111"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line112"></a>     * A constant for the absolute path of the activities node.
+<a name="line113"></a>     * This is PATH_SYSTEM_NODE . '/' . NAME_ACTIVITIES_NODE
+<a name="line114"></a>     * @api
+<a name="line115"></a>     */</span>
+<a name="line116"></a>    <span style="color: #000000; font-weight: bold;">const</span> PATH_ACTIVITIES_NODE <span style="color: #339933;">=</span> <span style="color: #0000ff;">'/{http://www.jcp.org/jcr/1.0}system/{http://www.jcp.org/jcr/1.0}activities'</span><span style="color: #339933;">;</span>
+<a name="line117"></a>&nbsp;
+<a name="line118"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line119"></a>     * A constant for the name of the configurations node.
+<a name="line120"></a>     * @api
+<a name="line121"></a>     */</span>
+<a name="line122"></a>    <span style="color: #000000; font-weight: bold;">const</span> NAME_CONFIGURATIONS_NODE <span style="color: #339933;">=</span> <span style="color: #0000ff;">'{http://www.jcp.org/jcr/1.0}configurations'</span><span style="color: #339933;">;</span>
+<a name="line123"></a>&nbsp;
+<a name="line124"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line125"></a>     * A constant for the absolute path of the configurations node.
+<a name="line126"></a>     * This is PATH_SYSTEM_NODE . '/' . NAME_CONFIGURATIONS_NODE
+<a name="line127"></a>     * @api
+<a name="line128"></a>     */</span>
+<a name="line129"></a>    <span style="color: #000000; font-weight: bold;">const</span> PATH_CONFIGURATIONS_NODE <span style="color: #339933;">=</span> <span style="color: #0000ff;">'/{http://www.jcp.org/jcr/1.0}system/{http://www.jcp.org/jcr/1.0}configurations'</span><span style="color: #339933;">;</span>
+<a name="line130"></a>&nbsp;
+<a name="line131"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line132"></a>     * A constant for the name of the unfiled storage node.
+<a name="line133"></a>     * @api
+<a name="line134"></a>     */</span>
+<a name="line135"></a>    <span style="color: #000000; font-weight: bold;">const</span> NAME_UNFILED_NODE <span style="color: #339933;">=</span> <span style="color: #0000ff;">'{http://www.jcp.org/jcr/1.0}unfiled'</span><span style="color: #339933;">;</span>
+<a name="line136"></a>&nbsp;
+<a name="line137"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line138"></a>     * A constant for the absolute path of the unfiled storage node.
+<a name="line139"></a>     * This is PATH_SYSTEM_NODE . '/' . NAME_UNFILED_NODE
+<a name="line140"></a>     * @api
+<a name="line141"></a>     */</span>
+<a name="line142"></a>    <span style="color: #000000; font-weight: bold;">const</span> PATH_UNFILED_NODE <span style="color: #339933;">=</span> <span style="color: #0000ff;">'/{http://www.jcp.org/jcr/1.0}system/{http://www.jcp.org/jcr/1.0}unfiled'</span><span style="color: #339933;">;</span>
+<a name="line143"></a>&nbsp;
+<a name="line144"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line145"></a>     * A constant for the name of the jcr:xmltext node produced on importXML().
+<a name="line146"></a>     * @api
+<a name="line147"></a>     */</span>
+<a name="line148"></a>    <span style="color: #000000; font-weight: bold;">const</span> NAME_JCR_XMLTEXT <span style="color: #339933;">=</span> <span style="color: #0000ff;">'{http://www.jcp.org/jcr/1.0}xmltext'</span><span style="color: #339933;">;</span>
+<a name="line149"></a>&nbsp;
+<a name="line150"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line151"></a>     * A constant for the name of the jcr:xmlcharacters property produced on importXML().
+<a name="line152"></a>     * @api
+<a name="line153"></a>     */</span>
+<a name="line154"></a>    <span style="color: #000000; font-weight: bold;">const</span> NAME_JCR_XMLCHARACTERS <span style="color: #339933;">=</span> <span style="color: #0000ff;">'{http://www.jcp.org/jcr/1.0}xmlcharacters'</span><span style="color: #339933;">;</span>
+<a name="line155"></a>&nbsp;
+<a name="line156"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line157"></a>     * A constant for the relative path from the node representing the imported XML element of
+<a name="line158"></a>     * the jcr:xmlcharacters property produced on importXML().
+<a name="line159"></a>     * This is NAME_JCR_XMLTEXT . '/' . NAME_JCR_XMLCHARACTERS
+<a name="line160"></a>     * @api
+<a name="line161"></a>     */</span>
+<a name="line162"></a>    <span style="color: #000000; font-weight: bold;">const</span> RELPATH_JCR_XMLCHARACTERS <span style="color: #339933;">=</span> <span style="color: #0000ff;">'{http://www.jcp.org/jcr/1.0}xmltext/{http://www.jcp.org/jcr/1.0}xmlcharacters'</span><span style="color: #339933;">;</span>
+<a name="line163"></a>&nbsp;
+<a name="line164"></a>    <span style="color: #009933; font-style: italic;">/**#@-*/</span>
+<a name="line165"></a>&nbsp;
+<a name="line166"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line167"></a>     * Returns the Session object through which this Workspace object was acquired.
+<a name="line168"></a>     *
+<a name="line169"></a>     * @return \PHPCR\SessionInterface a Session object.
+<a name="line170"></a>     * @api
+<a name="line171"></a>     */</span>
+<a name="line172"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getSession<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line173"></a>&nbsp;
+<a name="line174"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line175"></a>     * Returns the name of the actual persistent workspace represented by this Workspace object.
+<a name="line176"></a>     *
+<a name="line177"></a>     * This the name used in Repository-&gt;login.
+<a name="line178"></a>     *
+<a name="line179"></a>     * @return string the name of this workspace.
+<a name="line180"></a>     * @api
+<a name="line181"></a>     */</span>
+<a name="line182"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getName<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line183"></a>&nbsp;
+<a name="line184"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line185"></a>     * Copies a Node including its children to a new location to the given workspace.
+<a name="line186"></a>     *
+<a name="line187"></a>     * This method copies the subgraph rooted at, and including, the node at
+<a name="line188"></a>     * $srcWorkspace (if given) and $srcAbsPath to the new location in this
+<a name="line189"></a>     * Workspace at $destAbsPath.
+<a name="line190"></a>     *
+<a name="line191"></a>     * This is a workspace-write operation and therefore dispatches changes
+<a name="line192"></a>     * immediately and does not require a save.
+<a name="line193"></a>     *
+<a name="line194"></a>     * When a node N is copied to a path location where no node currently
+<a name="line195"></a>     * exists, a new node N' is created at that location.
+<a name="line196"></a>     * The subgraph rooted at and including N' (call it S') is created and is
+<a name="line197"></a>     * identical to the subgraph rooted at and including N (call it S) with the
+<a name="line198"></a>     * following exceptions:
+<a name="line199"></a>     * * Every node in S' is given a new and distinct identifier
+<a name="line200"></a>     *   - or if $srcWorkspace is given -
+<a name="line201"></a>     *   Every referenceable node in S' is given a new and distinct identifier
+<a name="line202"></a>     *   while every non-referenceable node in S' may be given a new and
+<a name="line203"></a>     *   distinct identifier.
+<a name="line204"></a>     * * The repository may automatically drop any mixin node type T present on
+<a name="line205"></a>     *   any node M in S. Dropping a mixin node type in this context means that
+<a name="line206"></a>     *   while M remains unchanged, its copy M' will lack the mixin T and any
+<a name="line207"></a>     *   child nodes and properties defined by T that are present on M. For
+<a name="line208"></a>     *   example, a node M that is mix:versionable may be copied such that the
+<a name="line209"></a>     *   resulting node M' will be a copy of N except that M' will not be
+<a name="line210"></a>     *   mix:versionable and will not have any of the properties defined by
+<a name="line211"></a>     *   mix:versionable. In order for a mixin node type to be dropped it must
+<a name="line212"></a>     *   be listed by name in the jcr:mixinTypes property of M. The resulting
+<a name="line213"></a>     *   jcr:mixinTypes property of M' will reflect any change.
+<a name="line214"></a>     * * If a node M in S is referenceable and its mix:referenceable mixin is
+<a name="line215"></a>     *   not dropped on copy, then the resulting jcr:uuid property of M' will
+<a name="line216"></a>     *   reflect the new identifier assigned to M'.
+<a name="line217"></a>     * * Each REFERENCE or WEAKEREFERENCE property R in S is copied to its new
+<a name="line218"></a>     *   location R' in S'. If R references a node M within S then the value of
+<a name="line219"></a>     *   R' will be the identifier of M', the new copy of M, thus preserving the
+<a name="line220"></a>     *   reference within the subgraph.
+<a name="line221"></a>     *
+<a name="line222"></a>     * When a node N is copied to a location where a node N' already exists, the
+<a name="line223"></a>     * repository may either immediately throw an ItemExistsException or attempt
+<a name="line224"></a>     * to update the node N' by selectively replacing part of its subgraph with
+<a name="line225"></a>     * a copy of the relevant part of the subgraph of N. If the node types of N
+<a name="line226"></a>     * and N' are compatible, the implementation supports update-on-copy for
+<a name="line227"></a>     * these node types and no other errors occur, then the copy will succeed.
+<a name="line228"></a>     * Otherwise an ItemExistsException is thrown.
+<a name="line229"></a>     *
+<a name="line230"></a>     * Which node types can be updated on copy and the details of any such
+<a name="line231"></a>     * updates are implementation-dependent. For example, some implementations
+<a name="line232"></a>     * may support update-on-copy for mix:versionable nodes. In such a case the
+<a name="line233"></a>     * versioning-related properties of the target node would remain unchanged
+<a name="line234"></a>     * (jcr:uuid, jcr:versionHistory, etc.) while the substantive content part
+<a name="line235"></a>     * of the subgraph would be replaced with that of the source node.
+<a name="line236"></a>     *
+<a name="line237"></a>     * The $destAbsPath provided must not have an index on its final element. If
+<a name="line238"></a>     * it does then a RepositoryException is thrown. Strictly speaking, the
+<a name="line239"></a>     * $destAbsPath parameter is actually an absolute path to the parent node of
+<a name="line240"></a>     * the new location, appended with the new name desired for the copied node.
+<a name="line241"></a>     * It does not specify a position within the child node ordering. If ordering
+<a name="line242"></a>     * is supported by the node type of the parent node of the new location, then
+<a name="line243"></a>     * the new copy of the node is appended to the end of the child node list.
+<a name="line244"></a>     *
+<a name="line245"></a>     * This method cannot be used to copy an individual property by itself. It
+<a name="line246"></a>     * copies an entire node and its subgraph (including, of course, any
+<a name="line247"></a>     * properties contained therein).
+<a name="line248"></a>     *
+<a name="line249"></a>     * @param string $srcAbsPath the path of the node to be copied.
+<a name="line250"></a>     * @param string $destAbsPath the location to which the node at srcAbsPath is to be copied in this workspace.
+<a name="line251"></a>     * @param string $srcWorkspace the name of the workspace from which the copy is to be made.
+<a name="line252"></a>     * @return void
+<a name="line253"></a>     *
+<a name="line254"></a>     * @throws \PHPCR\NoSuchWorkspaceException if srcWorkspace does not exist or if the current Session does not have permission to access it.
+<a name="line255"></a>     * @throws \PHPCR\ConstraintViolationException if the operation would violate a node-type or other implementation-specific constraint
+<a name="line256"></a>     * @throws \PHPCR\Version\VersionException if the parent node of destAbsPath is read-only due to a checked-in node.
+<a name="line257"></a>     * @throws \PHPCR\AccessDeniedException if the current session does have access srcWorkspace but otherwise does not have sufficient access to complete the operation.
+<a name="line258"></a>     * @throws \PHPCR\PathNotFoundException if the node at srcAbsPath in srcWorkspace or the parent of destAbsPath in this workspace does not exist.
+<a name="line259"></a>     * @throws \PHPCR\ItemExistsException if a node already exists at destAbsPath and either same-name siblings are not allowed or update on copy is not supported for the nodes involved.
+<a name="line260"></a>     * @throws \PHPCR\Lock\LockException if a lock prevents the copy.
+<a name="line261"></a>     * @throws \PHPCR\RepositoryException if the last element of destAbsPath has an index or if another error occurs.
+<a name="line262"></a>     * @api
+<a name="line263"></a>     */</span>
+<a name="line264"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> <a href="http://www.php.net/copy"><span style="color: #990000;">copy</span></a><span style="color: #009900;">&#40;</span><span style="color: #000088;">$srcAbsPath</span><span style="color: #339933;">,</span> <span style="color: #000088;">$destAbsPath</span><span style="color: #339933;">,</span> <span style="color: #000088;">$srcWorkspace</span> <span style="color: #339933;">=</span> <span style="color: #009900; font-weight: bold;">NULL</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line265"></a>&nbsp;
+<a name="line266"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line267"></a>     * Clones the subgraph at the node srcAbsPath in srcWorkspace to the new location at destAbsPath in this workspace.
+<a name="line268"></a>     *
+<a name="line269"></a>     * Unlike the signature of copy that copies between workspaces, this method
+<a name="line270"></a>     * does not assign new identifiers to the newly cloned nodes but preserves
+<a name="line271"></a>     * the identifiers of their respective source nodes. This applies to both
+<a name="line272"></a>     * referenceable and non-referenceable nodes.
+<a name="line273"></a>     *
+<a name="line274"></a>     * In some implementations there may be cases where preservation of a
+<a name="line275"></a>     * non-referenceable identifier is not possible, due to how non-referenceable
+<a name="line276"></a>     * identifiers are constructed in that implementation. In such a case this
+<a name="line277"></a>     * method will throw a RepositoryException.
+<a name="line278"></a>     *
+<a name="line279"></a>     * If removeExisting is true and an existing node in this workspace (the
+<a name="line280"></a>     * destination workspace) has the same identifier as a node being cloned
+<a name="line281"></a>     * from srcWorkspace, then the incoming node takes precedence, and the
+<a name="line282"></a>     * existing node (and its subgraph) is removed. If removeExisting is false
+<a name="line283"></a>     * then an identifier collision causes this method to throw a
+<a name="line284"></a>     * ItemExistsException and no changes are made.
+<a name="line285"></a>     *
+<a name="line286"></a>     * If successful, the change is persisted immediately, there is no need
+<a name="line287"></a>     * to call save.
+<a name="line288"></a>     *
+<a name="line289"></a>     * The destAbsPath provided must not have an index on its final element.
+<a name="line290"></a>     * If it does then a RepositoryException is thrown.
+<a name="line291"></a>     * If ordering is supported by the node type of the parent node of the new
+<a name="line292"></a>     * location, then the new clone of the node is appended to the end of the
+<a name="line293"></a>     * child node list.
+<a name="line294"></a>     *
+<a name="line295"></a>     * This method cannot be used to clone just an individual property; it
+<a name="line296"></a>     * clones a node and its subgraph.
+<a name="line297"></a>     *
+<a name="line298"></a>     * PHP Notice: The JCR method is called clone, but that is a reserved
+<a name="line299"></a>     * keyword in PHP, thus we named the method klone.
+<a name="line300"></a>     *
+<a name="line301"></a>     * @param string $srcWorkspace The name of the workspace from which the node is to be copied.
+<a name="line302"></a>     * @param string $srcAbsPath The path of the node to be copied in srcWorkspace.
+<a name="line303"></a>     * @param string $destAbsPath The location to which the node at srcAbsPath is to be copied in this workspace.
+<a name="line304"></a>     * @param boolean $removeExisting if false then this method throws an ItemExistsException on identifier conflict
+<a name="line305"></a>     *                                with an incoming node. If true then a identifier conflict is resolved by removing
+<a name="line306"></a>     *                                the existing node from its location in this workspace and cloning (copying in) the
+<a name="line307"></a>     *                                one from srcWorkspace.
+<a name="line308"></a>     * @return void
+<a name="line309"></a>     *
+<a name="line310"></a>     * @throws \PHPCR\NoSuchWorkspaceException if destWorkspace does not exist.
+<a name="line311"></a>     * @throws \PHPCR\ConstraintViolationException if the operation would violate a node-type or other
+<a name="line312"></a>     *                                             implementation-specific constraint.
+<a name="line313"></a>     * @throws \PHPCR\Version\VersionException if the parent node of destAbsPath is read-only due to a checked-in node.
+<a name="line314"></a>     *                                         This exception will also be thrown if removeExisting is true, and an
+<a name="line315"></a>     *                                          identifier conflict occurs that would require the moving and/or altering
+<a name="line316"></a>     *                                          of a node that is checked-in.
+<a name="line317"></a>     * @throws \PHPCR\AccessDeniedException if the current session does not have sufficient access to complete the operation.
+<a name="line318"></a>     * @throws \PHPCR\PathNotFoundException if the node at srcAbsPath in srcWorkspace or the parent of destAbsPath in
+<a name="line319"></a>     *                                      this workspace does not exist.
+<a name="line320"></a>     * @throws \PHPCR\ItemExistsException if a node already exists at destAbsPath and same-name siblings are not
+<a name="line321"></a>     *                                    allowed or if removeExisting is false and an identifier conflict occurs.
+<a name="line322"></a>     * @throws \PHPCR\Lock\LockException if a lock prevents the clone.
+<a name="line323"></a>     * @throws \PHPCR\RepositoryException if the last element of destAbsPath has an index or if another error occurs.
+<a name="line324"></a>     * @api
+<a name="line325"></a>     */</span>
+<a name="line326"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> klone<span style="color: #009900;">&#40;</span><span style="color: #000088;">$srcWorkspace</span><span style="color: #339933;">,</span> <span style="color: #000088;">$srcAbsPath</span><span style="color: #339933;">,</span> <span style="color: #000088;">$destAbsPath</span><span style="color: #339933;">,</span> <span style="color: #000088;">$removeExisting</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line327"></a>&nbsp;
+<a name="line328"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line329"></a>     * Moves the node at srcAbsPath (and its entire subgraph) to the new location at destAbsPath.
+<a name="line330"></a>     *
+<a name="line331"></a>     * If successful, the change is persisted immediately, there is no need to
+<a name="line332"></a>     * call save. Note that this is in contrast to
+<a name="line333"></a>     * Session-&gt;move($srcAbsPath, $destAbsPath) which operates within the transient
+<a name="line334"></a>     * space and hence requires a save.
+<a name="line335"></a>     *
+<a name="line336"></a>     * The identifiers of referenceable nodes must not be changed by a move. The
+<a name="line337"></a>     * identifiers of non-referenceable nodes may change.
+<a name="line338"></a>     *
+<a name="line339"></a>     * The destAbsPath provided must not have an index on its final element. If
+<a name="line340"></a>     * it does then a RepositoryException is thrown. Strictly speaking, the
+<a name="line341"></a>     * destAbsPath parameter is actually an absolute path to the parent node of
+<a name="line342"></a>     * the new location, appended with the new name desired for the moved node.
+<a name="line343"></a>     * It does not specify a position within the child node ordering. If ordering
+<a name="line344"></a>     * is supported by the node type of the parent node of the new location, then
+<a name="line345"></a>     * the newly moved node is appended to the end of the child node list.
+<a name="line346"></a>     *
+<a name="line347"></a>     * This method cannot be used to move just an individual property by itself.
+<a name="line348"></a>     * It moves an entire node and its subgraph (including, of course, any
+<a name="line349"></a>     * properties contained therein).
+<a name="line350"></a>     *
+<a name="line351"></a>     * The identifiers of referenceable nodes must not be changed by a move. The
+<a name="line352"></a>     * identifiers of non-referenceable nodes may change.
+<a name="line353"></a>     *
+<a name="line354"></a>     * @param string $srcAbsPath the path of the node to be moved.
+<a name="line355"></a>     * @param string $destAbsPath the location to which the node at srcAbsPath is to be moved.
+<a name="line356"></a>     * @return void
+<a name="line357"></a>     *
+<a name="line358"></a>     * @throws \PHPCR\ConstraintViolationException if the operation would violate a node-type or other
+<a name="line359"></a>     *                                             implementation-specific constraint
+<a name="line360"></a>     * @throws \PHPCR\Version\VersionException if the parent node of destAbsPath is read-only due to a checked-in node.
+<a name="line361"></a>     * @throws \PHPCR\AccessDeniedException if the current session (i.e. the session that was used to acquire this
+<a name="line362"></a>     *                                      Workspace object) does not have sufficient access rights to complete the
+<a name="line363"></a>     *                                      operation.
+<a name="line364"></a>     * @throws \PHPCR\PathNotFoundException if the node at srcAbsPath or the parent of destAbsPath does not exist.
+<a name="line365"></a>     * @throws \PHPCR\ItemExistsException if a node already exists at destAbsPath and same-name siblings are not allowed.
+<a name="line366"></a>     * @throws \PHPCR\Lock\LockException if a lock prevents the move.
+<a name="line367"></a>     * @throws \PHPCR\RepositoryException if the last element of destAbsPath has an index or if another error occurs.
+<a name="line368"></a>     * @api
+<a name="line369"></a>     */</span>
+<a name="line370"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> move<span style="color: #009900;">&#40;</span><span style="color: #000088;">$srcAbsPath</span><span style="color: #339933;">,</span> <span style="color: #000088;">$destAbsPath</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line371"></a>&nbsp;
+<a name="line372"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line373"></a>     * Returns the LockManager object, through which locking methods are accessed.
+<a name="line374"></a>     *
+<a name="line375"></a>     * @return \PHPCR\Lock\LockManagerInterface
+<a name="line376"></a>     * @throws \PHPCR\UnsupportedRepositoryOperationException if the implementation does not support locking.
+<a name="line377"></a>     * @throws \PHPCR\RepositoryException if an error occurs.
+<a name="line378"></a>     * @api
+<a name="line379"></a>     */</span>
+<a name="line380"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getLockManager<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line381"></a>&nbsp;
+<a name="line382"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line383"></a>     * Returns the QueryManager object, through search methods are accessed.
+<a name="line384"></a>     *
+<a name="line385"></a>     * @return \PHPCR\Query\QueryManagerInterface the QueryManager object.
+<a name="line386"></a>     * @throws \PHPCR\RepositoryException if an error occurs.
+<a name="line387"></a>     * @api
+<a name="line388"></a>     */</span>
+<a name="line389"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getQueryManager<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line390"></a>&nbsp;
+<a name="line391"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line392"></a>     * Returns the NamespaceRegistry object, which is used to access the mapping between prefixes and namespaces.
+<a name="line393"></a>     *
+<a name="line394"></a>     * In level 2 repositories the NamespaceRegistry can also be used to change the namespace mappings.
+<a name="line395"></a>     *
+<a name="line396"></a>     * @return \PHPCR\NamespaceRegistryInterface the NamespaceRegistry.
+<a name="line397"></a>     * @throws \PHPCR\RepositoryException if an error occurs.
+<a name="line398"></a>     * @api
+<a name="line399"></a>     */</span>
+<a name="line400"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getNamespaceRegistry<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line401"></a>&nbsp;
+<a name="line402"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line403"></a>     * Returns the NodeTypeManager through which node type information can be queried.
+<a name="line404"></a>     *
+<a name="line405"></a>     * There is one node type registry per repository, therefore the NodeTypeManager
+<a name="line406"></a>     * is not workspace-specific; it provides introspection methods for the global,
+<a name="line407"></a>     * repository-wide set of available node types. In repositories that support it,
+<a name="line408"></a>     * the NodeTypeManager can also be used to register new node types.
+<a name="line409"></a>     *
+<a name="line410"></a>     * @return \PHPCR\NodeType\NodeTypeManagerInterface a NodeTypeManager object.
+<a name="line411"></a>     * @throws \PHPCR\RepositoryException if an error occurs.
+<a name="line412"></a>     * @api
+<a name="line413"></a>     */</span>
+<a name="line414"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getNodeTypeManager<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line415"></a>&nbsp;
+<a name="line416"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line417"></a>     * Returns the ObservationManager object.
+<a name="line418"></a>     *
+<a name="line419"></a>     * @return \PHPCR\Observation\ObservationManagerInterface an ObservationManager object.
+<a name="line420"></a>     * @throws \PHPCR\UnsupportedRepositoryOperationException if the implementation does not support observation.
+<a name="line421"></a>     * @throws \PHPCR\RepositoryException if an error occurs.
+<a name="line422"></a>     * @api
+<a name="line423"></a>     */</span>
+<a name="line424"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getObservationManager<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line425"></a>&nbsp;
+<a name="line426"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line427"></a>     * Returns the VersionManager object.
+<a name="line428"></a>     *
+<a name="line429"></a>     * @return \PHPCR\Version\VersionManagerInterface a VersionManager object.
+<a name="line430"></a>     * @throws \PHPCR\UnsupportedRepositoryOperationException if the implementation does not support versioning.
+<a name="line431"></a>     * @throws \PHPCR\RepositoryException if an error occurs.
+<a name="line432"></a>     * @api
+<a name="line433"></a>     */</span>
+<a name="line434"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getVersionManager<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line435"></a>&nbsp;
+<a name="line436"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line437"></a>     * Gets a set of workspace accessible to the current user.
+<a name="line438"></a>     *
+<a name="line439"></a>     * Returns a string array containing the names of all workspaces in this
+<a name="line440"></a>     * repository that are accessible to this user, given the Credentials that
+<a name="line441"></a>     * were used to get the Session to which this Workspace is tied.
+<a name="line442"></a>     * In order to access one of the listed workspaces, the user performs
+<a name="line443"></a>     * another Repository.login, specifying the name of the desired workspace,
+<a name="line444"></a>     * and receives a new Session object.
+<a name="line445"></a>     *
+<a name="line446"></a>     * @return array string array of names of accessible workspaces.
+<a name="line447"></a>     * @throws \PHPCR\RepositoryException if an error occurs
+<a name="line448"></a>     * @api
+<a name="line449"></a>     */</span>
+<a name="line450"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getAccessibleWorkspaceNames<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line451"></a>&nbsp;
+<a name="line452"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line453"></a>     * Returns an \PHPCR\ContentHandlerInterface which can be used to push SAX events into the repository.
+<a name="line454"></a>     *
+<a name="line455"></a>     * If the incoming XML stream (in the form of SAX events)
+<a name="line456"></a>     * does not appear to be a JCR system view XML document then it is interpreted
+<a name="line457"></a>     * as a document view XML document.
+<a name="line458"></a>     * The incoming XML is deserialized into a subgraph of items immediately below
+<a name="line459"></a>     * the node at parentAbsPath.
+<a name="line460"></a>     *
+<a name="line461"></a>     * This method simply returns the ContentHandler without altering the state of
+<a name="line462"></a>     * the repository; the actual deserialization is done through the methods of
+<a name="line463"></a>     * the ContentHandler. Invalid XML data will cause the ContentHandler to throw
+<a name="line464"></a>     * a SAXException.
+<a name="line465"></a>     *
+<a name="line466"></a>     * As SAX events are fed into the ContentHandler, changes are made directly at
+<a name="line467"></a>     * the workspace level, without going through the Session. As a result, there
+<a name="line468"></a>     * is not need to call save. The advantage of this direct-to-workspace method
+<a name="line469"></a>     * is that a large import will not result in a large cache of pending nodes in
+<a name="line470"></a>     * the Session. The disadvantage is that structures that violate node type
+<a name="line471"></a>     * constraints cannot be imported, fixed and then saved. Instead, a constraint
+<a name="line472"></a>     * violation will cause the ContentHandler to throw a SAXException.
+<a name="line473"></a>     * See Session.getImportContentHandler for a version of this method that does go
+<a name="line474"></a>     * through the Session.
+<a name="line475"></a>     *
+<a name="line476"></a>     * The flag uuidBehavior governs how the identifiers of incoming (deserialized)
+<a name="line477"></a>     * nodes are handled. There are four options:
+<a name="line478"></a>     *
+<a name="line479"></a>     * * ImportUUIDBehavior.IMPORT_UUID_CREATE_NEW: Incoming nodes are assigned newly
+<a name="line480"></a>     *   created identifiers upon addition to the workspace. As a result identifier
+<a name="line481"></a>     *  collisions never occur.
+<a name="line482"></a>     * * ImportUUIDBehavior.IMPORT_UUID_COLLISION_REMOVE_EXISTING: If an incoming node
+<a name="line483"></a>     *   has the same identifier as a node already existing in the workspace, then the
+<a name="line484"></a>     *   already existing node (and its subgraph) is removed from wherever it may be in
+<a name="line485"></a>     *   the workspace before the incoming node is added. Note that this can result in
+<a name="line486"></a>     *   nodes &quot;disappearing&quot; from locations in the workspace that are remote from the
+<a name="line487"></a>     *   location to which the incoming subgraph is being written.
+<a name="line488"></a>     * * ImportUUIDBehavior.IMPORT_UUID_COLLISION_REPLACE_EXISTING: If an incoming node
+<a name="line489"></a>     *   has the same identifier as a node already existing in the workspace then the
+<a name="line490"></a>     *   already existing node is replaced by the incoming node in the same position as
+<a name="line491"></a>     *   the existing node. Note that this may result in the incoming subgraph being
+<a name="line492"></a>     *   disaggregated and &quot;spread around&quot; to different locations in the workspace. In
+<a name="line493"></a>     *   the most extreme case this behavior may result in no node at all being added as
+<a name="line494"></a>     *   child of parentAbsPath. This will occur if the topmost element of the incoming
+<a name="line495"></a>     *   XML has the same identifier as an existing node elsewhere in the workspace.
+<a name="line496"></a>     * * ImportUUIDBehavior.IMPORT_UUID_COLLISION_THROW: If an incoming node has the same
+<a name="line497"></a>     *   identifier as a node already existing in the workspace then a SAXException is
+<a name="line498"></a>     *   thrown by the returned ContentHandler during deserialization.
+<a name="line499"></a>     * A SAXException will be thrown by the returned ContentHandler during deserialization
+<a name="line500"></a>     * if the top-most element of the incoming XML would deserialize to a node with the same
+<a name="line501"></a>     * name as an existing child of parentAbsPath and that child does not allow same-name
+<a name="line502"></a>     * siblings.
+<a name="line503"></a>     * A SAXException will also be thrown by the returned ContentHandler during
+<a name="line504"></a>     * deserialization if uuidBehavior is set to IMPORT_UUID_COLLISION_REMOVE_EXISTING
+<a name="line505"></a>     * and an incoming node has the same identifier as the node at parentAbsPath or
+<a name="line506"></a>     * one of its ancestors.
+<a name="line507"></a>     *
+<a name="line508"></a>     * @param string $parentAbsPath the absolute path of a node under which (as child) the imported subgraph will be built.
+<a name="line509"></a>     * @param integer $uuidBehavior a four-value flag that governs how incoming identifiers are handled.
+<a name="line510"></a>     * @return an \PHPCR\ContentHandlerInterface whose methods may be called to feed SAX events into the deserializer.
+<a name="line511"></a>     *
+<a name="line512"></a>     * @throws \PHPCR\PathNotFoundException if no node exists at $parentAbsPath.
+<a name="line513"></a>     * @throws \PHPCR\ConstraintViolationException if the new subgraph cannot be added to the node at $parentAbsPath due
+<a name="line514"></a>     *                                             to node-type or other implementation-specific constraints, and this
+<a name="line515"></a>     *                                             can be determined before the first SAX event is sent. Unlike
+<a name="line516"></a>     *                                             Session#getImportContentHandler, this method also enforces node type
+<a name="line517"></a>     *                                             constraints by throwing SAXExceptions during deserialization.
+<a name="line518"></a>     *                                             However, which node type constraints are enforced depends upon
+<a name="line519"></a>     *                                             whether node type information in the imported data is respected,
+<a name="line520"></a>     *                                             and this is an implementation-specific issue.
+<a name="line521"></a>     * @throws \PHPCR\Version\VersionException if the node at $parentAbsPath is read-only due to a checked-in node.
+<a name="line522"></a>     * @throws \PHPCR\Lock\LockException if a lock prevents the addition of the subgraph.
+<a name="line523"></a>     * @throws \PHPCR\AccessDeniedException if the session associated with this Workspace object does not have
+<a name="line524"></a>     *                                      sufficient access to perform the import.
+<a name="line525"></a>     * @throws \PHPCR\RepositoryException if another error occurs.
+<a name="line526"></a>     * @todo Decide on a return type that fits the PHP world
+<a name="line527"></a>     * @api
+<a name="line528"></a>     */</span>
+<a name="line529"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getImportContentHandler<span style="color: #009900;">&#40;</span><span style="color: #000088;">$parentAbsPath</span><span style="color: #339933;">,</span> <span style="color: #000088;">$uuidBehavior</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line530"></a>&nbsp;
+<a name="line531"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line532"></a>     * Deserializes an XML document and adds the resulting item subgraph as a child of the node at $parentAbsPath.
+<a name="line533"></a>     *
+<a name="line534"></a>     * If the incoming XML does not appear to be a JCR system view XML document
+<a name="line535"></a>     * then it is interpreted as a document view XML document.
+<a name="line536"></a>     *
+<a name="line537"></a>     * Changes are made directly at the workspace level, without going through
+<a name="line538"></a>     * the Session. As a result, there is not need to call save. The advantage
+<a name="line539"></a>     * of this direct-to-workspace method is that a large import will not result
+<a name="line540"></a>     * in a large cache of pending nodes in the Session. The disadvantage is
+<a name="line541"></a>     * that invalid data cannot be imported, fixed and then saved. Instead,
+<a name="line542"></a>     * invalid data will cause this method to throw an InvalidSerializedDataException.
+<a name="line543"></a>     * See Session.importXML for a version of this method that does go through
+<a name="line544"></a>     * the Session.
+<a name="line545"></a>     *
+<a name="line546"></a>     * The flag $uuidBehavior governs how the identifiers of incoming (deserialized)
+<a name="line547"></a>     * nodes are handled. There are four options:
+<a name="line548"></a>     *
+<a name="line549"></a>     * * ImportUUIDBehavior.IMPORT_UUID_CREATE_NEW: Incoming nodes are assigned newly
+<a name="line550"></a>     *   created identifiers upon addition to the workspace. As a result identifier
+<a name="line551"></a>     *   collisions never occur.
+<a name="line552"></a>     * * ImportUUIDBehavior.IMPORT_UUID_COLLISION_REMOVE_EXISTING: If an incoming node
+<a name="line553"></a>     *   has the same identifier as a node already existing in the workspace then the
+<a name="line554"></a>     *   already existing node (and its subgraph) is removed from wherever it may be
+<a name="line555"></a>     *   in the workspace before the incoming node is added. Note that this can result
+<a name="line556"></a>     *   in nodes &quot;disappearing&quot; from locations in the workspace that are remote from
+<a name="line557"></a>     *   the location to which the incoming subgraph is being written. If an incoming
+<a name="line558"></a>     *   node has the same identifier as the existing root node of this workspace then
+<a name="line559"></a>     * * ImportUUIDBehavior.IMPORT_UUID_COLLISION_REPLACE_EXISTING: If an incoming node
+<a name="line560"></a>     *   has the same identifier as a node already existing in the workspace then the
+<a name="line561"></a>     *   already existing node is replaced by the incoming node in the same position as
+<a name="line562"></a>     *   the existing node. Note that this may result in the incoming subgraph being
+<a name="line563"></a>     *   disaggregated and &quot;spread around&quot; to different locations in the workspace. In
+<a name="line564"></a>     *   the most extreme edge case this behavior may result in no node at all being
+<a name="line565"></a>     *   added as child of parentAbsPath. This will occur if the topmost element of the
+<a name="line566"></a>     *   incoming XML has the same identifier as an existing node elsewhere in the
+<a name="line567"></a>     *   workspace.
+<a name="line568"></a>     * * ImportUUIDBehavior.IMPORT_UUID_COLLISION_THROW: If an incoming node has the
+<a name="line569"></a>     *   same identifier as a node already existing in the workspace then an
+<a name="line570"></a>     *   ItemExistsException is thrown.
+<a name="line571"></a>     *
+<a name="line572"></a>     * @param string $parentAbsPath the absolute path of the node below which the deserialized subgraph is added.
+<a name="line573"></a>     * @param string $in An URI from which the XML to be deserialized is read.
+<a name="line574"></a>     * @param integer $uuidBehavior a four-value flag that governs how incoming identifiers are handled.
+<a name="line575"></a>     * @return void
+<a name="line576"></a>     *
+<a name="line577"></a>     * @throws \RuntimeException if an error during an I/O operation occurs.
+<a name="line578"></a>     * @throws \PHPCR\PathNotFoundException if no node exists at parentAbsPath.
+<a name="line579"></a>     * @throws \PHPCR\ConstraintViolationException if node-type or other implementation-specific constraints prevent the addition of the subgraph or if uuidBehavior is set to IMPORT_UUID_COLLISION_REMOVE_EXISTING and an incoming node has the same identifier as the node at parentAbsPath or one of its ancestors.
+<a name="line580"></a>     * @throws \PHPCR\Version\VersionException if the node at parentAbsPath is read-only due to a checked-in node.
+<a name="line581"></a>     * @throws \PHPCR\InvalidSerializedDataException if incoming stream is not a valid XML document.
+<a name="line582"></a>     * @throws \PHPCR\ItemExistsException if the top-most element of the incoming XML would deserialize to a node with the same name as an existing child of parentAbsPath and that child does not allow same-name siblings, or if a uuidBehavior is set to IMPORT_UUID_COLLISION_THROW and an identifier collision occurs.
+<a name="line583"></a>     * @throws \PHPCR\Lock\LockException if a lock prevents the addition of the subgraph.
+<a name="line584"></a>     * @throws \PHPCR\AccessDeniedException if the session associated with this Workspace object does not have sufficient access to perform the import.
+<a name="line585"></a>     * @throws \PHPCR\RepositoryException if another error occurs.
+<a name="line586"></a>     * @api
+<a name="line587"></a>     */</span>
+<a name="line588"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> importXML<span style="color: #009900;">&#40;</span><span style="color: #000088;">$parentAbsPath</span><span style="color: #339933;">,</span> <span style="color: #000088;">$in</span><span style="color: #339933;">,</span> <span style="color: #000088;">$uuidBehavior</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line589"></a>&nbsp;
+<a name="line590"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line591"></a>     * Creates a new Workspace with the specified name. The new workspace is empty, meaning it contains only root node.
+<a name="line592"></a>     *
+<a name="line593"></a>     * If srcWorkspace is given:
+<a name="line594"></a>     * Creates a new Workspace with the specified name initialized with a
+<a name="line595"></a>     * clone of the content of the workspace srcWorkspace. Semantically,
+<a name="line596"></a>     * this method is equivalent to creating a new workspace and manually
+<a name="line597"></a>     * cloning srcWorkspace to it; however, this method may assist some
+<a name="line598"></a>     * implementations in optimizing subsequent Node.update and Node.merge
+<a name="line599"></a>     * calls between the new workspace and its source.
+<a name="line600"></a>     *
+<a name="line601"></a>     * The new workspace can be accessed through a login specifying its name.
+<a name="line602"></a>     *
+<a name="line603"></a>     * @param string $name A String, the name of the new workspace.
+<a name="line604"></a>     * @param string $srcWorkspace The name of the workspace from which the new workspace is to be cloned.
+<a name="line605"></a>     * @return void
+<a name="line606"></a>     *
+<a name="line607"></a>     * @throws \PHPCR\AccessDeniedException if the session through which this Workspace object was acquired does not have sufficient access to create the new workspace.
+<a name="line608"></a>     * @throws \PHPCR\UnsupportedRepositoryOperationException if the repository does not support the creation of workspaces.
+<a name="line609"></a>     * @throws \PHPCR\NoSuchWorkspaceException if $srcWorkspace does not exist.
+<a name="line610"></a>     * @throws \PHPCR\RepositoryException if another error occurs.
+<a name="line611"></a>     * @api
+<a name="line612"></a>     */</span>
+<a name="line613"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> createWorkspace<span style="color: #009900;">&#40;</span><span style="color: #000088;">$name</span><span style="color: #339933;">,</span> <span style="color: #000088;">$srcWorkspace</span> <span style="color: #339933;">=</span> <span style="color: #009900; font-weight: bold;">NULL</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line614"></a>&nbsp;
+<a name="line615"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line616"></a>     * Deletes the workspace with the specified name from the repository, deleting all content within it.
+<a name="line617"></a>     *
+<a name="line618"></a>     * @param string $name A String, the name of the workspace to be deleted.
+<a name="line619"></a>     * @return void
+<a name="line620"></a>     *
+<a name="line621"></a>     * @throws \PHPCR\AccessDeniedException if the session through which this Workspace object was acquired does not have sufficient access to remove the workspace.
+<a name="line622"></a>     * @throws \PHPCR\UnsupportedRepositoryOperationException if the repository does not support the removal of workspaces.
+<a name="line623"></a>     * @throws \PHPCR\NoSuchWorkspaceException if $name does not exist.
+<a name="line624"></a>     * @throws \PHPCR\RepositoryException if another error occurs.
+<a name="line625"></a>     * @api
+<a name="line626"></a>     */</span>
+<a name="line627"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> deleteWorkspace<span style="color: #009900;">&#40;</span><span style="color: #000088;">$name</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line628"></a>&nbsp;
+<a name="line629"></a><span style="color: #009900;">&#125;</span>
+<a name="line630"></a>&nbsp;</pre>
+<div class="header">
+<h1>PHPCR</h1>
+<ul>
+<li><a href="../../overview-summary.html">Overview</a></li>
+<li>Package</li><li>Class</li><li>Tree</li><li><a href="../../overview-files.html">Files</a></li>
+<li><a href="../../deprecated-list.html">Deprecated</a></li>
+<li><a href="../../todo-list.html">Todo</a></li>
+<li><a href="../../index-all.html">Index</a></li>
+</ul>
+</div>
+
+<div class="small_links">
+<a href="../../index.html" target="_top">Frames</a>
+<a href="../../source/phpcr/workspaceinterface.php.html" target="_top">No frames</a>
+</div>
+<hr>
+
+<p id="footer">This document was generated by <a href="http://peej.github.com/phpdoctor/">PHPDoctor: The PHP Documentation Creator</a></p>
+
+</body>
+
+</html>

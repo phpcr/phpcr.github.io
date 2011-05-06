@@ -1,0 +1,196 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+
+<html lang="en">
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="generator" content="PHPDoctor 2RC4 (http://peej.github.com/phpdoctor/)">
+<meta name="when" content="Fri, 06 May 2011 11:43:31 +0000">
+
+<link rel="stylesheet" type="text/css" href="../../../../stylesheet.css">
+<link rel="start" href="../../../../overview-summary.html">
+
+<title>PHPCR/Query/QOM/QueryObjectModelConstantsInterface.php (PHPCR API)</title>
+
+</head>
+<body id="file" onload="parent.document.title=document.title;">
+
+<div class="header">
+<h1>PHPCR</h1>
+<ul>
+<li><a href="../../../../overview-summary.html">Overview</a></li>
+<li>Package</li><li>Class</li><li>Tree</li><li><a href="../../../../overview-files.html">Files</a></li>
+<li><a href="../../../../deprecated-list.html">Deprecated</a></li>
+<li><a href="../../../../todo-list.html">Todo</a></li>
+<li><a href="../../../../index-all.html">Index</a></li>
+</ul>
+</div>
+
+<div class="small_links">
+<a href="../../../../index.html" target="_top">Frames</a>
+<a href="../../../../source/phpcr/query/qom/queryobjectmodelconstantsinterface.php.html" target="_top">No frames</a>
+</div>
+<hr>
+
+<h1>PHPCR/Query/QOM/QueryObjectModelConstantsInterface.php</h1>
+<div class="comment" id="overview_description"><p>Interface to describe the query object model constants.</p><p>This file was ported from the Java JCR API to PHP by
+Karsten Dambekalns <karsten@typo3.org> for the FLOW3 project.</p><p>It is free software; you can redistribute it and/or modify it under
+the terms of the GNU Lesser General Public License as published by the
+Free Software Foundation, either version 3 of the License, or (at your
+option) any later version. Alternatively, you may use the Simplified
+BSD License.</p><p>This script is distributed in the hope that it will be useful, but
+WITHOUT ANY WARRANTY; without even the implied warranty of MERCHAN-
+TABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser
+General Public License for more details.</p><p>You should have received a copy of the GNU Lesser General Public
+License along with the script.
+If not, see <code><a href="http://www.gnu.org/licenses/lgpl.html">http://www.gnu.org/licenses/lgpl.html</a></code>.</p><p>The TYPO3 project - inspiring people to share!</p></div>
+
+<hr>
+
+<a name="line1"></a><pre class="php" style="font-family:monospace;"><span style="color: #000000; font-weight: bold;">&lt;?php</span>
+<a name="line2"></a><span style="color: #009933; font-style: italic;">/**
+<a name="line3"></a> * Interface to describe the query object model constants.
+<a name="line4"></a> *
+<a name="line5"></a> * This file was ported from the Java JCR API to PHP by
+<a name="line6"></a> * Karsten Dambekalns &lt;karsten@typo3.org&gt; for the FLOW3 project.
+<a name="line7"></a> *
+<a name="line8"></a> * It is free software; you can redistribute it and/or modify it under
+<a name="line9"></a> * the terms of the GNU Lesser General Public License as published by the
+<a name="line10"></a> * Free Software Foundation, either version 3 of the License, or (at your
+<a name="line11"></a> * option) any later version. Alternatively, you may use the Simplified
+<a name="line12"></a> * BSD License.
+<a name="line13"></a> *
+<a name="line14"></a> * This script is distributed in the hope that it will be useful, but
+<a name="line15"></a> * WITHOUT ANY WARRANTY; without even the implied warranty of MERCHAN-
+<a name="line16"></a> * TABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser
+<a name="line17"></a> * General Public License for more details.
+<a name="line18"></a> *
+<a name="line19"></a> * You should have received a copy of the GNU Lesser General Public
+<a name="line20"></a> * License along with the script.
+<a name="line21"></a> * If not, see {@link http://www.gnu.org/licenses/lgpl.html}.
+<a name="line22"></a> *
+<a name="line23"></a> * The TYPO3 project - inspiring people to share!
+<a name="line24"></a> *
+<a name="line25"></a> * @license http://www.gnu.org/licenses/lgpl.html GNU Lesser General Public License, version 3 or later
+<a name="line26"></a> * @license http://opensource.org/licenses/bsd-license.php Simplified BSD License
+<a name="line27"></a> *
+<a name="line28"></a> * @package phpcr
+<a name="line29"></a> * @subpackage interfaces
+<a name="line30"></a> */</span>
+<a name="line31"></a>&nbsp;
+<a name="line32"></a>&nbsp;
+<a name="line33"></a><span style="color: #000000; font-weight: bold;">declare</span><span style="color: #009900;">&#40;</span>ENCODING <span style="color: #339933;">=</span> <span style="color: #0000ff;">'utf-8'</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line34"></a><span style="color: #000000; font-weight: bold;">namespace</span> PHPCR\Query\QOM<span style="color: #339933;">;</span>
+<a name="line35"></a>&nbsp;
+<a name="line36"></a><span style="color: #009933; font-style: italic;">/**
+<a name="line37"></a> * Defines constants used in the query object model.
+<a name="line38"></a> *
+<a name="line39"></a> * @package phpcr
+<a name="line40"></a> * @subpackage interfaces
+<a name="line41"></a> * @api
+<a name="line42"></a> */</span>
+<a name="line43"></a><span style="color: #000000; font-weight: bold;">interface</span> QueryObjectModelConstantsInterface <span style="color: #009900;">&#123;</span>
+<a name="line44"></a>&nbsp;
+<a name="line45"></a>    <span style="color: #009933; font-style: italic;">/**#@+
+<a name="line46"></a>     * @var string
+<a name="line47"></a>     */</span>
+<a name="line48"></a>&nbsp;
+<a name="line49"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line50"></a>     * An inner join.
+<a name="line51"></a>     * @api
+<a name="line52"></a>    */</span>
+<a name="line53"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_JOIN_TYPE_INNER <span style="color: #339933;">=</span> <span style="color: #0000ff;">'{http://www.jcp.org/jcr/1.0}joinTypeInner'</span><span style="color: #339933;">;</span>
+<a name="line54"></a>&nbsp;
+<a name="line55"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line56"></a>     * A left-outer join.
+<a name="line57"></a>     * @api
+<a name="line58"></a>    */</span>
+<a name="line59"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_JOIN_TYPE_LEFT_OUTER <span style="color: #339933;">=</span> <span style="color: #0000ff;">'{http://www.jcp.org/jcr/1.0}joinTypeLeftOuter'</span><span style="color: #339933;">;</span>
+<a name="line60"></a>&nbsp;
+<a name="line61"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line62"></a>     * A right-outer join.
+<a name="line63"></a>     * @api
+<a name="line64"></a>    */</span>
+<a name="line65"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_JOIN_TYPE_RIGHT_OUTER <span style="color: #339933;">=</span> <span style="color: #0000ff;">'{http://www.jcp.org/jcr/1.0}joinTypeRightOuter'</span><span style="color: #339933;">;</span>
+<a name="line66"></a>&nbsp;
+<a name="line67"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line68"></a>     * The '=' comparison operator.
+<a name="line69"></a>     * @api
+<a name="line70"></a>    */</span>
+<a name="line71"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_OPERATOR_EQUAL_TO <span style="color: #339933;">=</span> <span style="color: #0000ff;">'{http://www.jcp.org/jcr/1.0}operatorEqualTo'</span><span style="color: #339933;">;</span>
+<a name="line72"></a>&nbsp;
+<a name="line73"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line74"></a>     * The '!=' comparison operator.
+<a name="line75"></a>     * @api
+<a name="line76"></a>    */</span>
+<a name="line77"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_OPERATOR_NOT_EQUAL_TO <span style="color: #339933;">=</span> <span style="color: #0000ff;">'{http://www.jcp.org/jcr/1.0}operatorNotEqualTo'</span><span style="color: #339933;">;</span>
+<a name="line78"></a>&nbsp;
+<a name="line79"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line80"></a>     * The '&lt;' comparison operator.
+<a name="line81"></a>     * @api
+<a name="line82"></a>    */</span>
+<a name="line83"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_OPERATOR_LESS_THAN <span style="color: #339933;">=</span> <span style="color: #0000ff;">'{http://www.jcp.org/jcr/1.0}operatorLessThan'</span><span style="color: #339933;">;</span>
+<a name="line84"></a>&nbsp;
+<a name="line85"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line86"></a>     * The '&lt;=' comparison operator.
+<a name="line87"></a>     * @api
+<a name="line88"></a>    */</span>
+<a name="line89"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_OPERATOR_LESS_THAN_OR_EQUAL_TO <span style="color: #339933;">=</span> <span style="color: #0000ff;">'{http://www.jcp.org/jcr/1.0}operatorLessThanOrEqualTo'</span><span style="color: #339933;">;</span>
+<a name="line90"></a>&nbsp;
+<a name="line91"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line92"></a>     * The '&gt;' comparison operator.
+<a name="line93"></a>     * @api
+<a name="line94"></a>    */</span>
+<a name="line95"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_OPERATOR_GREATER_THAN <span style="color: #339933;">=</span> <span style="color: #0000ff;">'{http://www.jcp.org/jcr/1.0}operatorGreaterThan'</span><span style="color: #339933;">;</span>
+<a name="line96"></a>&nbsp;
+<a name="line97"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line98"></a>     * The '&gt;=' comparison operator.
+<a name="line99"></a>     * @api
+<a name="line100"></a>    */</span>
+<a name="line101"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_OPERATOR_GREATER_THAN_OR_EQUAL_TO <span style="color: #339933;">=</span> <span style="color: #0000ff;">'{http://www.jcp.org/jcr/1.0}operatorGreaterThanOrEqualTo'</span><span style="color: #339933;">;</span>
+<a name="line102"></a>&nbsp;
+<a name="line103"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line104"></a>     * The 'like' comparison operator.
+<a name="line105"></a>     * @api
+<a name="line106"></a>    */</span>
+<a name="line107"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_OPERATOR_LIKE <span style="color: #339933;">=</span> <span style="color: #0000ff;">'{http://www.jcp.org/jcr/1.0}operatorLike'</span><span style="color: #339933;">;</span>
+<a name="line108"></a>&nbsp;
+<a name="line109"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line110"></a>     * Ascending order.
+<a name="line111"></a>     * @api
+<a name="line112"></a>    */</span>
+<a name="line113"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_ORDER_ASCENDING <span style="color: #339933;">=</span> <span style="color: #0000ff;">'{http://www.jcp.org/jcr/1.0}orderAscending'</span><span style="color: #339933;">;</span>
+<a name="line114"></a>&nbsp;
+<a name="line115"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line116"></a>     * Descending order.
+<a name="line117"></a>     * @api
+<a name="line118"></a>    */</span>
+<a name="line119"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_ORDER_DESCENDING <span style="color: #339933;">=</span> <span style="color: #0000ff;">'{http://www.jcp.org/jcr/1.0}orderDescending'</span><span style="color: #339933;">;</span>
+<a name="line120"></a>&nbsp;
+<a name="line121"></a>    <span style="color: #009933; font-style: italic;">/**#@-*/</span>
+<a name="line122"></a>&nbsp;
+<a name="line123"></a><span style="color: #009900;">&#125;</span>
+<a name="line124"></a>&nbsp;</pre>
+<div class="header">
+<h1>PHPCR</h1>
+<ul>
+<li><a href="../../../../overview-summary.html">Overview</a></li>
+<li>Package</li><li>Class</li><li>Tree</li><li><a href="../../../../overview-files.html">Files</a></li>
+<li><a href="../../../../deprecated-list.html">Deprecated</a></li>
+<li><a href="../../../../todo-list.html">Todo</a></li>
+<li><a href="../../../../index-all.html">Index</a></li>
+</ul>
+</div>
+
+<div class="small_links">
+<a href="../../../../index.html" target="_top">Frames</a>
+<a href="../../../../source/phpcr/query/qom/queryobjectmodelconstantsinterface.php.html" target="_top">No frames</a>
+</div>
+<hr>
+
+<p id="footer">This document was generated by <a href="http://peej.github.com/phpdoctor/">PHPDoctor: The PHP Documentation Creator</a></p>
+
+</body>
+
+</html>

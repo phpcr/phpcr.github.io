@@ -1,0 +1,68 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+<title>PHPCR</title>
+<link rel="stylesheet" type="text/css" href="media/style.css">
+</head>
+
+<body>
+  <a href="http://github.com/phpcr/phpcr"><img style="position: absolute; top: 0; right: 0; border: 0;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub" /></a>
+  <div class="#header">
+  </div>
+
+  <div id="container">
+    <h1 id="header">PHPCR - Content Repository for PHP</h1>
+
+    <div class="description">
+
+        <p>
+            The PHP Content Repository is an adaption of the Java Content Repository (<a href="http://en.wikipedia.org/wiki/Content_repository_API_for_Java" class="external-link" rel="nofollow">JCR</a>) standard, an open API specification defined in <a href="http://jcp.org/en/jsr/detail?id=283" title="JSR: Java Specification Request" class="external-link" rel="nofollow">JSR-283</a>. <br/>
+            The API defines how to handle hierarchical semi-structured data in a consistent way.
+        </p>
+        <p>
+            The typical use case is content management systems.
+            PHPCR combines the best out of <a href="http://en.wikipedia.org/wiki/Document-oriented_database">document-oriented databases</a> (weak structured data) and of <a href="http://en.wikipedia.org/wiki/XML_database">XML databases</a> (hiearchical trees). On top of that, it adds useful features like searching, versioning, access control and locking on top of it.
+        </p>
+    </div>
+
+        <h2>When to use PHPCR</h2>
+
+            <ul>
+                <li>You have hierarchical navigation structures</li>
+                <li>You have compound data that belongs together. i.e. a web page with attached files or translations</li>
+                <li>You need to version content</li>
+                <li>You want full text search</li>
+            </ul>
+
+        <h2>When not to use PHPCR</h2>
+        <p>
+            PHPCR is targeted at semi structured content. When you have strict content and need to aggregate the data, PHPCR is not the tool of choice. We recommend using relational databases for this.<br/>
+            For example, when building a web shop, the products could be stored in PHPCR while the orders can be stored in a relational database.
+        </p>
+
+        <ul class="links">
+            <li><a href="http://github.com/phpcr/phpcr">Source</a></li>
+            <li><a href="doc/html/index.html">API</a></li>
+            <li><a href="https://github.com/jackalope/jackalope/wiki/Collaboration">Collaboration</a></li>
+        </ul>
+
+        <h2>Implementations</h2>
+
+        <p>PHPCR defines the interfaces for content repositories. There are several implementations available that you can use:</p>
+
+        <ul>
+            <li><a href="https://github.com/jackalope/jackalope">Jackalope Doctrine DBAL</a> (with Doctrine DBAL to use relational databases as storage engine)</li>
+            <li><a href="https://github.com/jackalope/jackalope">Jackalope Jackrabbit</a> (with Java Jackrabbit as storage engine)</li>
+            <li><a href="https://github.com/bergie/phpcr-midgard2">Midgard2 PHPCR layer</a></li>
+        </ul>
+    </div>
+
+    <div class="footer">
+    </div>
+  </div>
+</body>
+</html>

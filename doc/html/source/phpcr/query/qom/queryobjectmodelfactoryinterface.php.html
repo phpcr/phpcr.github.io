@@ -1,0 +1,645 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+
+<html lang="en">
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="generator" content="PHPDoctor 2RC4 (http://peej.github.com/phpdoctor/)">
+<meta name="when" content="Fri, 06 May 2011 11:43:32 +0000">
+
+<link rel="stylesheet" type="text/css" href="../../../../stylesheet.css">
+<link rel="start" href="../../../../overview-summary.html">
+
+<title>PHPCR/Query/QOM/QueryObjectModelFactoryInterface.php (PHPCR API)</title>
+
+</head>
+<body id="file" onload="parent.document.title=document.title;">
+
+<div class="header">
+<h1>PHPCR</h1>
+<ul>
+<li><a href="../../../../overview-summary.html">Overview</a></li>
+<li>Package</li><li>Class</li><li>Tree</li><li><a href="../../../../overview-files.html">Files</a></li>
+<li><a href="../../../../deprecated-list.html">Deprecated</a></li>
+<li><a href="../../../../todo-list.html">Todo</a></li>
+<li><a href="../../../../index-all.html">Index</a></li>
+</ul>
+</div>
+
+<div class="small_links">
+<a href="../../../../index.html" target="_top">Frames</a>
+<a href="../../../../source/phpcr/query/qom/queryobjectmodelfactoryinterface.php.html" target="_top">No frames</a>
+</div>
+<hr>
+
+<h1>PHPCR/Query/QOM/QueryObjectModelFactoryInterface.php</h1>
+<div class="comment" id="overview_description"><p>Interface to describe the contract to implement a query object model factory class.</p><p>This file was ported from the Java JCR API to PHP by
+Karsten Dambekalns <karsten@typo3.org> for the FLOW3 project.</p><p>It is free software; you can redistribute it and/or modify it under
+the terms of the GNU Lesser General Public License as published by the
+Free Software Foundation, either version 3 of the License, or (at your
+option) any later version. Alternatively, you may use the Simplified
+BSD License.</p><p>This script is distributed in the hope that it will be useful, but
+WITHOUT ANY WARRANTY; without even the implied warranty of MERCHAN-
+TABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser
+General Public License for more details.</p><p>You should have received a copy of the GNU Lesser General Public
+License along with the script.
+If not, see <code><a href="http://www.gnu.org/licenses/lgpl.html">http://www.gnu.org/licenses/lgpl.html</a></code>.</p><p>The TYPO3 project - inspiring people to share!</p></div>
+
+<hr>
+
+<a name="line1"></a><pre class="php" style="font-family:monospace;"><span style="color: #000000; font-weight: bold;">&lt;?php</span>
+<a name="line2"></a><span style="color: #009933; font-style: italic;">/**
+<a name="line3"></a> * Interface to describe the contract to implement a query object model factory class.
+<a name="line4"></a> *
+<a name="line5"></a> * This file was ported from the Java JCR API to PHP by
+<a name="line6"></a> * Karsten Dambekalns &lt;karsten@typo3.org&gt; for the FLOW3 project.
+<a name="line7"></a> *
+<a name="line8"></a> * It is free software; you can redistribute it and/or modify it under
+<a name="line9"></a> * the terms of the GNU Lesser General Public License as published by the
+<a name="line10"></a> * Free Software Foundation, either version 3 of the License, or (at your
+<a name="line11"></a> * option) any later version. Alternatively, you may use the Simplified
+<a name="line12"></a> * BSD License.
+<a name="line13"></a> *
+<a name="line14"></a> * This script is distributed in the hope that it will be useful, but
+<a name="line15"></a> * WITHOUT ANY WARRANTY; without even the implied warranty of MERCHAN-
+<a name="line16"></a> * TABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser
+<a name="line17"></a> * General Public License for more details.
+<a name="line18"></a> *
+<a name="line19"></a> * You should have received a copy of the GNU Lesser General Public
+<a name="line20"></a> * License along with the script.
+<a name="line21"></a> * If not, see {@link http://www.gnu.org/licenses/lgpl.html}.
+<a name="line22"></a> *
+<a name="line23"></a> * The TYPO3 project - inspiring people to share!
+<a name="line24"></a> *
+<a name="line25"></a> * @license http://www.gnu.org/licenses/lgpl.html GNU Lesser General Public License, version 3 or later
+<a name="line26"></a> * @license http://opensource.org/licenses/bsd-license.php Simplified BSD License
+<a name="line27"></a> *
+<a name="line28"></a> * @package phpcr
+<a name="line29"></a> * @subpackage interfaces
+<a name="line30"></a> */</span>
+<a name="line31"></a>&nbsp;
+<a name="line32"></a>&nbsp;
+<a name="line33"></a><span style="color: #000000; font-weight: bold;">declare</span><span style="color: #009900;">&#40;</span>ENCODING <span style="color: #339933;">=</span> <span style="color: #0000ff;">'utf-8'</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line34"></a><span style="color: #000000; font-weight: bold;">namespace</span> PHPCR\Query\QOM<span style="color: #339933;">;</span>
+<a name="line35"></a>&nbsp;
+<a name="line36"></a><span style="color: #009933; font-style: italic;">/**
+<a name="line37"></a> * A QueryObjectModelFactory creates instances of the JCR query object model.
+<a name="line38"></a> *
+<a name="line39"></a> * Refer to QueryObjectModelInterface for a description of the query object model.
+<a name="line40"></a> *
+<a name="line41"></a> * @package phpcr
+<a name="line42"></a> * @subpackage interfaces
+<a name="line43"></a> * @api
+<a name="line44"></a> */</span>
+<a name="line45"></a><span style="color: #000000; font-weight: bold;">interface</span> QueryObjectModelFactoryInterface <span style="color: #000000; font-weight: bold;">extends</span> QueryObjectModelConstantsInterface <span style="color: #009900;">&#123;</span>
+<a name="line46"></a>&nbsp;
+<a name="line47"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line48"></a>     * Creates a query with one or more selectors.
+<a name="line49"></a>     * If source is a selector, that selector is the default selector of the
+<a name="line50"></a>     * query. Otherwise the query does not have a default selector.
+<a name="line51"></a>     *
+<a name="line52"></a>     * If the query is invalid, this method throws an InvalidQueryException.
+<a name="line53"></a>     * See the individual QOM factory methods for the validity criteria of each
+<a name="line54"></a>     * query element.
+<a name="line55"></a>     *
+<a name="line56"></a>     * @param \PHPCR\Query\QOM\SourceInterface $source the Selector or the node-tuple Source; non-null
+<a name="line57"></a>     * @param \PHPCR\Query\QOM\ConstraintInterface $constraint the constraint, or null if none
+<a name="line58"></a>     * @param array $orderings zero or more orderings; null is equivalent to a zero-length array
+<a name="line59"></a>     * @param array $columns the columns; null is equivalent to a zero-length array
+<a name="line60"></a>     * @return \PHPCR\Query\QOM\QueryObjectModelInterface the query; non-null
+<a name="line61"></a>     * @throws \PHPCR\Query\InvalidQueryException if a particular validity test is possible on this method,
+<a name="line62"></a>     *                                            the implemention chooses to perform that test and the parameters
+<a name="line63"></a>     *                                            given fail that test. See the individual QOM factory methods for
+<a name="line64"></a>     *                                            the validity criteria of each query element.
+<a name="line65"></a>     * @throws \PHPCR\RepositoryException if another error occurs.
+<a name="line66"></a>     * @api
+<a name="line67"></a>     */</span>
+<a name="line68"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> createQuery<span style="color: #009900;">&#40;</span>\PHPCR\Query\QOM\SourceInterface <span style="color: #000088;">$source</span><span style="color: #339933;">,</span> <span style="color: #000088;">$constraint</span><span style="color: #339933;">,</span> <a href="http://www.php.net/array"><span style="color: #990000;">array</span></a> <span style="color: #000088;">$orderings</span><span style="color: #339933;">,</span> <a href="http://www.php.net/array"><span style="color: #990000;">array</span></a> <span style="color: #000088;">$columns</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line69"></a>&nbsp;
+<a name="line70"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line71"></a>     * Selects a subset of the nodes in the repository based on node type.
+<a name="line72"></a>     *
+<a name="line73"></a>     * The query is invalid if $nodeTypeName or $selectorName is not a
+<a name="line74"></a>     * syntactically valid JCR name.
+<a name="line75"></a>     *
+<a name="line76"></a>     * The query is invalid if $selectorName is identical to the name of another
+<a name="line77"></a>     * selector in the query.
+<a name="line78"></a>     *
+<a name="line79"></a>     * If $nodeTypeName is a valid JCR name but not the name of a node type
+<a name="line80"></a>     * available in the repository, the query is valid but the selector selects
+<a name="line81"></a>     * no nodes.
+<a name="line82"></a>     *
+<a name="line83"></a>     * @param string $nodeTypeName the name of the required node type; non-null
+<a name="line84"></a>     * @param string $selectorName the selector name; non-null
+<a name="line85"></a>     * @return \PHPCR\Query\QOM\SelectorInterface the selector; non-null
+<a name="line86"></a>     * @throws \PHPCR\Query\InvalidQueryException if a particular validity test is possible on this method,
+<a name="line87"></a>     *                                            the implemention chooses to perform that test (and not leave it
+<a name="line88"></a>     *                                            until later) on createQuery, and the parameters given fail that test
+<a name="line89"></a>     * @throws \PHPCR\RepositoryException if the operation otherwise fails
+<a name="line90"></a>     * @api
+<a name="line91"></a>     */</span>
+<a name="line92"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> selector<span style="color: #009900;">&#40;</span><span style="color: #000088;">$nodeTypeName</span><span style="color: #339933;">,</span> <span style="color: #000088;">$selectorName</span> <span style="color: #339933;">=</span> <span style="color: #009900; font-weight: bold;">NULL</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line93"></a>&nbsp;
+<a name="line94"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line95"></a>     * Performs a join between two node-tuple sources.
+<a name="line96"></a>     *
+<a name="line97"></a>     * The query is invalid if $left is the same source as $right.
+<a name="line98"></a>     *
+<a name="line99"></a>     * @param \PHPCR\Query\QOM\SourceInterface $left the left node-tuple source; non-null
+<a name="line100"></a>     * @param \PHPCR\Query\QOM\SourceInterface $right the right node-tuple source; non-null
+<a name="line101"></a>     * @param string $joinType one of QueryObjectModelConstants.JCR_JOIN_TYPE_*
+<a name="line102"></a>     * @param \PHPCR\Query\QOM\JoinConditionInterface $joinCondition the join condition; non-null
+<a name="line103"></a>     * @return \PHPCR\Query\QOM\JoinInterface the join; non-null
+<a name="line104"></a>     * @throws \PHPCR\Query\InvalidQueryException if a particular validity test is possible on this method,
+<a name="line105"></a>     *                                            the implemention chooses to perform that test (and not leave it
+<a name="line106"></a>     *                                            until later) on createQuery, and the parameters given fail that test
+<a name="line107"></a>     * @throws \PHPCR\RepositoryException if the operation otherwise fails
+<a name="line108"></a>     * @api
+<a name="line109"></a>     */</span>
+<a name="line110"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> <a href="http://www.php.net/join"><span style="color: #990000;">join</span></a><span style="color: #009900;">&#40;</span>\PHPCR\Query\QOM\SourceInterface <span style="color: #000088;">$left</span><span style="color: #339933;">,</span> \PHPCR\Query\QOM\SourceInterface <span style="color: #000088;">$right</span><span style="color: #339933;">,</span>
+<a name="line111"></a>                         <span style="color: #000088;">$joinType</span><span style="color: #339933;">,</span> \PHPCR\Query\QOM\JoinConditionInterface <span style="color: #000088;">$joinCondition</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line112"></a>&nbsp;
+<a name="line113"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line114"></a>     * Tests whether the value of a property in a first selector is equal to the
+<a name="line115"></a>     * value of a property in a second selector.
+<a name="line116"></a>     *
+<a name="line117"></a>     * The query is invalid if:
+<a name="line118"></a>     * - $selector1 is not the name of a selector in the query, or
+<a name="line119"></a>     * - $selector2 is not the name of a selector in the query, or
+<a name="line120"></a>     * - $selector1 is the same as $selector2, or
+<a name="line121"></a>     * - $property1 is not a syntactically valid JCR name, or
+<a name="line122"></a>     * - $property2 is not a syntactically valid JCR name, or
+<a name="line123"></a>     * - the value of $property1 is not the same property type as the value of
+<a name="line124"></a>     *   $property2, or
+<a name="line125"></a>     * - $property1 is a multi-valued property, or
+<a name="line126"></a>     * - $property2 is a multi-valued property, or
+<a name="line127"></a>     * - $property1 is a BINARY property, or
+<a name="line128"></a>     * - $property2 is a BINARY property.
+<a name="line129"></a>     *
+<a name="line130"></a>     * @param string $selector1Name the name of the first selector; non-null
+<a name="line131"></a>     * @param string $property1Name the property name in the first selector; non-null
+<a name="line132"></a>     * @param string $selector2Name the name of the second selector; non-null
+<a name="line133"></a>     * @param string $property2Name the property name in the second selector; non-null
+<a name="line134"></a>     * @return \PHPCR\Query\QOM\EquiJoinConditionInterface the constraint; non-null
+<a name="line135"></a>     * @throws \PHPCR\Query\InvalidQueryException if a particular validity test is possible on this method,
+<a name="line136"></a>     *                                            the implemention chooses to perform that test (and not leave it
+<a name="line137"></a>     *                                            until later) on createQuery, and the parameters given fail that test
+<a name="line138"></a>     * @throws \PHPCR\RepositoryException if the operation otherwise fails
+<a name="line139"></a>     * @api
+<a name="line140"></a>     */</span>
+<a name="line141"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> equiJoinCondition<span style="color: #009900;">&#40;</span><span style="color: #000088;">$selector1Name</span><span style="color: #339933;">,</span> <span style="color: #000088;">$property1Name</span><span style="color: #339933;">,</span> <span style="color: #000088;">$selector2Name</span><span style="color: #339933;">,</span> <span style="color: #000088;">$property2Name</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line142"></a>&nbsp;
+<a name="line143"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line144"></a>     * Tests whether a first selector's node is the same as a node identified by
+<a name="line145"></a>     * relative path from a second selector's node.
+<a name="line146"></a>     *
+<a name="line147"></a>     * The query is invalid if:
+<a name="line148"></a>     * - $selector1 is not the name of a selector in the query, or
+<a name="line149"></a>     * - $selector2 is not the name of a selector in the query, or
+<a name="line150"></a>     * - $selector1 is the same as $selector2, or
+<a name="line151"></a>     * - $selector2Path is not a syntactically valid relative path.
+<a name="line152"></a>     *   &lt;b&gt;Note:&lt;/b&gt;
+<a name="line153"></a>     *   however, that if the path is syntactically valid but does not identify a node
+<a name="line154"></a>     *   visible to the current session, the query is valid but the constraint
+<a name="line155"></a>     *   is not satisfied.
+<a name="line156"></a>     *
+<a name="line157"></a>     * @param string $selector1Name the name of the first selector; non-null
+<a name="line158"></a>     * @param string $selector2Name the name of the second selector; non-null
+<a name="line159"></a>     * @param string $selector2Path the path relative to the second selector; non-null
+<a name="line160"></a>     * @return \PHPCR\Query\QOM\SameNodeJoinConditionInterface the constraint; non-null
+<a name="line161"></a>     * @throws \PHPCR\Query\InvalidQueryException if a particular validity test is possible on this method,
+<a name="line162"></a>     *                                            the implemention chooses to perform that test (and not leave it
+<a name="line163"></a>     *                                            until later) on createQuery, and the parameters given fail that test
+<a name="line164"></a>     * @throws \PHPCR\RepositoryException if the operation otherwise fails
+<a name="line165"></a>     * @api
+<a name="line166"></a>     */</span>
+<a name="line167"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> sameNodeJoinCondition<span style="color: #009900;">&#40;</span><span style="color: #000088;">$selector1Name</span><span style="color: #339933;">,</span> <span style="color: #000088;">$selector2Name</span><span style="color: #339933;">,</span> <span style="color: #000088;">$selector2Path</span> <span style="color: #339933;">=</span> <span style="color: #009900; font-weight: bold;">NULL</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line168"></a>&nbsp;
+<a name="line169"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line170"></a>     * Tests whether a first selector's node is a child of a second selector's node.
+<a name="line171"></a>     *
+<a name="line172"></a>     * The query is invalid if:
+<a name="line173"></a>     * - $childSelector is not the name of a selector in the query
+<a name="line174"></a>     * - $parentSelector is not the name of a selector in the query
+<a name="line175"></a>     * - $childSelector is the same as $parentSelector
+<a name="line176"></a>     *
+<a name="line177"></a>     * @param string $childSelectorName the name of the child selector; non-null
+<a name="line178"></a>     * @param string $parentSelectorName the name of the parent selector; non-null
+<a name="line179"></a>     * @return \PHPCR\Query\QOM\ChildNodeJoinConditionInterface the constraint; non-null
+<a name="line180"></a>     * @throws \PHPCR\Query\InvalidQueryException if a particular validity test is possible on this method,
+<a name="line181"></a>     *                                            the implemention chooses to perform that test (and not leave it
+<a name="line182"></a>     *                                            until later) on createQuery, and the parameters given fail that test
+<a name="line183"></a>     * @throws \PHPCR\RepositoryException if the operation otherwise fails
+<a name="line184"></a>     * @api
+<a name="line185"></a>     */</span>
+<a name="line186"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> childNodeJoinCondition<span style="color: #009900;">&#40;</span><span style="color: #000088;">$childSelectorName</span><span style="color: #339933;">,</span> <span style="color: #000088;">$parentSelectorName</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line187"></a>&nbsp;
+<a name="line188"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line189"></a>     * Tests whether a first selector's node is a descendant of a second selector's node.
+<a name="line190"></a>     *
+<a name="line191"></a>     * The query is invalid if:
+<a name="line192"></a>     * - $descendantSelector is not the name of a selector in the query
+<a name="line193"></a>     * - $ancestorSelector is not the name of a selector in the query
+<a name="line194"></a>     * - $descendantSelector is the same as $ancestorSelector
+<a name="line195"></a>     *
+<a name="line196"></a>     * @param string $descendantSelectorName the name of the descendant selector; non-null
+<a name="line197"></a>     * @param string $ancestorSelectorName the name of the ancestor selector; non-null
+<a name="line198"></a>     * @return \PHPCR\Query\QOM\DescendantNodeJoinConditionInterface the constraint; non-null
+<a name="line199"></a>     * @throws \PHPCR\Query\InvalidQueryException if a particular validity test is possible on this method,
+<a name="line200"></a>     *                                            the implemention chooses to perform that test (and not leave it
+<a name="line201"></a>     *                                            until later) on createQuery, and the parameters given fail that test
+<a name="line202"></a>     * @throws \PHPCR\RepositoryException if the operation otherwise fails
+<a name="line203"></a>     * @api
+<a name="line204"></a>     */</span>
+<a name="line205"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> descendantNodeJoinCondition<span style="color: #009900;">&#40;</span><span style="color: #000088;">$descendantSelectorName</span><span style="color: #339933;">,</span> <span style="color: #000088;">$ancestorSelectorName</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line206"></a>&nbsp;
+<a name="line207"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line208"></a>     * Performs a logical conjunction of two other constraints.
+<a name="line209"></a>     *
+<a name="line210"></a>     * @param \PHPCR\Query\QOM\ConstraintInterface $constraint1 the first constraint; non-null
+<a name="line211"></a>     * @param \PHPCR\Query\QOM\ConstraintInterface $constraint2 the second constraint; non-null
+<a name="line212"></a>     * @return \PHPCR\Query\QOM\AndInterface the And constraint; non-null
+<a name="line213"></a>     * @throws \PHPCR\Query\InvalidQueryException if a particular validity test is possible on this method,
+<a name="line214"></a>     *                                            the implemention chooses to perform that test (and not leave it
+<a name="line215"></a>     *                                            until later) on createQuery, and the parameters given fail that test
+<a name="line216"></a>     * @throws \PHPCR\RepositoryException if the operation otherwise fails
+<a name="line217"></a>     * @api
+<a name="line218"></a>     */</span>
+<a name="line219"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> _and<span style="color: #009900;">&#40;</span>\PHPCR\Query\QOM\ConstraintInterface <span style="color: #000088;">$constraint1</span><span style="color: #339933;">,</span>
+<a name="line220"></a>                         \PHPCR\Query\QOM\ConstraintInterface <span style="color: #000088;">$constraint2</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line221"></a>&nbsp;
+<a name="line222"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line223"></a>     * Performs a logical disjunction of two other constraints.
+<a name="line224"></a>     *
+<a name="line225"></a>     * @param \PHPCR\Query\QOM\ConstraintInterface $constraint1 the first constraint; non-null
+<a name="line226"></a>     * @param \PHPCR\Query\QOM\ConstraintInterface $constraint2 the second constraint; non-null
+<a name="line227"></a>     * @return \PHPCR\Query\QOM\OrInterface the Or constraint; non-null
+<a name="line228"></a>     * @throws \PHPCR\Query\InvalidQueryException if a particular validity test is possible on this method,
+<a name="line229"></a>     *                                            the implemention chooses to perform that test (and not leave it
+<a name="line230"></a>     *                                            until later) on createQuery, and the parameters given fail that test
+<a name="line231"></a>     * @throws \PHPCR\RepositoryException if the operation otherwise fails
+<a name="line232"></a>     * @api
+<a name="line233"></a>     */</span>
+<a name="line234"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> _or<span style="color: #009900;">&#40;</span>\PHPCR\Query\QOM\ConstraintInterface <span style="color: #000088;">$constraint1</span><span style="color: #339933;">,</span>
+<a name="line235"></a>                        \PHPCR\Query\QOM\ConstraintInterface <span style="color: #000088;">$constraint2</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line236"></a>&nbsp;
+<a name="line237"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line238"></a>     * Performs a logical negation of another constraint.
+<a name="line239"></a>     *
+<a name="line240"></a>     * @param \PHPCR\Query\QOM\ConstraintInterface $constraint the constraint to be negated; non-null
+<a name="line241"></a>     * @return \PHPCR\Query\QOM\NotInterface the Not constraint; non-null
+<a name="line242"></a>     * @throws \PHPCR\Query\InvalidQueryException if a particular validity test is possible on this method,
+<a name="line243"></a>     *                                            the implemention chooses to perform that test (and not leave it
+<a name="line244"></a>     *                                            until later) on createQuery, and the parameters given fail that test
+<a name="line245"></a>     * @throws \PHPCR\RepositoryException if the operation otherwise fails
+<a name="line246"></a>     * @api
+<a name="line247"></a>     */</span>
+<a name="line248"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> not<span style="color: #009900;">&#40;</span>\PHPCR\Query\QOM\ConstraintInterface <span style="color: #000088;">$constraint</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line249"></a>&nbsp;
+<a name="line250"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line251"></a>     * Filters node-tuples based on the outcome of a binary operation.
+<a name="line252"></a>     *
+<a name="line253"></a>     * @param \PHPCR\Query\QOM\DynamicOperandInterface $operand1 the first operand; non-null
+<a name="line254"></a>     * @param string $operator the operator; one of QueryObjectModelConstants.JCR_OPERATOR_*
+<a name="line255"></a>     * @param \PHPCR\Query\QOM\StaticOperandInterface $operand2 the second operand; non-null
+<a name="line256"></a>     * @return \PHPCR\Query\QOM\ComparisonInterface the constraint; non-null
+<a name="line257"></a>     * @throws \PHPCR\Query\InvalidQueryException if a particular validity test is possible on this method,
+<a name="line258"></a>     *                                            the implemention chooses to perform that test (and not leave it
+<a name="line259"></a>     *                                            until later) on createQuery, and the parameters given fail that test
+<a name="line260"></a>     * @throws \PHPCR\RepositoryException if the operation otherwise fails
+<a name="line261"></a>     * @api
+<a name="line262"></a>     */</span>
+<a name="line263"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> comparison<span style="color: #009900;">&#40;</span>\PHPCR\Query\QOM\DynamicOperandInterface <span style="color: #000088;">$operand1</span><span style="color: #339933;">,</span> <span style="color: #000088;">$operator</span><span style="color: #339933;">,</span>
+<a name="line264"></a>                               \PHPCR\Query\QOM\StaticOperandInterface <span style="color: #000088;">$operand2</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line265"></a>&nbsp;
+<a name="line266"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line267"></a>     * Tests the existence of a property in the specified or default selector.
+<a name="line268"></a>     *
+<a name="line269"></a>     * The query is invalid if:
+<a name="line270"></a>     *
+<a name="line271"></a>     * - $propertyName is not a syntactically valid JCR name
+<a name="line272"></a>     * - $selectorName is not the name of a selector in the query
+<a name="line273"></a>     *
+<a name="line274"></a>     * @param string $propertyName the property name; non-null
+<a name="line275"></a>     * @param string $selectorName the selector name; non-null
+<a name="line276"></a>     * @return \PHPCR\Query\QOM\PropertyExistenceInterface the constraint; non-null
+<a name="line277"></a>     * @throws \PHPCR\Query\InvalidQueryException if a particular validity test is possible on this method,
+<a name="line278"></a>     *                                            the implemention chooses to perform that test (and not leave it
+<a name="line279"></a>     *                                            until later) on createQuery, and the parameters given fail that test
+<a name="line280"></a>     * @throws \PHPCR\RepositoryException if the operation otherwise fails
+<a name="line281"></a>     * @api
+<a name="line282"></a>     */</span>
+<a name="line283"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> propertyExistence<span style="color: #009900;">&#40;</span><span style="color: #000088;">$propertyName</span><span style="color: #339933;">,</span> <span style="color: #000088;">$selectorName</span> <span style="color: #339933;">=</span> <span style="color: #009900; font-weight: bold;">NULL</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line284"></a>&nbsp;
+<a name="line285"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line286"></a>     * Performs a full-text search against the specified or default selector.
+<a name="line287"></a>     *
+<a name="line288"></a>     * The query is invalid if:
+<a name="line289"></a>     * - $selectorName is not the name of a selector in the query
+<a name="line290"></a>     * - $propertyName is specified but is not a syntactically valid JCR name
+<a name="line291"></a>     * - $fullTextSearchExpression does not conform to the full text search grammar
+<a name="line292"></a>     *
+<a name="line293"></a>     * If $propertyName is specified but, for a node-tuple, the selector node
+<a name="line294"></a>     * does not have a property named $propertyName, the query is valid but the
+<a name="line295"></a>     * constraint is not satisfied.
+<a name="line296"></a>     *
+<a name="line297"></a>     * @param string $propertyName the property name, or null to search all full-text indexed properties of the
+<a name="line298"></a>     *                             node (or node subgraph, in some implementations);
+<a name="line299"></a>     * @param string $fullTextSearchExpression the full-text search expression; non-null
+<a name="line300"></a>     * @param string $selectorName the selector name; non-null
+<a name="line301"></a>     * @return \PHPCR\Query\QOM\FullTextSearchInterface the constraint; non-null
+<a name="line302"></a>     * @throws \PHPCR\Query\InvalidQueryException if a particular validity test is possible on this method,
+<a name="line303"></a>     *                                            the implemention chooses to perform that test (and not leave it
+<a name="line304"></a>     *                                            until later) on createQuery, and the parameters given fail that test
+<a name="line305"></a>     * @throws \PHPCR\RepositoryException if the operation otherwise fails
+<a name="line306"></a>     * @api
+<a name="line307"></a>     */</span>
+<a name="line308"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> fullTextSearch<span style="color: #009900;">&#40;</span><span style="color: #000088;">$propertyName</span><span style="color: #339933;">,</span> <span style="color: #000088;">$fullTextSearchExpression</span><span style="color: #339933;">,</span> <span style="color: #000088;">$selectorName</span> <span style="color: #339933;">=</span> <span style="color: #009900; font-weight: bold;">NULL</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line309"></a>&nbsp;
+<a name="line310"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line311"></a>     * Tests whether a node in the specified or default selector is reachable by
+<a name="line312"></a>     * a specified absolute path.
+<a name="line313"></a>     *
+<a name="line314"></a>     * The query is invalid if:
+<a name="line315"></a>     * - $selectorName is not the name of a selector in the query
+<a name="line316"></a>     * - $path is not a syntactically valid absolute path.
+<a name="line317"></a>     *   &lt;b&gt;Note:&lt;/b&gt;
+<a name="line318"></a>     *   however, that if the path is syntactically valid but does not identify a
+<a name="line319"></a>     *   node in the repository (or the node is not visible to this session,
+<a name="line320"></a>     *   because of access control constraints), the query is valid but the
+<a name="line321"></a>     *   constraint is not satisfied.
+<a name="line322"></a>     *
+<a name="line323"></a>     * @param string $path an absolute path; non-null
+<a name="line324"></a>     * @param string $selectorName the selector name; non-null
+<a name="line325"></a>     * @return \PHPCR\Query\QOM\SameNodeInterface the constraint; non-null
+<a name="line326"></a>     * @throws \PHPCR\Query\InvalidQueryException if the query is invalid
+<a name="line327"></a>     * @throws \PHPCR\RepositoryException if the operation otherwise fails
+<a name="line328"></a>     * @api
+<a name="line329"></a>     */</span>
+<a name="line330"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> sameNode<span style="color: #009900;">&#40;</span><span style="color: #000088;">$path</span><span style="color: #339933;">,</span> <span style="color: #000088;">$selectorName</span> <span style="color: #339933;">=</span> <span style="color: #009900; font-weight: bold;">NULL</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line331"></a>&nbsp;
+<a name="line332"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line333"></a>     * Tests whether a node in the specified or default selector is a child of a
+<a name="line334"></a>     * node reachable by a specified absolute path.
+<a name="line335"></a>     *
+<a name="line336"></a>     * The query is invalid if:
+<a name="line337"></a>     * - $selectorName is not the name of a selector in the query
+<a name="line338"></a>     * - $path is not a syntactically valid absolute path
+<a name="line339"></a>     *   &lt;b&gt;Note:&lt;/b&gt;
+<a name="line340"></a>     *   however, that if the path is syntactically valid but does not identify a
+<a name="line341"></a>     *   node in the repository (or the node is not visible to this session,
+<a name="line342"></a>     *   because of access control constraints), the query is valid but the
+<a name="line343"></a>     *   constraint is not satisfied.
+<a name="line344"></a>     *
+<a name="line345"></a>     * @param string $path an absolute path; non-null
+<a name="line346"></a>     * @param string $selectorName the selector name; non-null
+<a name="line347"></a>     * @return \PHPCR\Query\QOM\ChildNodeInterface the constraint; non-null
+<a name="line348"></a>     * @throws \PHPCR\Query\InvalidQueryException if a particular validity test is possible on this method,
+<a name="line349"></a>     *                                            the implemention chooses to perform that test (and not leave it
+<a name="line350"></a>     *                                            until later) on createQuery, and the parameters given fail that test
+<a name="line351"></a>     * @throws \PHPCR\RepositoryException if the operation otherwise fails
+<a name="line352"></a>     * @api
+<a name="line353"></a>     */</span>
+<a name="line354"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> childNode<span style="color: #009900;">&#40;</span><span style="color: #000088;">$path</span><span style="color: #339933;">,</span> <span style="color: #000088;">$selectorName</span> <span style="color: #339933;">=</span> <span style="color: #009900; font-weight: bold;">NULL</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line355"></a>&nbsp;
+<a name="line356"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line357"></a>     * Tests whether a node in the specified or default selector is a descendant
+<a name="line358"></a>     * of a node reachable by a specified absolute path.
+<a name="line359"></a>     *
+<a name="line360"></a>     * The query is invalid if:
+<a name="line361"></a>     * - $selectorName is not the name of a selector in the query
+<a name="line362"></a>     * - $path is not a syntactically valid absolute path
+<a name="line363"></a>     *   &lt;b&gt;Note:&lt;/b&gt;
+<a name="line364"></a>     *   however, that if the path is syntactically valid but does not identify a
+<a name="line365"></a>     *   node in the repository (or the node is not visible to this session,
+<a name="line366"></a>     *   because of access control constraints), the query is valid but the
+<a name="line367"></a>     *   constraint is not satisfied.
+<a name="line368"></a>     *
+<a name="line369"></a>     * @param string $path an absolute path; non-null
+<a name="line370"></a>     * @param string $selectorName the selector name; non-null
+<a name="line371"></a>     * @return \PHPCR\Query\QOM\DescendantNodeInterface the constraint; non-null
+<a name="line372"></a>     * @throws \PHPCR\Query\InvalidQueryException if a particular validity test is possible on this method,
+<a name="line373"></a>     *                                            the implemention chooses to perform that test (and not leave it
+<a name="line374"></a>     *                                            until later) on createQuery, and the parameters given fail that test
+<a name="line375"></a>     * @throws \PHPCR\RepositoryException if the operation otherwise fails
+<a name="line376"></a>     * @api
+<a name="line377"></a>     */</span>
+<a name="line378"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> descendantNode<span style="color: #009900;">&#40;</span><span style="color: #000088;">$path</span><span style="color: #339933;">,</span> <span style="color: #000088;">$selectorName</span> <span style="color: #339933;">=</span> <span style="color: #009900; font-weight: bold;">NULL</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line379"></a>&nbsp;
+<a name="line380"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line381"></a>     * Evaluates to the value (or values, if multi-valued) of a property in the
+<a name="line382"></a>     * specified or default selector.
+<a name="line383"></a>     *
+<a name="line384"></a>     * The query is invalid if:
+<a name="line385"></a>     * - $selectorName is not the name of a selector in the query
+<a name="line386"></a>     * - $propertyName is not a syntactically valid JCR name
+<a name="line387"></a>     *
+<a name="line388"></a>     * @param string $propertyName the property name; non-null
+<a name="line389"></a>     * @param string $selectorName the selector name; non-null
+<a name="line390"></a>     * @return \PHPCR\Query\QOM\PropertyValueInterface the operand; non-null
+<a name="line391"></a>     * @throws \PHPCR\Query\InvalidQueryException if the query is invalid
+<a name="line392"></a>     * @throws \PHPCR\RepositoryException if the operation otherwise fails
+<a name="line393"></a>     * @api
+<a name="line394"></a>     */</span>
+<a name="line395"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> propertyValue<span style="color: #009900;">&#40;</span><span style="color: #000088;">$propertyName</span><span style="color: #339933;">,</span> <span style="color: #000088;">$selectorName</span> <span style="color: #339933;">=</span> <span style="color: #009900; font-weight: bold;">NULL</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line396"></a>&nbsp;
+<a name="line397"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line398"></a>     * Evaluates to the length (or lengths, if multi-valued) of a property.
+<a name="line399"></a>     *
+<a name="line400"></a>     * @param \PHPCR\Query\QOM\PropertyValueInterface $propertyValue the property value for which to compute the
+<a name="line401"></a>     *                                                               length; non-null
+<a name="line402"></a>     * @return \PHPCR\Query\QOM\LengthInterface the operand; non-null
+<a name="line403"></a>     * @throws \PHPCR\Query\InvalidQueryException if a particular validity test is possible on this method,
+<a name="line404"></a>     *                                            the implemention chooses to perform that test (and not leave it
+<a name="line405"></a>     *                                            until later) on createQuery, and the parameters given fail that test
+<a name="line406"></a>     * @throws \PHPCR\RepositoryException if the operation otherwise fails
+<a name="line407"></a>     * @api
+<a name="line408"></a>     */</span>
+<a name="line409"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> length<span style="color: #009900;">&#40;</span>\PHPCR\Query\QOM\PropertyValueInterface <span style="color: #000088;">$propertyValue</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line410"></a>&nbsp;
+<a name="line411"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line412"></a>     * Evaluates to a NAME value equal to the prefix-qualified name of a node in
+<a name="line413"></a>     * the specified or default selector.
+<a name="line414"></a>     *
+<a name="line415"></a>     * The query is invalid if $selectorName is not the name of a selector in
+<a name="line416"></a>     * the query.
+<a name="line417"></a>     *
+<a name="line418"></a>     * @param string $selectorName the selector name; non-null
+<a name="line419"></a>     * @return \PHPCR\Query\QOM\NodeNameInterface the operand; non-null
+<a name="line420"></a>     * @throws \PHPCR\Query\InvalidQueryException if a particular validity test is possible on this method,
+<a name="line421"></a>     *                                            the implemention chooses to perform that test (and not leave it
+<a name="line422"></a>     *                                            until later) on createQuery, and the parameters given fail that test
+<a name="line423"></a>     * @throws \PHPCR\RepositoryException if the operation otherwise fails
+<a name="line424"></a>     * @api
+<a name="line425"></a>     */</span>
+<a name="line426"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> nodeName<span style="color: #009900;">&#40;</span><span style="color: #000088;">$selectorName</span> <span style="color: #339933;">=</span> <span style="color: #009900; font-weight: bold;">NULL</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line427"></a>&nbsp;
+<a name="line428"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line429"></a>     * Evaluates to a NAME value equal to the local (unprefixed) name of a node in the specified or default selector.
+<a name="line430"></a>     *
+<a name="line431"></a>     * The query is invalid if $selectorName is not the name of a selector in
+<a name="line432"></a>     * the query.
+<a name="line433"></a>     *
+<a name="line434"></a>     * @param string $selectorName the selector name; non-null
+<a name="line435"></a>     * @return \PHPCR\Query\QOM\NodeLocalNameInterface the operand; non-null
+<a name="line436"></a>     * @throws \PHPCR\Query\InvalidQueryException if the query is invalid
+<a name="line437"></a>     * @throws \PHPCR\RepositoryException if the operation otherwise fails
+<a name="line438"></a>     * @api
+<a name="line439"></a>     */</span>
+<a name="line440"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> nodeLocalName<span style="color: #009900;">&#40;</span><span style="color: #000088;">$selectorName</span> <span style="color: #339933;">=</span> <span style="color: #009900; font-weight: bold;">NULL</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line441"></a>&nbsp;
+<a name="line442"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line443"></a>     * Evaluates to a DOUBLE value equal to the full-text search score of a node in the specified or default selector.
+<a name="line444"></a>     *
+<a name="line445"></a>     * The query is invalid if $selectorName is not the name of a selector in
+<a name="line446"></a>     * the query.
+<a name="line447"></a>     *
+<a name="line448"></a>     * @param string $selectorName the selector name; non-null
+<a name="line449"></a>     * @return \PHPCR\Query\QOM\FullTextSearchScoreInterface the operand; non-null
+<a name="line450"></a>     * @throws \PHPCR\Query\InvalidQueryException if a particular validity test is possible on this method,
+<a name="line451"></a>     *                                            the implemention chooses to perform that test (and not leave it
+<a name="line452"></a>     *                                            until later) on createQuery, and the parameters given fail that test
+<a name="line453"></a>     * @throws \PHPCR\RepositoryException if the operation otherwise fails
+<a name="line454"></a>     * @api
+<a name="line455"></a>     */</span>
+<a name="line456"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> fullTextSearchScore<span style="color: #009900;">&#40;</span><span style="color: #000088;">$selectorName</span> <span style="color: #339933;">=</span> <span style="color: #009900; font-weight: bold;">NULL</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line457"></a>&nbsp;
+<a name="line458"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line459"></a>     * Evaluates to the lower-case string value (or values, if multi-valued) of an operand.
+<a name="line460"></a>     *
+<a name="line461"></a>     * @param \PHPCR\Query\QOM\DynamicOperandInterface $operand the operand whose value is converted to a
+<a name="line462"></a>     *                                                          lower-case string; non-null
+<a name="line463"></a>     * @return \PHPCR\Query\QOM\LowerCaseInterface the operand; non-null
+<a name="line464"></a>     * @throws \PHPCR\Query\InvalidQueryException if a particular validity test is possible on this method,
+<a name="line465"></a>     *                                            the implemention chooses to perform that test (and not leave it
+<a name="line466"></a>     *                                            until later) on createQuery, and the parameters given fail that test
+<a name="line467"></a>     * @throws \PHPCR\RepositoryException if the operation otherwise fails
+<a name="line468"></a>     * @api
+<a name="line469"></a>     */</span>
+<a name="line470"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> lowerCase<span style="color: #009900;">&#40;</span>\PHPCR\Query\QOM\DynamicOperandInterface <span style="color: #000088;">$operand</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line471"></a>&nbsp;
+<a name="line472"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line473"></a>     * Evaluates to the upper-case string value (or values, if multi-valued) of an operand.
+<a name="line474"></a>     *
+<a name="line475"></a>     * @param \PHPCR\Query\QOM\DynamicOperandInterface $operand the operand whose value is converted to a
+<a name="line476"></a>     *                                                          upper-case string; non-null
+<a name="line477"></a>     * @return \PHPCR\Query\QOM\UpperCaseInterface the operand; non-null
+<a name="line478"></a>     * @throws \PHPCR\Query\InvalidQueryException if a particular validity test is possible on this method,
+<a name="line479"></a>     *                                            the implemention chooses to perform that test (and not leave it
+<a name="line480"></a>     *                                            until later) on createQuery, and the parameters given fail that test
+<a name="line481"></a>     * @throws \PHPCR\RepositoryException if the operation otherwise fails
+<a name="line482"></a>     * @api
+<a name="line483"></a>     */</span>
+<a name="line484"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> upperCase<span style="color: #009900;">&#40;</span>\PHPCR\Query\QOM\DynamicOperandInterface <span style="color: #000088;">$operand</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line485"></a>&nbsp;
+<a name="line486"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line487"></a>     * Evaluates to the value of a bind variable.
+<a name="line488"></a>     *
+<a name="line489"></a>     * The query is invalid if $bindVariableName is not a valid JCR prefix.
+<a name="line490"></a>     *
+<a name="line491"></a>     * @param string $bindVariableName the bind variable name; non-null
+<a name="line492"></a>     * @return \PHPCR\Query\QOM\BindVariableValueInterface the operand; non-null
+<a name="line493"></a>     * @throws \PHPCR\Query\InvalidQueryException if a particular validity test is possible on this method,
+<a name="line494"></a>     *                                            the implemention chooses to perform that test (and not leave it
+<a name="line495"></a>     *                                            until later) on createQuery, and the parameters given fail that test
+<a name="line496"></a>     * @throws \PHPCR\RepositoryException if the operation otherwise fails
+<a name="line497"></a>     * @api
+<a name="line498"></a>     */</span>
+<a name="line499"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> bindVariable<span style="color: #009900;">&#40;</span><span style="color: #000088;">$bindVariableName</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line500"></a>&nbsp;
+<a name="line501"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line502"></a>     * Evaluates to a literal value.
+<a name="line503"></a>     *
+<a name="line504"></a>     * The query is invalid if no value is bound to $literalValue.
+<a name="line505"></a>     *
+<a name="line506"></a>     * @param mixed $literalValue the value
+<a name="line507"></a>     * @return mixed the operand; non-null
+<a name="line508"></a>     * @throws \PHPCR\Query\InvalidQueryException if a particular validity test is possible on this method,
+<a name="line509"></a>     *                                            the implemention chooses to perform that test (and not leave it
+<a name="line510"></a>     *                                            until later) on createQuery, and the parameters given fail that test
+<a name="line511"></a>     * @throws \PHPCR\RepositoryException if the operation otherwise fails
+<a name="line512"></a>     * @api
+<a name="line513"></a>     */</span>
+<a name="line514"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> literal<span style="color: #009900;">&#40;</span><span style="color: #000088;">$literalValue</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line515"></a>&nbsp;
+<a name="line516"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line517"></a>     * Orders by the value of the specified operand, in ascending order.
+<a name="line518"></a>     *
+<a name="line519"></a>     * The query is invalid if $operand does not evaluate to a scalar value.
+<a name="line520"></a>     *
+<a name="line521"></a>     * @param \PHPCR\Query\QOM\DynamicOperandInterface $operand the operand by which to order; non-null
+<a name="line522"></a>     * @return \PHPCR\Query\QOM\OrderingInterface the ordering
+<a name="line523"></a>     * @throws \PHPCR\Query\InvalidQueryException if the query is invalid
+<a name="line524"></a>     * @throws \PHPCR\RepositoryException if the operation otherwise fails
+<a name="line525"></a>     * @api
+<a name="line526"></a>     */</span>
+<a name="line527"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> ascending<span style="color: #009900;">&#40;</span>\PHPCR\Query\QOM\DynamicOperandInterface <span style="color: #000088;">$operand</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line528"></a>&nbsp;
+<a name="line529"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line530"></a>     * Orders by the value of the specified operand, in descending order.
+<a name="line531"></a>     *
+<a name="line532"></a>     * The query is invalid if $operand does not evaluate to a scalar value.
+<a name="line533"></a>     *
+<a name="line534"></a>     * @param \PHPCR\Query\QOM\DynamicOperandInterface $operand the operand by which to order; non-null
+<a name="line535"></a>     * @return \PHPCR\Query\QOM\OrderingInterface the ordering
+<a name="line536"></a>     * @throws \PHPCR\Query\InvalidQueryException if the query is invalid
+<a name="line537"></a>     * @throws \PHPCR\RepositoryException if the operation otherwise fails
+<a name="line538"></a>     * @api
+<a name="line539"></a>     */</span>
+<a name="line540"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> descending<span style="color: #009900;">&#40;</span>\PHPCR\Query\QOM\DynamicOperandInterface <span style="color: #000088;">$operand</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line541"></a>&nbsp;
+<a name="line542"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line543"></a>     * Identifies a property in the specified or default selector to include in
+<a name="line544"></a>     * the tabular view of query results.
+<a name="line545"></a>     * The column name is the property name if not given.
+<a name="line546"></a>     *
+<a name="line547"></a>     * The query is invalid if:
+<a name="line548"></a>     * - $selectorName is not the name of a selector in the query
+<a name="line549"></a>     * - $propertyName is specified but it is not a syntactically valid JCR name
+<a name="line550"></a>     * - $propertyName is specified but does not evaluate to a scalar value
+<a name="line551"></a>     * - $propertyName is specified but $columnName is omitted
+<a name="line552"></a>     * - $propertyName is omitted but $columnName is specified
+<a name="line553"></a>     * - the columns in the tabular view are not uniquely named, whether those
+<a name="line554"></a>     *   column names are specified by $columnName (if $propertyName is specified)
+<a name="line555"></a>     *   or generated as described above (if $propertyName is omitted).
+<a name="line556"></a>     *
+<a name="line557"></a>     * If $propertyName is specified but, for a node-tuple, the selector node
+<a name="line558"></a>     * does not have a property named $propertyName, the query is valid and the
+<a name="line559"></a>     * column has null value.
+<a name="line560"></a>     *
+<a name="line561"></a>     * @param string $propertyName the property name, or null to include a column for each single-value non-residual
+<a name="line562"></a>     *                             property of the selector's node type
+<a name="line563"></a>     * @param string $columnName the column name; must be null if propertyName is null
+<a name="line564"></a>     * @param string $selectorName the selector name; non-null
+<a name="line565"></a>     * @return \PHPCR\Query\QOM\ColumnInterface the column; non-null
+<a name="line566"></a>     * @throws \PHPCR\Query\InvalidQueryException if the query has no default selector or is otherwise invalid
+<a name="line567"></a>     * @throws \PHPCR\RepositoryException if the operation otherwise fails
+<a name="line568"></a>     * @api
+<a name="line569"></a>     */</span>
+<a name="line570"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> column<span style="color: #009900;">&#40;</span><span style="color: #000088;">$propertyName</span><span style="color: #339933;">,</span> <span style="color: #000088;">$columnName</span> <span style="color: #339933;">=</span> <span style="color: #009900; font-weight: bold;">NULL</span><span style="color: #339933;">,</span> <span style="color: #000088;">$selectorName</span> <span style="color: #339933;">=</span> <span style="color: #009900; font-weight: bold;">NULL</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line571"></a>&nbsp;
+<a name="line572"></a><span style="color: #009900;">&#125;</span>
+<a name="line573"></a>&nbsp;</pre>
+<div class="header">
+<h1>PHPCR</h1>
+<ul>
+<li><a href="../../../../overview-summary.html">Overview</a></li>
+<li>Package</li><li>Class</li><li>Tree</li><li><a href="../../../../overview-files.html">Files</a></li>
+<li><a href="../../../../deprecated-list.html">Deprecated</a></li>
+<li><a href="../../../../todo-list.html">Todo</a></li>
+<li><a href="../../../../index-all.html">Index</a></li>
+</ul>
+</div>
+
+<div class="small_links">
+<a href="../../../../index.html" target="_top">Frames</a>
+<a href="../../../../source/phpcr/query/qom/queryobjectmodelfactoryinterface.php.html" target="_top">No frames</a>
+</div>
+<hr>
+
+<p id="footer">This document was generated by <a href="http://peej.github.com/phpdoctor/">PHPDoctor: The PHP Documentation Creator</a></p>
+
+</body>
+
+</html>

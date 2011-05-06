@@ -1,0 +1,235 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+
+<html lang="en">
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="generator" content="PHPDoctor 2RC4 (http://peej.github.com/phpdoctor/)">
+<meta name="when" content="Fri, 06 May 2011 11:43:24 +0000">
+
+<link rel="stylesheet" type="text/css" href="../../../stylesheet.css">
+<link rel="start" href="../../../overview-summary.html">
+
+<title>PHPCR/Lock/LockInterface.php (PHPCR API)</title>
+
+</head>
+<body id="file" onload="parent.document.title=document.title;">
+
+<div class="header">
+<h1>PHPCR</h1>
+<ul>
+<li><a href="../../../overview-summary.html">Overview</a></li>
+<li>Package</li><li>Class</li><li>Tree</li><li><a href="../../../overview-files.html">Files</a></li>
+<li><a href="../../../deprecated-list.html">Deprecated</a></li>
+<li><a href="../../../todo-list.html">Todo</a></li>
+<li><a href="../../../index-all.html">Index</a></li>
+</ul>
+</div>
+
+<div class="small_links">
+<a href="../../../index.html" target="_top">Frames</a>
+<a href="../../../source/phpcr/lock/lockinterface.php.html" target="_top">No frames</a>
+</div>
+<hr>
+
+<h1>PHPCR/Lock/LockInterface.php</h1>
+<div class="comment" id="overview_description"><p>Interface description of an object with the ability to lock a node.</p><p>This file was ported from the Java JCR API to PHP by
+Karsten Dambekalns <karsten@typo3.org> for the FLOW3 project.</p><p>It is free software; you can redistribute it and/or modify it under
+the terms of the GNU Lesser General Public License as published by the
+Free Software Foundation, either version 3 of the License, or (at your
+option) any later version. Alternatively, you may use the Simplified
+BSD License.</p><p>This script is distributed in the hope that it will be useful, but
+WITHOUT ANY WARRANTY; without even the implied warranty of MERCHAN-
+TABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser
+General Public License for more details.</p><p>You should have received a copy of the GNU Lesser General Public
+License along with the script.
+If not, see <code><a href="http://www.gnu.org/licenses/lgpl.html">http://www.gnu.org/licenses/lgpl.html</a></code>.</p><p>The TYPO3 project - inspiring people to share!</p></div>
+
+<hr>
+
+<a name="line1"></a><pre class="php" style="font-family:monospace;"><span style="color: #000000; font-weight: bold;">&lt;?php</span>
+<a name="line2"></a><span style="color: #009933; font-style: italic;">/**
+<a name="line3"></a> * Interface description of an object with the ability to lock a node.
+<a name="line4"></a> *
+<a name="line5"></a> * This file was ported from the Java JCR API to PHP by
+<a name="line6"></a> * Karsten Dambekalns &lt;karsten@typo3.org&gt; for the FLOW3 project.
+<a name="line7"></a> *
+<a name="line8"></a> * It is free software; you can redistribute it and/or modify it under
+<a name="line9"></a> * the terms of the GNU Lesser General Public License as published by the
+<a name="line10"></a> * Free Software Foundation, either version 3 of the License, or (at your
+<a name="line11"></a> * option) any later version. Alternatively, you may use the Simplified
+<a name="line12"></a> * BSD License.
+<a name="line13"></a> *
+<a name="line14"></a> * This script is distributed in the hope that it will be useful, but
+<a name="line15"></a> * WITHOUT ANY WARRANTY; without even the implied warranty of MERCHAN-
+<a name="line16"></a> * TABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser
+<a name="line17"></a> * General Public License for more details.
+<a name="line18"></a> *
+<a name="line19"></a> * You should have received a copy of the GNU Lesser General Public
+<a name="line20"></a> * License along with the script.
+<a name="line21"></a> * If not, see {@link http://www.gnu.org/licenses/lgpl.html}.
+<a name="line22"></a> *
+<a name="line23"></a> * The TYPO3 project - inspiring people to share!
+<a name="line24"></a> *
+<a name="line25"></a> * @license http://www.gnu.org/licenses/lgpl.html GNU Lesser General Public License, version 3 or later
+<a name="line26"></a> * @license http://opensource.org/licenses/bsd-license.php Simplified BSD License
+<a name="line27"></a> *
+<a name="line28"></a> * @package phpcr
+<a name="line29"></a> * @subpackage interfaces
+<a name="line30"></a> */</span>
+<a name="line31"></a>&nbsp;
+<a name="line32"></a><span style="color: #000000; font-weight: bold;">declare</span><span style="color: #009900;">&#40;</span>ENCODING <span style="color: #339933;">=</span> <span style="color: #0000ff;">'utf-8'</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line33"></a><span style="color: #000000; font-weight: bold;">namespace</span> PHPCR\Lock<span style="color: #339933;">;</span>
+<a name="line34"></a>&nbsp;
+<a name="line35"></a><span style="color: #009933; font-style: italic;">/**
+<a name="line36"></a> * Represents a lock placed on an item.
+<a name="line37"></a> *
+<a name="line38"></a> * @package phpcr
+<a name="line39"></a> * @subpackage interfaces
+<a name="line40"></a> * @api
+<a name="line41"></a> */</span>
+<a name="line42"></a><span style="color: #000000; font-weight: bold;">interface</span> LockInterface <span style="color: #009900;">&#123;</span>
+<a name="line43"></a>&nbsp;
+<a name="line44"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line45"></a>     * Returns the value of the jcr:lockOwner property. This is either the
+<a name="line46"></a>     * client supplied owner information (see LockManager-&gt;lock()),
+<a name="line47"></a>     * an implementation-dependent string identifying the user who either
+<a name="line48"></a>     * created the lock or who is bound to the session holding the lock, or
+<a name="line49"></a>     * NULL if none of these are available.
+<a name="line50"></a>     *
+<a name="line51"></a>     * The lock owner's identity is only provided for informational purposes.
+<a name="line52"></a>     * It does not govern who can perform an unlock or make changes to the
+<a name="line53"></a>     * locked nodes; that depends entirely upon who the token holder is.
+<a name="line54"></a>     *
+<a name="line55"></a>     * @return string a user ID
+<a name="line56"></a>     * @api
+<a name="line57"></a>     */</span>
+<a name="line58"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getLockOwner<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line59"></a>&nbsp;
+<a name="line60"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line61"></a>     * Returns true if this is a deep lock; false otherwise.
+<a name="line62"></a>     *
+<a name="line63"></a>     * @return boolean
+<a name="line64"></a>     * @api
+<a name="line65"></a>     */</span>
+<a name="line66"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> isDeep<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line67"></a>&nbsp;
+<a name="line68"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line69"></a>     * Returns the lock holding node.
+<a name="line70"></a>     *
+<a name="line71"></a>     * Note that N.getLock().getNode() (where N
+<a name="line72"></a>     * is a locked node) will only return N if N is the lock holder. If N is in
+<a name="line73"></a>     * the subgraph of the lock holder, H, then this call will return H.
+<a name="line74"></a>     *
+<a name="line75"></a>     * @return \PHPCR\NodeInterface a Node
+<a name="line76"></a>     * @api
+<a name="line77"></a>     */</span>
+<a name="line78"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getNode<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line79"></a>&nbsp;
+<a name="line80"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line81"></a>     * May return the lock token for this lock.
+<a name="line82"></a>     *
+<a name="line83"></a>     * If this lock is open-scoped and the current session either holds the lock token for this lock, or the
+<a name="line84"></a>     * repository chooses to expose the lock token to the current session,
+<a name="line85"></a>     * then this method will return that lock token. Otherwise this method will
+<a name="line86"></a>     * return null.
+<a name="line87"></a>     *
+<a name="line88"></a>     * @return string
+<a name="line89"></a>     * @api
+<a name="line90"></a>     */</span>
+<a name="line91"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getLockToken<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line92"></a>&nbsp;
+<a name="line93"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line94"></a>     * Returns the number of seconds remaining until this locks times out.
+<a name="line95"></a>     *
+<a name="line96"></a>     * If the lock has already timed out, a negative value is returned. If the
+<a name="line97"></a>     * number of seconds remaining is infinite or unknown, PHP_INT_MAX is
+<a name="line98"></a>     * returned.
+<a name="line99"></a>     *
+<a name="line100"></a>     * @return integer the number of seconds remaining until this lock times out.
+<a name="line101"></a>     *
+<a name="line102"></a>     * @throws \PHPCR\RepositoryException if the timeout is infinite or unknown
+<a name="line103"></a>     * @api
+<a name="line104"></a>     */</span>
+<a name="line105"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getSecondsRemaining<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line106"></a>&nbsp;
+<a name="line107"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line108"></a>     * Determines if the lock is still in effect.
+<a name="line109"></a>     *
+<a name="line110"></a>     * Returns true if this Lock object represents a lock that is currently in
+<a name="line111"></a>     * effect. If this lock has been unlocked either explicitly or due to an
+<a name="line112"></a>     * implementation-specific limitation (like a timeout) then it returns false.
+<a name="line113"></a>     * Note that this method is intended for those cases where one is holding a
+<a name="line114"></a>     * Lock Java object and wants to find out whether the lock (the JCR-level
+<a name="line115"></a>     * entity that is attached to the lockable node) that this object originally
+<a name="line116"></a>     * represented still exists. For example, a timeout or explicit unlock will
+<a name="line117"></a>     * remove a lock from a node but the Lock Java object corresponding to that
+<a name="line118"></a>     * lock may still exist, and in that case its isLive method will return false.
+<a name="line119"></a>     *
+<a name="line120"></a>     * @return boolean True, if the lock still counts, else false.
+<a name="line121"></a>     *
+<a name="line122"></a>     * @throws RepositoryException if an error occurs
+<a name="line123"></a>     * @api
+<a name="line124"></a>     */</span>
+<a name="line125"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> isLive<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line126"></a>&nbsp;
+<a name="line127"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line128"></a>     * Determines if this lock is session-scoped.
+<a name="line129"></a>     *
+<a name="line130"></a>     * Returns true if this is a session-scoped lock and the scope is bound to the
+<a name="line131"></a>     * current session. Returns false otherwise.
+<a name="line132"></a>     *
+<a name="line133"></a>     * @return boolean True, if the lock current session is locked, else false.
+<a name="line134"></a>     * @api
+<a name="line135"></a>     */</span>
+<a name="line136"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> isSessionScoped<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line137"></a>&nbsp;
+<a name="line138"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line139"></a>     * Determines if the current session owns this lock.
+<a name="line140"></a>     *
+<a name="line141"></a>     * Returns true if the current session is the owner of this lock, either because
+<a name="line142"></a>     * it is session-scoped and bound to this session or open-scoped and this session
+<a name="line143"></a>     * currently holds the token for this lock. Returns false otherwise.
+<a name="line144"></a>     *
+<a name="line145"></a>     * @return boolean True, if the the current session is the owner of the lock, else false.
+<a name="line146"></a>     * @api
+<a name="line147"></a>     */</span>
+<a name="line148"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> isLockOwningSession<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line149"></a>&nbsp;
+<a name="line150"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line151"></a>     * If this lock's time-to-live is governed by a timer, this method resets that
+<a name="line152"></a>     * timer so that the lock does not timeout and expire.
+<a name="line153"></a>     *
+<a name="line154"></a>     * If this lock's time-to-live is not governed by a timer, then this method has no effect.
+<a name="line155"></a>     *
+<a name="line156"></a>     * @throws \PHPCR\Lock\LockException if this Session does not hold the correct lock token for this lock.
+<a name="line157"></a>     * @throws \PHPCR\RepositoryException if another error occurs.
+<a name="line158"></a>     * @api
+<a name="line159"></a>     */</span>
+<a name="line160"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> refresh<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line161"></a>&nbsp;
+<a name="line162"></a><span style="color: #009900;">&#125;</span>
+<a name="line163"></a>&nbsp;</pre>
+<div class="header">
+<h1>PHPCR</h1>
+<ul>
+<li><a href="../../../overview-summary.html">Overview</a></li>
+<li>Package</li><li>Class</li><li>Tree</li><li><a href="../../../overview-files.html">Files</a></li>
+<li><a href="../../../deprecated-list.html">Deprecated</a></li>
+<li><a href="../../../todo-list.html">Todo</a></li>
+<li><a href="../../../index-all.html">Index</a></li>
+</ul>
+</div>
+
+<div class="small_links">
+<a href="../../../index.html" target="_top">Frames</a>
+<a href="../../../source/phpcr/lock/lockinterface.php.html" target="_top">No frames</a>
+</div>
+<hr>
+
+<p id="footer">This document was generated by <a href="http://peej.github.com/phpdoctor/">PHPDoctor: The PHP Documentation Creator</a></p>
+
+</body>
+
+</html>

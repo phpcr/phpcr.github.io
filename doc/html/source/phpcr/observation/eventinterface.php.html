@@ -1,0 +1,292 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+
+<html lang="en">
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="generator" content="PHPDoctor 2RC4 (http://peej.github.com/phpdoctor/)">
+<meta name="when" content="Fri, 06 May 2011 11:43:26 +0000">
+
+<link rel="stylesheet" type="text/css" href="../../../stylesheet.css">
+<link rel="start" href="../../../overview-summary.html">
+
+<title>PHPCR/Observation/EventInterface.php (PHPCR API)</title>
+
+</head>
+<body id="file" onload="parent.document.title=document.title;">
+
+<div class="header">
+<h1>PHPCR</h1>
+<ul>
+<li><a href="../../../overview-summary.html">Overview</a></li>
+<li>Package</li><li>Class</li><li>Tree</li><li><a href="../../../overview-files.html">Files</a></li>
+<li><a href="../../../deprecated-list.html">Deprecated</a></li>
+<li><a href="../../../todo-list.html">Todo</a></li>
+<li><a href="../../../index-all.html">Index</a></li>
+</ul>
+</div>
+
+<div class="small_links">
+<a href="../../../index.html" target="_top">Frames</a>
+<a href="../../../source/phpcr/observation/eventinterface.php.html" target="_top">No frames</a>
+</div>
+<hr>
+
+<h1>PHPCR/Observation/EventInterface.php</h1>
+<div class="comment" id="overview_description"><p>Interface description of how to implement a class handling an event fired by the observation mechanism .</p><p>This file was ported from the Java JCR API to PHP by
+Karsten Dambekalns <karsten@typo3.org> for the FLOW3 project.</p><p>It is free software; you can redistribute it and/or modify it under
+the terms of the GNU Lesser General Public License as published by the
+Free Software Foundation, either version 3 of the License, or (at your
+option) any later version. Alternatively, you may use the Simplified
+BSD License.</p><p>This script is distributed in the hope that it will be useful, but
+WITHOUT ANY WARRANTY; without even the implied warranty of MERCHAN-
+TABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser
+General Public License for more details.</p><p>You should have received a copy of the GNU Lesser General Public
+License along with the script.
+If not, see <code><a href="http://www.gnu.org/licenses/lgpl.html">http://www.gnu.org/licenses/lgpl.html</a></code>.</p><p>The TYPO3 project - inspiring people to share!</p></div>
+
+<hr>
+
+<a name="line1"></a><pre class="php" style="font-family:monospace;"><span style="color: #000000; font-weight: bold;">&lt;?php</span>
+<a name="line2"></a><span style="color: #009933; font-style: italic;">/**
+<a name="line3"></a> * Interface description of how to implement a class handling an event fired by the observation mechanism .
+<a name="line4"></a> *
+<a name="line5"></a> * This file was ported from the Java JCR API to PHP by
+<a name="line6"></a> * Karsten Dambekalns &lt;karsten@typo3.org&gt; for the FLOW3 project.
+<a name="line7"></a> *
+<a name="line8"></a> * It is free software; you can redistribute it and/or modify it under
+<a name="line9"></a> * the terms of the GNU Lesser General Public License as published by the
+<a name="line10"></a> * Free Software Foundation, either version 3 of the License, or (at your
+<a name="line11"></a> * option) any later version. Alternatively, you may use the Simplified
+<a name="line12"></a> * BSD License.
+<a name="line13"></a> *
+<a name="line14"></a> * This script is distributed in the hope that it will be useful, but
+<a name="line15"></a> * WITHOUT ANY WARRANTY; without even the implied warranty of MERCHAN-
+<a name="line16"></a> * TABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser
+<a name="line17"></a> * General Public License for more details.
+<a name="line18"></a> *
+<a name="line19"></a> * You should have received a copy of the GNU Lesser General Public
+<a name="line20"></a> * License along with the script.
+<a name="line21"></a> * If not, see {@link http://www.gnu.org/licenses/lgpl.html}.
+<a name="line22"></a> *
+<a name="line23"></a> * The TYPO3 project - inspiring people to share!
+<a name="line24"></a> *
+<a name="line25"></a> * @license http://www.gnu.org/licenses/lgpl.html GNU Lesser General Public License, version 3 or later
+<a name="line26"></a> * @license http://opensource.org/licenses/bsd-license.php Simplified BSD License
+<a name="line27"></a> *
+<a name="line28"></a> * @package phpcr
+<a name="line29"></a> * @subpackage interfaces
+<a name="line30"></a> */</span>
+<a name="line31"></a>&nbsp;
+<a name="line32"></a><span style="color: #000000; font-weight: bold;">declare</span><span style="color: #009900;">&#40;</span>ENCODING <span style="color: #339933;">=</span> <span style="color: #0000ff;">'utf-8'</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line33"></a><span style="color: #000000; font-weight: bold;">namespace</span> PHPCR\Observation<span style="color: #339933;">;</span>
+<a name="line34"></a>&nbsp;
+<a name="line35"></a><span style="color: #009933; font-style: italic;">/**
+<a name="line36"></a> * An event fired by the observation mechanism.
+<a name="line37"></a> *
+<a name="line38"></a> * @package phpcr
+<a name="line39"></a> * @subpackage interfaces
+<a name="line40"></a> * @api
+<a name="line41"></a> */</span>
+<a name="line42"></a><span style="color: #000000; font-weight: bold;">interface</span> EventInterface <span style="color: #009900;">&#123;</span>
+<a name="line43"></a>&nbsp;
+<a name="line44"></a>    <span style="color: #009933; font-style: italic;">/**#@+
+<a name="line45"></a>     * @var integer
+<a name="line46"></a>     */</span>
+<a name="line47"></a>&nbsp;
+<a name="line48"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line49"></a>     * Generated on persist when a node is added.
+<a name="line50"></a>     * - getPath() returns the absolute path of the node that was added.
+<a name="line51"></a>     * - getIdentifier() returns the identifier of the node that was added.
+<a name="line52"></a>     * - getInfo() returns an empty array
+<a name="line53"></a>     *
+<a name="line54"></a>     * @api
+<a name="line55"></a>     */</span>
+<a name="line56"></a>    <span style="color: #000000; font-weight: bold;">const</span> NODE_ADDED <span style="color: #339933;">=</span> <span style="color: #208080;">0x1</span><span style="color: #339933;">;</span>
+<a name="line57"></a>&nbsp;
+<a name="line58"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line59"></a>     * Generated on persist when a node is removed.
+<a name="line60"></a>     * - getPath() returns the absolute path of the node that was removed.
+<a name="line61"></a>     * - getIdentifier() returns the identifier of the node that was removed.
+<a name="line62"></a>     * - getInfo() returns an empty array
+<a name="line63"></a>     *
+<a name="line64"></a>     * @api
+<a name="line65"></a>     */</span>
+<a name="line66"></a>    <span style="color: #000000; font-weight: bold;">const</span> NODE_REMOVED <span style="color: #339933;">=</span> <span style="color: #208080;">0x2</span><span style="color: #339933;">;</span>
+<a name="line67"></a>&nbsp;
+<a name="line68"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line69"></a>     * Generated on persist when a property is added.
+<a name="line70"></a>     * - getPath() returns the absolute path of the property that was added.
+<a name="line71"></a>     * - getIdentifier() returns the identifier of the parent node of the property that was added.
+<a name="line72"></a>     * - getInfo() returns an empty array
+<a name="line73"></a>     *
+<a name="line74"></a>     * @api
+<a name="line75"></a>     */</span>
+<a name="line76"></a>    <span style="color: #000000; font-weight: bold;">const</span> PROPERTY_ADDED <span style="color: #339933;">=</span> <span style="color: #208080;">0x4</span><span style="color: #339933;">;</span>
+<a name="line77"></a>&nbsp;
+<a name="line78"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line79"></a>     * Generated on persist when a property is removed.
+<a name="line80"></a>     * - getPath() returns the absolute path of the property that was removed.
+<a name="line81"></a>     * - getIdentifier() returns the identifier of the parent node of the property that was removed.
+<a name="line82"></a>     * - getInfo() returns an empty array
+<a name="line83"></a>     * @api
+<a name="line84"></a>     */</span>
+<a name="line85"></a>    <span style="color: #000000; font-weight: bold;">const</span> PROPERTY_REMOVED <span style="color: #339933;">=</span> <span style="color: #208080;">0x8</span><span style="color: #339933;">;</span>
+<a name="line86"></a>&nbsp;
+<a name="line87"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line88"></a>     * Generated on persist when a property is changed.
+<a name="line89"></a>     * - getPath() returns the absolute path of the property that was changed.
+<a name="line90"></a>     * - getIdentifier() returns the identifier of the parent node of the property that was changed.
+<a name="line91"></a>     * - getInfo() returns an empty array
+<a name="line92"></a>     *
+<a name="line93"></a>     * @api
+<a name="line94"></a>     */</span>
+<a name="line95"></a>    <span style="color: #000000; font-weight: bold;">const</span> PROPERTY_CHANGED <span style="color: #339933;">=</span> <span style="color: #208080;">0x10</span><span style="color: #339933;">;</span>
+<a name="line96"></a>&nbsp;
+<a name="line97"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line98"></a>     * Generated on persist when a node is moved.
+<a name="line99"></a>     * - getPath() returns the absolute path of the destination of the move.
+<a name="line100"></a>     * - getIdentifier() returns the identifier of the moved node.
+<a name="line101"></a>     * - getInfo() If the method that caused this event was a
+<a name="line102"></a>     *    SessionInterface-&gt;move() or WorkspaceInterface-&gt;move() then the
+<a name="line103"></a>     *    returned array has keys srcAbsPath and destAbsPath with values
+<a name="line104"></a>     *    corresponding to the parameters passed to the move() method.
+<a name="line105"></a>     *
+<a name="line106"></a>     *  If the method that caused this event was a NodeInterface.orderBefore()
+<a name="line107"></a>     *  then the returned aray has keys srcChildRelPath and destChildRelPath
+<a name="line108"></a>     *  with values corresponding to the parameters passed to the orderBefore()
+<a name="line109"></a>     *  method.
+<a name="line110"></a>     *
+<a name="line111"></a>     * @api
+<a name="line112"></a>     */</span>
+<a name="line113"></a>    <span style="color: #000000; font-weight: bold;">const</span> NODE_MOVED <span style="color: #339933;">=</span> <span style="color: #208080;">0x20</span><span style="color: #339933;">;</span>
+<a name="line114"></a>&nbsp;
+<a name="line115"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line116"></a>     * If event bundling is supported, this event is used to indicate a
+<a name="line117"></a>     * bundle boundary within the event journal.
+<a name="line118"></a>     * - getPath() returns NULL.
+<a name="line119"></a>     * - getIdentifier() returns NULL.
+<a name="line120"></a>     * - getInfo() returns an empty array.
+<a name="line121"></a>     *
+<a name="line122"></a>     * @api
+<a name="line123"></a>     */</span>
+<a name="line124"></a>    <span style="color: #000000; font-weight: bold;">const</span> PERSIST <span style="color: #339933;">=</span> <span style="color: #208080;">0x40</span><span style="color: #339933;">;</span>
+<a name="line125"></a>&nbsp;
+<a name="line126"></a>    <span style="color: #009933; font-style: italic;">/**#@-*/</span>
+<a name="line127"></a>&nbsp;
+<a name="line128"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line129"></a>     * Returns the type of this event: a constant defined by this interface.
+<a name="line130"></a>     * One of:
+<a name="line131"></a>     * - NODE_ADDED
+<a name="line132"></a>     * - NODE_REMOVED
+<a name="line133"></a>     * - PROPERTY_ADDED
+<a name="line134"></a>     * - PROPERTY_REMOVED
+<a name="line135"></a>     * - PROPERTY_CHANGED
+<a name="line136"></a>     * - NODE_MOVED
+<a name="line137"></a>     * - PERSIST
+<a name="line138"></a>     *
+<a name="line139"></a>     * @return integer the type of this event.
+<a name="line140"></a>     * @api
+<a name="line141"></a>     */</span>
+<a name="line142"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> <a href="http://www.php.net/gettype"><span style="color: #990000;">getType</span></a><span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line143"></a>&nbsp;
+<a name="line144"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line145"></a>     * Returns the absolute path associated with this event or NULL if this
+<a name="line146"></a>     * event has no associated identifier.
+<a name="line147"></a>     *
+<a name="line148"></a>     * The meaning of the associated path depends upon the type of the event.
+<a name="line149"></a>     * See event type constants above.
+<a name="line150"></a>     *
+<a name="line151"></a>     * @return string The absolute path associated with this event or NULL.
+<a name="line152"></a>     *
+<a name="line153"></a>     * @throws \PHPCR\RepositoryException if an error occurs.
+<a name="line154"></a>     * @api
+<a name="line155"></a>     */</span>
+<a name="line156"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getPath<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line157"></a>&nbsp;
+<a name="line158"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line159"></a>     * Returns the user ID connected with this event.
+<a name="line160"></a>     *
+<a name="line161"></a>     * This is the string returned by Session.getUserID() of the session that caused the event.
+<a name="line162"></a>     *
+<a name="line163"></a>     * @return string The identifier of the user connected to the event.
+<a name="line164"></a>     * @api
+<a name="line165"></a>     */</span>
+<a name="line166"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getUserID<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line167"></a>&nbsp;
+<a name="line168"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line169"></a>     * Returns the identifier associated with this event or null if this event
+<a name="line170"></a>     * has no associated identifier.
+<a name="line171"></a>     *
+<a name="line172"></a>     * The meaning of the associated identifier depends upon the type of the event.
+<a name="line173"></a>     * See event type constants above.
+<a name="line174"></a>     *
+<a name="line175"></a>     * @return string The identifier associated with this event or NULL.
+<a name="line176"></a>     *
+<a name="line177"></a>     * @throws \PHPCR\RepositoryException if an error occurs.
+<a name="line178"></a>     * @api
+<a name="line179"></a>     */</span>
+<a name="line180"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getIdentifier<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line181"></a>&nbsp;
+<a name="line182"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line183"></a>     * Returns the information map associated with this event.
+<a name="line184"></a>     *
+<a name="line185"></a>     * The meaning of the map depends upon the type of the event.
+<a name="line186"></a>     * See event type constants above.
+<a name="line187"></a>     *
+<a name="line188"></a>     * @return array A list containing parameter information for instances of a NODE_MOVED event.
+<a name="line189"></a>     *
+<a name="line190"></a>     * @throws \PHPCR\RepositoryException if an error occurs.
+<a name="line191"></a>     * @api
+<a name="line192"></a>     */</span>
+<a name="line193"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getInfo<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line194"></a>&nbsp;
+<a name="line195"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line196"></a>     * Returns the user data set through ObservationManager.setUserData() on the
+<a name="line197"></a>     * ObservationManager bound to the Session that caused the event.
+<a name="line198"></a>     *
+<a name="line199"></a>     * @return string The user data string.
+<a name="line200"></a>     * @throws \PHPCR\RepositoryException if an error occurs.
+<a name="line201"></a>     * @api
+<a name="line202"></a>     */</span>
+<a name="line203"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getUserData<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line204"></a>&nbsp;
+<a name="line205"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line206"></a>     * Returns the date when the change was persisted that caused this event.
+<a name="line207"></a>     *
+<a name="line208"></a>     * The date is represented as a millisecond value that is an offset from the
+<a name="line209"></a>     * Epoch, January 1, 1970 00:00:00.000 GMT (Gregorian). The granularity of
+<a name="line210"></a>     * the returned value is implementation dependent.
+<a name="line211"></a>     *
+<a name="line212"></a>     * @return integer The date when the change was persisted that caused this event (milliseconds since epoch).
+<a name="line213"></a>     *
+<a name="line214"></a>     * @throws \PHPCR\RepositoryException if an error occurs.
+<a name="line215"></a>     * @api
+<a name="line216"></a>     */</span>
+<a name="line217"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> <a href="http://www.php.net/getdate"><span style="color: #990000;">getDate</span></a><span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line218"></a>&nbsp;
+<a name="line219"></a><span style="color: #009900;">&#125;</span>
+<a name="line220"></a>&nbsp;</pre>
+<div class="header">
+<h1>PHPCR</h1>
+<ul>
+<li><a href="../../../overview-summary.html">Overview</a></li>
+<li>Package</li><li>Class</li><li>Tree</li><li><a href="../../../overview-files.html">Files</a></li>
+<li><a href="../../../deprecated-list.html">Deprecated</a></li>
+<li><a href="../../../todo-list.html">Todo</a></li>
+<li><a href="../../../index-all.html">Index</a></li>
+</ul>
+</div>
+
+<div class="small_links">
+<a href="../../../index.html" target="_top">Frames</a>
+<a href="../../../source/phpcr/observation/eventinterface.php.html" target="_top">No frames</a>
+</div>
+<hr>
+
+<p id="footer">This document was generated by <a href="http://peej.github.com/phpdoctor/">PHPDoctor: The PHP Documentation Creator</a></p>
+
+</body>
+
+</html>

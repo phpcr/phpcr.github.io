@@ -1,0 +1,391 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+
+<html lang="en">
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="generator" content="PHPDoctor 2RC4 (http://peej.github.com/phpdoctor/)">
+<meta name="when" content="Fri, 06 May 2011 11:43:18 +0000">
+
+<link rel="stylesheet" type="text/css" href="../../stylesheet.css">
+<link rel="start" href="../../overview-summary.html">
+
+<title>NodeTypeManagerInterface (PHPCR API)</title>
+
+</head>
+<body id="definition" onload="parent.document.title=document.title;">
+
+<div class="header">
+<h1>PHPCR</h1>
+<ul>
+<li><a href="../../overview-summary.html">Overview</a></li>
+<li><a href="../../phpcr/nodetype/package-summary.html">Namespace</a></li>
+<li class="active">Class</li>
+<li><a href="../../phpcr/nodetype/package-tree.html">Tree</a></li>
+<li><a href="../../overview-files.html">Files</a></li>
+<li><a href="../../deprecated-list.html">Deprecated</a></li>
+<li><a href="../../todo-list.html">Todo</a></li>
+<li><a href="../../index-all.html">Index</a></li>
+</ul>
+</div>
+
+<div class="small_links">
+<a href="../../index.html" target="_top">Frames</a>
+<a href="../../phpcr/nodetype/nodetypemanagerinterface.html" target="_top">No frames</a>
+</div>
+<div class="small_links">
+Summary: <a href="#summary_field">Field</a> | <a href="#summary_method">Method</a> | <a href="#summary_constr">Constr</a>
+Detail: <a href="#detail_field">Field</a> | <a href="#detail_method">Method</a> | <a href="#summary_constr">Constr</a>
+</div>
+<hr>
+
+<div class="qualifiedName">PHPCR\NodeType\NodeTypeManagerInterface</div>
+<a href="../../source/phpcr/nodetype/nodetypemanagerinterface.php.html#line49" class="location">PHPCR/NodeType/NodeTypeManagerInterface.php at line 49</a>
+
+<h1>Interface NodeTypeManagerInterface</h1>
+
+<pre class="tree">\Traversable<br> └─<strong>NodeTypeManagerInterface</strong><br /></pre>
+
+<hr>
+
+<p class="signature">public  interface <strong>NodeTypeManagerInterface</strong><br>extends \Traversable
+
+</p>
+
+<div class="comment" id="overview_description"><p>Allows for the retrieval and (in implementations that support it) the
+registration of node types. Accessed via Workspace.getNodeTypeManager().</p><p>The \Traversable interface enables the implementation to be addressed with
+<b>foreach</b>. NodeTypeManager has to implement either \RecursiveIterator
+or \Iterator.
+The iterator is equivalent to <b>getAllNodeTypes()</b> returning a list of
+all node types. The iterator keys have no significant meaning.</p></div>
+
+<dl>
+<dt>Subpackage:</dt>
+<dd>interfaces</dd>
+<dt>Api.</dt>
+</dl>
+<hr>
+
+<table id="summary_method">
+<tr><th colspan="2">Method Summary</th></tr>
+<tr>
+<td class="type"> <a href="../../phpcr/nodetype/nodedefinitiontemplateinterface.html">NodeDefinitionTemplateInterface</a></td>
+<td class="description"><p class="name"><a href="#createNodeDefinitionTemplate()">createNodeDefinitionTemplate</a>()</p><p class="description">Returns an empty NodeDefinitionTemplate which can then be used to create a
+child node definition and attached to a NodeTypeTemplate.</p></td>
+</tr>
+<tr>
+<td class="type"> <a href="../../phpcr/nodetype/nodetypetemplateinterface.html">NodeTypeTemplateInterface</a></td>
+<td class="description"><p class="name"><a href="#createNodeTypeTemplate()">createNodeTypeTemplate</a>(<a href="../../phpcr/nodetype/nodetypedefinitioninterface.html">NodeTypeDefinitionInterface</a> ntd)</p><p class="description">Returns an empty NodeTypeTemplate which can then be used to define a node type
+and passed to NodeTypeManager.registerNodeType.
+</p></td>
+</tr>
+<tr>
+<td class="type"> <a href="../../phpcr/nodetype/propertydefinitiontemplateinterface.html">PropertyDefinitionTemplateInterface</a></td>
+<td class="description"><p class="name"><a href="#createPropertyDefinitionTemplate()">createPropertyDefinitionTemplate</a>()</p><p class="description">Returns an empty PropertyDefinitionTemplate which can then be used to create
+a property definition and attached to a NodeTypeTemplate.</p></td>
+</tr>
+<tr>
+<td class="type"> Iterator</td>
+<td class="description"><p class="name"><a href="#getAllNodeTypes()">getAllNodeTypes</a>()</p><p class="description">Returns an iterator over all available node types (primary and mixin).</p></td>
+</tr>
+<tr>
+<td class="type"> Iterator</td>
+<td class="description"><p class="name"><a href="#getMixinNodeTypes()">getMixinNodeTypes</a>()</p><p class="description">Returns an iterator over all available mixin node types.
+</p></td>
+</tr>
+<tr>
+<td class="type"> <a href="../../phpcr/nodetype/nodetypeinterface.html">NodeTypeInterface</a></td>
+<td class="description"><p class="name"><a href="#getNodeType()">getNodeType</a>(string nodeTypeName)</p><p class="description">Returns the named node type.</p></td>
+</tr>
+<tr>
+<td class="type"> Iterator</td>
+<td class="description"><p class="name"><a href="#getPrimaryNodeTypes()">getPrimaryNodeTypes</a>()</p><p class="description">Returns an iterator over all available primary node types.</p></td>
+</tr>
+<tr>
+<td class="type"> boolean</td>
+<td class="description"><p class="name"><a href="#hasNodeType()">hasNodeType</a>(string name)</p><p class="description">Determines if the given node type is registered.
+</p></td>
+</tr>
+<tr>
+<td class="type"> <a href="../../phpcr/nodetype/nodetypeinterface.html">NodeTypeInterface</a></td>
+<td class="description"><p class="name"><a href="#registerNodeType()">registerNodeType</a>(<a href="../../phpcr/nodetype/nodetypedefinitioninterface.html">NodeTypeDefinitionInterface</a> ntd, boolean allowUpdate)</p><p class="description">Registers a new node type or updates an existing node type using the specified
+definition and returns the resulting NodeType object.
+</p></td>
+</tr>
+<tr>
+<td class="type"> Iterator</td>
+<td class="description"><p class="name"><a href="#registerNodeTypes()">registerNodeTypes</a>(array definitions, boolean allowUpdate)</p><p class="description">Registers or updates the specified array of NodeTypeDefinition objects.
+</p></td>
+</tr>
+<tr>
+<td class="type"> void</td>
+<td class="description"><p class="name"><a href="#unregisterNodeType()">unregisterNodeType</a>(string name)</p><p class="description">Unregisters the specified node type.</p></td>
+</tr>
+<tr>
+<td class="type"> void</td>
+<td class="description"><p class="name"><a href="#unregisterNodeTypes()">unregisterNodeTypes</a>(array names)</p><p class="description">Unregisters the specified set of node types. </p></td>
+</tr>
+</table>
+
+<h2 id="detail_method">Method Detail</h2>
+<a href="../../source/phpcr/nodetype/nodetypemanagerinterface.php.html#line141" class="location">PHPCR/NodeType/NodeTypeManagerInterface.php at line 141</a>
+
+<h3 id="createNodeDefinitionTemplate()">createNodeDefinitionTemplate</h3>
+<code class="signature">public  <a href="../../phpcr/nodetype/nodedefinitiontemplateinterface.html">NodeDefinitionTemplateInterface</a> <strong>createNodeDefinitionTemplate</strong>()</code>
+<div class="details">
+<p>Returns an empty NodeDefinitionTemplate which can then be used to create a
+child node definition and attached to a NodeTypeTemplate.</p><dl>
+<dt>Returns:</dt>
+<dd>A NodeDefinitionTemplate.</dd>
+<dt>Throws:</dt>
+<dd><a href="../../phpcr/unsupportedrepositoryoperationexception.html">\PHPCR\UnsupportedRepositoryOperationException</a> - if this implementation does not support node type registration.</dd>
+<dd><a href="../../phpcr/repositoryexception.html">\PHPCR\RepositoryException</a> - if another error occurs.</dd>
+<dt>Api.</dt>
+</dl>
+</div>
+
+<hr>
+
+<a href="../../source/phpcr/nodetype/nodetypemanagerinterface.php.html#line128" class="location">PHPCR/NodeType/NodeTypeManagerInterface.php at line 128</a>
+
+<h3 id="createNodeTypeTemplate()">createNodeTypeTemplate</h3>
+<code class="signature">public  <a href="../../phpcr/nodetype/nodetypetemplateinterface.html">NodeTypeTemplateInterface</a> <strong>createNodeTypeTemplate</strong>(<a href="../../phpcr/nodetype/nodetypedefinitioninterface.html">NodeTypeDefinitionInterface</a> ntd)</code>
+<div class="details">
+<p>Returns an empty NodeTypeTemplate which can then be used to define a node type
+and passed to NodeTypeManager.registerNodeType.</p><p>If <b>$ntd</b> is given:
+Returns a NodeTypeTemplate holding the specified node type definition. This
+template can then be altered and passed to NodeTypeManager.registerNodeType.</p><dl>
+<dt>Parameters:</dt>
+<dd>ntd - a NodeTypeDefinition.</dd>
+<dt>Returns:</dt>
+<dd>A NodeTypeTemplate.</dd>
+<dt>Throws:</dt>
+<dd><a href="../../phpcr/unsupportedrepositoryoperationexception.html">\PHPCR\UnsupportedRepositoryOperationException</a> - if this implementation does not support node type registration.</dd>
+<dd><a href="../../phpcr/repositoryexception.html">\PHPCR\RepositoryException</a> - if another error occurs.</dd>
+<dt>Api.</dt>
+</dl>
+</div>
+
+<hr>
+
+<a href="../../source/phpcr/nodetype/nodetypemanagerinterface.php.html#line154" class="location">PHPCR/NodeType/NodeTypeManagerInterface.php at line 154</a>
+
+<h3 id="createPropertyDefinitionTemplate()">createPropertyDefinitionTemplate</h3>
+<code class="signature">public  <a href="../../phpcr/nodetype/propertydefinitiontemplateinterface.html">PropertyDefinitionTemplateInterface</a> <strong>createPropertyDefinitionTemplate</strong>()</code>
+<div class="details">
+<p>Returns an empty PropertyDefinitionTemplate which can then be used to create
+a property definition and attached to a NodeTypeTemplate.</p><dl>
+<dt>Returns:</dt>
+<dd>A PropertyDefinitionTemplate.</dd>
+<dt>Throws:</dt>
+<dd><a href="../../phpcr/unsupportedrepositoryoperationexception.html">\PHPCR\UnsupportedRepositoryOperationException</a> - if this implementation does not support node type registration.</dd>
+<dd><a href="../../phpcr/repositoryexception.html">\PHPCR\RepositoryException</a> - if another error occurs.</dd>
+<dt>Api.</dt>
+</dl>
+</div>
+
+<hr>
+
+<a href="../../source/phpcr/nodetype/nodetypemanagerinterface.php.html#line86" class="location">PHPCR/NodeType/NodeTypeManagerInterface.php at line 86</a>
+
+<h3 id="getAllNodeTypes()">getAllNodeTypes</h3>
+<code class="signature">public  Iterator <strong>getAllNodeTypes</strong>()</code>
+<div class="details">
+<p>Returns an iterator over all available node types (primary and mixin).</p><dl>
+<dt>Returns:</dt>
+<dd>implementing <b>SeekableIterator</b> and <b>Countable</b>. Keys are the node type names, values the corresponding NodeTypeInterface instances.</dd>
+<dt>Throws:</dt>
+<dd><a href="../../phpcr/repositoryexception.html">\PHPCR\RepositoryException</a> - if an error occurs.</dd>
+<dt>Api.</dt>
+</dl>
+</div>
+
+<hr>
+
+<a href="../../source/phpcr/nodetype/nodetypemanagerinterface.php.html#line110" class="location">PHPCR/NodeType/NodeTypeManagerInterface.php at line 110</a>
+
+<h3 id="getMixinNodeTypes()">getMixinNodeTypes</h3>
+<code class="signature">public  Iterator <strong>getMixinNodeTypes</strong>()</code>
+<div class="details">
+<p>Returns an iterator over all available mixin node types.</p><p>If none are available, an empty iterator is returned.</p><dl>
+<dt>Returns:</dt>
+<dd>implementing <b>SeekableIterator</b> and <b>Countable</b>. Keys are the node type names, values the corresponding NodeTypeInterface instances.</dd>
+<dt>Throws:</dt>
+<dd><a href="../../phpcr/repositoryexception.html">\PHPCR\RepositoryException</a> - if an error occurs.</dd>
+<dt>Api.</dt>
+</dl>
+</div>
+
+<hr>
+
+<a href="../../source/phpcr/nodetype/nodetypemanagerinterface.php.html#line61" class="location">PHPCR/NodeType/NodeTypeManagerInterface.php at line 61</a>
+
+<h3 id="getNodeType()">getNodeType</h3>
+<code class="signature">public  <a href="../../phpcr/nodetype/nodetypeinterface.html">NodeTypeInterface</a> <strong>getNodeType</strong>(string nodeTypeName)</code>
+<div class="details">
+<p>Returns the named node type.</p><dl>
+<dt>Parameters:</dt>
+<dd>nodeTypeName - the name of an existing node type.</dd>
+<dt>Returns:</dt>
+<dd>A NodeType object.</dd>
+<dt>Throws:</dt>
+<dd><a href="../../phpcr/nodetype/nosuchnodetypeexception.html">\PHPCR\NodeType\NoSuchNodeTypeException</a> - if no node type by the given name exists.</dd>
+<dd><a href="../../phpcr/repositoryexception.html">\PHPCR\RepositoryException</a> - if another error occurs.</dd>
+<dt>Api.</dt>
+</dl>
+</div>
+
+<hr>
+
+<a href="../../source/phpcr/nodetype/nodetypemanagerinterface.php.html#line97" class="location">PHPCR/NodeType/NodeTypeManagerInterface.php at line 97</a>
+
+<h3 id="getPrimaryNodeTypes()">getPrimaryNodeTypes</h3>
+<code class="signature">public  Iterator <strong>getPrimaryNodeTypes</strong>()</code>
+<div class="details">
+<p>Returns an iterator over all available primary node types.</p><dl>
+<dt>Returns:</dt>
+<dd>implementing <b>SeekableIterator</b> and <b>Countable</b>. Keys are the node type names, values the corresponding NodeTypeInterface instances.</dd>
+<dt>Throws:</dt>
+<dd><a href="../../phpcr/repositoryexception.html">\PHPCR\RepositoryException</a> - if an error occurs.</dd>
+<dt>Api.</dt>
+</dl>
+</div>
+
+<hr>
+
+<a href="../../source/phpcr/nodetype/nodetypemanagerinterface.php.html#line75" class="location">PHPCR/NodeType/NodeTypeManagerInterface.php at line 75</a>
+
+<h3 id="hasNodeType()">hasNodeType</h3>
+<code class="signature">public  boolean <strong>hasNodeType</strong>(string name)</code>
+<div class="details">
+<p>Determines if the given node type is registered.</p><p>Returns true if a node type with the specified name is registered. Returns
+false otherwise.</p><dl>
+<dt>Parameters:</dt>
+<dd>name - The name of node type.</dd>
+<dt>Returns:</dt>
+<dd>True, if the node type identified by its name is registered, else false.</dd>
+<dt>Throws:</dt>
+<dd><a href="../../phpcr/repositoryexception.html">\PHPCR\RepositoryException</a> - if an error occurs.</dd>
+<dt>Api.</dt>
+</dl>
+</div>
+
+<hr>
+
+<a href="../../source/phpcr/nodetype/nodetypemanagerinterface.php.html#line176" class="location">PHPCR/NodeType/NodeTypeManagerInterface.php at line 176</a>
+
+<h3 id="registerNodeType()">registerNodeType</h3>
+<code class="signature">public  <a href="../../phpcr/nodetype/nodetypeinterface.html">NodeTypeInterface</a> <strong>registerNodeType</strong>(<a href="../../phpcr/nodetype/nodetypedefinitioninterface.html">NodeTypeDefinitionInterface</a> ntd, boolean allowUpdate)</code>
+<div class="details">
+<p>Registers a new node type or updates an existing node type using the specified
+definition and returns the resulting NodeType object.</p><p>Typically, the object passed to this method will be a NodeTypeTemplate (a
+subclass of NodeTypeDefinition) acquired from NodeTypeManager.createNodeTypeTemplate
+and then filled-in with definition information.</p><dl>
+<dt>Parameters:</dt>
+<dd>ntd - an NodeTypeDefinition.</dd>
+<dd>allowUpdate - whether to fail if node already exists or to update it</dd>
+<dt>Returns:</dt>
+<dd>the registered node type</dd>
+<dt>Throws:</dt>
+<dd>\PHPCR\InvalidNodeTypeDefinitionException - if the NodeTypeDefinition is invalid.</dd>
+<dd><a href="../../phpcr/nodetype/nodetypeexistsexception.html">\PHPCR\NodeType\NodeTypeExistsException</a> - if allowUpdate is false and the NodeTypeDefinition specifies a node type name that is already registered.</dd>
+<dd><a href="../../phpcr/unsupportedrepositoryoperationexception.html">\PHPCR\UnsupportedRepositoryOperationException</a> - if this implementation does not support node type registration.</dd>
+<dd><a href="../../phpcr/repositoryexception.html">\PHPCR\RepositoryException</a> - if another error occurs.</dd>
+<dt>Api.</dt>
+</dl>
+</div>
+
+<hr>
+
+<a href="../../source/phpcr/nodetype/nodetypemanagerinterface.php.html#line202" class="location">PHPCR/NodeType/NodeTypeManagerInterface.php at line 202</a>
+
+<h3 id="registerNodeTypes()">registerNodeTypes</h3>
+<code class="signature">public  Iterator <strong>registerNodeTypes</strong>(array definitions, boolean allowUpdate)</code>
+<div class="details">
+<p>Registers or updates the specified array of NodeTypeDefinition objects.</p><p>This method is used to register or update a set of node types with mutual
+dependencies. Returns an iterator over the resulting NodeType objects.
+The effect of the method is "all or nothing"; if an error occurs, no node
+types are registered or updated.</p><dl>
+<dt>Parameters:</dt>
+<dd>definitions - an array of NodeTypeDefinitions</dd>
+<dd>allowUpdate - whether to fail if node already exists or to update it</dd>
+<dt>Returns:</dt>
+<dd>over the registered node types implementing <b>SeekableIterator</b> and <b>Countable</b>. Keys are the node type names, values the corresponding NodeTypeInterface instances.</dd>
+<dt>Throws:</dt>
+<dd>\PHPCR\InvalidNodeTypeDefinitionException - if a NodeTypeDefinition within the Collection is invalid or if the Collection contains an object of a type other than NodeTypeDefinition.</dd>
+<dd><a href="../../phpcr/nodetype/nodetypeexistsexception.html">\PHPCR\NodeType\NodeTypeExistsException</a> - if allowUpdate is false and a NodeTypeDefinition within the Collection specifies a node type name that is already registered.</dd>
+<dd><a href="../../phpcr/unsupportedrepositoryoperationexception.html">\PHPCR\UnsupportedRepositoryOperationException</a> - if this implementation does not support node type registration.</dd>
+<dd><a href="../../phpcr/repositoryexception.html">\PHPCR\RepositoryException</a> - if another error occurs.</dd>
+<dt>Api.</dt>
+</dl>
+</div>
+
+<hr>
+
+<a href="../../source/phpcr/nodetype/nodetypemanagerinterface.php.html#line216" class="location">PHPCR/NodeType/NodeTypeManagerInterface.php at line 216</a>
+
+<h3 id="unregisterNodeType()">unregisterNodeType</h3>
+<code class="signature">public  void <strong>unregisterNodeType</strong>(string name)</code>
+<div class="details">
+<p>Unregisters the specified node type.</p><dl>
+<dt>Parameters:</dt>
+<dd>name - The name of the node type to be removed from the registry.</dd>
+<dt>Throws:</dt>
+<dd><a href="../../phpcr/unsupportedrepositoryoperationexception.html">\PHPCR\UnsupportedRepositoryOperationException</a> - if this implementation does not support node type registration.</dd>
+<dd><a href="../../phpcr/nodetype/nosuchnodetypeexception.html">\PHPCR\NodeType\NoSuchNodeTypeException</a> - if no registered node type exists with the specified name.</dd>
+<dd><a href="../../phpcr/repositoryexception.html">\PHPCR\RepositoryException</a> - if another error occurs.</dd>
+<dt>Api.</dt>
+</dl>
+</div>
+
+<hr>
+
+<a href="../../source/phpcr/nodetype/nodetypemanagerinterface.php.html#line231" class="location">PHPCR/NodeType/NodeTypeManagerInterface.php at line 231</a>
+
+<h3 id="unregisterNodeTypes()">unregisterNodeTypes</h3>
+<code class="signature">public  void <strong>unregisterNodeTypes</strong>(array names)</code>
+<div class="details">
+<p>Unregisters the specified set of node types. Used to unregister a set of node
+types with mutual dependencies.</p><dl>
+<dt>Parameters:</dt>
+<dd>names - List of node type names to be removed from the registry.</dd>
+<dt>Throws:</dt>
+<dd><a href="../../phpcr/unsupportedrepositoryoperationexception.html">\PHPCR\UnsupportedRepositoryOperationException</a> - if this implementation does not support node type registration.</dd>
+<dd><a href="../../phpcr/nodetype/nosuchnodetypeexception.html">\PHPCR\NodeType\NoSuchNodeTypeException</a> - if one of the names listed is not a registered node type.</dd>
+<dd><a href="../../phpcr/repositoryexception.html">\PHPCR\RepositoryException</a> - if another error occurs.</dd>
+<dt>Api.</dt>
+</dl>
+</div>
+
+<hr>
+
+<div class="header">
+<h1>PHPCR</h1>
+<ul>
+<li><a href="../../overview-summary.html">Overview</a></li>
+<li><a href="../../phpcr/nodetype/package-summary.html">Namespace</a></li>
+<li class="active">Class</li>
+<li><a href="../../phpcr/nodetype/package-tree.html">Tree</a></li>
+<li><a href="../../overview-files.html">Files</a></li>
+<li><a href="../../deprecated-list.html">Deprecated</a></li>
+<li><a href="../../todo-list.html">Todo</a></li>
+<li><a href="../../index-all.html">Index</a></li>
+</ul>
+</div>
+
+<div class="small_links">
+<a href="../../index.html" target="_top">Frames</a>
+<a href="../../phpcr/nodetype/nodetypemanagerinterface.html" target="_top">No frames</a>
+</div>
+<div class="small_links">
+Summary: <a href="#summary_field">Field</a> | <a href="#summary_method">Method</a> | <a href="#summary_constr">Constr</a>
+Detail: <a href="#detail_field">Field</a> | <a href="#detail_method">Method</a> | <a href="#summary_constr">Constr</a>
+</div>
+<hr>
+
+<p id="footer">This document was generated by <a href="http://peej.github.com/phpdoctor/">PHPDoctor: The PHP Documentation Creator</a></p>
+
+</body>
+
+</html>

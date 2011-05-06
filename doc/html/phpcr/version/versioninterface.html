@@ -1,0 +1,275 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+
+<html lang="en">
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="generator" content="PHPDoctor 2RC4 (http://peej.github.com/phpdoctor/)">
+<meta name="when" content="Fri, 06 May 2011 11:43:18 +0000">
+
+<link rel="stylesheet" type="text/css" href="../../stylesheet.css">
+<link rel="start" href="../../overview-summary.html">
+
+<title>VersionInterface (PHPCR API)</title>
+
+</head>
+<body id="definition" onload="parent.document.title=document.title;">
+
+<div class="header">
+<h1>PHPCR</h1>
+<ul>
+<li><a href="../../overview-summary.html">Overview</a></li>
+<li><a href="../../phpcr/version/package-summary.html">Namespace</a></li>
+<li class="active">Class</li>
+<li><a href="../../phpcr/version/package-tree.html">Tree</a></li>
+<li><a href="../../overview-files.html">Files</a></li>
+<li><a href="../../deprecated-list.html">Deprecated</a></li>
+<li><a href="../../todo-list.html">Todo</a></li>
+<li><a href="../../index-all.html">Index</a></li>
+</ul>
+</div>
+
+<div class="small_links">
+<a href="../../index.html" target="_top">Frames</a>
+<a href="../../phpcr/version/versioninterface.html" target="_top">No frames</a>
+</div>
+<div class="small_links">
+Summary: <a href="#summary_field">Field</a> | <a href="#summary_method">Method</a> | <a href="#summary_constr">Constr</a>
+Detail: <a href="#detail_field">Field</a> | <a href="#detail_method">Method</a> | <a href="#summary_constr">Constr</a>
+</div>
+<hr>
+
+<div class="qualifiedName">PHPCR\Version\VersionInterface</div>
+<a href="../../source/phpcr/version/versioninterface.php.html#line43" class="location">PHPCR/Version/VersionInterface.php at line 43</a>
+
+<h1>Interface VersionInterface</h1>
+
+<pre class="tree"><a href="../../phpcr/iteminterface.html">ItemInterface</a><br>    └─<a href="../../phpcr/nodeinterface.html">NodeInterface</a><br>       └─<strong>VersionInterface</strong><br /></pre>
+
+<hr>
+
+<p class="signature">public  interface <strong>VersionInterface</strong><br>extends <a href="../../phpcr/nodeinterface.html">NodeInterface</a>
+
+</p>
+
+<div class="comment" id="overview_description"><p>A Version object wraps an nt:version node. It provides convenient access to
+version information.</p></div>
+
+<dl>
+<dt>Subpackage:</dt>
+<dd>interfaces</dd>
+<dt>Api.</dt>
+</dl>
+<hr>
+
+<table id="summary_method">
+<tr><th colspan="2">Method Summary</th></tr>
+<tr>
+<td class="type"> <a href="../../phpcr/version/versionhistoryinterface.html">VersionHistoryInterface</a></td>
+<td class="description"><p class="name"><a href="#getContainingHistory()">getContainingHistory</a>()</p><p class="description">Returns the VersionHistory that contains this Version</p></td>
+</tr>
+<tr>
+<td class="type"> \DateTime</td>
+<td class="description"><p class="name"><a href="#getCreated()">getCreated</a>()</p><p class="description">Returns the date this version was created. </p></td>
+</tr>
+<tr>
+<td class="type"> <a href="../../phpcr/nodeinterface.html">NodeInterface</a></td>
+<td class="description"><p class="name"><a href="#getFrozenNode()">getFrozenNode</a>()</p><p class="description">Returns the frozen node of this version.</p></td>
+</tr>
+<tr>
+<td class="type"> <a href="../../phpcr/version/versioninterface.html">VersionInterface</a></td>
+<td class="description"><p class="name"><a href="#getLinearPredecessor()">getLinearPredecessor</a>()</p><p class="description">Assuming that this Version object was acquired through a Workspace W and
+is within the VersionHistory H, this method returns the predecessor of
+this version along the same line of descent as is returned by
+H.getAllLinearVersions() where H was also acquired through W.
+</p></td>
+</tr>
+<tr>
+<td class="type"> <a href="../../phpcr/version/versioninterface.html">VersionInterface</a></td>
+<td class="description"><p class="name"><a href="#getLinearSuccessor()">getLinearSuccessor</a>()</p><p class="description">Assuming that this Version object was acquired through a Workspace W and
+is within the VersionHistory H, this method returns the successor of this
+version along the same line of descent as is returned by
+H.getAllLinearVersions() where H was also acquired through W.
+</p></td>
+</tr>
+<tr>
+<td class="type"> array</td>
+<td class="description"><p class="name"><a href="#getPredecessors()">getPredecessors</a>()</p><p class="description">In both simple and full versioning repositories, this method returns the
+predecessor versions of this version. </p></td>
+</tr>
+<tr>
+<td class="type"> array</td>
+<td class="description"><p class="name"><a href="#getSuccessors()">getSuccessors</a>()</p><p class="description">Returns the successor versions of this version. </p></td>
+</tr>
+</table>
+
+<table class="inherit">
+<tr><th colspan="2">Methods inherited from PHPCR\NodeInterface</th></tr>
+<tr><td><a href="../../phpcr/nodeinterface.html#addMixin()">addMixin</a>, <a href="../../phpcr/nodeinterface.html#addNode()">addNode</a>, <a href="../../phpcr/nodeinterface.html#canAddMixin()">canAddMixin</a>, <a href="../../phpcr/nodeinterface.html#followLifecycleTransition()">followLifecycleTransition</a>, <a href="../../phpcr/nodeinterface.html#getAllowedLifecycleTransitions()">getAllowedLifecycleTransitions</a>, <a href="../../phpcr/nodeinterface.html#getCorrespondingNodePath()">getCorrespondingNodePath</a>, <a href="../../phpcr/nodeinterface.html#getDefinition()">getDefinition</a>, <a href="../../phpcr/nodeinterface.html#getIdentifier()">getIdentifier</a>, <a href="../../phpcr/nodeinterface.html#getIndex()">getIndex</a>, <a href="../../phpcr/nodeinterface.html#getMixinNodeTypes()">getMixinNodeTypes</a>, <a href="../../phpcr/nodeinterface.html#getNode()">getNode</a>, <a href="../../phpcr/nodeinterface.html#getNodes()">getNodes</a>, <a href="../../phpcr/nodeinterface.html#getPrimaryItem()">getPrimaryItem</a>, <a href="../../phpcr/nodeinterface.html#getPrimaryNodeType()">getPrimaryNodeType</a>, <a href="../../phpcr/nodeinterface.html#getProperties()">getProperties</a>, <a href="../../phpcr/nodeinterface.html#getPropertiesValues()">getPropertiesValues</a>, <a href="../../phpcr/nodeinterface.html#getProperty()">getProperty</a>, <a href="../../phpcr/nodeinterface.html#getPropertyValue()">getPropertyValue</a>, <a href="../../phpcr/nodeinterface.html#getReferences()">getReferences</a>, <a href="../../phpcr/nodeinterface.html#getSharedSet()">getSharedSet</a>, <a href="../../phpcr/nodeinterface.html#getWeakReferences()">getWeakReferences</a>, <a href="../../phpcr/nodeinterface.html#hasNode()">hasNode</a>, <a href="../../phpcr/nodeinterface.html#hasNodes()">hasNodes</a>, <a href="../../phpcr/nodeinterface.html#hasProperties()">hasProperties</a>, <a href="../../phpcr/nodeinterface.html#hasProperty()">hasProperty</a>, <a href="../../phpcr/nodeinterface.html#isCheckedOut()">isCheckedOut</a>, <a href="../../phpcr/nodeinterface.html#isLocked()">isLocked</a>, <a href="../../phpcr/nodeinterface.html#isNodeType()">isNodeType</a>, <a href="../../phpcr/nodeinterface.html#orderBefore()">orderBefore</a>, <a href="../../phpcr/nodeinterface.html#removeMixin()">removeMixin</a>, <a href="../../phpcr/nodeinterface.html#removeShare()">removeShare</a>, <a href="../../phpcr/nodeinterface.html#removeSharedSet()">removeSharedSet</a>, <a href="../../phpcr/nodeinterface.html#setPrimaryType()">setPrimaryType</a>, <a href="../../phpcr/nodeinterface.html#setProperty()">setProperty</a>, <a href="../../phpcr/nodeinterface.html#update()">update</a></td></tr></table>
+
+<table class="inherit">
+<tr><th colspan="2">Methods inherited from PHPCR\ItemInterface</th></tr>
+<tr><td><a href="../../phpcr/iteminterface.html#accept()">accept</a>, <a href="../../phpcr/iteminterface.html#getAncestor()">getAncestor</a>, <a href="../../phpcr/iteminterface.html#getDepth()">getDepth</a>, <a href="../../phpcr/iteminterface.html#getName()">getName</a>, <a href="../../phpcr/iteminterface.html#getParent()">getParent</a>, <a href="../../phpcr/iteminterface.html#getPath()">getPath</a>, <a href="../../phpcr/iteminterface.html#getSession()">getSession</a>, <a href="../../phpcr/iteminterface.html#isModified()">isModified</a>, <a href="../../phpcr/iteminterface.html#isNew()">isNew</a>, <a href="../../phpcr/iteminterface.html#isNode()">isNode</a>, <a href="../../phpcr/iteminterface.html#isSame()">isSame</a>, <a href="../../phpcr/iteminterface.html#refresh()">refresh</a>, <a href="../../phpcr/iteminterface.html#remove()">remove</a></td></tr></table>
+
+<h2 id="detail_method">Method Detail</h2>
+<a href="../../source/phpcr/version/versioninterface.php.html#line52" class="location">PHPCR/Version/VersionInterface.php at line 52</a>
+
+<h3 id="getContainingHistory()">getContainingHistory</h3>
+<code class="signature">public  <a href="../../phpcr/version/versionhistoryinterface.html">VersionHistoryInterface</a> <strong>getContainingHistory</strong>()</code>
+<div class="details">
+<p>Returns the VersionHistory that contains this Version</p><dl>
+<dt>Returns:</dt>
+<dd>the VersionHistory that contains this Version</dd>
+<dt>Throws:</dt>
+<dd><a href="../../phpcr/repositoryexception.html">\PHPCR\RepositoryException</a> - if an error occurs</dd>
+<dt>Api.</dt>
+</dl>
+</div>
+
+<hr>
+
+<a href="../../source/phpcr/version/versioninterface.php.html#line63" class="location">PHPCR/Version/VersionInterface.php at line 63</a>
+
+<h3 id="getCreated()">getCreated</h3>
+<code class="signature">public  \DateTime <strong>getCreated</strong>()</code>
+<div class="details">
+<p>Returns the date this version was created. This corresponds to the
+value of the jcr:created property in the nt:version node that represents
+this version.</p><dl>
+<dt>Returns:</dt>
+<dd>a \DateTime object</dd>
+<dt>Throws:</dt>
+<dd><a href="../../phpcr/repositoryexception.html">\PHPCR\RepositoryException</a> - - if an error occurs</dd>
+<dt>Api.</dt>
+</dl>
+</div>
+
+<hr>
+
+<a href="../../source/phpcr/version/versioninterface.php.html#line127" class="location">PHPCR/Version/VersionInterface.php at line 127</a>
+
+<h3 id="getFrozenNode()">getFrozenNode</h3>
+<code class="signature">public  <a href="../../phpcr/nodeinterface.html">NodeInterface</a> <strong>getFrozenNode</strong>()</code>
+<div class="details">
+<p>Returns the frozen node of this version.</p><dl>
+<dt>Returns:</dt>
+<dd>a Node object</dd>
+<dt>Throws:</dt>
+<dd><a href="../../phpcr/repositoryexception.html">\PHPCR\RepositoryException</a> - if an error occurs</dd>
+<dt>Api.</dt>
+</dl>
+</div>
+
+<hr>
+
+<a href="../../source/phpcr/version/versioninterface.php.html#line106" class="location">PHPCR/Version/VersionInterface.php at line 106</a>
+
+<h3 id="getLinearPredecessor()">getLinearPredecessor</h3>
+<code class="signature">public  <a href="../../phpcr/version/versioninterface.html">VersionInterface</a> <strong>getLinearPredecessor</strong>()</code>
+<div class="details">
+<p>Assuming that this Version object was acquired through a Workspace W and
+is within the VersionHistory H, this method returns the predecessor of
+this version along the same line of descent as is returned by
+H.getAllLinearVersions() where H was also acquired through W.</p><p>Note that under simple versioning the behavior of this method is equivalent
+to getting the unique predecessor (if any) of this version.</p><dl>
+<dt>Returns:</dt>
+<dd>a Version or NULL if no linear predecessor exists.</dd>
+<dt>Throws:</dt>
+<dd><a href="../../phpcr/repositoryexception.html">\PHPCR\RepositoryException</a> - if an error occurs.</dd>
+<dt>See Also:</dt>
+<dd>VersionHistory::getAllLinearVersions()</dd>
+<dt>Api.</dt>
+</dl>
+</div>
+
+<hr>
+
+<a href="../../source/phpcr/version/versioninterface.php.html#line79" class="location">PHPCR/Version/VersionInterface.php at line 79</a>
+
+<h3 id="getLinearSuccessor()">getLinearSuccessor</h3>
+<code class="signature">public  <a href="../../phpcr/version/versioninterface.html">VersionInterface</a> <strong>getLinearSuccessor</strong>()</code>
+<div class="details">
+<p>Assuming that this Version object was acquired through a Workspace W and
+is within the VersionHistory H, this method returns the successor of this
+version along the same line of descent as is returned by
+H.getAllLinearVersions() where H was also acquired through W.</p><p>Note that under simple versioning the behavior of this method is equivalent
+to getting the unique successor (if any) of this version.</p><dl>
+<dt>Returns:</dt>
+<dd>a Version or NULL if no linear successor exists.</dd>
+<dt>Throws:</dt>
+<dd><a href="../../phpcr/repositoryexception.html">\PHPCR\RepositoryException</a> - if an error occurs.</dd>
+<dt>See Also:</dt>
+<dd>VersionHistory::getAllLinearVersions()</dd>
+<dt>Api.</dt>
+</dl>
+</div>
+
+<hr>
+
+<a href="../../source/phpcr/version/versioninterface.php.html#line118" class="location">PHPCR/Version/VersionInterface.php at line 118</a>
+
+<h3 id="getPredecessors()">getPredecessors</h3>
+<code class="signature">public  array <strong>getPredecessors</strong>()</code>
+<div class="details">
+<p>In both simple and full versioning repositories, this method returns the
+predecessor versions of this version. This corresponds to returning all
+the nt:version nodes whose jcr:successors property includes a reference
+to the nt:version node that represents this version.</p><dl>
+<dt>Returns:</dt>
+<dd>of \PHPCR\Version\VersionInterface</dd>
+<dt>Throws:</dt>
+<dd><a href="../../phpcr/repositoryexception.html">\PHPCR\RepositoryException</a> - if an error occurs</dd>
+<dt>Api.</dt>
+</dl>
+</div>
+
+<hr>
+
+<a href="../../source/phpcr/version/versioninterface.php.html#line90" class="location">PHPCR/Version/VersionInterface.php at line 90</a>
+
+<h3 id="getSuccessors()">getSuccessors</h3>
+<code class="signature">public  array <strong>getSuccessors</strong>()</code>
+<div class="details">
+<p>Returns the successor versions of this version. This corresponds to
+returning all the nt:version nodes referenced by the jcr:successors
+multi-value property in the nt:version node that represents this version.</p><dl>
+<dt>Returns:</dt>
+<dd>of \PHPCR\Version\VersionInterface</dd>
+<dt>Throws:</dt>
+<dd><a href="../../phpcr/repositoryexception.html">\PHPCR\RepositoryException</a> - if an error occurs</dd>
+<dt>Api.</dt>
+</dl>
+</div>
+
+<hr>
+
+<div class="header">
+<h1>PHPCR</h1>
+<ul>
+<li><a href="../../overview-summary.html">Overview</a></li>
+<li><a href="../../phpcr/version/package-summary.html">Namespace</a></li>
+<li class="active">Class</li>
+<li><a href="../../phpcr/version/package-tree.html">Tree</a></li>
+<li><a href="../../overview-files.html">Files</a></li>
+<li><a href="../../deprecated-list.html">Deprecated</a></li>
+<li><a href="../../todo-list.html">Todo</a></li>
+<li><a href="../../index-all.html">Index</a></li>
+</ul>
+</div>
+
+<div class="small_links">
+<a href="../../index.html" target="_top">Frames</a>
+<a href="../../phpcr/version/versioninterface.html" target="_top">No frames</a>
+</div>
+<div class="small_links">
+Summary: <a href="#summary_field">Field</a> | <a href="#summary_method">Method</a> | <a href="#summary_constr">Constr</a>
+Detail: <a href="#detail_field">Field</a> | <a href="#detail_method">Method</a> | <a href="#summary_constr">Constr</a>
+</div>
+<hr>
+
+<p id="footer">This document was generated by <a href="http://peej.github.com/phpdoctor/">PHPDoctor: The PHP Documentation Creator</a></p>
+
+</body>
+
+</html>

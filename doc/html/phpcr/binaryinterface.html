@@ -1,0 +1,190 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+
+<html lang="en">
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="generator" content="PHPDoctor 2RC4 (http://peej.github.com/phpdoctor/)">
+<meta name="when" content="Fri, 06 May 2011 11:43:18 +0000">
+
+<link rel="stylesheet" type="text/css" href="../stylesheet.css">
+<link rel="start" href="../overview-summary.html">
+
+<title>BinaryInterface (PHPCR API)</title>
+
+</head>
+<body id="definition" onload="parent.document.title=document.title;">
+
+<div class="header">
+<h1>PHPCR</h1>
+<ul>
+<li><a href="../overview-summary.html">Overview</a></li>
+<li><a href="../phpcr/package-summary.html">Namespace</a></li>
+<li class="active">Class</li>
+<li><a href="../phpcr/package-tree.html">Tree</a></li>
+<li><a href="../overview-files.html">Files</a></li>
+<li><a href="../deprecated-list.html">Deprecated</a></li>
+<li><a href="../todo-list.html">Todo</a></li>
+<li><a href="../index-all.html">Index</a></li>
+</ul>
+</div>
+
+<div class="small_links">
+<a href="../index.html" target="_top">Frames</a>
+<a href="../phpcr/binaryinterface.html" target="_top">No frames</a>
+</div>
+<div class="small_links">
+Summary: <a href="#summary_field">Field</a> | <a href="#summary_method">Method</a> | <a href="#summary_constr">Constr</a>
+Detail: <a href="#detail_field">Field</a> | <a href="#detail_method">Method</a> | <a href="#summary_constr">Constr</a>
+</div>
+<hr>
+
+<div class="qualifiedName">PHPCR\BinaryInterface</div>
+<a href="../source/phpcr/binaryinterface.php.html#line42" class="location">PHPCR/BinaryInterface.php at line 42</a>
+
+<h1>Interface BinaryInterface</h1>
+
+<pre class="tree"><strong>BinaryInterface</strong><br /></pre>
+
+<hr>
+
+<p class="signature">public  interface <strong>BinaryInterface</strong></p>
+
+<div class="comment" id="overview_description"><p>A Binary object holds a JCR property value of type BINARY.</p></div>
+
+<dl>
+<dt>Subpackage:</dt>
+<dd>interfaces</dd>
+<dt>Api.</dt>
+</dl>
+<hr>
+
+<table id="summary_method">
+<tr><th colspan="2">Method Summary</th></tr>
+<tr>
+<td class="type"> void</td>
+<td class="description"><p class="name"><a href="#dispose()">dispose</a>()</p><p class="description">Releases all resources associated with this Binary object and informs the
+repository that these resources may now be reclaimed.
+</p></td>
+</tr>
+<tr>
+<td class="type"> integer</td>
+<td class="description"><p class="name"><a href="#getSize()">getSize</a>()</p><p class="description">Returns the size of this Binary value in bytes.</p></td>
+</tr>
+<tr>
+<td class="type"> resource</td>
+<td class="description"><p class="name"><a href="#getStream()">getStream</a>()</p><p class="description">Returns a stream representation of this value.
+</p></td>
+</tr>
+<tr>
+<td class="type"> string</td>
+<td class="description"><p class="name"><a href="#read()">read</a>(integer bytes)</p><p class="description">Reads successive bytes from the specified position in this Binary into
+the passed string until $limit or the end of the Binary is encountered
+(whichever comes first).</p></td>
+</tr>
+</table>
+
+<h2 id="detail_method">Method Detail</h2>
+<a href="../source/phpcr/binaryinterface.php.html#line93" class="location">PHPCR/BinaryInterface.php at line 93</a>
+
+<h3 id="dispose()">dispose</h3>
+<code class="signature">public  void <strong>dispose</strong>()</code>
+<div class="details">
+<p>Releases all resources associated with this Binary object and informs the
+repository that these resources may now be reclaimed.</p><p>An application should call this method when it is finished with the
+Binary object.</p><dl>
+<dt>Api.</dt>
+</dl>
+</div>
+
+<hr>
+
+<a href="../source/phpcr/binaryinterface.php.html#line81" class="location">PHPCR/BinaryInterface.php at line 81</a>
+
+<h3 id="getSize()">getSize</h3>
+<code class="signature">public  integer <strong>getSize</strong>()</code>
+<div class="details">
+<p>Returns the size of this Binary value in bytes.</p><dl>
+<dt>Returns:</dt>
+<dd>the size of this value in bytes.</dd>
+<dt>Throws:</dt>
+<dd>\BadMethodCallException - if dispose() has already been called on this Binary</dd>
+<dd><a href="../phpcr/repositoryexception.html">\PHPCR\RepositoryException</a> - if an error occurs.</dd>
+<dt>Api.</dt>
+</dl>
+</div>
+
+<hr>
+
+<a href="../source/phpcr/binaryinterface.php.html#line56" class="location">PHPCR/BinaryInterface.php at line 56</a>
+
+<h3 id="getStream()">getStream</h3>
+<code class="signature">public  resource <strong>getStream</strong>()</code>
+<div class="details">
+<p>Returns a stream representation of this value.</p><p>Each call to getStream() returns a new stream.
+The API consumer is responsible for calling close() on the returned
+stream.</p><dl>
+<dt>Returns:</dt>
+<dd>A stream representation of this value.</dd>
+<dt>Throws:</dt>
+<dd>\BadMethodCallException - if dispose() has already been called on this Binary</dd>
+<dd><a href="../phpcr/repositoryexception.html">\PHPCR\RepositoryException</a> - if an error occurs.</dd>
+<dt>Api.</dt>
+</dl>
+</div>
+
+<hr>
+
+<a href="../source/phpcr/binaryinterface.php.html#line71" class="location">PHPCR/BinaryInterface.php at line 71</a>
+
+<h3 id="read()">read</h3>
+<code class="signature">public  string <strong>read</strong>(integer bytes)</code>
+<div class="details">
+<p>Reads successive bytes from the specified position in this Binary into
+the passed string until $limit or the end of the Binary is encountered
+(whichever comes first).</p><dl>
+<dt>Parameters:</dt>
+<dd>bytes - how many bytes to read, unlimited by default</dd>
+<dt>Returns:</dt>
+<dd>bytes</dd>
+<dt>Throws:</dt>
+<dd>\RuntimeException - if an I/O error occurs.</dd>
+<dd>\InvalidArgumentException - if offset is negative.</dd>
+<dd>\BadMethodCallException - if dispose() has already been called on this Binary</dd>
+<dd><a href="../phpcr/repositoryexception.html">\PHPCR\RepositoryException</a> - if another error occurs.</dd>
+<dt>Api.</dt>
+</dl>
+</div>
+
+<hr>
+
+<div class="header">
+<h1>PHPCR</h1>
+<ul>
+<li><a href="../overview-summary.html">Overview</a></li>
+<li><a href="../phpcr/package-summary.html">Namespace</a></li>
+<li class="active">Class</li>
+<li><a href="../phpcr/package-tree.html">Tree</a></li>
+<li><a href="../overview-files.html">Files</a></li>
+<li><a href="../deprecated-list.html">Deprecated</a></li>
+<li><a href="../todo-list.html">Todo</a></li>
+<li><a href="../index-all.html">Index</a></li>
+</ul>
+</div>
+
+<div class="small_links">
+<a href="../index.html" target="_top">Frames</a>
+<a href="../phpcr/binaryinterface.html" target="_top">No frames</a>
+</div>
+<div class="small_links">
+Summary: <a href="#summary_field">Field</a> | <a href="#summary_method">Method</a> | <a href="#summary_constr">Constr</a>
+Detail: <a href="#detail_field">Field</a> | <a href="#detail_method">Method</a> | <a href="#summary_constr">Constr</a>
+</div>
+<hr>
+
+<p id="footer">This document was generated by <a href="http://peej.github.com/phpdoctor/">PHPDoctor: The PHP Documentation Creator</a></p>
+
+</body>
+
+</html>

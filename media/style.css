@@ -1,0 +1,126 @@
+/* Page basics
+----------------------------------------------- */
+html {
+  text-align: center;
+  font: .825em/1.5 Arial, Helvetica, sans-serif;
+  background-color: #FFFFFF;
+  color: #000000;
+  border-top: 15px solid #8b2626;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  text-align: left;
+  border-top: 3px solid #652020;
+}
+
+/* Header
+----------------------------------------------- */
+h1#header {
+  padding-top: 1em;
+  height: 63px;
+  margin: 0 auto;
+  font-size: 3em;
+  max-width: 63em;
+}
+h1#header img {
+  border: none;
+  width: 360px;
+  height: 60px;
+  vertical-align: -6px;
+}
+h1 a {
+  text-decoration: none;
+  color: #000000;
+  font-size: 2em;
+}
+
+#container {
+  padding: 0 1em;
+  margin: 0 auto;
+  max-width: 62em;
+}
+h2 {
+  font-size: 1.5em;
+  color: #000000;
+}
+h3 {
+  text-align: left;
+  color: #000000;
+}
+
+p {
+}
+
+a {
+  color: #214881;
+}
+
+.image-wrap {
+  margin: 0em 0.5em;
+}
+.description {
+  font-size: 1.2em;
+}
+.description p {
+  max-width: 23em;
+  float: left;
+  margin-right: 1em;
+  padding-bottom: 1em;
+}
+
+.description p:nth-child(2) {
+    max-width: 27em;
+    margin-right: 0;
+}
+
+.links {
+  border-top: 1px dotted silver;
+  margin: 0;
+  text-align: center;
+  list-style-type: none;
+  clear: both;
+  padding: 1em 0;
+}
+.links li {
+    display: inline;
+}
+.links a {
+  padding: 3em 2em;
+}
+.download {
+  clear: right;
+  float: right;
+}
+.statistics {
+  clear: right;
+  float: right;
+  border: 1px dotted silver;
+  width: 300px;
+  margin-left: 20px;
+  background-color: #FFFFFF;
+}
+pre {
+  background: #000;
+  color: #fff;
+  padding: 15px;
+}
+hr {
+  border: 0;
+  width: 80%;
+  border-bottom: 1px solid #aaa;
+}
+.footer {
+  text-align: center;
+  padding: 2em 1em 4em 1em;
+  color: #BBB;
+  font-style: italic;
+}
+.footer a {
+  color: #BBB;
+      text-decoration: none;
+}
+.footer a:hover {
+    text-decoration: underline;
+}

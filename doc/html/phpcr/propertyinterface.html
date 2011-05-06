@@ -1,0 +1,1625 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+
+<html lang="en">
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="generator" content="PHPDoctor 2RC4 (http://peej.github.com/phpdoctor/)">
+<meta name="when" content="Fri, 06 May 2011 11:43:18 +0000">
+
+<link rel="stylesheet" type="text/css" href="../stylesheet.css">
+<link rel="start" href="../overview-summary.html">
+
+<title>PropertyInterface (PHPCR API)</title>
+
+</head>
+<body id="definition" onload="parent.document.title=document.title;">
+
+<div class="header">
+<h1>PHPCR</h1>
+<ul>
+<li><a href="../overview-summary.html">Overview</a></li>
+<li><a href="../phpcr/package-summary.html">Namespace</a></li>
+<li class="active">Class</li>
+<li><a href="../phpcr/package-tree.html">Tree</a></li>
+<li><a href="../overview-files.html">Files</a></li>
+<li><a href="../deprecated-list.html">Deprecated</a></li>
+<li><a href="../todo-list.html">Todo</a></li>
+<li><a href="../index-all.html">Index</a></li>
+</ul>
+</div>
+
+<div class="small_links">
+<a href="../index.html" target="_top">Frames</a>
+<a href="../phpcr/propertyinterface.html" target="_top">No frames</a>
+</div>
+<div class="small_links">
+Summary: <a href="#summary_field">Field</a> | <a href="#summary_method">Method</a> | <a href="#summary_constr">Constr</a>
+Detail: <a href="#detail_field">Field</a> | <a href="#detail_method">Method</a> | <a href="#summary_constr">Constr</a>
+</div>
+<hr>
+
+<div class="qualifiedName">PHPCR\PropertyInterface</div>
+<a href="../source/phpcr/propertyinterface.php.html#line63" class="location">PHPCR/PropertyInterface.php at line 63</a>
+
+<h1>Interface PropertyInterface</h1>
+
+<pre class="tree"><a href="../phpcr/iteminterface.html">ItemInterface</a><br>    └─<strong>PropertyInterface</strong><br /></pre>
+
+<hr>
+
+<p class="signature">public  interface <strong>PropertyInterface</strong><br>extends <a href="../phpcr/iteminterface.html">ItemInterface</a>
+
+</p>
+
+<div class="comment" id="overview_description"><p>The property interface describes how an item property shall look like.</p><p>A Property object represents the smallest granularity of content storage.
+It has a single parent node and no children. A property consists of a name
+and a value, or in the case of multi-value properties, a set of values all
+of the same type.</p><p>The \Traversable interface enables the implementation to be addressed with
+<b>foreach</b>. Properties have to implement either \IteratorAggregate or
+\Iterator.
+The iterator is equivalent to <b>getNativeValue()</b> returning an iterator
+of all values of this property (which is exactly one except for multivalue
+properties). The iterator keys have no significant meaning.</p><p><b>PHPCR Note:</b>
+We removed the Value interface and consequently the getValue() and
+getValues() methods. If you just want the property value in its native type,
+use getNativeValue, or just NodeInterface::getPropertyValue.
+The PropertyInterface::getXX methods also work for multivalue properties.
+They return arrays in case of multivalue.
+PropertyInterface::setValue completely replaces the
+ValueFactory::createValue method.</p></div>
+
+<dl>
+<dt>Subpackage:</dt>
+<dd>interfaces</dd>
+<dt>Api.</dt>
+</dl>
+<hr>
+
+<table id="summary_field">
+<tr><th colspan="2">Constant Summary</th></tr>
+<tr>
+<td class="type">final static  str</td>
+<td class="description"><p class="name"><a href="#JCR_ACTIVITY">JCR_ACTIVITY</a></p><p class="description">A constant for the property name jcr:activity (in extended form),
+declared in node types mix:versionable and nt:version.</p></td>
+</tr>
+<tr>
+<td class="type">final static  str</td>
+<td class="description"><p class="name"><a href="#JCR_AUTOCREATED">JCR_AUTOCREATED</a></p><p class="description">A constant for the property name jcr:autoCreated (in extended form),
+declared in node types nt:propertyDefinition and nt:childNodeDefinition.</p></td>
+</tr>
+<tr>
+<td class="type">final static  str</td>
+<td class="description"><p class="name"><a href="#JCR_BASE_VERSION">JCR_BASE_VERSION</a></p><p class="description">A constant for the property name jcr:baseVersion (in extended form),
+declared in node type mix:versionable.</p></td>
+</tr>
+<tr>
+<td class="type">final static  str</td>
+<td class="description"><p class="name"><a href="#JCR_CHILD_VERSION_HISTORY">JCR_CHILD_VERSION_HISTORY</a></p><p class="description">A constant for the property name jcr:childVersionHistory (in extended form),
+declared in node type nt:versionedChild.</p></td>
+</tr>
+<tr>
+<td class="type">final static  str</td>
+<td class="description"><p class="name"><a href="#JCR_CONFIGURATION">JCR_CONFIGURATION</a></p><p class="description">A constant for the property name jcr:configuration (in extended form),
+declared in node type mix:versionable.</p></td>
+</tr>
+<tr>
+<td class="type">final static  str</td>
+<td class="description"><p class="name"><a href="#JCR_CONTENT">JCR_CONTENT</a></p><p class="description">A constant for the property name jcr:content (in extended form),
+declared in node type nt:linkedFile.
+</p></td>
+</tr>
+<tr>
+<td class="type">final static  str</td>
+<td class="description"><p class="name"><a href="#JCR_COPIED_FROM">JCR_COPIED_FROM</a></p><p class="description">A constant for the property name jcr:copiedFrom (in extended form),
+declared in node type nt:version.</p></td>
+</tr>
+<tr>
+<td class="type">final static  str</td>
+<td class="description"><p class="name"><a href="#JCR_CREATED">JCR_CREATED</a></p><p class="description">A constant for the property name jcr:created (in extended form),
+declared in node types mix:created and nt:version.</p></td>
+</tr>
+<tr>
+<td class="type">final static  str</td>
+<td class="description"><p class="name"><a href="#JCR_CREATED_BY">JCR_CREATED_BY</a></p><p class="description">A constant for the property name jcr:createdBy (in extended form),
+declared in node type mix:created.</p></td>
+</tr>
+<tr>
+<td class="type">final static  str</td>
+<td class="description"><p class="name"><a href="#JCR_CURRENT_LIFECYCLE_STATE">JCR_CURRENT_LIFECYCLE_STATE</a></p><p class="description">A constant for the property name jcr:currentLifecycleState (in extended form),
+declared in node type mix:lifecycle.</p></td>
+</tr>
+<tr>
+<td class="type">final static  str</td>
+<td class="description"><p class="name"><a href="#JCR_DATA">JCR_DATA</a></p><p class="description">A constant for the property name jcr:data (in extended form),
+declared in node type nt:resource.</p></td>
+</tr>
+<tr>
+<td class="type">final static  str</td>
+<td class="description"><p class="name"><a href="#JCR_DEFAULT_PRIMARY_TYPE">JCR_DEFAULT_PRIMARY_TYPE</a></p><p class="description">A constant for the property name jcr:defaultPrimaryType (in extended form),
+declared in node type nt:childNodeDefinition.</p></td>
+</tr>
+<tr>
+<td class="type">final static  str</td>
+<td class="description"><p class="name"><a href="#JCR_DEFAULT_VALUES">JCR_DEFAULT_VALUES</a></p><p class="description">A constant for the property name jcr:defaultValues (in extended form),
+declared in node type nt:propertyDefinition.</p></td>
+</tr>
+<tr>
+<td class="type">final static  str</td>
+<td class="description"><p class="name"><a href="#JCR_DESCRIPTION">JCR_DESCRIPTION</a></p><p class="description">A constant for the property name jcr:description (in extended form),
+declared in node type mix:title.</p></td>
+</tr>
+<tr>
+<td class="type">final static  str</td>
+<td class="description"><p class="name"><a href="#JCR_ENCODING">JCR_ENCODING</a></p><p class="description">A constant for the property name jcr:encoding (in extended form),
+declared in node type mix:mimeType.</p></td>
+</tr>
+<tr>
+<td class="type">final static  str</td>
+<td class="description"><p class="name"><a href="#JCR_FROZEN_MIXIN_TYPES">JCR_FROZEN_MIXIN_TYPES</a></p><p class="description">A constant for the property name jcr:frozenMixinTypes (in extended form),
+declared in node type nt:frozenNode.</p></td>
+</tr>
+<tr>
+<td class="type">final static  str</td>
+<td class="description"><p class="name"><a href="#JCR_FROZEN_PRIMARY_TYPE">JCR_FROZEN_PRIMARY_TYPE</a></p><p class="description">A constant for the property name jcr:frozenPrimaryType (in extended form),
+declared in node type nt:frozenNode.</p></td>
+</tr>
+<tr>
+<td class="type">final static  str</td>
+<td class="description"><p class="name"><a href="#JCR_FROZEN_UUID">JCR_FROZEN_UUID</a></p><p class="description">A constant for the property name jcr:frozenUuid (in extended form),
+declared in node type nt:frozenNode.</p></td>
+</tr>
+<tr>
+<td class="type">final static  str</td>
+<td class="description"><p class="name"><a href="#JCR_HAS_ORDERABLE_CHILD_NODES">JCR_HAS_ORDERABLE_CHILD_NODES</a></p><p class="description">A constant for the property name jcr:hasOrderableChildNodes (in extended form),
+declared in node type nt:nodeType.</p></td>
+</tr>
+<tr>
+<td class="type">final static  str</td>
+<td class="description"><p class="name"><a href="#JCR_HOST">JCR_HOST</a></p><p class="description">A constant for the property name jcr:host (in extended form),
+declared in node type nt:address.</p></td>
+</tr>
+<tr>
+<td class="type">final static  str</td>
+<td class="description"><p class="name"><a href="#JCR_ID">JCR_ID</a></p><p class="description">A constant for the property name jcr:id (in extended form),
+declared in node type nt:address.</p></td>
+</tr>
+<tr>
+<td class="type">final static  str</td>
+<td class="description"><p class="name"><a href="#JCR_IS_ABSTRACT">JCR_IS_ABSTRACT</a></p><p class="description">A constant for the property name jcr:isAbstract (in extended form),
+declared in node type nt:nodeType.</p></td>
+</tr>
+<tr>
+<td class="type">final static  str</td>
+<td class="description"><p class="name"><a href="#JCR_IS_CHECKED_OUT">JCR_IS_CHECKED_OUT</a></p><p class="description">A constant for the property name jcr:isCheckedOut (in extended form),
+declared in node type mix:simpleVersionable.</p></td>
+</tr>
+<tr>
+<td class="type">final static  str</td>
+<td class="description"><p class="name"><a href="#JCR_IS_MIXIN">JCR_IS_MIXIN</a></p><p class="description">A constant for the property name jcr:isMixin (in extended form),
+declared in node type nt:nodeType.</p></td>
+</tr>
+<tr>
+<td class="type">final static  str</td>
+<td class="description"><p class="name"><a href="#JCR_LANGUAGE">JCR_LANGUAGE</a></p><p class="description">A constant for the property name jcr:language (in extended form),
+declared in node types mix:language and nt:query.</p></td>
+</tr>
+<tr>
+<td class="type">final static  str</td>
+<td class="description"><p class="name"><a href="#JCR_LAST_MODIFIED">JCR_LAST_MODIFIED</a></p><p class="description">A constant for the property name jcr:lastModified (in extended form),
+declared in node type mix:lastModified.</p></td>
+</tr>
+<tr>
+<td class="type">final static  str</td>
+<td class="description"><p class="name"><a href="#JCR_LAST_MODIFIED_BY">JCR_LAST_MODIFIED_BY</a></p><p class="description">A constant for the property name jcr:lastModifiedBy (in extended form),
+declared in node type mix:lastModified.</p></td>
+</tr>
+<tr>
+<td class="type">final static  str</td>
+<td class="description"><p class="name"><a href="#JCR_LIFECYCLE_POLICY">JCR_LIFECYCLE_POLICY</a></p><p class="description">A constant for the property name jcr:lifecyclePolicy (in extended form),
+declared in node type mix:lifecycle.</p></td>
+</tr>
+<tr>
+<td class="type">final static  str</td>
+<td class="description"><p class="name"><a href="#JCR_LOCK_IS_DEEP">JCR_LOCK_IS_DEEP</a></p><p class="description">A constant for the property name jcr:lockIsDeep (in extended form),
+declared in node type mix:lockable.</p></td>
+</tr>
+<tr>
+<td class="type">final static  str</td>
+<td class="description"><p class="name"><a href="#JCR_LOCK_OWNER">JCR_LOCK_OWNER</a></p><p class="description">A constant for the property name jcr:lockOwner (in extended form),
+declared in node type mix:lockable.</p></td>
+</tr>
+<tr>
+<td class="type">final static  str</td>
+<td class="description"><p class="name"><a href="#JCR_MANDATORY">JCR_MANDATORY</a></p><p class="description">A constant for the property name jcr:mandatory (in extended form),
+declared in node types nt:propertyDefinition and nt:childNodeDefinition.</p></td>
+</tr>
+<tr>
+<td class="type">final static  str</td>
+<td class="description"><p class="name"><a href="#JCR_MERGE_FAILED">JCR_MERGE_FAILED</a></p><p class="description">A constant for the property name jcr:mergeFailed (in extended form),
+declared in node type mix:versionable.</p></td>
+</tr>
+<tr>
+<td class="type">final static  str</td>
+<td class="description"><p class="name"><a href="#JCR_MIMETYPE">JCR_MIMETYPE</a></p><p class="description">A constant for the property name jcr:mimeType (in extended form),
+declared in node type mix:mimeType.</p></td>
+</tr>
+<tr>
+<td class="type">final static  str</td>
+<td class="description"><p class="name"><a href="#JCR_MIXIN_TYPES">JCR_MIXIN_TYPES</a></p><p class="description">A constant for the property name jcr:mixinTypes (in extended form),
+declared in node type nt:base.</p></td>
+</tr>
+<tr>
+<td class="type">final static  str</td>
+<td class="description"><p class="name"><a href="#JCR_MULTIPLE">JCR_MULTIPLE</a></p><p class="description">A constant for the property name jcr:multiple (in extended form),
+declared in node type nt:propertyDefinition.</p></td>
+</tr>
+<tr>
+<td class="type">final static  str</td>
+<td class="description"><p class="name"><a href="#JCR_NAME">JCR_NAME</a></p><p class="description">A constant for the property name jcr:name (in extended form),
+declared in node types nt:propertyDefinition and nt:childNodeDefinition.</p></td>
+</tr>
+<tr>
+<td class="type">final static  str</td>
+<td class="description"><p class="name"><a href="#JCR_NODE_TYPE_NAME">JCR_NODE_TYPE_NAME</a></p><p class="description">A constant for the property name jcr:nodeTypeName (in extended form),
+declared in node type nt:nodeType.</p></td>
+</tr>
+<tr>
+<td class="type">final static  str</td>
+<td class="description"><p class="name"><a href="#JCR_ON_PARENT_VERSION">JCR_ON_PARENT_VERSION</a></p><p class="description">A constant for the property name jcr:onParentVersion (in extended form),
+declared in node types nt:propertyDefinition and nt:childNodeDefinition.</p></td>
+</tr>
+<tr>
+<td class="type">final static  str</td>
+<td class="description"><p class="name"><a href="#JCR_PATH">JCR_PATH</a></p><p class="description">A constant for the property name jcr:path (in extended form),
+declared in node type nt:address.</p></td>
+</tr>
+<tr>
+<td class="type">final static  str</td>
+<td class="description"><p class="name"><a href="#JCR_PORT">JCR_PORT</a></p><p class="description">A constant for the property name jcr:port (in extended form),
+declared in node type nt:address.</p></td>
+</tr>
+<tr>
+<td class="type">final static  str</td>
+<td class="description"><p class="name"><a href="#JCR_PREDECESSORS">JCR_PREDECESSORS</a></p><p class="description">A constant for the property name jcr:predecessors (in extended form),
+declared in node types mix:versionable and nt:version.</p></td>
+</tr>
+<tr>
+<td class="type">final static  str</td>
+<td class="description"><p class="name"><a href="#JCR_PRIMARY_ITEM_NAME">JCR_PRIMARY_ITEM_NAME</a></p><p class="description">A constant for the property name jcr:primaryItemName (in extended form),
+declared in node type nt:nodeType.</p></td>
+</tr>
+<tr>
+<td class="type">final static  string</td>
+<td class="description"><p class="name"><a href="#JCR_PRIMARY_TYPE">JCR_PRIMARY_TYPE</a></p><p class="description">A constant for the property name jcr:primaryType (in extended form),
+declared in node type nt:base.</p></td>
+</tr>
+<tr>
+<td class="type">final static  str</td>
+<td class="description"><p class="name"><a href="#JCR_PROTECTED">JCR_PROTECTED</a></p><p class="description">A constant for the property name jcr:protected (in extended form),
+declared in node types nt:propertyDefinition and nt:childNodeDefinition.</p></td>
+</tr>
+<tr>
+<td class="type">final static  str</td>
+<td class="description"><p class="name"><a href="#JCR_PROTOCOL">JCR_PROTOCOL</a></p><p class="description">A constant for the property name jcr:protocol (in extended form),
+declared in node type nt:address.</p></td>
+</tr>
+<tr>
+<td class="type">final static  str</td>
+<td class="description"><p class="name"><a href="#JCR_REPOSITORY">JCR_REPOSITORY</a></p><p class="description">A constant for the property name jcr:repository (in extended form),
+declared in node type nt:address.</p></td>
+</tr>
+<tr>
+<td class="type">final static  str</td>
+<td class="description"><p class="name"><a href="#JCR_REQUIRED_PRIMARY_TYPES">JCR_REQUIRED_PRIMARY_TYPES</a></p><p class="description">A constant for the property name jcr:requiredPrimaryTypes (in extended form),
+declared in node type nt:childNodeDefinition.</p></td>
+</tr>
+<tr>
+<td class="type">final static  str</td>
+<td class="description"><p class="name"><a href="#JCR_REQUIRED_TYPE">JCR_REQUIRED_TYPE</a></p><p class="description">A constant for the property name jcr:requiredType (in extended form),
+declared in node type nt:propertyDefinition.</p></td>
+</tr>
+<tr>
+<td class="type">final static  str</td>
+<td class="description"><p class="name"><a href="#JCR_ROOT">JCR_ROOT</a></p><p class="description">A constant for the property name jcr:root (in extended form),
+declared in node type nt:configuration.</p></td>
+</tr>
+<tr>
+<td class="type">final static  str</td>
+<td class="description"><p class="name"><a href="#JCR_SAME_NAME_SIBLINGS">JCR_SAME_NAME_SIBLINGS</a></p><p class="description">A constant for the property name jcr:sameNameSiblings (in extended form),
+declared in node type nt:childNodeDefinition.</p></td>
+</tr>
+<tr>
+<td class="type">final static  str</td>
+<td class="description"><p class="name"><a href="#JCR_STATEMENT">JCR_STATEMENT</a></p><p class="description">A constant for the property name jcr:statement (in extended form),
+declared in node type nt:query.</p></td>
+</tr>
+<tr>
+<td class="type">final static  str</td>
+<td class="description"><p class="name"><a href="#JCR_SUCCESSORS">JCR_SUCCESSORS</a></p><p class="description">A constant for the property name jcr:successors (in extended form),
+declared in node type nt:version.</p></td>
+</tr>
+<tr>
+<td class="type">final static  str</td>
+<td class="description"><p class="name"><a href="#JCR_SUPERTYPES">JCR_SUPERTYPES</a></p><p class="description">A constant for the property name jcr:supertypes (in extended form),
+declared in node type nt:nodeType.</p></td>
+</tr>
+<tr>
+<td class="type">final static  str</td>
+<td class="description"><p class="name"><a href="#JCR_TITLE">JCR_TITLE</a></p><p class="description">A constant for the property name jcr:title (in extended form),
+declared in node types mix:title and nt:activity.</p></td>
+</tr>
+<tr>
+<td class="type">final static  str</td>
+<td class="description"><p class="name"><a href="#JCR_UUID">JCR_UUID</a></p><p class="description">A constant for the property name jcr:uuid (in extended form),
+declared in node type mix:referenceable.</p></td>
+</tr>
+<tr>
+<td class="type">final static  str</td>
+<td class="description"><p class="name"><a href="#JCR_VALUE_CONSTRAINTS">JCR_VALUE_CONSTRAINTS</a></p><p class="description">A constant for the property name jcr:valueConstraints (in extended form),
+declared in node type nt:propertyDefinition.</p></td>
+</tr>
+<tr>
+<td class="type">final static  str</td>
+<td class="description"><p class="name"><a href="#JCR_VERSIONABLE_UUID">JCR_VERSIONABLE_UUID</a></p><p class="description">A constant for the property name jcr:versionableUuid (in extended form),
+declared in node type nt:version.</p></td>
+</tr>
+<tr>
+<td class="type">final static  str</td>
+<td class="description"><p class="name"><a href="#JCR_VERSION_HISTORY">JCR_VERSION_HISTORY</a></p><p class="description">A constant for the property name jcr:versionHistory (in extended form),
+declared in node type mix:versionable.</p></td>
+</tr>
+<tr>
+<td class="type">final static  str</td>
+<td class="description"><p class="name"><a href="#JCR_WORKSPACE">JCR_WORKSPACE</a></p><p class="description">A constant for the property name jcr:workspace (in extended form),
+declared in node type nt:address.</p></td>
+</tr>
+</table>
+
+<table id="summary_method">
+<tr><th colspan="2">Method Summary</th></tr>
+<tr>
+<td class="type"> void</td>
+<td class="description"><p class="name"><a href="#addValue()">addValue</a>(mixed value)</p><p class="description">Appends a value to a multi-value property</p></td>
+</tr>
+<tr>
+<td class="type"> <a href="../phpcr/binaryinterface.html">BinaryInterface</a></td>
+<td class="description"><p class="name"><a href="#getBinary()">getBinary</a>()</p><p class="description">Returns a Binary representation of the value of this property.
+</p></td>
+</tr>
+<tr>
+<td class="type"> boolean</td>
+<td class="description"><p class="name"><a href="#getBoolean()">getBoolean</a>()</p><p class="description">Returns a boolean representation of the value of this property.
+</p></td>
+</tr>
+<tr>
+<td class="type"> \DateTime</td>
+<td class="description"><p class="name"><a href="#getDate()">getDate</a>()</p><p class="description">Returns a \DateTime representation of the value of this property.
+</p></td>
+</tr>
+<tr>
+<td class="type"> float</td>
+<td class="description"><p class="name"><a href="#getDecimal()">getDecimal</a>()</p><p class="description">Returns a double representation of this value (a BigDecimal in Java).</p></td>
+</tr>
+<tr>
+<td class="type"> <a href="../phpcr/nodetype/propertydefinitioninterface.html">PropertyDefinitionInterface</a></td>
+<td class="description"><p class="name"><a href="#getDefinition()">getDefinition</a>()</p><p class="description">Returns the property definition that applies to this property. </p></td>
+</tr>
+<tr>
+<td class="type"> float</td>
+<td class="description"><p class="name"><a href="#getDouble()">getDouble</a>()</p><p class="description">Returns a float representation of the value of this property.</p></td>
+</tr>
+<tr>
+<td class="type"> integer</td>
+<td class="description"><p class="name"><a href="#getLength()">getLength</a>()</p><p class="description">Returns the length of the value of this property.
+</p></td>
+</tr>
+<tr>
+<td class="type"> array</td>
+<td class="description"><p class="name"><a href="#getLengths()">getLengths</a>()</p><p class="description">Returns an array holding the lengths of the values of this (multi-value)
+property in bytes where each is individually calculated as described in
+getLength().</p></td>
+</tr>
+<tr>
+<td class="type"> integer</td>
+<td class="description"><p class="name"><a href="#getLong()">getLong</a>()</p><p class="description">Returns an integer representation of the value of this property.</p></td>
+</tr>
+<tr>
+<td class="type"> mixed</td>
+<td class="description"><p class="name"><a href="#getNativeValue()">getNativeValue</a>()</p><p class="description">Get the value in format default for the PropertyType of this property.
+</p></td>
+</tr>
+<tr>
+<td class="type"> <a href="../phpcr/nodeinterface.html">NodeInterface</a></td>
+<td class="description"><p class="name"><a href="#getNode()">getNode</a>()</p><p class="description">Gets the node the property refers to by its type.
+</p></td>
+</tr>
+<tr>
+<td class="type"> <a href="../phpcr/propertyinterface.html">PropertyInterface</a></td>
+<td class="description"><p class="name"><a href="#getProperty()">getProperty</a>()</p><p class="description">Gets the property the property refers to by its type.
+</p></td>
+</tr>
+<tr>
+<td class="type"> string</td>
+<td class="description"><p class="name"><a href="#getString()">getString</a>()</p><p class="description">Returns a String representation of the value of this property.</p></td>
+</tr>
+<tr>
+<td class="type"> integer</td>
+<td class="description"><p class="name"><a href="#getType()">getType</a>()</p><p class="description">Returns the type of this Property.
+</p></td>
+</tr>
+<tr>
+<td class="type"> boolean</td>
+<td class="description"><p class="name"><a href="#isMultiple()">isMultiple</a>()</p><p class="description">Determines if the current property is multi-valued.
+</p></td>
+</tr>
+<tr>
+<td class="type"> void</td>
+<td class="description"><p class="name"><a href="#setValue()">setValue</a>(mixed value, integer type, boolean weak)</p><p class="description">Sets the value of this property to value.
+</p></td>
+</tr>
+</table>
+
+<table class="inherit">
+<tr><th colspan="2">Methods inherited from PHPCR\ItemInterface</th></tr>
+<tr><td><a href="../phpcr/iteminterface.html#accept()">accept</a>, <a href="../phpcr/iteminterface.html#getAncestor()">getAncestor</a>, <a href="../phpcr/iteminterface.html#getDepth()">getDepth</a>, <a href="../phpcr/iteminterface.html#getName()">getName</a>, <a href="../phpcr/iteminterface.html#getParent()">getParent</a>, <a href="../phpcr/iteminterface.html#getPath()">getPath</a>, <a href="../phpcr/iteminterface.html#getSession()">getSession</a>, <a href="../phpcr/iteminterface.html#isModified()">isModified</a>, <a href="../phpcr/iteminterface.html#isNew()">isNew</a>, <a href="../phpcr/iteminterface.html#isNode()">isNode</a>, <a href="../phpcr/iteminterface.html#isSame()">isSame</a>, <a href="../phpcr/iteminterface.html#refresh()">refresh</a>, <a href="../phpcr/iteminterface.html#remove()">remove</a></td></tr></table>
+
+<h2 id="detail_field">Constant Detail</h2>
+<a href="../source/phpcr/propertyinterface.php.html#line433" class="location">PHPCR/PropertyInterface.php at line 433</a>
+
+<h3 id="JCR_ACTIVITY">JCR_ACTIVITY</h3>
+<code class="signature">public final static  str <strong>JCR_ACTIVITY</strong> = &quot;{http://www.jcp.org/jcr/1.0}activity&quot;</code>
+<div class="details">
+<p>A constant for the property name jcr:activity (in extended form),
+declared in node types mix:versionable and nt:version.</p><dl>
+<dt>Api.</dt>
+</dl>
+</div>
+
+<hr>
+
+<a href="../source/phpcr/propertyinterface.php.html#line272" class="location">PHPCR/PropertyInterface.php at line 272</a>
+
+<h3 id="JCR_AUTOCREATED">JCR_AUTOCREATED</h3>
+<code class="signature">public final static  str <strong>JCR_AUTOCREATED</strong> = &quot;{http://www.jcp.org/jcr/1.0}autoCreated&quot;</code>
+<div class="details">
+<p>A constant for the property name jcr:autoCreated (in extended form),
+declared in node types nt:propertyDefinition and nt:childNodeDefinition.</p><dl>
+<dt>Api.</dt>
+</dl>
+</div>
+
+<hr>
+
+<a href="../source/phpcr/propertyinterface.php.html#line412" class="location">PHPCR/PropertyInterface.php at line 412</a>
+
+<h3 id="JCR_BASE_VERSION">JCR_BASE_VERSION</h3>
+<code class="signature">public final static  str <strong>JCR_BASE_VERSION</strong> = &quot;{http://www.jcp.org/jcr/1.0}baseVersion&quot;</code>
+<div class="details">
+<p>A constant for the property name jcr:baseVersion (in extended form),
+declared in node type mix:versionable.</p><dl>
+<dt>Api.</dt>
+</dl>
+</div>
+
+<hr>
+
+<a href="../source/phpcr/propertyinterface.php.html#line468" class="location">PHPCR/PropertyInterface.php at line 468</a>
+
+<h3 id="JCR_CHILD_VERSION_HISTORY">JCR_CHILD_VERSION_HISTORY</h3>
+<code class="signature">public final static  str <strong>JCR_CHILD_VERSION_HISTORY</strong> = &quot;{http://www.jcp.org/jcr/1.0}childVersionHistory&quot;</code>
+<div class="details">
+<p>A constant for the property name jcr:childVersionHistory (in extended form),
+declared in node type nt:versionedChild.</p><dl>
+<dt>Api.</dt>
+</dl>
+</div>
+
+<hr>
+
+<a href="../source/phpcr/propertyinterface.php.html#line440" class="location">PHPCR/PropertyInterface.php at line 440</a>
+
+<h3 id="JCR_CONFIGURATION">JCR_CONFIGURATION</h3>
+<code class="signature">public final static  str <strong>JCR_CONFIGURATION</strong> = &quot;{http://www.jcp.org/jcr/1.0}configuration&quot;</code>
+<div class="details">
+<p>A constant for the property name jcr:configuration (in extended form),
+declared in node type mix:versionable.</p><dl>
+<dt>Api.</dt>
+</dl>
+</div>
+
+<hr>
+
+<a href="../source/phpcr/propertyinterface.php.html#line90" class="location">PHPCR/PropertyInterface.php at line 90</a>
+
+<h3 id="JCR_CONTENT">JCR_CONTENT</h3>
+<code class="signature">public final static  str <strong>JCR_CONTENT</strong> = &quot;{http://www.jcp.org/jcr/1.0}content&quot;</code>
+<div class="details">
+<p>A constant for the property name jcr:content (in extended form),
+declared in node type nt:linkedFile.</p><p><b>Note:</b> jcr:content is also the name of a child node declared in nt:file.</p><dl>
+<dt>Api.</dt>
+</dl>
+</div>
+
+<hr>
+
+<a href="../source/phpcr/propertyinterface.php.html#line454" class="location">PHPCR/PropertyInterface.php at line 454</a>
+
+<h3 id="JCR_COPIED_FROM">JCR_COPIED_FROM</h3>
+<code class="signature">public final static  str <strong>JCR_COPIED_FROM</strong> = &quot;{http://www.jcp.org/jcr/1.0}copiedFrom&quot;</code>
+<div class="details">
+<p>A constant for the property name jcr:copiedFrom (in extended form),
+declared in node type nt:version.</p><dl>
+<dt>Api.</dt>
+</dl>
+</div>
+
+<hr>
+
+<a href="../source/phpcr/propertyinterface.php.html#line174" class="location">PHPCR/PropertyInterface.php at line 174</a>
+
+<h3 id="JCR_CREATED">JCR_CREATED</h3>
+<code class="signature">public final static  str <strong>JCR_CREATED</strong> = &quot;{http://www.jcp.org/jcr/1.0}created&quot;</code>
+<div class="details">
+<p>A constant for the property name jcr:created (in extended form),
+declared in node types mix:created and nt:version.</p><dl>
+<dt>Api.</dt>
+</dl>
+</div>
+
+<hr>
+
+<a href="../source/phpcr/propertyinterface.php.html#line181" class="location">PHPCR/PropertyInterface.php at line 181</a>
+
+<h3 id="JCR_CREATED_BY">JCR_CREATED_BY</h3>
+<code class="signature">public final static  str <strong>JCR_CREATED_BY</strong> = &quot;{http://www.jcp.org/jcr/1.0}createdBy&quot;</code>
+<div class="details">
+<p>A constant for the property name jcr:createdBy (in extended form),
+declared in node type mix:created.</p><dl>
+<dt>Api.</dt>
+</dl>
+</div>
+
+<hr>
+
+<a href="../source/phpcr/propertyinterface.php.html#line370" class="location">PHPCR/PropertyInterface.php at line 370</a>
+
+<h3 id="JCR_CURRENT_LIFECYCLE_STATE">JCR_CURRENT_LIFECYCLE_STATE</h3>
+<code class="signature">public final static  str <strong>JCR_CURRENT_LIFECYCLE_STATE</strong> = &quot;{http://www.jcp.org/jcr/1.0}currentLifecycleState&quot;</code>
+<div class="details">
+<p>A constant for the property name jcr:currentLifecycleState (in extended form),
+declared in node type mix:lifecycle.</p><dl>
+<dt>Api.</dt>
+</dl>
+</div>
+
+<hr>
+
+<a href="../source/phpcr/propertyinterface.php.html#line97" class="location">PHPCR/PropertyInterface.php at line 97</a>
+
+<h3 id="JCR_DATA">JCR_DATA</h3>
+<code class="signature">public final static  str <strong>JCR_DATA</strong> = &quot;{http://www.jcp.org/jcr/1.0}data&quot;</code>
+<div class="details">
+<p>A constant for the property name jcr:data (in extended form),
+declared in node type nt:resource.</p><dl>
+<dt>Api.</dt>
+</dl>
+</div>
+
+<hr>
+
+<a href="../source/phpcr/propertyinterface.php.html#line335" class="location">PHPCR/PropertyInterface.php at line 335</a>
+
+<h3 id="JCR_DEFAULT_PRIMARY_TYPE">JCR_DEFAULT_PRIMARY_TYPE</h3>
+<code class="signature">public final static  str <strong>JCR_DEFAULT_PRIMARY_TYPE</strong> = &quot;{http://www.jcp.org/jcr/1.0}defaultPrimaryType&quot;</code>
+<div class="details">
+<p>A constant for the property name jcr:defaultPrimaryType (in extended form),
+declared in node type nt:childNodeDefinition.</p><dl>
+<dt>Api.</dt>
+</dl>
+</div>
+
+<hr>
+
+<a href="../source/phpcr/propertyinterface.php.html#line314" class="location">PHPCR/PropertyInterface.php at line 314</a>
+
+<h3 id="JCR_DEFAULT_VALUES">JCR_DEFAULT_VALUES</h3>
+<code class="signature">public final static  str <strong>JCR_DEFAULT_VALUES</strong> = &quot;{http://www.jcp.org/jcr/1.0}defaultValues&quot;</code>
+<div class="details">
+<p>A constant for the property name jcr:defaultValues (in extended form),
+declared in node type nt:propertyDefinition.</p><dl>
+<dt>Api.</dt>
+</dl>
+</div>
+
+<hr>
+
+<a href="../source/phpcr/propertyinterface.php.html#line167" class="location">PHPCR/PropertyInterface.php at line 167</a>
+
+<h3 id="JCR_DESCRIPTION">JCR_DESCRIPTION</h3>
+<code class="signature">public final static  str <strong>JCR_DESCRIPTION</strong> = &quot;{http://www.jcp.org/jcr/1.0}description&quot;</code>
+<div class="details">
+<p>A constant for the property name jcr:description (in extended form),
+declared in node type mix:title.</p><dl>
+<dt>Api.</dt>
+</dl>
+</div>
+
+<hr>
+
+<a href="../source/phpcr/propertyinterface.php.html#line216" class="location">PHPCR/PropertyInterface.php at line 216</a>
+
+<h3 id="JCR_ENCODING">JCR_ENCODING</h3>
+<code class="signature">public final static  str <strong>JCR_ENCODING</strong> = &quot;{http://www.jcp.org/jcr/1.0}encoding&quot;</code>
+<div class="details">
+<p>A constant for the property name jcr:encoding (in extended form),
+declared in node type mix:mimeType.</p><dl>
+<dt>Api.</dt>
+</dl>
+</div>
+
+<hr>
+
+<a href="../source/phpcr/propertyinterface.php.html#line391" class="location">PHPCR/PropertyInterface.php at line 391</a>
+
+<h3 id="JCR_FROZEN_MIXIN_TYPES">JCR_FROZEN_MIXIN_TYPES</h3>
+<code class="signature">public final static  str <strong>JCR_FROZEN_MIXIN_TYPES</strong> = &quot;{http://www.jcp.org/jcr/1.0}frozenMixinTypes&quot;</code>
+<div class="details">
+<p>A constant for the property name jcr:frozenMixinTypes (in extended form),
+declared in node type nt:frozenNode.</p><dl>
+<dt>Api.</dt>
+</dl>
+</div>
+
+<hr>
+
+<a href="../source/phpcr/propertyinterface.php.html#line384" class="location">PHPCR/PropertyInterface.php at line 384</a>
+
+<h3 id="JCR_FROZEN_PRIMARY_TYPE">JCR_FROZEN_PRIMARY_TYPE</h3>
+<code class="signature">public final static  str <strong>JCR_FROZEN_PRIMARY_TYPE</strong> = &quot;{http://www.jcp.org/jcr/1.0}frozenPrimaryType&quot;</code>
+<div class="details">
+<p>A constant for the property name jcr:frozenPrimaryType (in extended form),
+declared in node type nt:frozenNode.</p><dl>
+<dt>Api.</dt>
+</dl>
+</div>
+
+<hr>
+
+<a href="../source/phpcr/propertyinterface.php.html#line398" class="location">PHPCR/PropertyInterface.php at line 398</a>
+
+<h3 id="JCR_FROZEN_UUID">JCR_FROZEN_UUID</h3>
+<code class="signature">public final static  str <strong>JCR_FROZEN_UUID</strong> = &quot;{http://www.jcp.org/jcr/1.0}frozenUuid&quot;</code>
+<div class="details">
+<p>A constant for the property name jcr:frozenUuid (in extended form),
+declared in node type nt:frozenNode.</p><dl>
+<dt>Api.</dt>
+</dl>
+</div>
+
+<hr>
+
+<a href="../source/phpcr/propertyinterface.php.html#line251" class="location">PHPCR/PropertyInterface.php at line 251</a>
+
+<h3 id="JCR_HAS_ORDERABLE_CHILD_NODES">JCR_HAS_ORDERABLE_CHILD_NODES</h3>
+<code class="signature">public final static  str <strong>JCR_HAS_ORDERABLE_CHILD_NODES</strong> = &quot;{http://www.jcp.org/jcr/1.0}hasOrderableChildNodes&quot;</code>
+<div class="details">
+<p>A constant for the property name jcr:hasOrderableChildNodes (in extended form),
+declared in node type nt:nodeType.</p><dl>
+<dt>Api.</dt>
+</dl>
+</div>
+
+<hr>
+
+<a href="../source/phpcr/propertyinterface.php.html#line111" class="location">PHPCR/PropertyInterface.php at line 111</a>
+
+<h3 id="JCR_HOST">JCR_HOST</h3>
+<code class="signature">public final static  str <strong>JCR_HOST</strong> = &quot;{http://www.jcp.org/jcr/1.0}host&quot;</code>
+<div class="details">
+<p>A constant for the property name jcr:host (in extended form),
+declared in node type nt:address.</p><dl>
+<dt>Api.</dt>
+</dl>
+</div>
+
+<hr>
+
+<a href="../source/phpcr/propertyinterface.php.html#line146" class="location">PHPCR/PropertyInterface.php at line 146</a>
+
+<h3 id="JCR_ID">JCR_ID</h3>
+<code class="signature">public final static  str <strong>JCR_ID</strong> = &quot;{http://www.jcp.org/jcr/1.0}id&quot;</code>
+<div class="details">
+<p>A constant for the property name jcr:id (in extended form),
+declared in node type nt:address.</p><dl>
+<dt>Api.</dt>
+</dl>
+</div>
+
+<hr>
+
+<a href="../source/phpcr/propertyinterface.php.html#line237" class="location">PHPCR/PropertyInterface.php at line 237</a>
+
+<h3 id="JCR_IS_ABSTRACT">JCR_IS_ABSTRACT</h3>
+<code class="signature">public final static  str <strong>JCR_IS_ABSTRACT</strong> = &quot;{http://www.jcp.org/jcr/1.0}isAbstract&quot;</code>
+<div class="details">
+<p>A constant for the property name jcr:isAbstract (in extended form),
+declared in node type nt:nodeType.</p><dl>
+<dt>Api.</dt>
+</dl>
+</div>
+
+<hr>
+
+<a href="../source/phpcr/propertyinterface.php.html#line377" class="location">PHPCR/PropertyInterface.php at line 377</a>
+
+<h3 id="JCR_IS_CHECKED_OUT">JCR_IS_CHECKED_OUT</h3>
+<code class="signature">public final static  str <strong>JCR_IS_CHECKED_OUT</strong> = &quot;{http://www.jcp.org/jcr/1.0}isCheckedOut&quot;</code>
+<div class="details">
+<p>A constant for the property name jcr:isCheckedOut (in extended form),
+declared in node type mix:simpleVersionable.</p><dl>
+<dt>Api.</dt>
+</dl>
+</div>
+
+<hr>
+
+<a href="../source/phpcr/propertyinterface.php.html#line244" class="location">PHPCR/PropertyInterface.php at line 244</a>
+
+<h3 id="JCR_IS_MIXIN">JCR_IS_MIXIN</h3>
+<code class="signature">public final static  str <strong>JCR_IS_MIXIN</strong> = &quot;{http://www.jcp.org/jcr/1.0}isMixin&quot;</code>
+<div class="details">
+<p>A constant for the property name jcr:isMixin (in extended form),
+declared in node type nt:nodeType.</p><dl>
+<dt>Api.</dt>
+</dl>
+</div>
+
+<hr>
+
+<a href="../source/phpcr/propertyinterface.php.html#line202" class="location">PHPCR/PropertyInterface.php at line 202</a>
+
+<h3 id="JCR_LANGUAGE">JCR_LANGUAGE</h3>
+<code class="signature">public final static  str <strong>JCR_LANGUAGE</strong> = &quot;{http://www.jcp.org/jcr/1.0}language&quot;</code>
+<div class="details">
+<p>A constant for the property name jcr:language (in extended form),
+declared in node types mix:language and nt:query.</p><dl>
+<dt>Api.</dt>
+</dl>
+</div>
+
+<hr>
+
+<a href="../source/phpcr/propertyinterface.php.html#line188" class="location">PHPCR/PropertyInterface.php at line 188</a>
+
+<h3 id="JCR_LAST_MODIFIED">JCR_LAST_MODIFIED</h3>
+<code class="signature">public final static  str <strong>JCR_LAST_MODIFIED</strong> = &quot;{http://www.jcp.org/jcr/1.0}lastModified&quot;</code>
+<div class="details">
+<p>A constant for the property name jcr:lastModified (in extended form),
+declared in node type mix:lastModified.</p><dl>
+<dt>Api.</dt>
+</dl>
+</div>
+
+<hr>
+
+<a href="../source/phpcr/propertyinterface.php.html#line195" class="location">PHPCR/PropertyInterface.php at line 195</a>
+
+<h3 id="JCR_LAST_MODIFIED_BY">JCR_LAST_MODIFIED_BY</h3>
+<code class="signature">public final static  str <strong>JCR_LAST_MODIFIED_BY</strong> = &quot;{http://www.jcp.org/jcr/1.0}lastModifiedBy&quot;</code>
+<div class="details">
+<p>A constant for the property name jcr:lastModifiedBy (in extended form),
+declared in node type mix:lastModified.</p><dl>
+<dt>Api.</dt>
+</dl>
+</div>
+
+<hr>
+
+<a href="../source/phpcr/propertyinterface.php.html#line363" class="location">PHPCR/PropertyInterface.php at line 363</a>
+
+<h3 id="JCR_LIFECYCLE_POLICY">JCR_LIFECYCLE_POLICY</h3>
+<code class="signature">public final static  str <strong>JCR_LIFECYCLE_POLICY</strong> = &quot;{http://www.jcp.org/jcr/1.0}lifecyclePolicy&quot;</code>
+<div class="details">
+<p>A constant for the property name jcr:lifecyclePolicy (in extended form),
+declared in node type mix:lifecycle.</p><dl>
+<dt>Api.</dt>
+</dl>
+</div>
+
+<hr>
+
+<a href="../source/phpcr/propertyinterface.php.html#line356" class="location">PHPCR/PropertyInterface.php at line 356</a>
+
+<h3 id="JCR_LOCK_IS_DEEP">JCR_LOCK_IS_DEEP</h3>
+<code class="signature">public final static  str <strong>JCR_LOCK_IS_DEEP</strong> = &quot;{http://www.jcp.org/jcr/1.0}lockIsDeep&quot;</code>
+<div class="details">
+<p>A constant for the property name jcr:lockIsDeep (in extended form),
+declared in node type mix:lockable.</p><dl>
+<dt>Api.</dt>
+</dl>
+</div>
+
+<hr>
+
+<a href="../source/phpcr/propertyinterface.php.html#line349" class="location">PHPCR/PropertyInterface.php at line 349</a>
+
+<h3 id="JCR_LOCK_OWNER">JCR_LOCK_OWNER</h3>
+<code class="signature">public final static  str <strong>JCR_LOCK_OWNER</strong> = &quot;{http://www.jcp.org/jcr/1.0}lockOwner&quot;</code>
+<div class="details">
+<p>A constant for the property name jcr:lockOwner (in extended form),
+declared in node type mix:lockable.</p><dl>
+<dt>Api.</dt>
+</dl>
+</div>
+
+<hr>
+
+<a href="../source/phpcr/propertyinterface.php.html#line279" class="location">PHPCR/PropertyInterface.php at line 279</a>
+
+<h3 id="JCR_MANDATORY">JCR_MANDATORY</h3>
+<code class="signature">public final static  str <strong>JCR_MANDATORY</strong> = &quot;{http://www.jcp.org/jcr/1.0}mandatory&quot;</code>
+<div class="details">
+<p>A constant for the property name jcr:mandatory (in extended form),
+declared in node types nt:propertyDefinition and nt:childNodeDefinition.</p><dl>
+<dt>Api.</dt>
+</dl>
+</div>
+
+<hr>
+
+<a href="../source/phpcr/propertyinterface.php.html#line426" class="location">PHPCR/PropertyInterface.php at line 426</a>
+
+<h3 id="JCR_MERGE_FAILED">JCR_MERGE_FAILED</h3>
+<code class="signature">public final static  str <strong>JCR_MERGE_FAILED</strong> = &quot;{http://www.jcp.org/jcr/1.0}mergeFailed&quot;</code>
+<div class="details">
+<p>A constant for the property name jcr:mergeFailed (in extended form),
+declared in node type mix:versionable.</p><dl>
+<dt>Api.</dt>
+</dl>
+</div>
+
+<hr>
+
+<a href="../source/phpcr/propertyinterface.php.html#line209" class="location">PHPCR/PropertyInterface.php at line 209</a>
+
+<h3 id="JCR_MIMETYPE">JCR_MIMETYPE</h3>
+<code class="signature">public final static  str <strong>JCR_MIMETYPE</strong> = &quot;{http://www.jcp.org/jcr/1.0}mimeType&quot;</code>
+<div class="details">
+<p>A constant for the property name jcr:mimeType (in extended form),
+declared in node type mix:mimeType.</p><dl>
+<dt>Api.</dt>
+</dl>
+</div>
+
+<hr>
+
+<a href="../source/phpcr/propertyinterface.php.html#line81" class="location">PHPCR/PropertyInterface.php at line 81</a>
+
+<h3 id="JCR_MIXIN_TYPES">JCR_MIXIN_TYPES</h3>
+<code class="signature">public final static  str <strong>JCR_MIXIN_TYPES</strong> = &quot;{http://www.jcp.org/jcr/1.0}mixinTypes&quot;</code>
+<div class="details">
+<p>A constant for the property name jcr:mixinTypes (in extended form),
+declared in node type nt:base.</p><dl>
+<dt>Api.</dt>
+</dl>
+</div>
+
+<hr>
+
+<a href="../source/phpcr/propertyinterface.php.html#line321" class="location">PHPCR/PropertyInterface.php at line 321</a>
+
+<h3 id="JCR_MULTIPLE">JCR_MULTIPLE</h3>
+<code class="signature">public final static  str <strong>JCR_MULTIPLE</strong> = &quot;{http://www.jcp.org/jcr/1.0}multiple&quot;</code>
+<div class="details">
+<p>A constant for the property name jcr:multiple (in extended form),
+declared in node type nt:propertyDefinition.</p><dl>
+<dt>Api.</dt>
+</dl>
+</div>
+
+<hr>
+
+<a href="../source/phpcr/propertyinterface.php.html#line265" class="location">PHPCR/PropertyInterface.php at line 265</a>
+
+<h3 id="JCR_NAME">JCR_NAME</h3>
+<code class="signature">public final static  str <strong>JCR_NAME</strong> = &quot;{http://www.jcp.org/jcr/1.0}name&quot;</code>
+<div class="details">
+<p>A constant for the property name jcr:name (in extended form),
+declared in node types nt:propertyDefinition and nt:childNodeDefinition.</p><dl>
+<dt>Api.</dt>
+</dl>
+</div>
+
+<hr>
+
+<a href="../source/phpcr/propertyinterface.php.html#line223" class="location">PHPCR/PropertyInterface.php at line 223</a>
+
+<h3 id="JCR_NODE_TYPE_NAME">JCR_NODE_TYPE_NAME</h3>
+<code class="signature">public final static  str <strong>JCR_NODE_TYPE_NAME</strong> = &quot;{http://www.jcp.org/jcr/1.0}nodeTypeName&quot;</code>
+<div class="details">
+<p>A constant for the property name jcr:nodeTypeName (in extended form),
+declared in node type nt:nodeType.</p><dl>
+<dt>Api.</dt>
+</dl>
+</div>
+
+<hr>
+
+<a href="../source/phpcr/propertyinterface.php.html#line293" class="location">PHPCR/PropertyInterface.php at line 293</a>
+
+<h3 id="JCR_ON_PARENT_VERSION">JCR_ON_PARENT_VERSION</h3>
+<code class="signature">public final static  str <strong>JCR_ON_PARENT_VERSION</strong> = &quot;{http://www.jcp.org/jcr/1.0}onParentVersion&quot;</code>
+<div class="details">
+<p>A constant for the property name jcr:onParentVersion (in extended form),
+declared in node types nt:propertyDefinition and nt:childNodeDefinition.</p><dl>
+<dt>Api.</dt>
+</dl>
+</div>
+
+<hr>
+
+<a href="../source/phpcr/propertyinterface.php.html#line139" class="location">PHPCR/PropertyInterface.php at line 139</a>
+
+<h3 id="JCR_PATH">JCR_PATH</h3>
+<code class="signature">public final static  str <strong>JCR_PATH</strong> = &quot;{http://www.jcp.org/jcr/1.0}path&quot;</code>
+<div class="details">
+<p>A constant for the property name jcr:path (in extended form),
+declared in node type nt:address.</p><dl>
+<dt>Api.</dt>
+</dl>
+</div>
+
+<hr>
+
+<a href="../source/phpcr/propertyinterface.php.html#line118" class="location">PHPCR/PropertyInterface.php at line 118</a>
+
+<h3 id="JCR_PORT">JCR_PORT</h3>
+<code class="signature">public final static  str <strong>JCR_PORT</strong> = &quot;{http://www.jcp.org/jcr/1.0}port&quot;</code>
+<div class="details">
+<p>A constant for the property name jcr:port (in extended form),
+declared in node type nt:address.</p><dl>
+<dt>Api.</dt>
+</dl>
+</div>
+
+<hr>
+
+<a href="../source/phpcr/propertyinterface.php.html#line419" class="location">PHPCR/PropertyInterface.php at line 419</a>
+
+<h3 id="JCR_PREDECESSORS">JCR_PREDECESSORS</h3>
+<code class="signature">public final static  str <strong>JCR_PREDECESSORS</strong> = &quot;{http://www.jcp.org/jcr/1.0}predecessors&quot;</code>
+<div class="details">
+<p>A constant for the property name jcr:predecessors (in extended form),
+declared in node types mix:versionable and nt:version.</p><dl>
+<dt>Api.</dt>
+</dl>
+</div>
+
+<hr>
+
+<a href="../source/phpcr/propertyinterface.php.html#line258" class="location">PHPCR/PropertyInterface.php at line 258</a>
+
+<h3 id="JCR_PRIMARY_ITEM_NAME">JCR_PRIMARY_ITEM_NAME</h3>
+<code class="signature">public final static  str <strong>JCR_PRIMARY_ITEM_NAME</strong> = &quot;{http://www.jcp.org/jcr/1.0}primaryItemName&quot;</code>
+<div class="details">
+<p>A constant for the property name jcr:primaryItemName (in extended form),
+declared in node type nt:nodeType.</p><dl>
+<dt>Api.</dt>
+</dl>
+</div>
+
+<hr>
+
+<a href="../source/phpcr/propertyinterface.php.html#line74" class="location">PHPCR/PropertyInterface.php at line 74</a>
+
+<h3 id="JCR_PRIMARY_TYPE">JCR_PRIMARY_TYPE</h3>
+<code class="signature">public final static  string <strong>JCR_PRIMARY_TYPE</strong> = &quot;{http://www.jcp.org/jcr/1.0}primaryType&quot;</code>
+<div class="details">
+<p>A constant for the property name jcr:primaryType (in extended form),
+declared in node type nt:base.</p><dl>
+<dt>Api.</dt>
+</dl>
+</div>
+
+<hr>
+
+<a href="../source/phpcr/propertyinterface.php.html#line286" class="location">PHPCR/PropertyInterface.php at line 286</a>
+
+<h3 id="JCR_PROTECTED">JCR_PROTECTED</h3>
+<code class="signature">public final static  str <strong>JCR_PROTECTED</strong> = &quot;{http://www.jcp.org/jcr/1.0}protected&quot;</code>
+<div class="details">
+<p>A constant for the property name jcr:protected (in extended form),
+declared in node types nt:propertyDefinition and nt:childNodeDefinition.</p><dl>
+<dt>Api.</dt>
+</dl>
+</div>
+
+<hr>
+
+<a href="../source/phpcr/propertyinterface.php.html#line104" class="location">PHPCR/PropertyInterface.php at line 104</a>
+
+<h3 id="JCR_PROTOCOL">JCR_PROTOCOL</h3>
+<code class="signature">public final static  str <strong>JCR_PROTOCOL</strong> = &quot;{http://www.jcp.org/jcr/1.0}protocol&quot;</code>
+<div class="details">
+<p>A constant for the property name jcr:protocol (in extended form),
+declared in node type nt:address.</p><dl>
+<dt>Api.</dt>
+</dl>
+</div>
+
+<hr>
+
+<a href="../source/phpcr/propertyinterface.php.html#line125" class="location">PHPCR/PropertyInterface.php at line 125</a>
+
+<h3 id="JCR_REPOSITORY">JCR_REPOSITORY</h3>
+<code class="signature">public final static  str <strong>JCR_REPOSITORY</strong> = &quot;{http://www.jcp.org/jcr/1.0repository&quot;</code>
+<div class="details">
+<p>A constant for the property name jcr:repository (in extended form),
+declared in node type nt:address.</p><dl>
+<dt>Api.</dt>
+</dl>
+</div>
+
+<hr>
+
+<a href="../source/phpcr/propertyinterface.php.html#line328" class="location">PHPCR/PropertyInterface.php at line 328</a>
+
+<h3 id="JCR_REQUIRED_PRIMARY_TYPES">JCR_REQUIRED_PRIMARY_TYPES</h3>
+<code class="signature">public final static  str <strong>JCR_REQUIRED_PRIMARY_TYPES</strong> = &quot;{http://www.jcp.org/jcr/1.0}requiredPrimaryTypes&quot;</code>
+<div class="details">
+<p>A constant for the property name jcr:requiredPrimaryTypes (in extended form),
+declared in node type nt:childNodeDefinition.</p><dl>
+<dt>Api.</dt>
+</dl>
+</div>
+
+<hr>
+
+<a href="../source/phpcr/propertyinterface.php.html#line300" class="location">PHPCR/PropertyInterface.php at line 300</a>
+
+<h3 id="JCR_REQUIRED_TYPE">JCR_REQUIRED_TYPE</h3>
+<code class="signature">public final static  str <strong>JCR_REQUIRED_TYPE</strong> = &quot;{http://www.jcp.org/jcr/1.0}requiredType&quot;</code>
+<div class="details">
+<p>A constant for the property name jcr:requiredType (in extended form),
+declared in node type nt:propertyDefinition.</p><dl>
+<dt>Api.</dt>
+</dl>
+</div>
+
+<hr>
+
+<a href="../source/phpcr/propertyinterface.php.html#line475" class="location">PHPCR/PropertyInterface.php at line 475</a>
+
+<h3 id="JCR_ROOT">JCR_ROOT</h3>
+<code class="signature">public final static  str <strong>JCR_ROOT</strong> = &quot;{http://www.jcp.org/jcr/1.0}root&quot;</code>
+<div class="details">
+<p>A constant for the property name jcr:root (in extended form),
+declared in node type nt:configuration.</p><dl>
+<dt>Api.</dt>
+</dl>
+</div>
+
+<hr>
+
+<a href="../source/phpcr/propertyinterface.php.html#line342" class="location">PHPCR/PropertyInterface.php at line 342</a>
+
+<h3 id="JCR_SAME_NAME_SIBLINGS">JCR_SAME_NAME_SIBLINGS</h3>
+<code class="signature">public final static  str <strong>JCR_SAME_NAME_SIBLINGS</strong> = &quot;{http://www.jcp.org/jcr/1.0}sameNameSiblings&quot;</code>
+<div class="details">
+<p>A constant for the property name jcr:sameNameSiblings (in extended form),
+declared in node type nt:childNodeDefinition.</p><dl>
+<dt>Api.</dt>
+</dl>
+</div>
+
+<hr>
+
+<a href="../source/phpcr/propertyinterface.php.html#line482" class="location">PHPCR/PropertyInterface.php at line 482</a>
+
+<h3 id="JCR_STATEMENT">JCR_STATEMENT</h3>
+<code class="signature">public final static  str <strong>JCR_STATEMENT</strong> = &quot;{http://www.jcp.org/jcr/1.0}statement&quot;</code>
+<div class="details">
+<p>A constant for the property name jcr:statement (in extended form),
+declared in node type nt:query.</p><dl>
+<dt>Api.</dt>
+</dl>
+</div>
+
+<hr>
+
+<a href="../source/phpcr/propertyinterface.php.html#line461" class="location">PHPCR/PropertyInterface.php at line 461</a>
+
+<h3 id="JCR_SUCCESSORS">JCR_SUCCESSORS</h3>
+<code class="signature">public final static  str <strong>JCR_SUCCESSORS</strong> = &quot;{http://www.jcp.org/jcr/1.0}successors&quot;</code>
+<div class="details">
+<p>A constant for the property name jcr:successors (in extended form),
+declared in node type nt:version.</p><dl>
+<dt>Api.</dt>
+</dl>
+</div>
+
+<hr>
+
+<a href="../source/phpcr/propertyinterface.php.html#line230" class="location">PHPCR/PropertyInterface.php at line 230</a>
+
+<h3 id="JCR_SUPERTYPES">JCR_SUPERTYPES</h3>
+<code class="signature">public final static  str <strong>JCR_SUPERTYPES</strong> = &quot;{http://www.jcp.org/jcr/1.0}supertypes&quot;</code>
+<div class="details">
+<p>A constant for the property name jcr:supertypes (in extended form),
+declared in node type nt:nodeType.</p><dl>
+<dt>Api.</dt>
+</dl>
+</div>
+
+<hr>
+
+<a href="../source/phpcr/propertyinterface.php.html#line160" class="location">PHPCR/PropertyInterface.php at line 160</a>
+
+<h3 id="JCR_TITLE">JCR_TITLE</h3>
+<code class="signature">public final static  str <strong>JCR_TITLE</strong> = &quot;{http://www.jcp.org/jcr/1.0}title&quot;</code>
+<div class="details">
+<p>A constant for the property name jcr:title (in extended form),
+declared in node types mix:title and nt:activity.</p><dl>
+<dt>Api.</dt>
+</dl>
+</div>
+
+<hr>
+
+<a href="../source/phpcr/propertyinterface.php.html#line153" class="location">PHPCR/PropertyInterface.php at line 153</a>
+
+<h3 id="JCR_UUID">JCR_UUID</h3>
+<code class="signature">public final static  str <strong>JCR_UUID</strong> = &quot;{http://www.jcp.org/jcr/1.0}uuid&quot;</code>
+<div class="details">
+<p>A constant for the property name jcr:uuid (in extended form),
+declared in node type mix:referenceable.</p><dl>
+<dt>Api.</dt>
+</dl>
+</div>
+
+<hr>
+
+<a href="../source/phpcr/propertyinterface.php.html#line307" class="location">PHPCR/PropertyInterface.php at line 307</a>
+
+<h3 id="JCR_VALUE_CONSTRAINTS">JCR_VALUE_CONSTRAINTS</h3>
+<code class="signature">public final static  str <strong>JCR_VALUE_CONSTRAINTS</strong> = &quot;{http://www.jcp.org/jcr/1.0}valueConstraints&quot;</code>
+<div class="details">
+<p>A constant for the property name jcr:valueConstraints (in extended form),
+declared in node type nt:propertyDefinition.</p><dl>
+<dt>Api.</dt>
+</dl>
+</div>
+
+<hr>
+
+<a href="../source/phpcr/propertyinterface.php.html#line447" class="location">PHPCR/PropertyInterface.php at line 447</a>
+
+<h3 id="JCR_VERSIONABLE_UUID">JCR_VERSIONABLE_UUID</h3>
+<code class="signature">public final static  str <strong>JCR_VERSIONABLE_UUID</strong> = &quot;{http://www.jcp.org/jcr/1.0}versionableUuid&quot;</code>
+<div class="details">
+<p>A constant for the property name jcr:versionableUuid (in extended form),
+declared in node type nt:version.</p><dl>
+<dt>Api.</dt>
+</dl>
+</div>
+
+<hr>
+
+<a href="../source/phpcr/propertyinterface.php.html#line405" class="location">PHPCR/PropertyInterface.php at line 405</a>
+
+<h3 id="JCR_VERSION_HISTORY">JCR_VERSION_HISTORY</h3>
+<code class="signature">public final static  str <strong>JCR_VERSION_HISTORY</strong> = &quot;{http://www.jcp.org/jcr/1.0}versionHistory&quot;</code>
+<div class="details">
+<p>A constant for the property name jcr:versionHistory (in extended form),
+declared in node type mix:versionable.</p><dl>
+<dt>Api.</dt>
+</dl>
+</div>
+
+<hr>
+
+<a href="../source/phpcr/propertyinterface.php.html#line132" class="location">PHPCR/PropertyInterface.php at line 132</a>
+
+<h3 id="JCR_WORKSPACE">JCR_WORKSPACE</h3>
+<code class="signature">public final static  str <strong>JCR_WORKSPACE</strong> = &quot;{http://www.jcp.org/jcr/1.0}workspace&quot;</code>
+<div class="details">
+<p>A constant for the property name jcr:workspace (in extended form),
+declared in node type nt:address.</p><dl>
+<dt>Api.</dt>
+</dl>
+</div>
+
+<hr>
+
+<h2 id="detail_method">Method Detail</h2>
+<a href="../source/phpcr/propertyinterface.php.html#line547" class="location">PHPCR/PropertyInterface.php at line 547</a>
+
+<h3 id="addValue()">addValue</h3>
+<code class="signature">public  void <strong>addValue</strong>(mixed value)</code>
+<div class="details">
+<p>Appends a value to a multi-value property</p><dl>
+<dt>Throws:</dt>
+<dd><a href="../phpcr/valueformatexception.html">\PHPCR\ValueFormatException</a> - if the property is not multi-value</dd>
+</dl>
+</div>
+
+<hr>
+
+<a href="../source/phpcr/propertyinterface.php.html#line582" class="location">PHPCR/PropertyInterface.php at line 582</a>
+
+<h3 id="getBinary()">getBinary</h3>
+<code class="signature">public  <a href="../phpcr/binaryinterface.html">BinaryInterface</a> <strong>getBinary</strong>()</code>
+<div class="details">
+<p>Returns a Binary representation of the value of this property.</p><p>The Binary object in turn provides methods to access the binary data
+itself. Uses the standard conversion to binary (see JCR specification).</p><dl>
+<dt>Returns:</dt>
+<dd>A Binary representation of the value of this property, or an array of binary for multi-valued properties.</dd>
+<dt>Throws:</dt>
+<dd><a href="../phpcr/repositoryexception.html">\PHPCR\RepositoryException</a> - if another error occurs</dd>
+<dt>Api.</dt>
+</dl>
+</div>
+
+<hr>
+
+<a href="../source/phpcr/propertyinterface.php.html#line649" class="location">PHPCR/PropertyInterface.php at line 649</a>
+
+<h3 id="getBoolean()">getBoolean</h3>
+<code class="signature">public  boolean <strong>getBoolean</strong>()</code>
+<div class="details">
+<p>Returns a boolean representation of the value of this property.</p><p>When converting String values to boolean, JCR uses
+java.lang.Boolean.valueOf(String) which evaluates to true only for the
+string "true" (case insensitive).
+PHP usually treats everything not null|0|false as true. The PHPCR API
+follows the JCR specification here in order to be consistent.</p><dl>
+<dt>Returns:</dt>
+<dd>A boolean representation of the value of this property, or an array of boolean for multi-valued properties.</dd>
+<dt>Throws:</dt>
+<dd><a href="../phpcr/valueformatexception.html">\PHPCR\ValueFormatException</a> - if conversion to a boolean is not possible</dd>
+<dd><a href="../phpcr/repositoryexception.html">\PHPCR\RepositoryException</a> - if another error occurs</dd>
+<dt>Api.</dt>
+</dl>
+</div>
+
+<hr>
+
+<a href="../source/phpcr/propertyinterface.php.html#line631" class="location">PHPCR/PropertyInterface.php at line 631</a>
+
+<h3 id="getDate()">getDate</h3>
+<code class="signature">public  \DateTime <strong>getDate</strong>()</code>
+<div class="details">
+<p>Returns a \DateTime representation of the value of this property.</p><p>The object returned is a copy of the stored value, so changes to it are
+not reflected in internal storage.</p><dl>
+<dt>Returns:</dt>
+<dd>A date representation of the value of this property, or an array of DateTime for multi-valued properties.</dd>
+<dt>Throws:</dt>
+<dd><a href="../phpcr/valueformatexception.html">\PHPCR\ValueFormatException</a> - if conversion to a string is not possible</dd>
+<dd><a href="../phpcr/repositoryexception.html">\PHPCR\RepositoryException</a> - if another error occurs</dd>
+<dt>Api.</dt>
+</dl>
+</div>
+
+<hr>
+
+<a href="../source/phpcr/propertyinterface.php.html#line616" class="location">PHPCR/PropertyInterface.php at line 616</a>
+
+<h3 id="getDecimal()">getDecimal</h3>
+<code class="signature">public  float <strong>getDecimal</strong>()</code>
+<div class="details">
+<p>Returns a double representation of this value (a BigDecimal in Java).</p><dl>
+<dt>Returns:</dt>
+<dd>A float representation of the value of this property, or an array of float for multi-valued properties.</dd>
+<dt>Throws:</dt>
+<dd><a href="../phpcr/valueformatexception.html">\PHPCR\ValueFormatException</a> - if conversion to a BigDecimal is not possible</dd>
+<dd><a href="../phpcr/repositoryexception.html">\PHPCR\RepositoryException</a> - if another error occurs</dd>
+<dt>Api.</dt>
+</dl>
+</div>
+
+<hr>
+
+<a href="../source/phpcr/propertyinterface.php.html#line757" class="location">PHPCR/PropertyInterface.php at line 757</a>
+
+<h3 id="getDefinition()">getDefinition</h3>
+<code class="signature">public  <a href="../phpcr/nodetype/propertydefinitioninterface.html">PropertyDefinitionInterface</a> <strong>getDefinition</strong>()</code>
+<div class="details">
+<p>Returns the property definition that applies to this property. In some
+cases there may appear to be more than one definition that could apply
+to this node. However, it is assumed that upon creation or change of
+this property, a single particular definition is chosen by the
+implementation. It is that definition that this method returns. How this
+governing definition is selected upon property creation or change from
+among others which may have been applicable is an implementation issue
+and is not covered by this specification.</p><dl>
+<dt>Returns:</dt>
+<dd>a PropertyDefinition object.</dd>
+<dt>Throws:</dt>
+<dd><a href="../phpcr/repositoryexception.html">\PHPCR\RepositoryException</a> - if an error occurs.</dd>
+<dt>Api.</dt>
+</dl>
+</div>
+
+<hr>
+
+<a href="../source/phpcr/propertyinterface.php.html#line605" class="location">PHPCR/PropertyInterface.php at line 605</a>
+
+<h3 id="getDouble()">getDouble</h3>
+<code class="signature">public  float <strong>getDouble</strong>()</code>
+<div class="details">
+<p>Returns a float representation of the value of this property.</p><dl>
+<dt>Returns:</dt>
+<dd>A float representation of the value of this property, or an array of float for multi-valued properties.</dd>
+<dt>Throws:</dt>
+<dd><a href="../phpcr/valueformatexception.html">\PHPCR\ValueFormatException</a> - if conversion to a double is not possible</dd>
+<dd><a href="../phpcr/repositoryexception.html">\PHPCR\RepositoryException</a> - if another error occurs</dd>
+<dt>Api.</dt>
+</dl>
+</div>
+
+<hr>
+
+<a href="../source/phpcr/propertyinterface.php.html#line727" class="location">PHPCR/PropertyInterface.php at line 727</a>
+
+<h3 id="getLength()">getLength</h3>
+<code class="signature">public  integer <strong>getLength</strong>()</code>
+<div class="details">
+<p>Returns the length of the value of this property.</p><p>For a BINARY property, getLength returns the number of bytes.
+For other property types, getLength returns the same value that would be
+returned by calling strlen() on the value when it has been converted to a
+STRING according to standard JCR propety type conversion.</p><p>Returns -1 if the implementation cannot determine the length.</p><dl>
+<dt>Returns:</dt>
+<dd>an integer.</dd>
+<dt>Throws:</dt>
+<dd><a href="../phpcr/valueformatexception.html">\PHPCR\ValueFormatException</a> - if this property is multi-valued.</dd>
+<dd><a href="../phpcr/repositoryexception.html">\PHPCR\RepositoryException</a> - if another error occurs.</dd>
+<dt>Api.</dt>
+</dl>
+</div>
+
+<hr>
+
+<a href="../source/phpcr/propertyinterface.php.html#line740" class="location">PHPCR/PropertyInterface.php at line 740</a>
+
+<h3 id="getLengths()">getLengths</h3>
+<code class="signature">public  array <strong>getLengths</strong>()</code>
+<div class="details">
+<p>Returns an array holding the lengths of the values of this (multi-value)
+property in bytes where each is individually calculated as described in
+getLength().</p><dl>
+<dt>Returns:</dt>
+<dd>an array of lengths (integers)</dd>
+<dt>Throws:</dt>
+<dd><a href="../phpcr/valueformatexception.html">\PHPCR\ValueFormatException</a> - if this property is single-valued.</dd>
+<dd><a href="../phpcr/repositoryexception.html">\PHPCR\RepositoryException</a> - if another error occurs.</dd>
+<dt>Api.</dt>
+</dl>
+</div>
+
+<hr>
+
+<a href="../source/phpcr/propertyinterface.php.html#line594" class="location">PHPCR/PropertyInterface.php at line 594</a>
+
+<h3 id="getLong()">getLong</h3>
+<code class="signature">public  integer <strong>getLong</strong>()</code>
+<div class="details">
+<p>Returns an integer representation of the value of this property.</p><dl>
+<dt>Returns:</dt>
+<dd>An integer representation of the value of this property, or an array of integer for multi-valued properties.</dd>
+<dt>Throws:</dt>
+<dd><a href="../phpcr/valueformatexception.html">\PHPCR\ValueFormatException</a> - if conversion to a long is not possible</dd>
+<dd><a href="../phpcr/repositoryexception.html">\PHPCR\RepositoryException</a> - if another error occurs</dd>
+<dt>Api.</dt>
+</dl>
+</div>
+
+<hr>
+
+<a href="../source/phpcr/propertyinterface.php.html#line556" class="location">PHPCR/PropertyInterface.php at line 556</a>
+
+<h3 id="getNativeValue()">getNativeValue</h3>
+<code class="signature">public  mixed <strong>getNativeValue</strong>()</code>
+<div class="details">
+<p>Get the value in format default for the PropertyType of this property.</p><p><b>PHPCR Note:</b> This is an additional method not found in JSR-283</p><dl>
+<dt>Returns:</dt>
+<dd>value of this property, or array in case of multi-value</dd>
+</dl>
+</div>
+
+<hr>
+
+<a href="../source/phpcr/propertyinterface.php.html#line682" class="location">PHPCR/PropertyInterface.php at line 682</a>
+
+<h3 id="getNode()">getNode</h3>
+<code class="signature">public  <a href="../phpcr/nodeinterface.html">NodeInterface</a> <strong>getNode</strong>()</code>
+<div class="details">
+<p>Gets the node the property refers to by its type.</p><p>If this property is of type REFERENCE, WEAKREFERENCE or PATH (or
+convertible to one of these types) this method returns the Node to
+which this property refers.
+If this property is of type PATH and it contains a relative path, it is
+interpreted relative to the parent node of this property. For example "."
+refers to the parent node itself, ".." to the parent of the parent node
+and "foo" to a sibling node of this property.</p><p>If you do not want to dereference the nodes yet, you can use getString
+to get the unique ids and use the SessionInterface::getNodeByIdentifier
+as all referenced nodes are referenciable and thus must have a uuid.
+If its a PATH property, you will need the node of this property and use
+getNodes to get the nodes with relative or absolute path.</p><dl>
+<dt>Returns:</dt>
+<dd>the referenced Node, or an array of Nodes for multi-valued properties.</dd>
+<dt>Throws:</dt>
+<dd><a href="../phpcr/valueformatexception.html">\PHPCR\ValueFormatException</a> - if this property cannot be converted to a referring type (REFERENCE, WEAKREFERENCE or PATH) or if this property is a referring type but is currently part of the frozen state of a version in version storage.</dd>
+<dd><a href="../phpcr/itemnotfoundexception.html">\PHPCR\ItemNotFoundException</a> - If this property is of type PATH or WEAKREFERENCE and no target node accessible by the current Session exists in this workspace. Note that this applies even if the property is a PATH and a property exists at the specified location. To dereference to a target property (as opposed to a target node), the method Property.getProperty is used.</dd>
+<dd><a href="../phpcr/repositoryexception.html">\PHPCR\RepositoryException</a> - if another error occurs.</dd>
+<dt>Api.</dt>
+</dl>
+</div>
+
+<hr>
+
+<a href="../source/phpcr/propertyinterface.php.html#line710" class="location">PHPCR/PropertyInterface.php at line 710</a>
+
+<h3 id="getProperty()">getProperty</h3>
+<code class="signature">public  <a href="../phpcr/propertyinterface.html">PropertyInterface</a> <strong>getProperty</strong>()</code>
+<div class="details">
+<p>Gets the property the property refers to by its type.</p><p>If this property is of type PATH (or convertible to this type) this
+method returns the Property to which this property refers.
+If this property contains a relative path, it is interpreted relative
+to the parent node of this property. Therefore, when resolving such a
+relative path, the segment "." refers to the parent node itself, ".." to
+the parent of the parent node and "foo" to a sibling property of this
+property or this property itself.</p><p>For example, if this property is located at /a/b/c and it has a value of
+"../d" then this method will return the property at /a/d if such exists.</p><dl>
+<dt>Returns:</dt>
+<dd>the referenced property, or an array of properties for multi-valued properties.</dd>
+<dt>Throws:</dt>
+<dd><a href="../phpcr/valueformatexception.html">\PHPCR\ValueFormatException</a> - if this property cannot be converted to a PATH or if this property is a referring type but is currently part of the frozen state of a version in version storage.</dd>
+<dd><a href="../phpcr/itemnotfoundexception.html">\PHPCR\ItemNotFoundException</a> - If no property accessible by the current Session exists in this workspace at the specified path. Note that this applies even if a node exists at the specified location. To dereference to a target node, the method Property.getNode is used.</dd>
+<dd><a href="../phpcr/repositoryexception.html">\PHPCR\RepositoryException</a> - if another error occurs</dd>
+<dt>Api.</dt>
+</dl>
+</div>
+
+<hr>
+
+<a href="../source/phpcr/propertyinterface.php.html#line568" class="location">PHPCR/PropertyInterface.php at line 568</a>
+
+<h3 id="getString()">getString</h3>
+<code class="signature">public  string <strong>getString</strong>()</code>
+<div class="details">
+<p>Returns a String representation of the value of this property.</p><dl>
+<dt>Returns:</dt>
+<dd>A string representation of the value of this property, or an array of string for multi-valued properties.</dd>
+<dt>Throws:</dt>
+<dd><a href="../phpcr/valueformatexception.html">\PHPCR\ValueFormatException</a> - if conversion to a String is not possible</dd>
+<dd><a href="../phpcr/repositoryexception.html">\PHPCR\RepositoryException</a> - if another error occurs.</dd>
+<dt>Api.</dt>
+</dl>
+</div>
+
+<hr>
+
+<a href="../source/phpcr/propertyinterface.php.html#line786" class="location">PHPCR/PropertyInterface.php at line 786</a>
+
+<h3 id="getType()">getType</h3>
+<code class="signature">public  integer <strong>getType</strong>()</code>
+<div class="details">
+<p>Returns the type of this Property.</p><p>Following property types are available:</p>
+<ul>
+<li>PropertyType.STRING</li>
+<li>PropertyType.BINARY</li>
+<li>PropertyType.DATE</li>
+<li>PropertyType.DOUBLE</li>
+<li>PropertyType.LONG</li>
+<li>PropertyType.BOOLEAN</li>
+<li>PropertyType.NAME</li>
+<li>PropertyType.PATH</li>
+<li>PropertyType.REFERENCE</li>
+<li>PropertyType.WEAKREFERENCE</li>
+<li>PropertyType.URI</li>
+</ul>
+<p>The type returned is that which was set at property creation. Note that
+for some property p, the type returned by p.getType() will differ from
+the type returned by p.getDefinition.getRequiredType() only in the case
+where the latter returns UNDEFINED. The type of a property instance is
+never UNDEFINED (it must always have some actual type).</p><dl>
+<dt>Returns:</dt>
+<dd>The numerical representation of a property type.</dd>
+<dt>Throws:</dt>
+<dd><a href="../phpcr/repositoryexception.html">\PHPCR\RepositoryException</a> - if an error occurs</dd>
+<dt>Api.</dt>
+</dl>
+</div>
+
+<hr>
+
+<a href="../source/phpcr/propertyinterface.php.html#line799" class="location">PHPCR/PropertyInterface.php at line 799</a>
+
+<h3 id="isMultiple()">isMultiple</h3>
+<code class="signature">public  boolean <strong>isMultiple</strong>()</code>
+<div class="details">
+<p>Determines if the current property is multi-valued.</p><p>Returns TRUE if this property is multi-valued and FALSE if this property
+is single-valued.</p><dl>
+<dt>Returns:</dt>
+<dd>TRUE if this property is multi-valued; FALSE otherwise.</dd>
+<dt>Throws:</dt>
+<dd><a href="../phpcr/repositoryexception.html">\PHPCR\RepositoryException</a> - if an error occurs.</dd>
+<dt>Api.</dt>
+</dl>
+</div>
+
+<hr>
+
+<a href="../source/phpcr/propertyinterface.php.html#line539" class="location">PHPCR/PropertyInterface.php at line 539</a>
+
+<h3 id="setValue()">setValue</h3>
+<code class="signature">public  void <strong>setValue</strong>(mixed value, integer type, boolean weak)</code>
+<div class="details">
+<p>Sets the value of this property to value.</p><p>If this property's property ype is not constrained by the node type of its
+parent node, then the property type may be changed. If the property type is
+constrained, then a best-effort conversion is attempted.</p><p>This method is a session-write and therefore requires a <code>save</code>
+to dispatch the change.</p><p>If no type is given, the value is stored as is, i.e. it's type is
+preserved. Exceptions are:</p>
+<ul>
+<li>if the given $value is a Node object, it's Identifier is fetched and
+the type of this property is set to REFERENCE</li>
+<li>if the given $value is a Node object, it's Identifier is fetched and
+the type of this property is set to WEAKREFERENCE if $weak is set to
+TRUE</li>
+<li>if the given $value is a DateTime object, the property type will be
+set to DATE.</li>
+</ul>
+<p>For Node objects as value:
+Sets this REFERENCE OR WEAKREFERENCE property to refer to the specified
+node. If this property is not of type REFERENCE or WEAKREFERENCE or the
+specified node is not referenceable then a ValueFormatException is thrown.</p><p>If value is an array:
+If this property is not multi-valued then a ValueFormatException is
+thrown immediately.</p><p><b>PHPCR Note:</b> The Java API defines this method with multiple differing signatures.
+<b>PHPCR Note:</b> Because we removed the Value interface, this method replaces
+ValueFactory::createValue.</p><dl>
+<dt>Parameters:</dt>
+<dd>value - The value to set</dd>
+<dd>type - Type request for the property, optional. Must be a constant from PropertyType</dd>
+<dd>weak - When a Node is given as $value this can be given as TRUE to create a WEAKREFERENCE, by default a REFERENCE is created</dd>
+<dt>Throws:</dt>
+<dd><a href="../phpcr/valueformatexception.html">\PHPCR\ValueFormatException</a> - if the type or format of the specified value is incompatible with the type of this property.</dd>
+<dd><a href="../phpcr/version/versionexception.html">\PHPCR\Version\VersionException</a> - if this property belongs to a node that is read-only due to a checked-in node and this implementation performs this validation immediately.</dd>
+<dd><a href="../phpcr/lock/lockexception.html">\PHPCR\Lock\LockException</a> - if a lock prevents the setting of the value and this implementation performs this validation immediately.</dd>
+<dd>\PHPCR\ConstraintViolationException - if the change would violate a node-type or other constraint and this implementation performs this validation immediately.</dd>
+<dd><a href="../phpcr/repositoryexception.html">\PHPCR\RepositoryException</a> - if another error occurs.</dd>
+<dd>\IllegalArgumentException - if the specified DateTime value cannot be expressed in the ISO 8601-based format defined in the JCR 2.0 specification and the implementation does not support dates incompatible with that format.</dd>
+<dt>Api.</dt>
+</dl>
+</div>
+
+<hr>
+
+<div class="header">
+<h1>PHPCR</h1>
+<ul>
+<li><a href="../overview-summary.html">Overview</a></li>
+<li><a href="../phpcr/package-summary.html">Namespace</a></li>
+<li class="active">Class</li>
+<li><a href="../phpcr/package-tree.html">Tree</a></li>
+<li><a href="../overview-files.html">Files</a></li>
+<li><a href="../deprecated-list.html">Deprecated</a></li>
+<li><a href="../todo-list.html">Todo</a></li>
+<li><a href="../index-all.html">Index</a></li>
+</ul>
+</div>
+
+<div class="small_links">
+<a href="../index.html" target="_top">Frames</a>
+<a href="../phpcr/propertyinterface.html" target="_top">No frames</a>
+</div>
+<div class="small_links">
+Summary: <a href="#summary_field">Field</a> | <a href="#summary_method">Method</a> | <a href="#summary_constr">Constr</a>
+Detail: <a href="#detail_field">Field</a> | <a href="#detail_method">Method</a> | <a href="#summary_constr">Constr</a>
+</div>
+<hr>
+
+<p id="footer">This document was generated by <a href="http://peej.github.com/phpdoctor/">PHPDoctor: The PHP Documentation Creator</a></p>
+
+</body>
+
+</html>

@@ -1,0 +1,367 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+
+<html lang="en">
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="generator" content="PHPDoctor 2RC4 (http://peej.github.com/phpdoctor/)">
+<meta name="when" content="Fri, 06 May 2011 11:43:35 +0000">
+
+<link rel="stylesheet" type="text/css" href="../../../stylesheet.css">
+<link rel="start" href="../../../overview-summary.html">
+
+<title>PHPCR/Version/VersionHistoryInterface.php (PHPCR API)</title>
+
+</head>
+<body id="file" onload="parent.document.title=document.title;">
+
+<div class="header">
+<h1>PHPCR</h1>
+<ul>
+<li><a href="../../../overview-summary.html">Overview</a></li>
+<li>Package</li><li>Class</li><li>Tree</li><li><a href="../../../overview-files.html">Files</a></li>
+<li><a href="../../../deprecated-list.html">Deprecated</a></li>
+<li><a href="../../../todo-list.html">Todo</a></li>
+<li><a href="../../../index-all.html">Index</a></li>
+</ul>
+</div>
+
+<div class="small_links">
+<a href="../../../index.html" target="_top">Frames</a>
+<a href="../../../source/phpcr/version/versionhistoryinterface.php.html" target="_top">No frames</a>
+</div>
+<hr>
+
+<h1>PHPCR/Version/VersionHistoryInterface.php</h1>
+<div class="comment" id="overview_description"><p>Interface description of an implementation of a version history class.</p><p>This file was ported from the Java JCR API to PHP by
+Karsten Dambekalns <karsten@typo3.org> for the FLOW3 project.</p><p>It is free software; you can redistribute it and/or modify it under
+the terms of the GNU Lesser General Public License as published by the
+Free Software Foundation, either version 3 of the License, or (at your
+option) any later version. Alternatively, you may use the Simplified
+BSD License.</p><p>This script is distributed in the hope that it will be useful, but
+WITHOUT ANY WARRANTY; without even the implied warranty of MERCHAN-
+TABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser
+General Public License for more details.</p><p>You should have received a copy of the GNU Lesser General Public
+License along with the script.
+If not, see <code><a href="http://www.gnu.org/licenses/lgpl.html">http://www.gnu.org/licenses/lgpl.html</a></code>.</p><p>The TYPO3 project - inspiring people to share!</p></div>
+
+<hr>
+
+<a name="line1"></a><pre class="php" style="font-family:monospace;"><span style="color: #000000; font-weight: bold;">&lt;?php</span>
+<a name="line2"></a><span style="color: #009933; font-style: italic;">/**
+<a name="line3"></a> * Interface description of an implementation of a version history class.
+<a name="line4"></a> *
+<a name="line5"></a> * This file was ported from the Java JCR API to PHP by
+<a name="line6"></a> * Karsten Dambekalns &lt;karsten@typo3.org&gt; for the FLOW3 project.
+<a name="line7"></a> *
+<a name="line8"></a> * It is free software; you can redistribute it and/or modify it under
+<a name="line9"></a> * the terms of the GNU Lesser General Public License as published by the
+<a name="line10"></a> * Free Software Foundation, either version 3 of the License, or (at your
+<a name="line11"></a> * option) any later version. Alternatively, you may use the Simplified
+<a name="line12"></a> * BSD License.
+<a name="line13"></a> *
+<a name="line14"></a> * This script is distributed in the hope that it will be useful, but
+<a name="line15"></a> * WITHOUT ANY WARRANTY; without even the implied warranty of MERCHAN-
+<a name="line16"></a> * TABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser
+<a name="line17"></a> * General Public License for more details.
+<a name="line18"></a> *
+<a name="line19"></a> * You should have received a copy of the GNU Lesser General Public
+<a name="line20"></a> * License along with the script.
+<a name="line21"></a> * If not, see {@link http://www.gnu.org/licenses/lgpl.html}.
+<a name="line22"></a> *
+<a name="line23"></a> * The TYPO3 project - inspiring people to share!
+<a name="line24"></a> *
+<a name="line25"></a> * @license http://www.gnu.org/licenses/lgpl.html GNU Lesser General Public License, version 3 or later
+<a name="line26"></a> * @license http://opensource.org/licenses/bsd-license.php Simplified BSD License
+<a name="line27"></a> *
+<a name="line28"></a> * @package phpcr
+<a name="line29"></a> * @subpackage interfaces
+<a name="line30"></a> */</span>
+<a name="line31"></a>&nbsp;
+<a name="line32"></a><span style="color: #000000; font-weight: bold;">declare</span><span style="color: #009900;">&#40;</span>ENCODING <span style="color: #339933;">=</span> <span style="color: #0000ff;">'utf-8'</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line33"></a><span style="color: #000000; font-weight: bold;">namespace</span> PHPCR\Version<span style="color: #339933;">;</span>
+<a name="line34"></a>&nbsp;
+<a name="line35"></a><span style="color: #009933; font-style: italic;">/**
+<a name="line36"></a> * A VersionHistory object wraps an nt:versionHistory node. It provides
+<a name="line37"></a> * convenient access to version history information.
+<a name="line38"></a> *
+<a name="line39"></a> * Note: As this extends NodeInterface, foreach still iterates over the
+<a name="line40"></a> * children and not over versions. If you want to use a foreach, you can use
+<a name="line41"></a> * getAllVersions() to retrieve an iterator over versions.
+<a name="line42"></a> *
+<a name="line43"></a> * @package phpcr
+<a name="line44"></a> * @subpackage interfaces
+<a name="line45"></a> * @api
+<a name="line46"></a> */</span>
+<a name="line47"></a><span style="color: #000000; font-weight: bold;">interface</span> VersionHistoryInterface <span style="color: #000000; font-weight: bold;">extends</span> \PHPCR\NodeInterface <span style="color: #009900;">&#123;</span>
+<a name="line48"></a>&nbsp;
+<a name="line49"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line50"></a>     * Returns the identifier of the versionable node for which this is the
+<a name="line51"></a>     * version history.
+<a name="line52"></a>     *
+<a name="line53"></a>     * @return string the identifier of the versionable node for which this is the version history.
+<a name="line54"></a>     *
+<a name="line55"></a>     * @throws \PHPCR\RepositoryException if an error occurs.
+<a name="line56"></a>     * @api
+<a name="line57"></a>     */</span>
+<a name="line58"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getVersionableIdentifier<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line59"></a>&nbsp;
+<a name="line60"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line61"></a>     * Returns the root version of this version history.
+<a name="line62"></a>     *
+<a name="line63"></a>     * @return \PHPCR\Version\VersionInterface a Version object.
+<a name="line64"></a>     *
+<a name="line65"></a>     * @throws \PHPCR\RepositoryException if an error occurs.
+<a name="line66"></a>     * @api
+<a name="line67"></a>     */</span>
+<a name="line68"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getRootVersion<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line69"></a>&nbsp;
+<a name="line70"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line71"></a>     * This method returns an iterator over all the versions in the line of
+<a name="line72"></a>     * descent from the root version to that base version within this history
+<a name="line73"></a>     * that is bound to the workspace through which this VersionHistory was
+<a name="line74"></a>     * accessed.
+<a name="line75"></a>     *
+<a name="line76"></a>     * Within a version history H, B is the base version bound to workspace W
+<a name="line77"></a>     * if and only if there exists a versionable node N in W whose version
+<a name="line78"></a>     * history is H and B is the base version of N.
+<a name="line79"></a>     *
+<a name="line80"></a>     * The line of descent from version V1 to V2, where V2 is a successor of V1,
+<a name="line81"></a>     * is the ordered list of versions starting with V1 and proceeding through
+<a name="line82"></a>     * each direct successor to V2.
+<a name="line83"></a>     *
+<a name="line84"></a>     * The versions are returned in order of creation date, from oldest to newest.
+<a name="line85"></a>     *
+<a name="line86"></a>     * Note that in a simple versioning repository the behavior of this method is
+<a name="line87"></a>     * equivalent to returning all versions in the version history in order from
+<a name="line88"></a>     * oldest to newest.
+<a name="line89"></a>     *
+<a name="line90"></a>     * @return Iterator implementing &lt;b&gt;SeekableIterator&lt;/b&gt; and &lt;b&gt;Countable&lt;/b&gt;.
+<a name="line91"></a>     *                  Values are the VersionInterface instances. Keys have no meaning.
+<a name="line92"></a>     *
+<a name="line93"></a>     * @throws \PHPCR\RepositoryException if an error occurs.
+<a name="line94"></a>     * @api
+<a name="line95"></a>     */</span>
+<a name="line96"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getAllLinearVersions<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line97"></a>&nbsp;
+<a name="line98"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line99"></a>     * Returns an iterator over all the versions within this version history.
+<a name="line100"></a>     * If the version graph of this history is linear then the versions are
+<a name="line101"></a>     * returned in order of creation date, from oldest to newest. Otherwise the
+<a name="line102"></a>     * order of the returned versions is implementation-dependent.
+<a name="line103"></a>     *
+<a name="line104"></a>     * @return Iterator implementing &lt;b&gt;SeekableIterator&lt;/b&gt; and &lt;b&gt;Countable&lt;/b&gt;.
+<a name="line105"></a>     *                  Values are the VersionInterface instances. Keys have no meaning.
+<a name="line106"></a>     *
+<a name="line107"></a>     * @throws \PHPCR\RepositoryException if an error occurs.
+<a name="line108"></a>     * @api
+<a name="line109"></a>     */</span>
+<a name="line110"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getAllVersions<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line111"></a>&nbsp;
+<a name="line112"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line113"></a>     * This method returns all the frozen nodes of all the versions in this
+<a name="line114"></a>     * verison history in the same order as getAllLinearVersions().
+<a name="line115"></a>     *
+<a name="line116"></a>     * @return Iterator implementing &lt;b&gt;SeekableIterator&lt;/b&gt; and &lt;b&gt;Countable&lt;/b&gt;.
+<a name="line117"></a>     *                  Values are the NodeInterface instances.
+<a name="line118"></a>     *
+<a name="line119"></a>     * @todo is there a version id to be used as key?
+<a name="line120"></a>     *
+<a name="line121"></a>     * @throws \PHPCR\RepositoryException if an error occurs.
+<a name="line122"></a>     * @api
+<a name="line123"></a>     */</span>
+<a name="line124"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getAllLinearFrozenNodes<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line125"></a>&nbsp;
+<a name="line126"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line127"></a>     * Returns an iterator over all the frozen nodes of all the versions of
+<a name="line128"></a>     * this version history. Under simple versioning the order of the returned
+<a name="line129"></a>     * nodes will be the order of their creation. Under full versioning the
+<a name="line130"></a>     * order is implementation-dependent.
+<a name="line131"></a>     *
+<a name="line132"></a>     * @return Iterator implementing &lt;b&gt;SeekableIterator&lt;/b&gt; and &lt;b&gt;Countable&lt;/b&gt;.
+<a name="line133"></a>     *                  Values are the NodeInterface instances.
+<a name="line134"></a>     *
+<a name="line135"></a>     * @todo is there a version id to be used as key?
+<a name="line136"></a>     *
+<a name="line137"></a>     * @throws \PHPCR\RepositoryException if an error occurs.
+<a name="line138"></a>     * @api
+<a name="line139"></a>     */</span>
+<a name="line140"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getAllFrozenNodes<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line141"></a>&nbsp;
+<a name="line142"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line143"></a>     * Retrieves a particular version from this version history by version name.
+<a name="line144"></a>     *
+<a name="line145"></a>     * @param string $versionName a version name
+<a name="line146"></a>     * @return \PHPCR\Version\VersionInterface a Version object.
+<a name="line147"></a>     *
+<a name="line148"></a>     * @throws \PHPCR\Version\VersionException if the specified version is not in this version history.
+<a name="line149"></a>     * @throws \PHPCR\RepositoryException if an error occurs.
+<a name="line150"></a>     * @api
+<a name="line151"></a>     */</span>
+<a name="line152"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getVersion<span style="color: #009900;">&#40;</span><span style="color: #000088;">$versionName</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line153"></a>&nbsp;
+<a name="line154"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line155"></a>     * Retrieves a particular version from this version history by version label.
+<a name="line156"></a>     *
+<a name="line157"></a>     * @param string $label a version label
+<a name="line158"></a>     * @return \PHPCR\Version\VersionInterface a Version object.
+<a name="line159"></a>     *
+<a name="line160"></a>     * @throws \PHPCR\Version\VersionException if the specified label is not in this version history.
+<a name="line161"></a>     * @throws \PHPCR\RepositoryException if an error occurs.
+<a name="line162"></a>     * @api
+<a name="line163"></a>     */</span>
+<a name="line164"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getVersionByLabel<span style="color: #009900;">&#40;</span><span style="color: #000088;">$label</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line165"></a>&nbsp;
+<a name="line166"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line167"></a>     * Adds the specified label to the specified version.
+<a name="line168"></a>     *
+<a name="line169"></a>     * The label must be a JCR name in either qualified or extended form
+<a name="line170"></a>     * and therefore must conform to the syntax restriction that apply to
+<a name="line171"></a>     * such names. In particular a colon (:) should not be used unless
+<a name="line172"></a>     * it is intended as a prefix delimiter in a qualified name.
+<a name="line173"></a>     *
+<a name="line174"></a>     * Adding a version label to a version corresponds to
+<a name="line175"></a>     * adding a reference property with a name specified by the label parameter
+<a name="line176"></a>     * to the jcr:versionLabels sub node of the nt:versionHistory node. The
+<a name="line177"></a>     * reference property points to the nt:version node that represents the
+<a name="line178"></a>     * specified version.
+<a name="line179"></a>     *
+<a name="line180"></a>     * This is a workspace-write method and therefore the change is made
+<a name="line181"></a>     * immediately.
+<a name="line182"></a>     *
+<a name="line183"></a>     * Within a particular version history, a given label may appear a maximum of
+<a name="line184"></a>     * once. If the specified label is already assigned to a version in this
+<a name="line185"></a>     * history and moveLabel is true then the label is removed from its current
+<a name="line186"></a>     * location and added to the version with the specified versionName. If m
+<a name="line187"></a>     * oveLabel is false, then an attempt to add a label that already exists
+<a name="line188"></a>     * will fail.
+<a name="line189"></a>     *
+<a name="line190"></a>     * A VersionException is thrown if the named version is not in this
+<a name="line191"></a>     * VersionHistory or if it is the root version (jcr:rootVersion) or if the
+<a name="line192"></a>     * label specified is not a valid JCR NAME.
+<a name="line193"></a>     *
+<a name="line194"></a>     * @param string $versionName the name of the version to which the label is to be added.
+<a name="line195"></a>     * @param string $label the label to be added, a JCR name in either extended or qualified form.
+<a name="line196"></a>     * @param boolean $moveLabel if true, then if label is already assigned to a version in this version history,
+<a name="line197"></a>     *                           it is moved to the new version specified; if false, then attempting to assign an
+<a name="line198"></a>     *                           already used label will throw a LabelExistsVersionException.
+<a name="line199"></a>     * @return void
+<a name="line200"></a>     *
+<a name="line201"></a>     * @throws \PHPCR\Version\LabelExistsVersionException if moveLabel is false, and an attempt is made to add a
+<a name="line202"></a>     *                                                    label that already exists in this version history
+<a name="line203"></a>     * @throws \PHPCR\Version\VersionException if the specified version does not exist in this version history
+<a name="line204"></a>     *                                         or if the specified version is the root version (jcr:rootVersion).
+<a name="line205"></a>     * @throws \PHPCR\RepositoryException if another error occurs.
+<a name="line206"></a>     * @api
+<a name="line207"></a>     */</span>
+<a name="line208"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> addVersionLabel<span style="color: #009900;">&#40;</span><span style="color: #000088;">$versionName</span><span style="color: #339933;">,</span> <span style="color: #000088;">$label</span><span style="color: #339933;">,</span> <span style="color: #000088;">$moveLabel</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line209"></a>&nbsp;
+<a name="line210"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line211"></a>     * Removes the specified label from among the labels of this version history.
+<a name="line212"></a>     * The label must be a JCR name in either qualified or extended form.
+<a name="line213"></a>     * This corresponds to removing a property from the jcr:versionLabels child node
+<a name="line214"></a>     * of the nt:versionHistory node that represents this version history.
+<a name="line215"></a>     *
+<a name="line216"></a>     * This is a workspace-write method and therefore the change is made
+<a name="line217"></a>     * immediately.
+<a name="line218"></a>     *
+<a name="line219"></a>     * @param string $label a version label. A JCR name in either extended or qualified form.
+<a name="line220"></a>     * @return void
+<a name="line221"></a>     *
+<a name="line222"></a>     * @throws \PHPCR\Version\VersionException if the name label does not exist in this version history.
+<a name="line223"></a>     * @throws \PHPCR\RepositoryException if another error occurs.
+<a name="line224"></a>     * @api
+<a name="line225"></a>     */</span>
+<a name="line226"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> removeVersionLabel<span style="color: #009900;">&#40;</span><span style="color: #000088;">$label</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line227"></a>&nbsp;
+<a name="line228"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line229"></a>     * Returns true if the given version has the given label. If no $version is given
+<a name="line230"></a>     * returns true if any version in the history has the given label.
+<a name="line231"></a>     * The label must be a JCR name in either qualified or extended form.
+<a name="line232"></a>     *
+<a name="line233"></a>     * &lt;b&gt;Note:&lt;/b&gt; The Java API defines this with multiple differing signatures.
+<a name="line234"></a>     *
+<a name="line235"></a>     * @param string $label a version label. A JCR name in either extended or qualified form.
+<a name="line236"></a>     * @param \PHPCR\Version\VersionInterface $version a Version object
+<a name="line237"></a>     * @return boolean a boolean.
+<a name="line238"></a>     *
+<a name="line239"></a>     * @throws \PHPCR\Version\VersionException if the specified version is not of this version history.
+<a name="line240"></a>     * @throws \PHPCR\RepositoryException if another error occurs.
+<a name="line241"></a>     * @api
+<a name="line242"></a>     */</span>
+<a name="line243"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> hasVersionLabel<span style="color: #009900;">&#40;</span><span style="color: #000088;">$label</span><span style="color: #339933;">,</span> <span style="color: #000088;">$version</span> <span style="color: #339933;">=</span> <span style="color: #009900; font-weight: bold;">NULL</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line244"></a>&nbsp;
+<a name="line245"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line246"></a>     * Returns all version labels of the given version - empty array if none.
+<a name="line247"></a>     *
+<a name="line248"></a>     * If a $version is given returns all version labels of the history or an empty
+<a name="line249"></a>     * array if there are none.
+<a name="line250"></a>     *
+<a name="line251"></a>     * &lt;b&gt;Note:&lt;/b&gt; The Java API defines this with multiple differing signatures.
+<a name="line252"></a>     *
+<a name="line253"></a>     * @param VersionInterface $version a Version object
+<a name="line254"></a>     * @return array a string array containing all the labels of the (given) version (history)
+<a name="line255"></a>     *
+<a name="line256"></a>     * @throws \PHPCR\Version\VersionException if the specified version is not in this version history.
+<a name="line257"></a>     * @throws \PHPCR\RepositoryException if another error occurs.
+<a name="line258"></a>     * @api
+<a name="line259"></a>     */</span>
+<a name="line260"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getVersionLabels<span style="color: #009900;">&#40;</span><span style="color: #000088;">$version</span> <span style="color: #339933;">=</span> <span style="color: #009900; font-weight: bold;">NULL</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line261"></a>&nbsp;
+<a name="line262"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line263"></a>     * Removes the named version from this version history and automatically
+<a name="line264"></a>     * repairs the version graph. If the version to be removed is V, V's
+<a name="line265"></a>     * predecessor set is P and V's successor set is S, then the version graph
+<a name="line266"></a>     * is repaired s follows:
+<a name="line267"></a>     * - For each member of P, remove the reference to V from its successor list
+<a name="line268"></a>     *   and add references to each member of S.
+<a name="line269"></a>     * - For each member of S, remove the reference to V from its predecessor
+<a name="line270"></a>     *   list and add references to each member of P.
+<a name="line271"></a>     *
+<a name="line272"></a>     * &lt;b&gt;Note&lt;/b&gt; that this change is made immediately; there is no need to call save.
+<a name="line273"></a>     * In fact, since the the version storage is read-only with respect to normal
+<a name="line274"></a>     * repository methods, save does not even function in this context.
+<a name="line275"></a>     *
+<a name="line276"></a>     * @param string $versionName the name of a version in this version history.
+<a name="line277"></a>     * @return void
+<a name="line278"></a>     *
+<a name="line279"></a>     * @throws \PHPCR\ReferentialIntegrityException if the specified version is currently the target of a
+<a name="line280"></a>     *                                              REFERENCE property elsewhere in the repository
+<a name="line281"></a>     *                                              (not necessarily in this workspace) and the current Session
+<a name="line282"></a>     *                                              has read access to that REFERENCE property.
+<a name="line283"></a>     * @throws \PHPCR\AccessDeniedException if the current Session does not have permission to remove the
+<a name="line284"></a>     *                                      specified version or if the specified version is currently the
+<a name="line285"></a>     *                                      target of a REFERENCE property elsewhere in the repository
+<a name="line286"></a>     *                                      (not just in this workspace) and the current Session does not have
+<a name="line287"></a>     *                                      read access to that REFERENCE property.
+<a name="line288"></a>     * @throws \PHPCR\UnsupportedRepositoryOperationException if this operation is not supported by the implementation.
+<a name="line289"></a>     * @throws \PHPCR\Version\VersionException if the named version is not in this version history.
+<a name="line290"></a>     * @throws \PHPCR\RepositoryException if another error occurs.
+<a name="line291"></a>     * @api
+<a name="line292"></a>     */</span>
+<a name="line293"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> removeVersion<span style="color: #009900;">&#40;</span><span style="color: #000088;">$versionName</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line294"></a><span style="color: #009900;">&#125;</span>
+<a name="line295"></a>&nbsp;</pre>
+<div class="header">
+<h1>PHPCR</h1>
+<ul>
+<li><a href="../../../overview-summary.html">Overview</a></li>
+<li>Package</li><li>Class</li><li>Tree</li><li><a href="../../../overview-files.html">Files</a></li>
+<li><a href="../../../deprecated-list.html">Deprecated</a></li>
+<li><a href="../../../todo-list.html">Todo</a></li>
+<li><a href="../../../index-all.html">Index</a></li>
+</ul>
+</div>
+
+<div class="small_links">
+<a href="../../../index.html" target="_top">Frames</a>
+<a href="../../../source/phpcr/version/versionhistoryinterface.php.html" target="_top">No frames</a>
+</div>
+<hr>
+
+<p id="footer">This document was generated by <a href="http://peej.github.com/phpdoctor/">PHPDoctor: The PHP Documentation Creator</a></p>
+
+</body>
+
+</html>

@@ -1,0 +1,987 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+
+<html lang="en">
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="generator" content="PHPDoctor 2RC4 (http://peej.github.com/phpdoctor/)">
+<meta name="when" content="Fri, 06 May 2011 11:43:23 +0000">
+
+<link rel="stylesheet" type="text/css" href="../../stylesheet.css">
+<link rel="start" href="../../overview-summary.html">
+
+<title>PHPCR/SessionInterface.php (PHPCR API)</title>
+
+</head>
+<body id="file" onload="parent.document.title=document.title;">
+
+<div class="header">
+<h1>PHPCR</h1>
+<ul>
+<li><a href="../../overview-summary.html">Overview</a></li>
+<li>Package</li><li>Class</li><li>Tree</li><li><a href="../../overview-files.html">Files</a></li>
+<li><a href="../../deprecated-list.html">Deprecated</a></li>
+<li><a href="../../todo-list.html">Todo</a></li>
+<li><a href="../../index-all.html">Index</a></li>
+</ul>
+</div>
+
+<div class="small_links">
+<a href="../../index.html" target="_top">Frames</a>
+<a href="../../source/phpcr/sessioninterface.php.html" target="_top">No frames</a>
+</div>
+<hr>
+
+<h1>PHPCR/SessionInterface.php</h1>
+<div class="comment" id="overview_description"><p>Interface to describe the contract to implement a PHPCR session.</p><p>This file was ported from the Java JCR API to PHP by
+Karsten Dambekalns <karsten@typo3.org> for the FLOW3 project.</p><p>It is free software; you can redistribute it and/or modify it under
+the terms of the GNU Lesser General Public License as published by the
+Free Software Foundation, either version 3 of the License, or (at your
+option) any later version. Alternatively, you may use the Simplified
+BSD License.</p><p>This script is distributed in the hope that it will be useful, but
+WITHOUT ANY WARRANTY; without even the implied warranty of MERCHAN-
+TABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser
+General Public License for more details.</p><p>You should have received a copy of the GNU Lesser General Public
+License along with the script.
+If not, see <code><a href="http://www.gnu.org/licenses/lgpl.html">http://www.gnu.org/licenses/lgpl.html</a></code>.</p><p>The TYPO3 project - inspiring people to share!</p></div>
+
+<hr>
+
+<a name="line1"></a><pre class="php" style="font-family:monospace;"><span style="color: #000000; font-weight: bold;">&lt;?php</span>
+<a name="line2"></a><span style="color: #009933; font-style: italic;">/**
+<a name="line3"></a> * Interface to describe the contract to implement a PHPCR session.
+<a name="line4"></a> *
+<a name="line5"></a> * This file was ported from the Java JCR API to PHP by
+<a name="line6"></a> * Karsten Dambekalns &lt;karsten@typo3.org&gt; for the FLOW3 project.
+<a name="line7"></a> *
+<a name="line8"></a> * It is free software; you can redistribute it and/or modify it under
+<a name="line9"></a> * the terms of the GNU Lesser General Public License as published by the
+<a name="line10"></a> * Free Software Foundation, either version 3 of the License, or (at your
+<a name="line11"></a> * option) any later version. Alternatively, you may use the Simplified
+<a name="line12"></a> * BSD License.
+<a name="line13"></a> *
+<a name="line14"></a> * This script is distributed in the hope that it will be useful, but
+<a name="line15"></a> * WITHOUT ANY WARRANTY; without even the implied warranty of MERCHAN-
+<a name="line16"></a> * TABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser
+<a name="line17"></a> * General Public License for more details.
+<a name="line18"></a> *
+<a name="line19"></a> * You should have received a copy of the GNU Lesser General Public
+<a name="line20"></a> * License along with the script.
+<a name="line21"></a> * If not, see {@link http://www.gnu.org/licenses/lgpl.html}.
+<a name="line22"></a> *
+<a name="line23"></a> * The TYPO3 project - inspiring people to share!
+<a name="line24"></a> *
+<a name="line25"></a> * @license http://www.gnu.org/licenses/lgpl.html GNU Lesser General Public License, version 3 or later
+<a name="line26"></a> * @license http://opensource.org/licenses/bsd-license.php Simplified BSD License
+<a name="line27"></a> *
+<a name="line28"></a> * @package phpcr
+<a name="line29"></a> * @subpackage interfaces
+<a name="line30"></a> */</span>
+<a name="line31"></a>&nbsp;
+<a name="line32"></a><span style="color: #000000; font-weight: bold;">declare</span><span style="color: #009900;">&#40;</span>ENCODING <span style="color: #339933;">=</span> <span style="color: #0000ff;">'utf-8'</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line33"></a><span style="color: #000000; font-weight: bold;">namespace</span> PHPCR<span style="color: #339933;">;</span>
+<a name="line34"></a>&nbsp;
+<a name="line35"></a><span style="color: #009933; font-style: italic;">/**
+<a name="line36"></a> * Describes the implementation of a session class.
+<a name="line37"></a> *
+<a name="line38"></a> * The Session object provides read and (in level 2) write access to the
+<a name="line39"></a> * content of a particular workspace in the repository.
+<a name="line40"></a> *
+<a name="line41"></a> * The Session object is returned by Repository::login(). It encapsulates both
+<a name="line42"></a> * the authorization settings of a particular user (as specified by the passed
+<a name="line43"></a> * Credentials) and a binding to the workspace specified by the workspaceName
+<a name="line44"></a> * passed on login.
+<a name="line45"></a> *
+<a name="line46"></a> * Each Session object is associated one-to-one with a Workspace object. The
+<a name="line47"></a> * Workspace object represents a &quot;view&quot; of an actual repository workspace
+<a name="line48"></a> * entity as seen through the authorization settings of its associated Session.
+<a name="line49"></a> *
+<a name="line50"></a> * &lt;b&gt;PHPCR Note:&lt;/b&gt;
+<a name="line51"></a> *   We removed getValueFactory as the ValueFactory interface has
+<a name="line52"></a> *   been removed. To set properties, use NodeInterface::setProperty() or
+<a name="line53"></a> *   PropertyInterface::setValue() with native PHP variables.
+<a name="line54"></a> *
+<a name="line55"></a> * @package phpcr
+<a name="line56"></a> * @subpackage interfaces
+<a name="line57"></a> * @api
+<a name="line58"></a> */</span>
+<a name="line59"></a><span style="color: #000000; font-weight: bold;">interface</span> SessionInterface <span style="color: #009900;">&#123;</span>
+<a name="line60"></a>&nbsp;
+<a name="line61"></a>    <span style="color: #009933; font-style: italic;">/**#@+
+<a name="line62"></a>     * @var string
+<a name="line63"></a>     */</span>
+<a name="line64"></a>&nbsp;
+<a name="line65"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line66"></a>     * A constant representing the add_node action string, used to determine if
+<a name="line67"></a>     * this Session has permission to add a new node.
+<a name="line68"></a>     * @api
+<a name="line69"></a>     */</span>
+<a name="line70"></a>    <span style="color: #000000; font-weight: bold;">const</span> ACTION_ADD_NODE <span style="color: #339933;">=</span> <span style="color: #0000ff;">'add_node'</span><span style="color: #339933;">;</span>
+<a name="line71"></a>&nbsp;
+<a name="line72"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line73"></a>     * A constant representing the read action string, used to determine if this
+<a name="line74"></a>     * Session has permission to retrieve an item (and read the value, in the case
+<a name="line75"></a>     * of a property).
+<a name="line76"></a>     * @api
+<a name="line77"></a>     */</span>
+<a name="line78"></a>    <span style="color: #000000; font-weight: bold;">const</span> ACTION_READ <span style="color: #339933;">=</span> <span style="color: #0000ff;">'read'</span><span style="color: #339933;">;</span>
+<a name="line79"></a>&nbsp;
+<a name="line80"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line81"></a>     * A constant representing the remove action string, used to determine if this
+<a name="line82"></a>     * Session has permission to remove an item.
+<a name="line83"></a>     * @api
+<a name="line84"></a>     */</span>
+<a name="line85"></a>    <span style="color: #000000; font-weight: bold;">const</span> ACTION_REMOVE <span style="color: #339933;">=</span> <span style="color: #0000ff;">'remove'</span><span style="color: #339933;">;</span>
+<a name="line86"></a>&nbsp;
+<a name="line87"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line88"></a>     * A constant representing the set_property action string, used to determine if
+<a name="line89"></a>     * this Session has permission to set (add or modify) a property.
+<a name="line90"></a>     * @api
+<a name="line91"></a>     */</span>
+<a name="line92"></a>    <span style="color: #000000; font-weight: bold;">const</span> ACTION_SET_PROPERTY <span style="color: #339933;">=</span> <span style="color: #0000ff;">'set_property'</span><span style="color: #339933;">;</span>
+<a name="line93"></a>&nbsp;
+<a name="line94"></a>    <span style="color: #009933; font-style: italic;">/**#@-*/</span>
+<a name="line95"></a>&nbsp;
+<a name="line96"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line97"></a>     * Returns the Repository object through which this session was acquired.
+<a name="line98"></a>     *
+<a name="line99"></a>     * @return \PHPCR\RepositoryInterface a Repository object.
+<a name="line100"></a>     * @api
+<a name="line101"></a>     */</span>
+<a name="line102"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getRepository<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line103"></a>&nbsp;
+<a name="line104"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line105"></a>     * Gets the user ID associated with this Session.
+<a name="line106"></a>     *
+<a name="line107"></a>     * How the user ID is set is up to the implementation, it may be a string passed in as part of the credentials
+<a name="line108"></a>     * or it may be a string acquired in some other way. This method is free to return an &quot;anonymous user ID&quot; or null.
+<a name="line109"></a>     *
+<a name="line110"></a>     * @return string The user id associated with this Session.
+<a name="line111"></a>     * @api
+<a name="line112"></a>     */</span>
+<a name="line113"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getUserID<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line114"></a>&nbsp;
+<a name="line115"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line116"></a>     * Returns the names of the attributes set in this session as a result of
+<a name="line117"></a>     * the Credentials that were used to acquire it.
+<a name="line118"></a>     *
+<a name="line119"></a>     * Not all Credentials implementations will contain attributes (though, for example,
+<a name="line120"></a>     * SimpleCredentials does allow for them). This method returns an empty
+<a name="line121"></a>     * array if the Credentials instance did not provide attributes.
+<a name="line122"></a>     *
+<a name="line123"></a>     * @return array A string array containing the names of all attributes passed in the credentials used to acquire this session.
+<a name="line124"></a>     * @api
+<a name="line125"></a>     */</span>
+<a name="line126"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getAttributeNames<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line127"></a>&nbsp;
+<a name="line128"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line129"></a>     * Returns the value of the named attribute, or null if no
+<a name="line130"></a>     * attribute of the given name exists. See getAttributeNames().
+<a name="line131"></a>     *
+<a name="line132"></a>     * @param string $name The name of an attribute passed in the credentials used to acquire this session.
+<a name="line133"></a>     * @return mixed The value of the attribute or null if no attribute of the given name exists.
+<a name="line134"></a>     * @api
+<a name="line135"></a>     */</span>
+<a name="line136"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getAttribute<span style="color: #009900;">&#40;</span><span style="color: #000088;">$name</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line137"></a>&nbsp;
+<a name="line138"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line139"></a>     * Returns the Workspace attached to this Session.
+<a name="line140"></a>     *
+<a name="line141"></a>     * @return \PHPCR\WorkspaceInterface a Workspace object.
+<a name="line142"></a>     * @api
+<a name="line143"></a>     */</span>
+<a name="line144"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getWorkspace<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line145"></a>&nbsp;
+<a name="line146"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line147"></a>     * Returns the root node of the workspace, &quot;/&quot;.
+<a name="line148"></a>     *
+<a name="line149"></a>     * This node is the main access point to the content of the workspace.
+<a name="line150"></a>     *
+<a name="line151"></a>     * @return \PHPCR\NodeInterface The root node of the workspace: a Node object.
+<a name="line152"></a>     * @throws RepositoryException if an error occurs.
+<a name="line153"></a>     * @api
+<a name="line154"></a>     */</span>
+<a name="line155"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getRootNode<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line156"></a>&nbsp;
+<a name="line157"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line158"></a>     * Returns a new session in accordance with the specified (new) Credentials.
+<a name="line159"></a>     *
+<a name="line160"></a>     * Allows the current user to &quot;impersonate&quot; another using incomplete or relaxed
+<a name="line161"></a>     * credentials requirements (perhaps including a user name but no password, for
+<a name="line162"></a>     * example), assuming that this Session gives them that permission.
+<a name="line163"></a>     * The new Session is tied to a new Workspace instance. In other words, Workspace
+<a name="line164"></a>     * instances are not re-used. However, the Workspace instance returned represents
+<a name="line165"></a>     * the same actual persistent workspace entity in the repository as is represented
+<a name="line166"></a>     * by the Workspace object tied to this Session.
+<a name="line167"></a>     *
+<a name="line168"></a>     * @param \PHPCR\CredentialsInterface $credentials A Credentials object
+<a name="line169"></a>     * @return \PHPCR\SessionInterface a Session object
+<a name="line170"></a>     *
+<a name="line171"></a>     * @throws \PHPCR\LoginException if the current session does not have sufficient access to perform the operation.
+<a name="line172"></a>     * @throws \PHPCR\RepositoryException if another error occurs.
+<a name="line173"></a>     * @api
+<a name="line174"></a>     */</span>
+<a name="line175"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> impersonate<span style="color: #009900;">&#40;</span>\PHPCR\CredentialsInterface <span style="color: #000088;">$credentials</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line176"></a>&nbsp;
+<a name="line177"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line178"></a>     * Returns the node specified by the given identifier.
+<a name="line179"></a>     *
+<a name="line180"></a>     * Applies to both referenceable and non-referenceable nodes.
+<a name="line181"></a>     *
+<a name="line182"></a>     * @param string $id An identifier.
+<a name="line183"></a>     * @return \PHPCR\NodeInterface A Node.
+<a name="line184"></a>     *
+<a name="line185"></a>     * @throws \PHPCR\ItemNotFoundException if no node with the specified identifier exists or if this Session does not have read access to the node with the specified identifier.
+<a name="line186"></a>     * @throws \PHPCR\RepositoryException if another error occurs.
+<a name="line187"></a>     * @api
+<a name="line188"></a>     */</span>
+<a name="line189"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getNodeByIdentifier<span style="color: #009900;">&#40;</span><span style="color: #000088;">$id</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line190"></a>&nbsp;
+<a name="line191"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line192"></a>     * Returns the node at the specified absolute path in the workspace.
+<a name="line193"></a>     *
+<a name="line194"></a>     * If no such node exists, then it returns the property at the specified path.
+<a name="line195"></a>     *
+<a name="line196"></a>     * This method should only be used if the application does not know whether the
+<a name="line197"></a>     * item at the indicated path is property or node. In cases where the application
+<a name="line198"></a>     * has this information, either getNode(java.lang.String) or
+<a name="line199"></a>     * getProperty(java.lang.String) should be used, as appropriate. In many repository
+<a name="line200"></a>     * implementations the node and property-specific methods are likely to be more
+<a name="line201"></a>     * efficient than getItem.
+<a name="line202"></a>     *
+<a name="line203"></a>     * @param string $absPath An absolute path.
+<a name="line204"></a>     * @return \PHPCR\ItemInterface
+<a name="line205"></a>     *
+<a name="line206"></a>     * @throws \PHPCR\PathNotFoundException if no accessible item is found at the specified path.
+<a name="line207"></a>     * @throws \PHPCR\RepositoryException if another error occurs.
+<a name="line208"></a>     * @api
+<a name="line209"></a>     */</span>
+<a name="line210"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getItem<span style="color: #009900;">&#40;</span><span style="color: #000088;">$absPath</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line211"></a>&nbsp;
+<a name="line212"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line213"></a>     * Returns the node at the specified absolute path in the workspace.
+<a name="line214"></a>     *
+<a name="line215"></a>     * @param string $absPath An absolute path.
+<a name="line216"></a>     * @return \PHPCR\NodeInterface A node
+<a name="line217"></a>     *
+<a name="line218"></a>     * @throws \PHPCR\PathNotFoundException if no accessible node is found at the specified path.
+<a name="line219"></a>     * @throws \PHPCR\RepositoryException if another error occurs.
+<a name="line220"></a>     * @api
+<a name="line221"></a>     */</span>
+<a name="line222"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getNode<span style="color: #009900;">&#40;</span><span style="color: #000088;">$absPath</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line223"></a>&nbsp;
+<a name="line224"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line225"></a>     * Returns the property at the specified absolute path in the workspace.
+<a name="line226"></a>     *
+<a name="line227"></a>     * @param string $absPath An absolute path.
+<a name="line228"></a>     * @return \PHPCR\PropertyInterface A property
+<a name="line229"></a>     *
+<a name="line230"></a>     * @throws \PHPCR\PathNotFoundException if no accessible property is found at the specified path.
+<a name="line231"></a>     * @throws \PHPCR\RepositoryException if another error occurs.
+<a name="line232"></a>     * @api
+<a name="line233"></a>     */</span>
+<a name="line234"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getProperty<span style="color: #009900;">&#40;</span><span style="color: #000088;">$absPath</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line235"></a>&nbsp;
+<a name="line236"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line237"></a>     * Determines if the item identified by a path does exists.
+<a name="line238"></a>     *
+<a name="line239"></a>     * Returns true if an item exists at absPath and this Session has read
+<a name="line240"></a>     * access to it; otherwise returns false.
+<a name="line241"></a>     *
+<a name="line242"></a>     * @param string $absPath An absolute path to an item to be found.
+<a name="line243"></a>     * @return boolean True if the item exists, else false.
+<a name="line244"></a>     *
+<a name="line245"></a>     * @throws \PHPCR\RepositoryException if absPath is not a well-formed absolute path.
+<a name="line246"></a>     * @api
+<a name="line247"></a>     */</span>
+<a name="line248"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> itemExists<span style="color: #009900;">&#40;</span><span style="color: #000088;">$absPath</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line249"></a>&nbsp;
+<a name="line250"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line251"></a>     * Determines if the node identified by the given absolute path does exist.
+<a name="line252"></a>     *
+<a name="line253"></a>     * Returns true if a node exists at absPath and this Session has read
+<a name="line254"></a>     * access to it; otherwise returns false.
+<a name="line255"></a>     *
+<a name="line256"></a>     * @param string $absPath An absolute path to the node to be found.
+<a name="line257"></a>     * @return boolean True if the item does esist
+<a name="line258"></a>     *
+<a name="line259"></a>     * @throws \PHPCR\RepositoryException if absPath is not a well-formed absolute path.
+<a name="line260"></a>     * @api
+<a name="line261"></a>     */</span>
+<a name="line262"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> nodeExists<span style="color: #009900;">&#40;</span><span style="color: #000088;">$absPath</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line263"></a>&nbsp;
+<a name="line264"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line265"></a>     * Determines the existance of a property.
+<a name="line266"></a>     *
+<a name="line267"></a>     * Returns true if a property exists at absPath and this Session has read
+<a name="line268"></a>     * access to it; otherwise returns false.
+<a name="line269"></a>     *
+<a name="line270"></a>     * @param string $absPath An absolute path to the property to be found.
+<a name="line271"></a>     * @return boolean True if the property is available.
+<a name="line272"></a>     * @throws \PHPCR\RepositoryException if absPath is not a well-formed absolute path.
+<a name="line273"></a>     * @api
+<a name="line274"></a>     */</span>
+<a name="line275"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> propertyExists<span style="color: #009900;">&#40;</span><span style="color: #000088;">$absPath</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line276"></a>&nbsp;
+<a name="line277"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line278"></a>     * Moves the node at srcAbsPath (and its entire subgraph) to the new location
+<a name="line279"></a>     * at destAbsPath.
+<a name="line280"></a>     *
+<a name="line281"></a>     * This is a session-write method and therefor requires a save to dispatch
+<a name="line282"></a>     * the change.
+<a name="line283"></a>     *
+<a name="line284"></a>     * The identifiers of referenceable nodes must not be changed by a move. The
+<a name="line285"></a>     * identifiers of non-referenceable nodes may change.
+<a name="line286"></a>     *
+<a name="line287"></a>     * A ConstraintViolationException is thrown either immediately, on dispatch
+<a name="line288"></a>     * or on persist, if performing this operation would violate a node type or
+<a name="line289"></a>     * implementation-specific constraint. Implementations may differ on when
+<a name="line290"></a>     * this validation is performed.
+<a name="line291"></a>     *
+<a name="line292"></a>     * As well, a ConstraintViolationException will be thrown on persist if an
+<a name="line293"></a>     * attempt is made to separately save either the source or destination node.
+<a name="line294"></a>     *
+<a name="line295"></a>     * Note that this behaviour differs from that of Workspace.move($srcAbsPath,
+<a name="line296"></a>     * $destAbsPath), which is a workspace-write method and therefore
+<a name="line297"></a>     * immediately dispatches changes.
+<a name="line298"></a>     *
+<a name="line299"></a>     * The destAbsPath provided must not have an index on its final element. If
+<a name="line300"></a>     * ordering is supported by the node type of the parent node of the new location,
+<a name="line301"></a>     * then the newly moved node is appended to the end of the child node list.
+<a name="line302"></a>     *
+<a name="line303"></a>     * This method cannot be used to move an individual property by itself. It
+<a name="line304"></a>     * moves an entire node and its subgraph.
+<a name="line305"></a>     *
+<a name="line306"></a>     * @param string $srcAbsPath the root of the subgraph to be moved.
+<a name="line307"></a>     * @param string $destAbsPath the location to which the subgraph is to be moved.
+<a name="line308"></a>     * @return void
+<a name="line309"></a>     *
+<a name="line310"></a>     * @throws \PHPCR\ItemExistsException if a node already exists at destAbsPath and same-name siblings are not allowed.
+<a name="line311"></a>     * @throws \PHPCR\PathNotFoundException if either srcAbsPath or destAbsPath cannot be found and this implementation
+<a name="line312"></a>     *                                      performs this validation immediately.
+<a name="line313"></a>     * @throws \PHPCR\Version\VersionException if the parent node of destAbsPath or the parent node of srcAbsPath is
+<a name="line314"></a>     *                                         versionable and checked-in, or or is non-versionable and its nearest
+<a name="line315"></a>     *                                         versionable ancestor is checked-in and this implementation performs
+<a name="line316"></a>     *                                         this validation immediately.
+<a name="line317"></a>     * @throws \PHPCR\ConstraintViolationException if a node-type or other constraint violation is detected immediately
+<a name="line318"></a>     *                                             and this implementation performs this validation immediately.
+<a name="line319"></a>     * @throws \PHPCR\Lock\LockException if the move operation would violate a lock and this implementation performs
+<a name="line320"></a>     *                                   this validation immediately.
+<a name="line321"></a>     * @throws \PHPCR\RepositoryException if the last element of destAbsPath has an index or if another error occurs.
+<a name="line322"></a>     * @api
+<a name="line323"></a>     */</span>
+<a name="line324"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> move<span style="color: #009900;">&#40;</span><span style="color: #000088;">$srcAbsPath</span><span style="color: #339933;">,</span> <span style="color: #000088;">$destAbsPath</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line325"></a>&nbsp;
+<a name="line326"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line327"></a>     * Removes the specified item and its subgraph.
+<a name="line328"></a>     *
+<a name="line329"></a>     * This is a session-write method and therefore requires a save in order to
+<a name="line330"></a>     * dispatch the change.
+<a name="line331"></a>     *
+<a name="line332"></a>     * If a node with same-name siblings is removed, this decrements by one the
+<a name="line333"></a>     * indices of all the siblings with indices greater than that of the removed
+<a name="line334"></a>     * node. In other words, a removal compacts the array of same-name siblings
+<a name="line335"></a>     * and causes the minimal re-numbering required to maintain the original
+<a name="line336"></a>     * order but leave no gaps in the numbering.
+<a name="line337"></a>     *
+<a name="line338"></a>     * @param string $absPath the absolute path of the item to be removed.
+<a name="line339"></a>     * @return void
+<a name="line340"></a>     *
+<a name="line341"></a>     * @throws \PHPCR\Version\VersionException if the parent node of the item at absPath is read-only due to a
+<a name="line342"></a>     *                                         checked-in node and this implementation performs this validation
+<a name="line343"></a>     *                                         immediately.
+<a name="line344"></a>     * @throws \PHPCR\Lock\LockException if a lock prevents the removal of the specified item and this implementation
+<a name="line345"></a>     *                                   performs this validation immediately instead.
+<a name="line346"></a>     * @throws \PHPCR\ConstraintViolationException if removing the specified item would violate a node type or
+<a name="line347"></a>     *                                             implementation-specific constraint and this implementation performs
+<a name="line348"></a>     *                                             this validation immediately.
+<a name="line349"></a>     * @throws \PHPCR\PathNotFoundException if no accessible item is found at $absPath property or if the specified
+<a name="line350"></a>     *                                      item or an item in its subgraph is currently the target of a REFERENCE
+<a name="line351"></a>     *                                      property located in this workspace but outside the specified item's
+<a name="line352"></a>     *                                      subgraph and the current Session does not have read access to that
+<a name="line353"></a>     *                                      REFERENCE property.
+<a name="line354"></a>     * @throws \PHPCR\RepositoryException if another error occurs.
+<a name="line355"></a>     * @see Item::remove()
+<a name="line356"></a>     * @api
+<a name="line357"></a>     */</span>
+<a name="line358"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> removeItem<span style="color: #009900;">&#40;</span><span style="color: #000088;">$absPath</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line359"></a>&nbsp;
+<a name="line360"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line361"></a>     * Validates all pending changes currently recorded in this Session.
+<a name="line362"></a>     *
+<a name="line363"></a>     * If validation of all pending changes succeeds, then this change information
+<a name="line364"></a>     * is cleared from the Session.
+<a name="line365"></a>     *
+<a name="line366"></a>     * If the save occurs outside a transaction, the changes are dispatched and
+<a name="line367"></a>     * persisted. Upon being persisted the changes become potentially visible to
+<a name="line368"></a>     * other Sessions bound to the same persitent workspace.
+<a name="line369"></a>     *
+<a name="line370"></a>     * If the save occurs within a transaction, the changes are dispatched but
+<a name="line371"></a>     * are not persisted until the transaction is committed.
+<a name="line372"></a>     *
+<a name="line373"></a>     * If validation fails, then no pending changes are dispatched and they
+<a name="line374"></a>     * remain recorded on the Session. There is no best-effort or partial save.
+<a name="line375"></a>     *
+<a name="line376"></a>     * @return void
+<a name="line377"></a>     *
+<a name="line378"></a>     * @throws \PHPCR\AccessDeniedException if any of the changes to be persisted would violate the access privileges
+<a name="line379"></a>     *                                      of the this Session. Also thrown if any of the changes to be persisted
+<a name="line380"></a>     *                                      would cause the removal of a node that is currently referenced by a
+<a name="line381"></a>     *                                      REFERENCE property that this Session does not have read access to.
+<a name="line382"></a>     * @throws \PHPCR\ItemExistsException if any of the changes to be persisted would be prevented by the presence
+<a name="line383"></a>     *                                    of an already existing item in the workspace.
+<a name="line384"></a>     * @throws \PHPCR\ConstraintViolationException if any of the changes to be persisted would violate a node type or
+<a name="line385"></a>     *                                             restriction. Additionally, a repository may use this exception to
+<a name="line386"></a>     *                                             enforce implementation- or configuration-dependent restrictions.
+<a name="line387"></a>     * @throws \PHPCR\InvalidItemStateException if any of the changes to be persisted conflicts with a change already
+<a name="line388"></a>     *                                          persisted through another session and the implementation is such that
+<a name="line389"></a>     *                                          this conflict can only be detected at save-time and therefore was not
+<a name="line390"></a>     *                                          detected earlier, at change-time.
+<a name="line391"></a>     * @throws \PHPCR\ReferentialIntegrityException if any of the changes to be persisted would cause the removal of a
+<a name="line392"></a>     *                                              node that is currently referenced by a REFERENCE property that
+<a name="line393"></a>     *                                              this Session has read access to.
+<a name="line394"></a>     * @throws \PHPCR\Version\VersionException if the save would make a result in a change to persistent storage
+<a name="line395"></a>     *                                         that would violate the read-only status of a checked-in node.
+<a name="line396"></a>     * @throws \PHPCR\Lock\LockException if the save would result in a change to persistent storage that
+<a name="line397"></a>     *                                   would violate a lock.
+<a name="line398"></a>     * @throws \PHPCR\NodeType\NoSuchNodeTypeException if the save would result in the addition of a node with an
+<a name="line399"></a>     *                                                 unrecognized node type.
+<a name="line400"></a>     * @throws \PHPCR\RepositoryException if another error occurs.
+<a name="line401"></a>     * @api
+<a name="line402"></a>     */</span>
+<a name="line403"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> save<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line404"></a>&nbsp;
+<a name="line405"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line406"></a>     * Reloads the current session.
+<a name="line407"></a>     *
+<a name="line408"></a>     * If keepChanges is false, this method discards all pending changes currently
+<a name="line409"></a>     * recorded in this Session and returns all items to reflect the current saved
+<a name="line410"></a>     * state. Outside a transaction this state is simply the current state of
+<a name="line411"></a>     * persistent storage. Within a transaction, this state will reflect persistent
+<a name="line412"></a>     * storage as modified by changes that have been saved but not yet committed.
+<a name="line413"></a>     * If keepChanges is true then pending change are not discarded but items that
+<a name="line414"></a>     * do not have changes pending have their state refreshed to reflect the current
+<a name="line415"></a>     * saved state, thus revealing changes made by other sessions.
+<a name="line416"></a>     *
+<a name="line417"></a>     * @param boolean $keepChanges Switch to override current changes kept in the session.
+<a name="line418"></a>     * @return void
+<a name="line419"></a>     *
+<a name="line420"></a>     * @throws \PHPCR\RepositoryException if an error occurs.
+<a name="line421"></a>     * @api
+<a name="line422"></a>     */</span>
+<a name="line423"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> refresh<span style="color: #009900;">&#40;</span><span style="color: #000088;">$keepChanges</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line424"></a>&nbsp;
+<a name="line425"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line426"></a>     * Clears the state of the current session
+<a name="line427"></a>     *
+<a name="line428"></a>     * Removes all cached objects, planned changes etc. Mostly useful for testing purposes.
+<a name="line429"></a>     */</span>
+<a name="line430"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> clear<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line431"></a>&nbsp;
+<a name="line432"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line433"></a>     * Determines if the current session has pending changes.
+<a name="line434"></a>     *
+<a name="line435"></a>     * Returns true if this session holds pending (that is, unsaved) changes;
+<a name="line436"></a>     * otherwise returns false.
+<a name="line437"></a>     *
+<a name="line438"></a>     * @return boolean a boolean
+<a name="line439"></a>     * @throws \PHPCR\RepositoryException if an error occurs
+<a name="line440"></a>     * @api
+<a name="line441"></a>     */</span>
+<a name="line442"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> hasPendingChanges<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line443"></a>&nbsp;
+<a name="line444"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line445"></a>     * Determines if the current session is permitted to run the passed actions.
+<a name="line446"></a>     *
+<a name="line447"></a>     * Returns true if this Session has permission to perform the specified
+<a name="line448"></a>     * actions at the specified absPath and false otherwise.
+<a name="line449"></a>     * The actions parameter is a comma separated list of action strings.
+<a name="line450"></a>     * The following action strings are defined:
+<a name="line451"></a>     *
+<a name="line452"></a>     * - add_node: If hasPermission(path, &quot;add_node&quot;) returns true, then this
+<a name="line453"></a>     *             Session has permission to add a node at path.
+<a name="line454"></a>     * - set_property: If hasPermission(path, &quot;set_property&quot;) returns true, then
+<a name="line455"></a>     *                 this Session has permission to set (add or change) a property at path.
+<a name="line456"></a>     * - remove: If hasPermission(path, &quot;remove&quot;) returns true, then this Session
+<a name="line457"></a>     *           has permission to remove an item at path.
+<a name="line458"></a>     * - read: If hasPermission(path, &quot;read&quot;) returns true, then this Session has
+<a name="line459"></a>     *         permission to retrieve (and read the value of, in the case of a property)
+<a name="line460"></a>     *         an item at path.
+<a name="line461"></a>     *
+<a name="line462"></a>     * When more than one action is specified in the actions parameter, this method
+<a name="line463"></a>     * will only return true if this Session has permission to perform all of the
+<a name="line464"></a>     * listed actions at the specified path.
+<a name="line465"></a>     *
+<a name="line466"></a>     * The information returned through this method will only reflect the access
+<a name="line467"></a>     * control status (both JCR defined and implementation-specific) and not
+<a name="line468"></a>     * other restrictions that may exist, such as node type constraints. For
+<a name="line469"></a>     * example, even though hasPermission may indicate that a particular Session
+<a name="line470"></a>     * may add a property at /A/B/C, the node type of the node at /A/B may
+<a name="line471"></a>     * prevent the addition of a property called C.
+<a name="line472"></a>     *
+<a name="line473"></a>     * @param string $absPath an absolute path.
+<a name="line474"></a>     * @param string $actions a comma separated list of action strings.
+<a name="line475"></a>     * @return boolean true if this Session has permission to perform the specified actions at the specified absPath.
+<a name="line476"></a>     *
+<a name="line477"></a>     * @throws \PHPCR\RepositoryException if an error occurs.
+<a name="line478"></a>     * @api
+<a name="line479"></a>     */</span>
+<a name="line480"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> hasPermission<span style="color: #009900;">&#40;</span><span style="color: #000088;">$absPath</span><span style="color: #339933;">,</span> <span style="color: #000088;">$actions</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line481"></a>&nbsp;
+<a name="line482"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line483"></a>     * Determines whether this Session has permission to perform the specified actions
+<a name="line484"></a>     * at the specified absPath.
+<a name="line485"></a>     *
+<a name="line486"></a>     * This method quietly returns if the access request is
+<a name="line487"></a>     * permitted, or throws a \PHPCR\Security\AccessControlException otherwise.
+<a name="line488"></a>     * The actions parameter is a comma separated list of action strings. The following
+<a name="line489"></a>     * action strings are defined:
+<a name="line490"></a>     *
+<a name="line491"></a>     * - add_node: If checkPermission(path, &quot;add_node&quot;) returns quietly, then this Session
+<a name="line492"></a>     *             has permission to add a node at path, otherwise permission is denied.
+<a name="line493"></a>     * - set_property: If checkPermission(path, &quot;set_property&quot;) returns quietly, then this
+<a name="line494"></a>     *                 Session has permission to set (add or change) a property at path, otherwise
+<a name="line495"></a>     *                 permission is denied.
+<a name="line496"></a>     * - remove: If checkPermission(path, &quot;remove&quot;) returns quietly, then this Session
+<a name="line497"></a>     *           has permission to remove an item at path, otherwise permission is denied.
+<a name="line498"></a>     * - read: If checkPermission(path, &quot;read&quot;) returns quietly, then this Session has
+<a name="line499"></a>     *         permission to retrieve (and read the value of, in the case of a property) an
+<a name="line500"></a>     *         item at path, otherwise permission is denied.
+<a name="line501"></a>     *
+<a name="line502"></a>     * When more than one action is specified in the actions parameter, this method
+<a name="line503"></a>     * will only return true if this Session has permission to perform all of the
+<a name="line504"></a>     * listed actions at the specified path.
+<a name="line505"></a>     *
+<a name="line506"></a>     * The information returned through this method will only reflect the access
+<a name="line507"></a>     * control status (both JCR defined and implementation-specific) and not
+<a name="line508"></a>     * other restrictions that may exist, such as node type constraints. For
+<a name="line509"></a>     * example, even though hasPermission may indicate that a particular Session
+<a name="line510"></a>     * may add a property at /A/B/C, the node type of the node at /A/B may
+<a name="line511"></a>     * prevent the addition of a property called C.
+<a name="line512"></a>     *
+<a name="line513"></a>     * @param string $absPath an absolute path.
+<a name="line514"></a>     * @param string $actions a comma separated list of action strings.
+<a name="line515"></a>     * @return void
+<a name="line516"></a>     *
+<a name="line517"></a>     * @throws \PHPCR\Security\AccessControlException If permission is denied.
+<a name="line518"></a>     * @throws \PHPCR\RepositoryException if another error occurs.
+<a name="line519"></a>     * @api
+<a name="line520"></a>     */</span>
+<a name="line521"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> checkPermission<span style="color: #009900;">&#40;</span><span style="color: #000088;">$absPath</span><span style="color: #339933;">,</span> <span style="color: #000088;">$actions</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line522"></a>&nbsp;
+<a name="line523"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line524"></a>     * Checks whether an operation can be performed given as much context as can
+<a name="line525"></a>     * be determined by the repository, including:
+<a name="line526"></a>     *
+<a name="line527"></a>     * - Permissions granted to the current user, including access control privileges.
+<a name="line528"></a>     * - Current state of the target object (reflecting locks, checkin/checkout
+<a name="line529"></a>     *   status, retention and hold status etc.).
+<a name="line530"></a>     * - Repository capabilities.
+<a name="line531"></a>     * - Node type-enforced restrictions.
+<a name="line532"></a>     * - Repository configuration-specific restrictions.
+<a name="line533"></a>     *
+<a name="line534"></a>     * The implementation of this method is best effort: returning false guarantees
+<a name="line535"></a>     * that the operation cannot be performed, but returning true does not guarantee
+<a name="line536"></a>     * the opposite.
+<a name="line537"></a>     *
+<a name="line538"></a>     * The methodName parameter identifies the method in question by its name
+<a name="line539"></a>     * as defined in the Javadoc.
+<a name="line540"></a>     *
+<a name="line541"></a>     * The target parameter identifies the object on which the specified method
+<a name="line542"></a>     * is called.
+<a name="line543"></a>     *
+<a name="line544"></a>     * The arguments parameter contains a Map object consisting of
+<a name="line545"></a>     * name/value pairs where the name is a String holding the parameter name of
+<a name="line546"></a>     * the method as defined in the Javadoc and the value is a variable.
+<a name="line547"></a>     *
+<a name="line548"></a>     * For example, given a Session S and Node N then
+<a name="line549"></a>     *
+<a name="line550"></a>     * Map p = new HashMap();
+<a name="line551"></a>     * p.put(&quot;relPath&quot;, &quot;foo&quot;);
+<a name="line552"></a>     * boolean b = S.hasCapability(&quot;addNode&quot;, N, p);
+<a name="line553"></a>     *
+<a name="line554"></a>     * will result in b == false if a child node called foo cannot be added to
+<a name="line555"></a>     * the node N within the session S.
+<a name="line556"></a>     *
+<a name="line557"></a>     * @param string $methodName the nakme of the method.
+<a name="line558"></a>     * @param object $target the target object of the operation.
+<a name="line559"></a>     * @param array $arguments the arguments of the operation.
+<a name="line560"></a>     * @return boolean FALSE if the operation cannot be performed, TRUE if the operation can be performed or if the
+<a name="line561"></a>     *                       repository cannot determine whether the operation can be performed.
+<a name="line562"></a>     *
+<a name="line563"></a>     * @throws \PHPCR\RepositoryException if an error occurs
+<a name="line564"></a>     * @api
+<a name="line565"></a>     */</span>
+<a name="line566"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> hasCapability<span style="color: #009900;">&#40;</span><span style="color: #000088;">$methodName</span><span style="color: #339933;">,</span> <span style="color: #000088;">$target</span><span style="color: #339933;">,</span> <a href="http://www.php.net/array"><span style="color: #990000;">array</span></a> <span style="color: #000088;">$arguments</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line567"></a>&nbsp;
+<a name="line568"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line569"></a>     * Fetches a content handler without altering the session.
+<a name="line570"></a>     *
+<a name="line571"></a>     * Returns an \PHPCR\ContentHandlerInterface which is used to push SAX events
+<a name="line572"></a>     * to the repository. If the incoming XML (in the form of SAX events)
+<a name="line573"></a>     * does not appear to be a JCR system view XML document then it is interpreted
+<a name="line574"></a>     * as a JCR document view XML document.
+<a name="line575"></a>     * The incoming XML is deserialized into a subgraph of items immediately below
+<a name="line576"></a>     * the node at parentAbsPath.
+<a name="line577"></a>     *
+<a name="line578"></a>     * This method simply returns the ContentHandler without altering the state of
+<a name="line579"></a>     * the session; the actual deserialization to the session transient space is
+<a name="line580"></a>     * done through the methods of the ContentHandler. Invalid XML data will
+<a name="line581"></a>     * cause the ContentHandler to throw a SAXException.
+<a name="line582"></a>     *
+<a name="line583"></a>     * As SAX events are fed into the ContentHandler, the tree of new items is built
+<a name="line584"></a>     * in the transient storage of the session. In order to dispatch the new
+<a name="line585"></a>     * content, save must be called. See Workspace.getImportContentHandler() for
+<a name="line586"></a>     * a workspace-write version of this method.
+<a name="line587"></a>     *
+<a name="line588"></a>     * The flag uuidBehavior governs how the identifiers of incoming nodes are
+<a name="line589"></a>     * handled. There are four options:
+<a name="line590"></a>     *
+<a name="line591"></a>     * - ImportUUIDBehavior.IMPORT_UUID_CREATE_NEW: Incoming identifiers nodes are added
+<a name="line592"></a>     *   in the same way that new node is added with Node.addNode. That is, they are either
+<a name="line593"></a>     *   assigned newly created identifiers upon addition or upon save (depending on the
+<a name="line594"></a>     *   implementation). In either case, identifier collisions will not occur.
+<a name="line595"></a>     *
+<a name="line596"></a>     * - ImportUUIDBehavior.IMPORT_UUID_COLLISION_REMOVE_EXISTING: If an incoming node has
+<a name="line597"></a>     *   the same identifier as a node already existing in the workspace then the already
+<a name="line598"></a>     *   existing node (and its subgraph) is removed from wherever it may be in the workspace
+<a name="line599"></a>     *   before the incoming node is added. Note that this can result in nodes &quot;disappearing&quot;
+<a name="line600"></a>     *   from locations in the workspace that are remote from the location to which the
+<a name="line601"></a>     *   incoming subgraph is being written. Both the removal and the new addition will be
+<a name="line602"></a>     *   persisted on save.
+<a name="line603"></a>     *
+<a name="line604"></a>     * -  ImportUUIDBehavior.IMPORT_UUID_COLLISION_REPLACE_EXISTING: If an incoming node has
+<a name="line605"></a>     *   the same identifier as a node already existing in the workspace, then the
+<a name="line606"></a>     *   already-existing node is replaced by the incoming node in the same position as the
+<a name="line607"></a>     *   existing node. Note that this may result in the incoming subgraph being disaggregated
+<a name="line608"></a>     *   and &quot;spread around&quot; to different locations in the workspace. In the most extreme
+<a name="line609"></a>     *   case this behavior may result in no node at all being added as child of parentAbsPath.
+<a name="line610"></a>     *   This will occur if the topmost element of the incoming XML has the same identifier as
+<a name="line611"></a>     *   an existing node elsewhere in the workspace. The change will be persisted on save.
+<a name="line612"></a>     *
+<a name="line613"></a>     * - ImportUUIDBehavior.IMPORT_UUID_COLLISION_THROW: If an incoming node has the same
+<a name="line614"></a>     *   identifier as a node already existing in the workspace then a SAXException is thrown
+<a name="line615"></a>     *   by the ContentHandler during deserialization.
+<a name="line616"></a>     *
+<a name="line617"></a>     * Unlike Workspace.getImportContentHandler, this method does not necessarily enforce
+<a name="line618"></a>     * all node type constraints during deserialization. Those that would be immediately
+<a name="line619"></a>     * enforced in a session-write method (Node.addNode, Node.setProperty etc.) of this
+<a name="line620"></a>     * implementation cause the returned ContentHandler to throw an immediate SAXException
+<a name="line621"></a>     * during deserialization. All other constraints are checked on save, just as they are
+<a name="line622"></a>     * in normal write operations. However, which node type constraints are enforced depends
+<a name="line623"></a>     * upon whether node type information in the imported data is respected, and this is an
+<a name="line624"></a>     * implementation-specific issue.
+<a name="line625"></a>     *
+<a name="line626"></a>     * A SAXException will also be thrown by the returned ContentHandler during deserialization
+<a name="line627"></a>     * if uuidBehavior is set to IMPORT_UUID_COLLISION_REMOVE_EXISTING and an incoming node has
+<a name="line628"></a>     * the same identifier as the node at parentAbsPath or one of its ancestors.
+<a name="line629"></a>     *
+<a name="line630"></a>     * @param string $parentAbsPath the absolute path of a node under which (as child) the imported subgraph will be built.
+<a name="line631"></a>     * @param integer $uuidBehavior a four-value flag that governs how incoming identifiers are handled.
+<a name="line632"></a>     * @return \PHPCR\ContentHandlerInterface whose methods may be called to feed SAX events into the deserializer.
+<a name="line633"></a>     *
+<a name="line634"></a>     * @throws \PHPCR\PathNotFoundException if no node exists at parentAbsPath and this implementation performs this
+<a name="line635"></a>     *                                      validation immediately.
+<a name="line636"></a>     * @throws \PHPCR\ConstraintViolationException if the new subgraph cannot be added to the node at parentAbsPath
+<a name="line637"></a>     *                                             due to node-type or other implementation-specific constraints, and
+<a name="line638"></a>     *                                             this implementation performs this validation immediately.
+<a name="line639"></a>     * @throws \PHPCR\Version\VersionException if the node at $parentAbsPath is read-only due to a checked-in node and
+<a name="line640"></a>     *                                         this implementation performs this validation immediately.
+<a name="line641"></a>     * @throws \PHPCR\Lock\LockException if a lock prevents the addition of the subgraph and this implementation
+<a name="line642"></a>     *                                   performs this validation immediately.
+<a name="line643"></a>     * @throws \PHPCR\RepositoryException if another error occurs.
+<a name="line644"></a>     * @api
+<a name="line645"></a>     */</span>
+<a name="line646"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getImportContentHandler<span style="color: #009900;">&#40;</span><span style="color: #000088;">$parentAbsPath</span><span style="color: #339933;">,</span> <span style="color: #000088;">$uuidBehavior</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line647"></a>&nbsp;
+<a name="line648"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line649"></a>     * Deserializes an XML document and adds the resulting item subgraph as a
+<a name="line650"></a>     * child of the node at $parentAbsPath.
+<a name="line651"></a>     *
+<a name="line652"></a>     * If the incoming XML does not appear to be a JCR system view XML document
+<a name="line653"></a>     * then it is interpreted as a document view XML document.
+<a name="line654"></a>     *
+<a name="line655"></a>     * The tree of new items is built in the transient storage of the Session. In order
+<a name="line656"></a>     * to persist the new content, save must be called. The advantage of this
+<a name="line657"></a>     * through-the-session method is that (depending on what constraint checks the
+<a name="line658"></a>     * implementation leaves until save) structures that violate node type constraints
+<a name="line659"></a>     * can be imported, fixed and then saved. The disadvantage is that a large import
+<a name="line660"></a>     * will result in a large cache of pending nodes in the session. See
+<a name="line661"></a>     * Workspace.importXML(string, string, integer) for a version
+<a name="line662"></a>     * of this method that does not go through the Session.
+<a name="line663"></a>     *
+<a name="line664"></a>     * The flag $uuidBehavior governs how the identifiers of incoming nodes are
+<a name="line665"></a>     * handled. There are four options:
+<a name="line666"></a>     *
+<a name="line667"></a>     * - ImportUUIDBehavior.IMPORT_UUID_CREATE_NEW: Incoming nodes are added in the same
+<a name="line668"></a>     *   way that new node is added with Node.addNode. That is, they are either assigned
+<a name="line669"></a>     *   newly created identifiers upon addition or upon save (depending on the implementation,
+<a name="line670"></a>     *   see 4.9.1.1 When Identifiers are Assigned in the specification). In either case,
+<a name="line671"></a>     *   identifier collisions will not occur.
+<a name="line672"></a>     * - ImportUUIDBehavior.IMPORT_UUID_COLLISION_REMOVE_EXISTING: If an incoming node has
+<a name="line673"></a>     *   the same identifier as a node already existing in the workspace then the already
+<a name="line674"></a>     *   existing node (and its subgraph) is removed from wherever it may be in the workspace
+<a name="line675"></a>     *   before the incoming node is added. Note that this can result in nodes &quot;disappearing&quot;
+<a name="line676"></a>     *   from locations in the workspace that are remote from the location to which the
+<a name="line677"></a>     *   incoming subgraph is being written. Both the removal and the new addition will be
+<a name="line678"></a>     *   dispatched on save.
+<a name="line679"></a>     * - ImportUUIDBehavior.IMPORT_UUID_COLLISION_REPLACE_EXISTING: If an incoming node
+<a name="line680"></a>     *   has the same identifier as a node already existing in the workspace, then the
+<a name="line681"></a>     *   already-existing node is replaced by the incoming node in the same position as
+<a name="line682"></a>     *   the existing node. Note that this may result in the incoming subgraph being
+<a name="line683"></a>     *   disaggregated and &quot;spread around&quot; to different locations in the workspace. In the
+<a name="line684"></a>     *   most extreme case this behavior may result in no node at all being added as child
+<a name="line685"></a>     *   of parentAbsPath. This will occur if the topmost element of the incoming XML has
+<a name="line686"></a>     *   the same identifier as an existing node elsewhere in the workspace. The change
+<a name="line687"></a>     *   will be dispatched on save.
+<a name="line688"></a>     * - ImportUUIDBehavior.IMPORT_UUID_COLLISION_THROW: If an incoming node has the same
+<a name="line689"></a>     *   identifier as a node already existing in the workspace then an
+<a name="line690"></a>     *   ItemExistsException is thrown.
+<a name="line691"></a>     *   Unlike Workspace.importXML(string, string, integer), this method does not
+<a name="line692"></a>     *   necessarily enforce all node type constraints during deserialization.
+<a name="line693"></a>     *   Those that would be immediately enforced in a normal write method (Node.addNode,
+<a name="line694"></a>     *   Node.setProperty etc.) of this implementation cause an immediate
+<a name="line695"></a>     *   ConstraintViolationException during deserialization. All other constraints are
+<a name="line696"></a>     *   checked on save, just as they are in normal write operations. However, which node
+<a name="line697"></a>     *   type constraints are enforced depends upon whether node type information in the
+<a name="line698"></a>     *   imported data is respected, and this is an implementation-specific issue.
+<a name="line699"></a>     *
+<a name="line700"></a>     * @param string $parentAbsPath the absolute path of the node below which the deserialized subgraph is added.
+<a name="line701"></a>     * @param string $in An URI from which the XML to be deserialized is read.
+<a name="line702"></a>     * @param integer $uuidBehavior a four-value flag that governs how incoming identifiers are handled.
+<a name="line703"></a>     * @return void
+<a name="line704"></a>     *
+<a name="line705"></a>     * @throws \RuntimeException if an error during an I/O operation occurs.
+<a name="line706"></a>     * @throws \PHPCR\PathNotFoundException if no node exists at parentAbsPath and this implementation performs this
+<a name="line707"></a>     *                                      validation immediately.
+<a name="line708"></a>     * @throws \PHPCR\ItemExistsException if deserialization would overwrite an existing item and this implementation
+<a name="line709"></a>     *                                    performs this validation immediately.
+<a name="line710"></a>     * @throws \PHPCR\ConstraintViolationException if a node type or other implementation-specific constraint is
+<a name="line711"></a>     *                                             violated that would be checked on a session write method or if
+<a name="line712"></a>     *                                             uuidBehavior is set to IMPORT_UUID_COLLISION_REMOVE_EXISTING and an
+<a name="line713"></a>     *                                             incoming node has the same UUID as the node at parentAbsPath or one
+<a name="line714"></a>     *                                             of its ancestors.
+<a name="line715"></a>     * @throws \PHPCR\Version\VersionException if the node at $parentAbsPath is read-only due to a checked-in node and
+<a name="line716"></a>     *                                         this implementation performs this validation immediately.
+<a name="line717"></a>     * @throws \PHPCR\InvalidSerializedDataException if incoming stream is not a valid XML document.
+<a name="line718"></a>     * @throws \PHPCR\Lock\LockException if a lock prevents the addition of the subgraph and this implementation
+<a name="line719"></a>     *                                   performs this validation immediately.
+<a name="line720"></a>     * @throws \PHPCR\RepositoryException if another error occurs.
+<a name="line721"></a>     * @api
+<a name="line722"></a>     */</span>
+<a name="line723"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> importXML<span style="color: #009900;">&#40;</span><span style="color: #000088;">$parentAbsPath</span><span style="color: #339933;">,</span> <span style="color: #000088;">$in</span><span style="color: #339933;">,</span> <span style="color: #000088;">$uuidBehavior</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line724"></a>&nbsp;
+<a name="line725"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line726"></a>     * Serializes the node (and if $noRecurse is false, the whole subgraph) at
+<a name="line727"></a>     * $absPath as an XML stream and outputs it to the supplied URI. The
+<a name="line728"></a>     * resulting XML is in the system view form. Note that $absPath must be
+<a name="line729"></a>     * the path of a node, not a property.
+<a name="line730"></a>     *
+<a name="line731"></a>     * If $skipBinary is true then any properties of PropertyType.BINARY will be serialized
+<a name="line732"></a>     * as if they are empty. That is, the existence of the property will be serialized,
+<a name="line733"></a>     * but its content will not appear in the serialized output (the &lt;sv:value&gt; element
+<a name="line734"></a>     * will have no content). Note that in the case of multi-value BINARY properties,
+<a name="line735"></a>     * the number of values in the property will be reflected in the serialized output,
+<a name="line736"></a>     * though they will all be empty. If $skipBinary is false then the actual value(s)
+<a name="line737"></a>     * of each BINARY property is recorded using Base64 encoding.
+<a name="line738"></a>     *
+<a name="line739"></a>     * If $noRecurse is true then only the node at $absPath and its properties, but not
+<a name="line740"></a>     * its child nodes, are serialized. If $noRecurse is false then the entire subgraph
+<a name="line741"></a>     * rooted at $absPath is serialized.
+<a name="line742"></a>     *
+<a name="line743"></a>     * If the user lacks read access to some subsection of the specified tree, that
+<a name="line744"></a>     * section simply does not get serialized, since, from the user's point of view,
+<a name="line745"></a>     * it is not there.
+<a name="line746"></a>     *
+<a name="line747"></a>     * The serialized output will reflect the state of the current workspace as
+<a name="line748"></a>     * modified by the state of this Session. This means that pending changes
+<a name="line749"></a>     * (regardless of whether they are valid according to node type constraints)
+<a name="line750"></a>     * and all namespace mappings in the namespace registry, as modified by the
+<a name="line751"></a>     * current session-mappings, are reflected in the output.
+<a name="line752"></a>     *
+<a name="line753"></a>     * The output XML will be encoded in UTF-8.
+<a name="line754"></a>     *
+<a name="line755"></a>     * @param string $absPath The path of the root of the subgraph to be serialized. This must be the path to a node, not a property
+<a name="line756"></a>     * @param string $out The URI to which the XML serialization of the subgraph will be output.
+<a name="line757"></a>     * @param boolean $skipBinary A boolean governing whether binary properties are to be serialized.
+<a name="line758"></a>     * @param boolean $noRecurse A boolean governing whether the subgraph at absPath is to be recursed.
+<a name="line759"></a>     * @return void
+<a name="line760"></a>     * @throws \PHPCR\PathNotFoundException if no node exists at absPath.
+<a name="line761"></a>     * @throws \RuntimeException if an error during an I/O operation occurs.
+<a name="line762"></a>     * @throws \PHPCR\RepositoryException if another error occurs.
+<a name="line763"></a>     * @api
+<a name="line764"></a>     */</span>
+<a name="line765"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> exportSystemView<span style="color: #009900;">&#40;</span><span style="color: #000088;">$absPath</span><span style="color: #339933;">,</span> <span style="color: #000088;">$out</span><span style="color: #339933;">,</span> <span style="color: #000088;">$skipBinary</span><span style="color: #339933;">,</span> <span style="color: #000088;">$noRecurse</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line766"></a>&nbsp;
+<a name="line767"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line768"></a>     * Serializes the node (and if $noRecurse is false, the whole subgraph) at
+<a name="line769"></a>     * $absPath as an XML stream and outputs it to the supplied URI.
+<a name="line770"></a>     *
+<a name="line771"></a>     * The resulting XML is in the document view form. Note that $absPath must be
+<a name="line772"></a>     * the path of a node, not a property.
+<a name="line773"></a>     *
+<a name="line774"></a>     * If $skipBinary is true then any properties of PropertyType.BINARY will be serialized as if
+<a name="line775"></a>     * they are empty. That is, the existence of the property will be serialized, but its content
+<a name="line776"></a>     * will not appear in the serialized output (the value of the attribute will be empty). If
+<a name="line777"></a>     * $skipBinary is false then the actual value(s) of each BINARY property is recorded using
+<a name="line778"></a>     * Base64 encoding.
+<a name="line779"></a>     *
+<a name="line780"></a>     * If $noRecurse is true then only the node at $absPath and its properties, but not its
+<a name="line781"></a>     * child nodes, are serialized. If $noRecurse is false then the entire subgraph rooted at
+<a name="line782"></a>     * $absPath is serialized.
+<a name="line783"></a>     *
+<a name="line784"></a>     * If the user lacks read access to some subsection of the specified tree, that section
+<a name="line785"></a>     * simply does not get serialized, since, from the user's point of view, it is not there.
+<a name="line786"></a>     *
+<a name="line787"></a>     * The serialized output will reflect the state of the current workspace as modified by
+<a name="line788"></a>     * the state of this Session. This means that pending changes (regardless of whether they
+<a name="line789"></a>     * are valid according to node type constraints) and all namespace mappings in the
+<a name="line790"></a>     * namespace registry, as modified by the current session-mappings, are reflected in
+<a name="line791"></a>     * the output.
+<a name="line792"></a>     *
+<a name="line793"></a>     * The output XML will be encoded in UTF-8.
+<a name="line794"></a>     *
+<a name="line795"></a>     * @param string $absPath The path of the root of the subgraph to be serialized. This must be the path to a node,
+<a name="line796"></a>     *                        not a property
+<a name="line797"></a>     * @param string $out The URI to which the XML serialization of the subgraph will be output.
+<a name="line798"></a>     * @param boolean $skipBinary A boolean governing whether binary properties are to be serialized.
+<a name="line799"></a>     * @param boolean $noRecurse A boolean governing whether the subgraph at absPath is to be recursed.
+<a name="line800"></a>     * @return void
+<a name="line801"></a>     *
+<a name="line802"></a>     * @throws \PHPCR\PathNotFoundException if no node exists at absPath.
+<a name="line803"></a>     * @throws \RuntimeException if an error during an I/O operation occurs.
+<a name="line804"></a>     * @throws \PHPCR\RepositoryException if another error occurs.
+<a name="line805"></a>     * @api
+<a name="line806"></a>     */</span>
+<a name="line807"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> exportDocumentView<span style="color: #009900;">&#40;</span><span style="color: #000088;">$absPath</span><span style="color: #339933;">,</span> <span style="color: #000088;">$out</span><span style="color: #339933;">,</span> <span style="color: #000088;">$skipBinary</span><span style="color: #339933;">,</span> <span style="color: #000088;">$noRecurse</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line808"></a>&nbsp;
+<a name="line809"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line810"></a>     * Sets the name of a namespace prefix.
+<a name="line811"></a>     *
+<a name="line812"></a>     * Within the scope of this Session, this method maps uri to prefix. The
+<a name="line813"></a>     * remapping only affects operations done through this Session. To clear
+<a name="line814"></a>     * all remappings, the client must acquire a new Session.
+<a name="line815"></a>     * All local mappings already present in the Session that include either
+<a name="line816"></a>     * the specified prefix or the specified uri are removed and the new mapping
+<a name="line817"></a>     * is added.
+<a name="line818"></a>     *
+<a name="line819"></a>     * @param string $prefix The namespace prefix to be set as identifier.
+<a name="line820"></a>     * @param string $uri The loaction of the namespace definition (usually a uri).
+<a name="line821"></a>     * @return void
+<a name="line822"></a>     *
+<a name="line823"></a>     * @throws \PHPCR\NamespaceException if an attempt is made to map a namespace URI to a prefix beginning with
+<a name="line824"></a>     *                                   the characters &quot;xml&quot; (in any combination of case) or if an attempt is made to
+<a name="line825"></a>     *                                   map either the empty prefix or the empty namespace (i.e., if either $prefix or
+<a name="line826"></a>     *                                   $uri are the empty string).
+<a name="line827"></a>     * @throws \PHPCR\RepositoryException if another error occurs.
+<a name="line828"></a>     * @api
+<a name="line829"></a>     */</span>
+<a name="line830"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> setNamespacePrefix<span style="color: #009900;">&#40;</span><span style="color: #000088;">$prefix</span><span style="color: #339933;">,</span> <span style="color: #000088;">$uri</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line831"></a>&nbsp;
+<a name="line832"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line833"></a>     * Returns all prefixes currently mapped to URIs in this Session.
+<a name="line834"></a>     *
+<a name="line835"></a>     * @return array The list of currently registered namespace prefixes.
+<a name="line836"></a>     *
+<a name="line837"></a>     * @throws \PHPCR\RepositoryException if an error occurs
+<a name="line838"></a>     * @api
+<a name="line839"></a>     */</span>
+<a name="line840"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getNamespacePrefixes<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line841"></a>&nbsp;
+<a name="line842"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line843"></a>     * Returns the URI to which the given prefix is mapped as currently set in
+<a name="line844"></a>     * this Session.
+<a name="line845"></a>     *
+<a name="line846"></a>     * @param string $prefix The identifier of the namespace location to be returned.
+<a name="line847"></a>     * @return string The location of the namespace definition identified by its prefix.
+<a name="line848"></a>     *
+<a name="line849"></a>     * @throws \PHPCR\NamespaceException if the specified prefix is unknown.
+<a name="line850"></a>     * @throws \PHPCR\RepositoryException if another error occurs
+<a name="line851"></a>     * @api
+<a name="line852"></a>     */</span>
+<a name="line853"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getNamespaceURI<span style="color: #009900;">&#40;</span><span style="color: #000088;">$prefix</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line854"></a>&nbsp;
+<a name="line855"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line856"></a>     * Returns the prefix to which the given uri is mapped as currently set in
+<a name="line857"></a>     * this Session.
+<a name="line858"></a>     *
+<a name="line859"></a>     * @param string $uri The loaction of the namespace definition (usually a uri).
+<a name="line860"></a>     * @return string The prefix of a namespace identified by its uri.
+<a name="line861"></a>     *
+<a name="line862"></a>     * @throws \PHPCR\NamespaceException if the specified uri is unknown.
+<a name="line863"></a>     * @throws \PHPCR\RepositoryException if another error occurs
+<a name="line864"></a>     * @api
+<a name="line865"></a>     */</span>
+<a name="line866"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getNamespacePrefix<span style="color: #009900;">&#40;</span><span style="color: #000088;">$uri</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line867"></a>&nbsp;
+<a name="line868"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line869"></a>     * Releases all resources associated with this Session.
+<a name="line870"></a>     *
+<a name="line871"></a>     * This method should be called when a Session is no longer needed.
+<a name="line872"></a>     *
+<a name="line873"></a>     * @return void
+<a name="line874"></a>     * @api
+<a name="line875"></a>     */</span>
+<a name="line876"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> logout<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line877"></a>&nbsp;
+<a name="line878"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line879"></a>     * Determines if the current session is still valid.
+<a name="line880"></a>     *
+<a name="line881"></a>     * Returns true if this Session object is usable by the client. Otherwise,
+<a name="line882"></a>     * returns false.
+<a name="line883"></a>     *
+<a name="line884"></a>     * A usable Session is one that is neither logged-out, timed-out nor in
+<a name="line885"></a>     * any other way disconnected from the repository.
+<a name="line886"></a>     *
+<a name="line887"></a>     * @return boolean true if this Session is usable, false otherwise.
+<a name="line888"></a>     * @api
+<a name="line889"></a>     */</span>
+<a name="line890"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> isLive<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line891"></a>&nbsp;
+<a name="line892"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line893"></a>     * Returns the access control manager for this Session.
+<a name="line894"></a>     *
+<a name="line895"></a>     * @return \PHPCR\Security\AccessControlManager the access control manager for this Session
+<a name="line896"></a>     *
+<a name="line897"></a>     * @throws \PHPCR\UnsupportedRepositoryOperationException if access control is not supported.
+<a name="line898"></a>     * @throws \PHPCR\RepositoryException if another error occurs.
+<a name="line899"></a>     * @api
+<a name="line900"></a>     */</span>
+<a name="line901"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getAccessControlManager<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line902"></a>&nbsp;
+<a name="line903"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line904"></a>     * Returns the retention and hold manager for this Session.
+<a name="line905"></a>     *
+<a name="line906"></a>     * @return \PHPCR\Retention\RetentionManagerInterface the retention manager for this Session.
+<a name="line907"></a>     *
+<a name="line908"></a>     * @throws \PHPCR\UnsupportedRepositoryOperationException if retention and hold are not supported.
+<a name="line909"></a>     * @throws \PHPCR\RepositoryException if another error occurs.
+<a name="line910"></a>     * @api
+<a name="line911"></a>     */</span>
+<a name="line912"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getRetentionManager<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line913"></a>&nbsp;
+<a name="line914"></a><span style="color: #009900;">&#125;</span>
+<a name="line915"></a>&nbsp;</pre>
+<div class="header">
+<h1>PHPCR</h1>
+<ul>
+<li><a href="../../overview-summary.html">Overview</a></li>
+<li>Package</li><li>Class</li><li>Tree</li><li><a href="../../overview-files.html">Files</a></li>
+<li><a href="../../deprecated-list.html">Deprecated</a></li>
+<li><a href="../../todo-list.html">Todo</a></li>
+<li><a href="../../index-all.html">Index</a></li>
+</ul>
+</div>
+
+<div class="small_links">
+<a href="../../index.html" target="_top">Frames</a>
+<a href="../../source/phpcr/sessioninterface.php.html" target="_top">No frames</a>
+</div>
+<hr>
+
+<p id="footer">This document was generated by <a href="http://peej.github.com/phpdoctor/">PHPDoctor: The PHP Documentation Creator</a></p>
+
+</body>
+
+</html>
