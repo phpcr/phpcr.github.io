@@ -1,1 +1,1 @@
-PHPCR Web Site, see [[http://phpcr.github.com/]]
+PHPCR Web Site, see http://phpcr.github.com/
