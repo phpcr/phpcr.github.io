@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="generator" content="PHPDoctor 2RC4 (http://peej.github.com/phpdoctor/)">
-<meta name="when" content="Thu, 12 May 2011 08:50:42 +0000">
+<meta name="when" content="Thu, 12 May 2011 09:07:52 +0000">
 
 <link rel="stylesheet" type="text/css" href="../stylesheet.css">
 <link rel="start" href="../overview-summary.html">
@@ -101,10 +101,6 @@ this Session has permission to set (add or modify) a property.</p></td>
 <td class="description"><p class="name"><a href="#checkPermission()">checkPermission</a>(string absPath, string actions)</p><p class="description">Determines whether this Session has permission to perform the specified actions
 at the specified absPath.
 </p></td>
-</tr>
-<tr>
-<td class="type"> void</td>
-<td class="description"><p class="name"><a href="#clear()">clear</a>()</p><p class="description">Clears the state of the current sessionRemoves all cached objects, planned changes etc. </p></td>
 </tr>
 <tr>
 <td class="type"> void</td>
@@ -326,7 +322,7 @@ this Session has permission to set (add or modify) a property.</p><dl>
 <hr>
 
 <h2 id="detail_method">Method Detail</h2>
-<a href="../source/phpcr/sessioninterface.php.html#line520" class="location">PHPCR/SessionInterface.php at line 520</a>
+<a href="../source/phpcr/sessioninterface.php.html#line517" class="location">PHPCR/SessionInterface.php at line 517</a>
 
 <h3 id="checkPermission()">checkPermission</h3>
 <code class="signature">public  void <strong>checkPermission</strong>(string absPath, string actions)</code>
@@ -368,16 +364,7 @@ prevent the addition of a property called C.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/sessioninterface.php.html#line429" class="location">PHPCR/SessionInterface.php at line 429</a>
-
-<h3 id="clear()">clear</h3>
-<code class="signature">public  void <strong>clear</strong>()</code>
-<div class="details">
-<p>Clears the state of the current session</p><p>Removes all cached objects, planned changes etc. Mostly useful for testing purposes.</p></div>
-
-<hr>
-
-<a href="../source/phpcr/sessioninterface.php.html#line806" class="location">PHPCR/SessionInterface.php at line 806</a>
+<a href="../source/phpcr/sessioninterface.php.html#line803" class="location">PHPCR/SessionInterface.php at line 803</a>
 
 <h3 id="exportDocumentView()">exportDocumentView</h3>
 <code class="signature">public  void <strong>exportDocumentView</strong>(string absPath, string out, boolean skipBinary, boolean noRecurse)</code>
@@ -411,7 +398,7 @@ the output.</p><p>The output XML will be encoded in UTF-8.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/sessioninterface.php.html#line764" class="location">PHPCR/SessionInterface.php at line 764</a>
+<a href="../source/phpcr/sessioninterface.php.html#line761" class="location">PHPCR/SessionInterface.php at line 761</a>
 
 <h3 id="exportSystemView()">exportSystemView</h3>
 <code class="signature">public  void <strong>exportSystemView</strong>(string absPath, string out, boolean skipBinary, boolean noRecurse)</code>
@@ -449,7 +436,7 @@ current session-mappings, are reflected in the output.</p><p>The output XML will
 
 <hr>
 
-<a href="../source/phpcr/sessioninterface.php.html#line900" class="location">PHPCR/SessionInterface.php at line 900</a>
+<a href="../source/phpcr/sessioninterface.php.html#line897" class="location">PHPCR/SessionInterface.php at line 897</a>
 
 <h3 id="getAccessControlManager()">getAccessControlManager</h3>
 <code class="signature">public  \PHPCR\Security\AccessControlManager <strong>getAccessControlManager</strong>()</code>
@@ -500,7 +487,7 @@ array if the Credentials instance did not provide attributes.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/sessioninterface.php.html#line645" class="location">PHPCR/SessionInterface.php at line 645</a>
+<a href="../source/phpcr/sessioninterface.php.html#line642" class="location">PHPCR/SessionInterface.php at line 642</a>
 
 <h3 id="getImportContentHandler()">getImportContentHandler</h3>
 <code class="signature">public  <a href="../phpcr/contenthandlerinterface.html">ContentHandlerInterface</a> <strong>getImportContentHandler</strong>(string parentAbsPath, integer uuidBehavior)</code>
@@ -591,7 +578,7 @@ efficient than getItem.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/sessioninterface.php.html#line865" class="location">PHPCR/SessionInterface.php at line 865</a>
+<a href="../source/phpcr/sessioninterface.php.html#line862" class="location">PHPCR/SessionInterface.php at line 862</a>
 
 <h3 id="getNamespacePrefix()">getNamespacePrefix</h3>
 <code class="signature">public  string <strong>getNamespacePrefix</strong>(string uri)</code>
@@ -611,7 +598,7 @@ this Session.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/sessioninterface.php.html#line839" class="location">PHPCR/SessionInterface.php at line 839</a>
+<a href="../source/phpcr/sessioninterface.php.html#line836" class="location">PHPCR/SessionInterface.php at line 836</a>
 
 <h3 id="getNamespacePrefixes()">getNamespacePrefixes</h3>
 <code class="signature">public  array <strong>getNamespacePrefixes</strong>()</code>
@@ -627,7 +614,7 @@ this Session.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/sessioninterface.php.html#line852" class="location">PHPCR/SessionInterface.php at line 852</a>
+<a href="../source/phpcr/sessioninterface.php.html#line849" class="location">PHPCR/SessionInterface.php at line 849</a>
 
 <h3 id="getNamespaceURI()">getNamespaceURI</h3>
 <code class="signature">public  string <strong>getNamespaceURI</strong>(string prefix)</code>
@@ -718,7 +705,7 @@ this Session.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/sessioninterface.php.html#line911" class="location">PHPCR/SessionInterface.php at line 911</a>
+<a href="../source/phpcr/sessioninterface.php.html#line908" class="location">PHPCR/SessionInterface.php at line 908</a>
 
 <h3 id="getRetentionManager()">getRetentionManager</h3>
 <code class="signature">public  <a href="../phpcr/retention/retentionmanagerinterface.html">RetentionManagerInterface</a> <strong>getRetentionManager</strong>()</code>
@@ -780,7 +767,7 @@ or it may be a string acquired in some other way. This method is free to return 
 
 <hr>
 
-<a href="../source/phpcr/sessioninterface.php.html#line565" class="location">PHPCR/SessionInterface.php at line 565</a>
+<a href="../source/phpcr/sessioninterface.php.html#line562" class="location">PHPCR/SessionInterface.php at line 562</a>
 
 <h3 id="hasCapability()">hasCapability</h3>
 <code class="signature">public  boolean <strong>hasCapability</strong>(string methodName, object target, array arguments)</code>
@@ -819,7 +806,7 @@ the node N within the session S.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/sessioninterface.php.html#line441" class="location">PHPCR/SessionInterface.php at line 441</a>
+<a href="../source/phpcr/sessioninterface.php.html#line438" class="location">PHPCR/SessionInterface.php at line 438</a>
 
 <h3 id="hasPendingChanges()">hasPendingChanges</h3>
 <code class="signature">public  boolean <strong>hasPendingChanges</strong>()</code>
@@ -836,7 +823,7 @@ otherwise returns false.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/sessioninterface.php.html#line479" class="location">PHPCR/SessionInterface.php at line 479</a>
+<a href="../source/phpcr/sessioninterface.php.html#line476" class="location">PHPCR/SessionInterface.php at line 476</a>
 
 <h3 id="hasPermission()">hasPermission</h3>
 <code class="signature">public  boolean <strong>hasPermission</strong>(string absPath, string actions)</code>
@@ -902,7 +889,7 @@ by the Workspace object tied to this Session.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/sessioninterface.php.html#line722" class="location">PHPCR/SessionInterface.php at line 722</a>
+<a href="../source/phpcr/sessioninterface.php.html#line719" class="location">PHPCR/SessionInterface.php at line 719</a>
 
 <h3 id="importXML()">importXML</h3>
 <code class="signature">public  void <strong>importXML</strong>(string parentAbsPath, string in, integer uuidBehavior)</code>
@@ -971,7 +958,7 @@ type constraints are enforced depends upon whether node type information in the<
 
 <hr>
 
-<a href="../source/phpcr/sessioninterface.php.html#line889" class="location">PHPCR/SessionInterface.php at line 889</a>
+<a href="../source/phpcr/sessioninterface.php.html#line886" class="location">PHPCR/SessionInterface.php at line 886</a>
 
 <h3 id="isLive()">isLive</h3>
 <code class="signature">public  boolean <strong>isLive</strong>()</code>
@@ -1006,7 +993,7 @@ access to it; otherwise returns false.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/sessioninterface.php.html#line875" class="location">PHPCR/SessionInterface.php at line 875</a>
+<a href="../source/phpcr/sessioninterface.php.html#line872" class="location">PHPCR/SessionInterface.php at line 872</a>
 
 <h3 id="logout()">logout</h3>
 <code class="signature">public  void <strong>logout</strong>()</code>
@@ -1090,7 +1077,7 @@ access to it; otherwise returns false.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/sessioninterface.php.html#line422" class="location">PHPCR/SessionInterface.php at line 422</a>
+<a href="../source/phpcr/sessioninterface.php.html#line426" class="location">PHPCR/SessionInterface.php at line 426</a>
 
 <h3 id="refresh()">refresh</h3>
 <code class="signature">public  void <strong>refresh</strong>(boolean keepChanges)</code>
@@ -1102,7 +1089,9 @@ persistent storage. Within a transaction, this state will reflect persistent
 storage as modified by changes that have been saved but not yet committed.
 If keepChanges is true then pending change are not discarded but items that
 do not have changes pending have their state refreshed to reflect the current
-saved state, thus revealing changes made by other sessions.</p><dl>
+saved state, thus revealing changes made by other sessions.</p><p>Implementors note: For performance reasons, implementations should only
+mark nodes as dirty and reload them from the backend only if actually
+needed.</p><dl>
 <dt>Parameters:</dt>
 <dd>keepChanges - Switch to override current changes kept in the session.</dd>
 <dt>Throws:</dt>
@@ -1167,7 +1156,7 @@ remain recorded on the Session. There is no best-effort or partial save.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/sessioninterface.php.html#line829" class="location">PHPCR/SessionInterface.php at line 829</a>
+<a href="../source/phpcr/sessioninterface.php.html#line826" class="location">PHPCR/SessionInterface.php at line 826</a>
 
 <h3 id="setNamespacePrefix()">setNamespacePrefix</h3>
 <code class="signature">public  void <strong>setNamespacePrefix</strong>(string prefix, string uri)</code>
