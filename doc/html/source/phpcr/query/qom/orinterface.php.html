@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="generator" content="PHPDoctor 2RC4 (http://peej.github.com/phpdoctor/)">
-<meta name="when" content="Fri, 06 May 2011 11:43:31 +0000">
+<meta name="when" content="Thu, 12 May 2011 08:50:54 +0000">
 
 <link rel="stylesheet" type="text/css" href="../../../../stylesheet.css">
 <link rel="start" href="../../../../overview-summary.html">
@@ -79,42 +79,40 @@ If not, see <code><a href="http://www.gnu.org/licenses/lgpl.html">http://www.gnu
 <a name="line29"></a> * @subpackage interfaces
 <a name="line30"></a> */</span>
 <a name="line31"></a>&nbsp;
-<a name="line32"></a>&nbsp;
-<a name="line33"></a><span style="color: #000000; font-weight: bold;">declare</span><span style="color: #009900;">&#40;</span>ENCODING <span style="color: #339933;">=</span> <span style="color: #0000ff;">'utf-8'</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line34"></a><span style="color: #000000; font-weight: bold;">namespace</span> PHPCR\Query\QOM<span style="color: #339933;">;</span>
-<a name="line35"></a>&nbsp;
-<a name="line36"></a><span style="color: #009933; font-style: italic;">/**
-<a name="line37"></a> * Performs a logical disjunction of two other constraints.
-<a name="line38"></a> *
-<a name="line39"></a> * To satisfy the Or constraint, the node-tuple must either:
-<a name="line40"></a> * - satisfy constraint1 but not constraint2, or
-<a name="line41"></a> * - satisfy constraint2 but not constraint1, or
-<a name="line42"></a> * - satisfy both constraint1 and constraint2.
-<a name="line43"></a> *
-<a name="line44"></a> * @package phpcr
-<a name="line45"></a> * @subpackage interfaces
-<a name="line46"></a> * @api
-<a name="line47"></a> */</span>
-<a name="line48"></a><span style="color: #000000; font-weight: bold;">interface</span> OrInterface <span style="color: #000000; font-weight: bold;">extends</span> ConstraintInterface <span style="color: #009900;">&#123;</span>
-<a name="line49"></a>&nbsp;
-<a name="line50"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line51"></a>     * Gets the first constraint.
-<a name="line52"></a>     *
-<a name="line53"></a>     * @return \PHPCR\Query\QOM\ConstraintInterface the constraint; non-null
-<a name="line54"></a>     * @api
-<a name="line55"></a>     */</span>
-<a name="line56"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getConstraint1<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line57"></a>&nbsp;
-<a name="line58"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line59"></a>     * Gets the second constraint.
-<a name="line60"></a>     *
-<a name="line61"></a>     * @return \PHPCR\Query\QOM\ConstraintInterface the constraint; non-null
-<a name="line62"></a>     * @api
-<a name="line63"></a>     */</span>
-<a name="line64"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getConstraint2<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line65"></a>&nbsp;
-<a name="line66"></a><span style="color: #009900;">&#125;</span>
-<a name="line67"></a>&nbsp;</pre>
+<a name="line32"></a><span style="color: #000000; font-weight: bold;">namespace</span> PHPCR\Query\QOM<span style="color: #339933;">;</span>
+<a name="line33"></a>&nbsp;
+<a name="line34"></a><span style="color: #009933; font-style: italic;">/**
+<a name="line35"></a> * Performs a logical disjunction of two other constraints.
+<a name="line36"></a> *
+<a name="line37"></a> * To satisfy the Or constraint, the node-tuple must either:
+<a name="line38"></a> * - satisfy constraint1 but not constraint2, or
+<a name="line39"></a> * - satisfy constraint2 but not constraint1, or
+<a name="line40"></a> * - satisfy both constraint1 and constraint2.
+<a name="line41"></a> *
+<a name="line42"></a> * @package phpcr
+<a name="line43"></a> * @subpackage interfaces
+<a name="line44"></a> * @api
+<a name="line45"></a> */</span>
+<a name="line46"></a><span style="color: #000000; font-weight: bold;">interface</span> OrInterface <span style="color: #000000; font-weight: bold;">extends</span> ConstraintInterface <span style="color: #009900;">&#123;</span>
+<a name="line47"></a>&nbsp;
+<a name="line48"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line49"></a>     * Gets the first constraint.
+<a name="line50"></a>     *
+<a name="line51"></a>     * @return \PHPCR\Query\QOM\ConstraintInterface the constraint; non-null
+<a name="line52"></a>     * @api
+<a name="line53"></a>     */</span>
+<a name="line54"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getConstraint1<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line55"></a>&nbsp;
+<a name="line56"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line57"></a>     * Gets the second constraint.
+<a name="line58"></a>     *
+<a name="line59"></a>     * @return \PHPCR\Query\QOM\ConstraintInterface the constraint; non-null
+<a name="line60"></a>     * @api
+<a name="line61"></a>     */</span>
+<a name="line62"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getConstraint2<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line63"></a>&nbsp;
+<a name="line64"></a><span style="color: #009900;">&#125;</span>
+<a name="line65"></a>&nbsp;</pre>
 <div class="header">
 <h1>PHPCR</h1>
 <ul>

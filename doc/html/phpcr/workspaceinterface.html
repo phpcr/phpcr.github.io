@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="generator" content="PHPDoctor 2RC4 (http://peej.github.com/phpdoctor/)">
-<meta name="when" content="Fri, 06 May 2011 11:43:18 +0000">
+<meta name="when" content="Thu, 12 May 2011 08:50:42 +0000">
 
 <link rel="stylesheet" type="text/css" href="../stylesheet.css">
 <link rel="start" href="../overview-summary.html">
@@ -41,7 +41,7 @@ Detail: <a href="#detail_field">Field</a> | <a href="#detail_method">Method</a> 
 <hr>
 
 <div class="qualifiedName">PHPCR\WorkspaceInterface</div>
-<a href="../source/phpcr/workspaceinterface.php.html#line48" class="location">PHPCR/WorkspaceInterface.php at line 48</a>
+<a href="../source/phpcr/workspaceinterface.php.html#line47" class="location">PHPCR/WorkspaceInterface.php at line 47</a>
 
 <h1>Interface WorkspaceInterface</h1>
 
@@ -148,6 +148,11 @@ the jcr:xmlcharacters property produced on importXML().
 <tr><th colspan="2">Method Summary</th></tr>
 <tr>
 <td class="type"> void</td>
+<td class="description"><p class="name"><a href="#cloneFrom()">cloneFrom</a>(string srcWorkspace, string srcAbsPath, string destAbsPath, boolean removeExisting)</p><p class="description">Clones the subgraph at the node srcAbsPath in srcWorkspace to the new location at destAbsPath in the current workspace.
+</p></td>
+</tr>
+<tr>
+<td class="type"> void</td>
 <td class="description"><p class="name"><a href="#copy()">copy</a>(string srcAbsPath, string destAbsPath, string srcWorkspace)</p><p class="description">Copies a Node including its children to a new location to the given workspace.
 </p></td>
 </tr>
@@ -211,18 +216,13 @@ the jcr:xmlcharacters property produced on importXML().
 </tr>
 <tr>
 <td class="type"> void</td>
-<td class="description"><p class="name"><a href="#klone()">klone</a>(string srcWorkspace, string srcAbsPath, string destAbsPath, boolean removeExisting)</p><p class="description">Clones the subgraph at the node srcAbsPath in srcWorkspace to the new location at destAbsPath in this workspace.
-</p></td>
-</tr>
-<tr>
-<td class="type"> void</td>
 <td class="description"><p class="name"><a href="#move()">move</a>(string srcAbsPath, string destAbsPath)</p><p class="description">Moves the node at srcAbsPath (and its entire subgraph) to the new location at destAbsPath.
 </p></td>
 </tr>
 </table>
 
 <h2 id="detail_field">Constant Detail</h2>
-<a href="../source/phpcr/workspaceinterface.php.html#line109" class="location">PHPCR/WorkspaceInterface.php at line 109</a>
+<a href="../source/phpcr/workspaceinterface.php.html#line108" class="location">PHPCR/WorkspaceInterface.php at line 108</a>
 
 <h3 id="NAME_ACTIVITIES_NODE">NAME_ACTIVITIES_NODE</h3>
 <code class="signature">public final static  str <strong>NAME_ACTIVITIES_NODE</strong> = '{http://www.jcp.org/jcr/1.0}activities'</code>
@@ -234,7 +234,7 @@ the jcr:xmlcharacters property produced on importXML().
 
 <hr>
 
-<a href="../source/phpcr/workspaceinterface.php.html#line122" class="location">PHPCR/WorkspaceInterface.php at line 122</a>
+<a href="../source/phpcr/workspaceinterface.php.html#line121" class="location">PHPCR/WorkspaceInterface.php at line 121</a>
 
 <h3 id="NAME_CONFIGURATIONS_NODE">NAME_CONFIGURATIONS_NODE</h3>
 <code class="signature">public final static  str <strong>NAME_CONFIGURATIONS_NODE</strong> = '{http://www.jcp.org/jcr/1.0}configurations'</code>
@@ -246,7 +246,7 @@ the jcr:xmlcharacters property produced on importXML().
 
 <hr>
 
-<a href="../source/phpcr/workspaceinterface.php.html#line154" class="location">PHPCR/WorkspaceInterface.php at line 154</a>
+<a href="../source/phpcr/workspaceinterface.php.html#line153" class="location">PHPCR/WorkspaceInterface.php at line 153</a>
 
 <h3 id="NAME_JCR_XMLCHARACTERS">NAME_JCR_XMLCHARACTERS</h3>
 <code class="signature">public final static  str <strong>NAME_JCR_XMLCHARACTERS</strong> = '{http://www.jcp.org/jcr/1.0}xmlcharacters'</code>
@@ -258,7 +258,7 @@ the jcr:xmlcharacters property produced on importXML().
 
 <hr>
 
-<a href="../source/phpcr/workspaceinterface.php.html#line148" class="location">PHPCR/WorkspaceInterface.php at line 148</a>
+<a href="../source/phpcr/workspaceinterface.php.html#line147" class="location">PHPCR/WorkspaceInterface.php at line 147</a>
 
 <h3 id="NAME_JCR_XMLTEXT">NAME_JCR_XMLTEXT</h3>
 <code class="signature">public final static  str <strong>NAME_JCR_XMLTEXT</strong> = '{http://www.jcp.org/jcr/1.0}xmltext'</code>
@@ -270,7 +270,7 @@ the jcr:xmlcharacters property produced on importXML().
 
 <hr>
 
-<a href="../source/phpcr/workspaceinterface.php.html#line83" class="location">PHPCR/WorkspaceInterface.php at line 83</a>
+<a href="../source/phpcr/workspaceinterface.php.html#line82" class="location">PHPCR/WorkspaceInterface.php at line 82</a>
 
 <h3 id="NAME_NODE_TYPES_NODE">NAME_NODE_TYPES_NODE</h3>
 <code class="signature">public final static  str <strong>NAME_NODE_TYPES_NODE</strong> = '{http://www.jcp.org/jcr/1.0}nodeTypes'</code>
@@ -282,7 +282,7 @@ the jcr:xmlcharacters property produced on importXML().
 
 <hr>
 
-<a href="../source/phpcr/workspaceinterface.php.html#line70" class="location">PHPCR/WorkspaceInterface.php at line 70</a>
+<a href="../source/phpcr/workspaceinterface.php.html#line69" class="location">PHPCR/WorkspaceInterface.php at line 69</a>
 
 <h3 id="NAME_SYSTEM_NODE">NAME_SYSTEM_NODE</h3>
 <code class="signature">public final static  str <strong>NAME_SYSTEM_NODE</strong> = '{http://www.jcp.org/jcr/1.0}system'</code>
@@ -294,7 +294,7 @@ the jcr:xmlcharacters property produced on importXML().
 
 <hr>
 
-<a href="../source/phpcr/workspaceinterface.php.html#line135" class="location">PHPCR/WorkspaceInterface.php at line 135</a>
+<a href="../source/phpcr/workspaceinterface.php.html#line134" class="location">PHPCR/WorkspaceInterface.php at line 134</a>
 
 <h3 id="NAME_UNFILED_NODE">NAME_UNFILED_NODE</h3>
 <code class="signature">public final static  str <strong>NAME_UNFILED_NODE</strong> = '{http://www.jcp.org/jcr/1.0}unfiled'</code>
@@ -306,7 +306,7 @@ the jcr:xmlcharacters property produced on importXML().
 
 <hr>
 
-<a href="../source/phpcr/workspaceinterface.php.html#line96" class="location">PHPCR/WorkspaceInterface.php at line 96</a>
+<a href="../source/phpcr/workspaceinterface.php.html#line95" class="location">PHPCR/WorkspaceInterface.php at line 95</a>
 
 <h3 id="NAME_VERSION_STORAGE_NODE">NAME_VERSION_STORAGE_NODE</h3>
 <code class="signature">public final static  str <strong>NAME_VERSION_STORAGE_NODE</strong> = '{http://www.jcp.org/jcr/1.0}versionStorage'</code>
@@ -318,7 +318,7 @@ the jcr:xmlcharacters property produced on importXML().
 
 <hr>
 
-<a href="../source/phpcr/workspaceinterface.php.html#line58" class="location">PHPCR/WorkspaceInterface.php at line 58</a>
+<a href="../source/phpcr/workspaceinterface.php.html#line57" class="location">PHPCR/WorkspaceInterface.php at line 57</a>
 
 <h3 id="NAME_WORKSPACE_ROOT">NAME_WORKSPACE_ROOT</h3>
 <code class="signature">public final static  string <strong>NAME_WORKSPACE_ROOT</strong> = ''</code>
@@ -330,7 +330,7 @@ the jcr:xmlcharacters property produced on importXML().
 
 <hr>
 
-<a href="../source/phpcr/workspaceinterface.php.html#line116" class="location">PHPCR/WorkspaceInterface.php at line 116</a>
+<a href="../source/phpcr/workspaceinterface.php.html#line115" class="location">PHPCR/WorkspaceInterface.php at line 115</a>
 
 <h3 id="PATH_ACTIVITIES_NODE">PATH_ACTIVITIES_NODE</h3>
 <code class="signature">public final static  str <strong>PATH_ACTIVITIES_NODE</strong> = '/{http://www.jcp.org/jcr/1.0}system/{http://www.jcp.org/jcr/1.0}activities'</code>
@@ -343,7 +343,7 @@ This is PATH_SYSTEM_NODE . '/' . NAME_ACTIVITIES_NODE</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/workspaceinterface.php.html#line129" class="location">PHPCR/WorkspaceInterface.php at line 129</a>
+<a href="../source/phpcr/workspaceinterface.php.html#line128" class="location">PHPCR/WorkspaceInterface.php at line 128</a>
 
 <h3 id="PATH_CONFIGURATIONS_NODE">PATH_CONFIGURATIONS_NODE</h3>
 <code class="signature">public final static  str <strong>PATH_CONFIGURATIONS_NODE</strong> = '/{http://www.jcp.org/jcr/1.0}system/{http://www.jcp.org/jcr/1.0}configurations'</code>
@@ -356,7 +356,7 @@ This is PATH_SYSTEM_NODE . '/' . NAME_CONFIGURATIONS_NODE</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/workspaceinterface.php.html#line90" class="location">PHPCR/WorkspaceInterface.php at line 90</a>
+<a href="../source/phpcr/workspaceinterface.php.html#line89" class="location">PHPCR/WorkspaceInterface.php at line 89</a>
 
 <h3 id="PATH_NODE_TYPES_NODE">PATH_NODE_TYPES_NODE</h3>
 <code class="signature">public final static  str <strong>PATH_NODE_TYPES_NODE</strong> = '/{http://www.jcp.org/jcr/1.0}system/{http://www.jcp.org/jcr/1.0}nodeTypes'</code>
@@ -369,7 +369,7 @@ This is PATH_SYSTEM_NODE . '/' . NAME_NODE_TYPES_NODE</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/workspaceinterface.php.html#line77" class="location">PHPCR/WorkspaceInterface.php at line 77</a>
+<a href="../source/phpcr/workspaceinterface.php.html#line76" class="location">PHPCR/WorkspaceInterface.php at line 76</a>
 
 <h3 id="PATH_SYSTEM_NODE">PATH_SYSTEM_NODE</h3>
 <code class="signature">public final static  str <strong>PATH_SYSTEM_NODE</strong> = '/{http://www.jcp.org/jcr/1.0}system'</code>
@@ -382,7 +382,7 @@ This is '/' . NAME_SYSTEM_NODE</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/workspaceinterface.php.html#line142" class="location">PHPCR/WorkspaceInterface.php at line 142</a>
+<a href="../source/phpcr/workspaceinterface.php.html#line141" class="location">PHPCR/WorkspaceInterface.php at line 141</a>
 
 <h3 id="PATH_UNFILED_NODE">PATH_UNFILED_NODE</h3>
 <code class="signature">public final static  str <strong>PATH_UNFILED_NODE</strong> = '/{http://www.jcp.org/jcr/1.0}system/{http://www.jcp.org/jcr/1.0}unfiled'</code>
@@ -395,7 +395,7 @@ This is PATH_SYSTEM_NODE . '/' . NAME_UNFILED_NODE</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/workspaceinterface.php.html#line103" class="location">PHPCR/WorkspaceInterface.php at line 103</a>
+<a href="../source/phpcr/workspaceinterface.php.html#line102" class="location">PHPCR/WorkspaceInterface.php at line 102</a>
 
 <h3 id="PATH_VERSION_STORAGE_NODE">PATH_VERSION_STORAGE_NODE</h3>
 <code class="signature">public final static  str <strong>PATH_VERSION_STORAGE_NODE</strong> = '/{http://www.jcp.org/jcr/1.0}system/{http://www.jcp.org/jcr/1.0}versionStorage'</code>
@@ -408,7 +408,7 @@ This is PATH_SYSTEM_NODE . '/' . NAME_VERSION_STORAGE_NODE</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/workspaceinterface.php.html#line64" class="location">PHPCR/WorkspaceInterface.php at line 64</a>
+<a href="../source/phpcr/workspaceinterface.php.html#line63" class="location">PHPCR/WorkspaceInterface.php at line 63</a>
 
 <h3 id="PATH_WORKSPACE_ROOT">PATH_WORKSPACE_ROOT</h3>
 <code class="signature">public final static  str <strong>PATH_WORKSPACE_ROOT</strong> = '/'</code>
@@ -420,7 +420,7 @@ This is PATH_SYSTEM_NODE . '/' . NAME_VERSION_STORAGE_NODE</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/workspaceinterface.php.html#line162" class="location">PHPCR/WorkspaceInterface.php at line 162</a>
+<a href="../source/phpcr/workspaceinterface.php.html#line161" class="location">PHPCR/WorkspaceInterface.php at line 161</a>
 
 <h3 id="RELPATH_JCR_XMLCHARACTERS">RELPATH_JCR_XMLCHARACTERS</h3>
 <code class="signature">public final static  str <strong>RELPATH_JCR_XMLCHARACTERS</strong> = '{http://www.jcp.org/jcr/1.0}xmltext/{http://www.jcp.org/jcr/1.0}xmlcharacters'</code>
@@ -435,7 +435,51 @@ This is NAME_JCR_XMLTEXT . '/' . NAME_JCR_XMLCHARACTERS</p><dl>
 <hr>
 
 <h2 id="detail_method">Method Detail</h2>
-<a href="../source/phpcr/workspaceinterface.php.html#line264" class="location">PHPCR/WorkspaceInterface.php at line 264</a>
+<a href="../source/phpcr/workspaceinterface.php.html#line325" class="location">PHPCR/WorkspaceInterface.php at line 325</a>
+
+<h3 id="cloneFrom()">cloneFrom</h3>
+<code class="signature">public  void <strong>cloneFrom</strong>(string srcWorkspace, string srcAbsPath, string destAbsPath, boolean removeExisting)</code>
+<div class="details">
+<p>Clones the subgraph at the node srcAbsPath in srcWorkspace to the new location at destAbsPath in the current workspace.</p><p>Unlike the signature of copy that copies between workspaces, this method
+does not assign new identifiers to the newly cloned nodes but preserves
+the identifiers of their respective source nodes. This applies to both
+referenceable and non-referenceable nodes.</p><p>In some implementations there may be cases where preservation of a
+non-referenceable identifier is not possible, due to how non-referenceable
+identifiers are constructed in that implementation. In such a case this
+method will throw a RepositoryException.</p><p>If removeExisting is true and an existing node in this workspace (the
+destination workspace) has the same identifier as a node being cloned
+from srcWorkspace, then the incoming node takes precedence, and the
+existing node (and its subgraph) is removed. If removeExisting is false
+then an identifier collision causes this method to throw a
+ItemExistsException and no changes are made.</p><p>If successful, the change is persisted immediately, there is no need
+to call save.</p><p>The destAbsPath provided must not have an index on its final element.
+If it does then a RepositoryException is thrown.
+If ordering is supported by the node type of the parent node of the new
+location, then the new clone of the node is appended to the end of the
+child node list.</p><p>This method cannot be used to clone just an individual property; it
+clones a node and its subgraph.</p><p>PHP Notice: The JCR method is called clone, but that is a reserved
+keyword in PHP, thus we named the method cloneFrom.</p><dl>
+<dt>Parameters:</dt>
+<dd>srcWorkspace - The name of the workspace from which the node is to be copied.</dd>
+<dd>srcAbsPath - The path of the node to be copied in srcWorkspace.</dd>
+<dd>destAbsPath - The location to which the node at srcAbsPath is to be copied in this workspace.</dd>
+<dd>removeExisting - if false then this method throws an ItemExistsException on identifier conflict with an incoming node. If true then a identifier conflict is resolved by removing the existing node from its location in this workspace and cloning (copying in) the one from srcWorkspace.</dd>
+<dt>Throws:</dt>
+<dd><a href="../phpcr/nosuchworkspaceexception.html">\PHPCR\NoSuchWorkspaceException</a> - if destWorkspace does not exist.</dd>
+<dd>\PHPCR\ConstraintViolationException - if the operation would violate a node-type or other implementation-specific constraint.</dd>
+<dd><a href="../phpcr/version/versionexception.html">\PHPCR\Version\VersionException</a> - if the parent node of destAbsPath is read-only due to a checked-in node. This exception will also be thrown if removeExisting is true, and an identifier conflict occurs that would require the moving and/or altering of a node that is checked-in.</dd>
+<dd><a href="../phpcr/accessdeniedexception.html">\PHPCR\AccessDeniedException</a> - if the current session does not have sufficient access to complete the operation.</dd>
+<dd><a href="../phpcr/pathnotfoundexception.html">\PHPCR\PathNotFoundException</a> - if the node at srcAbsPath in srcWorkspace or the parent of destAbsPath in this workspace does not exist.</dd>
+<dd><a href="../phpcr/itemexistsexception.html">\PHPCR\ItemExistsException</a> - if a node already exists at destAbsPath and same-name siblings are not allowed or if removeExisting is false and an identifier conflict occurs.</dd>
+<dd><a href="../phpcr/lock/lockexception.html">\PHPCR\Lock\LockException</a> - if a lock prevents the clone.</dd>
+<dd><a href="../phpcr/repositoryexception.html">\PHPCR\RepositoryException</a> - if the last element of destAbsPath has an index or if another error occurs.</dd>
+<dt>Api.</dt>
+</dl>
+</div>
+
+<hr>
+
+<a href="../source/phpcr/workspaceinterface.php.html#line263" class="location">PHPCR/WorkspaceInterface.php at line 263</a>
 
 <h3 id="copy()">copy</h3>
 <code class="signature">public  void <strong>copy</strong>(string srcAbsPath, string destAbsPath, string srcWorkspace)</code>
@@ -508,7 +552,7 @@ properties contained therein).</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/workspaceinterface.php.html#line613" class="location">PHPCR/WorkspaceInterface.php at line 613</a>
+<a href="../source/phpcr/workspaceinterface.php.html#line612" class="location">PHPCR/WorkspaceInterface.php at line 612</a>
 
 <h3 id="createWorkspace()">createWorkspace</h3>
 <code class="signature">public  void <strong>createWorkspace</strong>(string name, string srcWorkspace)</code>
@@ -534,7 +578,7 @@ calls between the new workspace and its source.</p><p>The new workspace can be a
 
 <hr>
 
-<a href="../source/phpcr/workspaceinterface.php.html#line627" class="location">PHPCR/WorkspaceInterface.php at line 627</a>
+<a href="../source/phpcr/workspaceinterface.php.html#line626" class="location">PHPCR/WorkspaceInterface.php at line 626</a>
 
 <h3 id="deleteWorkspace()">deleteWorkspace</h3>
 <code class="signature">public  void <strong>deleteWorkspace</strong>(string name)</code>
@@ -553,7 +597,7 @@ calls between the new workspace and its source.</p><p>The new workspace can be a
 
 <hr>
 
-<a href="../source/phpcr/workspaceinterface.php.html#line450" class="location">PHPCR/WorkspaceInterface.php at line 450</a>
+<a href="../source/phpcr/workspaceinterface.php.html#line449" class="location">PHPCR/WorkspaceInterface.php at line 449</a>
 
 <h3 id="getAccessibleWorkspaceNames()">getAccessibleWorkspaceNames</h3>
 <code class="signature">public  array <strong>getAccessibleWorkspaceNames</strong>()</code>
@@ -574,7 +618,7 @@ and receives a new Session object.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/workspaceinterface.php.html#line529" class="location">PHPCR/WorkspaceInterface.php at line 529</a>
+<a href="../source/phpcr/workspaceinterface.php.html#line528" class="location">PHPCR/WorkspaceInterface.php at line 528</a>
 
 <h3 id="getImportContentHandler()">getImportContentHandler</h3>
 <code class="signature">public  an <strong>getImportContentHandler</strong>(string parentAbsPath, integer uuidBehavior)</code>
@@ -643,7 +687,7 @@ one of its ancestors.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/workspaceinterface.php.html#line380" class="location">PHPCR/WorkspaceInterface.php at line 380</a>
+<a href="../source/phpcr/workspaceinterface.php.html#line379" class="location">PHPCR/WorkspaceInterface.php at line 379</a>
 
 <h3 id="getLockManager()">getLockManager</h3>
 <code class="signature">public  <a href="../phpcr/lock/lockmanagerinterface.html">LockManagerInterface</a> <strong>getLockManager</strong>()</code>
@@ -658,7 +702,7 @@ one of its ancestors.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/workspaceinterface.php.html#line182" class="location">PHPCR/WorkspaceInterface.php at line 182</a>
+<a href="../source/phpcr/workspaceinterface.php.html#line181" class="location">PHPCR/WorkspaceInterface.php at line 181</a>
 
 <h3 id="getName()">getName</h3>
 <code class="signature">public  string <strong>getName</strong>()</code>
@@ -672,7 +716,7 @@ one of its ancestors.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/workspaceinterface.php.html#line400" class="location">PHPCR/WorkspaceInterface.php at line 400</a>
+<a href="../source/phpcr/workspaceinterface.php.html#line399" class="location">PHPCR/WorkspaceInterface.php at line 399</a>
 
 <h3 id="getNamespaceRegistry()">getNamespaceRegistry</h3>
 <code class="signature">public  <a href="../phpcr/namespaceregistryinterface.html">NamespaceRegistryInterface</a> <strong>getNamespaceRegistry</strong>()</code>
@@ -688,7 +732,7 @@ one of its ancestors.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/workspaceinterface.php.html#line414" class="location">PHPCR/WorkspaceInterface.php at line 414</a>
+<a href="../source/phpcr/workspaceinterface.php.html#line413" class="location">PHPCR/WorkspaceInterface.php at line 413</a>
 
 <h3 id="getNodeTypeManager()">getNodeTypeManager</h3>
 <code class="signature">public  <a href="../phpcr/nodetype/nodetypemanagerinterface.html">NodeTypeManagerInterface</a> <strong>getNodeTypeManager</strong>()</code>
@@ -707,7 +751,7 @@ the NodeTypeManager can also be used to register new node types.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/workspaceinterface.php.html#line424" class="location">PHPCR/WorkspaceInterface.php at line 424</a>
+<a href="../source/phpcr/workspaceinterface.php.html#line423" class="location">PHPCR/WorkspaceInterface.php at line 423</a>
 
 <h3 id="getObservationManager()">getObservationManager</h3>
 <code class="signature">public  <a href="../phpcr/observation/observationmanagerinterface.html">ObservationManagerInterface</a> <strong>getObservationManager</strong>()</code>
@@ -724,7 +768,7 @@ the NodeTypeManager can also be used to register new node types.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/workspaceinterface.php.html#line389" class="location">PHPCR/WorkspaceInterface.php at line 389</a>
+<a href="../source/phpcr/workspaceinterface.php.html#line388" class="location">PHPCR/WorkspaceInterface.php at line 388</a>
 
 <h3 id="getQueryManager()">getQueryManager</h3>
 <code class="signature">public  <a href="../phpcr/query/querymanagerinterface.html">QueryManagerInterface</a> <strong>getQueryManager</strong>()</code>
@@ -740,7 +784,7 @@ the NodeTypeManager can also be used to register new node types.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/workspaceinterface.php.html#line172" class="location">PHPCR/WorkspaceInterface.php at line 172</a>
+<a href="../source/phpcr/workspaceinterface.php.html#line171" class="location">PHPCR/WorkspaceInterface.php at line 171</a>
 
 <h3 id="getSession()">getSession</h3>
 <code class="signature">public  <a href="../phpcr/sessioninterface.html">SessionInterface</a> <strong>getSession</strong>()</code>
@@ -754,7 +798,7 @@ the NodeTypeManager can also be used to register new node types.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/workspaceinterface.php.html#line434" class="location">PHPCR/WorkspaceInterface.php at line 434</a>
+<a href="../source/phpcr/workspaceinterface.php.html#line433" class="location">PHPCR/WorkspaceInterface.php at line 433</a>
 
 <h3 id="getVersionManager()">getVersionManager</h3>
 <code class="signature">public  <a href="../phpcr/version/versionmanagerinterface.html">VersionManagerInterface</a> <strong>getVersionManager</strong>()</code>
@@ -771,7 +815,7 @@ the NodeTypeManager can also be used to register new node types.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/workspaceinterface.php.html#line588" class="location">PHPCR/WorkspaceInterface.php at line 588</a>
+<a href="../source/phpcr/workspaceinterface.php.html#line587" class="location">PHPCR/WorkspaceInterface.php at line 587</a>
 
 <h3 id="importXML()">importXML</h3>
 <code class="signature">public  void <strong>importXML</strong>(string parentAbsPath, string in, integer uuidBehavior)</code>
@@ -827,51 +871,7 @@ ItemExistsException is thrown.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/workspaceinterface.php.html#line326" class="location">PHPCR/WorkspaceInterface.php at line 326</a>
-
-<h3 id="klone()">klone</h3>
-<code class="signature">public  void <strong>klone</strong>(string srcWorkspace, string srcAbsPath, string destAbsPath, boolean removeExisting)</code>
-<div class="details">
-<p>Clones the subgraph at the node srcAbsPath in srcWorkspace to the new location at destAbsPath in this workspace.</p><p>Unlike the signature of copy that copies between workspaces, this method
-does not assign new identifiers to the newly cloned nodes but preserves
-the identifiers of their respective source nodes. This applies to both
-referenceable and non-referenceable nodes.</p><p>In some implementations there may be cases where preservation of a
-non-referenceable identifier is not possible, due to how non-referenceable
-identifiers are constructed in that implementation. In such a case this
-method will throw a RepositoryException.</p><p>If removeExisting is true and an existing node in this workspace (the
-destination workspace) has the same identifier as a node being cloned
-from srcWorkspace, then the incoming node takes precedence, and the
-existing node (and its subgraph) is removed. If removeExisting is false
-then an identifier collision causes this method to throw a
-ItemExistsException and no changes are made.</p><p>If successful, the change is persisted immediately, there is no need
-to call save.</p><p>The destAbsPath provided must not have an index on its final element.
-If it does then a RepositoryException is thrown.
-If ordering is supported by the node type of the parent node of the new
-location, then the new clone of the node is appended to the end of the
-child node list.</p><p>This method cannot be used to clone just an individual property; it
-clones a node and its subgraph.</p><p>PHP Notice: The JCR method is called clone, but that is a reserved
-keyword in PHP, thus we named the method klone.</p><dl>
-<dt>Parameters:</dt>
-<dd>srcWorkspace - The name of the workspace from which the node is to be copied.</dd>
-<dd>srcAbsPath - The path of the node to be copied in srcWorkspace.</dd>
-<dd>destAbsPath - The location to which the node at srcAbsPath is to be copied in this workspace.</dd>
-<dd>removeExisting - if false then this method throws an ItemExistsException on identifier conflict with an incoming node. If true then a identifier conflict is resolved by removing the existing node from its location in this workspace and cloning (copying in) the one from srcWorkspace.</dd>
-<dt>Throws:</dt>
-<dd><a href="../phpcr/nosuchworkspaceexception.html">\PHPCR\NoSuchWorkspaceException</a> - if destWorkspace does not exist.</dd>
-<dd>\PHPCR\ConstraintViolationException - if the operation would violate a node-type or other implementation-specific constraint.</dd>
-<dd><a href="../phpcr/version/versionexception.html">\PHPCR\Version\VersionException</a> - if the parent node of destAbsPath is read-only due to a checked-in node. This exception will also be thrown if removeExisting is true, and an identifier conflict occurs that would require the moving and/or altering of a node that is checked-in.</dd>
-<dd><a href="../phpcr/accessdeniedexception.html">\PHPCR\AccessDeniedException</a> - if the current session does not have sufficient access to complete the operation.</dd>
-<dd><a href="../phpcr/pathnotfoundexception.html">\PHPCR\PathNotFoundException</a> - if the node at srcAbsPath in srcWorkspace or the parent of destAbsPath in this workspace does not exist.</dd>
-<dd><a href="../phpcr/itemexistsexception.html">\PHPCR\ItemExistsException</a> - if a node already exists at destAbsPath and same-name siblings are not allowed or if removeExisting is false and an identifier conflict occurs.</dd>
-<dd><a href="../phpcr/lock/lockexception.html">\PHPCR\Lock\LockException</a> - if a lock prevents the clone.</dd>
-<dd><a href="../phpcr/repositoryexception.html">\PHPCR\RepositoryException</a> - if the last element of destAbsPath has an index or if another error occurs.</dd>
-<dt>Api.</dt>
-</dl>
-</div>
-
-<hr>
-
-<a href="../source/phpcr/workspaceinterface.php.html#line370" class="location">PHPCR/WorkspaceInterface.php at line 370</a>
+<a href="../source/phpcr/workspaceinterface.php.html#line369" class="location">PHPCR/WorkspaceInterface.php at line 369</a>
 
 <h3 id="move()">move</h3>
 <code class="signature">public  void <strong>move</strong>(string srcAbsPath, string destAbsPath)</code>

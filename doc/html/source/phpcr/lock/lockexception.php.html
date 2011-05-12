@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="generator" content="PHPDoctor 2RC4 (http://peej.github.com/phpdoctor/)">
-<meta name="when" content="Fri, 06 May 2011 11:43:24 +0000">
+<meta name="when" content="Thu, 12 May 2011 08:50:47 +0000">
 
 <link rel="stylesheet" type="text/css" href="../../../stylesheet.css">
 <link rel="start" href="../../../overview-summary.html">
@@ -79,61 +79,60 @@ If not, see <code><a href="http://www.gnu.org/licenses/lgpl.html">http://www.gnu
 <a name="line29"></a> * @subpackage exceptions
 <a name="line30"></a> */</span>
 <a name="line31"></a>&nbsp;
-<a name="line32"></a><span style="color: #000000; font-weight: bold;">declare</span><span style="color: #009900;">&#40;</span>ENCODING <span style="color: #339933;">=</span> <span style="color: #0000ff;">'utf-8'</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line33"></a><span style="color: #000000; font-weight: bold;">namespace</span> PHPCR\Lock<span style="color: #339933;">;</span>
-<a name="line34"></a>&nbsp;
-<a name="line35"></a><span style="color: #009933; font-style: italic;">/**
-<a name="line36"></a> * Exception thrown when a lock-related error occurs.
-<a name="line37"></a> *
-<a name="line38"></a> * @package phpcr
-<a name="line39"></a> * @subpackage exceptions
-<a name="line40"></a> * @api
-<a name="line41"></a> */</span>
-<a name="line42"></a><span style="color: #000000; font-weight: bold;">class</span> LockException <span style="color: #000000; font-weight: bold;">extends</span> \PHPCR\RepositoryException <span style="color: #009900;">&#123;</span>
-<a name="line43"></a>&nbsp;
-<a name="line44"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line45"></a>     * Absolute path of the node that caused the error, in normalized, standard
-<a name="line46"></a>     * form, that is, each path segment must be a JCR name in qualified form,
-<a name="line47"></a>     * the path must have no trailing slash, no self or parent segments and no
-<a name="line48"></a>     * [1] indexes.
-<a name="line49"></a>     * @var string
-<a name="line50"></a>     */</span>
-<a name="line51"></a>    <span style="color: #000000; font-weight: bold;">protected</span> <span style="color: #000088;">$failureNodePath</span><span style="color: #339933;">;</span>
-<a name="line52"></a>&nbsp;
-<a name="line53"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line54"></a>     * If a path is passed it must be an absolute path in normalized, standard form,
-<a name="line55"></a>     * that is, each path segment must be a JCR name in qualified form, the path
-<a name="line56"></a>     * must have no trailing slash, no self or parent segments and no [1]
-<a name="line57"></a>     * indexes.
-<a name="line58"></a>     *
-<a name="line59"></a>     * @param string $message The exception message
-<a name="line60"></a>     * @param integer $code The exception error code
-<a name="line61"></a>     * @param string $failureNodePath the absolute path of the node that caused the error or  NULL if the implementation
-<a name="line62"></a>     *                                chooses not to, or cannot, return a path.
-<a name="line63"></a>     *
-<a name="line64"></a>     * @author Karsten Dambekalns &lt;karsten@typo3.org&gt;
-<a name="line65"></a>     * @api
-<a name="line66"></a>     */</span>
-<a name="line67"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> __construct<span style="color: #009900;">&#40;</span><span style="color: #000088;">$message</span><span style="color: #339933;">,</span> <span style="color: #000088;">$code</span><span style="color: #339933;">,</span> <span style="color: #000088;">$failureNodePath</span> <span style="color: #339933;">=</span> <span style="color: #009900; font-weight: bold;">NULL</span><span style="color: #009900;">&#41;</span> <span style="color: #009900;">&#123;</span>
-<a name="line68"></a>        parent<span style="color: #339933;">::</span><span style="color: #004000;">construct</span><span style="color: #009900;">&#40;</span><span style="color: #000088;">$message</span><span style="color: #339933;">,</span> <span style="color: #000088;">$code</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line69"></a>        <span style="color: #000088;">$this</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">failureNodePath</span> <span style="color: #339933;">=</span> <span style="color: #000088;">$failureNodePath</span><span style="color: #339933;">;</span>
-<a name="line70"></a>    <span style="color: #009900;">&#125;</span>
-<a name="line71"></a>&nbsp;
-<a name="line72"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line73"></a>     * Returns the absolute path of the node that caused the error or NULL
-<a name="line74"></a>     * if the implementation chooses not to, or cannot, return a path.
-<a name="line75"></a>     *
-<a name="line76"></a>     * @return string path of the node that caused the error
-<a name="line77"></a>     *
-<a name="line78"></a>     * @author Karsten Dambekalns &lt;karsten@typo3.org&gt;
-<a name="line79"></a>     * @api
-<a name="line80"></a>     */</span>
-<a name="line81"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getFailureNodePath<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span> <span style="color: #009900;">&#123;</span>
-<a name="line82"></a>        <span style="color: #b1b100;">return</span> <span style="color: #000088;">$this</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">failureNodePath</span><span style="color: #339933;">;</span>
-<a name="line83"></a>    <span style="color: #009900;">&#125;</span>
-<a name="line84"></a>&nbsp;
-<a name="line85"></a><span style="color: #009900;">&#125;</span>
-<a name="line86"></a>&nbsp;</pre>
+<a name="line32"></a><span style="color: #000000; font-weight: bold;">namespace</span> PHPCR\Lock<span style="color: #339933;">;</span>
+<a name="line33"></a>&nbsp;
+<a name="line34"></a><span style="color: #009933; font-style: italic;">/**
+<a name="line35"></a> * Exception thrown when a lock-related error occurs.
+<a name="line36"></a> *
+<a name="line37"></a> * @package phpcr
+<a name="line38"></a> * @subpackage exceptions
+<a name="line39"></a> * @api
+<a name="line40"></a> */</span>
+<a name="line41"></a><span style="color: #000000; font-weight: bold;">class</span> LockException <span style="color: #000000; font-weight: bold;">extends</span> \PHPCR\RepositoryException <span style="color: #009900;">&#123;</span>
+<a name="line42"></a>&nbsp;
+<a name="line43"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line44"></a>     * Absolute path of the node that caused the error, in normalized, standard
+<a name="line45"></a>     * form, that is, each path segment must be a JCR name in qualified form,
+<a name="line46"></a>     * the path must have no trailing slash, no self or parent segments and no
+<a name="line47"></a>     * [1] indexes.
+<a name="line48"></a>     * @var string
+<a name="line49"></a>     */</span>
+<a name="line50"></a>    <span style="color: #000000; font-weight: bold;">protected</span> <span style="color: #000088;">$failureNodePath</span><span style="color: #339933;">;</span>
+<a name="line51"></a>&nbsp;
+<a name="line52"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line53"></a>     * If a path is passed it must be an absolute path in normalized, standard form,
+<a name="line54"></a>     * that is, each path segment must be a JCR name in qualified form, the path
+<a name="line55"></a>     * must have no trailing slash, no self or parent segments and no [1]
+<a name="line56"></a>     * indexes.
+<a name="line57"></a>     *
+<a name="line58"></a>     * @param string $message The exception message
+<a name="line59"></a>     * @param integer $code The exception error code
+<a name="line60"></a>     * @param string $failureNodePath the absolute path of the node that caused the error or  null if the implementation
+<a name="line61"></a>     *                                chooses not to, or cannot, return a path.
+<a name="line62"></a>     *
+<a name="line63"></a>     * @author Karsten Dambekalns &lt;karsten@typo3.org&gt;
+<a name="line64"></a>     * @api
+<a name="line65"></a>     */</span>
+<a name="line66"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> __construct<span style="color: #009900;">&#40;</span><span style="color: #000088;">$message</span><span style="color: #339933;">,</span> <span style="color: #000088;">$code</span><span style="color: #339933;">,</span> <span style="color: #000088;">$failureNodePath</span> <span style="color: #339933;">=</span> <span style="color: #009900; font-weight: bold;">null</span><span style="color: #009900;">&#41;</span> <span style="color: #009900;">&#123;</span>
+<a name="line67"></a>        parent<span style="color: #339933;">::</span><span style="color: #004000;">construct</span><span style="color: #009900;">&#40;</span><span style="color: #000088;">$message</span><span style="color: #339933;">,</span> <span style="color: #000088;">$code</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line68"></a>        <span style="color: #000088;">$this</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">failureNodePath</span> <span style="color: #339933;">=</span> <span style="color: #000088;">$failureNodePath</span><span style="color: #339933;">;</span>
+<a name="line69"></a>    <span style="color: #009900;">&#125;</span>
+<a name="line70"></a>&nbsp;
+<a name="line71"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line72"></a>     * Returns the absolute path of the node that caused the error or null
+<a name="line73"></a>     * if the implementation chooses not to, or cannot, return a path.
+<a name="line74"></a>     *
+<a name="line75"></a>     * @return string path of the node that caused the error
+<a name="line76"></a>     *
+<a name="line77"></a>     * @author Karsten Dambekalns &lt;karsten@typo3.org&gt;
+<a name="line78"></a>     * @api
+<a name="line79"></a>     */</span>
+<a name="line80"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getFailureNodePath<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span> <span style="color: #009900;">&#123;</span>
+<a name="line81"></a>        <span style="color: #b1b100;">return</span> <span style="color: #000088;">$this</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">failureNodePath</span><span style="color: #339933;">;</span>
+<a name="line82"></a>    <span style="color: #009900;">&#125;</span>
+<a name="line83"></a>&nbsp;
+<a name="line84"></a><span style="color: #009900;">&#125;</span>
+<a name="line85"></a>&nbsp;</pre>
 <div class="header">
 <h1>PHPCR</h1>
 <ul>

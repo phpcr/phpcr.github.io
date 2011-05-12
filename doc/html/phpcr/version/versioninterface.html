@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="generator" content="PHPDoctor 2RC4 (http://peej.github.com/phpdoctor/)">
-<meta name="when" content="Fri, 06 May 2011 11:43:18 +0000">
+<meta name="when" content="Thu, 12 May 2011 08:50:42 +0000">
 
 <link rel="stylesheet" type="text/css" href="../../stylesheet.css">
 <link rel="start" href="../../overview-summary.html">
@@ -41,7 +41,7 @@ Detail: <a href="#detail_field">Field</a> | <a href="#detail_method">Method</a> 
 <hr>
 
 <div class="qualifiedName">PHPCR\Version\VersionInterface</div>
-<a href="../../source/phpcr/version/versioninterface.php.html#line43" class="location">PHPCR/Version/VersionInterface.php at line 43</a>
+<a href="../../source/phpcr/version/versioninterface.php.html#line42" class="location">PHPCR/Version/VersionInterface.php at line 42</a>
 
 <h1>Interface VersionInterface</h1>
 
@@ -113,7 +113,7 @@ predecessor versions of this version. </p></td>
 <tr><td><a href="../../phpcr/iteminterface.html#accept()">accept</a>, <a href="../../phpcr/iteminterface.html#getAncestor()">getAncestor</a>, <a href="../../phpcr/iteminterface.html#getDepth()">getDepth</a>, <a href="../../phpcr/iteminterface.html#getName()">getName</a>, <a href="../../phpcr/iteminterface.html#getParent()">getParent</a>, <a href="../../phpcr/iteminterface.html#getPath()">getPath</a>, <a href="../../phpcr/iteminterface.html#getSession()">getSession</a>, <a href="../../phpcr/iteminterface.html#isModified()">isModified</a>, <a href="../../phpcr/iteminterface.html#isNew()">isNew</a>, <a href="../../phpcr/iteminterface.html#isNode()">isNode</a>, <a href="../../phpcr/iteminterface.html#isSame()">isSame</a>, <a href="../../phpcr/iteminterface.html#refresh()">refresh</a>, <a href="../../phpcr/iteminterface.html#remove()">remove</a></td></tr></table>
 
 <h2 id="detail_method">Method Detail</h2>
-<a href="../../source/phpcr/version/versioninterface.php.html#line52" class="location">PHPCR/Version/VersionInterface.php at line 52</a>
+<a href="../../source/phpcr/version/versioninterface.php.html#line51" class="location">PHPCR/Version/VersionInterface.php at line 51</a>
 
 <h3 id="getContainingHistory()">getContainingHistory</h3>
 <code class="signature">public  <a href="../../phpcr/version/versionhistoryinterface.html">VersionHistoryInterface</a> <strong>getContainingHistory</strong>()</code>
@@ -129,7 +129,7 @@ predecessor versions of this version. </p></td>
 
 <hr>
 
-<a href="../../source/phpcr/version/versioninterface.php.html#line63" class="location">PHPCR/Version/VersionInterface.php at line 63</a>
+<a href="../../source/phpcr/version/versioninterface.php.html#line62" class="location">PHPCR/Version/VersionInterface.php at line 62</a>
 
 <h3 id="getCreated()">getCreated</h3>
 <code class="signature">public  \DateTime <strong>getCreated</strong>()</code>
@@ -147,7 +147,7 @@ this version.</p><dl>
 
 <hr>
 
-<a href="../../source/phpcr/version/versioninterface.php.html#line127" class="location">PHPCR/Version/VersionInterface.php at line 127</a>
+<a href="../../source/phpcr/version/versioninterface.php.html#line126" class="location">PHPCR/Version/VersionInterface.php at line 126</a>
 
 <h3 id="getFrozenNode()">getFrozenNode</h3>
 <code class="signature">public  <a href="../../phpcr/nodeinterface.html">NodeInterface</a> <strong>getFrozenNode</strong>()</code>
@@ -163,7 +163,7 @@ this version.</p><dl>
 
 <hr>
 
-<a href="../../source/phpcr/version/versioninterface.php.html#line106" class="location">PHPCR/Version/VersionInterface.php at line 106</a>
+<a href="../../source/phpcr/version/versioninterface.php.html#line105" class="location">PHPCR/Version/VersionInterface.php at line 105</a>
 
 <h3 id="getLinearPredecessor()">getLinearPredecessor</h3>
 <code class="signature">public  <a href="../../phpcr/version/versioninterface.html">VersionInterface</a> <strong>getLinearPredecessor</strong>()</code>
@@ -174,7 +174,7 @@ this version along the same line of descent as is returned by
 H.getAllLinearVersions() where H was also acquired through W.</p><p>Note that under simple versioning the behavior of this method is equivalent
 to getting the unique predecessor (if any) of this version.</p><dl>
 <dt>Returns:</dt>
-<dd>a Version or NULL if no linear predecessor exists.</dd>
+<dd>a Version or null if no linear predecessor exists.</dd>
 <dt>Throws:</dt>
 <dd><a href="../../phpcr/repositoryexception.html">\PHPCR\RepositoryException</a> - if an error occurs.</dd>
 <dt>See Also:</dt>
@@ -185,7 +185,7 @@ to getting the unique predecessor (if any) of this version.</p><dl>
 
 <hr>
 
-<a href="../../source/phpcr/version/versioninterface.php.html#line79" class="location">PHPCR/Version/VersionInterface.php at line 79</a>
+<a href="../../source/phpcr/version/versioninterface.php.html#line78" class="location">PHPCR/Version/VersionInterface.php at line 78</a>
 
 <h3 id="getLinearSuccessor()">getLinearSuccessor</h3>
 <code class="signature">public  <a href="../../phpcr/version/versioninterface.html">VersionInterface</a> <strong>getLinearSuccessor</strong>()</code>
@@ -196,7 +196,7 @@ version along the same line of descent as is returned by
 H.getAllLinearVersions() where H was also acquired through W.</p><p>Note that under simple versioning the behavior of this method is equivalent
 to getting the unique successor (if any) of this version.</p><dl>
 <dt>Returns:</dt>
-<dd>a Version or NULL if no linear successor exists.</dd>
+<dd>a Version or null if no linear successor exists.</dd>
 <dt>Throws:</dt>
 <dd><a href="../../phpcr/repositoryexception.html">\PHPCR\RepositoryException</a> - if an error occurs.</dd>
 <dt>See Also:</dt>
@@ -207,7 +207,7 @@ to getting the unique successor (if any) of this version.</p><dl>
 
 <hr>
 
-<a href="../../source/phpcr/version/versioninterface.php.html#line118" class="location">PHPCR/Version/VersionInterface.php at line 118</a>
+<a href="../../source/phpcr/version/versioninterface.php.html#line117" class="location">PHPCR/Version/VersionInterface.php at line 117</a>
 
 <h3 id="getPredecessors()">getPredecessors</h3>
 <code class="signature">public  array <strong>getPredecessors</strong>()</code>
@@ -226,7 +226,7 @@ to the nt:version node that represents this version.</p><dl>
 
 <hr>
 
-<a href="../../source/phpcr/version/versioninterface.php.html#line90" class="location">PHPCR/Version/VersionInterface.php at line 90</a>
+<a href="../../source/phpcr/version/versioninterface.php.html#line89" class="location">PHPCR/Version/VersionInterface.php at line 89</a>
 
 <h3 id="getSuccessors()">getSuccessors</h3>
 <code class="signature">public  array <strong>getSuccessors</strong>()</code>

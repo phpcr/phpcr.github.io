@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="generator" content="PHPDoctor 2RC4 (http://peej.github.com/phpdoctor/)">
-<meta name="when" content="Fri, 06 May 2011 11:43:26 +0000">
+<meta name="when" content="Thu, 12 May 2011 08:50:49 +0000">
 
 <link rel="stylesheet" type="text/css" href="../../../stylesheet.css">
 <link rel="start" href="../../../overview-summary.html">
@@ -79,208 +79,207 @@ If not, see <code><a href="http://www.gnu.org/licenses/lgpl.html">http://www.gnu
 <a name="line29"></a> * @subpackage interfaces
 <a name="line30"></a> */</span>
 <a name="line31"></a>&nbsp;
-<a name="line32"></a><span style="color: #000000; font-weight: bold;">declare</span><span style="color: #009900;">&#40;</span>ENCODING <span style="color: #339933;">=</span> <span style="color: #0000ff;">'utf-8'</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line33"></a><span style="color: #000000; font-weight: bold;">namespace</span> PHPCR\NodeType<span style="color: #339933;">;</span>
-<a name="line34"></a>&nbsp;
-<a name="line35"></a><span style="color: #009933; font-style: italic;">/**
-<a name="line36"></a> * Allows for the retrieval and (in implementations that support it) the
-<a name="line37"></a> * registration of node types. Accessed via Workspace.getNodeTypeManager().
-<a name="line38"></a> *
-<a name="line39"></a> * The \Traversable interface enables the implementation to be addressed with
-<a name="line40"></a> * &lt;b&gt;foreach&lt;/b&gt;. NodeTypeManager has to implement either \RecursiveIterator
-<a name="line41"></a> * or \Iterator.
-<a name="line42"></a> * The iterator is equivalent to &lt;b&gt;getAllNodeTypes()&lt;/b&gt; returning a list of
-<a name="line43"></a> * all node types. The iterator keys have no significant meaning.
-<a name="line44"></a> *
-<a name="line45"></a> * @package phpcr
-<a name="line46"></a> * @subpackage interfaces
-<a name="line47"></a> * @api
-<a name="line48"></a> */</span>
-<a name="line49"></a><span style="color: #000000; font-weight: bold;">interface</span> NodeTypeManagerInterface <span style="color: #000000; font-weight: bold;">extends</span> \Traversable <span style="color: #009900;">&#123;</span>
-<a name="line50"></a>&nbsp;
-<a name="line51"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line52"></a>     * Returns the named node type.
-<a name="line53"></a>     *
-<a name="line54"></a>     * @param string $nodeTypeName the name of an existing node type.
-<a name="line55"></a>     * @return \PHPCR\NodeType\NodeTypeInterface A NodeType object.
-<a name="line56"></a>     *
-<a name="line57"></a>     * @throws \PHPCR\NodeType\NoSuchNodeTypeException if no node type by the given name exists.
-<a name="line58"></a>     * @throws \PHPCR\RepositoryException if another error occurs.
-<a name="line59"></a>     * @api
-<a name="line60"></a>     */</span>
-<a name="line61"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getNodeType<span style="color: #009900;">&#40;</span><span style="color: #000088;">$nodeTypeName</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line62"></a>&nbsp;
-<a name="line63"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line64"></a>     * Determines if the given node type is registered.
-<a name="line65"></a>     *
-<a name="line66"></a>     * Returns true if a node type with the specified name is registered. Returns
-<a name="line67"></a>     * false otherwise.
-<a name="line68"></a>     *
-<a name="line69"></a>     * @param string $name The name of node type.
-<a name="line70"></a>     * @return boolean True, if the node type identified by its name is registered, else false.
-<a name="line71"></a>     *
-<a name="line72"></a>     * @throws \PHPCR\RepositoryException if an error occurs.
-<a name="line73"></a>     * @api
-<a name="line74"></a>     */</span>
-<a name="line75"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> hasNodeType<span style="color: #009900;">&#40;</span><span style="color: #000088;">$name</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line76"></a>&nbsp;
-<a name="line77"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line78"></a>     * Returns an iterator over all available node types (primary and mixin).
-<a name="line79"></a>     *
-<a name="line80"></a>     * @return Iterator implementing &lt;b&gt;SeekableIterator&lt;/b&gt; and &lt;b&gt;Countable&lt;/b&gt;. Keys are the node type names,
-<a name="line81"></a>     *                  values the corresponding NodeTypeInterface instances.
-<a name="line82"></a>     *
-<a name="line83"></a>     * @throws \PHPCR\RepositoryException if an error occurs.
-<a name="line84"></a>     * @api
-<a name="line85"></a>     */</span>
-<a name="line86"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getAllNodeTypes<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line87"></a>&nbsp;
-<a name="line88"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line89"></a>     * Returns an iterator over all available primary node types.
-<a name="line90"></a>     *
-<a name="line91"></a>     * @return Iterator implementing &lt;b&gt;SeekableIterator&lt;/b&gt; and &lt;b&gt;Countable&lt;/b&gt;. Keys are the node type names,
-<a name="line92"></a>     *                  values the corresponding NodeTypeInterface instances.
-<a name="line93"></a>     *
-<a name="line94"></a>     * @throws \PHPCR\RepositoryException if an error occurs.
-<a name="line95"></a>     * @api
-<a name="line96"></a>     */</span>
-<a name="line97"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getPrimaryNodeTypes<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line98"></a>&nbsp;
-<a name="line99"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line100"></a>     * Returns an iterator over all available mixin node types.
-<a name="line101"></a>     *
-<a name="line102"></a>     * If none are available, an empty iterator is returned.
-<a name="line103"></a>     *
-<a name="line104"></a>     * @return Iterator implementing &lt;b&gt;SeekableIterator&lt;/b&gt; and &lt;b&gt;Countable&lt;/b&gt;. Keys are the node type names,
-<a name="line105"></a>     *                  values the corresponding NodeTypeInterface instances.
-<a name="line106"></a>     *
-<a name="line107"></a>     * @throws \PHPCR\RepositoryException if an error occurs.
-<a name="line108"></a>     * @api
-<a name="line109"></a>     */</span>
-<a name="line110"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getMixinNodeTypes<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line111"></a>&nbsp;
-<a name="line112"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line113"></a>     * Returns an empty NodeTypeTemplate which can then be used to define a node type
-<a name="line114"></a>     * and passed to NodeTypeManager.registerNodeType.
-<a name="line115"></a>     *
-<a name="line116"></a>     * If &lt;b&gt;$ntd&lt;/b&gt; is given:
-<a name="line117"></a>     * Returns a NodeTypeTemplate holding the specified node type definition. This
-<a name="line118"></a>     * template can then be altered and passed to NodeTypeManager.registerNodeType.
-<a name="line119"></a>     *
-<a name="line120"></a>     * @param \PHPCR\NodeType\NodeTypeDefinitionInterface $ntd a NodeTypeDefinition.
-<a name="line121"></a>     * @return \PHPCR\NodeType\NodeTypeTemplateInterface A NodeTypeTemplate.
-<a name="line122"></a>     *
-<a name="line123"></a>     * @throws \PHPCR\UnsupportedRepositoryOperationException if this implementation does not support
-<a name="line124"></a>     *                                                        node type registration.
-<a name="line125"></a>     * @throws \PHPCR\RepositoryException if another error occurs.
-<a name="line126"></a>     * @api
-<a name="line127"></a>     */</span>
-<a name="line128"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> createNodeTypeTemplate<span style="color: #009900;">&#40;</span><span style="color: #000088;">$ntd</span> <span style="color: #339933;">=</span> <span style="color: #009900; font-weight: bold;">NULL</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line129"></a>&nbsp;
-<a name="line130"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line131"></a>     * Returns an empty NodeDefinitionTemplate which can then be used to create a
-<a name="line132"></a>     * child node definition and attached to a NodeTypeTemplate.
-<a name="line133"></a>     *
-<a name="line134"></a>     * @return \PHPCR\NodeType\NodeDefinitionTemplateInterface A NodeDefinitionTemplate.
-<a name="line135"></a>     *
-<a name="line136"></a>     * @throws \PHPCR\UnsupportedRepositoryOperationException if this implementation does not support
-<a name="line137"></a>     *                                                        node type registration.
-<a name="line138"></a>     * @throws \PHPCR\RepositoryException if another error occurs.
-<a name="line139"></a>     * @api
-<a name="line140"></a>     */</span>
-<a name="line141"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> createNodeDefinitionTemplate<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line142"></a>&nbsp;
-<a name="line143"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line144"></a>     * Returns an empty PropertyDefinitionTemplate which can then be used to create
-<a name="line145"></a>     * a property definition and attached to a NodeTypeTemplate.
-<a name="line146"></a>     *
-<a name="line147"></a>     * @return \PHPCR\NodeType\PropertyDefinitionTemplateInterface A PropertyDefinitionTemplate.
-<a name="line148"></a>     *
-<a name="line149"></a>     * @throws \PHPCR\UnsupportedRepositoryOperationException if this implementation does not support
-<a name="line150"></a>     *                                                        node type registration.
-<a name="line151"></a>     * @throws \PHPCR\RepositoryException if another error occurs.
-<a name="line152"></a>     * @api
-<a name="line153"></a>     */</span>
-<a name="line154"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> createPropertyDefinitionTemplate<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line155"></a>&nbsp;
-<a name="line156"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line157"></a>     * Registers a new node type or updates an existing node type using the specified
-<a name="line158"></a>     * definition and returns the resulting NodeType object.
-<a name="line159"></a>     *
-<a name="line160"></a>     * Typically, the object passed to this method will be a NodeTypeTemplate (a
-<a name="line161"></a>     * subclass of NodeTypeDefinition) acquired from NodeTypeManager.createNodeTypeTemplate
-<a name="line162"></a>     * and then filled-in with definition information.
-<a name="line163"></a>     *
-<a name="line164"></a>     * @param \PHPCR\NodeType\NodeTypeDefinitionInterface $ntd an NodeTypeDefinition.
-<a name="line165"></a>     * @param boolean $allowUpdate whether to fail if node already exists or to update it
-<a name="line166"></a>     * @return \PHPCR\NodeType\NodeTypeInterface the registered node type
-<a name="line167"></a>     *
-<a name="line168"></a>     * @throws \PHPCR\InvalidNodeTypeDefinitionException if the NodeTypeDefinition is invalid.
-<a name="line169"></a>     * @throws \PHPCR\NodeType\NodeTypeExistsException if allowUpdate is false and the NodeTypeDefinition
-<a name="line170"></a>     *                                                 specifies a node type name that is already registered.
-<a name="line171"></a>     * @throws \PHPCR\UnsupportedRepositoryOperationException if this implementation does not support
-<a name="line172"></a>     *                                                        node type registration.
-<a name="line173"></a>     * @throws \PHPCR\RepositoryException if another error occurs.
-<a name="line174"></a>     * @api
-<a name="line175"></a>     */</span>
-<a name="line176"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> registerNodeType<span style="color: #009900;">&#40;</span>\PHPCR\NodeType\NodeTypeDefinitionInterface <span style="color: #000088;">$ntd</span><span style="color: #339933;">,</span> <span style="color: #000088;">$allowUpdate</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line177"></a>&nbsp;
-<a name="line178"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line179"></a>     * Registers or updates the specified array of NodeTypeDefinition objects.
-<a name="line180"></a>     *
-<a name="line181"></a>     * This method is used to register or update a set of node types with mutual
-<a name="line182"></a>     * dependencies. Returns an iterator over the resulting NodeType objects.
-<a name="line183"></a>     * The effect of the method is &quot;all or nothing&quot;; if an error occurs, no node
-<a name="line184"></a>     * types are registered or updated.
-<a name="line185"></a>     *
-<a name="line186"></a>     * @param array $definitions an array of NodeTypeDefinitions
-<a name="line187"></a>     * @param boolean $allowUpdate whether to fail if node already exists or to update it
-<a name="line188"></a>     * @return Iterator over the registered node types implementing &lt;b&gt;SeekableIterator&lt;/b&gt; and &lt;b&gt;Countable&lt;/b&gt;.
-<a name="line189"></a>     *                  Keys are the node type names, values the corresponding NodeTypeInterface instances.
-<a name="line190"></a>     *
-<a name="line191"></a>     * @throws \PHPCR\InvalidNodeTypeDefinitionException if a NodeTypeDefinition within the Collection is
-<a name="line192"></a>     *                                                   invalid or if the Collection contains an object of a
-<a name="line193"></a>     *                                                   type other than NodeTypeDefinition.
-<a name="line194"></a>     * @throws \PHPCR\NodeType\NodeTypeExistsException if allowUpdate is false and a NodeTypeDefinition within
-<a name="line195"></a>     *                                                 the Collection specifies a node type name that is already
-<a name="line196"></a>     *                                                 registered.
-<a name="line197"></a>     * @throws \PHPCR\UnsupportedRepositoryOperationException if this implementation does not support node type
-<a name="line198"></a>     *                                                        registration.
-<a name="line199"></a>     * @throws \PHPCR\RepositoryException if another error occurs.
-<a name="line200"></a>     * @api
-<a name="line201"></a>     */</span>
-<a name="line202"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> registerNodeTypes<span style="color: #009900;">&#40;</span><a href="http://www.php.net/array"><span style="color: #990000;">array</span></a> <span style="color: #000088;">$definitions</span><span style="color: #339933;">,</span> <span style="color: #000088;">$allowUpdate</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line203"></a>&nbsp;
-<a name="line204"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line205"></a>     * Unregisters the specified node type.
-<a name="line206"></a>     *
-<a name="line207"></a>     * @param string $name The name of the node type to be removed from the registry.
-<a name="line208"></a>     * @return void
-<a name="line209"></a>     *
-<a name="line210"></a>     * @throws \PHPCR\UnsupportedRepositoryOperationException if this implementation does not
-<a name="line211"></a>     *                                                        support node type registration.
-<a name="line212"></a>     * @throws \PHPCR\NodeType\NoSuchNodeTypeException if no registered node type exists with the specified name.
-<a name="line213"></a>     * @throws \PHPCR\RepositoryException if another error occurs.
-<a name="line214"></a>     * @api
-<a name="line215"></a>     */</span>
-<a name="line216"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> unregisterNodeType<span style="color: #009900;">&#40;</span><span style="color: #000088;">$name</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line217"></a>&nbsp;
-<a name="line218"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line219"></a>     * Unregisters the specified set of node types. Used to unregister a set of node
-<a name="line220"></a>     * types with mutual dependencies.
-<a name="line221"></a>     *
-<a name="line222"></a>     * @param array $names List of node type names to be removed from the registry.
-<a name="line223"></a>     * @return void
-<a name="line224"></a>     *
-<a name="line225"></a>     * @throws \PHPCR\UnsupportedRepositoryOperationException if this implementation does not support
-<a name="line226"></a>     *                                                        node type registration.
-<a name="line227"></a>     * @throws \PHPCR\NodeType\NoSuchNodeTypeException if one of the names listed is not a registered node type.
-<a name="line228"></a>     * @throws \PHPCR\RepositoryException if another error occurs.
-<a name="line229"></a>     * @api
-<a name="line230"></a>     */</span>
-<a name="line231"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> unregisterNodeTypes<span style="color: #009900;">&#40;</span><a href="http://www.php.net/array"><span style="color: #990000;">array</span></a> <span style="color: #000088;">$names</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line232"></a><span style="color: #009900;">&#125;</span>
-<a name="line233"></a>&nbsp;</pre>
+<a name="line32"></a><span style="color: #000000; font-weight: bold;">namespace</span> PHPCR\NodeType<span style="color: #339933;">;</span>
+<a name="line33"></a>&nbsp;
+<a name="line34"></a><span style="color: #009933; font-style: italic;">/**
+<a name="line35"></a> * Allows for the retrieval and (in implementations that support it) the
+<a name="line36"></a> * registration of node types. Accessed via Workspace.getNodeTypeManager().
+<a name="line37"></a> *
+<a name="line38"></a> * The \Traversable interface enables the implementation to be addressed with
+<a name="line39"></a> * &lt;b&gt;foreach&lt;/b&gt;. NodeTypeManager has to implement either \RecursiveIterator
+<a name="line40"></a> * or \Iterator.
+<a name="line41"></a> * The iterator is equivalent to &lt;b&gt;getAllNodeTypes()&lt;/b&gt; returning a list of
+<a name="line42"></a> * all node types. The iterator keys have no significant meaning.
+<a name="line43"></a> *
+<a name="line44"></a> * @package phpcr
+<a name="line45"></a> * @subpackage interfaces
+<a name="line46"></a> * @api
+<a name="line47"></a> */</span>
+<a name="line48"></a><span style="color: #000000; font-weight: bold;">interface</span> NodeTypeManagerInterface <span style="color: #000000; font-weight: bold;">extends</span> \Traversable <span style="color: #009900;">&#123;</span>
+<a name="line49"></a>&nbsp;
+<a name="line50"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line51"></a>     * Returns the named node type.
+<a name="line52"></a>     *
+<a name="line53"></a>     * @param string $nodeTypeName the name of an existing node type.
+<a name="line54"></a>     * @return \PHPCR\NodeType\NodeTypeInterface A NodeType object.
+<a name="line55"></a>     *
+<a name="line56"></a>     * @throws \PHPCR\NodeType\NoSuchNodeTypeException if no node type by the given name exists.
+<a name="line57"></a>     * @throws \PHPCR\RepositoryException if another error occurs.
+<a name="line58"></a>     * @api
+<a name="line59"></a>     */</span>
+<a name="line60"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getNodeType<span style="color: #009900;">&#40;</span><span style="color: #000088;">$nodeTypeName</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line61"></a>&nbsp;
+<a name="line62"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line63"></a>     * Determines if the given node type is registered.
+<a name="line64"></a>     *
+<a name="line65"></a>     * Returns true if a node type with the specified name is registered. Returns
+<a name="line66"></a>     * false otherwise.
+<a name="line67"></a>     *
+<a name="line68"></a>     * @param string $name The name of node type.
+<a name="line69"></a>     * @return boolean True, if the node type identified by its name is registered, else false.
+<a name="line70"></a>     *
+<a name="line71"></a>     * @throws \PHPCR\RepositoryException if an error occurs.
+<a name="line72"></a>     * @api
+<a name="line73"></a>     */</span>
+<a name="line74"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> hasNodeType<span style="color: #009900;">&#40;</span><span style="color: #000088;">$name</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line75"></a>&nbsp;
+<a name="line76"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line77"></a>     * Returns an iterator over all available node types (primary and mixin).
+<a name="line78"></a>     *
+<a name="line79"></a>     * @return Iterator implementing &lt;b&gt;SeekableIterator&lt;/b&gt; and &lt;b&gt;Countable&lt;/b&gt;. Keys are the node type names,
+<a name="line80"></a>     *                  values the corresponding NodeTypeInterface instances.
+<a name="line81"></a>     *
+<a name="line82"></a>     * @throws \PHPCR\RepositoryException if an error occurs.
+<a name="line83"></a>     * @api
+<a name="line84"></a>     */</span>
+<a name="line85"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getAllNodeTypes<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line86"></a>&nbsp;
+<a name="line87"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line88"></a>     * Returns an iterator over all available primary node types.
+<a name="line89"></a>     *
+<a name="line90"></a>     * @return Iterator implementing &lt;b&gt;SeekableIterator&lt;/b&gt; and &lt;b&gt;Countable&lt;/b&gt;. Keys are the node type names,
+<a name="line91"></a>     *                  values the corresponding NodeTypeInterface instances.
+<a name="line92"></a>     *
+<a name="line93"></a>     * @throws \PHPCR\RepositoryException if an error occurs.
+<a name="line94"></a>     * @api
+<a name="line95"></a>     */</span>
+<a name="line96"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getPrimaryNodeTypes<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line97"></a>&nbsp;
+<a name="line98"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line99"></a>     * Returns an iterator over all available mixin node types.
+<a name="line100"></a>     *
+<a name="line101"></a>     * If none are available, an empty iterator is returned.
+<a name="line102"></a>     *
+<a name="line103"></a>     * @return Iterator implementing &lt;b&gt;SeekableIterator&lt;/b&gt; and &lt;b&gt;Countable&lt;/b&gt;. Keys are the node type names,
+<a name="line104"></a>     *                  values the corresponding NodeTypeInterface instances.
+<a name="line105"></a>     *
+<a name="line106"></a>     * @throws \PHPCR\RepositoryException if an error occurs.
+<a name="line107"></a>     * @api
+<a name="line108"></a>     */</span>
+<a name="line109"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getMixinNodeTypes<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line110"></a>&nbsp;
+<a name="line111"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line112"></a>     * Returns an empty NodeTypeTemplate which can then be used to define a node type
+<a name="line113"></a>     * and passed to NodeTypeManager.registerNodeType.
+<a name="line114"></a>     *
+<a name="line115"></a>     * If &lt;b&gt;$ntd&lt;/b&gt; is given:
+<a name="line116"></a>     * Returns a NodeTypeTemplate holding the specified node type definition. This
+<a name="line117"></a>     * template can then be altered and passed to NodeTypeManager.registerNodeType.
+<a name="line118"></a>     *
+<a name="line119"></a>     * @param \PHPCR\NodeType\NodeTypeDefinitionInterface $ntd a NodeTypeDefinition.
+<a name="line120"></a>     * @return \PHPCR\NodeType\NodeTypeTemplateInterface A NodeTypeTemplate.
+<a name="line121"></a>     *
+<a name="line122"></a>     * @throws \PHPCR\UnsupportedRepositoryOperationException if this implementation does not support
+<a name="line123"></a>     *                                                        node type registration.
+<a name="line124"></a>     * @throws \PHPCR\RepositoryException if another error occurs.
+<a name="line125"></a>     * @api
+<a name="line126"></a>     */</span>
+<a name="line127"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> createNodeTypeTemplate<span style="color: #009900;">&#40;</span><span style="color: #000088;">$ntd</span> <span style="color: #339933;">=</span> <span style="color: #009900; font-weight: bold;">null</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line128"></a>&nbsp;
+<a name="line129"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line130"></a>     * Returns an empty NodeDefinitionTemplate which can then be used to create a
+<a name="line131"></a>     * child node definition and attached to a NodeTypeTemplate.
+<a name="line132"></a>     *
+<a name="line133"></a>     * @return \PHPCR\NodeType\NodeDefinitionTemplateInterface A NodeDefinitionTemplate.
+<a name="line134"></a>     *
+<a name="line135"></a>     * @throws \PHPCR\UnsupportedRepositoryOperationException if this implementation does not support
+<a name="line136"></a>     *                                                        node type registration.
+<a name="line137"></a>     * @throws \PHPCR\RepositoryException if another error occurs.
+<a name="line138"></a>     * @api
+<a name="line139"></a>     */</span>
+<a name="line140"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> createNodeDefinitionTemplate<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line141"></a>&nbsp;
+<a name="line142"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line143"></a>     * Returns an empty PropertyDefinitionTemplate which can then be used to create
+<a name="line144"></a>     * a property definition and attached to a NodeTypeTemplate.
+<a name="line145"></a>     *
+<a name="line146"></a>     * @return \PHPCR\NodeType\PropertyDefinitionTemplateInterface A PropertyDefinitionTemplate.
+<a name="line147"></a>     *
+<a name="line148"></a>     * @throws \PHPCR\UnsupportedRepositoryOperationException if this implementation does not support
+<a name="line149"></a>     *                                                        node type registration.
+<a name="line150"></a>     * @throws \PHPCR\RepositoryException if another error occurs.
+<a name="line151"></a>     * @api
+<a name="line152"></a>     */</span>
+<a name="line153"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> createPropertyDefinitionTemplate<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line154"></a>&nbsp;
+<a name="line155"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line156"></a>     * Registers a new node type or updates an existing node type using the specified
+<a name="line157"></a>     * definition and returns the resulting NodeType object.
+<a name="line158"></a>     *
+<a name="line159"></a>     * Typically, the object passed to this method will be a NodeTypeTemplate (a
+<a name="line160"></a>     * subclass of NodeTypeDefinition) acquired from NodeTypeManager.createNodeTypeTemplate
+<a name="line161"></a>     * and then filled-in with definition information.
+<a name="line162"></a>     *
+<a name="line163"></a>     * @param \PHPCR\NodeType\NodeTypeDefinitionInterface $ntd an NodeTypeDefinition.
+<a name="line164"></a>     * @param boolean $allowUpdate whether to fail if node already exists or to update it
+<a name="line165"></a>     * @return \PHPCR\NodeType\NodeTypeInterface the registered node type
+<a name="line166"></a>     *
+<a name="line167"></a>     * @throws \PHPCR\InvalidNodeTypeDefinitionException if the NodeTypeDefinition is invalid.
+<a name="line168"></a>     * @throws \PHPCR\NodeType\NodeTypeExistsException if allowUpdate is false and the NodeTypeDefinition
+<a name="line169"></a>     *                                                 specifies a node type name that is already registered.
+<a name="line170"></a>     * @throws \PHPCR\UnsupportedRepositoryOperationException if this implementation does not support
+<a name="line171"></a>     *                                                        node type registration.
+<a name="line172"></a>     * @throws \PHPCR\RepositoryException if another error occurs.
+<a name="line173"></a>     * @api
+<a name="line174"></a>     */</span>
+<a name="line175"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> registerNodeType<span style="color: #009900;">&#40;</span>\PHPCR\NodeType\NodeTypeDefinitionInterface <span style="color: #000088;">$ntd</span><span style="color: #339933;">,</span> <span style="color: #000088;">$allowUpdate</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line176"></a>&nbsp;
+<a name="line177"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line178"></a>     * Registers or updates the specified array of NodeTypeDefinition objects.
+<a name="line179"></a>     *
+<a name="line180"></a>     * This method is used to register or update a set of node types with mutual
+<a name="line181"></a>     * dependencies. Returns an iterator over the resulting NodeType objects.
+<a name="line182"></a>     * The effect of the method is &quot;all or nothing&quot;; if an error occurs, no node
+<a name="line183"></a>     * types are registered or updated.
+<a name="line184"></a>     *
+<a name="line185"></a>     * @param array $definitions an array of NodeTypeDefinitions
+<a name="line186"></a>     * @param boolean $allowUpdate whether to fail if node already exists or to update it
+<a name="line187"></a>     * @return Iterator over the registered node types implementing &lt;b&gt;SeekableIterator&lt;/b&gt; and &lt;b&gt;Countable&lt;/b&gt;.
+<a name="line188"></a>     *                  Keys are the node type names, values the corresponding NodeTypeInterface instances.
+<a name="line189"></a>     *
+<a name="line190"></a>     * @throws \PHPCR\InvalidNodeTypeDefinitionException if a NodeTypeDefinition within the Collection is
+<a name="line191"></a>     *                                                   invalid or if the Collection contains an object of a
+<a name="line192"></a>     *                                                   type other than NodeTypeDefinition.
+<a name="line193"></a>     * @throws \PHPCR\NodeType\NodeTypeExistsException if allowUpdate is false and a NodeTypeDefinition within
+<a name="line194"></a>     *                                                 the Collection specifies a node type name that is already
+<a name="line195"></a>     *                                                 registered.
+<a name="line196"></a>     * @throws \PHPCR\UnsupportedRepositoryOperationException if this implementation does not support node type
+<a name="line197"></a>     *                                                        registration.
+<a name="line198"></a>     * @throws \PHPCR\RepositoryException if another error occurs.
+<a name="line199"></a>     * @api
+<a name="line200"></a>     */</span>
+<a name="line201"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> registerNodeTypes<span style="color: #009900;">&#40;</span><a href="http://www.php.net/array"><span style="color: #990000;">array</span></a> <span style="color: #000088;">$definitions</span><span style="color: #339933;">,</span> <span style="color: #000088;">$allowUpdate</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line202"></a>&nbsp;
+<a name="line203"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line204"></a>     * Unregisters the specified node type.
+<a name="line205"></a>     *
+<a name="line206"></a>     * @param string $name The name of the node type to be removed from the registry.
+<a name="line207"></a>     * @return void
+<a name="line208"></a>     *
+<a name="line209"></a>     * @throws \PHPCR\UnsupportedRepositoryOperationException if this implementation does not
+<a name="line210"></a>     *                                                        support node type registration.
+<a name="line211"></a>     * @throws \PHPCR\NodeType\NoSuchNodeTypeException if no registered node type exists with the specified name.
+<a name="line212"></a>     * @throws \PHPCR\RepositoryException if another error occurs.
+<a name="line213"></a>     * @api
+<a name="line214"></a>     */</span>
+<a name="line215"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> unregisterNodeType<span style="color: #009900;">&#40;</span><span style="color: #000088;">$name</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line216"></a>&nbsp;
+<a name="line217"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line218"></a>     * Unregisters the specified set of node types. Used to unregister a set of node
+<a name="line219"></a>     * types with mutual dependencies.
+<a name="line220"></a>     *
+<a name="line221"></a>     * @param array $names List of node type names to be removed from the registry.
+<a name="line222"></a>     * @return void
+<a name="line223"></a>     *
+<a name="line224"></a>     * @throws \PHPCR\UnsupportedRepositoryOperationException if this implementation does not support
+<a name="line225"></a>     *                                                        node type registration.
+<a name="line226"></a>     * @throws \PHPCR\NodeType\NoSuchNodeTypeException if one of the names listed is not a registered node type.
+<a name="line227"></a>     * @throws \PHPCR\RepositoryException if another error occurs.
+<a name="line228"></a>     * @api
+<a name="line229"></a>     */</span>
+<a name="line230"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> unregisterNodeTypes<span style="color: #009900;">&#40;</span><a href="http://www.php.net/array"><span style="color: #990000;">array</span></a> <span style="color: #000088;">$names</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line231"></a><span style="color: #009900;">&#125;</span>
+<a name="line232"></a>&nbsp;</pre>
 <div class="header">
 <h1>PHPCR</h1>
 <ul>

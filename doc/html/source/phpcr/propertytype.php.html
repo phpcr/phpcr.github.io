@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="generator" content="PHPDoctor 2RC4 (http://peej.github.com/phpdoctor/)">
-<meta name="when" content="Fri, 06 May 2011 11:43:22 +0000">
+<meta name="when" content="Thu, 12 May 2011 08:50:45 +0000">
 
 <link rel="stylesheet" type="text/css" href="../../stylesheet.css">
 <link rel="start" href="../../overview-summary.html">
@@ -78,362 +78,361 @@ If not, see <code><a href="http://www.gnu.org/licenses/lgpl.html">http://www.gnu
 <a name="line28"></a> * @package phpcr
 <a name="line29"></a> */</span>
 <a name="line30"></a>&nbsp;
-<a name="line31"></a><span style="color: #000000; font-weight: bold;">declare</span><span style="color: #009900;">&#40;</span>ENCODING <span style="color: #339933;">=</span> <span style="color: #0000ff;">'utf-8'</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line32"></a><span style="color: #000000; font-weight: bold;">namespace</span> PHPCR<span style="color: #339933;">;</span>
-<a name="line33"></a>&nbsp;
-<a name="line34"></a><span style="color: #009933; font-style: italic;">/**
-<a name="line35"></a> * The property types supported by the JCR standard.
-<a name="line36"></a> *
-<a name="line37"></a> * The &lt;b&gt;STRING&lt;/b&gt; property type is used to store strings.
-<a name="line38"></a> * &lt;b&gt;BINARY&lt;/b&gt; properties are used to store binary data.
-<a name="line39"></a> * The &lt;b&gt;LONG&lt;/b&gt; property type is used to store integers.
-<a name="line40"></a> * The &lt;b&gt;DECIMAL&lt;/b&gt; property type is used to store precise decimal numbers.
-<a name="line41"></a> * The &lt;b&gt;DOUBLE&lt;/b&gt; property type is used to store floating point numbers.
-<a name="line42"></a> * The &lt;b&gt;DATE&lt;/b&gt; property type is used to store time and date information. See 4.2.6.1 Date in the specification.
-<a name="line43"></a> * The &lt;b&gt;BOOLEAN&lt;/b&gt; property type is used to store boolean values.
-<a name="line44"></a> * A &lt;b&gt;NAME&lt;/b&gt; is a pairing of a namespace and a local name. When read, the namespace is mapped to the current prefix.
-<a name="line45"></a> * See 4.2.6.2 Name in the specification.
-<a name="line46"></a> * A &lt;b&gt;PATH&lt;/b&gt; property is an ordered list of path elements. A path element is a NAME with an optional index.
-<a name="line47"></a> * When read, the NAMEs within the path are mapped to their current prefix. A path may be absolute or relative.
-<a name="line48"></a> * See 4.2.6.3 Path in the specification.
-<a name="line49"></a> * A &lt;b&gt;REFERENCE&lt;/b&gt; property stores the identifier of a referenceable node (one having type mix:referenceable),
-<a name="line50"></a> * which must exist within the same workspace or session as the REFERENCE property. A REFERENCE property enforces this
-<a name="line51"></a> * referential integrity by preventing (in level 2 implementations) the removal of its target node.
-<a name="line52"></a> * See 4.2.6.4 Reference in the specification.
-<a name="line53"></a> * A &lt;b&gt;WEAKREFERENCE&lt;/b&gt; property stores the identifier of a referenceable node (one having type mix:referenceable).
-<a name="line54"></a> * A WEAKREFERENCE property does not enforce referential integrity. See 4.2.6.5 Weak Reference in the specification.
-<a name="line55"></a> * A &lt;b&gt;URI&lt;/b&gt; property is identical to STRING property except that it only accepts values that conform to the
-<a name="line56"></a> * syntax of a URI-reference as defined in RFC 3986. See also 4.2.6.6 URI in the specification.
-<a name="line57"></a> * &lt;b&gt;UNDEFINED&lt;/b&gt; can be used within a property definition (see 4.7.5 Property Definitions) to specify that the
-<a name="line58"></a> * property in question may be of any type. However, it cannot be the actual type of any property instance.
-<a name="line59"></a> * For example it will never be returned by Property.getType() and (in level 2 implementations) it cannot be assigned
-<a name="line60"></a> * as the type when creating a new property.
-<a name="line61"></a> *
-<a name="line62"></a> * @package phpcr
-<a name="line63"></a> * @api
-<a name="line64"></a> */</span>
-<a name="line65"></a>final <span style="color: #000000; font-weight: bold;">class</span> PropertyType <span style="color: #009900;">&#123;</span>
-<a name="line66"></a>&nbsp;
-<a name="line67"></a>    <span style="color: #009933; font-style: italic;">/**#@+
-<a name="line68"></a>     * @var integer
-<a name="line69"></a>     */</span>
-<a name="line70"></a>&nbsp;
-<a name="line71"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line72"></a>     * This constant can be used within a property definition to specify that
-<a name="line73"></a>     * the property in question may be of any type.
-<a name="line74"></a>     *
-<a name="line75"></a>     * However, it cannot be the actual type of any property instance. For
-<a name="line76"></a>     * example, it will never be returned by Property#getType and it cannot be
-<a name="line77"></a>     * assigned as the type when creating a new property.
-<a name="line78"></a>     */</span>
-<a name="line79"></a>    <span style="color: #000000; font-weight: bold;">const</span> UNDEFINED <span style="color: #339933;">=</span> <span style="color: #cc66cc;">0</span><span style="color: #339933;">;</span>
-<a name="line80"></a>&nbsp;
-<a name="line81"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line82"></a>     * The STRING property type is used to store strings.
-<a name="line83"></a>     */</span>
-<a name="line84"></a>    <span style="color: #000000; font-weight: bold;">const</span> STRING <span style="color: #339933;">=</span> <span style="color: #cc66cc;">1</span><span style="color: #339933;">;</span>
-<a name="line85"></a>&nbsp;
-<a name="line86"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line87"></a>     * BINARY properties are used to store binary data.
-<a name="line88"></a>     */</span>
-<a name="line89"></a>    <span style="color: #000000; font-weight: bold;">const</span> BINARY <span style="color: #339933;">=</span> <span style="color: #cc66cc;">2</span><span style="color: #339933;">;</span>
-<a name="line90"></a>&nbsp;
-<a name="line91"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line92"></a>     * The LONG property type is used to store integers.
-<a name="line93"></a>     */</span>
-<a name="line94"></a>    <span style="color: #000000; font-weight: bold;">const</span> LONG <span style="color: #339933;">=</span> <span style="color: #cc66cc;">3</span><span style="color: #339933;">;</span>
-<a name="line95"></a>&nbsp;
-<a name="line96"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line97"></a>     * The DOUBLE property type is used to store floating point numbers.
-<a name="line98"></a>     */</span>
-<a name="line99"></a>    <span style="color: #000000; font-weight: bold;">const</span> DOUBLE <span style="color: #339933;">=</span> <span style="color: #cc66cc;">4</span><span style="color: #339933;">;</span>
-<a name="line100"></a>&nbsp;
-<a name="line101"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line102"></a>     * The DATE property type is used to store time and date information.
-<a name="line103"></a>     */</span>
-<a name="line104"></a>    <span style="color: #000000; font-weight: bold;">const</span> <a href="http://www.php.net/date"><span style="color: #990000;">DATE</span></a> <span style="color: #339933;">=</span> <span style="color: #cc66cc;">5</span><span style="color: #339933;">;</span>
-<a name="line105"></a>&nbsp;
-<a name="line106"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line107"></a>     * The BOOLEAN property type is used to store boolean values.
-<a name="line108"></a>     */</span>
-<a name="line109"></a>    <span style="color: #000000; font-weight: bold;">const</span> BOOLEAN <span style="color: #339933;">=</span> <span style="color: #cc66cc;">6</span><span style="color: #339933;">;</span>
-<a name="line110"></a>&nbsp;
-<a name="line111"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line112"></a>     * A NAME is a pairing of a namespace and a local name. When read, the
-<a name="line113"></a>     * namespace is mapped to the current prefix.
-<a name="line114"></a>     */</span>
-<a name="line115"></a>    <span style="color: #000000; font-weight: bold;">const</span> NAME <span style="color: #339933;">=</span> <span style="color: #cc66cc;">7</span><span style="color: #339933;">;</span>
-<a name="line116"></a>&nbsp;
-<a name="line117"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line118"></a>     * A PATH property is an ordered list of path elements. A path element is a
-<a name="line119"></a>     * NAME with an optional index. When read, the NAMEs within the path are
-<a name="line120"></a>     * mapped to their current prefix. A path may be absolute or relative.
-<a name="line121"></a>     */</span>
-<a name="line122"></a>    <span style="color: #000000; font-weight: bold;">const</span> PATH <span style="color: #339933;">=</span> <span style="color: #cc66cc;">8</span><span style="color: #339933;">;</span>
-<a name="line123"></a>&nbsp;
-<a name="line124"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line125"></a>     * A REFERENCE property stores the identifier of a referenceable node (one
-<a name="line126"></a>     * having type mix:referenceable), which must exist within the same
-<a name="line127"></a>     * workspace or session as the REFERENCE property. A REFERENCE property
-<a name="line128"></a>     * enforces this referential integrity by preventing the removal of its
-<a name="line129"></a>     * target node.
-<a name="line130"></a>     */</span>
-<a name="line131"></a>    <span style="color: #000000; font-weight: bold;">const</span> REFERENCE <span style="color: #339933;">=</span> <span style="color: #cc66cc;">9</span><span style="color: #339933;">;</span>
-<a name="line132"></a>&nbsp;
-<a name="line133"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line134"></a>     * A WEAKREFERENCE property stores the identifier of a referenceable node
-<a name="line135"></a>     * (one having type mix:referenceable). A WEAKREFERENCE property does not
-<a name="line136"></a>     * enforce referential integrity.
-<a name="line137"></a>     */</span>
-<a name="line138"></a>    <span style="color: #000000; font-weight: bold;">const</span> WEAKREFERENCE <span style="color: #339933;">=</span> <span style="color: #cc66cc;">10</span><span style="color: #339933;">;</span>
-<a name="line139"></a>&nbsp;
-<a name="line140"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line141"></a>     * A URI property is identical to STRING property except that it only
-<a name="line142"></a>     * accepts values that conform to the syntax of a URI-reference as defined
-<a name="line143"></a>     * in RFC 3986.
-<a name="line144"></a>     */</span>
-<a name="line145"></a>    <span style="color: #000000; font-weight: bold;">const</span> URI <span style="color: #339933;">=</span> <span style="color: #cc66cc;">11</span><span style="color: #339933;">;</span>
-<a name="line146"></a>&nbsp;
-<a name="line147"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line148"></a>     * The DECIMAL property type is used to store precise decimal numbers.
-<a name="line149"></a>     */</span>
-<a name="line150"></a>    <span style="color: #000000; font-weight: bold;">const</span> DECIMAL <span style="color: #339933;">=</span> <span style="color: #cc66cc;">12</span><span style="color: #339933;">;</span>
-<a name="line151"></a>&nbsp;
-<a name="line152"></a>    <span style="color: #009933; font-style: italic;">/**#@-*/</span>
-<a name="line153"></a>&nbsp;
-<a name="line154"></a>    <span style="color: #009933; font-style: italic;">/**#@+
-<a name="line155"></a>     * @var string
-<a name="line156"></a>     */</span>
-<a name="line157"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line158"></a>     * String constant for type name as used in serialization.
-<a name="line159"></a>     */</span>
-<a name="line160"></a>    <span style="color: #000000; font-weight: bold;">const</span> TYPENAME_UNDEFINED <span style="color: #339933;">=</span> <span style="color: #0000ff;">'undefined'</span><span style="color: #339933;">;</span>
-<a name="line161"></a>&nbsp;
-<a name="line162"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line163"></a>     * String constant for type name as used in serialization.
-<a name="line164"></a>     */</span>
-<a name="line165"></a>    <span style="color: #000000; font-weight: bold;">const</span> TYPENAME_STRING <span style="color: #339933;">=</span> <span style="color: #0000ff;">'String'</span><span style="color: #339933;">;</span>
-<a name="line166"></a>&nbsp;
-<a name="line167"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line168"></a>     * String constant for type name as used in serialization.
-<a name="line169"></a>     */</span>
-<a name="line170"></a>    <span style="color: #000000; font-weight: bold;">const</span> TYPENAME_BINARY <span style="color: #339933;">=</span> <span style="color: #0000ff;">'Binary'</span><span style="color: #339933;">;</span>
-<a name="line171"></a>&nbsp;
-<a name="line172"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line173"></a>     * String constant for type name as used in serialization.
-<a name="line174"></a>     */</span>
-<a name="line175"></a>    <span style="color: #000000; font-weight: bold;">const</span> TYPENAME_LONG <span style="color: #339933;">=</span> <span style="color: #0000ff;">'Long'</span><span style="color: #339933;">;</span>
-<a name="line176"></a>&nbsp;
-<a name="line177"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line178"></a>     * String constant for type name as used in serialization.
-<a name="line179"></a>     */</span>
-<a name="line180"></a>    <span style="color: #000000; font-weight: bold;">const</span> TYPENAME_DOUBLE <span style="color: #339933;">=</span> <span style="color: #0000ff;">'Double'</span><span style="color: #339933;">;</span>
-<a name="line181"></a>&nbsp;
-<a name="line182"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line183"></a>     * String constant for type name as used in serialization.
-<a name="line184"></a>     */</span>
-<a name="line185"></a>    <span style="color: #000000; font-weight: bold;">const</span> TYPENAME_DATE <span style="color: #339933;">=</span> <span style="color: #0000ff;">'Date'</span><span style="color: #339933;">;</span>
-<a name="line186"></a>&nbsp;
-<a name="line187"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line188"></a>     * String constant for type name as used in serialization.
-<a name="line189"></a>     */</span>
-<a name="line190"></a>    <span style="color: #000000; font-weight: bold;">const</span> TYPENAME_BOOLEAN <span style="color: #339933;">=</span> <span style="color: #0000ff;">'Boolean'</span><span style="color: #339933;">;</span>
-<a name="line191"></a>&nbsp;
-<a name="line192"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line193"></a>     * String constant for type name as used in serialization.
-<a name="line194"></a>     */</span>
-<a name="line195"></a>    <span style="color: #000000; font-weight: bold;">const</span> TYPENAME_NAME <span style="color: #339933;">=</span> <span style="color: #0000ff;">'Name'</span><span style="color: #339933;">;</span>
-<a name="line196"></a>&nbsp;
-<a name="line197"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line198"></a>     * String constant for type name as used in serialization.
-<a name="line199"></a>     */</span>
-<a name="line200"></a>    <span style="color: #000000; font-weight: bold;">const</span> TYPENAME_PATH <span style="color: #339933;">=</span> <span style="color: #0000ff;">'Path'</span><span style="color: #339933;">;</span>
-<a name="line201"></a>&nbsp;
-<a name="line202"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line203"></a>     * String constant for type name as used in serialization.
-<a name="line204"></a>     */</span>
-<a name="line205"></a>    <span style="color: #000000; font-weight: bold;">const</span> TYPENAME_REFERENCE <span style="color: #339933;">=</span> <span style="color: #0000ff;">'Reference'</span><span style="color: #339933;">;</span>
-<a name="line206"></a>&nbsp;
-<a name="line207"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line208"></a>     * String constant for type name as used in serialization.
-<a name="line209"></a>     */</span>
-<a name="line210"></a>    <span style="color: #000000; font-weight: bold;">const</span> TYPENAME_WEAKREFERENCE <span style="color: #339933;">=</span> <span style="color: #0000ff;">'WeakReference'</span><span style="color: #339933;">;</span>
-<a name="line211"></a>&nbsp;
-<a name="line212"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line213"></a>     * String constant for type name as used in serialization.
-<a name="line214"></a>     */</span>
-<a name="line215"></a>    <span style="color: #000000; font-weight: bold;">const</span> TYPENAME_URI<span style="color: #339933;">=</span> <span style="color: #0000ff;">'URI'</span><span style="color: #339933;">;</span>
-<a name="line216"></a>&nbsp;
-<a name="line217"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line218"></a>     * String constant for type name as used in serialization.
-<a name="line219"></a>     */</span>
-<a name="line220"></a>    <span style="color: #000000; font-weight: bold;">const</span> TYPENAME_DECIMAL <span style="color: #339933;">=</span> <span style="color: #0000ff;">'Decimal'</span><span style="color: #339933;">;</span>
-<a name="line221"></a>&nbsp;
-<a name="line222"></a>    <span style="color: #009933; font-style: italic;">/**#@-*/</span>
-<a name="line223"></a>&nbsp;
-<a name="line224"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line225"></a>     * Make instantiation impossible...
-<a name="line226"></a>     *
-<a name="line227"></a>     * @return void
-<a name="line228"></a>     *
-<a name="line229"></a>     * @author Karsten Dambekalns &lt;karsten@typo3.org&gt;
-<a name="line230"></a>     */</span>
-<a name="line231"></a>    <span style="color: #000000; font-weight: bold;">private</span> <span style="color: #000000; font-weight: bold;">function</span> __construct<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span> <span style="color: #009900;">&#123;</span><span style="color: #009900;">&#125;</span>
-<a name="line232"></a>&nbsp;
-<a name="line233"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line234"></a>     * Returns the name of the specified type, as used in serialization.
-<a name="line235"></a>     *
-<a name="line236"></a>     * @param integer $type type the property type
-<a name="line237"></a>     * @return string  name of the specified type
-<a name="line238"></a>     *
-<a name="line239"></a>     * @author Sebastian Kurfürst &lt;sebastian@typo3.org&gt;
-<a name="line240"></a>     * @author Karsten Dambekalns &lt;karsten@typo3.org&gt;
-<a name="line241"></a>     *
-<a name="line242"></a>     * @throws \InvalidArgumentException if the given type is unknown.
-<a name="line243"></a>     * @api
-<a name="line244"></a>     */</span>
-<a name="line245"></a>    static <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> nameFromValue<span style="color: #009900;">&#40;</span><span style="color: #000088;">$type</span><span style="color: #009900;">&#41;</span> <span style="color: #009900;">&#123;</span>
-<a name="line246"></a>        <span style="color: #b1b100;">switch</span> <span style="color: #009900;">&#40;</span><a href="http://www.php.net/intval"><span style="color: #990000;">intval</span></a><span style="color: #009900;">&#40;</span><span style="color: #000088;">$type</span><span style="color: #009900;">&#41;</span><span style="color: #009900;">&#41;</span> <span style="color: #009900;">&#123;</span>
-<a name="line247"></a>            <span style="color: #b1b100;">case</span> <span style="color: #000000; font-weight: bold;">self</span><span style="color: #339933;">::</span><span style="color: #004000;">UNDEFINED</span> <span style="color: #339933;">:</span>
-<a name="line248"></a>                <span style="color: #b1b100;">return</span> <span style="color: #000000; font-weight: bold;">self</span><span style="color: #339933;">::</span><span style="color: #004000;">TYPENAME_UNDEFINED</span><span style="color: #339933;">;</span>
-<a name="line249"></a>                <span style="color: #b1b100;">break</span><span style="color: #339933;">;</span>
-<a name="line250"></a>            <span style="color: #b1b100;">case</span> <span style="color: #000000; font-weight: bold;">self</span><span style="color: #339933;">::</span><span style="color: #004000;">STRING</span> <span style="color: #339933;">:</span>
-<a name="line251"></a>                <span style="color: #b1b100;">return</span> <span style="color: #000000; font-weight: bold;">self</span><span style="color: #339933;">::</span><span style="color: #004000;">TYPENAME_STRING</span><span style="color: #339933;">;</span>
-<a name="line252"></a>                <span style="color: #b1b100;">break</span><span style="color: #339933;">;</span>
-<a name="line253"></a>            <span style="color: #b1b100;">case</span> <span style="color: #000000; font-weight: bold;">self</span><span style="color: #339933;">::</span><span style="color: #004000;">BINARY</span> <span style="color: #339933;">:</span>
-<a name="line254"></a>                <span style="color: #b1b100;">return</span> <span style="color: #000000; font-weight: bold;">self</span><span style="color: #339933;">::</span><span style="color: #004000;">TYPENAME_BINARY</span><span style="color: #339933;">;</span>
-<a name="line255"></a>                <span style="color: #b1b100;">break</span><span style="color: #339933;">;</span>
-<a name="line256"></a>            <span style="color: #b1b100;">case</span> <span style="color: #000000; font-weight: bold;">self</span><span style="color: #339933;">::</span><span style="color: #004000;">BOOLEAN</span> <span style="color: #339933;">:</span>
-<a name="line257"></a>                <span style="color: #b1b100;">return</span> <span style="color: #000000; font-weight: bold;">self</span><span style="color: #339933;">::</span><span style="color: #004000;">TYPENAME_BOOLEAN</span><span style="color: #339933;">;</span>
-<a name="line258"></a>                <span style="color: #b1b100;">break</span><span style="color: #339933;">;</span>
-<a name="line259"></a>            <span style="color: #b1b100;">case</span> <span style="color: #000000; font-weight: bold;">self</span><span style="color: #339933;">::</span><span style="color: #004000;">LONG</span> <span style="color: #339933;">:</span>
-<a name="line260"></a>                <span style="color: #b1b100;">return</span> <span style="color: #000000; font-weight: bold;">self</span><span style="color: #339933;">::</span><span style="color: #004000;">TYPENAME_LONG</span><span style="color: #339933;">;</span>
-<a name="line261"></a>                <span style="color: #b1b100;">break</span><span style="color: #339933;">;</span>
-<a name="line262"></a>            <span style="color: #b1b100;">case</span> <span style="color: #000000; font-weight: bold;">self</span><span style="color: #339933;">::</span><span style="color: #004000;">DOUBLE</span> <span style="color: #339933;">:</span>
-<a name="line263"></a>                <span style="color: #b1b100;">return</span> <span style="color: #000000; font-weight: bold;">self</span><span style="color: #339933;">::</span><span style="color: #004000;">TYPENAME_DOUBLE</span><span style="color: #339933;">;</span>
-<a name="line264"></a>                <span style="color: #b1b100;">break</span><span style="color: #339933;">;</span>
-<a name="line265"></a>            <span style="color: #b1b100;">case</span> <span style="color: #000000; font-weight: bold;">self</span><span style="color: #339933;">::</span><span style="color: #004000;">DECIMAL</span> <span style="color: #339933;">:</span>
-<a name="line266"></a>                <span style="color: #b1b100;">return</span> <span style="color: #000000; font-weight: bold;">self</span><span style="color: #339933;">::</span><span style="color: #004000;">TYPENAME_DECIMAL</span><span style="color: #339933;">;</span>
-<a name="line267"></a>                <span style="color: #b1b100;">break</span><span style="color: #339933;">;</span>
-<a name="line268"></a>            <span style="color: #b1b100;">case</span> <span style="color: #000000; font-weight: bold;">self</span><span style="color: #339933;">::</span><a href="http://www.php.net/date"><span style="color: #990000;">DATE</span></a> <span style="color: #339933;">:</span>
-<a name="line269"></a>                <span style="color: #b1b100;">return</span> <span style="color: #000000; font-weight: bold;">self</span><span style="color: #339933;">::</span><span style="color: #004000;">TYPENAME_DATE</span><span style="color: #339933;">;</span>
-<a name="line270"></a>                <span style="color: #b1b100;">break</span><span style="color: #339933;">;</span>
-<a name="line271"></a>            <span style="color: #b1b100;">case</span> <span style="color: #000000; font-weight: bold;">self</span><span style="color: #339933;">::</span><span style="color: #004000;">NAME</span> <span style="color: #339933;">:</span>
-<a name="line272"></a>                <span style="color: #b1b100;">return</span> <span style="color: #000000; font-weight: bold;">self</span><span style="color: #339933;">::</span><span style="color: #004000;">TYPENAME_NAME</span><span style="color: #339933;">;</span>
-<a name="line273"></a>                <span style="color: #b1b100;">break</span><span style="color: #339933;">;</span>
-<a name="line274"></a>            <span style="color: #b1b100;">case</span> <span style="color: #000000; font-weight: bold;">self</span><span style="color: #339933;">::</span><span style="color: #004000;">PATH</span> <span style="color: #339933;">:</span>
-<a name="line275"></a>                <span style="color: #b1b100;">return</span> <span style="color: #000000; font-weight: bold;">self</span><span style="color: #339933;">::</span><span style="color: #004000;">TYPENAME_PATH</span><span style="color: #339933;">;</span>
-<a name="line276"></a>                <span style="color: #b1b100;">break</span><span style="color: #339933;">;</span>
-<a name="line277"></a>            <span style="color: #b1b100;">case</span> <span style="color: #000000; font-weight: bold;">self</span><span style="color: #339933;">::</span><span style="color: #004000;">REFERENCE</span> <span style="color: #339933;">:</span>
-<a name="line278"></a>                <span style="color: #b1b100;">return</span> <span style="color: #000000; font-weight: bold;">self</span><span style="color: #339933;">::</span><span style="color: #004000;">TYPENAME_REFERENCE</span><span style="color: #339933;">;</span>
-<a name="line279"></a>                <span style="color: #b1b100;">break</span><span style="color: #339933;">;</span>
-<a name="line280"></a>            <span style="color: #b1b100;">case</span> <span style="color: #000000; font-weight: bold;">self</span><span style="color: #339933;">::</span><span style="color: #004000;">WEAKREFERENCE</span> <span style="color: #339933;">:</span>
-<a name="line281"></a>                <span style="color: #b1b100;">return</span> <span style="color: #000000; font-weight: bold;">self</span><span style="color: #339933;">::</span><span style="color: #004000;">TYPENAME_WEAKREFERENCE</span><span style="color: #339933;">;</span>
-<a name="line282"></a>                <span style="color: #b1b100;">break</span><span style="color: #339933;">;</span>
-<a name="line283"></a>            <span style="color: #b1b100;">case</span> <span style="color: #000000; font-weight: bold;">self</span><span style="color: #339933;">::</span><span style="color: #004000;">URI</span> <span style="color: #339933;">:</span>
-<a name="line284"></a>                <span style="color: #b1b100;">return</span> <span style="color: #000000; font-weight: bold;">self</span><span style="color: #339933;">::</span><span style="color: #004000;">TYPENAME_URI</span><span style="color: #339933;">;</span>
-<a name="line285"></a>                <span style="color: #b1b100;">break</span><span style="color: #339933;">;</span>
-<a name="line286"></a>            <span style="color: #b1b100;">default</span><span style="color: #339933;">:</span>
-<a name="line287"></a>                <span style="color: #b1b100;">throw</span> <span style="color: #000000; font-weight: bold;">new</span> \InvalidArgumentException<span style="color: #009900;">&#40;</span><span style="color: #0000ff;">'Unknown type ('</span> <span style="color: #339933;">.</span> <span style="color: #000088;">$type</span> <span style="color: #339933;">.</span> <span style="color: #0000ff;">') given.'</span><span style="color: #339933;">,</span> <span style="color: #cc66cc;">1257170231</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line288"></a>        <span style="color: #009900;">&#125;</span>
-<a name="line289"></a>    <span style="color: #009900;">&#125;</span>
-<a name="line290"></a>&nbsp;
-<a name="line291"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line292"></a>     * Returns the numeric constant value of the type with the specified name.
-<a name="line293"></a>     *
-<a name="line294"></a>     * @param string $name The name of the property type
-<a name="line295"></a>     * @return int The numeric constant value
-<a name="line296"></a>     *
-<a name="line297"></a>     * @author Sebastian Kurfürst &lt;sebastian@typo3.org&gt;
-<a name="line298"></a>     * @author Karsten Dambekalns &lt;karsten@typo3.org&gt;
-<a name="line299"></a>     *
-<a name="line300"></a>     * @throws \InvalidArgumentException if the given name is unknown.
-<a name="line301"></a>     * @api
-<a name="line302"></a>     */</span>
-<a name="line303"></a>    static <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> valueFromName<span style="color: #009900;">&#40;</span><span style="color: #000088;">$name</span><span style="color: #009900;">&#41;</span> <span style="color: #009900;">&#123;</span>
-<a name="line304"></a>        <span style="color: #b1b100;">switch</span> <span style="color: #009900;">&#40;</span><a href="http://www.php.net/strtolower"><span style="color: #990000;">strtolower</span></a><span style="color: #009900;">&#40;</span><span style="color: #000088;">$name</span><span style="color: #009900;">&#41;</span><span style="color: #009900;">&#41;</span> <span style="color: #009900;">&#123;</span>
-<a name="line305"></a>            <span style="color: #b1b100;">case</span> <span style="color: #0000ff;">'undefined'</span><span style="color: #339933;">:</span>
-<a name="line306"></a>                <span style="color: #b1b100;">return</span> <span style="color: #000000; font-weight: bold;">self</span><span style="color: #339933;">::</span><span style="color: #004000;">UNDEFINED</span><span style="color: #339933;">;</span>
-<a name="line307"></a>                <span style="color: #b1b100;">break</span><span style="color: #339933;">;</span>
-<a name="line308"></a>            <span style="color: #b1b100;">case</span> <span style="color: #0000ff;">'string'</span><span style="color: #339933;">:</span>
-<a name="line309"></a>                <span style="color: #b1b100;">return</span> <span style="color: #000000; font-weight: bold;">self</span><span style="color: #339933;">::</span><span style="color: #004000;">STRING</span><span style="color: #339933;">;</span>
-<a name="line310"></a>                <span style="color: #b1b100;">break</span><span style="color: #339933;">;</span>
-<a name="line311"></a>            <span style="color: #b1b100;">case</span> <span style="color: #0000ff;">'binary'</span><span style="color: #339933;">:</span>
-<a name="line312"></a>                <span style="color: #b1b100;">return</span> <span style="color: #000000; font-weight: bold;">self</span><span style="color: #339933;">::</span><span style="color: #004000;">BINARY</span><span style="color: #339933;">;</span>
-<a name="line313"></a>                <span style="color: #b1b100;">break</span><span style="color: #339933;">;</span>
-<a name="line314"></a>            <span style="color: #b1b100;">case</span> <span style="color: #0000ff;">'long'</span><span style="color: #339933;">:</span>
-<a name="line315"></a>                <span style="color: #b1b100;">return</span> <span style="color: #000000; font-weight: bold;">self</span><span style="color: #339933;">::</span><span style="color: #004000;">LONG</span><span style="color: #339933;">;</span>
-<a name="line316"></a>                <span style="color: #b1b100;">break</span><span style="color: #339933;">;</span>
-<a name="line317"></a>            <span style="color: #b1b100;">case</span> <span style="color: #0000ff;">'double'</span><span style="color: #339933;">:</span>
-<a name="line318"></a>                <span style="color: #b1b100;">return</span> <span style="color: #000000; font-weight: bold;">self</span><span style="color: #339933;">::</span><span style="color: #004000;">DOUBLE</span><span style="color: #339933;">;</span>
-<a name="line319"></a>                <span style="color: #b1b100;">break</span><span style="color: #339933;">;</span>
-<a name="line320"></a>            <span style="color: #b1b100;">case</span> <span style="color: #0000ff;">'date'</span><span style="color: #339933;">:</span>
-<a name="line321"></a>                <span style="color: #b1b100;">return</span> <span style="color: #000000; font-weight: bold;">self</span><span style="color: #339933;">::</span><a href="http://www.php.net/date"><span style="color: #990000;">DATE</span></a><span style="color: #339933;">;</span>
-<a name="line322"></a>                <span style="color: #b1b100;">break</span><span style="color: #339933;">;</span>
-<a name="line323"></a>            <span style="color: #b1b100;">case</span> <span style="color: #0000ff;">'boolean'</span><span style="color: #339933;">:</span>
-<a name="line324"></a>                <span style="color: #b1b100;">return</span> <span style="color: #000000; font-weight: bold;">self</span><span style="color: #339933;">::</span><span style="color: #004000;">BOOLEAN</span><span style="color: #339933;">;</span>
-<a name="line325"></a>                <span style="color: #b1b100;">break</span><span style="color: #339933;">;</span>
-<a name="line326"></a>            <span style="color: #b1b100;">case</span> <span style="color: #0000ff;">'name'</span><span style="color: #339933;">:</span>
-<a name="line327"></a>                <span style="color: #b1b100;">return</span> <span style="color: #000000; font-weight: bold;">self</span><span style="color: #339933;">::</span><span style="color: #004000;">NAME</span><span style="color: #339933;">;</span>
-<a name="line328"></a>                <span style="color: #b1b100;">break</span><span style="color: #339933;">;</span>
-<a name="line329"></a>            <span style="color: #b1b100;">case</span> <span style="color: #0000ff;">'path'</span><span style="color: #339933;">:</span>
-<a name="line330"></a>                <span style="color: #b1b100;">return</span> <span style="color: #000000; font-weight: bold;">self</span><span style="color: #339933;">::</span><span style="color: #004000;">PATH</span><span style="color: #339933;">;</span>
-<a name="line331"></a>                <span style="color: #b1b100;">break</span><span style="color: #339933;">;</span>
-<a name="line332"></a>            <span style="color: #b1b100;">case</span> <span style="color: #0000ff;">'reference'</span><span style="color: #339933;">:</span>
-<a name="line333"></a>                <span style="color: #b1b100;">return</span> <span style="color: #000000; font-weight: bold;">self</span><span style="color: #339933;">::</span><span style="color: #004000;">REFERENCE</span><span style="color: #339933;">;</span>
-<a name="line334"></a>                <span style="color: #b1b100;">break</span><span style="color: #339933;">;</span>
-<a name="line335"></a>            <span style="color: #b1b100;">case</span> <span style="color: #0000ff;">'weakreference'</span><span style="color: #339933;">:</span>
-<a name="line336"></a>                <span style="color: #b1b100;">return</span> <span style="color: #000000; font-weight: bold;">self</span><span style="color: #339933;">::</span><span style="color: #004000;">WEAKREFERENCE</span><span style="color: #339933;">;</span>
-<a name="line337"></a>                <span style="color: #b1b100;">break</span><span style="color: #339933;">;</span>
-<a name="line338"></a>            <span style="color: #b1b100;">case</span> <span style="color: #0000ff;">'uri'</span><span style="color: #339933;">:</span>
-<a name="line339"></a>                <span style="color: #b1b100;">return</span> <span style="color: #000000; font-weight: bold;">self</span><span style="color: #339933;">::</span><span style="color: #004000;">URI</span><span style="color: #339933;">;</span>
-<a name="line340"></a>                <span style="color: #b1b100;">break</span><span style="color: #339933;">;</span>
-<a name="line341"></a>            <span style="color: #b1b100;">case</span> <span style="color: #0000ff;">'decimal'</span><span style="color: #339933;">:</span>
-<a name="line342"></a>                <span style="color: #b1b100;">return</span> <span style="color: #000000; font-weight: bold;">self</span><span style="color: #339933;">::</span><span style="color: #004000;">DECIMAL</span><span style="color: #339933;">;</span>
-<a name="line343"></a>                <span style="color: #b1b100;">break</span><span style="color: #339933;">;</span>
-<a name="line344"></a>            <span style="color: #b1b100;">default</span><span style="color: #339933;">:</span>
-<a name="line345"></a>                <span style="color: #b1b100;">throw</span> <span style="color: #000000; font-weight: bold;">new</span> \InvalidArgumentException<span style="color: #009900;">&#40;</span><span style="color: #0000ff;">'Unknown type name ('</span> <span style="color: #339933;">.</span> <span style="color: #000088;">$name</span> <span style="color: #339933;">.</span> <span style="color: #0000ff;">') given.'</span><span style="color: #339933;">,</span> <span style="color: #cc66cc;">1257170232</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line346"></a>        <span style="color: #009900;">&#125;</span>
-<a name="line347"></a>    <span style="color: #009900;">&#125;</span>
-<a name="line348"></a>&nbsp;
-<a name="line349"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line350"></a>     * Returns the numeric constant value of the type for the given PHP type
-<a name="line351"></a>     * name as returned by gettype().
-<a name="line352"></a>     *
-<a name="line353"></a>     * &lt;b&gt;Note:&lt;/b&gt; this is an addition not defined in JSR-283.
-<a name="line354"></a>     *
-<a name="line355"></a>     * @param string $type
-<a name="line356"></a>     * @return integer
-<a name="line357"></a>     *
-<a name="line358"></a>     * @author Karsten Dambekalns &lt;karsten@typo3.org&gt;
-<a name="line359"></a>     * @api
-<a name="line360"></a>     */</span>
-<a name="line361"></a>    static <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> valueFromType<span style="color: #009900;">&#40;</span><span style="color: #000088;">$type</span><span style="color: #009900;">&#41;</span> <span style="color: #009900;">&#123;</span>
-<a name="line362"></a>        <span style="color: #b1b100;">switch</span> <span style="color: #009900;">&#40;</span><a href="http://www.php.net/strtolower"><span style="color: #990000;">strtolower</span></a><span style="color: #009900;">&#40;</span><span style="color: #000088;">$type</span><span style="color: #009900;">&#41;</span><span style="color: #009900;">&#41;</span> <span style="color: #009900;">&#123;</span>
-<a name="line363"></a>            <span style="color: #b1b100;">case</span> <span style="color: #0000ff;">'string'</span><span style="color: #339933;">:</span>
-<a name="line364"></a>                <span style="color: #b1b100;">return</span> <span style="color: #000000; font-weight: bold;">self</span><span style="color: #339933;">::</span><span style="color: #004000;">STRING</span><span style="color: #339933;">;</span>
-<a name="line365"></a>                <span style="color: #b1b100;">break</span><span style="color: #339933;">;</span>
-<a name="line366"></a>            <span style="color: #b1b100;">case</span> <span style="color: #0000ff;">'bool'</span><span style="color: #339933;">:</span>
-<a name="line367"></a>            <span style="color: #b1b100;">case</span> <span style="color: #0000ff;">'boolean'</span><span style="color: #339933;">:</span>
-<a name="line368"></a>                <span style="color: #b1b100;">return</span> <span style="color: #000000; font-weight: bold;">self</span><span style="color: #339933;">::</span><span style="color: #004000;">BOOLEAN</span><span style="color: #339933;">;</span>
-<a name="line369"></a>                <span style="color: #b1b100;">break</span><span style="color: #339933;">;</span>
-<a name="line370"></a>            <span style="color: #b1b100;">case</span> <span style="color: #0000ff;">'int'</span><span style="color: #339933;">:</span>
-<a name="line371"></a>            <span style="color: #b1b100;">case</span> <span style="color: #0000ff;">'integer'</span><span style="color: #339933;">:</span>
-<a name="line372"></a>                <span style="color: #b1b100;">return</span> <span style="color: #000000; font-weight: bold;">self</span><span style="color: #339933;">::</span><span style="color: #004000;">LONG</span><span style="color: #339933;">;</span>
-<a name="line373"></a>                <span style="color: #b1b100;">break</span><span style="color: #339933;">;</span>
-<a name="line374"></a>            <span style="color: #b1b100;">case</span> <span style="color: #0000ff;">'float'</span><span style="color: #339933;">:</span>
-<a name="line375"></a>            <span style="color: #b1b100;">case</span> <span style="color: #0000ff;">'double'</span><span style="color: #339933;">:</span>
-<a name="line376"></a>                <span style="color: #b1b100;">return</span> <span style="color: #000000; font-weight: bold;">self</span><span style="color: #339933;">::</span><span style="color: #004000;">DOUBLE</span><span style="color: #339933;">;</span>
-<a name="line377"></a>                <span style="color: #b1b100;">break</span><span style="color: #339933;">;</span>
-<a name="line378"></a>            <span style="color: #b1b100;">case</span> <span style="color: #0000ff;">'datetime'</span><span style="color: #339933;">:</span>
-<a name="line379"></a>                <span style="color: #b1b100;">return</span> <span style="color: #000000; font-weight: bold;">self</span><span style="color: #339933;">::</span><a href="http://www.php.net/date"><span style="color: #990000;">DATE</span></a><span style="color: #339933;">;</span>
-<a name="line380"></a>                <span style="color: #b1b100;">break</span><span style="color: #339933;">;</span>
-<a name="line381"></a>            <span style="color: #b1b100;">default</span><span style="color: #339933;">:</span>
-<a name="line382"></a>                <span style="color: #b1b100;">return</span> <span style="color: #000000; font-weight: bold;">self</span><span style="color: #339933;">::</span><span style="color: #004000;">UNDEFINED</span><span style="color: #339933;">;</span>
-<a name="line383"></a>        <span style="color: #009900;">&#125;</span>
-<a name="line384"></a>    <span style="color: #009900;">&#125;</span>
-<a name="line385"></a><span style="color: #009900;">&#125;</span>
-<a name="line386"></a>&nbsp;</pre>
+<a name="line31"></a><span style="color: #000000; font-weight: bold;">namespace</span> PHPCR<span style="color: #339933;">;</span>
+<a name="line32"></a>&nbsp;
+<a name="line33"></a><span style="color: #009933; font-style: italic;">/**
+<a name="line34"></a> * The property types supported by the JCR standard.
+<a name="line35"></a> *
+<a name="line36"></a> * The &lt;b&gt;STRING&lt;/b&gt; property type is used to store strings.
+<a name="line37"></a> * &lt;b&gt;BINARY&lt;/b&gt; properties are used to store binary data.
+<a name="line38"></a> * The &lt;b&gt;LONG&lt;/b&gt; property type is used to store integers.
+<a name="line39"></a> * The &lt;b&gt;DECIMAL&lt;/b&gt; property type is used to store precise decimal numbers.
+<a name="line40"></a> * The &lt;b&gt;DOUBLE&lt;/b&gt; property type is used to store floating point numbers.
+<a name="line41"></a> * The &lt;b&gt;DATE&lt;/b&gt; property type is used to store time and date information. See 4.2.6.1 Date in the specification.
+<a name="line42"></a> * The &lt;b&gt;BOOLEAN&lt;/b&gt; property type is used to store boolean values.
+<a name="line43"></a> * A &lt;b&gt;NAME&lt;/b&gt; is a pairing of a namespace and a local name. When read, the namespace is mapped to the current prefix.
+<a name="line44"></a> * See 4.2.6.2 Name in the specification.
+<a name="line45"></a> * A &lt;b&gt;PATH&lt;/b&gt; property is an ordered list of path elements. A path element is a NAME with an optional index.
+<a name="line46"></a> * When read, the NAMEs within the path are mapped to their current prefix. A path may be absolute or relative.
+<a name="line47"></a> * See 4.2.6.3 Path in the specification.
+<a name="line48"></a> * A &lt;b&gt;REFERENCE&lt;/b&gt; property stores the identifier of a referenceable node (one having type mix:referenceable),
+<a name="line49"></a> * which must exist within the same workspace or session as the REFERENCE property. A REFERENCE property enforces this
+<a name="line50"></a> * referential integrity by preventing (in level 2 implementations) the removal of its target node.
+<a name="line51"></a> * See 4.2.6.4 Reference in the specification.
+<a name="line52"></a> * A &lt;b&gt;WEAKREFERENCE&lt;/b&gt; property stores the identifier of a referenceable node (one having type mix:referenceable).
+<a name="line53"></a> * A WEAKREFERENCE property does not enforce referential integrity. See 4.2.6.5 Weak Reference in the specification.
+<a name="line54"></a> * A &lt;b&gt;URI&lt;/b&gt; property is identical to STRING property except that it only accepts values that conform to the
+<a name="line55"></a> * syntax of a URI-reference as defined in RFC 3986. See also 4.2.6.6 URI in the specification.
+<a name="line56"></a> * &lt;b&gt;UNDEFINED&lt;/b&gt; can be used within a property definition (see 4.7.5 Property Definitions) to specify that the
+<a name="line57"></a> * property in question may be of any type. However, it cannot be the actual type of any property instance.
+<a name="line58"></a> * For example it will never be returned by Property.getType() and (in level 2 implementations) it cannot be assigned
+<a name="line59"></a> * as the type when creating a new property.
+<a name="line60"></a> *
+<a name="line61"></a> * @package phpcr
+<a name="line62"></a> * @api
+<a name="line63"></a> */</span>
+<a name="line64"></a>final <span style="color: #000000; font-weight: bold;">class</span> PropertyType <span style="color: #009900;">&#123;</span>
+<a name="line65"></a>&nbsp;
+<a name="line66"></a>    <span style="color: #009933; font-style: italic;">/**#@+
+<a name="line67"></a>     * @var integer
+<a name="line68"></a>     */</span>
+<a name="line69"></a>&nbsp;
+<a name="line70"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line71"></a>     * This constant can be used within a property definition to specify that
+<a name="line72"></a>     * the property in question may be of any type.
+<a name="line73"></a>     *
+<a name="line74"></a>     * However, it cannot be the actual type of any property instance. For
+<a name="line75"></a>     * example, it will never be returned by Property#getType and it cannot be
+<a name="line76"></a>     * assigned as the type when creating a new property.
+<a name="line77"></a>     */</span>
+<a name="line78"></a>    <span style="color: #000000; font-weight: bold;">const</span> UNDEFINED <span style="color: #339933;">=</span> <span style="color: #cc66cc;">0</span><span style="color: #339933;">;</span>
+<a name="line79"></a>&nbsp;
+<a name="line80"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line81"></a>     * The STRING property type is used to store strings.
+<a name="line82"></a>     */</span>
+<a name="line83"></a>    <span style="color: #000000; font-weight: bold;">const</span> STRING <span style="color: #339933;">=</span> <span style="color: #cc66cc;">1</span><span style="color: #339933;">;</span>
+<a name="line84"></a>&nbsp;
+<a name="line85"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line86"></a>     * BINARY properties are used to store binary data.
+<a name="line87"></a>     */</span>
+<a name="line88"></a>    <span style="color: #000000; font-weight: bold;">const</span> BINARY <span style="color: #339933;">=</span> <span style="color: #cc66cc;">2</span><span style="color: #339933;">;</span>
+<a name="line89"></a>&nbsp;
+<a name="line90"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line91"></a>     * The LONG property type is used to store integers.
+<a name="line92"></a>     */</span>
+<a name="line93"></a>    <span style="color: #000000; font-weight: bold;">const</span> LONG <span style="color: #339933;">=</span> <span style="color: #cc66cc;">3</span><span style="color: #339933;">;</span>
+<a name="line94"></a>&nbsp;
+<a name="line95"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line96"></a>     * The DOUBLE property type is used to store floating point numbers.
+<a name="line97"></a>     */</span>
+<a name="line98"></a>    <span style="color: #000000; font-weight: bold;">const</span> DOUBLE <span style="color: #339933;">=</span> <span style="color: #cc66cc;">4</span><span style="color: #339933;">;</span>
+<a name="line99"></a>&nbsp;
+<a name="line100"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line101"></a>     * The DATE property type is used to store time and date information.
+<a name="line102"></a>     */</span>
+<a name="line103"></a>    <span style="color: #000000; font-weight: bold;">const</span> <a href="http://www.php.net/date"><span style="color: #990000;">DATE</span></a> <span style="color: #339933;">=</span> <span style="color: #cc66cc;">5</span><span style="color: #339933;">;</span>
+<a name="line104"></a>&nbsp;
+<a name="line105"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line106"></a>     * The BOOLEAN property type is used to store boolean values.
+<a name="line107"></a>     */</span>
+<a name="line108"></a>    <span style="color: #000000; font-weight: bold;">const</span> BOOLEAN <span style="color: #339933;">=</span> <span style="color: #cc66cc;">6</span><span style="color: #339933;">;</span>
+<a name="line109"></a>&nbsp;
+<a name="line110"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line111"></a>     * A NAME is a pairing of a namespace and a local name. When read, the
+<a name="line112"></a>     * namespace is mapped to the current prefix.
+<a name="line113"></a>     */</span>
+<a name="line114"></a>    <span style="color: #000000; font-weight: bold;">const</span> NAME <span style="color: #339933;">=</span> <span style="color: #cc66cc;">7</span><span style="color: #339933;">;</span>
+<a name="line115"></a>&nbsp;
+<a name="line116"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line117"></a>     * A PATH property is an ordered list of path elements. A path element is a
+<a name="line118"></a>     * NAME with an optional index. When read, the NAMEs within the path are
+<a name="line119"></a>     * mapped to their current prefix. A path may be absolute or relative.
+<a name="line120"></a>     */</span>
+<a name="line121"></a>    <span style="color: #000000; font-weight: bold;">const</span> PATH <span style="color: #339933;">=</span> <span style="color: #cc66cc;">8</span><span style="color: #339933;">;</span>
+<a name="line122"></a>&nbsp;
+<a name="line123"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line124"></a>     * A REFERENCE property stores the identifier of a referenceable node (one
+<a name="line125"></a>     * having type mix:referenceable), which must exist within the same
+<a name="line126"></a>     * workspace or session as the REFERENCE property. A REFERENCE property
+<a name="line127"></a>     * enforces this referential integrity by preventing the removal of its
+<a name="line128"></a>     * target node.
+<a name="line129"></a>     */</span>
+<a name="line130"></a>    <span style="color: #000000; font-weight: bold;">const</span> REFERENCE <span style="color: #339933;">=</span> <span style="color: #cc66cc;">9</span><span style="color: #339933;">;</span>
+<a name="line131"></a>&nbsp;
+<a name="line132"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line133"></a>     * A WEAKREFERENCE property stores the identifier of a referenceable node
+<a name="line134"></a>     * (one having type mix:referenceable). A WEAKREFERENCE property does not
+<a name="line135"></a>     * enforce referential integrity.
+<a name="line136"></a>     */</span>
+<a name="line137"></a>    <span style="color: #000000; font-weight: bold;">const</span> WEAKREFERENCE <span style="color: #339933;">=</span> <span style="color: #cc66cc;">10</span><span style="color: #339933;">;</span>
+<a name="line138"></a>&nbsp;
+<a name="line139"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line140"></a>     * A URI property is identical to STRING property except that it only
+<a name="line141"></a>     * accepts values that conform to the syntax of a URI-reference as defined
+<a name="line142"></a>     * in RFC 3986.
+<a name="line143"></a>     */</span>
+<a name="line144"></a>    <span style="color: #000000; font-weight: bold;">const</span> URI <span style="color: #339933;">=</span> <span style="color: #cc66cc;">11</span><span style="color: #339933;">;</span>
+<a name="line145"></a>&nbsp;
+<a name="line146"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line147"></a>     * The DECIMAL property type is used to store precise decimal numbers.
+<a name="line148"></a>     */</span>
+<a name="line149"></a>    <span style="color: #000000; font-weight: bold;">const</span> DECIMAL <span style="color: #339933;">=</span> <span style="color: #cc66cc;">12</span><span style="color: #339933;">;</span>
+<a name="line150"></a>&nbsp;
+<a name="line151"></a>    <span style="color: #009933; font-style: italic;">/**#@-*/</span>
+<a name="line152"></a>&nbsp;
+<a name="line153"></a>    <span style="color: #009933; font-style: italic;">/**#@+
+<a name="line154"></a>     * @var string
+<a name="line155"></a>     */</span>
+<a name="line156"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line157"></a>     * String constant for type name as used in serialization.
+<a name="line158"></a>     */</span>
+<a name="line159"></a>    <span style="color: #000000; font-weight: bold;">const</span> TYPENAME_UNDEFINED <span style="color: #339933;">=</span> <span style="color: #0000ff;">'undefined'</span><span style="color: #339933;">;</span>
+<a name="line160"></a>&nbsp;
+<a name="line161"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line162"></a>     * String constant for type name as used in serialization.
+<a name="line163"></a>     */</span>
+<a name="line164"></a>    <span style="color: #000000; font-weight: bold;">const</span> TYPENAME_STRING <span style="color: #339933;">=</span> <span style="color: #0000ff;">'String'</span><span style="color: #339933;">;</span>
+<a name="line165"></a>&nbsp;
+<a name="line166"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line167"></a>     * String constant for type name as used in serialization.
+<a name="line168"></a>     */</span>
+<a name="line169"></a>    <span style="color: #000000; font-weight: bold;">const</span> TYPENAME_BINARY <span style="color: #339933;">=</span> <span style="color: #0000ff;">'Binary'</span><span style="color: #339933;">;</span>
+<a name="line170"></a>&nbsp;
+<a name="line171"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line172"></a>     * String constant for type name as used in serialization.
+<a name="line173"></a>     */</span>
+<a name="line174"></a>    <span style="color: #000000; font-weight: bold;">const</span> TYPENAME_LONG <span style="color: #339933;">=</span> <span style="color: #0000ff;">'Long'</span><span style="color: #339933;">;</span>
+<a name="line175"></a>&nbsp;
+<a name="line176"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line177"></a>     * String constant for type name as used in serialization.
+<a name="line178"></a>     */</span>
+<a name="line179"></a>    <span style="color: #000000; font-weight: bold;">const</span> TYPENAME_DOUBLE <span style="color: #339933;">=</span> <span style="color: #0000ff;">'Double'</span><span style="color: #339933;">;</span>
+<a name="line180"></a>&nbsp;
+<a name="line181"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line182"></a>     * String constant for type name as used in serialization.
+<a name="line183"></a>     */</span>
+<a name="line184"></a>    <span style="color: #000000; font-weight: bold;">const</span> TYPENAME_DATE <span style="color: #339933;">=</span> <span style="color: #0000ff;">'Date'</span><span style="color: #339933;">;</span>
+<a name="line185"></a>&nbsp;
+<a name="line186"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line187"></a>     * String constant for type name as used in serialization.
+<a name="line188"></a>     */</span>
+<a name="line189"></a>    <span style="color: #000000; font-weight: bold;">const</span> TYPENAME_BOOLEAN <span style="color: #339933;">=</span> <span style="color: #0000ff;">'Boolean'</span><span style="color: #339933;">;</span>
+<a name="line190"></a>&nbsp;
+<a name="line191"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line192"></a>     * String constant for type name as used in serialization.
+<a name="line193"></a>     */</span>
+<a name="line194"></a>    <span style="color: #000000; font-weight: bold;">const</span> TYPENAME_NAME <span style="color: #339933;">=</span> <span style="color: #0000ff;">'Name'</span><span style="color: #339933;">;</span>
+<a name="line195"></a>&nbsp;
+<a name="line196"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line197"></a>     * String constant for type name as used in serialization.
+<a name="line198"></a>     */</span>
+<a name="line199"></a>    <span style="color: #000000; font-weight: bold;">const</span> TYPENAME_PATH <span style="color: #339933;">=</span> <span style="color: #0000ff;">'Path'</span><span style="color: #339933;">;</span>
+<a name="line200"></a>&nbsp;
+<a name="line201"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line202"></a>     * String constant for type name as used in serialization.
+<a name="line203"></a>     */</span>
+<a name="line204"></a>    <span style="color: #000000; font-weight: bold;">const</span> TYPENAME_REFERENCE <span style="color: #339933;">=</span> <span style="color: #0000ff;">'Reference'</span><span style="color: #339933;">;</span>
+<a name="line205"></a>&nbsp;
+<a name="line206"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line207"></a>     * String constant for type name as used in serialization.
+<a name="line208"></a>     */</span>
+<a name="line209"></a>    <span style="color: #000000; font-weight: bold;">const</span> TYPENAME_WEAKREFERENCE <span style="color: #339933;">=</span> <span style="color: #0000ff;">'WeakReference'</span><span style="color: #339933;">;</span>
+<a name="line210"></a>&nbsp;
+<a name="line211"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line212"></a>     * String constant for type name as used in serialization.
+<a name="line213"></a>     */</span>
+<a name="line214"></a>    <span style="color: #000000; font-weight: bold;">const</span> TYPENAME_URI<span style="color: #339933;">=</span> <span style="color: #0000ff;">'URI'</span><span style="color: #339933;">;</span>
+<a name="line215"></a>&nbsp;
+<a name="line216"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line217"></a>     * String constant for type name as used in serialization.
+<a name="line218"></a>     */</span>
+<a name="line219"></a>    <span style="color: #000000; font-weight: bold;">const</span> TYPENAME_DECIMAL <span style="color: #339933;">=</span> <span style="color: #0000ff;">'Decimal'</span><span style="color: #339933;">;</span>
+<a name="line220"></a>&nbsp;
+<a name="line221"></a>    <span style="color: #009933; font-style: italic;">/**#@-*/</span>
+<a name="line222"></a>&nbsp;
+<a name="line223"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line224"></a>     * Make instantiation impossible...
+<a name="line225"></a>     *
+<a name="line226"></a>     * @return void
+<a name="line227"></a>     *
+<a name="line228"></a>     * @author Karsten Dambekalns &lt;karsten@typo3.org&gt;
+<a name="line229"></a>     */</span>
+<a name="line230"></a>    <span style="color: #000000; font-weight: bold;">private</span> <span style="color: #000000; font-weight: bold;">function</span> __construct<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span> <span style="color: #009900;">&#123;</span><span style="color: #009900;">&#125;</span>
+<a name="line231"></a>&nbsp;
+<a name="line232"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line233"></a>     * Returns the name of the specified type, as used in serialization.
+<a name="line234"></a>     *
+<a name="line235"></a>     * @param integer $type type the property type
+<a name="line236"></a>     * @return string  name of the specified type
+<a name="line237"></a>     *
+<a name="line238"></a>     * @author Sebastian Kurfürst &lt;sebastian@typo3.org&gt;
+<a name="line239"></a>     * @author Karsten Dambekalns &lt;karsten@typo3.org&gt;
+<a name="line240"></a>     *
+<a name="line241"></a>     * @throws \InvalidArgumentException if the given type is unknown.
+<a name="line242"></a>     * @api
+<a name="line243"></a>     */</span>
+<a name="line244"></a>    static <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> nameFromValue<span style="color: #009900;">&#40;</span><span style="color: #000088;">$type</span><span style="color: #009900;">&#41;</span> <span style="color: #009900;">&#123;</span>
+<a name="line245"></a>        <span style="color: #b1b100;">switch</span> <span style="color: #009900;">&#40;</span><a href="http://www.php.net/intval"><span style="color: #990000;">intval</span></a><span style="color: #009900;">&#40;</span><span style="color: #000088;">$type</span><span style="color: #009900;">&#41;</span><span style="color: #009900;">&#41;</span> <span style="color: #009900;">&#123;</span>
+<a name="line246"></a>            <span style="color: #b1b100;">case</span> <span style="color: #000000; font-weight: bold;">self</span><span style="color: #339933;">::</span><span style="color: #004000;">UNDEFINED</span> <span style="color: #339933;">:</span>
+<a name="line247"></a>                <span style="color: #b1b100;">return</span> <span style="color: #000000; font-weight: bold;">self</span><span style="color: #339933;">::</span><span style="color: #004000;">TYPENAME_UNDEFINED</span><span style="color: #339933;">;</span>
+<a name="line248"></a>                <span style="color: #b1b100;">break</span><span style="color: #339933;">;</span>
+<a name="line249"></a>            <span style="color: #b1b100;">case</span> <span style="color: #000000; font-weight: bold;">self</span><span style="color: #339933;">::</span><span style="color: #004000;">STRING</span> <span style="color: #339933;">:</span>
+<a name="line250"></a>                <span style="color: #b1b100;">return</span> <span style="color: #000000; font-weight: bold;">self</span><span style="color: #339933;">::</span><span style="color: #004000;">TYPENAME_STRING</span><span style="color: #339933;">;</span>
+<a name="line251"></a>                <span style="color: #b1b100;">break</span><span style="color: #339933;">;</span>
+<a name="line252"></a>            <span style="color: #b1b100;">case</span> <span style="color: #000000; font-weight: bold;">self</span><span style="color: #339933;">::</span><span style="color: #004000;">BINARY</span> <span style="color: #339933;">:</span>
+<a name="line253"></a>                <span style="color: #b1b100;">return</span> <span style="color: #000000; font-weight: bold;">self</span><span style="color: #339933;">::</span><span style="color: #004000;">TYPENAME_BINARY</span><span style="color: #339933;">;</span>
+<a name="line254"></a>                <span style="color: #b1b100;">break</span><span style="color: #339933;">;</span>
+<a name="line255"></a>            <span style="color: #b1b100;">case</span> <span style="color: #000000; font-weight: bold;">self</span><span style="color: #339933;">::</span><span style="color: #004000;">BOOLEAN</span> <span style="color: #339933;">:</span>
+<a name="line256"></a>                <span style="color: #b1b100;">return</span> <span style="color: #000000; font-weight: bold;">self</span><span style="color: #339933;">::</span><span style="color: #004000;">TYPENAME_BOOLEAN</span><span style="color: #339933;">;</span>
+<a name="line257"></a>                <span style="color: #b1b100;">break</span><span style="color: #339933;">;</span>
+<a name="line258"></a>            <span style="color: #b1b100;">case</span> <span style="color: #000000; font-weight: bold;">self</span><span style="color: #339933;">::</span><span style="color: #004000;">LONG</span> <span style="color: #339933;">:</span>
+<a name="line259"></a>                <span style="color: #b1b100;">return</span> <span style="color: #000000; font-weight: bold;">self</span><span style="color: #339933;">::</span><span style="color: #004000;">TYPENAME_LONG</span><span style="color: #339933;">;</span>
+<a name="line260"></a>                <span style="color: #b1b100;">break</span><span style="color: #339933;">;</span>
+<a name="line261"></a>            <span style="color: #b1b100;">case</span> <span style="color: #000000; font-weight: bold;">self</span><span style="color: #339933;">::</span><span style="color: #004000;">DOUBLE</span> <span style="color: #339933;">:</span>
+<a name="line262"></a>                <span style="color: #b1b100;">return</span> <span style="color: #000000; font-weight: bold;">self</span><span style="color: #339933;">::</span><span style="color: #004000;">TYPENAME_DOUBLE</span><span style="color: #339933;">;</span>
+<a name="line263"></a>                <span style="color: #b1b100;">break</span><span style="color: #339933;">;</span>
+<a name="line264"></a>            <span style="color: #b1b100;">case</span> <span style="color: #000000; font-weight: bold;">self</span><span style="color: #339933;">::</span><span style="color: #004000;">DECIMAL</span> <span style="color: #339933;">:</span>
+<a name="line265"></a>                <span style="color: #b1b100;">return</span> <span style="color: #000000; font-weight: bold;">self</span><span style="color: #339933;">::</span><span style="color: #004000;">TYPENAME_DECIMAL</span><span style="color: #339933;">;</span>
+<a name="line266"></a>                <span style="color: #b1b100;">break</span><span style="color: #339933;">;</span>
+<a name="line267"></a>            <span style="color: #b1b100;">case</span> <span style="color: #000000; font-weight: bold;">self</span><span style="color: #339933;">::</span><a href="http://www.php.net/date"><span style="color: #990000;">DATE</span></a> <span style="color: #339933;">:</span>
+<a name="line268"></a>                <span style="color: #b1b100;">return</span> <span style="color: #000000; font-weight: bold;">self</span><span style="color: #339933;">::</span><span style="color: #004000;">TYPENAME_DATE</span><span style="color: #339933;">;</span>
+<a name="line269"></a>                <span style="color: #b1b100;">break</span><span style="color: #339933;">;</span>
+<a name="line270"></a>            <span style="color: #b1b100;">case</span> <span style="color: #000000; font-weight: bold;">self</span><span style="color: #339933;">::</span><span style="color: #004000;">NAME</span> <span style="color: #339933;">:</span>
+<a name="line271"></a>                <span style="color: #b1b100;">return</span> <span style="color: #000000; font-weight: bold;">self</span><span style="color: #339933;">::</span><span style="color: #004000;">TYPENAME_NAME</span><span style="color: #339933;">;</span>
+<a name="line272"></a>                <span style="color: #b1b100;">break</span><span style="color: #339933;">;</span>
+<a name="line273"></a>            <span style="color: #b1b100;">case</span> <span style="color: #000000; font-weight: bold;">self</span><span style="color: #339933;">::</span><span style="color: #004000;">PATH</span> <span style="color: #339933;">:</span>
+<a name="line274"></a>                <span style="color: #b1b100;">return</span> <span style="color: #000000; font-weight: bold;">self</span><span style="color: #339933;">::</span><span style="color: #004000;">TYPENAME_PATH</span><span style="color: #339933;">;</span>
+<a name="line275"></a>                <span style="color: #b1b100;">break</span><span style="color: #339933;">;</span>
+<a name="line276"></a>            <span style="color: #b1b100;">case</span> <span style="color: #000000; font-weight: bold;">self</span><span style="color: #339933;">::</span><span style="color: #004000;">REFERENCE</span> <span style="color: #339933;">:</span>
+<a name="line277"></a>                <span style="color: #b1b100;">return</span> <span style="color: #000000; font-weight: bold;">self</span><span style="color: #339933;">::</span><span style="color: #004000;">TYPENAME_REFERENCE</span><span style="color: #339933;">;</span>
+<a name="line278"></a>                <span style="color: #b1b100;">break</span><span style="color: #339933;">;</span>
+<a name="line279"></a>            <span style="color: #b1b100;">case</span> <span style="color: #000000; font-weight: bold;">self</span><span style="color: #339933;">::</span><span style="color: #004000;">WEAKREFERENCE</span> <span style="color: #339933;">:</span>
+<a name="line280"></a>                <span style="color: #b1b100;">return</span> <span style="color: #000000; font-weight: bold;">self</span><span style="color: #339933;">::</span><span style="color: #004000;">TYPENAME_WEAKREFERENCE</span><span style="color: #339933;">;</span>
+<a name="line281"></a>                <span style="color: #b1b100;">break</span><span style="color: #339933;">;</span>
+<a name="line282"></a>            <span style="color: #b1b100;">case</span> <span style="color: #000000; font-weight: bold;">self</span><span style="color: #339933;">::</span><span style="color: #004000;">URI</span> <span style="color: #339933;">:</span>
+<a name="line283"></a>                <span style="color: #b1b100;">return</span> <span style="color: #000000; font-weight: bold;">self</span><span style="color: #339933;">::</span><span style="color: #004000;">TYPENAME_URI</span><span style="color: #339933;">;</span>
+<a name="line284"></a>                <span style="color: #b1b100;">break</span><span style="color: #339933;">;</span>
+<a name="line285"></a>            <span style="color: #b1b100;">default</span><span style="color: #339933;">:</span>
+<a name="line286"></a>                <span style="color: #b1b100;">throw</span> <span style="color: #000000; font-weight: bold;">new</span> \InvalidArgumentException<span style="color: #009900;">&#40;</span><span style="color: #0000ff;">'Unknown type ('</span> <span style="color: #339933;">.</span> <span style="color: #000088;">$type</span> <span style="color: #339933;">.</span> <span style="color: #0000ff;">') given.'</span><span style="color: #339933;">,</span> <span style="color: #cc66cc;">1257170231</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line287"></a>        <span style="color: #009900;">&#125;</span>
+<a name="line288"></a>    <span style="color: #009900;">&#125;</span>
+<a name="line289"></a>&nbsp;
+<a name="line290"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line291"></a>     * Returns the numeric constant value of the type with the specified name.
+<a name="line292"></a>     *
+<a name="line293"></a>     * @param string $name The name of the property type
+<a name="line294"></a>     * @return int The numeric constant value
+<a name="line295"></a>     *
+<a name="line296"></a>     * @author Sebastian Kurfürst &lt;sebastian@typo3.org&gt;
+<a name="line297"></a>     * @author Karsten Dambekalns &lt;karsten@typo3.org&gt;
+<a name="line298"></a>     *
+<a name="line299"></a>     * @throws \InvalidArgumentException if the given name is unknown.
+<a name="line300"></a>     * @api
+<a name="line301"></a>     */</span>
+<a name="line302"></a>    static <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> valueFromName<span style="color: #009900;">&#40;</span><span style="color: #000088;">$name</span><span style="color: #009900;">&#41;</span> <span style="color: #009900;">&#123;</span>
+<a name="line303"></a>        <span style="color: #b1b100;">switch</span> <span style="color: #009900;">&#40;</span><a href="http://www.php.net/strtolower"><span style="color: #990000;">strtolower</span></a><span style="color: #009900;">&#40;</span><span style="color: #000088;">$name</span><span style="color: #009900;">&#41;</span><span style="color: #009900;">&#41;</span> <span style="color: #009900;">&#123;</span>
+<a name="line304"></a>            <span style="color: #b1b100;">case</span> <span style="color: #0000ff;">'undefined'</span><span style="color: #339933;">:</span>
+<a name="line305"></a>                <span style="color: #b1b100;">return</span> <span style="color: #000000; font-weight: bold;">self</span><span style="color: #339933;">::</span><span style="color: #004000;">UNDEFINED</span><span style="color: #339933;">;</span>
+<a name="line306"></a>                <span style="color: #b1b100;">break</span><span style="color: #339933;">;</span>
+<a name="line307"></a>            <span style="color: #b1b100;">case</span> <span style="color: #0000ff;">'string'</span><span style="color: #339933;">:</span>
+<a name="line308"></a>                <span style="color: #b1b100;">return</span> <span style="color: #000000; font-weight: bold;">self</span><span style="color: #339933;">::</span><span style="color: #004000;">STRING</span><span style="color: #339933;">;</span>
+<a name="line309"></a>                <span style="color: #b1b100;">break</span><span style="color: #339933;">;</span>
+<a name="line310"></a>            <span style="color: #b1b100;">case</span> <span style="color: #0000ff;">'binary'</span><span style="color: #339933;">:</span>
+<a name="line311"></a>                <span style="color: #b1b100;">return</span> <span style="color: #000000; font-weight: bold;">self</span><span style="color: #339933;">::</span><span style="color: #004000;">BINARY</span><span style="color: #339933;">;</span>
+<a name="line312"></a>                <span style="color: #b1b100;">break</span><span style="color: #339933;">;</span>
+<a name="line313"></a>            <span style="color: #b1b100;">case</span> <span style="color: #0000ff;">'long'</span><span style="color: #339933;">:</span>
+<a name="line314"></a>                <span style="color: #b1b100;">return</span> <span style="color: #000000; font-weight: bold;">self</span><span style="color: #339933;">::</span><span style="color: #004000;">LONG</span><span style="color: #339933;">;</span>
+<a name="line315"></a>                <span style="color: #b1b100;">break</span><span style="color: #339933;">;</span>
+<a name="line316"></a>            <span style="color: #b1b100;">case</span> <span style="color: #0000ff;">'double'</span><span style="color: #339933;">:</span>
+<a name="line317"></a>                <span style="color: #b1b100;">return</span> <span style="color: #000000; font-weight: bold;">self</span><span style="color: #339933;">::</span><span style="color: #004000;">DOUBLE</span><span style="color: #339933;">;</span>
+<a name="line318"></a>                <span style="color: #b1b100;">break</span><span style="color: #339933;">;</span>
+<a name="line319"></a>            <span style="color: #b1b100;">case</span> <span style="color: #0000ff;">'date'</span><span style="color: #339933;">:</span>
+<a name="line320"></a>                <span style="color: #b1b100;">return</span> <span style="color: #000000; font-weight: bold;">self</span><span style="color: #339933;">::</span><a href="http://www.php.net/date"><span style="color: #990000;">DATE</span></a><span style="color: #339933;">;</span>
+<a name="line321"></a>                <span style="color: #b1b100;">break</span><span style="color: #339933;">;</span>
+<a name="line322"></a>            <span style="color: #b1b100;">case</span> <span style="color: #0000ff;">'boolean'</span><span style="color: #339933;">:</span>
+<a name="line323"></a>                <span style="color: #b1b100;">return</span> <span style="color: #000000; font-weight: bold;">self</span><span style="color: #339933;">::</span><span style="color: #004000;">BOOLEAN</span><span style="color: #339933;">;</span>
+<a name="line324"></a>                <span style="color: #b1b100;">break</span><span style="color: #339933;">;</span>
+<a name="line325"></a>            <span style="color: #b1b100;">case</span> <span style="color: #0000ff;">'name'</span><span style="color: #339933;">:</span>
+<a name="line326"></a>                <span style="color: #b1b100;">return</span> <span style="color: #000000; font-weight: bold;">self</span><span style="color: #339933;">::</span><span style="color: #004000;">NAME</span><span style="color: #339933;">;</span>
+<a name="line327"></a>                <span style="color: #b1b100;">break</span><span style="color: #339933;">;</span>
+<a name="line328"></a>            <span style="color: #b1b100;">case</span> <span style="color: #0000ff;">'path'</span><span style="color: #339933;">:</span>
+<a name="line329"></a>                <span style="color: #b1b100;">return</span> <span style="color: #000000; font-weight: bold;">self</span><span style="color: #339933;">::</span><span style="color: #004000;">PATH</span><span style="color: #339933;">;</span>
+<a name="line330"></a>                <span style="color: #b1b100;">break</span><span style="color: #339933;">;</span>
+<a name="line331"></a>            <span style="color: #b1b100;">case</span> <span style="color: #0000ff;">'reference'</span><span style="color: #339933;">:</span>
+<a name="line332"></a>                <span style="color: #b1b100;">return</span> <span style="color: #000000; font-weight: bold;">self</span><span style="color: #339933;">::</span><span style="color: #004000;">REFERENCE</span><span style="color: #339933;">;</span>
+<a name="line333"></a>                <span style="color: #b1b100;">break</span><span style="color: #339933;">;</span>
+<a name="line334"></a>            <span style="color: #b1b100;">case</span> <span style="color: #0000ff;">'weakreference'</span><span style="color: #339933;">:</span>
+<a name="line335"></a>                <span style="color: #b1b100;">return</span> <span style="color: #000000; font-weight: bold;">self</span><span style="color: #339933;">::</span><span style="color: #004000;">WEAKREFERENCE</span><span style="color: #339933;">;</span>
+<a name="line336"></a>                <span style="color: #b1b100;">break</span><span style="color: #339933;">;</span>
+<a name="line337"></a>            <span style="color: #b1b100;">case</span> <span style="color: #0000ff;">'uri'</span><span style="color: #339933;">:</span>
+<a name="line338"></a>                <span style="color: #b1b100;">return</span> <span style="color: #000000; font-weight: bold;">self</span><span style="color: #339933;">::</span><span style="color: #004000;">URI</span><span style="color: #339933;">;</span>
+<a name="line339"></a>                <span style="color: #b1b100;">break</span><span style="color: #339933;">;</span>
+<a name="line340"></a>            <span style="color: #b1b100;">case</span> <span style="color: #0000ff;">'decimal'</span><span style="color: #339933;">:</span>
+<a name="line341"></a>                <span style="color: #b1b100;">return</span> <span style="color: #000000; font-weight: bold;">self</span><span style="color: #339933;">::</span><span style="color: #004000;">DECIMAL</span><span style="color: #339933;">;</span>
+<a name="line342"></a>                <span style="color: #b1b100;">break</span><span style="color: #339933;">;</span>
+<a name="line343"></a>            <span style="color: #b1b100;">default</span><span style="color: #339933;">:</span>
+<a name="line344"></a>                <span style="color: #b1b100;">throw</span> <span style="color: #000000; font-weight: bold;">new</span> \InvalidArgumentException<span style="color: #009900;">&#40;</span><span style="color: #0000ff;">'Unknown type name ('</span> <span style="color: #339933;">.</span> <span style="color: #000088;">$name</span> <span style="color: #339933;">.</span> <span style="color: #0000ff;">') given.'</span><span style="color: #339933;">,</span> <span style="color: #cc66cc;">1257170232</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line345"></a>        <span style="color: #009900;">&#125;</span>
+<a name="line346"></a>    <span style="color: #009900;">&#125;</span>
+<a name="line347"></a>&nbsp;
+<a name="line348"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line349"></a>     * Returns the numeric constant value of the type for the given PHP type
+<a name="line350"></a>     * name as returned by gettype().
+<a name="line351"></a>     *
+<a name="line352"></a>     * &lt;b&gt;Note:&lt;/b&gt; this is an addition not defined in JSR-283.
+<a name="line353"></a>     *
+<a name="line354"></a>     * @param string $type
+<a name="line355"></a>     * @return integer
+<a name="line356"></a>     *
+<a name="line357"></a>     * @author Karsten Dambekalns &lt;karsten@typo3.org&gt;
+<a name="line358"></a>     * @api
+<a name="line359"></a>     */</span>
+<a name="line360"></a>    static <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> valueFromType<span style="color: #009900;">&#40;</span><span style="color: #000088;">$type</span><span style="color: #009900;">&#41;</span> <span style="color: #009900;">&#123;</span>
+<a name="line361"></a>        <span style="color: #b1b100;">switch</span> <span style="color: #009900;">&#40;</span><a href="http://www.php.net/strtolower"><span style="color: #990000;">strtolower</span></a><span style="color: #009900;">&#40;</span><span style="color: #000088;">$type</span><span style="color: #009900;">&#41;</span><span style="color: #009900;">&#41;</span> <span style="color: #009900;">&#123;</span>
+<a name="line362"></a>            <span style="color: #b1b100;">case</span> <span style="color: #0000ff;">'string'</span><span style="color: #339933;">:</span>
+<a name="line363"></a>                <span style="color: #b1b100;">return</span> <span style="color: #000000; font-weight: bold;">self</span><span style="color: #339933;">::</span><span style="color: #004000;">STRING</span><span style="color: #339933;">;</span>
+<a name="line364"></a>                <span style="color: #b1b100;">break</span><span style="color: #339933;">;</span>
+<a name="line365"></a>            <span style="color: #b1b100;">case</span> <span style="color: #0000ff;">'bool'</span><span style="color: #339933;">:</span>
+<a name="line366"></a>            <span style="color: #b1b100;">case</span> <span style="color: #0000ff;">'boolean'</span><span style="color: #339933;">:</span>
+<a name="line367"></a>                <span style="color: #b1b100;">return</span> <span style="color: #000000; font-weight: bold;">self</span><span style="color: #339933;">::</span><span style="color: #004000;">BOOLEAN</span><span style="color: #339933;">;</span>
+<a name="line368"></a>                <span style="color: #b1b100;">break</span><span style="color: #339933;">;</span>
+<a name="line369"></a>            <span style="color: #b1b100;">case</span> <span style="color: #0000ff;">'int'</span><span style="color: #339933;">:</span>
+<a name="line370"></a>            <span style="color: #b1b100;">case</span> <span style="color: #0000ff;">'integer'</span><span style="color: #339933;">:</span>
+<a name="line371"></a>                <span style="color: #b1b100;">return</span> <span style="color: #000000; font-weight: bold;">self</span><span style="color: #339933;">::</span><span style="color: #004000;">LONG</span><span style="color: #339933;">;</span>
+<a name="line372"></a>                <span style="color: #b1b100;">break</span><span style="color: #339933;">;</span>
+<a name="line373"></a>            <span style="color: #b1b100;">case</span> <span style="color: #0000ff;">'float'</span><span style="color: #339933;">:</span>
+<a name="line374"></a>            <span style="color: #b1b100;">case</span> <span style="color: #0000ff;">'double'</span><span style="color: #339933;">:</span>
+<a name="line375"></a>                <span style="color: #b1b100;">return</span> <span style="color: #000000; font-weight: bold;">self</span><span style="color: #339933;">::</span><span style="color: #004000;">DOUBLE</span><span style="color: #339933;">;</span>
+<a name="line376"></a>                <span style="color: #b1b100;">break</span><span style="color: #339933;">;</span>
+<a name="line377"></a>            <span style="color: #b1b100;">case</span> <span style="color: #0000ff;">'datetime'</span><span style="color: #339933;">:</span>
+<a name="line378"></a>                <span style="color: #b1b100;">return</span> <span style="color: #000000; font-weight: bold;">self</span><span style="color: #339933;">::</span><a href="http://www.php.net/date"><span style="color: #990000;">DATE</span></a><span style="color: #339933;">;</span>
+<a name="line379"></a>                <span style="color: #b1b100;">break</span><span style="color: #339933;">;</span>
+<a name="line380"></a>            <span style="color: #b1b100;">default</span><span style="color: #339933;">:</span>
+<a name="line381"></a>                <span style="color: #b1b100;">return</span> <span style="color: #000000; font-weight: bold;">self</span><span style="color: #339933;">::</span><span style="color: #004000;">UNDEFINED</span><span style="color: #339933;">;</span>
+<a name="line382"></a>        <span style="color: #009900;">&#125;</span>
+<a name="line383"></a>    <span style="color: #009900;">&#125;</span>
+<a name="line384"></a><span style="color: #009900;">&#125;</span>
+<a name="line385"></a>&nbsp;</pre>
 <div class="header">
 <h1>PHPCR</h1>
 <ul>

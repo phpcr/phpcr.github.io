@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="generator" content="PHPDoctor 2RC4 (http://peej.github.com/phpdoctor/)">
-<meta name="when" content="Fri, 06 May 2011 11:43:24 +0000">
+<meta name="when" content="Thu, 12 May 2011 08:50:47 +0000">
 
 <link rel="stylesheet" type="text/css" href="../../../stylesheet.css">
 <link rel="start" href="../../../overview-summary.html">
@@ -79,212 +79,211 @@ If not, see <code><a href="http://www.gnu.org/licenses/lgpl.html">http://www.gnu
 <a name="line29"></a> * @subpackage interfaces
 <a name="line30"></a> */</span>
 <a name="line31"></a>&nbsp;
-<a name="line32"></a><span style="color: #000000; font-weight: bold;">declare</span><span style="color: #009900;">&#40;</span>ENCODING <span style="color: #339933;">=</span> <span style="color: #0000ff;">'utf-8'</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line33"></a><span style="color: #000000; font-weight: bold;">namespace</span> PHPCR\Lock<span style="color: #339933;">;</span>
-<a name="line34"></a>&nbsp;
-<a name="line35"></a><span style="color: #009933; font-style: italic;">/**
-<a name="line36"></a> * This interface encapsulates methods for the management of locks.
-<a name="line37"></a> *
-<a name="line38"></a> * The \Traversable interface enables the implementation to be addressed with
-<a name="line39"></a> * &lt;b&gt;foreach&lt;/b&gt;. LockManager has to implement either \IteratorAggregate or
-<a name="line40"></a> * \Iterator.
-<a name="line41"></a> * The iterator is equivalent to &lt;b&gt;getLockTokens()&lt;/b&gt; returning a list of all
-<a name="line42"></a> * locks. The iterator keys have no significant meaning.
-<a name="line43"></a> *
-<a name="line44"></a> * @package phpcr
-<a name="line45"></a> * @subpackage interfaces
-<a name="line46"></a> * @api
-<a name="line47"></a> */</span>
-<a name="line48"></a><span style="color: #000000; font-weight: bold;">interface</span> LockManagerInterface <span style="color: #000000; font-weight: bold;">extends</span> \Traversable <span style="color: #009900;">&#123;</span>
-<a name="line49"></a>&nbsp;
-<a name="line50"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line51"></a>     * Adds the specified lock token to the current Session.
-<a name="line52"></a>     *
-<a name="line53"></a>     * Holding a lock token makes the current Session the owner of the lock
-<a name="line54"></a>     * specified by that particular lock token.
-<a name="line55"></a>     *
-<a name="line56"></a>     * @param string $lockToken A lock token (a string).
-<a name="line57"></a>     * @return void
-<a name="line58"></a>     *
-<a name="line59"></a>     * @throws \PHPCR\Lock\LockException if the specified lock token is already held by another Session and the
-<a name="line60"></a>     *                                   implementation does not support simultaneous ownership of open-scoped locks.
-<a name="line61"></a>     * @throws \PHPCR\RepositoryException if another error occurs.
-<a name="line62"></a>     * @api
-<a name="line63"></a>     */</span>
-<a name="line64"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> addLockToken<span style="color: #009900;">&#40;</span><span style="color: #000088;">$lockToken</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line65"></a>&nbsp;
-<a name="line66"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line67"></a>     * Returns the Lock object that applies to the node at the specified absPath.
-<a name="line68"></a>     *
-<a name="line69"></a>     * This may be either a lock on that node itself or a deep lock on a node
-<a name="line70"></a>     * above that node.
-<a name="line71"></a>     *
-<a name="line72"></a>     * @param string $absPath - absolute path of node for which to obtain the lock
-<a name="line73"></a>     * @return \PHPCR\Lock\LockInterface The applicable Lock object.
-<a name="line74"></a>     *
-<a name="line75"></a>     * @throws \PHPCR\Lock\LockException if no lock applies to this node.
-<a name="line76"></a>     * @throws \PHPCR\AccessDeniedException if the current session does not have sufficient access to get the lock.
-<a name="line77"></a>     * @throws \PHPCR\PathNotFoundException if no node is found at $absPath
-<a name="line78"></a>     * @throws \PHPCR\RepositoryException if another error occurs.
-<a name="line79"></a>     * @api
-<a name="line80"></a>     */</span>
-<a name="line81"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getLock<span style="color: #009900;">&#40;</span><span style="color: #000088;">$absPath</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line82"></a>&nbsp;
-<a name="line83"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line84"></a>     * Gets the list of previously registered tokens.
-<a name="line85"></a>     *
-<a name="line86"></a>     * Returns an array containing all lock tokens currently held by the current
-<a name="line87"></a>     * Session. Note that any such tokens will represent open-scoped locks, since
-<a name="line88"></a>     * session-scoped locks do not have tokens.
-<a name="line89"></a>     *
-<a name="line90"></a>     * @return array an array of lock tokens (strings)
-<a name="line91"></a>     *
-<a name="line92"></a>     * @throws \PHPCR\RepositoryException if an error occurs.
-<a name="line93"></a>     * @api
-<a name="line94"></a>     */</span>
-<a name="line95"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getLockTokens<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line96"></a>&nbsp;
-<a name="line97"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line98"></a>     * Determines if the node identified by the passed path holds a lock.
-<a name="line99"></a>     *
-<a name="line100"></a>     * Returns true if the node at absPath holds a lock; otherwise returns false.
-<a name="line101"></a>     * To hold a lock means that this node has actually had a lock placed on it
-<a name="line102"></a>     * specifically, as opposed to just having a lock apply to it due to a deep
-<a name="line103"></a>     * lock held by a node above.
-<a name="line104"></a>     *
-<a name="line105"></a>     * @param string $absPath The absolute path of node to be checked.
-<a name="line106"></a>     * @return boolean True, if the node identified by the given path holds a lock, else false.
-<a name="line107"></a>     *
-<a name="line108"></a>     * @throws \PHPCR\PathNotFoundException if no node is found at $absPath
-<a name="line109"></a>     * @throws \PHPCR\RepositoryException if an error occurs.
-<a name="line110"></a>     * @api
-<a name="line111"></a>     */</span>
-<a name="line112"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> holdsLock<span style="color: #009900;">&#40;</span><span style="color: #000088;">$absPath</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line113"></a>&nbsp;
-<a name="line114"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line115"></a>     * Places a lock on the node at absPath.
-<a name="line116"></a>     *
-<a name="line117"></a>     * If successful, the node is said to hold the lock.
-<a name="line118"></a>     *
-<a name="line119"></a>     * If &lt;b&gt;isDeep&lt;/b&gt; is true then the lock applies to the specified node and all its
-<a name="line120"></a>     * descendant nodes; if false, the lock applies only to the specified node.
-<a name="line121"></a>     * On a successful lock, the jcr:lockIsDeep property of the locked node is
-<a name="line122"></a>     * set to this value.
-<a name="line123"></a>     *
-<a name="line124"></a>     * If &lt;b&gt;isSessionScoped&lt;/b&gt; is true then this lock will expire upon the expiration
-<a name="line125"></a>     * of the current session (either through an automatic or explicit Session.logout);
-<a name="line126"></a>     * if false, this lock does not expire until it is explicitly unlocked, it
-<a name="line127"></a>     * times out, or it is automatically unlocked due to a implementation-specific
-<a name="line128"></a>     * limitation.
-<a name="line129"></a>     *
-<a name="line130"></a>     * The &lt;b&gt;timeout&lt;/b&gt; parameter specifies the number of seconds until the lock times
-<a name="line131"></a>     * out (if it is not refreshed with Lock.refresh in the meantime). An
-<a name="line132"></a>     * implementation may use this information as a hint or ignore it altogether.
-<a name="line133"></a>     * Clients can discover the actual timeout by inspecting the returned Lock
-<a name="line134"></a>     * object.
-<a name="line135"></a>     *
-<a name="line136"></a>     * The &lt;b&gt;ownerInfo&lt;/b&gt; parameter can be used to pass a string holding owner
-<a name="line137"></a>     * information relevant to the client. An implementation may either use or
-<a name="line138"></a>     * ignore this parameter. If it uses the parameter it must set the jcr:lockOwner
-<a name="line139"></a>     * property of the locked node to this value and return this value on
-<a name="line140"></a>     * Lock.getLockOwner. If it ignores this parameter the jcr:lockOwner property
-<a name="line141"></a>     * (and the value returned by Lock.getLockOwner) is set to either the value
-<a name="line142"></a>     * returned by Session.getUserID of the owning session or an implementation-
-<a name="line143"></a>     * specific string identifying the owner.
-<a name="line144"></a>     *
-<a name="line145"></a>     * The method returns a Lock object representing the new lock. If the lock is
-<a name="line146"></a>     * open-scoped the returned lock will include a lock token. The lock token is
-<a name="line147"></a>     * also automatically added to the set of lock tokens held by the current session.
-<a name="line148"></a>     *
-<a name="line149"></a>     * The addition or change of the properties jcr:lockIsDeep and jcr:lockOwner
-<a name="line150"></a>     * are persisted immediately; there is no need to call save.
-<a name="line151"></a>     *
-<a name="line152"></a>     * It is possible to lock a node even if it is checked-in.
-<a name="line153"></a>     *
-<a name="line154"></a>     * @param string $absPath The absolute path of node to be locked
-<a name="line155"></a>     * @param boolean $isDeep If true this lock will apply to this node and all its descendants;
-<a name="line156"></a>     *                        if false, it applies only to this node.
-<a name="line157"></a>     * @param boolean $isSessionScoped If true, this lock expires with the current session;
-<a name="line158"></a>     *                                 if false it expires when explicitly or automatically unlocked for
-<a name="line159"></a>     *                                 some other reason.
-<a name="line160"></a>     * @param integer $timeoutHint Desired lock timeout in seconds (servers are free to ignore this value);
-<a name="line161"></a>     *                             specify Long.MAX_VALUE for no timeout.
-<a name="line162"></a>     * @param string $ownerInfo A string containing owner information supplied by the client; servers are
-<a name="line163"></a>     *                          free to ignore this value.
-<a name="line164"></a>     * @return \PHPCR\Lock\LockInterface A Lock object containing a lock token.
-<a name="line165"></a>     *
-<a name="line166"></a>     * @throws \PHPCR\Lock\LockException if this node is not mix:lockable or this node is already locked or isDeep
-<a name="line167"></a>     *                                   is true and a descendant node of this node already holds a lock.
-<a name="line168"></a>     * @throws \PHPCR\AccessDeniedException if this session does not have sufficient access to lock this node.
-<a name="line169"></a>     * @throws \PHPCR\InvalidItemStateException if this node has pending unsaved changes.
-<a name="line170"></a>     * @throws \PHPCR\PathNotFoundException if no node is found at $absPath
-<a name="line171"></a>     * @throws \PHPCR\RepositoryException if another error occurs.
-<a name="line172"></a>     * @api
-<a name="line173"></a>     */</span>
-<a name="line174"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> lock<span style="color: #009900;">&#40;</span><span style="color: #000088;">$absPath</span><span style="color: #339933;">,</span> <span style="color: #000088;">$isDeep</span><span style="color: #339933;">,</span> <span style="color: #000088;">$isSessionScoped</span><span style="color: #339933;">,</span> <span style="color: #000088;">$timeoutHint</span><span style="color: #339933;">,</span> <span style="color: #000088;">$ownerInfo</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line175"></a>&nbsp;
-<a name="line176"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line177"></a>     * Determines if the node at absPath is locked.
-<a name="line178"></a>     *
-<a name="line179"></a>     * Returns true if the node at absPath is locked either as a result of a lock
-<a name="line180"></a>     * held by that node or by a deep lock on a node above that node; otherwise
-<a name="line181"></a>     * returns false.
-<a name="line182"></a>     *
-<a name="line183"></a>     * @param string $absPath The absolute path of a node to be checked.
-<a name="line184"></a>     * @return boolean True, if the identified node has a lock.
-<a name="line185"></a>     *
-<a name="line186"></a>     * @throws \PHPCR\PathNotFoundException if no node is found at $absPath.
-<a name="line187"></a>     * @throws \PHPCR\RepositoryException if an error occurs.
-<a name="line188"></a>     * @api
-<a name="line189"></a>     */</span>
-<a name="line190"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> isLocked<span style="color: #009900;">&#40;</span><span style="color: #000088;">$absPath</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line191"></a>&nbsp;
-<a name="line192"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line193"></a>     * Removes the specified lock token from this Session.
-<a name="line194"></a>     *
-<a name="line195"></a>     * @param string $lockToken - a lock token (a string)
-<a name="line196"></a>     * @return void
-<a name="line197"></a>     *
-<a name="line198"></a>     * @throws \PHPCR\Lock\LockException if the current Session does not hold the specified lock token.
-<a name="line199"></a>     * @throws \PHPCR\RepositoryException if another error occurs.
-<a name="line200"></a>     * @api
-<a name="line201"></a>     */</span>
-<a name="line202"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> removeLockToken<span style="color: #009900;">&#40;</span><span style="color: #000088;">$lockToken</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line203"></a>&nbsp;
-<a name="line204"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line205"></a>     * Removes the lock on the node at absPath.
-<a name="line206"></a>     *
-<a name="line207"></a>     * Also removes the properties jcr:lockOwner and jcr:lockIsDeep from that node.
-<a name="line208"></a>     * As well, the corresponding lock token is removed from the set of lock tokens
-<a name="line209"></a>     * held by the current Session.
-<a name="line210"></a>     *
-<a name="line211"></a>     * If the node does not currently hold a lock or holds a lock for which this
-<a name="line212"></a>     * Session is not the owner and is not a &quot;lock-superuser&quot;, then a
-<a name="line213"></a>     * \PHPCR\Lock\LockException is thrown.
-<a name="line214"></a>     *
-<a name="line215"></a>     * &lt;b&gt;Note:&lt;/b&gt;
-<a name="line216"></a>     * However that the system may give permission to a non-owning session
-<a name="line217"></a>     * to unlock a lock. Typically such &quot;lock-superuser&quot; capability is intended
-<a name="line218"></a>     * to facilitate administrational clean-up of orphaned open-scoped locks.
-<a name="line219"></a>     *
-<a name="line220"></a>     * Note that it is possible to unlock a node even if it is checked-in (the
-<a name="line221"></a>     * lock-related properties will be changed despite the checked-in status).
-<a name="line222"></a>     *
-<a name="line223"></a>     * @param string $absPath The absolute path of node to be unlocked.
-<a name="line224"></a>     * @return void
-<a name="line225"></a>     *
-<a name="line226"></a>     * @throws \PHPCR\Lock\LockException If this node does not currently hold a lock or holds a lock for which
-<a name="line227"></a>     *                                   this Session does not have the correct lock token.
-<a name="line228"></a>     * @throws \PHPCR\AccessDeniedException if the current session does not have permission to unlock this node.
-<a name="line229"></a>     * @throws \PHPCR\InvalidItemStateException if this node has pending unsaved changes.
-<a name="line230"></a>     * @throws \PHPCR\PathNotFoundException if no node is found at $absPath
-<a name="line231"></a>     * @throws \PHPCR\RepositoryException if another error occurs.
-<a name="line232"></a>     * @api
-<a name="line233"></a>     */</span>
-<a name="line234"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> unlock<span style="color: #009900;">&#40;</span><span style="color: #000088;">$absPath</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line235"></a>&nbsp;
-<a name="line236"></a><span style="color: #009900;">&#125;</span>
-<a name="line237"></a>&nbsp;</pre>
+<a name="line32"></a><span style="color: #000000; font-weight: bold;">namespace</span> PHPCR\Lock<span style="color: #339933;">;</span>
+<a name="line33"></a>&nbsp;
+<a name="line34"></a><span style="color: #009933; font-style: italic;">/**
+<a name="line35"></a> * This interface encapsulates methods for the management of locks.
+<a name="line36"></a> *
+<a name="line37"></a> * The \Traversable interface enables the implementation to be addressed with
+<a name="line38"></a> * &lt;b&gt;foreach&lt;/b&gt;. LockManager has to implement either \IteratorAggregate or
+<a name="line39"></a> * \Iterator.
+<a name="line40"></a> * The iterator is equivalent to &lt;b&gt;getLockTokens()&lt;/b&gt; returning a list of all
+<a name="line41"></a> * locks. The iterator keys have no significant meaning.
+<a name="line42"></a> *
+<a name="line43"></a> * @package phpcr
+<a name="line44"></a> * @subpackage interfaces
+<a name="line45"></a> * @api
+<a name="line46"></a> */</span>
+<a name="line47"></a><span style="color: #000000; font-weight: bold;">interface</span> LockManagerInterface <span style="color: #000000; font-weight: bold;">extends</span> \Traversable <span style="color: #009900;">&#123;</span>
+<a name="line48"></a>&nbsp;
+<a name="line49"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line50"></a>     * Adds the specified lock token to the current Session.
+<a name="line51"></a>     *
+<a name="line52"></a>     * Holding a lock token makes the current Session the owner of the lock
+<a name="line53"></a>     * specified by that particular lock token.
+<a name="line54"></a>     *
+<a name="line55"></a>     * @param string $lockToken A lock token (a string).
+<a name="line56"></a>     * @return void
+<a name="line57"></a>     *
+<a name="line58"></a>     * @throws \PHPCR\Lock\LockException if the specified lock token is already held by another Session and the
+<a name="line59"></a>     *                                   implementation does not support simultaneous ownership of open-scoped locks.
+<a name="line60"></a>     * @throws \PHPCR\RepositoryException if another error occurs.
+<a name="line61"></a>     * @api
+<a name="line62"></a>     */</span>
+<a name="line63"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> addLockToken<span style="color: #009900;">&#40;</span><span style="color: #000088;">$lockToken</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line64"></a>&nbsp;
+<a name="line65"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line66"></a>     * Returns the Lock object that applies to the node at the specified absPath.
+<a name="line67"></a>     *
+<a name="line68"></a>     * This may be either a lock on that node itself or a deep lock on a node
+<a name="line69"></a>     * above that node.
+<a name="line70"></a>     *
+<a name="line71"></a>     * @param string $absPath - absolute path of node for which to obtain the lock
+<a name="line72"></a>     * @return \PHPCR\Lock\LockInterface The applicable Lock object.
+<a name="line73"></a>     *
+<a name="line74"></a>     * @throws \PHPCR\Lock\LockException if no lock applies to this node.
+<a name="line75"></a>     * @throws \PHPCR\AccessDeniedException if the current session does not have sufficient access to get the lock.
+<a name="line76"></a>     * @throws \PHPCR\PathNotFoundException if no node is found at $absPath
+<a name="line77"></a>     * @throws \PHPCR\RepositoryException if another error occurs.
+<a name="line78"></a>     * @api
+<a name="line79"></a>     */</span>
+<a name="line80"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getLock<span style="color: #009900;">&#40;</span><span style="color: #000088;">$absPath</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line81"></a>&nbsp;
+<a name="line82"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line83"></a>     * Gets the list of previously registered tokens.
+<a name="line84"></a>     *
+<a name="line85"></a>     * Returns an array containing all lock tokens currently held by the current
+<a name="line86"></a>     * Session. Note that any such tokens will represent open-scoped locks, since
+<a name="line87"></a>     * session-scoped locks do not have tokens.
+<a name="line88"></a>     *
+<a name="line89"></a>     * @return array an array of lock tokens (strings)
+<a name="line90"></a>     *
+<a name="line91"></a>     * @throws \PHPCR\RepositoryException if an error occurs.
+<a name="line92"></a>     * @api
+<a name="line93"></a>     */</span>
+<a name="line94"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getLockTokens<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line95"></a>&nbsp;
+<a name="line96"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line97"></a>     * Determines if the node identified by the passed path holds a lock.
+<a name="line98"></a>     *
+<a name="line99"></a>     * Returns true if the node at absPath holds a lock; otherwise returns false.
+<a name="line100"></a>     * To hold a lock means that this node has actually had a lock placed on it
+<a name="line101"></a>     * specifically, as opposed to just having a lock apply to it due to a deep
+<a name="line102"></a>     * lock held by a node above.
+<a name="line103"></a>     *
+<a name="line104"></a>     * @param string $absPath The absolute path of node to be checked.
+<a name="line105"></a>     * @return boolean True, if the node identified by the given path holds a lock, else false.
+<a name="line106"></a>     *
+<a name="line107"></a>     * @throws \PHPCR\PathNotFoundException if no node is found at $absPath
+<a name="line108"></a>     * @throws \PHPCR\RepositoryException if an error occurs.
+<a name="line109"></a>     * @api
+<a name="line110"></a>     */</span>
+<a name="line111"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> holdsLock<span style="color: #009900;">&#40;</span><span style="color: #000088;">$absPath</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line112"></a>&nbsp;
+<a name="line113"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line114"></a>     * Places a lock on the node at absPath.
+<a name="line115"></a>     *
+<a name="line116"></a>     * If successful, the node is said to hold the lock.
+<a name="line117"></a>     *
+<a name="line118"></a>     * If &lt;b&gt;isDeep&lt;/b&gt; is true then the lock applies to the specified node and all its
+<a name="line119"></a>     * descendant nodes; if false, the lock applies only to the specified node.
+<a name="line120"></a>     * On a successful lock, the jcr:lockIsDeep property of the locked node is
+<a name="line121"></a>     * set to this value.
+<a name="line122"></a>     *
+<a name="line123"></a>     * If &lt;b&gt;isSessionScoped&lt;/b&gt; is true then this lock will expire upon the expiration
+<a name="line124"></a>     * of the current session (either through an automatic or explicit Session.logout);
+<a name="line125"></a>     * if false, this lock does not expire until it is explicitly unlocked, it
+<a name="line126"></a>     * times out, or it is automatically unlocked due to a implementation-specific
+<a name="line127"></a>     * limitation.
+<a name="line128"></a>     *
+<a name="line129"></a>     * The &lt;b&gt;timeout&lt;/b&gt; parameter specifies the number of seconds until the lock times
+<a name="line130"></a>     * out (if it is not refreshed with Lock.refresh in the meantime). An
+<a name="line131"></a>     * implementation may use this information as a hint or ignore it altogether.
+<a name="line132"></a>     * Clients can discover the actual timeout by inspecting the returned Lock
+<a name="line133"></a>     * object.
+<a name="line134"></a>     *
+<a name="line135"></a>     * The &lt;b&gt;ownerInfo&lt;/b&gt; parameter can be used to pass a string holding owner
+<a name="line136"></a>     * information relevant to the client. An implementation may either use or
+<a name="line137"></a>     * ignore this parameter. If it uses the parameter it must set the jcr:lockOwner
+<a name="line138"></a>     * property of the locked node to this value and return this value on
+<a name="line139"></a>     * Lock.getLockOwner. If it ignores this parameter the jcr:lockOwner property
+<a name="line140"></a>     * (and the value returned by Lock.getLockOwner) is set to either the value
+<a name="line141"></a>     * returned by Session.getUserID of the owning session or an implementation-
+<a name="line142"></a>     * specific string identifying the owner.
+<a name="line143"></a>     *
+<a name="line144"></a>     * The method returns a Lock object representing the new lock. If the lock is
+<a name="line145"></a>     * open-scoped the returned lock will include a lock token. The lock token is
+<a name="line146"></a>     * also automatically added to the set of lock tokens held by the current session.
+<a name="line147"></a>     *
+<a name="line148"></a>     * The addition or change of the properties jcr:lockIsDeep and jcr:lockOwner
+<a name="line149"></a>     * are persisted immediately; there is no need to call save.
+<a name="line150"></a>     *
+<a name="line151"></a>     * It is possible to lock a node even if it is checked-in.
+<a name="line152"></a>     *
+<a name="line153"></a>     * @param string $absPath The absolute path of node to be locked
+<a name="line154"></a>     * @param boolean $isDeep If true this lock will apply to this node and all its descendants;
+<a name="line155"></a>     *                        if false, it applies only to this node.
+<a name="line156"></a>     * @param boolean $isSessionScoped If true, this lock expires with the current session;
+<a name="line157"></a>     *                                 if false it expires when explicitly or automatically unlocked for
+<a name="line158"></a>     *                                 some other reason.
+<a name="line159"></a>     * @param integer $timeoutHint Desired lock timeout in seconds (servers are free to ignore this value);
+<a name="line160"></a>     *                             specify Long.MAX_VALUE for no timeout.
+<a name="line161"></a>     * @param string $ownerInfo A string containing owner information supplied by the client; servers are
+<a name="line162"></a>     *                          free to ignore this value.
+<a name="line163"></a>     * @return \PHPCR\Lock\LockInterface A Lock object containing a lock token.
+<a name="line164"></a>     *
+<a name="line165"></a>     * @throws \PHPCR\Lock\LockException if this node is not mix:lockable or this node is already locked or isDeep
+<a name="line166"></a>     *                                   is true and a descendant node of this node already holds a lock.
+<a name="line167"></a>     * @throws \PHPCR\AccessDeniedException if this session does not have sufficient access to lock this node.
+<a name="line168"></a>     * @throws \PHPCR\InvalidItemStateException if this node has pending unsaved changes.
+<a name="line169"></a>     * @throws \PHPCR\PathNotFoundException if no node is found at $absPath
+<a name="line170"></a>     * @throws \PHPCR\RepositoryException if another error occurs.
+<a name="line171"></a>     * @api
+<a name="line172"></a>     */</span>
+<a name="line173"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> lock<span style="color: #009900;">&#40;</span><span style="color: #000088;">$absPath</span><span style="color: #339933;">,</span> <span style="color: #000088;">$isDeep</span><span style="color: #339933;">,</span> <span style="color: #000088;">$isSessionScoped</span><span style="color: #339933;">,</span> <span style="color: #000088;">$timeoutHint</span><span style="color: #339933;">,</span> <span style="color: #000088;">$ownerInfo</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line174"></a>&nbsp;
+<a name="line175"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line176"></a>     * Determines if the node at absPath is locked.
+<a name="line177"></a>     *
+<a name="line178"></a>     * Returns true if the node at absPath is locked either as a result of a lock
+<a name="line179"></a>     * held by that node or by a deep lock on a node above that node; otherwise
+<a name="line180"></a>     * returns false.
+<a name="line181"></a>     *
+<a name="line182"></a>     * @param string $absPath The absolute path of a node to be checked.
+<a name="line183"></a>     * @return boolean True, if the identified node has a lock.
+<a name="line184"></a>     *
+<a name="line185"></a>     * @throws \PHPCR\PathNotFoundException if no node is found at $absPath.
+<a name="line186"></a>     * @throws \PHPCR\RepositoryException if an error occurs.
+<a name="line187"></a>     * @api
+<a name="line188"></a>     */</span>
+<a name="line189"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> isLocked<span style="color: #009900;">&#40;</span><span style="color: #000088;">$absPath</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line190"></a>&nbsp;
+<a name="line191"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line192"></a>     * Removes the specified lock token from this Session.
+<a name="line193"></a>     *
+<a name="line194"></a>     * @param string $lockToken - a lock token (a string)
+<a name="line195"></a>     * @return void
+<a name="line196"></a>     *
+<a name="line197"></a>     * @throws \PHPCR\Lock\LockException if the current Session does not hold the specified lock token.
+<a name="line198"></a>     * @throws \PHPCR\RepositoryException if another error occurs.
+<a name="line199"></a>     * @api
+<a name="line200"></a>     */</span>
+<a name="line201"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> removeLockToken<span style="color: #009900;">&#40;</span><span style="color: #000088;">$lockToken</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line202"></a>&nbsp;
+<a name="line203"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line204"></a>     * Removes the lock on the node at absPath.
+<a name="line205"></a>     *
+<a name="line206"></a>     * Also removes the properties jcr:lockOwner and jcr:lockIsDeep from that node.
+<a name="line207"></a>     * As well, the corresponding lock token is removed from the set of lock tokens
+<a name="line208"></a>     * held by the current Session.
+<a name="line209"></a>     *
+<a name="line210"></a>     * If the node does not currently hold a lock or holds a lock for which this
+<a name="line211"></a>     * Session is not the owner and is not a &quot;lock-superuser&quot;, then a
+<a name="line212"></a>     * \PHPCR\Lock\LockException is thrown.
+<a name="line213"></a>     *
+<a name="line214"></a>     * &lt;b&gt;Note:&lt;/b&gt;
+<a name="line215"></a>     * However that the system may give permission to a non-owning session
+<a name="line216"></a>     * to unlock a lock. Typically such &quot;lock-superuser&quot; capability is intended
+<a name="line217"></a>     * to facilitate administrational clean-up of orphaned open-scoped locks.
+<a name="line218"></a>     *
+<a name="line219"></a>     * Note that it is possible to unlock a node even if it is checked-in (the
+<a name="line220"></a>     * lock-related properties will be changed despite the checked-in status).
+<a name="line221"></a>     *
+<a name="line222"></a>     * @param string $absPath The absolute path of node to be unlocked.
+<a name="line223"></a>     * @return void
+<a name="line224"></a>     *
+<a name="line225"></a>     * @throws \PHPCR\Lock\LockException If this node does not currently hold a lock or holds a lock for which
+<a name="line226"></a>     *                                   this Session does not have the correct lock token.
+<a name="line227"></a>     * @throws \PHPCR\AccessDeniedException if the current session does not have permission to unlock this node.
+<a name="line228"></a>     * @throws \PHPCR\InvalidItemStateException if this node has pending unsaved changes.
+<a name="line229"></a>     * @throws \PHPCR\PathNotFoundException if no node is found at $absPath
+<a name="line230"></a>     * @throws \PHPCR\RepositoryException if another error occurs.
+<a name="line231"></a>     * @api
+<a name="line232"></a>     */</span>
+<a name="line233"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> unlock<span style="color: #009900;">&#40;</span><span style="color: #000088;">$absPath</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line234"></a>&nbsp;
+<a name="line235"></a><span style="color: #009900;">&#125;</span>
+<a name="line236"></a>&nbsp;</pre>
 <div class="header">
 <h1>PHPCR</h1>
 <ul>

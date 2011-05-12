@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="generator" content="PHPDoctor 2RC4 (http://peej.github.com/phpdoctor/)">
-<meta name="when" content="Fri, 06 May 2011 11:43:33 +0000">
+<meta name="when" content="Thu, 12 May 2011 08:50:56 +0000">
 
 <link rel="stylesheet" type="text/css" href="../../../../stylesheet.css">
 <link rel="start" href="../../../../overview-summary.html">
@@ -79,35 +79,33 @@ If not, see <code><a href="http://www.gnu.org/licenses/lgpl.html">http://www.gnu
 <a name="line29"></a> * @subpackage interfaces
 <a name="line30"></a> */</span>
 <a name="line31"></a>&nbsp;
-<a name="line32"></a>&nbsp;
-<a name="line33"></a><span style="color: #000000; font-weight: bold;">declare</span><span style="color: #009900;">&#40;</span>ENCODING <span style="color: #339933;">=</span> <span style="color: #0000ff;">'utf-8'</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line34"></a><span style="color: #000000; font-weight: bold;">namespace</span> PHPCR\Query\QOM<span style="color: #339933;">;</span>
-<a name="line35"></a>&nbsp;
-<a name="line36"></a><span style="color: #009933; font-style: italic;">/**
-<a name="line37"></a> * Evaluates to the upper-case string value (or values, if multi-valued) of
-<a name="line38"></a> * operand.
-<a name="line39"></a> *
-<a name="line40"></a> * If operand does not evaluate to a string value, its value is first converted
-<a name="line41"></a> * to a string.
+<a name="line32"></a><span style="color: #000000; font-weight: bold;">namespace</span> PHPCR\Query\QOM<span style="color: #339933;">;</span>
+<a name="line33"></a>&nbsp;
+<a name="line34"></a><span style="color: #009933; font-style: italic;">/**
+<a name="line35"></a> * Evaluates to the upper-case string value (or values, if multi-valued) of
+<a name="line36"></a> * operand.
+<a name="line37"></a> *
+<a name="line38"></a> * If operand does not evaluate to a string value, its value is first converted
+<a name="line39"></a> * to a string.
+<a name="line40"></a> *
+<a name="line41"></a> * If operand evaluates to null, the UpperCase operand also evaluates to null.
 <a name="line42"></a> *
-<a name="line43"></a> * If operand evaluates to null, the UpperCase operand also evaluates to null.
-<a name="line44"></a> *
-<a name="line45"></a> * @package phpcr
-<a name="line46"></a> * @subpackage interfaces
-<a name="line47"></a> * @api
-<a name="line48"></a> */</span>
-<a name="line49"></a><span style="color: #000000; font-weight: bold;">interface</span> UpperCaseInterface <span style="color: #000000; font-weight: bold;">extends</span> DynamicOperandInterface <span style="color: #009900;">&#123;</span>
-<a name="line50"></a>&nbsp;
-<a name="line51"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line52"></a>     * Gets the operand whose value is converted to a upper-case string.
-<a name="line53"></a>     *
-<a name="line54"></a>     * @return \PHPCR\Query\QOM\DynamicOperandInterface the operand; non-null
-<a name="line55"></a>     * @api
-<a name="line56"></a>     */</span>
-<a name="line57"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getOperand<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line58"></a>&nbsp;
-<a name="line59"></a><span style="color: #009900;">&#125;</span>
-<a name="line60"></a>&nbsp;</pre>
+<a name="line43"></a> * @package phpcr
+<a name="line44"></a> * @subpackage interfaces
+<a name="line45"></a> * @api
+<a name="line46"></a> */</span>
+<a name="line47"></a><span style="color: #000000; font-weight: bold;">interface</span> UpperCaseInterface <span style="color: #000000; font-weight: bold;">extends</span> DynamicOperandInterface <span style="color: #009900;">&#123;</span>
+<a name="line48"></a>&nbsp;
+<a name="line49"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line50"></a>     * Gets the operand whose value is converted to a upper-case string.
+<a name="line51"></a>     *
+<a name="line52"></a>     * @return \PHPCR\Query\QOM\DynamicOperandInterface the operand; non-null
+<a name="line53"></a>     * @api
+<a name="line54"></a>     */</span>
+<a name="line55"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getOperand<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line56"></a>&nbsp;
+<a name="line57"></a><span style="color: #009900;">&#125;</span>
+<a name="line58"></a>&nbsp;</pre>
 <div class="header">
 <h1>PHPCR</h1>
 <ul>

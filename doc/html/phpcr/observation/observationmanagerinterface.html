@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="generator" content="PHPDoctor 2RC4 (http://peej.github.com/phpdoctor/)">
-<meta name="when" content="Fri, 06 May 2011 11:43:18 +0000">
+<meta name="when" content="Thu, 12 May 2011 08:50:42 +0000">
 
 <link rel="stylesheet" type="text/css" href="../../stylesheet.css">
 <link rel="start" href="../../overview-summary.html">
@@ -41,7 +41,7 @@ Detail: <a href="#detail_field">Field</a> | <a href="#detail_method">Method</a> 
 <hr>
 
 <div class="qualifiedName">PHPCR\Observation\ObservationManagerInterface</div>
-<a href="../../source/phpcr/observation/observationmanagerinterface.php.html#line52" class="location">PHPCR/Observation/ObservationManagerInterface.php at line 52</a>
+<a href="../../source/phpcr/observation/observationmanagerinterface.php.html#line51" class="location">PHPCR/Observation/ObservationManagerInterface.php at line 51</a>
 
 <h1>Interface ObservationManagerInterface</h1>
 
@@ -98,7 +98,7 @@ combination of one or more event types encoded as a bit mask value).
 </table>
 
 <h2 id="detail_method">Method Detail</h2>
-<a href="../../source/phpcr/observation/observationmanagerinterface.php.html#line108" class="location">PHPCR/Observation/ObservationManagerInterface.php at line 108</a>
+<a href="../../source/phpcr/observation/observationmanagerinterface.php.html#line107" class="location">PHPCR/Observation/ObservationManagerInterface.php at line 107</a>
 
 <h3 id="addEventListener()">addEventListener</h3>
 <code class="signature">public  void <strong>addEventListener</strong>(<a href="../../phpcr/observation/eventlistenerinterface.html">EventListenerInterface</a> listener, integer eventTypes, string absPath, boolean isDeep, array uuid, array nodeTypeName, boolean noLocal)</code>
@@ -151,12 +151,12 @@ supported</p><dl>
 
 <hr>
 
-<a href="../../source/phpcr/observation/observationmanagerinterface.php.html#line175" class="location">PHPCR/Observation/ObservationManagerInterface.php at line 175</a>
+<a href="../../source/phpcr/observation/observationmanagerinterface.php.html#line174" class="location">PHPCR/Observation/ObservationManagerInterface.php at line 174</a>
 
 <h3 id="getEventJournal()">getEventJournal</h3>
 <code class="signature">public  <a href="../../phpcr/observation/eventjournalinterface.html">EventJournalInterface</a> <strong>getEventJournal</strong>(integer eventTypes, string absPath, boolean isDeep, array uuid, array nodeTypeName)</code>
 <div class="details">
-<p>Retrieves the event journal for this workspace.</p><p>If journaled observation is not supported for this workspace, NULL is
+<p>Retrieves the event journal for this workspace.</p><p>If journaled observation is not supported for this workspace, null is
 returned.</p><p>Events returned in the EventJournal instance will be filtered according
 to the parameters of this method, the current session's access
 restrictions as well as any additional restrictions specified through
@@ -169,7 +169,7 @@ they do in addEventListener().</p><dl>
 <dd>uuid - array of identifiers.</dd>
 <dd>nodeTypeName - array of node type names.</dd>
 <dt>Returns:</dt>
-<dd>an EventJournal (or NULL).</dd>
+<dd>an EventJournal (or null).</dd>
 <dt>Throws:</dt>
 <dd><a href="../../phpcr/repositoryexception.html">\PHPCR\RepositoryException</a> - if an error occurs</dd>
 <dt>Api.</dt>
@@ -178,7 +178,7 @@ they do in addEventListener().</p><dl>
 
 <hr>
 
-<a href="../../source/phpcr/observation/observationmanagerinterface.php.html#line138" class="location">PHPCR/Observation/ObservationManagerInterface.php at line 138</a>
+<a href="../../source/phpcr/observation/observationmanagerinterface.php.html#line137" class="location">PHPCR/Observation/ObservationManagerInterface.php at line 137</a>
 
 <h3 id="getRegisteredEventListeners()">getRegisteredEventListeners</h3>
 <code class="signature">public  Iterator <strong>getRegisteredEventListeners</strong>()</code>
@@ -194,7 +194,7 @@ they do in addEventListener().</p><dl>
 
 <hr>
 
-<a href="../../source/phpcr/observation/observationmanagerinterface.php.html#line125" class="location">PHPCR/Observation/ObservationManagerInterface.php at line 125</a>
+<a href="../../source/phpcr/observation/observationmanagerinterface.php.html#line124" class="location">PHPCR/Observation/ObservationManagerInterface.php at line 124</a>
 
 <h3 id="removeEventListener()">removeEventListener</h3>
 <code class="signature">public  void <strong>removeEventListener</strong>(<a href="../../phpcr/observation/eventlistenerinterface.html">EventListenerInterface</a> listener)</code>
@@ -214,7 +214,7 @@ deregistration will effectively be delayed until the listener completes.</p><dl>
 
 <hr>
 
-<a href="../../source/phpcr/observation/observationmanagerinterface.php.html#line149" class="location">PHPCR/Observation/ObservationManagerInterface.php at line 149</a>
+<a href="../../source/phpcr/observation/observationmanagerinterface.php.html#line148" class="location">PHPCR/Observation/ObservationManagerInterface.php at line 148</a>
 
 <h3 id="setUserData()">setUserData</h3>
 <code class="signature">public  void <strong>setUserData</strong>(string userData)</code>

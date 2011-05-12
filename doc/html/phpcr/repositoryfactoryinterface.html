@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="generator" content="PHPDoctor 2RC4 (http://peej.github.com/phpdoctor/)">
-<meta name="when" content="Fri, 06 May 2011 11:43:18 +0000">
+<meta name="when" content="Thu, 12 May 2011 08:50:41 +0000">
 
 <link rel="stylesheet" type="text/css" href="../stylesheet.css">
 <link rel="start" href="../overview-summary.html">
@@ -41,7 +41,7 @@ Detail: <a href="#detail_field">Field</a> | <a href="#detail_method">Method</a> 
 <hr>
 
 <div class="qualifiedName">PHPCR\RepositoryFactoryInterface</div>
-<a href="../source/phpcr/repositoryfactoryinterface.php.html#line52" class="location">PHPCR/RepositoryFactoryInterface.php at line 52</a>
+<a href="../source/phpcr/repositoryfactoryinterface.php.html#line48" class="location">PHPCR/RepositoryFactoryInterface.php at line 48</a>
 
 <h1>Interface RepositoryFactoryInterface</h1>
 
@@ -54,8 +54,7 @@ Detail: <a href="#detail_field">Field</a> | <a href="#detail_method">Method</a> 
 <div class="comment" id="overview_description"><p>RepositoryFactory is an interface for factory class implementations for
 Repositories.</p><p>Examples how to obtain repository instances</p><p>Use repository factory based on parameters (the parameters below are examples):
 $parameters = array('com.vendor.address' => 'vendor://localhost:9999/myrepo');
-$repo = \SomeRepository\RepositoryFactory::getRepository($parameters);</p><p>Get a default repository available in this environment:
-$repo = \PHPCR\RepositoryFactory::getRepository();</p></div>
+$repo = \SomeRepository\RepositoryFactory::getRepository($parameters);</p></div>
 
 <dl>
 <dt>Subpackage:</dt>
@@ -67,34 +66,53 @@ $repo = \PHPCR\RepositoryFactory::getRepository();</p></div>
 <table id="summary_method">
 <tr><th colspan="2">Method Summary</th></tr>
 <tr>
+<td class="type"> array</td>
+<td class="description"><p class="name"><a href="#getConfigurationKeys()">getConfigurationKeys</a>()</p><p class="description">Get the list of configuration options that can be passed to getRepositoryThe description string should include whether the key is mandatory or
+optional.</p></td>
+</tr>
+<tr>
 <td class="type"> <a href="../phpcr/repositoryinterface.html">RepositoryInterface</a></td>
-<td class="description"><p class="name"><a href="#getRepository()">getRepository</a>(array|NULL parameters)</p><p class="description">Attempts to establish a connection to a repository using the given
+<td class="description"><p class="name"><a href="#getRepository()">getRepository</a>(array|null parameters)</p><p class="description">Attempts to establish a connection to a repository using the given
 parameters.
 </p></td>
 </tr>
 </table>
 
 <h2 id="detail_method">Method Detail</h2>
-<a href="../source/phpcr/repositoryfactoryinterface.php.html#line78" class="location">PHPCR/RepositoryFactoryInterface.php at line 78</a>
+<a href="../source/phpcr/repositoryfactoryinterface.php.html#line84" class="location">PHPCR/RepositoryFactoryInterface.php at line 84</a>
+
+<h3 id="getConfigurationKeys()">getConfigurationKeys</h3>
+<code class="signature">public  array <strong>getConfigurationKeys</strong>()</code>
+<div class="details">
+<p>Get the list of configuration options that can be passed to getRepository</p><p>The description string should include whether the key is mandatory or
+optional.</p><dl>
+<dt>Returns:</dt>
+<dd>hash map of configuration key => english description</dd>
+</dl>
+</div>
+
+<hr>
+
+<a href="../source/phpcr/repositoryfactoryinterface.php.html#line74" class="location">PHPCR/RepositoryFactoryInterface.php at line 74</a>
 
 <h3 id="getRepository()">getRepository</h3>
-<code class="signature">public  <a href="../phpcr/repositoryinterface.html">RepositoryInterface</a> <strong>getRepository</strong>(array|NULL parameters)</code>
+<code class="signature">public  <a href="../phpcr/repositoryinterface.html">RepositoryInterface</a> <strong>getRepository</strong>(array|null parameters)</code>
 <div class="details">
 <p>Attempts to establish a connection to a repository using the given
 parameters.</p><p>Parameters are passed in an array of key/value pairs. The keys are not
 specified by JCR and are implementation specific.
 However, vendors should use keys that are namespace qualified in the
 Java package style to distinguish their key names. For example
-an address parameter might be com.vendor.address.</p><p>The implementation must return NULL if it does not understand
+an address parameter might be com.vendor.address.</p><p>The implementation must return null if it does not understand
 the given parameters. The implementation may also return null if a default
 repository instance is requested (indicated by null parameters) and this
 factory is not able to identify a default repository. An implementation
 should throw an RepositoryException if it is the right factory but has
 trouble connecting to the repository.</p><dl>
 <dt>Parameters:</dt>
-<dd>parameters - string key/value pairs as repository arguments or NULL if a client wishes to connect to a default repository.</dd>
+<dd>parameters - string key/value pairs as repository arguments or null if a client wishes to connect to a default repository.</dd>
 <dt>Returns:</dt>
-<dd>a repository instance or NULL if this implementation does not understand the passed parameters</dd>
+<dd>a repository instance or null if this implementation does not understand the passed parameters</dd>
 <dt>Throws:</dt>
 <dd><a href="../phpcr/repositoryexception.html">\PHPCR\RepositoryException</a> - if no suitable repository is found or another error occurs.</dd>
 <dt>Api.</dt>

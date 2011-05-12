@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="generator" content="PHPDoctor 2RC4 (http://peej.github.com/phpdoctor/)">
-<meta name="when" content="Fri, 06 May 2011 11:43:18 +0000">
+<meta name="when" content="Thu, 12 May 2011 08:50:42 +0000">
 
 <link rel="stylesheet" type="text/css" href="../../stylesheet.css">
 <link rel="start" href="../../overview-summary.html">
@@ -41,7 +41,7 @@ Detail: <a href="#detail_field">Field</a> | <a href="#detail_method">Method</a> 
 <hr>
 
 <div class="qualifiedName">PHPCR\NodeType\PropertyDefinitionInterface</div>
-<a href="../../source/phpcr/nodetype/propertydefinitioninterface.php.html#line42" class="location">PHPCR/NodeType/PropertyDefinitionInterface.php at line 42</a>
+<a href="../../source/phpcr/nodetype/propertydefinitioninterface.php.html#line41" class="location">PHPCR/NodeType/PropertyDefinitionInterface.php at line 41</a>
 
 <h1>Interface PropertyDefinitionInterface</h1>
 
@@ -107,14 +107,14 @@ property.
 <tr><td><a href="../../phpcr/nodetype/itemdefinitioninterface.html#getDeclaringNodeType()">getDeclaringNodeType</a>, <a href="../../phpcr/nodetype/itemdefinitioninterface.html#getName()">getName</a>, <a href="../../phpcr/nodetype/itemdefinitioninterface.html#getOnParentVersion()">getOnParentVersion</a>, <a href="../../phpcr/nodetype/itemdefinitioninterface.html#isAutoCreated()">isAutoCreated</a>, <a href="../../phpcr/nodetype/itemdefinitioninterface.html#isMandatory()">isMandatory</a>, <a href="../../phpcr/nodetype/itemdefinitioninterface.html#isProtected()">isProtected</a></td></tr></table>
 
 <h2 id="detail_method">Method Detail</h2>
-<a href="../../source/phpcr/nodetype/propertydefinitioninterface.php.html#line280" class="location">PHPCR/NodeType/PropertyDefinitionInterface.php at line 280</a>
+<a href="../../source/phpcr/nodetype/propertydefinitioninterface.php.html#line279" class="location">PHPCR/NodeType/PropertyDefinitionInterface.php at line 279</a>
 
 <h3 id="getAvailableQueryOperators()">getAvailableQueryOperators</h3>
 <code class="signature">public  array <strong>getAvailableQueryOperators</strong>()</code>
 <div class="details">
 <p>Returns the set of query comparison operators supported by this
 property.</p><p>This attribute only takes effect if the node type holding the property
-definition has a queryable setting of TRUE.</p><p>JCR defines the comparison operators QueryObjectModelConstants::JCR_OPERATOR_*</p><p>An implementation may define additional comparison operators.</p><p>Note that the set of operators that can appear in this attribute may be
+definition has a queryable setting of true.</p><p>JCR defines the comparison operators QueryObjectModelConstants::JCR_OPERATOR_*</p><p>An implementation may define additional comparison operators.</p><p>Note that the set of operators that can appear in this attribute may be
 limited by implementation-specific constraints that differ across
 property types. For example, some implementations may permit property
 definitions to provide JCR_OPERATOR_EQUAL_TO and
@@ -131,7 +131,7 @@ Comparison of Values).</p><dl>
 
 <hr>
 
-<a href="../../source/phpcr/nodetype/propertydefinitioninterface.php.html#line234" class="location">PHPCR/NodeType/PropertyDefinitionInterface.php at line 234</a>
+<a href="../../source/phpcr/nodetype/propertydefinitioninterface.php.html#line233" class="location">PHPCR/NodeType/PropertyDefinitionInterface.php at line 233</a>
 
 <h3 id="getDefaultValues()">getDefaultValues</h3>
 <code class="signature">public  array <strong>getDefaultValues</strong>()</code>
@@ -161,7 +161,7 @@ PropertyDefinitionTemplate, then this method will return null.</p><dl>
 
 <hr>
 
-<a href="../../source/phpcr/nodetype/propertydefinitioninterface.php.html#line71" class="location">PHPCR/NodeType/PropertyDefinitionInterface.php at line 71</a>
+<a href="../../source/phpcr/nodetype/propertydefinitioninterface.php.html#line70" class="location">PHPCR/NodeType/PropertyDefinitionInterface.php at line 70</a>
 
 <h3 id="getRequiredType()">getRequiredType</h3>
 <code class="signature">public  integer <strong>getRequiredType</strong>()</code>
@@ -193,7 +193,7 @@ PropertyDefinitionTemplate, then this method will return PropertyType.STRING.</p
 
 <hr>
 
-<a href="../../source/phpcr/nodetype/propertydefinitioninterface.php.html#line202" class="location">PHPCR/NodeType/PropertyDefinitionInterface.php at line 202</a>
+<a href="../../source/phpcr/nodetype/propertydefinitioninterface.php.html#line201" class="location">PHPCR/NodeType/PropertyDefinitionInterface.php at line 201</a>
 
 <h3 id="getValueConstraints()">getValueConstraints</h3>
 <code class="signature">public  array <strong>getValueConstraints</strong>()</code>
@@ -300,15 +300,15 @@ PropertyDefinitionTemplate, then this method will return null.</p><dl>
 
 <hr>
 
-<a href="../../source/phpcr/nodetype/propertydefinitioninterface.php.html#line295" class="location">PHPCR/NodeType/PropertyDefinitionInterface.php at line 295</a>
+<a href="../../source/phpcr/nodetype/propertydefinitioninterface.php.html#line294" class="location">PHPCR/NodeType/PropertyDefinitionInterface.php at line 294</a>
 
 <h3 id="isFullTextSearchable()">isFullTextSearchable</h3>
 <code class="signature">public  boolean <strong>isFullTextSearchable</strong>()</code>
 <div class="details">
-<p>Determines if this property is full-text searchable.</p><p>Returns TRUE if this property is full-text searchable,
+<p>Determines if this property is full-text searchable.</p><p>Returns true if this property is full-text searchable,
 meaning that its value is accessible through the full-text search
 function within a query.</p><p>This attribute only takes effect if the node type holding the
-property definition has a queryable setting of TRUE.</p><dl>
+property definition has a queryable setting of true.</p><dl>
 <dt>Returns:</dt>
 <dd>True, if this property is full-text searchable, else false.</dd>
 <dt>Api.</dt>
@@ -317,7 +317,7 @@ property definition has a queryable setting of TRUE.</p><dl>
 
 <hr>
 
-<a href="../../source/phpcr/nodetype/propertydefinitioninterface.php.html#line252" class="location">PHPCR/NodeType/PropertyDefinitionInterface.php at line 252</a>
+<a href="../../source/phpcr/nodetype/propertydefinitioninterface.php.html#line251" class="location">PHPCR/NodeType/PropertyDefinitionInterface.php at line 251</a>
 
 <h3 id="isMultiple()">isMultiple</h3>
 <code class="signature">public  boolean <strong>isMultiple</strong>()</code>
@@ -337,15 +337,15 @@ PropertyDefinitionTemplate, then this method will return false.</p><dl>
 
 <hr>
 
-<a href="../../source/phpcr/nodetype/propertydefinitioninterface.php.html#line310" class="location">PHPCR/NodeType/PropertyDefinitionInterface.php at line 310</a>
+<a href="../../source/phpcr/nodetype/propertydefinitioninterface.php.html#line309" class="location">PHPCR/NodeType/PropertyDefinitionInterface.php at line 309</a>
 
 <h3 id="isQueryOrderable()">isQueryOrderable</h3>
 <code class="signature">public  boolean <strong>isQueryOrderable</strong>()</code>
 <div class="details">
-<p>Report this property is orderable by a query.</p><p>Returns TRUE if this property is query orderable,
+<p>Report this property is orderable by a query.</p><p>Returns true if this property is query orderable,
 meaning that query results may be ordered by this property
 using the order-by clause of a query.</p><p>This attribute only takes effect if the node type holding the
-property definition has a queryable setting of TRUE.</p><dl>
+property definition has a queryable setting of true.</p><dl>
 <dt>Returns:</dt>
 <dd>True, if this property is query orderable, else false.</dd>
 <dt>Api.</dt>

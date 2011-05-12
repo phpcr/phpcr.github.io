@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="generator" content="PHPDoctor 2RC4 (http://peej.github.com/phpdoctor/)">
-<meta name="when" content="Fri, 06 May 2011 11:43:29 +0000">
+<meta name="when" content="Thu, 12 May 2011 08:50:52 +0000">
 
 <link rel="stylesheet" type="text/css" href="../../../../stylesheet.css">
 <link rel="start" href="../../../../overview-summary.html">
@@ -79,87 +79,85 @@ If not, see <code><a href="http://www.gnu.org/licenses/lgpl.html">http://www.gnu
 <a name="line29"></a> * @subpackage interfaces
 <a name="line30"></a> */</span>
 <a name="line31"></a>&nbsp;
-<a name="line32"></a>&nbsp;
-<a name="line33"></a><span style="color: #000000; font-weight: bold;">declare</span><span style="color: #009900;">&#40;</span>ENCODING <span style="color: #339933;">=</span> <span style="color: #0000ff;">'utf-8'</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line34"></a><span style="color: #000000; font-weight: bold;">namespace</span> PHPCR\Query\QOM<span style="color: #339933;">;</span>
-<a name="line35"></a>&nbsp;
-<a name="line36"></a><span style="color: #009933; font-style: italic;">/**
-<a name="line37"></a> * Performs a full-text search.
-<a name="line38"></a> *
-<a name="line39"></a> * The full-text search expression is evaluated against the set of full-text
-<a name="line40"></a> * indexed properties within the full-text search scope. If property is
-<a name="line41"></a> * specified, the full-text search scope is the property of that name on the
-<a name="line42"></a> * selector node in the node-tuple; otherwise the full-text search scope is all
-<a name="line43"></a> * properties of the selector node (or, in some implementations, all properties
-<a name="line44"></a> * in the node subgraph).
-<a name="line45"></a> *
-<a name="line46"></a> * Which properties (if any) in a repository are full-text indexed is
-<a name="line47"></a> * implementation determined.
-<a name="line48"></a> *
-<a name="line49"></a> * It is also implementation determined whether fullTextSearchExpression is
-<a name="line50"></a> * independently evaluated against each full-text indexed property in the
-<a name="line51"></a> * full-text search scope, or collectively evaluated against the set of such
-<a name="line52"></a> * properties using some implementation-determined mechanism.
-<a name="line53"></a> *
-<a name="line54"></a> * Similarly, for multi-valued properties, it is implementation determined
-<a name="line55"></a> * whether fullTextSearchExpression is independently evaluated against each
-<a name="line56"></a> * element in the array of values, or collectively evaluated against the array
-<a name="line57"></a> * of values using some implementation-determined mechanism.
-<a name="line58"></a> *
-<a name="line59"></a> * At minimum, an implementation must support the following
-<a name="line60"></a> * fullTextSearchExpression grammar:
-<a name="line61"></a> *
-<a name="line62"></a> * - fullTextSearchExpression ::= [-]term {whitespace [OR] whitespace [-]term}
-<a name="line63"></a> * - term ::= word | '&quot;' word {whitespace word} '&quot;'
-<a name="line64"></a> * - word ::= (A string containing no whitespace)
-<a name="line65"></a> * - whitespace ::= (A string of only whitespace)
-<a name="line66"></a> *
-<a name="line67"></a> * A query satisfies a FullTextSearch constraint if the value (or values) of the
-<a name="line68"></a> * full-text indexed properties within the full-text search scope satisfy the
-<a name="line69"></a> * specified fullTextSearchExpression, evaluated as follows:
-<a name="line70"></a> *
-<a name="line71"></a> * - A term not preceded with &quot;-&quot; (minus sign) is satisfied only if the value contains that term.
-<a name="line72"></a> * - A term preceded with &quot;-&quot; (minus sign) is satisfied only if the value does not contain that term.
-<a name="line73"></a> * - Terms separated by whitespace are implicitly &quot;ANDed&quot;.
-<a name="line74"></a> * - Terms separated by &quot;OR&quot; are &quot;ORed&quot;.
-<a name="line75"></a> * - &quot;AND&quot; has higher precedence than &quot;OR&quot;.
-<a name="line76"></a> * - Within a term, each double quote (&quot;), &quot;-&quot; (minus sign), and &quot;\&quot; (backslash) must be escaped by a
-<a name="line77"></a> *   preceding &quot;\&quot; (backslash).
-<a name="line78"></a> *
-<a name="line79"></a> * @package phpcr
-<a name="line80"></a> * @subpackage interfaces
-<a name="line81"></a> * @api
-<a name="line82"></a> */</span>
-<a name="line83"></a><span style="color: #000000; font-weight: bold;">interface</span> FullTextSearchInterface <span style="color: #000000; font-weight: bold;">extends</span> ConstraintInterface <span style="color: #009900;">&#123;</span>
-<a name="line84"></a>&nbsp;
-<a name="line85"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line86"></a>     * Gets the name of the selector against which to apply this constraint.
-<a name="line87"></a>     *
-<a name="line88"></a>     * @return string the selector name; non-null
-<a name="line89"></a>     * @api
-<a name="line90"></a>     */</span>
-<a name="line91"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getSelectorName<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line92"></a>&nbsp;
-<a name="line93"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line94"></a>     * Gets the name of the property.
-<a name="line95"></a>     *
-<a name="line96"></a>     * @return string the property name if the full-text search scope is a property,
-<a name="line97"></a>     *                otherwise null if the full-text search scope is the node
-<a name="line98"></a>     *                (or node subgraph, in some implementations).
-<a name="line99"></a>     * @api
-<a name="line100"></a>     */</span>
-<a name="line101"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getPropertyName<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line102"></a>&nbsp;
-<a name="line103"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line104"></a>     * Gets the full-text search expression.
-<a name="line105"></a>     *
-<a name="line106"></a>     * @return \PHPCR\Query\QOM\StaticOperandInterface the full-text search expression; non-null
-<a name="line107"></a>     * @api
-<a name="line108"></a>     */</span>
-<a name="line109"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getFullTextSearchExpression<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line110"></a>&nbsp;
-<a name="line111"></a><span style="color: #009900;">&#125;</span>
-<a name="line112"></a>&nbsp;</pre>
+<a name="line32"></a><span style="color: #000000; font-weight: bold;">namespace</span> PHPCR\Query\QOM<span style="color: #339933;">;</span>
+<a name="line33"></a>&nbsp;
+<a name="line34"></a><span style="color: #009933; font-style: italic;">/**
+<a name="line35"></a> * Performs a full-text search.
+<a name="line36"></a> *
+<a name="line37"></a> * The full-text search expression is evaluated against the set of full-text
+<a name="line38"></a> * indexed properties within the full-text search scope. If property is
+<a name="line39"></a> * specified, the full-text search scope is the property of that name on the
+<a name="line40"></a> * selector node in the node-tuple; otherwise the full-text search scope is all
+<a name="line41"></a> * properties of the selector node (or, in some implementations, all properties
+<a name="line42"></a> * in the node subgraph).
+<a name="line43"></a> *
+<a name="line44"></a> * Which properties (if any) in a repository are full-text indexed is
+<a name="line45"></a> * implementation determined.
+<a name="line46"></a> *
+<a name="line47"></a> * It is also implementation determined whether fullTextSearchExpression is
+<a name="line48"></a> * independently evaluated against each full-text indexed property in the
+<a name="line49"></a> * full-text search scope, or collectively evaluated against the set of such
+<a name="line50"></a> * properties using some implementation-determined mechanism.
+<a name="line51"></a> *
+<a name="line52"></a> * Similarly, for multi-valued properties, it is implementation determined
+<a name="line53"></a> * whether fullTextSearchExpression is independently evaluated against each
+<a name="line54"></a> * element in the array of values, or collectively evaluated against the array
+<a name="line55"></a> * of values using some implementation-determined mechanism.
+<a name="line56"></a> *
+<a name="line57"></a> * At minimum, an implementation must support the following
+<a name="line58"></a> * fullTextSearchExpression grammar:
+<a name="line59"></a> *
+<a name="line60"></a> * - fullTextSearchExpression ::= [-]term {whitespace [OR] whitespace [-]term}
+<a name="line61"></a> * - term ::= word | '&quot;' word {whitespace word} '&quot;'
+<a name="line62"></a> * - word ::= (A string containing no whitespace)
+<a name="line63"></a> * - whitespace ::= (A string of only whitespace)
+<a name="line64"></a> *
+<a name="line65"></a> * A query satisfies a FullTextSearch constraint if the value (or values) of the
+<a name="line66"></a> * full-text indexed properties within the full-text search scope satisfy the
+<a name="line67"></a> * specified fullTextSearchExpression, evaluated as follows:
+<a name="line68"></a> *
+<a name="line69"></a> * - A term not preceded with &quot;-&quot; (minus sign) is satisfied only if the value contains that term.
+<a name="line70"></a> * - A term preceded with &quot;-&quot; (minus sign) is satisfied only if the value does not contain that term.
+<a name="line71"></a> * - Terms separated by whitespace are implicitly &quot;ANDed&quot;.
+<a name="line72"></a> * - Terms separated by &quot;OR&quot; are &quot;ORed&quot;.
+<a name="line73"></a> * - &quot;AND&quot; has higher precedence than &quot;OR&quot;.
+<a name="line74"></a> * - Within a term, each double quote (&quot;), &quot;-&quot; (minus sign), and &quot;\&quot; (backslash) must be escaped by a
+<a name="line75"></a> *   preceding &quot;\&quot; (backslash).
+<a name="line76"></a> *
+<a name="line77"></a> * @package phpcr
+<a name="line78"></a> * @subpackage interfaces
+<a name="line79"></a> * @api
+<a name="line80"></a> */</span>
+<a name="line81"></a><span style="color: #000000; font-weight: bold;">interface</span> FullTextSearchInterface <span style="color: #000000; font-weight: bold;">extends</span> ConstraintInterface <span style="color: #009900;">&#123;</span>
+<a name="line82"></a>&nbsp;
+<a name="line83"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line84"></a>     * Gets the name of the selector against which to apply this constraint.
+<a name="line85"></a>     *
+<a name="line86"></a>     * @return string the selector name; non-null
+<a name="line87"></a>     * @api
+<a name="line88"></a>     */</span>
+<a name="line89"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getSelectorName<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line90"></a>&nbsp;
+<a name="line91"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line92"></a>     * Gets the name of the property.
+<a name="line93"></a>     *
+<a name="line94"></a>     * @return string the property name if the full-text search scope is a property,
+<a name="line95"></a>     *                otherwise null if the full-text search scope is the node
+<a name="line96"></a>     *                (or node subgraph, in some implementations).
+<a name="line97"></a>     * @api
+<a name="line98"></a>     */</span>
+<a name="line99"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getPropertyName<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line100"></a>&nbsp;
+<a name="line101"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line102"></a>     * Gets the full-text search expression.
+<a name="line103"></a>     *
+<a name="line104"></a>     * @return \PHPCR\Query\QOM\StaticOperandInterface the full-text search expression; non-null
+<a name="line105"></a>     * @api
+<a name="line106"></a>     */</span>
+<a name="line107"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getFullTextSearchExpression<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line108"></a>&nbsp;
+<a name="line109"></a><span style="color: #009900;">&#125;</span>
+<a name="line110"></a>&nbsp;</pre>
 <div class="header">
 <h1>PHPCR</h1>
 <ul>

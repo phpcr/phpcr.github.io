@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="generator" content="PHPDoctor 2RC4 (http://peej.github.com/phpdoctor/)">
-<meta name="when" content="Fri, 06 May 2011 11:43:26 +0000">
+<meta name="when" content="Thu, 12 May 2011 08:50:50 +0000">
 
 <link rel="stylesheet" type="text/css" href="../../../stylesheet.css">
 <link rel="start" href="../../../overview-summary.html">
@@ -79,195 +79,194 @@ If not, see <code><a href="http://www.gnu.org/licenses/lgpl.html">http://www.gnu
 <a name="line29"></a> * @subpackage interfaces
 <a name="line30"></a> */</span>
 <a name="line31"></a>&nbsp;
-<a name="line32"></a><span style="color: #000000; font-weight: bold;">declare</span><span style="color: #009900;">&#40;</span>ENCODING <span style="color: #339933;">=</span> <span style="color: #0000ff;">'utf-8'</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line33"></a><span style="color: #000000; font-weight: bold;">namespace</span> PHPCR\Observation<span style="color: #339933;">;</span>
-<a name="line34"></a>&nbsp;
-<a name="line35"></a><span style="color: #009933; font-style: italic;">/**
-<a name="line36"></a> * An event fired by the observation mechanism.
-<a name="line37"></a> *
-<a name="line38"></a> * @package phpcr
-<a name="line39"></a> * @subpackage interfaces
-<a name="line40"></a> * @api
-<a name="line41"></a> */</span>
-<a name="line42"></a><span style="color: #000000; font-weight: bold;">interface</span> EventInterface <span style="color: #009900;">&#123;</span>
-<a name="line43"></a>&nbsp;
-<a name="line44"></a>    <span style="color: #009933; font-style: italic;">/**#@+
-<a name="line45"></a>     * @var integer
-<a name="line46"></a>     */</span>
-<a name="line47"></a>&nbsp;
-<a name="line48"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line49"></a>     * Generated on persist when a node is added.
-<a name="line50"></a>     * - getPath() returns the absolute path of the node that was added.
-<a name="line51"></a>     * - getIdentifier() returns the identifier of the node that was added.
-<a name="line52"></a>     * - getInfo() returns an empty array
-<a name="line53"></a>     *
-<a name="line54"></a>     * @api
-<a name="line55"></a>     */</span>
-<a name="line56"></a>    <span style="color: #000000; font-weight: bold;">const</span> NODE_ADDED <span style="color: #339933;">=</span> <span style="color: #208080;">0x1</span><span style="color: #339933;">;</span>
-<a name="line57"></a>&nbsp;
-<a name="line58"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line59"></a>     * Generated on persist when a node is removed.
-<a name="line60"></a>     * - getPath() returns the absolute path of the node that was removed.
-<a name="line61"></a>     * - getIdentifier() returns the identifier of the node that was removed.
-<a name="line62"></a>     * - getInfo() returns an empty array
-<a name="line63"></a>     *
-<a name="line64"></a>     * @api
-<a name="line65"></a>     */</span>
-<a name="line66"></a>    <span style="color: #000000; font-weight: bold;">const</span> NODE_REMOVED <span style="color: #339933;">=</span> <span style="color: #208080;">0x2</span><span style="color: #339933;">;</span>
-<a name="line67"></a>&nbsp;
-<a name="line68"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line69"></a>     * Generated on persist when a property is added.
-<a name="line70"></a>     * - getPath() returns the absolute path of the property that was added.
-<a name="line71"></a>     * - getIdentifier() returns the identifier of the parent node of the property that was added.
-<a name="line72"></a>     * - getInfo() returns an empty array
-<a name="line73"></a>     *
-<a name="line74"></a>     * @api
-<a name="line75"></a>     */</span>
-<a name="line76"></a>    <span style="color: #000000; font-weight: bold;">const</span> PROPERTY_ADDED <span style="color: #339933;">=</span> <span style="color: #208080;">0x4</span><span style="color: #339933;">;</span>
-<a name="line77"></a>&nbsp;
-<a name="line78"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line79"></a>     * Generated on persist when a property is removed.
-<a name="line80"></a>     * - getPath() returns the absolute path of the property that was removed.
-<a name="line81"></a>     * - getIdentifier() returns the identifier of the parent node of the property that was removed.
-<a name="line82"></a>     * - getInfo() returns an empty array
-<a name="line83"></a>     * @api
-<a name="line84"></a>     */</span>
-<a name="line85"></a>    <span style="color: #000000; font-weight: bold;">const</span> PROPERTY_REMOVED <span style="color: #339933;">=</span> <span style="color: #208080;">0x8</span><span style="color: #339933;">;</span>
-<a name="line86"></a>&nbsp;
-<a name="line87"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line88"></a>     * Generated on persist when a property is changed.
-<a name="line89"></a>     * - getPath() returns the absolute path of the property that was changed.
-<a name="line90"></a>     * - getIdentifier() returns the identifier of the parent node of the property that was changed.
-<a name="line91"></a>     * - getInfo() returns an empty array
-<a name="line92"></a>     *
-<a name="line93"></a>     * @api
-<a name="line94"></a>     */</span>
-<a name="line95"></a>    <span style="color: #000000; font-weight: bold;">const</span> PROPERTY_CHANGED <span style="color: #339933;">=</span> <span style="color: #208080;">0x10</span><span style="color: #339933;">;</span>
-<a name="line96"></a>&nbsp;
-<a name="line97"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line98"></a>     * Generated on persist when a node is moved.
-<a name="line99"></a>     * - getPath() returns the absolute path of the destination of the move.
-<a name="line100"></a>     * - getIdentifier() returns the identifier of the moved node.
-<a name="line101"></a>     * - getInfo() If the method that caused this event was a
-<a name="line102"></a>     *    SessionInterface-&gt;move() or WorkspaceInterface-&gt;move() then the
-<a name="line103"></a>     *    returned array has keys srcAbsPath and destAbsPath with values
-<a name="line104"></a>     *    corresponding to the parameters passed to the move() method.
-<a name="line105"></a>     *
-<a name="line106"></a>     *  If the method that caused this event was a NodeInterface.orderBefore()
-<a name="line107"></a>     *  then the returned aray has keys srcChildRelPath and destChildRelPath
-<a name="line108"></a>     *  with values corresponding to the parameters passed to the orderBefore()
-<a name="line109"></a>     *  method.
-<a name="line110"></a>     *
-<a name="line111"></a>     * @api
-<a name="line112"></a>     */</span>
-<a name="line113"></a>    <span style="color: #000000; font-weight: bold;">const</span> NODE_MOVED <span style="color: #339933;">=</span> <span style="color: #208080;">0x20</span><span style="color: #339933;">;</span>
-<a name="line114"></a>&nbsp;
-<a name="line115"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line116"></a>     * If event bundling is supported, this event is used to indicate a
-<a name="line117"></a>     * bundle boundary within the event journal.
-<a name="line118"></a>     * - getPath() returns NULL.
-<a name="line119"></a>     * - getIdentifier() returns NULL.
-<a name="line120"></a>     * - getInfo() returns an empty array.
-<a name="line121"></a>     *
-<a name="line122"></a>     * @api
-<a name="line123"></a>     */</span>
-<a name="line124"></a>    <span style="color: #000000; font-weight: bold;">const</span> PERSIST <span style="color: #339933;">=</span> <span style="color: #208080;">0x40</span><span style="color: #339933;">;</span>
-<a name="line125"></a>&nbsp;
-<a name="line126"></a>    <span style="color: #009933; font-style: italic;">/**#@-*/</span>
-<a name="line127"></a>&nbsp;
-<a name="line128"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line129"></a>     * Returns the type of this event: a constant defined by this interface.
-<a name="line130"></a>     * One of:
-<a name="line131"></a>     * - NODE_ADDED
-<a name="line132"></a>     * - NODE_REMOVED
-<a name="line133"></a>     * - PROPERTY_ADDED
-<a name="line134"></a>     * - PROPERTY_REMOVED
-<a name="line135"></a>     * - PROPERTY_CHANGED
-<a name="line136"></a>     * - NODE_MOVED
-<a name="line137"></a>     * - PERSIST
-<a name="line138"></a>     *
-<a name="line139"></a>     * @return integer the type of this event.
-<a name="line140"></a>     * @api
-<a name="line141"></a>     */</span>
-<a name="line142"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> <a href="http://www.php.net/gettype"><span style="color: #990000;">getType</span></a><span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line143"></a>&nbsp;
-<a name="line144"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line145"></a>     * Returns the absolute path associated with this event or NULL if this
-<a name="line146"></a>     * event has no associated identifier.
-<a name="line147"></a>     *
-<a name="line148"></a>     * The meaning of the associated path depends upon the type of the event.
-<a name="line149"></a>     * See event type constants above.
-<a name="line150"></a>     *
-<a name="line151"></a>     * @return string The absolute path associated with this event or NULL.
-<a name="line152"></a>     *
-<a name="line153"></a>     * @throws \PHPCR\RepositoryException if an error occurs.
-<a name="line154"></a>     * @api
-<a name="line155"></a>     */</span>
-<a name="line156"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getPath<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line157"></a>&nbsp;
-<a name="line158"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line159"></a>     * Returns the user ID connected with this event.
-<a name="line160"></a>     *
-<a name="line161"></a>     * This is the string returned by Session.getUserID() of the session that caused the event.
-<a name="line162"></a>     *
-<a name="line163"></a>     * @return string The identifier of the user connected to the event.
-<a name="line164"></a>     * @api
-<a name="line165"></a>     */</span>
-<a name="line166"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getUserID<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line167"></a>&nbsp;
-<a name="line168"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line169"></a>     * Returns the identifier associated with this event or null if this event
-<a name="line170"></a>     * has no associated identifier.
-<a name="line171"></a>     *
-<a name="line172"></a>     * The meaning of the associated identifier depends upon the type of the event.
-<a name="line173"></a>     * See event type constants above.
-<a name="line174"></a>     *
-<a name="line175"></a>     * @return string The identifier associated with this event or NULL.
-<a name="line176"></a>     *
-<a name="line177"></a>     * @throws \PHPCR\RepositoryException if an error occurs.
-<a name="line178"></a>     * @api
-<a name="line179"></a>     */</span>
-<a name="line180"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getIdentifier<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line181"></a>&nbsp;
-<a name="line182"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line183"></a>     * Returns the information map associated with this event.
-<a name="line184"></a>     *
-<a name="line185"></a>     * The meaning of the map depends upon the type of the event.
-<a name="line186"></a>     * See event type constants above.
-<a name="line187"></a>     *
-<a name="line188"></a>     * @return array A list containing parameter information for instances of a NODE_MOVED event.
-<a name="line189"></a>     *
-<a name="line190"></a>     * @throws \PHPCR\RepositoryException if an error occurs.
-<a name="line191"></a>     * @api
-<a name="line192"></a>     */</span>
-<a name="line193"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getInfo<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line194"></a>&nbsp;
-<a name="line195"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line196"></a>     * Returns the user data set through ObservationManager.setUserData() on the
-<a name="line197"></a>     * ObservationManager bound to the Session that caused the event.
-<a name="line198"></a>     *
-<a name="line199"></a>     * @return string The user data string.
-<a name="line200"></a>     * @throws \PHPCR\RepositoryException if an error occurs.
-<a name="line201"></a>     * @api
-<a name="line202"></a>     */</span>
-<a name="line203"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getUserData<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line204"></a>&nbsp;
-<a name="line205"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line206"></a>     * Returns the date when the change was persisted that caused this event.
-<a name="line207"></a>     *
-<a name="line208"></a>     * The date is represented as a millisecond value that is an offset from the
-<a name="line209"></a>     * Epoch, January 1, 1970 00:00:00.000 GMT (Gregorian). The granularity of
-<a name="line210"></a>     * the returned value is implementation dependent.
-<a name="line211"></a>     *
-<a name="line212"></a>     * @return integer The date when the change was persisted that caused this event (milliseconds since epoch).
-<a name="line213"></a>     *
-<a name="line214"></a>     * @throws \PHPCR\RepositoryException if an error occurs.
-<a name="line215"></a>     * @api
-<a name="line216"></a>     */</span>
-<a name="line217"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> <a href="http://www.php.net/getdate"><span style="color: #990000;">getDate</span></a><span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line218"></a>&nbsp;
-<a name="line219"></a><span style="color: #009900;">&#125;</span>
-<a name="line220"></a>&nbsp;</pre>
+<a name="line32"></a><span style="color: #000000; font-weight: bold;">namespace</span> PHPCR\Observation<span style="color: #339933;">;</span>
+<a name="line33"></a>&nbsp;
+<a name="line34"></a><span style="color: #009933; font-style: italic;">/**
+<a name="line35"></a> * An event fired by the observation mechanism.
+<a name="line36"></a> *
+<a name="line37"></a> * @package phpcr
+<a name="line38"></a> * @subpackage interfaces
+<a name="line39"></a> * @api
+<a name="line40"></a> */</span>
+<a name="line41"></a><span style="color: #000000; font-weight: bold;">interface</span> EventInterface <span style="color: #009900;">&#123;</span>
+<a name="line42"></a>&nbsp;
+<a name="line43"></a>    <span style="color: #009933; font-style: italic;">/**#@+
+<a name="line44"></a>     * @var integer
+<a name="line45"></a>     */</span>
+<a name="line46"></a>&nbsp;
+<a name="line47"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line48"></a>     * Generated on persist when a node is added.
+<a name="line49"></a>     * - getPath() returns the absolute path of the node that was added.
+<a name="line50"></a>     * - getIdentifier() returns the identifier of the node that was added.
+<a name="line51"></a>     * - getInfo() returns an empty array
+<a name="line52"></a>     *
+<a name="line53"></a>     * @api
+<a name="line54"></a>     */</span>
+<a name="line55"></a>    <span style="color: #000000; font-weight: bold;">const</span> NODE_ADDED <span style="color: #339933;">=</span> <span style="color: #208080;">0x1</span><span style="color: #339933;">;</span>
+<a name="line56"></a>&nbsp;
+<a name="line57"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line58"></a>     * Generated on persist when a node is removed.
+<a name="line59"></a>     * - getPath() returns the absolute path of the node that was removed.
+<a name="line60"></a>     * - getIdentifier() returns the identifier of the node that was removed.
+<a name="line61"></a>     * - getInfo() returns an empty array
+<a name="line62"></a>     *
+<a name="line63"></a>     * @api
+<a name="line64"></a>     */</span>
+<a name="line65"></a>    <span style="color: #000000; font-weight: bold;">const</span> NODE_REMOVED <span style="color: #339933;">=</span> <span style="color: #208080;">0x2</span><span style="color: #339933;">;</span>
+<a name="line66"></a>&nbsp;
+<a name="line67"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line68"></a>     * Generated on persist when a property is added.
+<a name="line69"></a>     * - getPath() returns the absolute path of the property that was added.
+<a name="line70"></a>     * - getIdentifier() returns the identifier of the parent node of the property that was added.
+<a name="line71"></a>     * - getInfo() returns an empty array
+<a name="line72"></a>     *
+<a name="line73"></a>     * @api
+<a name="line74"></a>     */</span>
+<a name="line75"></a>    <span style="color: #000000; font-weight: bold;">const</span> PROPERTY_ADDED <span style="color: #339933;">=</span> <span style="color: #208080;">0x4</span><span style="color: #339933;">;</span>
+<a name="line76"></a>&nbsp;
+<a name="line77"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line78"></a>     * Generated on persist when a property is removed.
+<a name="line79"></a>     * - getPath() returns the absolute path of the property that was removed.
+<a name="line80"></a>     * - getIdentifier() returns the identifier of the parent node of the property that was removed.
+<a name="line81"></a>     * - getInfo() returns an empty array
+<a name="line82"></a>     * @api
+<a name="line83"></a>     */</span>
+<a name="line84"></a>    <span style="color: #000000; font-weight: bold;">const</span> PROPERTY_REMOVED <span style="color: #339933;">=</span> <span style="color: #208080;">0x8</span><span style="color: #339933;">;</span>
+<a name="line85"></a>&nbsp;
+<a name="line86"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line87"></a>     * Generated on persist when a property is changed.
+<a name="line88"></a>     * - getPath() returns the absolute path of the property that was changed.
+<a name="line89"></a>     * - getIdentifier() returns the identifier of the parent node of the property that was changed.
+<a name="line90"></a>     * - getInfo() returns an empty array
+<a name="line91"></a>     *
+<a name="line92"></a>     * @api
+<a name="line93"></a>     */</span>
+<a name="line94"></a>    <span style="color: #000000; font-weight: bold;">const</span> PROPERTY_CHANGED <span style="color: #339933;">=</span> <span style="color: #208080;">0x10</span><span style="color: #339933;">;</span>
+<a name="line95"></a>&nbsp;
+<a name="line96"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line97"></a>     * Generated on persist when a node is moved.
+<a name="line98"></a>     * - getPath() returns the absolute path of the destination of the move.
+<a name="line99"></a>     * - getIdentifier() returns the identifier of the moved node.
+<a name="line100"></a>     * - getInfo() If the method that caused this event was a
+<a name="line101"></a>     *    SessionInterface-&gt;move() or WorkspaceInterface-&gt;move() then the
+<a name="line102"></a>     *    returned array has keys srcAbsPath and destAbsPath with values
+<a name="line103"></a>     *    corresponding to the parameters passed to the move() method.
+<a name="line104"></a>     *
+<a name="line105"></a>     *  If the method that caused this event was a NodeInterface.orderBefore()
+<a name="line106"></a>     *  then the returned aray has keys srcChildRelPath and destChildRelPath
+<a name="line107"></a>     *  with values corresponding to the parameters passed to the orderBefore()
+<a name="line108"></a>     *  method.
+<a name="line109"></a>     *
+<a name="line110"></a>     * @api
+<a name="line111"></a>     */</span>
+<a name="line112"></a>    <span style="color: #000000; font-weight: bold;">const</span> NODE_MOVED <span style="color: #339933;">=</span> <span style="color: #208080;">0x20</span><span style="color: #339933;">;</span>
+<a name="line113"></a>&nbsp;
+<a name="line114"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line115"></a>     * If event bundling is supported, this event is used to indicate a
+<a name="line116"></a>     * bundle boundary within the event journal.
+<a name="line117"></a>     * - getPath() returns null.
+<a name="line118"></a>     * - getIdentifier() returns null.
+<a name="line119"></a>     * - getInfo() returns an empty array.
+<a name="line120"></a>     *
+<a name="line121"></a>     * @api
+<a name="line122"></a>     */</span>
+<a name="line123"></a>    <span style="color: #000000; font-weight: bold;">const</span> PERSIST <span style="color: #339933;">=</span> <span style="color: #208080;">0x40</span><span style="color: #339933;">;</span>
+<a name="line124"></a>&nbsp;
+<a name="line125"></a>    <span style="color: #009933; font-style: italic;">/**#@-*/</span>
+<a name="line126"></a>&nbsp;
+<a name="line127"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line128"></a>     * Returns the type of this event: a constant defined by this interface.
+<a name="line129"></a>     * One of:
+<a name="line130"></a>     * - NODE_ADDED
+<a name="line131"></a>     * - NODE_REMOVED
+<a name="line132"></a>     * - PROPERTY_ADDED
+<a name="line133"></a>     * - PROPERTY_REMOVED
+<a name="line134"></a>     * - PROPERTY_CHANGED
+<a name="line135"></a>     * - NODE_MOVED
+<a name="line136"></a>     * - PERSIST
+<a name="line137"></a>     *
+<a name="line138"></a>     * @return integer the type of this event.
+<a name="line139"></a>     * @api
+<a name="line140"></a>     */</span>
+<a name="line141"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> <a href="http://www.php.net/gettype"><span style="color: #990000;">getType</span></a><span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line142"></a>&nbsp;
+<a name="line143"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line144"></a>     * Returns the absolute path associated with this event or null if this
+<a name="line145"></a>     * event has no associated identifier.
+<a name="line146"></a>     *
+<a name="line147"></a>     * The meaning of the associated path depends upon the type of the event.
+<a name="line148"></a>     * See event type constants above.
+<a name="line149"></a>     *
+<a name="line150"></a>     * @return string The absolute path associated with this event or null.
+<a name="line151"></a>     *
+<a name="line152"></a>     * @throws \PHPCR\RepositoryException if an error occurs.
+<a name="line153"></a>     * @api
+<a name="line154"></a>     */</span>
+<a name="line155"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getPath<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line156"></a>&nbsp;
+<a name="line157"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line158"></a>     * Returns the user ID connected with this event.
+<a name="line159"></a>     *
+<a name="line160"></a>     * This is the string returned by Session.getUserID() of the session that caused the event.
+<a name="line161"></a>     *
+<a name="line162"></a>     * @return string The identifier of the user connected to the event.
+<a name="line163"></a>     * @api
+<a name="line164"></a>     */</span>
+<a name="line165"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getUserID<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line166"></a>&nbsp;
+<a name="line167"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line168"></a>     * Returns the identifier associated with this event or null if this event
+<a name="line169"></a>     * has no associated identifier.
+<a name="line170"></a>     *
+<a name="line171"></a>     * The meaning of the associated identifier depends upon the type of the event.
+<a name="line172"></a>     * See event type constants above.
+<a name="line173"></a>     *
+<a name="line174"></a>     * @return string The identifier associated with this event or null.
+<a name="line175"></a>     *
+<a name="line176"></a>     * @throws \PHPCR\RepositoryException if an error occurs.
+<a name="line177"></a>     * @api
+<a name="line178"></a>     */</span>
+<a name="line179"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getIdentifier<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line180"></a>&nbsp;
+<a name="line181"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line182"></a>     * Returns the information map associated with this event.
+<a name="line183"></a>     *
+<a name="line184"></a>     * The meaning of the map depends upon the type of the event.
+<a name="line185"></a>     * See event type constants above.
+<a name="line186"></a>     *
+<a name="line187"></a>     * @return array A list containing parameter information for instances of a NODE_MOVED event.
+<a name="line188"></a>     *
+<a name="line189"></a>     * @throws \PHPCR\RepositoryException if an error occurs.
+<a name="line190"></a>     * @api
+<a name="line191"></a>     */</span>
+<a name="line192"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getInfo<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line193"></a>&nbsp;
+<a name="line194"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line195"></a>     * Returns the user data set through ObservationManager.setUserData() on the
+<a name="line196"></a>     * ObservationManager bound to the Session that caused the event.
+<a name="line197"></a>     *
+<a name="line198"></a>     * @return string The user data string.
+<a name="line199"></a>     * @throws \PHPCR\RepositoryException if an error occurs.
+<a name="line200"></a>     * @api
+<a name="line201"></a>     */</span>
+<a name="line202"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getUserData<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line203"></a>&nbsp;
+<a name="line204"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line205"></a>     * Returns the date when the change was persisted that caused this event.
+<a name="line206"></a>     *
+<a name="line207"></a>     * The date is represented as a millisecond value that is an offset from the
+<a name="line208"></a>     * Epoch, January 1, 1970 00:00:00.000 GMT (Gregorian). The granularity of
+<a name="line209"></a>     * the returned value is implementation dependent.
+<a name="line210"></a>     *
+<a name="line211"></a>     * @return integer The date when the change was persisted that caused this event (milliseconds since epoch).
+<a name="line212"></a>     *
+<a name="line213"></a>     * @throws \PHPCR\RepositoryException if an error occurs.
+<a name="line214"></a>     * @api
+<a name="line215"></a>     */</span>
+<a name="line216"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> <a href="http://www.php.net/getdate"><span style="color: #990000;">getDate</span></a><span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line217"></a>&nbsp;
+<a name="line218"></a><span style="color: #009900;">&#125;</span>
+<a name="line219"></a>&nbsp;</pre>
 <div class="header">
 <h1>PHPCR</h1>
 <ul>

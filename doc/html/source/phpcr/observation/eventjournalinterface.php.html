@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="generator" content="PHPDoctor 2RC4 (http://peej.github.com/phpdoctor/)">
-<meta name="when" content="Fri, 06 May 2011 11:43:26 +0000">
+<meta name="when" content="Thu, 12 May 2011 08:50:50 +0000">
 
 <link rel="stylesheet" type="text/css" href="../../../stylesheet.css">
 <link rel="start" href="../../../overview-summary.html">
@@ -79,38 +79,37 @@ If not, see <code><a href="http://www.gnu.org/licenses/lgpl.html">http://www.gnu
 <a name="line29"></a> * @subpackage interfaces
 <a name="line30"></a> */</span>
 <a name="line31"></a>&nbsp;
-<a name="line32"></a><span style="color: #000000; font-weight: bold;">declare</span><span style="color: #009900;">&#40;</span>ENCODING <span style="color: #339933;">=</span> <span style="color: #0000ff;">'utf-8'</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line33"></a><span style="color: #000000; font-weight: bold;">namespace</span> PHPCR\Observation<span style="color: #339933;">;</span>
-<a name="line34"></a>&nbsp;
-<a name="line35"></a><span style="color: #009933; font-style: italic;">/**
-<a name="line36"></a> * An EventJournal is an extended Iterator that provides the additional
-<a name="line37"></a> * method skipTo().
-<a name="line38"></a> *
-<a name="line39"></a> * All elements in this iterator are of type EventInterface.
-<a name="line40"></a> *
-<a name="line41"></a> * &lt;b&gt;PHPCR Note:&lt;/b&gt; This is the only iterator interface we kept, as it adds
-<a name="line42"></a> * additional value (performance).
-<a name="line43"></a> *
-<a name="line44"></a> * @package phpcr
-<a name="line45"></a> * @subpackage interfaces
-<a name="line46"></a> * @api
-<a name="line47"></a> */</span>
-<a name="line48"></a><span style="color: #000000; font-weight: bold;">interface</span> EventJournalInterface <span style="color: #000000; font-weight: bold;">extends</span> \Countable<span style="color: #339933;">,</span> \SeekableIterator <span style="color: #009900;">&#123;</span>
-<a name="line49"></a>&nbsp;
-<a name="line50"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line51"></a>     * Skip all elements of the iterator earlier than date.
-<a name="line52"></a>     *
-<a name="line53"></a>     * If an attempt is made to skip past the last element of the iterator, no
-<a name="line54"></a>     * exception is thrown but the subsequent next() will fail.
-<a name="line55"></a>     *
-<a name="line56"></a>     * @param integer $date Value that represents an offset in milliseconds from the epoch.
-<a name="line57"></a>     * @return void
-<a name="line58"></a>     * @api
-<a name="line59"></a>     */</span>
-<a name="line60"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> skipTo<span style="color: #009900;">&#40;</span><span style="color: #000088;">$date</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line61"></a>&nbsp;
-<a name="line62"></a><span style="color: #009900;">&#125;</span>
-<a name="line63"></a>&nbsp;</pre>
+<a name="line32"></a><span style="color: #000000; font-weight: bold;">namespace</span> PHPCR\Observation<span style="color: #339933;">;</span>
+<a name="line33"></a>&nbsp;
+<a name="line34"></a><span style="color: #009933; font-style: italic;">/**
+<a name="line35"></a> * An EventJournal is an extended Iterator that provides the additional
+<a name="line36"></a> * method skipTo().
+<a name="line37"></a> *
+<a name="line38"></a> * All elements in this iterator are of type EventInterface.
+<a name="line39"></a> *
+<a name="line40"></a> * &lt;b&gt;PHPCR Note:&lt;/b&gt; This is the only iterator interface we kept, as it adds
+<a name="line41"></a> * additional value (performance).
+<a name="line42"></a> *
+<a name="line43"></a> * @package phpcr
+<a name="line44"></a> * @subpackage interfaces
+<a name="line45"></a> * @api
+<a name="line46"></a> */</span>
+<a name="line47"></a><span style="color: #000000; font-weight: bold;">interface</span> EventJournalInterface <span style="color: #000000; font-weight: bold;">extends</span> \Countable<span style="color: #339933;">,</span> \SeekableIterator <span style="color: #009900;">&#123;</span>
+<a name="line48"></a>&nbsp;
+<a name="line49"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line50"></a>     * Skip all elements of the iterator earlier than date.
+<a name="line51"></a>     *
+<a name="line52"></a>     * If an attempt is made to skip past the last element of the iterator, no
+<a name="line53"></a>     * exception is thrown but the subsequent next() will fail.
+<a name="line54"></a>     *
+<a name="line55"></a>     * @param integer $date Value that represents an offset in milliseconds from the epoch.
+<a name="line56"></a>     * @return void
+<a name="line57"></a>     * @api
+<a name="line58"></a>     */</span>
+<a name="line59"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> skipTo<span style="color: #009900;">&#40;</span><span style="color: #000088;">$date</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line60"></a>&nbsp;
+<a name="line61"></a><span style="color: #009900;">&#125;</span>
+<a name="line62"></a>&nbsp;</pre>
 <div class="header">
 <h1>PHPCR</h1>
 <ul>

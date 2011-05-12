@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="generator" content="PHPDoctor 2RC4 (http://peej.github.com/phpdoctor/)">
-<meta name="when" content="Fri, 06 May 2011 11:43:18 +0000">
+<meta name="when" content="Thu, 12 May 2011 08:50:42 +0000">
 
 <link rel="stylesheet" type="text/css" href="../../stylesheet.css">
 <link rel="start" href="../../overview-summary.html">
@@ -41,7 +41,7 @@ Detail: <a href="#detail_field">Field</a> | <a href="#detail_method">Method</a> 
 <hr>
 
 <div class="qualifiedName">PHPCR\Retention\RetentionManagerInterface</div>
-<a href="../../source/phpcr/retention/retentionmanagerinterface.php.html#line42" class="location">PHPCR/Retention/RetentionManagerInterface.php at line 42</a>
+<a href="../../source/phpcr/retention/retentionmanagerinterface.php.html#line41" class="location">PHPCR/Retention/RetentionManagerInterface.php at line 41</a>
 
 <h1>Interface RetentionManagerInterface</h1>
 
@@ -96,12 +96,12 @@ existing node at $absPath.
 </table>
 
 <h2 id="detail_method">Method Detail</h2>
-<a href="../../source/phpcr/retention/retentionmanagerinterface.php.html#line87" class="location">PHPCR/Retention/RetentionManagerInterface.php at line 87</a>
+<a href="../../source/phpcr/retention/retentionmanagerinterface.php.html#line86" class="location">PHPCR/Retention/RetentionManagerInterface.php at line 86</a>
 
 <h3 id="addHold()">addHold</h3>
 <code class="signature">public  <a href="../../phpcr/retention/holdinterface.html">HoldInterface</a> <strong>addHold</strong>(string absPath, string name, boolean isDeep)</code>
 <div class="details">
-<p>Places a hold on the existing node at $absPath.</p><p>If $isDeep is TRUE the hold applies to this node and its subgraph.
+<p>Places a hold on the existing node at $absPath.</p><p>If $isDeep is true the hold applies to this node and its subgraph.
 The hold does not take effect until a save is performed. A node may have
 more than one hold. The format and interpretation of the name are not
 specified. They are application-dependent.</p><dl>
@@ -123,7 +123,7 @@ specified. They are application-dependent.</p><dl>
 
 <hr>
 
-<a href="../../source/phpcr/retention/retentionmanagerinterface.php.html#line61" class="location">PHPCR/Retention/RetentionManagerInterface.php at line 61</a>
+<a href="../../source/phpcr/retention/retentionmanagerinterface.php.html#line60" class="location">PHPCR/Retention/RetentionManagerInterface.php at line 60</a>
 
 <h3 id="getHolds()">getHolds</h3>
 <code class="signature">public  array <strong>getHolds</strong>(string absPath)</code>
@@ -144,7 +144,7 @@ existing node at $absPath.</p><p>If no hold has been set before, this method ret
 
 <hr>
 
-<a href="../../source/phpcr/retention/retentionmanagerinterface.php.html#line127" class="location">PHPCR/Retention/RetentionManagerInterface.php at line 127</a>
+<a href="../../source/phpcr/retention/retentionmanagerinterface.php.html#line126" class="location">PHPCR/Retention/RetentionManagerInterface.php at line 126</a>
 
 <h3 id="getRetentionPolicy()">getRetentionPolicy</h3>
 <code class="signature">public  <a href="../../phpcr/retention/retentionpolicyinterface.html">RetentionPolicyInterface</a> <strong>getRetentionPolicy</strong>(string absPath)</code>
@@ -154,7 +154,7 @@ on the node at $absPath or null if no policy has been set.</p><dl>
 <dt>Parameters:</dt>
 <dd>absPath - an absolute path to an existing node.</dd>
 <dt>Returns:</dt>
-<dd>The retention policy that applies to the existing node at $absPath or NULL if no policy applies.</dd>
+<dd>The retention policy that applies to the existing node at $absPath or null if no policy applies.</dd>
 <dt>Throws:</dt>
 <dd><a href="../../phpcr/pathnotfoundexception.html">\PHPCR\PathNotFoundException</a> - if no node at $absPath exists or the session does not have sufficient access to retrieve the node.</dd>
 <dd><a href="../../phpcr/accessdeniedexception.html">\PHPCR\AccessDeniedException</a> - if the current session does not have sufficient access to retrieve the policy.</dd>
@@ -165,7 +165,7 @@ on the node at $absPath or null if no policy has been set.</p><dl>
 
 <hr>
 
-<a href="../../source/phpcr/retention/retentionmanagerinterface.php.html#line109" class="location">PHPCR/Retention/RetentionManagerInterface.php at line 109</a>
+<a href="../../source/phpcr/retention/retentionmanagerinterface.php.html#line108" class="location">PHPCR/Retention/RetentionManagerInterface.php at line 108</a>
 
 <h3 id="removeHold()">removeHold</h3>
 <code class="signature">public  void <strong>removeHold</strong>(string absPath, <a href="../../phpcr/retention/holdinterface.html">HoldInterface</a> hold)</code>
@@ -186,7 +186,7 @@ on the node at $absPath or null if no policy has been set.</p><dl>
 
 <hr>
 
-<a href="../../source/phpcr/retention/retentionmanagerinterface.php.html#line174" class="location">PHPCR/Retention/RetentionManagerInterface.php at line 174</a>
+<a href="../../source/phpcr/retention/retentionmanagerinterface.php.html#line173" class="location">PHPCR/Retention/RetentionManagerInterface.php at line 173</a>
 
 <h3 id="removeRetentionPolicy()">removeRetentionPolicy</h3>
 <code class="signature">public  void <strong>removeRetentionPolicy</strong>(string absPath)</code>
@@ -207,7 +207,7 @@ apply. The removal does not take effect until a save is performed.</p><dl>
 
 <hr>
 
-<a href="../../source/phpcr/retention/retentionmanagerinterface.php.html#line152" class="location">PHPCR/Retention/RetentionManagerInterface.php at line 152</a>
+<a href="../../source/phpcr/retention/retentionmanagerinterface.php.html#line151" class="location">PHPCR/Retention/RetentionManagerInterface.php at line 151</a>
 
 <h3 id="setRetentionPolicy()">setRetentionPolicy</h3>
 <code class="signature">public  void <strong>setRetentionPolicy</strong>(string absPath, <a href="../../phpcr/retention/retentionpolicyinterface.html">RetentionPolicyInterface</a> retentionPolicy)</code>

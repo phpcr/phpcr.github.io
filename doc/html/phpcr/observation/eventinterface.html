@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="generator" content="PHPDoctor 2RC4 (http://peej.github.com/phpdoctor/)">
-<meta name="when" content="Fri, 06 May 2011 11:43:18 +0000">
+<meta name="when" content="Thu, 12 May 2011 08:50:42 +0000">
 
 <link rel="stylesheet" type="text/css" href="../../stylesheet.css">
 <link rel="start" href="../../overview-summary.html">
@@ -41,7 +41,7 @@ Detail: <a href="#detail_field">Field</a> | <a href="#detail_method">Method</a> 
 <hr>
 
 <div class="qualifiedName">PHPCR\Observation\EventInterface</div>
-<a href="../../source/phpcr/observation/eventinterface.php.html#line42" class="location">PHPCR/Observation/EventInterface.php at line 42</a>
+<a href="../../source/phpcr/observation/eventinterface.php.html#line41" class="location">PHPCR/Observation/EventInterface.php at line 41</a>
 
 <h1>Interface EventInterface</h1>
 
@@ -120,7 +120,7 @@ has no associated identifier.
 </tr>
 <tr>
 <td class="type"> string</td>
-<td class="description"><p class="name"><a href="#getPath()">getPath</a>()</p><p class="description">Returns the absolute path associated with this event or NULL if this
+<td class="description"><p class="name"><a href="#getPath()">getPath</a>()</p><p class="description">Returns the absolute path associated with this event or null if this
 event has no associated identifier.
 </p></td>
 </tr>
@@ -142,7 +142,7 @@ ObservationManager bound to the Session that caused the event.</p></td>
 </table>
 
 <h2 id="detail_field">Constant Detail</h2>
-<a href="../../source/phpcr/observation/eventinterface.php.html#line56" class="location">PHPCR/Observation/EventInterface.php at line 56</a>
+<a href="../../source/phpcr/observation/eventinterface.php.html#line55" class="location">PHPCR/Observation/EventInterface.php at line 55</a>
 
 <h3 id="NODE_ADDED">NODE_ADDED</h3>
 <code class="signature">public final static  integer <strong>NODE_ADDED</strong> = 0x1</code>
@@ -159,7 +159,7 @@ ObservationManager bound to the Session that caused the event.</p></td>
 
 <hr>
 
-<a href="../../source/phpcr/observation/eventinterface.php.html#line113" class="location">PHPCR/Observation/EventInterface.php at line 113</a>
+<a href="../../source/phpcr/observation/eventinterface.php.html#line112" class="location">PHPCR/Observation/EventInterface.php at line 112</a>
 
 <h3 id="NODE_MOVED">NODE_MOVED</h3>
 <code class="signature">public final static  int <strong>NODE_MOVED</strong> = 0x20</code>
@@ -182,7 +182,7 @@ with values corresponding to the parameters passed to the orderBefore()</p></li>
 
 <hr>
 
-<a href="../../source/phpcr/observation/eventinterface.php.html#line66" class="location">PHPCR/Observation/EventInterface.php at line 66</a>
+<a href="../../source/phpcr/observation/eventinterface.php.html#line65" class="location">PHPCR/Observation/EventInterface.php at line 65</a>
 
 <h3 id="NODE_REMOVED">NODE_REMOVED</h3>
 <code class="signature">public final static  int <strong>NODE_REMOVED</strong> = 0x2</code>
@@ -199,7 +199,7 @@ with values corresponding to the parameters passed to the orderBefore()</p></li>
 
 <hr>
 
-<a href="../../source/phpcr/observation/eventinterface.php.html#line124" class="location">PHPCR/Observation/EventInterface.php at line 124</a>
+<a href="../../source/phpcr/observation/eventinterface.php.html#line123" class="location">PHPCR/Observation/EventInterface.php at line 123</a>
 
 <h3 id="PERSIST">PERSIST</h3>
 <code class="signature">public final static  int <strong>PERSIST</strong> = 0x40</code>
@@ -207,8 +207,8 @@ with values corresponding to the parameters passed to the orderBefore()</p></li>
 <p>If event bundling is supported, this event is used to indicate a
 bundle boundary within the event journal.</p>
 <ul>
-<li>getPath() returns NULL.</li>
-<li>getIdentifier() returns NULL.</li>
+<li>getPath() returns null.</li>
+<li>getIdentifier() returns null.</li>
 </ul>
 <p>- getInfo() returns an empty array.</p><dl>
 <dt>Api.</dt>
@@ -217,7 +217,7 @@ bundle boundary within the event journal.</p>
 
 <hr>
 
-<a href="../../source/phpcr/observation/eventinterface.php.html#line76" class="location">PHPCR/Observation/EventInterface.php at line 76</a>
+<a href="../../source/phpcr/observation/eventinterface.php.html#line75" class="location">PHPCR/Observation/EventInterface.php at line 75</a>
 
 <h3 id="PROPERTY_ADDED">PROPERTY_ADDED</h3>
 <code class="signature">public final static  int <strong>PROPERTY_ADDED</strong> = 0x4</code>
@@ -234,7 +234,7 @@ bundle boundary within the event journal.</p>
 
 <hr>
 
-<a href="../../source/phpcr/observation/eventinterface.php.html#line95" class="location">PHPCR/Observation/EventInterface.php at line 95</a>
+<a href="../../source/phpcr/observation/eventinterface.php.html#line94" class="location">PHPCR/Observation/EventInterface.php at line 94</a>
 
 <h3 id="PROPERTY_CHANGED">PROPERTY_CHANGED</h3>
 <code class="signature">public final static  int <strong>PROPERTY_CHANGED</strong> = 0x10</code>
@@ -251,7 +251,7 @@ bundle boundary within the event journal.</p>
 
 <hr>
 
-<a href="../../source/phpcr/observation/eventinterface.php.html#line85" class="location">PHPCR/Observation/EventInterface.php at line 85</a>
+<a href="../../source/phpcr/observation/eventinterface.php.html#line84" class="location">PHPCR/Observation/EventInterface.php at line 84</a>
 
 <h3 id="PROPERTY_REMOVED">PROPERTY_REMOVED</h3>
 <code class="signature">public final static  int <strong>PROPERTY_REMOVED</strong> = 0x8</code>
@@ -269,7 +269,7 @@ bundle boundary within the event journal.</p>
 <hr>
 
 <h2 id="detail_method">Method Detail</h2>
-<a href="../../source/phpcr/observation/eventinterface.php.html#line217" class="location">PHPCR/Observation/EventInterface.php at line 217</a>
+<a href="../../source/phpcr/observation/eventinterface.php.html#line216" class="location">PHPCR/Observation/EventInterface.php at line 216</a>
 
 <h3 id="getDate()">getDate</h3>
 <code class="signature">public  integer <strong>getDate</strong>()</code>
@@ -287,7 +287,7 @@ the returned value is implementation dependent.</p><dl>
 
 <hr>
 
-<a href="../../source/phpcr/observation/eventinterface.php.html#line180" class="location">PHPCR/Observation/EventInterface.php at line 180</a>
+<a href="../../source/phpcr/observation/eventinterface.php.html#line179" class="location">PHPCR/Observation/EventInterface.php at line 179</a>
 
 <h3 id="getIdentifier()">getIdentifier</h3>
 <code class="signature">public  string <strong>getIdentifier</strong>()</code>
@@ -296,7 +296,7 @@ the returned value is implementation dependent.</p><dl>
 has no associated identifier.</p><p>The meaning of the associated identifier depends upon the type of the event.
 See event type constants above.</p><dl>
 <dt>Returns:</dt>
-<dd>The identifier associated with this event or NULL.</dd>
+<dd>The identifier associated with this event or null.</dd>
 <dt>Throws:</dt>
 <dd><a href="../../phpcr/repositoryexception.html">\PHPCR\RepositoryException</a> - if an error occurs.</dd>
 <dt>Api.</dt>
@@ -305,7 +305,7 @@ See event type constants above.</p><dl>
 
 <hr>
 
-<a href="../../source/phpcr/observation/eventinterface.php.html#line193" class="location">PHPCR/Observation/EventInterface.php at line 193</a>
+<a href="../../source/phpcr/observation/eventinterface.php.html#line192" class="location">PHPCR/Observation/EventInterface.php at line 192</a>
 
 <h3 id="getInfo()">getInfo</h3>
 <code class="signature">public  array <strong>getInfo</strong>()</code>
@@ -322,16 +322,16 @@ See event type constants above.</p><dl>
 
 <hr>
 
-<a href="../../source/phpcr/observation/eventinterface.php.html#line156" class="location">PHPCR/Observation/EventInterface.php at line 156</a>
+<a href="../../source/phpcr/observation/eventinterface.php.html#line155" class="location">PHPCR/Observation/EventInterface.php at line 155</a>
 
 <h3 id="getPath()">getPath</h3>
 <code class="signature">public  string <strong>getPath</strong>()</code>
 <div class="details">
-<p>Returns the absolute path associated with this event or NULL if this
+<p>Returns the absolute path associated with this event or null if this
 event has no associated identifier.</p><p>The meaning of the associated path depends upon the type of the event.
 See event type constants above.</p><dl>
 <dt>Returns:</dt>
-<dd>The absolute path associated with this event or NULL.</dd>
+<dd>The absolute path associated with this event or null.</dd>
 <dt>Throws:</dt>
 <dd><a href="../../phpcr/repositoryexception.html">\PHPCR\RepositoryException</a> - if an error occurs.</dd>
 <dt>Api.</dt>
@@ -340,7 +340,7 @@ See event type constants above.</p><dl>
 
 <hr>
 
-<a href="../../source/phpcr/observation/eventinterface.php.html#line142" class="location">PHPCR/Observation/EventInterface.php at line 142</a>
+<a href="../../source/phpcr/observation/eventinterface.php.html#line141" class="location">PHPCR/Observation/EventInterface.php at line 141</a>
 
 <h3 id="getType()">getType</h3>
 <code class="signature">public  integer <strong>getType</strong>()</code>
@@ -364,7 +364,7 @@ One of:</p>
 
 <hr>
 
-<a href="../../source/phpcr/observation/eventinterface.php.html#line203" class="location">PHPCR/Observation/EventInterface.php at line 203</a>
+<a href="../../source/phpcr/observation/eventinterface.php.html#line202" class="location">PHPCR/Observation/EventInterface.php at line 202</a>
 
 <h3 id="getUserData()">getUserData</h3>
 <code class="signature">public  string <strong>getUserData</strong>()</code>
@@ -381,7 +381,7 @@ ObservationManager bound to the Session that caused the event.</p><dl>
 
 <hr>
 
-<a href="../../source/phpcr/observation/eventinterface.php.html#line166" class="location">PHPCR/Observation/EventInterface.php at line 166</a>
+<a href="../../source/phpcr/observation/eventinterface.php.html#line165" class="location">PHPCR/Observation/EventInterface.php at line 165</a>
 
 <h3 id="getUserID()">getUserID</h3>
 <code class="signature">public  string <strong>getUserID</strong>()</code>

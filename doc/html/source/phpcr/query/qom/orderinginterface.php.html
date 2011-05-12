@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="generator" content="PHPDoctor 2RC4 (http://peej.github.com/phpdoctor/)">
-<meta name="when" content="Fri, 06 May 2011 11:43:31 +0000">
+<meta name="when" content="Thu, 12 May 2011 08:50:54 +0000">
 
 <link rel="stylesheet" type="text/css" href="../../../../stylesheet.css">
 <link rel="start" href="../../../../overview-summary.html">
@@ -79,59 +79,57 @@ If not, see <code><a href="http://www.gnu.org/licenses/lgpl.html">http://www.gnu
 <a name="line29"></a> * @subpackage interfaces
 <a name="line30"></a> */</span>
 <a name="line31"></a>&nbsp;
-<a name="line32"></a>&nbsp;
-<a name="line33"></a><span style="color: #000000; font-weight: bold;">declare</span><span style="color: #009900;">&#40;</span>ENCODING <span style="color: #339933;">=</span> <span style="color: #0000ff;">'utf-8'</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line34"></a><span style="color: #000000; font-weight: bold;">namespace</span> PHPCR\Query\QOM<span style="color: #339933;">;</span>
-<a name="line35"></a>&nbsp;
-<a name="line36"></a><span style="color: #009933; font-style: italic;">/**
-<a name="line37"></a> * Determines the relative order of two node-tuples by evaluating operand for
-<a name="line38"></a> * each.
-<a name="line39"></a> *
-<a name="line40"></a> * For a first node-tuple, nt1, for which operand evaluates to v1, and a second
-<a name="line41"></a> * node-tuple, nt2, for which operand evaluates to v2:
-<a name="line42"></a> *
-<a name="line43"></a> * If order is Ascending, then:
-<a name="line44"></a> * - if either v1 is null, v2 is null, or both v1 and v2 are null, the relative order of nt1 and nt2 is
-<a name="line45"></a> *   implementation determined, otherwise
-<a name="line46"></a> * - if v1 is a different property type than v2, the relative order of nt1 and nt2 is implementation
-<a name="line47"></a> *   determined, otherwise
-<a name="line48"></a> * - if v1 is ordered before v2, then nt1 precedes nt2, otherwise
-<a name="line49"></a> * - if v1 is ordered after v2, then nt2 precedes nt1, otherwise
-<a name="line50"></a> *   the relative order of nt1 and nt2 is implementation determined and may be arbitrary.
-<a name="line51"></a> *
-<a name="line52"></a> * Otherwise, if order is Descending, then:
-<a name="line53"></a> * - if either v1 is null, v2 is null, or both v1 and v2 are null, the relative order of nt1 and nt2 is
-<a name="line54"></a> *   implementation determined, otherwise
-<a name="line55"></a> * - if v1 is a different property type than v2, the relative order of nt1 and nt2 is implementation
-<a name="line56"></a> *   determined, otherwise
-<a name="line57"></a> * - if v1 is ordered before v2, then nt2 precedes nt1, otherwise
-<a name="line58"></a> * - if v1 is ordered after v2, then nt1 precedes nt2, otherwise
-<a name="line59"></a> *   the relative order of nt1 and nt2 is implementation determined and may be arbitrary.
-<a name="line60"></a> *
-<a name="line61"></a> * @package phpcr
-<a name="line62"></a> * @subpackage interfaces
-<a name="line63"></a> * @api
-<a name="line64"></a> */</span>
-<a name="line65"></a><span style="color: #000000; font-weight: bold;">interface</span> OrderingInterface <span style="color: #009900;">&#123;</span>
-<a name="line66"></a>&nbsp;
-<a name="line67"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line68"></a>     * The operand by which to order.
-<a name="line69"></a>     *
-<a name="line70"></a>     * @return \PHPCR\Query\QOM\DynamicOperandInterface the operand; non-null
-<a name="line71"></a>     * @api
-<a name="line72"></a>     */</span>
-<a name="line73"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getOperand<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line74"></a>&nbsp;
-<a name="line75"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line76"></a>     * Gets the order.
-<a name="line77"></a>     *
-<a name="line78"></a>     * @return string either QueryObjectModelConstants.JCR_ORDER_ASCENDING or QueryObjectModelConstants.JCR_ORDER_DESCENDING
-<a name="line79"></a>     * @api
-<a name="line80"></a>     */</span>
-<a name="line81"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getOrder<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line82"></a>&nbsp;
-<a name="line83"></a><span style="color: #009900;">&#125;</span>
-<a name="line84"></a>&nbsp;</pre>
+<a name="line32"></a><span style="color: #000000; font-weight: bold;">namespace</span> PHPCR\Query\QOM<span style="color: #339933;">;</span>
+<a name="line33"></a>&nbsp;
+<a name="line34"></a><span style="color: #009933; font-style: italic;">/**
+<a name="line35"></a> * Determines the relative order of two node-tuples by evaluating operand for
+<a name="line36"></a> * each.
+<a name="line37"></a> *
+<a name="line38"></a> * For a first node-tuple, nt1, for which operand evaluates to v1, and a second
+<a name="line39"></a> * node-tuple, nt2, for which operand evaluates to v2:
+<a name="line40"></a> *
+<a name="line41"></a> * If order is Ascending, then:
+<a name="line42"></a> * - if either v1 is null, v2 is null, or both v1 and v2 are null, the relative order of nt1 and nt2 is
+<a name="line43"></a> *   implementation determined, otherwise
+<a name="line44"></a> * - if v1 is a different property type than v2, the relative order of nt1 and nt2 is implementation
+<a name="line45"></a> *   determined, otherwise
+<a name="line46"></a> * - if v1 is ordered before v2, then nt1 precedes nt2, otherwise
+<a name="line47"></a> * - if v1 is ordered after v2, then nt2 precedes nt1, otherwise
+<a name="line48"></a> *   the relative order of nt1 and nt2 is implementation determined and may be arbitrary.
+<a name="line49"></a> *
+<a name="line50"></a> * Otherwise, if order is Descending, then:
+<a name="line51"></a> * - if either v1 is null, v2 is null, or both v1 and v2 are null, the relative order of nt1 and nt2 is
+<a name="line52"></a> *   implementation determined, otherwise
+<a name="line53"></a> * - if v1 is a different property type than v2, the relative order of nt1 and nt2 is implementation
+<a name="line54"></a> *   determined, otherwise
+<a name="line55"></a> * - if v1 is ordered before v2, then nt2 precedes nt1, otherwise
+<a name="line56"></a> * - if v1 is ordered after v2, then nt1 precedes nt2, otherwise
+<a name="line57"></a> *   the relative order of nt1 and nt2 is implementation determined and may be arbitrary.
+<a name="line58"></a> *
+<a name="line59"></a> * @package phpcr
+<a name="line60"></a> * @subpackage interfaces
+<a name="line61"></a> * @api
+<a name="line62"></a> */</span>
+<a name="line63"></a><span style="color: #000000; font-weight: bold;">interface</span> OrderingInterface <span style="color: #009900;">&#123;</span>
+<a name="line64"></a>&nbsp;
+<a name="line65"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line66"></a>     * The operand by which to order.
+<a name="line67"></a>     *
+<a name="line68"></a>     * @return \PHPCR\Query\QOM\DynamicOperandInterface the operand; non-null
+<a name="line69"></a>     * @api
+<a name="line70"></a>     */</span>
+<a name="line71"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getOperand<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line72"></a>&nbsp;
+<a name="line73"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line74"></a>     * Gets the order.
+<a name="line75"></a>     *
+<a name="line76"></a>     * @return string either QueryObjectModelConstants.JCR_ORDER_ASCENDING or QueryObjectModelConstants.JCR_ORDER_DESCENDING
+<a name="line77"></a>     * @api
+<a name="line78"></a>     */</span>
+<a name="line79"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getOrder<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line80"></a>&nbsp;
+<a name="line81"></a><span style="color: #009900;">&#125;</span>
+<a name="line82"></a>&nbsp;</pre>
 <div class="header">
 <h1>PHPCR</h1>
 <ul>

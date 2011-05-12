@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="generator" content="PHPDoctor 2RC4 (http://peej.github.com/phpdoctor/)">
-<meta name="when" content="Fri, 06 May 2011 11:43:34 +0000">
+<meta name="when" content="Thu, 12 May 2011 08:50:58 +0000">
 
 <link rel="stylesheet" type="text/css" href="../../../stylesheet.css">
 <link rel="start" href="../../../overview-summary.html">
@@ -79,178 +79,177 @@ If not, see <code><a href="http://www.gnu.org/licenses/lgpl.html">http://www.gnu
 <a name="line29"></a> * @subpackage interfaces
 <a name="line30"></a> */</span>
 <a name="line31"></a>&nbsp;
-<a name="line32"></a><span style="color: #000000; font-weight: bold;">declare</span><span style="color: #009900;">&#40;</span>ENCODING <span style="color: #339933;">=</span> <span style="color: #0000ff;">'utf-8'</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line33"></a><span style="color: #000000; font-weight: bold;">namespace</span> PHPCR\Util<span style="color: #339933;">;</span>
-<a name="line34"></a>&nbsp;
-<a name="line35"></a><span style="color: #009933; font-style: italic;">/**
-<a name="line36"></a> * An implementation of ItemVisitor.
-<a name="line37"></a> *
-<a name="line38"></a> * TraversingItemVisitor is an abstract utility class which allows to easily
-<a name="line39"></a> * traverse an Item hierarchy.
-<a name="line40"></a> * TraversingItemVisitor makes use of the Visitor Pattern as described in the
-<a name="line41"></a> * book 'Design Patterns' by the Gang Of Four (Gamma et al.).
-<a name="line42"></a> * Tree traversal is done observing the left-to-right order of child Items if
-<a name="line43"></a> * such an order is supported and exists.
-<a name="line44"></a> *
-<a name="line45"></a> * @package phpcr
-<a name="line46"></a> * @subpackage interfaces
-<a name="line47"></a> * @api
-<a name="line48"></a> */</span>
-<a name="line49"></a>abstract <span style="color: #000000; font-weight: bold;">class</span> TraversingItemVisitor implements \PHPCR\ItemVisitorInterface <span style="color: #009900;">&#123;</span>
-<a name="line50"></a>&nbsp;
-<a name="line51"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line52"></a>     * Indicates if traversal should be done in a breadth-first manner rather
-<a name="line53"></a>     * than depth-first (which is the default).
-<a name="line54"></a>     * @var boolean
-<a name="line55"></a>     */</span>
-<a name="line56"></a>    <span style="color: #000000; font-weight: bold;">protected</span> <span style="color: #000088;">$breadthFirst</span> <span style="color: #339933;">=</span> <span style="color: #009900; font-weight: bold;">FALSE</span><span style="color: #339933;">;</span>
-<a name="line57"></a>&nbsp;
-<a name="line58"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line59"></a>     * The 0-based level up to which the hierarchy should be traversed (if it's
-<a name="line60"></a>     * -1, the hierarchy will be traversed until there are no more children of
-<a name="line61"></a>     * the current item).
-<a name="line62"></a>     * @var integer
-<a name="line63"></a>     */</span>
-<a name="line64"></a>    <span style="color: #000000; font-weight: bold;">protected</span> <span style="color: #000088;">$maxLevel</span> <span style="color: #339933;">=</span> <span style="color: #339933;">-</span><span style="color: #cc66cc;">1</span><span style="color: #339933;">;</span>
-<a name="line65"></a>&nbsp;
-<a name="line66"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line67"></a>     * Queue used to implement breadth-first traversal.
-<a name="line68"></a>     * @var \SplQueue
-<a name="line69"></a>     */</span>
-<a name="line70"></a>    <span style="color: #000000; font-weight: bold;">protected</span> <span style="color: #000088;">$currentQueue</span><span style="color: #339933;">;</span>
-<a name="line71"></a>&nbsp;
-<a name="line72"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line73"></a>     * Queue used to implement breadth-first traversal.
-<a name="line74"></a>     * @var \SplQueue
-<a name="line75"></a>     */</span>
-<a name="line76"></a>    <span style="color: #000000; font-weight: bold;">protected</span> <span style="color: #000088;">$nextQueue</span><span style="color: #339933;">;</span>
-<a name="line77"></a>&nbsp;
-<a name="line78"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line79"></a>     * Used to track hierarchy level of item currently being processed.
-<a name="line80"></a>     * @var integer
-<a name="line81"></a>     */</span>
-<a name="line82"></a>    <span style="color: #000000; font-weight: bold;">protected</span> <span style="color: #000088;">$currentLevel</span><span style="color: #339933;">;</span>
-<a name="line83"></a>&nbsp;
-<a name="line84"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line85"></a>     * Constructs a new instance of this class.
-<a name="line86"></a>     *
-<a name="line87"></a>     * @param boolean $breadthFirst if $breadthFirst is TRUE then traversal is done in a breadth-first manner;
-<a name="line88"></a>     *                              otherwise it is done in a depth-first manner (which is the default behavior).
-<a name="line89"></a>     * @param integer $maxLevel the 0-based level up to which the hierarchy should be traversed
-<a name="line90"></a>     *                          (if it's -1, the hierarchy will be traversed until there are no more children
-<a name="line91"></a>     *                          of the current item).
-<a name="line92"></a>     *
-<a name="line93"></a>     * @author Karsten Dambekalns &lt;karsten@typo3.org&gt;
-<a name="line94"></a>     * @author Day Management AG, Switzerland
-<a name="line95"></a>     * @api
-<a name="line96"></a>     */</span>
-<a name="line97"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> TraversingItemVisitor<span style="color: #009900;">&#40;</span><span style="color: #000088;">$breadthFirst</span> <span style="color: #339933;">=</span> <span style="color: #009900; font-weight: bold;">FALSE</span><span style="color: #339933;">,</span> <span style="color: #000088;">$maxLevel</span> <span style="color: #339933;">=</span> <span style="color: #339933;">-</span><span style="color: #cc66cc;">1</span><span style="color: #009900;">&#41;</span> <span style="color: #009900;">&#123;</span>
-<a name="line98"></a>        <span style="color: #000088;">$this</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">breadthFirst</span> <span style="color: #339933;">=</span> <span style="color: #000088;">$breadthFirst</span><span style="color: #339933;">;</span>
-<a name="line99"></a>        <span style="color: #000088;">$this</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">maxLevel</span> <span style="color: #339933;">=</span> <span style="color: #000088;">$maxLevel</span><span style="color: #339933;">;</span>
-<a name="line100"></a>&nbsp;
-<a name="line101"></a>        <span style="color: #b1b100;">if</span> <span style="color: #009900;">&#40;</span><span style="color: #000088;">$this</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">breadthFirst</span> <span style="color: #339933;">===</span> <span style="color: #009900; font-weight: bold;">TRUE</span><span style="color: #009900;">&#41;</span> <span style="color: #009900;">&#123;</span>
-<a name="line102"></a>            <span style="color: #000088;">$this</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">currentQueue</span> <span style="color: #339933;">=</span> <span style="color: #000000; font-weight: bold;">new</span> \SplQueue<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line103"></a>            <span style="color: #000088;">$this</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">nextQueue</span> <span style="color: #339933;">=</span> <span style="color: #000000; font-weight: bold;">new</span> \SplQueue<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line104"></a>        <span style="color: #009900;">&#125;</span>
-<a name="line105"></a>        <span style="color: #000088;">$this</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">currentLevel</span> <span style="color: #339933;">=</span> <span style="color: #cc66cc;">0</span><span style="color: #339933;">;</span>
-<a name="line106"></a>    <span style="color: #009900;">&#125;</span>
-<a name="line107"></a>&nbsp;
-<a name="line108"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line109"></a>     * Implement this method to add behavior performed before an Item is visited.
-<a name="line110"></a>     *
-<a name="line111"></a>     * @param \PHPCR\ItemInterface $item the Item that is accepting this visitor.
-<a name="line112"></a>     * @param integer $level hierarchy level of this node (the root node starts at level 0).
-<a name="line113"></a>     * @return void
-<a name="line114"></a>     *
-<a name="line115"></a>     * @throws \PHPCR\RepositoryException if an error occurs.
-<a name="line116"></a>     * @api
-<a name="line117"></a>     */</span>
-<a name="line118"></a>    <span style="color: #000000; font-weight: bold;">protected</span> abstract <span style="color: #000000; font-weight: bold;">function</span> entering<span style="color: #009900;">&#40;</span>\PHPCR\ItemInterface <span style="color: #000088;">$item</span><span style="color: #339933;">,</span> <span style="color: #000088;">$level</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line119"></a>&nbsp;
-<a name="line120"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line121"></a>     * Implement this method to add behavior performed after an Item is visited.
-<a name="line122"></a>     *
-<a name="line123"></a>     * @param \PHPCR\ItemInterface $item the Item that is accepting this visitor.
-<a name="line124"></a>     * @param integer $level hierarchy level of this property (the root node starts at level 0).
-<a name="line125"></a>     * @return void
-<a name="line126"></a>     * @throws \PHPCR\RepositoryException if an error occurs.
-<a name="line127"></a>     * @api
-<a name="line128"></a>     */</span>
-<a name="line129"></a>    <span style="color: #000000; font-weight: bold;">protected</span> abstract <span style="color: #000000; font-weight: bold;">function</span> leaving<span style="color: #009900;">&#40;</span>\PHPCR\ItemInterface <span style="color: #000088;">$item</span><span style="color: #339933;">,</span> <span style="color: #000088;">$level</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line130"></a>&nbsp;
-<a name="line131"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line132"></a>     * Called when the Visitor is passed to an Item.
-<a name="line133"></a>     *
-<a name="line134"></a>     * It calls TraversingItemVisitor.entering(ItemInterface, int) followed by
-<a name="line135"></a>     * TraversingItemVisitor.leaving(ItemInterface, int). Implement these
-<a name="line136"></a>     * abstract methods to specify behavior on 'arrival at' and 'after leaving'
-<a name="line137"></a>     * the $item.
-<a name="line138"></a>     *
-<a name="line139"></a>     * If this method throws, the visiting process is aborted.
-<a name="line140"></a>     *
-<a name="line141"></a>     * @param \PHPCR\ItemInterface $item the Node or Property that is accepting this visitor.
-<a name="line142"></a>     * @return void
-<a name="line143"></a>     *
-<a name="line144"></a>     * @throws \PHPCR\RepositoryException if an error occurs.
-<a name="line145"></a>     *
-<a name="line146"></a>     * @author Karsten Dambekalns &lt;karsten@typo3.org&gt;
-<a name="line147"></a>     * @author Day Management AG, Switzerland
-<a name="line148"></a>     * @api
-<a name="line149"></a>     */</span>
-<a name="line150"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> visit<span style="color: #009900;">&#40;</span>\PHPCR\ItemInterface <span style="color: #000088;">$item</span><span style="color: #009900;">&#41;</span> <span style="color: #009900;">&#123;</span>
-<a name="line151"></a>        <span style="color: #b1b100;">if</span> <span style="color: #009900;">&#40;</span><span style="color: #000088;">$item</span> instanceof \PHPCR\PropertyInterface<span style="color: #009900;">&#41;</span> <span style="color: #009900;">&#123;</span>
-<a name="line152"></a>            <span style="color: #000088;">$this</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">entering</span><span style="color: #009900;">&#40;</span><span style="color: #000088;">$item</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line153"></a>            <span style="color: #000088;">$this</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">leaving</span><span style="color: #009900;">&#40;</span><span style="color: #000088;">$item</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line154"></a>        <span style="color: #009900;">&#125;</span> <span style="color: #b1b100;">else</span> <span style="color: #009900;">&#123;</span>
-<a name="line155"></a>            try <span style="color: #009900;">&#123;</span>
-<a name="line156"></a>                <span style="color: #b1b100;">if</span> <span style="color: #009900;">&#40;</span><span style="color: #000088;">$this</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">breadthFirst</span> <span style="color: #339933;">===</span> <span style="color: #009900; font-weight: bold;">FALSE</span><span style="color: #009900;">&#41;</span> <span style="color: #009900;">&#123;</span>
-<a name="line157"></a>                        <span style="color: #666666; font-style: italic;">// depth-first traversal</span>
-<a name="line158"></a>                    <span style="color: #000088;">$this</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">entering</span><span style="color: #009900;">&#40;</span><span style="color: #000088;">$item</span><span style="color: #339933;">,</span> <span style="color: #000088;">$this</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">currentLevel</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line159"></a>                    <span style="color: #b1b100;">if</span> <span style="color: #009900;">&#40;</span><span style="color: #000088;">$this</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">maxLevel</span> <span style="color: #339933;">==</span> <span style="color: #339933;">-</span><span style="color: #cc66cc;">1</span> <span style="color: #339933;">||</span> <span style="color: #000088;">$this</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">currentLevel</span> <span style="color: #339933;">&lt;</span> <span style="color: #000088;">$this</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">maxLevel</span><span style="color: #009900;">&#41;</span> <span style="color: #009900;">&#123;</span>
-<a name="line160"></a>                        <span style="color: #000088;">$this</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">currentLevel</span><span style="color: #339933;">++;</span>
-<a name="line161"></a>                        <span style="color: #b1b100;">foreach</span><span style="color: #009900;">&#40;</span><span style="color: #000088;">$item</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">getProperties</span><span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span> <span style="color: #b1b100;">as</span> <span style="color: #000088;">$property</span><span style="color: #009900;">&#41;</span> <span style="color: #009900;">&#123;</span>
-<a name="line162"></a>                            <span style="color: #000088;">$property</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">accept</span><span style="color: #009900;">&#40;</span><span style="color: #000088;">$this</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line163"></a>                        <span style="color: #009900;">&#125;</span>
-<a name="line164"></a>                        <span style="color: #b1b100;">foreach</span><span style="color: #009900;">&#40;</span><span style="color: #000088;">$item</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">getNodes</span><span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span> <span style="color: #b1b100;">as</span> <span style="color: #000088;">$node</span><span style="color: #009900;">&#41;</span> <span style="color: #009900;">&#123;</span>
-<a name="line165"></a>                            <span style="color: #000088;">$node</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">accept</span><span style="color: #009900;">&#40;</span><span style="color: #000088;">$this</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line166"></a>                        <span style="color: #009900;">&#125;</span>
-<a name="line167"></a>                        <span style="color: #000088;">$this</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">currentLevel</span><span style="color: #339933;">--;</span>
-<a name="line168"></a>                    <span style="color: #009900;">&#125;</span>
-<a name="line169"></a>                    <span style="color: #000088;">$this</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">leaving</span><span style="color: #009900;">&#40;</span><span style="color: #000088;">$item</span><span style="color: #339933;">,</span> <span style="color: #000088;">$this</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">currentLevel</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line170"></a>                <span style="color: #009900;">&#125;</span> <span style="color: #b1b100;">else</span> <span style="color: #009900;">&#123;</span>
-<a name="line171"></a>                        <span style="color: #666666; font-style: italic;">// breadth-first traversal</span>
-<a name="line172"></a>                    <span style="color: #000088;">$this</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">entering</span><span style="color: #009900;">&#40;</span><span style="color: #000088;">$item</span><span style="color: #339933;">,</span> <span style="color: #000088;">$this</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">currentLevel</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line173"></a>                    <span style="color: #000088;">$this</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">leaving</span><span style="color: #009900;">&#40;</span><span style="color: #000088;">$item</span><span style="color: #339933;">,</span> <span style="color: #000088;">$this</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">currentLevel</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line174"></a>&nbsp;
-<a name="line175"></a>                    <span style="color: #b1b100;">if</span> <span style="color: #009900;">&#40;</span><span style="color: #000088;">$this</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">maxLevel</span> <span style="color: #339933;">==</span> <span style="color: #339933;">-</span><span style="color: #cc66cc;">1</span> <span style="color: #339933;">||</span> <span style="color: #000088;">$this</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">currentLevel</span> <span style="color: #339933;">&lt;</span> <span style="color: #000088;">$this</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">maxLevel</span><span style="color: #009900;">&#41;</span> <span style="color: #009900;">&#123;</span>
-<a name="line176"></a>                        <span style="color: #b1b100;">foreach</span><span style="color: #009900;">&#40;</span><span style="color: #000088;">$item</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">getProperties</span><span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span> <span style="color: #b1b100;">as</span> <span style="color: #000088;">$property</span><span style="color: #009900;">&#41;</span> <span style="color: #009900;">&#123;</span>
-<a name="line177"></a>                            <span style="color: #000088;">$property</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">accept</span><span style="color: #009900;">&#40;</span><span style="color: #000088;">$this</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line178"></a>                        <span style="color: #009900;">&#125;</span>
-<a name="line179"></a>                        <span style="color: #b1b100;">foreach</span><span style="color: #009900;">&#40;</span><span style="color: #000088;">$item</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">getNodes</span><span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span> <span style="color: #b1b100;">as</span> <span style="color: #000088;">$node</span><span style="color: #009900;">&#41;</span> <span style="color: #009900;">&#123;</span>
-<a name="line180"></a>                            <span style="color: #000088;">$node</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">accept</span><span style="color: #009900;">&#40;</span><span style="color: #000088;">$this</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line181"></a>                        <span style="color: #009900;">&#125;</span>
-<a name="line182"></a>                    <span style="color: #009900;">&#125;</span>
-<a name="line183"></a>&nbsp;
-<a name="line184"></a>                    <span style="color: #b1b100;">while</span> <span style="color: #009900;">&#40;</span><span style="color: #339933;">!</span><span style="color: #000088;">$this</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">currentQueue</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">isEmpty</span><span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span> <span style="color: #339933;">||</span> <span style="color: #339933;">!</span><span style="color: #000088;">$this</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">nextQueue</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">isEmpty</span><span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #009900;">&#41;</span> <span style="color: #009900;">&#123;</span>
-<a name="line185"></a>                        <span style="color: #b1b100;">if</span> <span style="color: #009900;">&#40;</span><span style="color: #000088;">$this</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">currentQueue</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">isEmpty</span><span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #009900;">&#41;</span> <span style="color: #009900;">&#123;</span>
-<a name="line186"></a>                            <span style="color: #000088;">$this</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">currentLevel</span><span style="color: #339933;">++;</span>
-<a name="line187"></a>                            <span style="color: #000088;">$this</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">currentQueue</span> <span style="color: #339933;">=</span> <span style="color: #000088;">$this</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">nextQueue</span><span style="color: #339933;">;</span>
-<a name="line188"></a>                            <span style="color: #000088;">$this</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">nextQueue</span> <span style="color: #339933;">=</span> <span style="color: #000000; font-weight: bold;">new</span> \SplQueue<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line189"></a>                        <span style="color: #009900;">&#125;</span>
-<a name="line190"></a>                        <span style="color: #000088;">$item</span> <span style="color: #339933;">=</span> <span style="color: #000088;">$this</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">currentQueue</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">dequeue</span><span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line191"></a>                        <span style="color: #000088;">$item</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">accept</span><span style="color: #009900;">&#40;</span><span style="color: #000088;">$this</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line192"></a>                    <span style="color: #009900;">&#125;</span>
-<a name="line193"></a>                    <span style="color: #000088;">$this</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">currentLevel</span> <span style="color: #339933;">=</span> <span style="color: #cc66cc;">0</span><span style="color: #339933;">;</span>
-<a name="line194"></a>                <span style="color: #009900;">&#125;</span>
-<a name="line195"></a>            <span style="color: #009900;">&#125;</span> catch <span style="color: #009900;">&#40;</span>\PHPCR\RepositoryException <span style="color: #000088;">$exception</span><span style="color: #009900;">&#41;</span> <span style="color: #009900;">&#123;</span>
-<a name="line196"></a>                <span style="color: #000088;">$this</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">currentLevel</span> <span style="color: #339933;">=</span> <span style="color: #cc66cc;">0</span><span style="color: #339933;">;</span>
-<a name="line197"></a>                <span style="color: #b1b100;">throw</span> <span style="color: #000088;">$exception</span><span style="color: #339933;">;</span>
-<a name="line198"></a>            <span style="color: #009900;">&#125;</span>
-<a name="line199"></a>        <span style="color: #009900;">&#125;</span>
-<a name="line200"></a>    <span style="color: #009900;">&#125;</span>
-<a name="line201"></a>&nbsp;
-<a name="line202"></a><span style="color: #009900;">&#125;</span>
-<a name="line203"></a>&nbsp;</pre>
+<a name="line32"></a><span style="color: #000000; font-weight: bold;">namespace</span> PHPCR\Util<span style="color: #339933;">;</span>
+<a name="line33"></a>&nbsp;
+<a name="line34"></a><span style="color: #009933; font-style: italic;">/**
+<a name="line35"></a> * An implementation of ItemVisitor.
+<a name="line36"></a> *
+<a name="line37"></a> * TraversingItemVisitor is an abstract utility class which allows to easily
+<a name="line38"></a> * traverse an Item hierarchy.
+<a name="line39"></a> * TraversingItemVisitor makes use of the Visitor Pattern as described in the
+<a name="line40"></a> * book 'Design Patterns' by the Gang Of Four (Gamma et al.).
+<a name="line41"></a> * Tree traversal is done observing the left-to-right order of child Items if
+<a name="line42"></a> * such an order is supported and exists.
+<a name="line43"></a> *
+<a name="line44"></a> * @package phpcr
+<a name="line45"></a> * @subpackage interfaces
+<a name="line46"></a> * @api
+<a name="line47"></a> */</span>
+<a name="line48"></a>abstract <span style="color: #000000; font-weight: bold;">class</span> TraversingItemVisitor implements \PHPCR\ItemVisitorInterface <span style="color: #009900;">&#123;</span>
+<a name="line49"></a>&nbsp;
+<a name="line50"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line51"></a>     * Indicates if traversal should be done in a breadth-first manner rather
+<a name="line52"></a>     * than depth-first (which is the default).
+<a name="line53"></a>     * @var boolean
+<a name="line54"></a>     */</span>
+<a name="line55"></a>    <span style="color: #000000; font-weight: bold;">protected</span> <span style="color: #000088;">$breadthFirst</span> <span style="color: #339933;">=</span> <span style="color: #009900; font-weight: bold;">false</span><span style="color: #339933;">;</span>
+<a name="line56"></a>&nbsp;
+<a name="line57"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line58"></a>     * The 0-based level up to which the hierarchy should be traversed (if it's
+<a name="line59"></a>     * -1, the hierarchy will be traversed until there are no more children of
+<a name="line60"></a>     * the current item).
+<a name="line61"></a>     * @var integer
+<a name="line62"></a>     */</span>
+<a name="line63"></a>    <span style="color: #000000; font-weight: bold;">protected</span> <span style="color: #000088;">$maxLevel</span> <span style="color: #339933;">=</span> <span style="color: #339933;">-</span><span style="color: #cc66cc;">1</span><span style="color: #339933;">;</span>
+<a name="line64"></a>&nbsp;
+<a name="line65"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line66"></a>     * Queue used to implement breadth-first traversal.
+<a name="line67"></a>     * @var \SplQueue
+<a name="line68"></a>     */</span>
+<a name="line69"></a>    <span style="color: #000000; font-weight: bold;">protected</span> <span style="color: #000088;">$currentQueue</span><span style="color: #339933;">;</span>
+<a name="line70"></a>&nbsp;
+<a name="line71"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line72"></a>     * Queue used to implement breadth-first traversal.
+<a name="line73"></a>     * @var \SplQueue
+<a name="line74"></a>     */</span>
+<a name="line75"></a>    <span style="color: #000000; font-weight: bold;">protected</span> <span style="color: #000088;">$nextQueue</span><span style="color: #339933;">;</span>
+<a name="line76"></a>&nbsp;
+<a name="line77"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line78"></a>     * Used to track hierarchy level of item currently being processed.
+<a name="line79"></a>     * @var integer
+<a name="line80"></a>     */</span>
+<a name="line81"></a>    <span style="color: #000000; font-weight: bold;">protected</span> <span style="color: #000088;">$currentLevel</span><span style="color: #339933;">;</span>
+<a name="line82"></a>&nbsp;
+<a name="line83"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line84"></a>     * Constructs a new instance of this class.
+<a name="line85"></a>     *
+<a name="line86"></a>     * @param boolean $breadthFirst if $breadthFirst is true then traversal is done in a breadth-first manner;
+<a name="line87"></a>     *                              otherwise it is done in a depth-first manner (which is the default behavior).
+<a name="line88"></a>     * @param integer $maxLevel the 0-based level up to which the hierarchy should be traversed
+<a name="line89"></a>     *                          (if it's -1, the hierarchy will be traversed until there are no more children
+<a name="line90"></a>     *                          of the current item).
+<a name="line91"></a>     *
+<a name="line92"></a>     * @author Karsten Dambekalns &lt;karsten@typo3.org&gt;
+<a name="line93"></a>     * @author Day Management AG, Switzerland
+<a name="line94"></a>     * @api
+<a name="line95"></a>     */</span>
+<a name="line96"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> TraversingItemVisitor<span style="color: #009900;">&#40;</span><span style="color: #000088;">$breadthFirst</span> <span style="color: #339933;">=</span> <span style="color: #009900; font-weight: bold;">false</span><span style="color: #339933;">,</span> <span style="color: #000088;">$maxLevel</span> <span style="color: #339933;">=</span> <span style="color: #339933;">-</span><span style="color: #cc66cc;">1</span><span style="color: #009900;">&#41;</span> <span style="color: #009900;">&#123;</span>
+<a name="line97"></a>        <span style="color: #000088;">$this</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">breadthFirst</span> <span style="color: #339933;">=</span> <span style="color: #000088;">$breadthFirst</span><span style="color: #339933;">;</span>
+<a name="line98"></a>        <span style="color: #000088;">$this</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">maxLevel</span> <span style="color: #339933;">=</span> <span style="color: #000088;">$maxLevel</span><span style="color: #339933;">;</span>
+<a name="line99"></a>&nbsp;
+<a name="line100"></a>        <span style="color: #b1b100;">if</span> <span style="color: #009900;">&#40;</span><span style="color: #000088;">$this</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">breadthFirst</span> <span style="color: #339933;">===</span> <span style="color: #009900; font-weight: bold;">true</span><span style="color: #009900;">&#41;</span> <span style="color: #009900;">&#123;</span>
+<a name="line101"></a>            <span style="color: #000088;">$this</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">currentQueue</span> <span style="color: #339933;">=</span> <span style="color: #000000; font-weight: bold;">new</span> \SplQueue<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line102"></a>            <span style="color: #000088;">$this</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">nextQueue</span> <span style="color: #339933;">=</span> <span style="color: #000000; font-weight: bold;">new</span> \SplQueue<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line103"></a>        <span style="color: #009900;">&#125;</span>
+<a name="line104"></a>        <span style="color: #000088;">$this</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">currentLevel</span> <span style="color: #339933;">=</span> <span style="color: #cc66cc;">0</span><span style="color: #339933;">;</span>
+<a name="line105"></a>    <span style="color: #009900;">&#125;</span>
+<a name="line106"></a>&nbsp;
+<a name="line107"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line108"></a>     * Implement this method to add behavior performed before an Item is visited.
+<a name="line109"></a>     *
+<a name="line110"></a>     * @param \PHPCR\ItemInterface $item the Item that is accepting this visitor.
+<a name="line111"></a>     * @param integer $level hierarchy level of this node (the root node starts at level 0).
+<a name="line112"></a>     * @return void
+<a name="line113"></a>     *
+<a name="line114"></a>     * @throws \PHPCR\RepositoryException if an error occurs.
+<a name="line115"></a>     * @api
+<a name="line116"></a>     */</span>
+<a name="line117"></a>    <span style="color: #000000; font-weight: bold;">protected</span> abstract <span style="color: #000000; font-weight: bold;">function</span> entering<span style="color: #009900;">&#40;</span>\PHPCR\ItemInterface <span style="color: #000088;">$item</span><span style="color: #339933;">,</span> <span style="color: #000088;">$level</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line118"></a>&nbsp;
+<a name="line119"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line120"></a>     * Implement this method to add behavior performed after an Item is visited.
+<a name="line121"></a>     *
+<a name="line122"></a>     * @param \PHPCR\ItemInterface $item the Item that is accepting this visitor.
+<a name="line123"></a>     * @param integer $level hierarchy level of this property (the root node starts at level 0).
+<a name="line124"></a>     * @return void
+<a name="line125"></a>     * @throws \PHPCR\RepositoryException if an error occurs.
+<a name="line126"></a>     * @api
+<a name="line127"></a>     */</span>
+<a name="line128"></a>    <span style="color: #000000; font-weight: bold;">protected</span> abstract <span style="color: #000000; font-weight: bold;">function</span> leaving<span style="color: #009900;">&#40;</span>\PHPCR\ItemInterface <span style="color: #000088;">$item</span><span style="color: #339933;">,</span> <span style="color: #000088;">$level</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line129"></a>&nbsp;
+<a name="line130"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line131"></a>     * Called when the Visitor is passed to an Item.
+<a name="line132"></a>     *
+<a name="line133"></a>     * It calls TraversingItemVisitor.entering(ItemInterface, int) followed by
+<a name="line134"></a>     * TraversingItemVisitor.leaving(ItemInterface, int). Implement these
+<a name="line135"></a>     * abstract methods to specify behavior on 'arrival at' and 'after leaving'
+<a name="line136"></a>     * the $item.
+<a name="line137"></a>     *
+<a name="line138"></a>     * If this method throws, the visiting process is aborted.
+<a name="line139"></a>     *
+<a name="line140"></a>     * @param \PHPCR\ItemInterface $item the Node or Property that is accepting this visitor.
+<a name="line141"></a>     * @return void
+<a name="line142"></a>     *
+<a name="line143"></a>     * @throws \PHPCR\RepositoryException if an error occurs.
+<a name="line144"></a>     *
+<a name="line145"></a>     * @author Karsten Dambekalns &lt;karsten@typo3.org&gt;
+<a name="line146"></a>     * @author Day Management AG, Switzerland
+<a name="line147"></a>     * @api
+<a name="line148"></a>     */</span>
+<a name="line149"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> visit<span style="color: #009900;">&#40;</span>\PHPCR\ItemInterface <span style="color: #000088;">$item</span><span style="color: #009900;">&#41;</span> <span style="color: #009900;">&#123;</span>
+<a name="line150"></a>        <span style="color: #b1b100;">if</span> <span style="color: #009900;">&#40;</span><span style="color: #000088;">$item</span> instanceof \PHPCR\PropertyInterface<span style="color: #009900;">&#41;</span> <span style="color: #009900;">&#123;</span>
+<a name="line151"></a>            <span style="color: #000088;">$this</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">entering</span><span style="color: #009900;">&#40;</span><span style="color: #000088;">$item</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line152"></a>            <span style="color: #000088;">$this</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">leaving</span><span style="color: #009900;">&#40;</span><span style="color: #000088;">$item</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line153"></a>        <span style="color: #009900;">&#125;</span> <span style="color: #b1b100;">else</span> <span style="color: #009900;">&#123;</span>
+<a name="line154"></a>            try <span style="color: #009900;">&#123;</span>
+<a name="line155"></a>                <span style="color: #b1b100;">if</span> <span style="color: #009900;">&#40;</span><span style="color: #000088;">$this</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">breadthFirst</span> <span style="color: #339933;">===</span> <span style="color: #009900; font-weight: bold;">false</span><span style="color: #009900;">&#41;</span> <span style="color: #009900;">&#123;</span>
+<a name="line156"></a>                        <span style="color: #666666; font-style: italic;">// depth-first traversal</span>
+<a name="line157"></a>                    <span style="color: #000088;">$this</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">entering</span><span style="color: #009900;">&#40;</span><span style="color: #000088;">$item</span><span style="color: #339933;">,</span> <span style="color: #000088;">$this</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">currentLevel</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line158"></a>                    <span style="color: #b1b100;">if</span> <span style="color: #009900;">&#40;</span><span style="color: #000088;">$this</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">maxLevel</span> <span style="color: #339933;">==</span> <span style="color: #339933;">-</span><span style="color: #cc66cc;">1</span> <span style="color: #339933;">||</span> <span style="color: #000088;">$this</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">currentLevel</span> <span style="color: #339933;">&lt;</span> <span style="color: #000088;">$this</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">maxLevel</span><span style="color: #009900;">&#41;</span> <span style="color: #009900;">&#123;</span>
+<a name="line159"></a>                        <span style="color: #000088;">$this</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">currentLevel</span><span style="color: #339933;">++;</span>
+<a name="line160"></a>                        <span style="color: #b1b100;">foreach</span> <span style="color: #009900;">&#40;</span><span style="color: #000088;">$item</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">getProperties</span><span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span> <span style="color: #b1b100;">as</span> <span style="color: #000088;">$property</span><span style="color: #009900;">&#41;</span> <span style="color: #009900;">&#123;</span>
+<a name="line161"></a>                            <span style="color: #000088;">$property</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">accept</span><span style="color: #009900;">&#40;</span><span style="color: #000088;">$this</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line162"></a>                        <span style="color: #009900;">&#125;</span>
+<a name="line163"></a>                        <span style="color: #b1b100;">foreach</span> <span style="color: #009900;">&#40;</span><span style="color: #000088;">$item</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">getNodes</span><span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span> <span style="color: #b1b100;">as</span> <span style="color: #000088;">$node</span><span style="color: #009900;">&#41;</span> <span style="color: #009900;">&#123;</span>
+<a name="line164"></a>                            <span style="color: #000088;">$node</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">accept</span><span style="color: #009900;">&#40;</span><span style="color: #000088;">$this</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line165"></a>                        <span style="color: #009900;">&#125;</span>
+<a name="line166"></a>                        <span style="color: #000088;">$this</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">currentLevel</span><span style="color: #339933;">--;</span>
+<a name="line167"></a>                    <span style="color: #009900;">&#125;</span>
+<a name="line168"></a>                    <span style="color: #000088;">$this</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">leaving</span><span style="color: #009900;">&#40;</span><span style="color: #000088;">$item</span><span style="color: #339933;">,</span> <span style="color: #000088;">$this</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">currentLevel</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line169"></a>                <span style="color: #009900;">&#125;</span> <span style="color: #b1b100;">else</span> <span style="color: #009900;">&#123;</span>
+<a name="line170"></a>                        <span style="color: #666666; font-style: italic;">// breadth-first traversal</span>
+<a name="line171"></a>                    <span style="color: #000088;">$this</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">entering</span><span style="color: #009900;">&#40;</span><span style="color: #000088;">$item</span><span style="color: #339933;">,</span> <span style="color: #000088;">$this</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">currentLevel</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line172"></a>                    <span style="color: #000088;">$this</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">leaving</span><span style="color: #009900;">&#40;</span><span style="color: #000088;">$item</span><span style="color: #339933;">,</span> <span style="color: #000088;">$this</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">currentLevel</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line173"></a>&nbsp;
+<a name="line174"></a>                    <span style="color: #b1b100;">if</span> <span style="color: #009900;">&#40;</span><span style="color: #000088;">$this</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">maxLevel</span> <span style="color: #339933;">==</span> <span style="color: #339933;">-</span><span style="color: #cc66cc;">1</span> <span style="color: #339933;">||</span> <span style="color: #000088;">$this</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">currentLevel</span> <span style="color: #339933;">&lt;</span> <span style="color: #000088;">$this</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">maxLevel</span><span style="color: #009900;">&#41;</span> <span style="color: #009900;">&#123;</span>
+<a name="line175"></a>                        <span style="color: #b1b100;">foreach</span> <span style="color: #009900;">&#40;</span><span style="color: #000088;">$item</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">getProperties</span><span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span> <span style="color: #b1b100;">as</span> <span style="color: #000088;">$property</span><span style="color: #009900;">&#41;</span> <span style="color: #009900;">&#123;</span>
+<a name="line176"></a>                            <span style="color: #000088;">$property</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">accept</span><span style="color: #009900;">&#40;</span><span style="color: #000088;">$this</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line177"></a>                        <span style="color: #009900;">&#125;</span>
+<a name="line178"></a>                        <span style="color: #b1b100;">foreach</span> <span style="color: #009900;">&#40;</span><span style="color: #000088;">$item</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">getNodes</span><span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span> <span style="color: #b1b100;">as</span> <span style="color: #000088;">$node</span><span style="color: #009900;">&#41;</span> <span style="color: #009900;">&#123;</span>
+<a name="line179"></a>                            <span style="color: #000088;">$node</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">accept</span><span style="color: #009900;">&#40;</span><span style="color: #000088;">$this</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line180"></a>                        <span style="color: #009900;">&#125;</span>
+<a name="line181"></a>                    <span style="color: #009900;">&#125;</span>
+<a name="line182"></a>&nbsp;
+<a name="line183"></a>                    <span style="color: #b1b100;">while</span> <span style="color: #009900;">&#40;</span><span style="color: #339933;">!</span><span style="color: #000088;">$this</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">currentQueue</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">isEmpty</span><span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span> <span style="color: #339933;">||</span> <span style="color: #339933;">!</span><span style="color: #000088;">$this</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">nextQueue</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">isEmpty</span><span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #009900;">&#41;</span> <span style="color: #009900;">&#123;</span>
+<a name="line184"></a>                        <span style="color: #b1b100;">if</span> <span style="color: #009900;">&#40;</span><span style="color: #000088;">$this</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">currentQueue</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">isEmpty</span><span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #009900;">&#41;</span> <span style="color: #009900;">&#123;</span>
+<a name="line185"></a>                            <span style="color: #000088;">$this</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">currentLevel</span><span style="color: #339933;">++;</span>
+<a name="line186"></a>                            <span style="color: #000088;">$this</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">currentQueue</span> <span style="color: #339933;">=</span> <span style="color: #000088;">$this</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">nextQueue</span><span style="color: #339933;">;</span>
+<a name="line187"></a>                            <span style="color: #000088;">$this</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">nextQueue</span> <span style="color: #339933;">=</span> <span style="color: #000000; font-weight: bold;">new</span> \SplQueue<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line188"></a>                        <span style="color: #009900;">&#125;</span>
+<a name="line189"></a>                        <span style="color: #000088;">$item</span> <span style="color: #339933;">=</span> <span style="color: #000088;">$this</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">currentQueue</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">dequeue</span><span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line190"></a>                        <span style="color: #000088;">$item</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">accept</span><span style="color: #009900;">&#40;</span><span style="color: #000088;">$this</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line191"></a>                    <span style="color: #009900;">&#125;</span>
+<a name="line192"></a>                    <span style="color: #000088;">$this</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">currentLevel</span> <span style="color: #339933;">=</span> <span style="color: #cc66cc;">0</span><span style="color: #339933;">;</span>
+<a name="line193"></a>                <span style="color: #009900;">&#125;</span>
+<a name="line194"></a>            <span style="color: #009900;">&#125;</span> catch <span style="color: #009900;">&#40;</span>\PHPCR\RepositoryException <span style="color: #000088;">$exception</span><span style="color: #009900;">&#41;</span> <span style="color: #009900;">&#123;</span>
+<a name="line195"></a>                <span style="color: #000088;">$this</span><span style="color: #339933;">-&gt;</span><span style="color: #004000;">currentLevel</span> <span style="color: #339933;">=</span> <span style="color: #cc66cc;">0</span><span style="color: #339933;">;</span>
+<a name="line196"></a>                <span style="color: #b1b100;">throw</span> <span style="color: #000088;">$exception</span><span style="color: #339933;">;</span>
+<a name="line197"></a>            <span style="color: #009900;">&#125;</span>
+<a name="line198"></a>        <span style="color: #009900;">&#125;</span>
+<a name="line199"></a>    <span style="color: #009900;">&#125;</span>
+<a name="line200"></a>&nbsp;
+<a name="line201"></a><span style="color: #009900;">&#125;</span>
+<a name="line202"></a>&nbsp;</pre>
 <div class="header">
 <h1>PHPCR</h1>
 <ul>

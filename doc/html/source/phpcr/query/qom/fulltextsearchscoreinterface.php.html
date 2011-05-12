@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="generator" content="PHPDoctor 2RC4 (http://peej.github.com/phpdoctor/)">
-<meta name="when" content="Fri, 06 May 2011 11:43:29 +0000">
+<meta name="when" content="Thu, 12 May 2011 08:50:53 +0000">
 
 <link rel="stylesheet" type="text/css" href="../../../../stylesheet.css">
 <link rel="start" href="../../../../overview-summary.html">
@@ -79,36 +79,34 @@ If not, see <code><a href="http://www.gnu.org/licenses/lgpl.html">http://www.gnu
 <a name="line29"></a> * @subpackage interfaces
 <a name="line30"></a> */</span>
 <a name="line31"></a>&nbsp;
-<a name="line32"></a>&nbsp;
-<a name="line33"></a><span style="color: #000000; font-weight: bold;">declare</span><span style="color: #009900;">&#40;</span>ENCODING <span style="color: #339933;">=</span> <span style="color: #0000ff;">'utf-8'</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line34"></a><span style="color: #000000; font-weight: bold;">namespace</span> PHPCR\Query\QOM<span style="color: #339933;">;</span>
-<a name="line35"></a>&nbsp;
-<a name="line36"></a><span style="color: #009933; font-style: italic;">/**
-<a name="line37"></a> * Evaluates to a DOUBLE value equal to the full-text search score of a node.
-<a name="line38"></a> *
-<a name="line39"></a> * Full-text search score ranks a selector's nodes by their relevance to the
-<a name="line40"></a> * fullTextSearchExpression specified in a FullTextSearch. The values to which
-<a name="line41"></a> * FullTextSearchScore evaluates and the interpretation of those values are
-<a name="line42"></a> * implementation specific. FullTextSearchScore may evaluate to a constant value
-<a name="line43"></a> * in a repository that does not support full-text search scoring or has no
-<a name="line44"></a> * full-text indexed properties.
-<a name="line45"></a> *
-<a name="line46"></a> * @package phpcr
-<a name="line47"></a> * @subpackage interfaces
-<a name="line48"></a> * @api
-<a name="line49"></a> */</span>
-<a name="line50"></a><span style="color: #000000; font-weight: bold;">interface</span> FullTextSearchScoreInterface <span style="color: #000000; font-weight: bold;">extends</span> DynamicOperandInterface <span style="color: #009900;">&#123;</span>
-<a name="line51"></a>&nbsp;
-<a name="line52"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line53"></a>     * Gets the name of the selector against which to evaluate this operand.
-<a name="line54"></a>     *
-<a name="line55"></a>     * @return string the selector name; non-null
-<a name="line56"></a>     * @api
-<a name="line57"></a>     */</span>
-<a name="line58"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getSelectorName<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line59"></a>&nbsp;
-<a name="line60"></a><span style="color: #009900;">&#125;</span>
-<a name="line61"></a>&nbsp;</pre>
+<a name="line32"></a><span style="color: #000000; font-weight: bold;">namespace</span> PHPCR\Query\QOM<span style="color: #339933;">;</span>
+<a name="line33"></a>&nbsp;
+<a name="line34"></a><span style="color: #009933; font-style: italic;">/**
+<a name="line35"></a> * Evaluates to a DOUBLE value equal to the full-text search score of a node.
+<a name="line36"></a> *
+<a name="line37"></a> * Full-text search score ranks a selector's nodes by their relevance to the
+<a name="line38"></a> * fullTextSearchExpression specified in a FullTextSearch. The values to which
+<a name="line39"></a> * FullTextSearchScore evaluates and the interpretation of those values are
+<a name="line40"></a> * implementation specific. FullTextSearchScore may evaluate to a constant value
+<a name="line41"></a> * in a repository that does not support full-text search scoring or has no
+<a name="line42"></a> * full-text indexed properties.
+<a name="line43"></a> *
+<a name="line44"></a> * @package phpcr
+<a name="line45"></a> * @subpackage interfaces
+<a name="line46"></a> * @api
+<a name="line47"></a> */</span>
+<a name="line48"></a><span style="color: #000000; font-weight: bold;">interface</span> FullTextSearchScoreInterface <span style="color: #000000; font-weight: bold;">extends</span> DynamicOperandInterface <span style="color: #009900;">&#123;</span>
+<a name="line49"></a>&nbsp;
+<a name="line50"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line51"></a>     * Gets the name of the selector against which to evaluate this operand.
+<a name="line52"></a>     *
+<a name="line53"></a>     * @return string the selector name; non-null
+<a name="line54"></a>     * @api
+<a name="line55"></a>     */</span>
+<a name="line56"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getSelectorName<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line57"></a>&nbsp;
+<a name="line58"></a><span style="color: #009900;">&#125;</span>
+<a name="line59"></a>&nbsp;</pre>
 <div class="header">
 <h1>PHPCR</h1>
 <ul>

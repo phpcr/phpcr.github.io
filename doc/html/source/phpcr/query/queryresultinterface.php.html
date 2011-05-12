@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="generator" content="PHPDoctor 2RC4 (http://peej.github.com/phpdoctor/)">
-<meta name="when" content="Fri, 06 May 2011 11:43:27 +0000">
+<meta name="when" content="Thu, 12 May 2011 08:50:51 +0000">
 
 <link rel="stylesheet" type="text/css" href="../../../stylesheet.css">
 <link rel="start" href="../../../overview-summary.html">
@@ -79,81 +79,79 @@ If not, see <code><a href="http://www.gnu.org/licenses/lgpl.html">http://www.gnu
 <a name="line29"></a> * @subpackage interfaces
 <a name="line30"></a> */</span>
 <a name="line31"></a>&nbsp;
-<a name="line32"></a>&nbsp;
-<a name="line33"></a><span style="color: #000000; font-weight: bold;">declare</span><span style="color: #009900;">&#40;</span>ENCODING <span style="color: #339933;">=</span> <span style="color: #0000ff;">'utf-8'</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line34"></a><span style="color: #000000; font-weight: bold;">namespace</span> PHPCR\Query<span style="color: #339933;">;</span>
-<a name="line35"></a>&nbsp;
-<a name="line36"></a><span style="color: #009933; font-style: italic;">/**
-<a name="line37"></a> * A QueryResult object. Returned by Query-&gt;execute().
-<a name="line38"></a> *
-<a name="line39"></a> * The \Traversable interface enables the implementation to be addressed with
-<a name="line40"></a> * &lt;b&gt;foreach&lt;/b&gt;. QueryResults have to implement einther \RecursiveIterator or
-<a name="line41"></a> * \Iterator.
-<a name="line42"></a> * The iterator is equivalent to &lt;b&gt;getRows()&lt;/b&gt; returning a list of the rows.
-<a name="line43"></a> * The iterator keys have no significant meaning.
-<a name="line44"></a> * Note: We use getRows and not getNodes as this is more generic. If you have a
-<a name="line45"></a> * single selector, you can either do foreach on getNodes or call getNode on the
-<a name="line46"></a> * rows.
-<a name="line47"></a> *
-<a name="line48"></a> * @package phpcr
-<a name="line49"></a> * @subpackage interfaces
-<a name="line50"></a> * @api
-<a name="line51"></a> */</span>
-<a name="line52"></a><span style="color: #000000; font-weight: bold;">interface</span> QueryResultInterface <span style="color: #000000; font-weight: bold;">extends</span> \Traversable <span style="color: #009900;">&#123;</span>
-<a name="line53"></a>&nbsp;
-<a name="line54"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line55"></a>     * Returns an array of all the column names in the table view of this result set.
+<a name="line32"></a><span style="color: #000000; font-weight: bold;">namespace</span> PHPCR\Query<span style="color: #339933;">;</span>
+<a name="line33"></a>&nbsp;
+<a name="line34"></a><span style="color: #009933; font-style: italic;">/**
+<a name="line35"></a> * A QueryResult object. Returned by Query-&gt;execute().
+<a name="line36"></a> *
+<a name="line37"></a> * The \Traversable interface enables the implementation to be addressed with
+<a name="line38"></a> * &lt;b&gt;foreach&lt;/b&gt;. QueryResults have to implement einther \RecursiveIterator or
+<a name="line39"></a> * \Iterator.
+<a name="line40"></a> * The iterator is equivalent to &lt;b&gt;getRows()&lt;/b&gt; returning a list of the rows.
+<a name="line41"></a> * The iterator keys have no significant meaning.
+<a name="line42"></a> * Note: We use getRows and not getNodes as this is more generic. If you have a
+<a name="line43"></a> * single selector, you can either do foreach on getNodes or call getNode on the
+<a name="line44"></a> * rows.
+<a name="line45"></a> *
+<a name="line46"></a> * @package phpcr
+<a name="line47"></a> * @subpackage interfaces
+<a name="line48"></a> * @api
+<a name="line49"></a> */</span>
+<a name="line50"></a><span style="color: #000000; font-weight: bold;">interface</span> QueryResultInterface <span style="color: #000000; font-weight: bold;">extends</span> \Traversable <span style="color: #009900;">&#123;</span>
+<a name="line51"></a>&nbsp;
+<a name="line52"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line53"></a>     * Returns an array of all the column names in the table view of this result set.
+<a name="line54"></a>     *
+<a name="line55"></a>     * @return array A list holding the column names.
 <a name="line56"></a>     *
-<a name="line57"></a>     * @return array A list holding the column names.
-<a name="line58"></a>     *
-<a name="line59"></a>     * @throws \PHPCR\RepositoryException if an error occurs.
-<a name="line60"></a>     * @api
-<a name="line61"></a>     */</span>
-<a name="line62"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getColumnNames<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line63"></a>&nbsp;
-<a name="line64"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line65"></a>     * Returns an iterator over the Rows of the result table.
+<a name="line57"></a>     * @throws \PHPCR\RepositoryException if an error occurs.
+<a name="line58"></a>     * @api
+<a name="line59"></a>     */</span>
+<a name="line60"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getColumnNames<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line61"></a>&nbsp;
+<a name="line62"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line63"></a>     * Returns an iterator over the Rows of the result table.
+<a name="line64"></a>     *
+<a name="line65"></a>     * The rows are returned according to the ordering specified in the query.
 <a name="line66"></a>     *
-<a name="line67"></a>     * The rows are returned according to the ordering specified in the query.
-<a name="line68"></a>     *
-<a name="line69"></a>     * @return Iterator implementing &lt;b&gt;SeekableIterator&lt;/b&gt; and &lt;b&gt;Countable&lt;/b&gt;.
-<a name="line70"></a>     *                  Keys are the row position in this result set, Values are the RowInterface instances.
-<a name="line71"></a>     * @throws \PHPCR\RepositoryException if this call is the second time either getRows() or getNodes()
-<a name="line72"></a>     *                                    has been called on the same QueryResult object or if another error occurs.
-<a name="line73"></a>     * @api
-<a name="line74"></a>    */</span>
-<a name="line75"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getRows<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line76"></a>&nbsp;
-<a name="line77"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line78"></a>     * Returns an iterator over all nodes that match the query.
+<a name="line67"></a>     * @return Iterator implementing &lt;b&gt;SeekableIterator&lt;/b&gt; and &lt;b&gt;Countable&lt;/b&gt;.
+<a name="line68"></a>     *                  Keys are the row position in this result set, Values are the RowInterface instances.
+<a name="line69"></a>     * @throws \PHPCR\RepositoryException if this call is the second time either getRows() or getNodes()
+<a name="line70"></a>     *                                    has been called on the same QueryResult object or if another error occurs.
+<a name="line71"></a>     * @api
+<a name="line72"></a>    */</span>
+<a name="line73"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getRows<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line74"></a>&nbsp;
+<a name="line75"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line76"></a>     * Returns an iterator over all nodes that match the query.
+<a name="line77"></a>     *
+<a name="line78"></a>     * The nodes are returned according to the ordering specified in the query.
 <a name="line79"></a>     *
-<a name="line80"></a>     * The nodes are returned according to the ordering specified in the query.
-<a name="line81"></a>     *
-<a name="line82"></a>     * @return Iterator implementing &lt;b&gt;SeekableIterator&lt;/b&gt; and &lt;b&gt;Countable&lt;/b&gt;.
-<a name="line83"></a>     *                  Keys are the Node names, values the corresponding NodeInterface instances.
-<a name="line84"></a>     *
-<a name="line85"></a>     * @throws \PHPCR\RepositoryException if the query contains more than one selector, if this call is
-<a name="line86"></a>     *                                    the second time either getRows() or getNodes() has been called on the
-<a name="line87"></a>     *                                    same QueryResult object or if another error occurs.
-<a name="line88"></a>     * @api
-<a name="line89"></a>     */</span>
-<a name="line90"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getNodes<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line91"></a>&nbsp;
-<a name="line92"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line93"></a>     * Returns an array of all the selector names that were used in the query
-<a name="line94"></a>     * that created this result.
+<a name="line80"></a>     * @return Iterator implementing &lt;b&gt;SeekableIterator&lt;/b&gt; and &lt;b&gt;Countable&lt;/b&gt;.
+<a name="line81"></a>     *                  Keys are the Node names, values the corresponding NodeInterface instances.
+<a name="line82"></a>     *
+<a name="line83"></a>     * @throws \PHPCR\RepositoryException if the query contains more than one selector, if this call is
+<a name="line84"></a>     *                                    the second time either getRows() or getNodes() has been called on the
+<a name="line85"></a>     *                                    same QueryResult object or if another error occurs.
+<a name="line86"></a>     * @api
+<a name="line87"></a>     */</span>
+<a name="line88"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getNodes<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line89"></a>&nbsp;
+<a name="line90"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line91"></a>     * Returns an array of all the selector names that were used in the query
+<a name="line92"></a>     * that created this result.
+<a name="line93"></a>     *
+<a name="line94"></a>     * If the query did not have a selector name then an empty array is returned.
 <a name="line95"></a>     *
-<a name="line96"></a>     * If the query did not have a selector name then an empty array is returned.
+<a name="line96"></a>     * @return array A String array holding the selector names.
 <a name="line97"></a>     *
-<a name="line98"></a>     * @return array A String array holding the selector names.
-<a name="line99"></a>     *
-<a name="line100"></a>     * @throws \PHPCR\RepositoryException if an error occurs.
-<a name="line101"></a>     * @api
-<a name="line102"></a>     */</span>
-<a name="line103"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getSelectorNames<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line104"></a>&nbsp;
-<a name="line105"></a><span style="color: #009900;">&#125;</span>
-<a name="line106"></a>&nbsp;</pre>
+<a name="line98"></a>     * @throws \PHPCR\RepositoryException if an error occurs.
+<a name="line99"></a>     * @api
+<a name="line100"></a>     */</span>
+<a name="line101"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getSelectorNames<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line102"></a>&nbsp;
+<a name="line103"></a><span style="color: #009900;">&#125;</span>
+<a name="line104"></a>&nbsp;</pre>
 <div class="header">
 <h1>PHPCR</h1>
 <ul>

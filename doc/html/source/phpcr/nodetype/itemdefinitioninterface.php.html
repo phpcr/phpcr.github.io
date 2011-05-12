@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="generator" content="PHPDoctor 2RC4 (http://peej.github.com/phpdoctor/)">
-<meta name="when" content="Fri, 06 May 2011 11:43:24 +0000">
+<meta name="when" content="Thu, 12 May 2011 08:50:48 +0000">
 
 <link rel="stylesheet" type="text/css" href="../../../stylesheet.css">
 <link rel="start" href="../../../overview-summary.html">
@@ -79,145 +79,144 @@ If not, see <code><a href="http://www.gnu.org/licenses/lgpl.html">http://www.gnu
 <a name="line29"></a> * @subpackage interfaces
 <a name="line30"></a> */</span>
 <a name="line31"></a>&nbsp;
-<a name="line32"></a><span style="color: #000000; font-weight: bold;">declare</span><span style="color: #009900;">&#40;</span>ENCODING <span style="color: #339933;">=</span> <span style="color: #0000ff;">'utf-8'</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line33"></a><span style="color: #000000; font-weight: bold;">namespace</span> PHPCR\NodeType<span style="color: #339933;">;</span>
-<a name="line34"></a>&nbsp;
-<a name="line35"></a><span style="color: #009933; font-style: italic;">/**
-<a name="line36"></a> * Superclass of NodeDefinition and PropertyDefinition.
-<a name="line37"></a> *
-<a name="line38"></a> * @package phpcr
-<a name="line39"></a> * @subpackage interfaces
-<a name="line40"></a> * @api
-<a name="line41"></a> */</span>
-<a name="line42"></a><span style="color: #000000; font-weight: bold;">interface</span> ItemDefinitionInterface <span style="color: #009900;">&#123;</span>
-<a name="line43"></a>&nbsp;
-<a name="line44"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line45"></a>     * Gets the node type that contains the declaration of this ItemDefinition.
-<a name="line46"></a>     *
-<a name="line47"></a>     * In implementations that support node type registration an ItemDefinition
-<a name="line48"></a>     * object may be acquired (in the form of a NodeDefinitionTemplate or
-<a name="line49"></a>     * PropertyDefinitionTemplate) that is not attached to a live NodeType. In
-<a name="line50"></a>     * such cases this method returns null.
-<a name="line51"></a>     *
-<a name="line52"></a>     * @return \PHPCR\NodeType\NodeTypeInterface A NodeType object.
-<a name="line53"></a>     * @api
-<a name="line54"></a>     */</span>
-<a name="line55"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getDeclaringNodeType<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line56"></a>&nbsp;
-<a name="line57"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line58"></a>     * Gets the name of the child item.
-<a name="line59"></a>     *
-<a name="line60"></a>     * If &quot;*&quot;, this ItemDefinition defines a residual set of child items.
-<a name="line61"></a>     * That is, it defines the characteristics of all those child items with names
-<a name="line62"></a>     * apart from the names explicitly used in other child item definitions.
-<a name="line63"></a>     *
-<a name="line64"></a>     * In implementations that support node type registration, if this
-<a name="line65"></a>     * ItemDefinition object is actually a newly-created empty
-<a name="line66"></a>     * PropertyDefinitionTemplate or NodeDefinitionTemplate, then this method
-<a name="line67"></a>     * will return null.
-<a name="line68"></a>     *
-<a name="line69"></a>     * @return string A string denoting the name or &quot;*&quot;.
-<a name="line70"></a>     * @api
-<a name="line71"></a>     */</span>
-<a name="line72"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getName<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line73"></a>&nbsp;
-<a name="line74"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line75"></a>     * Reports whether the item is to be automatically created when its parent
-<a name="line76"></a>     * node is created.
-<a name="line77"></a>     *
-<a name="line78"></a>     * If true, then this ItemDefinition will necessarily not
-<a name="line79"></a>     * be a residual set definition but will specify an actual item name (in
-<a name="line80"></a>     * other words getName() will not return &quot;*&quot;).
-<a name="line81"></a>     *
-<a name="line82"></a>     * An autocreated non-protected item must be created immediately when
-<a name="line83"></a>     * its parent node is created in the transient session space. Creation of
-<a name="line84"></a>     * autocreated non-protected items is never delayed until save.
-<a name="line85"></a>     *
-<a name="line86"></a>     * An autocreated protected item should be created immediately when its
-<a name="line87"></a>     * parent node is created in the transient session space. Creation of
-<a name="line88"></a>     * autocreated protected items should not be delayed until save, though
-<a name="line89"></a>     * doing so does not violate JCR compliance.
-<a name="line90"></a>     *
-<a name="line91"></a>     * In implementations that support node type registration, if this
-<a name="line92"></a>     * ItemDefinition object is actually a newly-created empty
-<a name="line93"></a>     * PropertyDefinitionTemplate or NodeDefinitionTemplate, then this method
-<a name="line94"></a>     * will return false.
-<a name="line95"></a>     *
-<a name="line96"></a>     * @return boolean True, if the item is automatically created when its parent node is created, else false.
-<a name="line97"></a>     * @api
-<a name="line98"></a>     */</span>
-<a name="line99"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> isAutoCreated<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line100"></a>&nbsp;
-<a name="line101"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line102"></a>     * Reports whether the item is mandatory.
-<a name="line103"></a>     *
-<a name="line104"></a>     * A mandatory item is one that, if its parent node exists, must also exist.
-<a name="line105"></a>     * This means that a mandatory single-value property must have a value (since
-<a name="line106"></a>     * there is no such thing a null value). In the case of multi-value properties
-<a name="line107"></a>     * this means that the property must exist, though it can have zero or more
-<a name="line108"></a>     * values.
-<a name="line109"></a>     *
-<a name="line110"></a>     * An attempt to save a node that has a mandatory child item without first
-<a name="line111"></a>     * creating that child item will throw a ConstraintViolationException on save.
-<a name="line112"></a>     *
-<a name="line113"></a>     * In implementations that support node type registration, if this
-<a name="line114"></a>     * ItemDefinition object is actually a newly-created empty
-<a name="line115"></a>     * PropertyDefinitionTemplate or NodeDefinitionTemplate, then this method
-<a name="line116"></a>     * will return false.
-<a name="line117"></a>     *
-<a name="line118"></a>     * An item definition cannot be both residual and mandatory.
-<a name="line119"></a>     *
-<a name="line120"></a>     * @return boolean True, if the item is mandatory, else false.
-<a name="line121"></a>     * @api
-<a name="line122"></a>     */</span>
-<a name="line123"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> isMandatory<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line124"></a>&nbsp;
-<a name="line125"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line126"></a>     * Gets the OnParentVersion status of the child item.
-<a name="line127"></a>     *
-<a name="line128"></a>     * This governs what occurs (in implementations that support versioning)
-<a name="line129"></a>     * when the parent node of this item is checked-in. One of:
-<a name="line130"></a>     * - OnParentVersionAction.COPY
-<a name="line131"></a>     * - OnParentVersionAction.VERSION
-<a name="line132"></a>     * - OnParentVersionAction.IGNORE
-<a name="line133"></a>     * - OnParentVersionAction.INITIALIZE
-<a name="line134"></a>     * - OnParentVersionAction.COMPUTE
-<a name="line135"></a>     * - OnParentVersionAction.ABORT
-<a name="line136"></a>     *
-<a name="line137"></a>     * In implementations that support node type registration, if this
-<a name="line138"></a>     * ItemDefinition object is actually a newly-created empty
-<a name="line139"></a>     * PropertyDefinitionTemplate or NodeDefinitionTemplate, then this method
-<a name="line140"></a>     * will return OnParentVersionAction.COPY.
-<a name="line141"></a>     *
-<a name="line142"></a>     * @return integer An int constant member of OnParentVersionAction.
-<a name="line143"></a>     * @api
-<a name="line144"></a>     */</span>
-<a name="line145"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getOnParentVersion<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line146"></a>&nbsp;
-<a name="line147"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line148"></a>     * Reports whether the child item is protected.
-<a name="line149"></a>     *
-<a name="line150"></a>     * In level 2 implementations, a protected item is one that cannot be removed
-<a name="line151"></a>     * (except by removing its parent) or modified through the the standard write
-<a name="line152"></a>     * methods of this API (that is, Item.remove, Node.addNode, Node.setProperty
-<a name="line153"></a>     * and Property.setValue).
-<a name="line154"></a>     *
-<a name="line155"></a>     * A protected node may be removed or modified (in a level 2 implementation),
-<a name="line156"></a>     * however, through some mechanism not defined by this specification or as a
-<a name="line157"></a>     * side-effect of operations other than the standard write methods of the API.
-<a name="line158"></a>     *
-<a name="line159"></a>     * In implementations that support node type registration, if this
-<a name="line160"></a>     * ItemDefinition object is actually a newly-created empty
-<a name="line161"></a>     * PropertyDefinitionTemplate or NodeDefinitionTemplate, then this method
-<a name="line162"></a>     * will return false.
-<a name="line163"></a>     *
-<a name="line164"></a>     * @return boolean True, if the child item is protected, else false.
-<a name="line165"></a>     * @api
-<a name="line166"></a>     */</span>
-<a name="line167"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> isProtected<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line168"></a>&nbsp;
-<a name="line169"></a><span style="color: #009900;">&#125;</span>
-<a name="line170"></a>&nbsp;</pre>
+<a name="line32"></a><span style="color: #000000; font-weight: bold;">namespace</span> PHPCR\NodeType<span style="color: #339933;">;</span>
+<a name="line33"></a>&nbsp;
+<a name="line34"></a><span style="color: #009933; font-style: italic;">/**
+<a name="line35"></a> * Superclass of NodeDefinition and PropertyDefinition.
+<a name="line36"></a> *
+<a name="line37"></a> * @package phpcr
+<a name="line38"></a> * @subpackage interfaces
+<a name="line39"></a> * @api
+<a name="line40"></a> */</span>
+<a name="line41"></a><span style="color: #000000; font-weight: bold;">interface</span> ItemDefinitionInterface <span style="color: #009900;">&#123;</span>
+<a name="line42"></a>&nbsp;
+<a name="line43"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line44"></a>     * Gets the node type that contains the declaration of this ItemDefinition.
+<a name="line45"></a>     *
+<a name="line46"></a>     * In implementations that support node type registration an ItemDefinition
+<a name="line47"></a>     * object may be acquired (in the form of a NodeDefinitionTemplate or
+<a name="line48"></a>     * PropertyDefinitionTemplate) that is not attached to a live NodeType. In
+<a name="line49"></a>     * such cases this method returns null.
+<a name="line50"></a>     *
+<a name="line51"></a>     * @return \PHPCR\NodeType\NodeTypeInterface A NodeType object.
+<a name="line52"></a>     * @api
+<a name="line53"></a>     */</span>
+<a name="line54"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getDeclaringNodeType<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line55"></a>&nbsp;
+<a name="line56"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line57"></a>     * Gets the name of the child item.
+<a name="line58"></a>     *
+<a name="line59"></a>     * If &quot;*&quot;, this ItemDefinition defines a residual set of child items.
+<a name="line60"></a>     * That is, it defines the characteristics of all those child items with names
+<a name="line61"></a>     * apart from the names explicitly used in other child item definitions.
+<a name="line62"></a>     *
+<a name="line63"></a>     * In implementations that support node type registration, if this
+<a name="line64"></a>     * ItemDefinition object is actually a newly-created empty
+<a name="line65"></a>     * PropertyDefinitionTemplate or NodeDefinitionTemplate, then this method
+<a name="line66"></a>     * will return null.
+<a name="line67"></a>     *
+<a name="line68"></a>     * @return string A string denoting the name or &quot;*&quot;.
+<a name="line69"></a>     * @api
+<a name="line70"></a>     */</span>
+<a name="line71"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getName<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line72"></a>&nbsp;
+<a name="line73"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line74"></a>     * Reports whether the item is to be automatically created when its parent
+<a name="line75"></a>     * node is created.
+<a name="line76"></a>     *
+<a name="line77"></a>     * If true, then this ItemDefinition will necessarily not
+<a name="line78"></a>     * be a residual set definition but will specify an actual item name (in
+<a name="line79"></a>     * other words getName() will not return &quot;*&quot;).
+<a name="line80"></a>     *
+<a name="line81"></a>     * An autocreated non-protected item must be created immediately when
+<a name="line82"></a>     * its parent node is created in the transient session space. Creation of
+<a name="line83"></a>     * autocreated non-protected items is never delayed until save.
+<a name="line84"></a>     *
+<a name="line85"></a>     * An autocreated protected item should be created immediately when its
+<a name="line86"></a>     * parent node is created in the transient session space. Creation of
+<a name="line87"></a>     * autocreated protected items should not be delayed until save, though
+<a name="line88"></a>     * doing so does not violate JCR compliance.
+<a name="line89"></a>     *
+<a name="line90"></a>     * In implementations that support node type registration, if this
+<a name="line91"></a>     * ItemDefinition object is actually a newly-created empty
+<a name="line92"></a>     * PropertyDefinitionTemplate or NodeDefinitionTemplate, then this method
+<a name="line93"></a>     * will return false.
+<a name="line94"></a>     *
+<a name="line95"></a>     * @return boolean True, if the item is automatically created when its parent node is created, else false.
+<a name="line96"></a>     * @api
+<a name="line97"></a>     */</span>
+<a name="line98"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> isAutoCreated<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line99"></a>&nbsp;
+<a name="line100"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line101"></a>     * Reports whether the item is mandatory.
+<a name="line102"></a>     *
+<a name="line103"></a>     * A mandatory item is one that, if its parent node exists, must also exist.
+<a name="line104"></a>     * This means that a mandatory single-value property must have a value (since
+<a name="line105"></a>     * there is no such thing a null value). In the case of multi-value properties
+<a name="line106"></a>     * this means that the property must exist, though it can have zero or more
+<a name="line107"></a>     * values.
+<a name="line108"></a>     *
+<a name="line109"></a>     * An attempt to save a node that has a mandatory child item without first
+<a name="line110"></a>     * creating that child item will throw a ConstraintViolationException on save.
+<a name="line111"></a>     *
+<a name="line112"></a>     * In implementations that support node type registration, if this
+<a name="line113"></a>     * ItemDefinition object is actually a newly-created empty
+<a name="line114"></a>     * PropertyDefinitionTemplate or NodeDefinitionTemplate, then this method
+<a name="line115"></a>     * will return false.
+<a name="line116"></a>     *
+<a name="line117"></a>     * An item definition cannot be both residual and mandatory.
+<a name="line118"></a>     *
+<a name="line119"></a>     * @return boolean True, if the item is mandatory, else false.
+<a name="line120"></a>     * @api
+<a name="line121"></a>     */</span>
+<a name="line122"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> isMandatory<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line123"></a>&nbsp;
+<a name="line124"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line125"></a>     * Gets the OnParentVersion status of the child item.
+<a name="line126"></a>     *
+<a name="line127"></a>     * This governs what occurs (in implementations that support versioning)
+<a name="line128"></a>     * when the parent node of this item is checked-in. One of:
+<a name="line129"></a>     * - OnParentVersionAction.COPY
+<a name="line130"></a>     * - OnParentVersionAction.VERSION
+<a name="line131"></a>     * - OnParentVersionAction.IGNORE
+<a name="line132"></a>     * - OnParentVersionAction.INITIALIZE
+<a name="line133"></a>     * - OnParentVersionAction.COMPUTE
+<a name="line134"></a>     * - OnParentVersionAction.ABORT
+<a name="line135"></a>     *
+<a name="line136"></a>     * In implementations that support node type registration, if this
+<a name="line137"></a>     * ItemDefinition object is actually a newly-created empty
+<a name="line138"></a>     * PropertyDefinitionTemplate or NodeDefinitionTemplate, then this method
+<a name="line139"></a>     * will return OnParentVersionAction.COPY.
+<a name="line140"></a>     *
+<a name="line141"></a>     * @return integer An int constant member of OnParentVersionAction.
+<a name="line142"></a>     * @api
+<a name="line143"></a>     */</span>
+<a name="line144"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getOnParentVersion<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line145"></a>&nbsp;
+<a name="line146"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line147"></a>     * Reports whether the child item is protected.
+<a name="line148"></a>     *
+<a name="line149"></a>     * In level 2 implementations, a protected item is one that cannot be removed
+<a name="line150"></a>     * (except by removing its parent) or modified through the the standard write
+<a name="line151"></a>     * methods of this API (that is, Item.remove, Node.addNode, Node.setProperty
+<a name="line152"></a>     * and Property.setValue).
+<a name="line153"></a>     *
+<a name="line154"></a>     * A protected node may be removed or modified (in a level 2 implementation),
+<a name="line155"></a>     * however, through some mechanism not defined by this specification or as a
+<a name="line156"></a>     * side-effect of operations other than the standard write methods of the API.
+<a name="line157"></a>     *
+<a name="line158"></a>     * In implementations that support node type registration, if this
+<a name="line159"></a>     * ItemDefinition object is actually a newly-created empty
+<a name="line160"></a>     * PropertyDefinitionTemplate or NodeDefinitionTemplate, then this method
+<a name="line161"></a>     * will return false.
+<a name="line162"></a>     *
+<a name="line163"></a>     * @return boolean True, if the child item is protected, else false.
+<a name="line164"></a>     * @api
+<a name="line165"></a>     */</span>
+<a name="line166"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> isProtected<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line167"></a>&nbsp;
+<a name="line168"></a><span style="color: #009900;">&#125;</span>
+<a name="line169"></a>&nbsp;</pre>
 <div class="header">
 <h1>PHPCR</h1>
 <ul>

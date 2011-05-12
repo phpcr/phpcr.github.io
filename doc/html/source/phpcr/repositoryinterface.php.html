@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="generator" content="PHPDoctor 2RC4 (http://peej.github.com/phpdoctor/)">
-<meta name="when" content="Fri, 06 May 2011 11:43:23 +0000">
+<meta name="when" content="Thu, 12 May 2011 08:50:46 +0000">
 
 <link rel="stylesheet" type="text/css" href="../../stylesheet.css">
 <link rel="start" href="../../overview-summary.html">
@@ -79,506 +79,505 @@ If not, see <code><a href="http://www.gnu.org/licenses/lgpl.html">http://www.gnu
 <a name="line29"></a> * @subpackage interfaces
 <a name="line30"></a> */</span>
 <a name="line31"></a>&nbsp;
-<a name="line32"></a><span style="color: #000000; font-weight: bold;">declare</span><span style="color: #009900;">&#40;</span>ENCODING <span style="color: #339933;">=</span> <span style="color: #0000ff;">'utf-8'</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line33"></a><span style="color: #000000; font-weight: bold;">namespace</span> PHPCR<span style="color: #339933;">;</span>
-<a name="line34"></a>&nbsp;
-<a name="line35"></a><span style="color: #009933; font-style: italic;">/**
-<a name="line36"></a> * The entry point into the content repository.
-<a name="line37"></a> *
-<a name="line38"></a> * The Repository object is usually acquired through the RepositoryFactory.
-<a name="line39"></a> *
-<a name="line40"></a> * &lt;b&gt;PHPCR Note:&lt;/b&gt; This interface has been simplified:
-<a name="line41"></a> *  - getDescriptor returns array on multivalue, single variable otherwise
-<a name="line42"></a> *  - removed isSingleValueDescriptor
-<a name="line43"></a> *  -removed getDescriptorValue and getDescriptorValues as ValueInterface has been dropped.
-<a name="line44"></a> *   Use getDescriptor to get the variables.
-<a name="line45"></a> *
-<a name="line46"></a> * @package phpcr
-<a name="line47"></a> * @subpackage interfaces
-<a name="line48"></a> * @api
-<a name="line49"></a> */</span>
-<a name="line50"></a><span style="color: #000000; font-weight: bold;">interface</span> RepositoryInterface <span style="color: #009900;">&#123;</span>
-<a name="line51"></a>&nbsp;
-<a name="line52"></a>    <span style="color: #009933; font-style: italic;">/**#@+
-<a name="line53"></a>     * @var string
-<a name="line54"></a>     */</span>
-<a name="line55"></a>&nbsp;
-<a name="line56"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line57"></a>     * The descriptor key for the version of the specification
-<a name="line58"></a>     * that this repository implements. For JCR 2.0
-<a name="line59"></a>     * the value of this descriptor is the string &quot;2.0&quot;.
-<a name="line60"></a>     * @api
-<a name="line61"></a>     */</span>
-<a name="line62"></a>    <span style="color: #000000; font-weight: bold;">const</span> SPEC_VERSION_DESC <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;jcr.specification.version&quot;</span><span style="color: #339933;">;</span>
-<a name="line63"></a>&nbsp;
-<a name="line64"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line65"></a>     * The descriptor key for the name of the specification
-<a name="line66"></a>     * that this repository implements. For JCR 2.0
-<a name="line67"></a>     * the value of this descriptor is the string &quot;Content Repository for
-<a name="line68"></a>     * Java Technology API&quot;.
-<a name="line69"></a>     * @api
-<a name="line70"></a>     */</span>
-<a name="line71"></a>    <span style="color: #000000; font-weight: bold;">const</span> SPEC_NAME_DESC <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;jcr.specification.name&quot;</span><span style="color: #339933;">;</span>
-<a name="line72"></a>&nbsp;
-<a name="line73"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line74"></a>     * The descriptor key for the name of the repository vendor.
-<a name="line75"></a>     * The descriptor returned for this key is a String.
-<a name="line76"></a>     * @api
-<a name="line77"></a>     */</span>
-<a name="line78"></a>    <span style="color: #000000; font-weight: bold;">const</span> REP_VENDOR_DESC <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;jcr.repository.vendor&quot;</span><span style="color: #339933;">;</span>
-<a name="line79"></a>&nbsp;
-<a name="line80"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line81"></a>     * The descriptor key for the URL of the repository vendor.
-<a name="line82"></a>     * The descriptor returned for this key is a String.
-<a name="line83"></a>     * @api
-<a name="line84"></a>     */</span>
-<a name="line85"></a>    <span style="color: #000000; font-weight: bold;">const</span> REP_VENDOR_URL_DESC <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;jcr.repository.vendor.url&quot;</span><span style="color: #339933;">;</span>
-<a name="line86"></a>&nbsp;
-<a name="line87"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line88"></a>     * The descriptor key for the name of this repository implementation.
-<a name="line89"></a>     * The descriptor returned for this key is a String.
-<a name="line90"></a>     * @api
-<a name="line91"></a>     */</span>
-<a name="line92"></a>    <span style="color: #000000; font-weight: bold;">const</span> REP_NAME_DESC <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;jcr.repository.name&quot;</span><span style="color: #339933;">;</span>
-<a name="line93"></a>&nbsp;
-<a name="line94"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line95"></a>     * The descriptor key for the version of this repository implementation.
-<a name="line96"></a>     * The descriptor returned for this key is a String.
-<a name="line97"></a>     * @api
-<a name="line98"></a>     */</span>
-<a name="line99"></a>    <span style="color: #000000; font-weight: bold;">const</span> REP_VERSION_DESC <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;jcr.repository.version&quot;</span><span style="color: #339933;">;</span>
-<a name="line100"></a>&nbsp;
-<a name="line101"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line102"></a>     * Key to a boolean descriptor. Returns TRUE
-<a name="line103"></a>     * if and only if repository content can be updated through the JCR API
-<a name="line104"></a>     * (as opposed to having read-only access).
-<a name="line105"></a>     * @api
-<a name="line106"></a>     */</span>
-<a name="line107"></a>    <span style="color: #000000; font-weight: bold;">const</span> WRITE_SUPPORTED <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;write.supported&quot;</span><span style="color: #339933;">;</span>
-<a name="line108"></a>&nbsp;
-<a name="line109"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line110"></a>     * Key to a String descriptor. Returns one of the following
-<a name="line111"></a>     * javax.jcr.Repository constants indicating the stability
-<a name="line112"></a>     * of identifiers:
-<a name="line113"></a>     *
-<a name="line114"></a>     * IDENTIFIER_STABILITY_METHOD_DURATION - Identifiers may change between method calls.
-<a name="line115"></a>     * IDENTIFIER_STABILITY_SAVE_DURATION - Identifers are guaranteed stable within a single save/refresh cycle.
-<a name="line116"></a>     * IDENTIFIER_STABILITY_SESSION_DURATION - Identifiers are guaranteed stable within a single session.
-<a name="line117"></a>     * IDENTIFIER_STABILITY_INDEFINITE_DURATION - Identifers are guaranteed to be stable forever.
-<a name="line118"></a>     * @api
-<a name="line119"></a>     */</span>
-<a name="line120"></a>    <span style="color: #000000; font-weight: bold;">const</span> IDENTIFIER_STABILITY <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;identifier.stability&quot;</span><span style="color: #339933;">;</span>
-<a name="line121"></a>&nbsp;
-<a name="line122"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line123"></a>     * One of four possible values for the descriptor IDENTIFIER_STABILITY.
-<a name="line124"></a>     * Indicates that identifiers may change between method calls.
-<a name="line125"></a>     * @api
-<a name="line126"></a>     */</span>
-<a name="line127"></a>    <span style="color: #000000; font-weight: bold;">const</span> IDENTIFIER_STABILITY_METHOD_DURATION <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;identifier.stability.method.duration&quot;</span><span style="color: #339933;">;</span>
-<a name="line128"></a>&nbsp;
-<a name="line129"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line130"></a>     * One of four possible values for the descriptor IDENTIFIER_STABILITY.
-<a name="line131"></a>     * Indicates that identifiers are guaranteed stable within a single save/refresh cycle.
-<a name="line132"></a>     * @api
-<a name="line133"></a>     */</span>
-<a name="line134"></a>    <span style="color: #000000; font-weight: bold;">const</span> IDENTIFIER_STABILITY_SAVE_DURATION <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;identifier.stability.save.duration&quot;</span><span style="color: #339933;">;</span>
-<a name="line135"></a>&nbsp;
-<a name="line136"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line137"></a>     * One of four possible values for the descriptor IDENTIFIER_STABILITY.
-<a name="line138"></a>     * Indicates that identifiers are guaranteed stable within a single session.
-<a name="line139"></a>     * @api
-<a name="line140"></a>     */</span>
-<a name="line141"></a>    <span style="color: #000000; font-weight: bold;">const</span> IDENTIFIER_STABILITY_SESSION_DURATION <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;identifier.stability.session.duration&quot;</span><span style="color: #339933;">;</span>
-<a name="line142"></a>&nbsp;
-<a name="line143"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line144"></a>     * One of four possible values for the descriptor IDENTIFIER_STABILITY.
-<a name="line145"></a>     * Indicates that identifiers are guaranteed to be stable forever.
-<a name="line146"></a>     * @api
-<a name="line147"></a>     */</span>
-<a name="line148"></a>    <span style="color: #000000; font-weight: bold;">const</span> IDENTIFIER_STABILITY_INDEFINITE_DURATION <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;identifier.stability.indefinite.duration&quot;</span><span style="color: #339933;">;</span>
-<a name="line149"></a>&nbsp;
-<a name="line150"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line151"></a>     * Key to a boolean descriptor. Returns TRUE
-<a name="line152"></a>     * if and only if XML export is supported.
-<a name="line153"></a>     * @api
-<a name="line154"></a>     */</span>
-<a name="line155"></a>    <span style="color: #000000; font-weight: bold;">const</span> OPTION_XML_EXPORT_SUPPORTED <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;option.xml.export.supported&quot;</span><span style="color: #339933;">;</span>
-<a name="line156"></a>&nbsp;
-<a name="line157"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line158"></a>     * Key to a boolean descriptor. Returns TRUE
-<a name="line159"></a>     * if and only if XML import is supported.
-<a name="line160"></a>     * @api
-<a name="line161"></a>     */</span>
-<a name="line162"></a>    <span style="color: #000000; font-weight: bold;">const</span> OPTION_XML_IMPORT_SUPPORTED <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;option.xml.import.supported&quot;</span><span style="color: #339933;">;</span>
-<a name="line163"></a>&nbsp;
-<a name="line164"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line165"></a>     * Key to a boolean descriptor. Returns TRUE
-<a name="line166"></a>     * if and only if unfiled content is supported.
-<a name="line167"></a>     * @api
-<a name="line168"></a>     */</span>
-<a name="line169"></a>    <span style="color: #000000; font-weight: bold;">const</span> OPTION_UNFILED_CONTENT_SUPPORTED <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;option.unfiled.content.supported&quot;</span><span style="color: #339933;">;</span>
-<a name="line170"></a>&nbsp;
-<a name="line171"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line172"></a>     * Key to a boolean descriptor. Returns TRUE
-<a name="line173"></a>     * if and only if full versioning is supported.
-<a name="line174"></a>     * @api
-<a name="line175"></a>     */</span>
-<a name="line176"></a>    <span style="color: #000000; font-weight: bold;">const</span> OPTION_VERSIONING_SUPPORTED <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;option.versioning.supported&quot;</span><span style="color: #339933;">;</span>
-<a name="line177"></a>&nbsp;
-<a name="line178"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line179"></a>     * Key to a boolean descriptor. Returns TRUE
-<a name="line180"></a>     * if and only if simple versioning is supported.
-<a name="line181"></a>     * @api
-<a name="line182"></a>     */</span>
-<a name="line183"></a>    <span style="color: #000000; font-weight: bold;">const</span> OPTION_SIMPLE_VERSIONING_SUPPORTED <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;option.simple.versioning.supported&quot;</span><span style="color: #339933;">;</span>
-<a name="line184"></a>&nbsp;
-<a name="line185"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line186"></a>     * Key to a boolean descriptor. Returns TRUE if and only if activities are
-<a name="line187"></a>     * supported.
-<a name="line188"></a>     * @api
-<a name="line189"></a>     */</span>
-<a name="line190"></a>    <span style="color: #000000; font-weight: bold;">const</span> OPTION_ACTIVITIES_SUPPORTED <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;option.activities.supported&quot;</span><span style="color: #339933;">;</span>
-<a name="line191"></a>&nbsp;
-<a name="line192"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line193"></a>     * Key to a boolean descriptor. Returns TRUE if and only if configurations
-<a name="line194"></a>     * and baselines are supported.
-<a name="line195"></a>     * @api
-<a name="line196"></a>     */</span>
-<a name="line197"></a>    <span style="color: #000000; font-weight: bold;">const</span> OPTION_BASELINES_SUPPORTED <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;option.baselines.supported&quot;</span><span style="color: #339933;">;</span>
-<a name="line198"></a>&nbsp;
-<a name="line199"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line200"></a>     * Key to a boolean descriptor. Returns TRUE
-<a name="line201"></a>     * if and only if access control is supported.
-<a name="line202"></a>     * @api
-<a name="line203"></a>     */</span>
-<a name="line204"></a>    <span style="color: #000000; font-weight: bold;">const</span> OPTION_ACCESS_CONTROL_SUPPORTED <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;option.access.control.supported&quot;</span><span style="color: #339933;">;</span>
-<a name="line205"></a>&nbsp;
-<a name="line206"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line207"></a>     * Key to a boolean descriptor. Returns TRUE
-<a name="line208"></a>     * if and only if locking is supported.
-<a name="line209"></a>     * @api
-<a name="line210"></a>     */</span>
-<a name="line211"></a>    <span style="color: #000000; font-weight: bold;">const</span> OPTION_LOCKING_SUPPORTED <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;option.locking.supported&quot;</span><span style="color: #339933;">;</span>
-<a name="line212"></a>&nbsp;
-<a name="line213"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line214"></a>     * Key to a boolean descriptor. Returns TRUE
-<a name="line215"></a>     * if and only if asynchronous observation is supported.
-<a name="line216"></a>     * @api
-<a name="line217"></a>     */</span>
-<a name="line218"></a>    <span style="color: #000000; font-weight: bold;">const</span> OPTION_OBSERVATION_SUPPORTED <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;option.observation.supported&quot;</span><span style="color: #339933;">;</span>
-<a name="line219"></a>&nbsp;
-<a name="line220"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line221"></a>     * Key to a boolean descriptor. Returns TRUE
-<a name="line222"></a>     * if and only if journaled observation is supported.
-<a name="line223"></a>     * @api
-<a name="line224"></a>     */</span>
-<a name="line225"></a>    <span style="color: #000000; font-weight: bold;">const</span> OPTION_JOURNALED_OBSERVATION_SUPPORTED <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;option.journaled.observation.supported&quot;</span><span style="color: #339933;">;</span>
-<a name="line226"></a>&nbsp;
-<a name="line227"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line228"></a>     * Key to a boolean descriptor. Returns TRUE
-<a name="line229"></a>     * if and only if retention and hold are supported.
-<a name="line230"></a>     * @api
-<a name="line231"></a>     */</span>
-<a name="line232"></a>    <span style="color: #000000; font-weight: bold;">const</span> OPTION_RETENTION_SUPPORTED <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;option.retention.supported&quot;</span><span style="color: #339933;">;</span>
-<a name="line233"></a>&nbsp;
-<a name="line234"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line235"></a>     * Key to a boolean descriptor. Returns TRUE
-<a name="line236"></a>     * if and only if lifecycles are supported.
-<a name="line237"></a>     * @api
-<a name="line238"></a>     */</span>
-<a name="line239"></a>    <span style="color: #000000; font-weight: bold;">const</span> OPTION_LIFECYCLE_SUPPORTED <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;option.lifecycle.supported&quot;</span><span style="color: #339933;">;</span>
-<a name="line240"></a>&nbsp;
-<a name="line241"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line242"></a>     * Key to a boolean descriptor. Returns TRUE
-<a name="line243"></a>     * if and only if transactions are supported.
-<a name="line244"></a>     * @api
-<a name="line245"></a>     */</span>
-<a name="line246"></a>    <span style="color: #000000; font-weight: bold;">const</span> OPTION_TRANSACTIONS_SUPPORTED <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;option.transactions.supported&quot;</span><span style="color: #339933;">;</span>
-<a name="line247"></a>&nbsp;
-<a name="line248"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line249"></a>     * Key to a boolean descriptor. Returns TRUE
-<a name="line250"></a>     * if and only if workspace management is supported.
-<a name="line251"></a>     * @api
-<a name="line252"></a>     */</span>
-<a name="line253"></a>    <span style="color: #000000; font-weight: bold;">const</span> OPTION_WORKSPACE_MANAGEMENT_SUPPORTED <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;option.workspace.management.supported&quot;</span><span style="color: #339933;">;</span>
-<a name="line254"></a>&nbsp;
-<a name="line255"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line256"></a>     * Key to a boolean descriptor. Returns TRUE
-<a name="line257"></a>     * if and only if the primary node type of an existing node can be updated.
-<a name="line258"></a>     * @api
-<a name="line259"></a>     */</span>
-<a name="line260"></a>    <span style="color: #000000; font-weight: bold;">const</span> OPTION_UPDATE_PRIMARY_NODETYPE_SUPPORTED <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;option.update.primary.nodetype.supported&quot;</span><span style="color: #339933;">;</span>
-<a name="line261"></a>&nbsp;
-<a name="line262"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line263"></a>     * Key to a boolean descriptor. Returns TRUE
-<a name="line264"></a>     * if and only if the mixin node types of an existing node can be added and removed.
-<a name="line265"></a>     * @api
-<a name="line266"></a>     */</span>
-<a name="line267"></a>    <span style="color: #000000; font-weight: bold;">const</span> OPTION_UPDATE_MIXIN_NODETYPES_SUPPORTED <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;option.update.mixin.nodetypes.supported&quot;</span><span style="color: #339933;">;</span>
-<a name="line268"></a>&nbsp;
-<a name="line269"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line270"></a>     * Key to a boolean descriptor. Returns TRUE
-<a name="line271"></a>     * if and only if the creation of shareable nodes is supported.
-<a name="line272"></a>     * @api
-<a name="line273"></a>     */</span>
-<a name="line274"></a>    <span style="color: #000000; font-weight: bold;">const</span> OPTION_SHAREABLE_NODES_SUPPORTED <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;option.shareable.nodes.supported&quot;</span><span style="color: #339933;">;</span>
-<a name="line275"></a>&nbsp;
-<a name="line276"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line277"></a>     * Key to a boolean descriptor. Returns TRUE
-<a name="line278"></a>     * if and only if node type management is supported.
-<a name="line279"></a>     * @api
-<a name="line280"></a>     */</span>
-<a name="line281"></a>    <span style="color: #000000; font-weight: bold;">const</span> OPTION_NODE_TYPE_MANAGEMENT_SUPPORTED <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;option.node.type.management.supported&quot;</span><span style="color: #339933;">;</span>
-<a name="line282"></a>&nbsp;
-<a name="line283"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line284"></a>     * Key to a boolean descriptor. Returns TRUE if and only if node and
-<a name="line285"></a>     * property with same name is supported.
-<a name="line286"></a>     * @api
-<a name="line287"></a>     */</span>
-<a name="line288"></a>    <span style="color: #000000; font-weight: bold;">const</span> OPTION_NODE_AND_PROPERTY_WITH_SAME_NAME_SUPPORTED <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;option.node.and.property.with.same.name.supported&quot;</span><span style="color: #339933;">;</span>
-<a name="line289"></a>&nbsp;
-<a name="line290"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line291"></a>     * Key to string descriptor. Returns one of the following
-<a name="line292"></a>     * javax.jcr.Repository constants indicating the level of
-<a name="line293"></a>     * support for node type inheritance:
-<a name="line294"></a>     *
-<a name="line295"></a>     * NODE_TYPE_MANAGEMENT_INHERITANCE_MINIMAL
-<a name="line296"></a>     *   Registration of primary node types is limited to those which have only
-<a name="line297"></a>     *   nt:base as supertype. Registration of mixin node types is limited to
-<a name="line298"></a>     *   those without any supertypes.
-<a name="line299"></a>     *
-<a name="line300"></a>     * NODE_TYPE_MANAGEMENT_INHERITANCE_SINGLE
-<a name="line301"></a>     *   Registration of primary node types is limited to those with exactly one
-<a name="line302"></a>     *   supertype. Registration of mixin node types is limited to those with at
-<a name="line303"></a>     *   most one supertype.
-<a name="line304"></a>     *
-<a name="line305"></a>     * NODE_TYPE_MANAGEMENT_INHERITANCE_MULTIPLE
-<a name="line306"></a>     *   Primary node types can be registered with one or more supertypes. Mixin node
-<a name="line307"></a>     *   types can be registered with zero or more supertypes.
-<a name="line308"></a>     * @api
-<a name="line309"></a>     */</span>
-<a name="line310"></a>    <span style="color: #000000; font-weight: bold;">const</span> NODE_TYPE_MANAGEMENT_INHERITANCE <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;node.type.management.inheritance&quot;</span><span style="color: #339933;">;</span>
-<a name="line311"></a>&nbsp;
-<a name="line312"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line313"></a>     * One of three possible values for the descriptor NODE_TYPE_MANAGEMENT_INHERITANCE.
-<a name="line314"></a>     * Indicates that registration of primary node types is limited to those which have only nt:base
-<a name="line315"></a>     * as supertype. Registration of mixin node types is limited to those without any supertypes.
-<a name="line316"></a>     * @api
-<a name="line317"></a>     */</span>
-<a name="line318"></a>    <span style="color: #000000; font-weight: bold;">const</span> NODE_TYPE_MANAGEMENT_INHERITANCE_MINIMAL <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;node.type.management.inheritance.minimal&quot;</span><span style="color: #339933;">;</span>
-<a name="line319"></a>&nbsp;
-<a name="line320"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line321"></a>     * One of three possible values for the descriptor NODE_TYPE_MANAGEMENT_INHERITANCE.
-<a name="line322"></a>     * Indicates that registration of primary node types is limited to those with exactly one supertype.
-<a name="line323"></a>     * Registration of mixin node types is limited to those with at most one supertype.
-<a name="line324"></a>     * @api
-<a name="line325"></a>     */</span>
-<a name="line326"></a>    <span style="color: #000000; font-weight: bold;">const</span> NODE_TYPE_MANAGEMENT_INHERITANCE_SINGLE <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;node.type.management.inheritance.single&quot;</span><span style="color: #339933;">;</span>
-<a name="line327"></a>&nbsp;
-<a name="line328"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line329"></a>     * One of three possible values for the descriptor NODE_TYPE_MANAGEMENT_INHERITANCE.
-<a name="line330"></a>     * Indicates that primary node types can be registered with one or more supertypes.
-<a name="line331"></a>     * Mixin node types can be registered with zero or more supertypes.
-<a name="line332"></a>     * @api
-<a name="line333"></a>     */</span>
-<a name="line334"></a>    <span style="color: #000000; font-weight: bold;">const</span> NODE_TYPE_MANAGEMENT_INHERITANCE_MULTIPLE <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;node.type.management.inheritance.multiple&quot;</span><span style="color: #339933;">;</span>
-<a name="line335"></a>&nbsp;
-<a name="line336"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line337"></a>     * Key to a boolean descriptor. Returns TRUE
-<a name="line338"></a>     * if and only if override of inherited property or child node definitions is supported.
-<a name="line339"></a>     * @api
-<a name="line340"></a>     */</span>
-<a name="line341"></a>    <span style="color: #000000; font-weight: bold;">const</span> NODE_TYPE_MANAGEMENT_OVERRIDES_SUPPORTED <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;node.type.management.overrides.supported&quot;</span><span style="color: #339933;">;</span>
-<a name="line342"></a>&nbsp;
-<a name="line343"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line344"></a>     * Key to a boolean descriptor. Returns TRUE
-<a name="line345"></a>     * if and only if primary items are supported.
-<a name="line346"></a>     * @api
-<a name="line347"></a>     */</span>
-<a name="line348"></a>    <span style="color: #000000; font-weight: bold;">const</span> NODE_TYPE_MANAGEMENT_PRIMARY_ITEM_NAME_SUPPORTED <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;node.type.management.primary.item.name.supported&quot;</span><span style="color: #339933;">;</span>
-<a name="line349"></a>&nbsp;
-<a name="line350"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line351"></a>     * Key to a boolean descriptor. Returns TRUE
-<a name="line352"></a>     * if and only if preservation of child node ordering is supported.
-<a name="line353"></a>     * @api
-<a name="line354"></a>     */</span>
-<a name="line355"></a>    <span style="color: #000000; font-weight: bold;">const</span> NODE_TYPE_MANAGEMENT_ORDERABLE_CHILD_NODES_SUPPORTED <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;node.type.management.orderable.child.nodes.supported&quot;</span><span style="color: #339933;">;</span>
-<a name="line356"></a>&nbsp;
-<a name="line357"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line358"></a>     * Key to a boolean descriptor. Returns TRUE
-<a name="line359"></a>     * if and only if residual property and child node definitions are supported.
-<a name="line360"></a>     * @api
-<a name="line361"></a>     */</span>
-<a name="line362"></a>    <span style="color: #000000; font-weight: bold;">const</span> NODE_TYPE_MANAGEMENT_RESIDUAL_DEFINITIONS_SUPPORTED <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;node.type.management.residual.definitions.supported&quot;</span><span style="color: #339933;">;</span>
-<a name="line363"></a>&nbsp;
-<a name="line364"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line365"></a>     * Key to a boolean descriptor. Returns TRUE
-<a name="line366"></a>     * if and only if autocreated properties and child nodes are supported.
-<a name="line367"></a>     * @api
-<a name="line368"></a>     */</span>
-<a name="line369"></a>    <span style="color: #000000; font-weight: bold;">const</span> NODE_TYPE_MANAGEMENT_AUTOCREATED_DEFINITIONS_SUPPORTED <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;node.type.management.autocreated.definitions.supported&quot;</span><span style="color: #339933;">;</span>
-<a name="line370"></a>&nbsp;
-<a name="line371"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line372"></a>     * Key to a boolean descriptor. Returns TRUE
-<a name="line373"></a>     * if and only if same-name sibling child nodes are supported.
-<a name="line374"></a>     * @api
-<a name="line375"></a>     */</span>
-<a name="line376"></a>    <span style="color: #000000; font-weight: bold;">const</span> NODE_TYPE_MANAGEMENT_SAME_NAME_SIBLINGS_SUPPORTED <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;node.type.management.same.name.siblings.supported&quot;</span><span style="color: #339933;">;</span>
-<a name="line377"></a>&nbsp;
-<a name="line378"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line379"></a>     * Key to an integer[] descriptor. Returns an array holding the
-<a name="line380"></a>     * javax.jcr.PropertyType constants for the property types
-<a name="line381"></a>     * (including UNDEFINED, if supported) that a registered node
-<a name="line382"></a>     * type can specify, or a zero-length array if registered node types cannot
-<a name="line383"></a>     * specify property definitions.
-<a name="line384"></a>     * @api
-<a name="line385"></a>     */</span>
-<a name="line386"></a>    <span style="color: #000000; font-weight: bold;">const</span> NODE_TYPE_MANAGEMENT_PROPERTY_TYPES <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;node.type.management.property.types&quot;</span><span style="color: #339933;">;</span>
-<a name="line387"></a>&nbsp;
-<a name="line388"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line389"></a>     * Key to a boolean descriptor. Returns TRUE
-<a name="line390"></a>     * if and only if multivalue properties are supported.
-<a name="line391"></a>     * @api
-<a name="line392"></a>     */</span>
-<a name="line393"></a>    <span style="color: #000000; font-weight: bold;">const</span> NODE_TYPE_MANAGEMENT_MULTIVALUED_PROPERTIES_SUPPORTED <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;node.type.management.multivalued.properties.supported&quot;</span><span style="color: #339933;">;</span>
-<a name="line394"></a>&nbsp;
-<a name="line395"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line396"></a>     * Key to a boolean descriptor. Returns TRUE
-<a name="line397"></a>     * if and only if registration of a node types with more than one BINARY
-<a name="line398"></a>     * property is permitted.
-<a name="line399"></a>     * @api
-<a name="line400"></a>     */</span>
-<a name="line401"></a>    <span style="color: #000000; font-weight: bold;">const</span> NODE_TYPE_MANAGEMENT_MULTIPLE_BINARY_PROPERTIES_SUPPORTED <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;node.type.management.multiple.binary.properties.supported&quot;</span><span style="color: #339933;">;</span>
-<a name="line402"></a>&nbsp;
-<a name="line403"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line404"></a>     * Key to a boolean descriptor. Returns TRUE
-<a name="line405"></a>     * if and only value-constraints are supported.
-<a name="line406"></a>     * @api
-<a name="line407"></a>     */</span>
-<a name="line408"></a>    <span style="color: #000000; font-weight: bold;">const</span> NODE_TYPE_MANAGEMENT_VALUE_CONSTRAINTS_SUPPORTED <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;node.type.management.value.constraints.supported&quot;</span><span style="color: #339933;">;</span>
-<a name="line409"></a>&nbsp;
-<a name="line410"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line411"></a>     * Key to a string[] descriptor. Returns an array holding the
-<a name="line412"></a>     * constants representing the supported query languages, or a zero-length
-<a name="line413"></a>     * if query is not supported.
-<a name="line414"></a>     * @api
-<a name="line415"></a>     */</span>
-<a name="line416"></a>    <span style="color: #000000; font-weight: bold;">const</span> QUERY_LANGUAGES <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;query.languages&quot;</span><span style="color: #339933;">;</span>
-<a name="line417"></a>&nbsp;
-<a name="line418"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line419"></a>     * Key to a boolean descriptor. Returns TRUE
-<a name="line420"></a>     * if and only if stored queries are supported.
-<a name="line421"></a>     * @api
-<a name="line422"></a>     */</span>
-<a name="line423"></a>    <span style="color: #000000; font-weight: bold;">const</span> QUERY_STORED_QUERIES_SUPPORTED <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;query.stored.queries.supported&quot;</span><span style="color: #339933;">;</span>
-<a name="line424"></a>&nbsp;
-<a name="line425"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line426"></a>     * Key to a boolean descriptor. Returns TRUE
-<a name="line427"></a>     * if and only if full-text search is supported.
-<a name="line428"></a>     * @api
-<a name="line429"></a>     */</span>
-<a name="line430"></a>    <span style="color: #000000; font-weight: bold;">const</span> QUERY_FULL_TEXT_SEARCH_SUPPORTED <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;query.full.text.search.supported&quot;</span><span style="color: #339933;">;</span>
-<a name="line431"></a>&nbsp;
-<a name="line432"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line433"></a>     * Key to String descriptor. Returns one of the following
-<a name="line434"></a>     * javax.jcr.Repository constants indicating the level of
-<a name="line435"></a>     * support for joins in queries:
-<a name="line436"></a>     *
-<a name="line437"></a>     * QUERY_JOINS_NONE - Joins are not supported. Queries are limited to a single selector.
-<a name="line438"></a>     * QUERY_JOINS_INNER - Inner joins are supported.
-<a name="line439"></a>     * QUERY_JOINS_INNER_OUTER - Inner and outer joins are supported.
-<a name="line440"></a>     * @api
-<a name="line441"></a>     */</span>
-<a name="line442"></a>    <span style="color: #000000; font-weight: bold;">const</span> QUERY_JOINS <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;query.joins&quot;</span><span style="color: #339933;">;</span>
-<a name="line443"></a>&nbsp;
-<a name="line444"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line445"></a>     * One of three possible values for the descriptor QUERY_JOINS .
-<a name="line446"></a>     * Indicates that joins are not supported. Queries are limited to a single selector.
-<a name="line447"></a>     * @api
-<a name="line448"></a>     */</span>
-<a name="line449"></a>    <span style="color: #000000; font-weight: bold;">const</span> QUERY_JOINS_NONE <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;query.joins.none&quot;</span><span style="color: #339933;">;</span>
-<a name="line450"></a>&nbsp;
-<a name="line451"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line452"></a>     * One of three possible values for the descriptor QUERY_JOINS .
-<a name="line453"></a>     * Indicates that inner joins are supported.
-<a name="line454"></a>     * @api
-<a name="line455"></a>     */</span>
-<a name="line456"></a>    <span style="color: #000000; font-weight: bold;">const</span> QUERY_JOINS_INNER <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;query.joins.inner&quot;</span><span style="color: #339933;">;</span>
-<a name="line457"></a>&nbsp;
-<a name="line458"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line459"></a>     * One of three possible values for the descriptor QUERY_JOINS .
-<a name="line460"></a>     * Indicates that inner and outer joins are supported.
-<a name="line461"></a>     * @api
-<a name="line462"></a>     */</span>
-<a name="line463"></a>    <span style="color: #000000; font-weight: bold;">const</span> QUERY_JOINS_INNER_OUTER <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;query.joins.inner.outer&quot;</span><span style="color: #339933;">;</span>
-<a name="line464"></a>&nbsp;
-<a name="line465"></a>    <span style="color: #009933; font-style: italic;">/**#@-*/</span>
-<a name="line466"></a>&nbsp;
-<a name="line467"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line468"></a>     * Authenticates the user using the supplied credentials.
-<a name="line469"></a>     *
-<a name="line470"></a>     * If workspaceName is recognized as the name of an existing workspace in the repository and authorization
-<a name="line471"></a>     * to access that workspace is granted, then a new Session object is returned. The format of the string
-<a name="line472"></a>     * workspaceName depends upon the implementation. If credentials is null, it is assumed that authentication
-<a name="line473"></a>     * is handled by a mechanism external to the repository itself and that the repository implementation exists
-<a name="line474"></a>     * within a context (for example, an application server) that allows it to handle authorization of the request
-<a name="line475"></a>     * for access to the specified workspace.
-<a name="line476"></a>     *
-<a name="line477"></a>     * If workspaceName is null, a default workspace is automatically selected by the repository
-<a name="line478"></a>     * implementation. This may, for example, be the &quot;home workspace&quot; of the user whose credentials
-<a name="line479"></a>     * were passed, though this is entirely up to the configuration and implementation of the
-<a name="line480"></a>     * repository. Alternatively, it may be a &quot;null workspace&quot; that serves only to provide the
-<a name="line481"></a>     * method Workspace.getAccessibleWorkspaceNames(), allowing the client to select from among
-<a name="line482"></a>     * available &quot;real&quot; workspaces.
-<a name="line483"></a>     *
-<a name="line484"></a>     * &lt;b&gt;Note:&lt;/b&gt; The Java API defines this method with multiple differing signatures.
-<a name="line485"></a>     *
-<a name="line486"></a>     * @param \PHPCR\CredentialsInterface $credentials The credentials of the user
-<a name="line487"></a>     * @param string $workspaceName the name of a workspace
-<a name="line488"></a>     * @return \PHPCR\SessionInterface a valid session for the user to access the repository
-<a name="line489"></a>     *
-<a name="line490"></a>     * @throws \PHPCR\LoginException if authentication or authorization (for the specified workspace) fails
-<a name="line491"></a>     * @throws \PHPCR\NoSuchWorkspacexception if the specified workspaceName is not recognized
-<a name="line492"></a>     * @throws \PHPCR\RepositoryException if another error occurs
-<a name="line493"></a>     * @api
-<a name="line494"></a>     */</span>
-<a name="line495"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> login<span style="color: #009900;">&#40;</span><span style="color: #000088;">$credentials</span> <span style="color: #339933;">=</span> <span style="color: #009900; font-weight: bold;">NULL</span><span style="color: #339933;">,</span> <span style="color: #000088;">$workspaceName</span> <span style="color: #339933;">=</span> <span style="color: #009900; font-weight: bold;">NULL</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line496"></a>&nbsp;
-<a name="line497"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line498"></a>     * Returns a string array holding all descriptor keys available for this implementation.
-<a name="line499"></a>     *
-<a name="line500"></a>     * Both, the standard descriptors defined by the string constants in this interface and any
-<a name="line501"></a>     * implementation-specific descriptors. Used in conjunction with getDescriptor($key) to query information about
-<a name="line502"></a>     * this repository implementation.
-<a name="line503"></a>     *
-<a name="line504"></a>     * @return array a string array holding all descriptor keys
-<a name="line505"></a>     * @api
-<a name="line506"></a>     */</span>
-<a name="line507"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getDescriptorKeys<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line508"></a>&nbsp;
-<a name="line509"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line510"></a>     * Determines if the given identifier is a standard descriptor.
-<a name="line511"></a>     *
-<a name="line512"></a>     * Returns TRUE if $key is a standard descriptor defined by the string constants in this interface and
-<a name="line513"></a>     * FALSE if it is either a valid implementation-specific key or not a valid key.
-<a name="line514"></a>     *
-<a name="line515"></a>     * @param string $key a descriptor key.
-<a name="line516"></a>     * @return boolan whether $key is a standard descriptor.
-<a name="line517"></a>     * @api
-<a name="line518"></a>     */</span>
-<a name="line519"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> isStandardDescriptor<span style="color: #009900;">&#40;</span><span style="color: #000088;">$key</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line520"></a>&nbsp;
-<a name="line521"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line522"></a>     * Get the string value(s) for this key.
-<a name="line523"></a>     *
-<a name="line524"></a>     * @param string $key a descriptor key.
-<a name="line525"></a>     * @return a descriptor value in string form or an array of strings for multivalue descriptors
-<a name="line526"></a>     * @api
-<a name="line527"></a>     */</span>
-<a name="line528"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getDescriptor<span style="color: #009900;">&#40;</span><span style="color: #000088;">$key</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line529"></a>&nbsp;
-<a name="line530"></a><span style="color: #009900;">&#125;</span>
-<a name="line531"></a>&nbsp;</pre>
+<a name="line32"></a><span style="color: #000000; font-weight: bold;">namespace</span> PHPCR<span style="color: #339933;">;</span>
+<a name="line33"></a>&nbsp;
+<a name="line34"></a><span style="color: #009933; font-style: italic;">/**
+<a name="line35"></a> * The entry point into the content repository.
+<a name="line36"></a> *
+<a name="line37"></a> * The Repository object is usually acquired through the RepositoryFactory.
+<a name="line38"></a> *
+<a name="line39"></a> * &lt;b&gt;PHPCR Note:&lt;/b&gt; This interface has been simplified:
+<a name="line40"></a> *  - getDescriptor returns array on multivalue, single variable otherwise
+<a name="line41"></a> *  - removed isSingleValueDescriptor
+<a name="line42"></a> *  -removed getDescriptorValue and getDescriptorValues as ValueInterface has been dropped.
+<a name="line43"></a> *   Use getDescriptor to get the variables.
+<a name="line44"></a> *
+<a name="line45"></a> * @package phpcr
+<a name="line46"></a> * @subpackage interfaces
+<a name="line47"></a> * @api
+<a name="line48"></a> */</span>
+<a name="line49"></a><span style="color: #000000; font-weight: bold;">interface</span> RepositoryInterface <span style="color: #009900;">&#123;</span>
+<a name="line50"></a>&nbsp;
+<a name="line51"></a>    <span style="color: #009933; font-style: italic;">/**#@+
+<a name="line52"></a>     * @var string
+<a name="line53"></a>     */</span>
+<a name="line54"></a>&nbsp;
+<a name="line55"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line56"></a>     * The descriptor key for the version of the specification
+<a name="line57"></a>     * that this repository implements. For JCR 2.0
+<a name="line58"></a>     * the value of this descriptor is the string &quot;2.0&quot;.
+<a name="line59"></a>     * @api
+<a name="line60"></a>     */</span>
+<a name="line61"></a>    <span style="color: #000000; font-weight: bold;">const</span> SPEC_VERSION_DESC <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;jcr.specification.version&quot;</span><span style="color: #339933;">;</span>
+<a name="line62"></a>&nbsp;
+<a name="line63"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line64"></a>     * The descriptor key for the name of the specification
+<a name="line65"></a>     * that this repository implements. For JCR 2.0
+<a name="line66"></a>     * the value of this descriptor is the string &quot;Content Repository for
+<a name="line67"></a>     * Java Technology API&quot;.
+<a name="line68"></a>     * @api
+<a name="line69"></a>     */</span>
+<a name="line70"></a>    <span style="color: #000000; font-weight: bold;">const</span> SPEC_NAME_DESC <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;jcr.specification.name&quot;</span><span style="color: #339933;">;</span>
+<a name="line71"></a>&nbsp;
+<a name="line72"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line73"></a>     * The descriptor key for the name of the repository vendor.
+<a name="line74"></a>     * The descriptor returned for this key is a String.
+<a name="line75"></a>     * @api
+<a name="line76"></a>     */</span>
+<a name="line77"></a>    <span style="color: #000000; font-weight: bold;">const</span> REP_VENDOR_DESC <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;jcr.repository.vendor&quot;</span><span style="color: #339933;">;</span>
+<a name="line78"></a>&nbsp;
+<a name="line79"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line80"></a>     * The descriptor key for the URL of the repository vendor.
+<a name="line81"></a>     * The descriptor returned for this key is a String.
+<a name="line82"></a>     * @api
+<a name="line83"></a>     */</span>
+<a name="line84"></a>    <span style="color: #000000; font-weight: bold;">const</span> REP_VENDOR_URL_DESC <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;jcr.repository.vendor.url&quot;</span><span style="color: #339933;">;</span>
+<a name="line85"></a>&nbsp;
+<a name="line86"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line87"></a>     * The descriptor key for the name of this repository implementation.
+<a name="line88"></a>     * The descriptor returned for this key is a String.
+<a name="line89"></a>     * @api
+<a name="line90"></a>     */</span>
+<a name="line91"></a>    <span style="color: #000000; font-weight: bold;">const</span> REP_NAME_DESC <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;jcr.repository.name&quot;</span><span style="color: #339933;">;</span>
+<a name="line92"></a>&nbsp;
+<a name="line93"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line94"></a>     * The descriptor key for the version of this repository implementation.
+<a name="line95"></a>     * The descriptor returned for this key is a String.
+<a name="line96"></a>     * @api
+<a name="line97"></a>     */</span>
+<a name="line98"></a>    <span style="color: #000000; font-weight: bold;">const</span> REP_VERSION_DESC <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;jcr.repository.version&quot;</span><span style="color: #339933;">;</span>
+<a name="line99"></a>&nbsp;
+<a name="line100"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line101"></a>     * Key to a boolean descriptor. Returns true
+<a name="line102"></a>     * if and only if repository content can be updated through the JCR API
+<a name="line103"></a>     * (as opposed to having read-only access).
+<a name="line104"></a>     * @api
+<a name="line105"></a>     */</span>
+<a name="line106"></a>    <span style="color: #000000; font-weight: bold;">const</span> WRITE_SUPPORTED <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;write.supported&quot;</span><span style="color: #339933;">;</span>
+<a name="line107"></a>&nbsp;
+<a name="line108"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line109"></a>     * Key to a String descriptor. Returns one of the following
+<a name="line110"></a>     * javax.jcr.Repository constants indicating the stability
+<a name="line111"></a>     * of identifiers:
+<a name="line112"></a>     *
+<a name="line113"></a>     * IDENTIFIER_STABILITY_METHOD_DURATION - Identifiers may change between method calls.
+<a name="line114"></a>     * IDENTIFIER_STABILITY_SAVE_DURATION - Identifers are guaranteed stable within a single save/refresh cycle.
+<a name="line115"></a>     * IDENTIFIER_STABILITY_SESSION_DURATION - Identifiers are guaranteed stable within a single session.
+<a name="line116"></a>     * IDENTIFIER_STABILITY_INDEFINITE_DURATION - Identifers are guaranteed to be stable forever.
+<a name="line117"></a>     * @api
+<a name="line118"></a>     */</span>
+<a name="line119"></a>    <span style="color: #000000; font-weight: bold;">const</span> IDENTIFIER_STABILITY <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;identifier.stability&quot;</span><span style="color: #339933;">;</span>
+<a name="line120"></a>&nbsp;
+<a name="line121"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line122"></a>     * One of four possible values for the descriptor IDENTIFIER_STABILITY.
+<a name="line123"></a>     * Indicates that identifiers may change between method calls.
+<a name="line124"></a>     * @api
+<a name="line125"></a>     */</span>
+<a name="line126"></a>    <span style="color: #000000; font-weight: bold;">const</span> IDENTIFIER_STABILITY_METHOD_DURATION <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;identifier.stability.method.duration&quot;</span><span style="color: #339933;">;</span>
+<a name="line127"></a>&nbsp;
+<a name="line128"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line129"></a>     * One of four possible values for the descriptor IDENTIFIER_STABILITY.
+<a name="line130"></a>     * Indicates that identifiers are guaranteed stable within a single save/refresh cycle.
+<a name="line131"></a>     * @api
+<a name="line132"></a>     */</span>
+<a name="line133"></a>    <span style="color: #000000; font-weight: bold;">const</span> IDENTIFIER_STABILITY_SAVE_DURATION <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;identifier.stability.save.duration&quot;</span><span style="color: #339933;">;</span>
+<a name="line134"></a>&nbsp;
+<a name="line135"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line136"></a>     * One of four possible values for the descriptor IDENTIFIER_STABILITY.
+<a name="line137"></a>     * Indicates that identifiers are guaranteed stable within a single session.
+<a name="line138"></a>     * @api
+<a name="line139"></a>     */</span>
+<a name="line140"></a>    <span style="color: #000000; font-weight: bold;">const</span> IDENTIFIER_STABILITY_SESSION_DURATION <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;identifier.stability.session.duration&quot;</span><span style="color: #339933;">;</span>
+<a name="line141"></a>&nbsp;
+<a name="line142"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line143"></a>     * One of four possible values for the descriptor IDENTIFIER_STABILITY.
+<a name="line144"></a>     * Indicates that identifiers are guaranteed to be stable forever.
+<a name="line145"></a>     * @api
+<a name="line146"></a>     */</span>
+<a name="line147"></a>    <span style="color: #000000; font-weight: bold;">const</span> IDENTIFIER_STABILITY_INDEFINITE_DURATION <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;identifier.stability.indefinite.duration&quot;</span><span style="color: #339933;">;</span>
+<a name="line148"></a>&nbsp;
+<a name="line149"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line150"></a>     * Key to a boolean descriptor. Returns true
+<a name="line151"></a>     * if and only if XML export is supported.
+<a name="line152"></a>     * @api
+<a name="line153"></a>     */</span>
+<a name="line154"></a>    <span style="color: #000000; font-weight: bold;">const</span> OPTION_XML_EXPORT_SUPPORTED <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;option.xml.export.supported&quot;</span><span style="color: #339933;">;</span>
+<a name="line155"></a>&nbsp;
+<a name="line156"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line157"></a>     * Key to a boolean descriptor. Returns true
+<a name="line158"></a>     * if and only if XML import is supported.
+<a name="line159"></a>     * @api
+<a name="line160"></a>     */</span>
+<a name="line161"></a>    <span style="color: #000000; font-weight: bold;">const</span> OPTION_XML_IMPORT_SUPPORTED <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;option.xml.import.supported&quot;</span><span style="color: #339933;">;</span>
+<a name="line162"></a>&nbsp;
+<a name="line163"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line164"></a>     * Key to a boolean descriptor. Returns true
+<a name="line165"></a>     * if and only if unfiled content is supported.
+<a name="line166"></a>     * @api
+<a name="line167"></a>     */</span>
+<a name="line168"></a>    <span style="color: #000000; font-weight: bold;">const</span> OPTION_UNFILED_CONTENT_SUPPORTED <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;option.unfiled.content.supported&quot;</span><span style="color: #339933;">;</span>
+<a name="line169"></a>&nbsp;
+<a name="line170"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line171"></a>     * Key to a boolean descriptor. Returns true
+<a name="line172"></a>     * if and only if full versioning is supported.
+<a name="line173"></a>     * @api
+<a name="line174"></a>     */</span>
+<a name="line175"></a>    <span style="color: #000000; font-weight: bold;">const</span> OPTION_VERSIONING_SUPPORTED <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;option.versioning.supported&quot;</span><span style="color: #339933;">;</span>
+<a name="line176"></a>&nbsp;
+<a name="line177"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line178"></a>     * Key to a boolean descriptor. Returns true
+<a name="line179"></a>     * if and only if simple versioning is supported.
+<a name="line180"></a>     * @api
+<a name="line181"></a>     */</span>
+<a name="line182"></a>    <span style="color: #000000; font-weight: bold;">const</span> OPTION_SIMPLE_VERSIONING_SUPPORTED <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;option.simple.versioning.supported&quot;</span><span style="color: #339933;">;</span>
+<a name="line183"></a>&nbsp;
+<a name="line184"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line185"></a>     * Key to a boolean descriptor. Returns true if and only if activities are
+<a name="line186"></a>     * supported.
+<a name="line187"></a>     * @api
+<a name="line188"></a>     */</span>
+<a name="line189"></a>    <span style="color: #000000; font-weight: bold;">const</span> OPTION_ACTIVITIES_SUPPORTED <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;option.activities.supported&quot;</span><span style="color: #339933;">;</span>
+<a name="line190"></a>&nbsp;
+<a name="line191"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line192"></a>     * Key to a boolean descriptor. Returns true if and only if configurations
+<a name="line193"></a>     * and baselines are supported.
+<a name="line194"></a>     * @api
+<a name="line195"></a>     */</span>
+<a name="line196"></a>    <span style="color: #000000; font-weight: bold;">const</span> OPTION_BASELINES_SUPPORTED <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;option.baselines.supported&quot;</span><span style="color: #339933;">;</span>
+<a name="line197"></a>&nbsp;
+<a name="line198"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line199"></a>     * Key to a boolean descriptor. Returns true
+<a name="line200"></a>     * if and only if access control is supported.
+<a name="line201"></a>     * @api
+<a name="line202"></a>     */</span>
+<a name="line203"></a>    <span style="color: #000000; font-weight: bold;">const</span> OPTION_ACCESS_CONTROL_SUPPORTED <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;option.access.control.supported&quot;</span><span style="color: #339933;">;</span>
+<a name="line204"></a>&nbsp;
+<a name="line205"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line206"></a>     * Key to a boolean descriptor. Returns true
+<a name="line207"></a>     * if and only if locking is supported.
+<a name="line208"></a>     * @api
+<a name="line209"></a>     */</span>
+<a name="line210"></a>    <span style="color: #000000; font-weight: bold;">const</span> OPTION_LOCKING_SUPPORTED <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;option.locking.supported&quot;</span><span style="color: #339933;">;</span>
+<a name="line211"></a>&nbsp;
+<a name="line212"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line213"></a>     * Key to a boolean descriptor. Returns true
+<a name="line214"></a>     * if and only if asynchronous observation is supported.
+<a name="line215"></a>     * @api
+<a name="line216"></a>     */</span>
+<a name="line217"></a>    <span style="color: #000000; font-weight: bold;">const</span> OPTION_OBSERVATION_SUPPORTED <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;option.observation.supported&quot;</span><span style="color: #339933;">;</span>
+<a name="line218"></a>&nbsp;
+<a name="line219"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line220"></a>     * Key to a boolean descriptor. Returns true
+<a name="line221"></a>     * if and only if journaled observation is supported.
+<a name="line222"></a>     * @api
+<a name="line223"></a>     */</span>
+<a name="line224"></a>    <span style="color: #000000; font-weight: bold;">const</span> OPTION_JOURNALED_OBSERVATION_SUPPORTED <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;option.journaled.observation.supported&quot;</span><span style="color: #339933;">;</span>
+<a name="line225"></a>&nbsp;
+<a name="line226"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line227"></a>     * Key to a boolean descriptor. Returns true
+<a name="line228"></a>     * if and only if retention and hold are supported.
+<a name="line229"></a>     * @api
+<a name="line230"></a>     */</span>
+<a name="line231"></a>    <span style="color: #000000; font-weight: bold;">const</span> OPTION_RETENTION_SUPPORTED <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;option.retention.supported&quot;</span><span style="color: #339933;">;</span>
+<a name="line232"></a>&nbsp;
+<a name="line233"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line234"></a>     * Key to a boolean descriptor. Returns true
+<a name="line235"></a>     * if and only if lifecycles are supported.
+<a name="line236"></a>     * @api
+<a name="line237"></a>     */</span>
+<a name="line238"></a>    <span style="color: #000000; font-weight: bold;">const</span> OPTION_LIFECYCLE_SUPPORTED <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;option.lifecycle.supported&quot;</span><span style="color: #339933;">;</span>
+<a name="line239"></a>&nbsp;
+<a name="line240"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line241"></a>     * Key to a boolean descriptor. Returns true
+<a name="line242"></a>     * if and only if transactions are supported.
+<a name="line243"></a>     * @api
+<a name="line244"></a>     */</span>
+<a name="line245"></a>    <span style="color: #000000; font-weight: bold;">const</span> OPTION_TRANSACTIONS_SUPPORTED <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;option.transactions.supported&quot;</span><span style="color: #339933;">;</span>
+<a name="line246"></a>&nbsp;
+<a name="line247"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line248"></a>     * Key to a boolean descriptor. Returns true
+<a name="line249"></a>     * if and only if workspace management is supported.
+<a name="line250"></a>     * @api
+<a name="line251"></a>     */</span>
+<a name="line252"></a>    <span style="color: #000000; font-weight: bold;">const</span> OPTION_WORKSPACE_MANAGEMENT_SUPPORTED <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;option.workspace.management.supported&quot;</span><span style="color: #339933;">;</span>
+<a name="line253"></a>&nbsp;
+<a name="line254"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line255"></a>     * Key to a boolean descriptor. Returns true
+<a name="line256"></a>     * if and only if the primary node type of an existing node can be updated.
+<a name="line257"></a>     * @api
+<a name="line258"></a>     */</span>
+<a name="line259"></a>    <span style="color: #000000; font-weight: bold;">const</span> OPTION_UPDATE_PRIMARY_NODETYPE_SUPPORTED <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;option.update.primary.nodetype.supported&quot;</span><span style="color: #339933;">;</span>
+<a name="line260"></a>&nbsp;
+<a name="line261"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line262"></a>     * Key to a boolean descriptor. Returns true
+<a name="line263"></a>     * if and only if the mixin node types of an existing node can be added and removed.
+<a name="line264"></a>     * @api
+<a name="line265"></a>     */</span>
+<a name="line266"></a>    <span style="color: #000000; font-weight: bold;">const</span> OPTION_UPDATE_MIXIN_NODETYPES_SUPPORTED <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;option.update.mixin.nodetypes.supported&quot;</span><span style="color: #339933;">;</span>
+<a name="line267"></a>&nbsp;
+<a name="line268"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line269"></a>     * Key to a boolean descriptor. Returns true
+<a name="line270"></a>     * if and only if the creation of shareable nodes is supported.
+<a name="line271"></a>     * @api
+<a name="line272"></a>     */</span>
+<a name="line273"></a>    <span style="color: #000000; font-weight: bold;">const</span> OPTION_SHAREABLE_NODES_SUPPORTED <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;option.shareable.nodes.supported&quot;</span><span style="color: #339933;">;</span>
+<a name="line274"></a>&nbsp;
+<a name="line275"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line276"></a>     * Key to a boolean descriptor. Returns true
+<a name="line277"></a>     * if and only if node type management is supported.
+<a name="line278"></a>     * @api
+<a name="line279"></a>     */</span>
+<a name="line280"></a>    <span style="color: #000000; font-weight: bold;">const</span> OPTION_NODE_TYPE_MANAGEMENT_SUPPORTED <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;option.node.type.management.supported&quot;</span><span style="color: #339933;">;</span>
+<a name="line281"></a>&nbsp;
+<a name="line282"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line283"></a>     * Key to a boolean descriptor. Returns true if and only if node and
+<a name="line284"></a>     * property with same name is supported.
+<a name="line285"></a>     * @api
+<a name="line286"></a>     */</span>
+<a name="line287"></a>    <span style="color: #000000; font-weight: bold;">const</span> OPTION_NODE_AND_PROPERTY_WITH_SAME_NAME_SUPPORTED <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;option.node.and.property.with.same.name.supported&quot;</span><span style="color: #339933;">;</span>
+<a name="line288"></a>&nbsp;
+<a name="line289"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line290"></a>     * Key to string descriptor. Returns one of the following
+<a name="line291"></a>     * javax.jcr.Repository constants indicating the level of
+<a name="line292"></a>     * support for node type inheritance:
+<a name="line293"></a>     *
+<a name="line294"></a>     * NODE_TYPE_MANAGEMENT_INHERITANCE_MINIMAL
+<a name="line295"></a>     *   Registration of primary node types is limited to those which have only
+<a name="line296"></a>     *   nt:base as supertype. Registration of mixin node types is limited to
+<a name="line297"></a>     *   those without any supertypes.
+<a name="line298"></a>     *
+<a name="line299"></a>     * NODE_TYPE_MANAGEMENT_INHERITANCE_SINGLE
+<a name="line300"></a>     *   Registration of primary node types is limited to those with exactly one
+<a name="line301"></a>     *   supertype. Registration of mixin node types is limited to those with at
+<a name="line302"></a>     *   most one supertype.
+<a name="line303"></a>     *
+<a name="line304"></a>     * NODE_TYPE_MANAGEMENT_INHERITANCE_MULTIPLE
+<a name="line305"></a>     *   Primary node types can be registered with one or more supertypes. Mixin node
+<a name="line306"></a>     *   types can be registered with zero or more supertypes.
+<a name="line307"></a>     * @api
+<a name="line308"></a>     */</span>
+<a name="line309"></a>    <span style="color: #000000; font-weight: bold;">const</span> NODE_TYPE_MANAGEMENT_INHERITANCE <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;node.type.management.inheritance&quot;</span><span style="color: #339933;">;</span>
+<a name="line310"></a>&nbsp;
+<a name="line311"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line312"></a>     * One of three possible values for the descriptor NODE_TYPE_MANAGEMENT_INHERITANCE.
+<a name="line313"></a>     * Indicates that registration of primary node types is limited to those which have only nt:base
+<a name="line314"></a>     * as supertype. Registration of mixin node types is limited to those without any supertypes.
+<a name="line315"></a>     * @api
+<a name="line316"></a>     */</span>
+<a name="line317"></a>    <span style="color: #000000; font-weight: bold;">const</span> NODE_TYPE_MANAGEMENT_INHERITANCE_MINIMAL <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;node.type.management.inheritance.minimal&quot;</span><span style="color: #339933;">;</span>
+<a name="line318"></a>&nbsp;
+<a name="line319"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line320"></a>     * One of three possible values for the descriptor NODE_TYPE_MANAGEMENT_INHERITANCE.
+<a name="line321"></a>     * Indicates that registration of primary node types is limited to those with exactly one supertype.
+<a name="line322"></a>     * Registration of mixin node types is limited to those with at most one supertype.
+<a name="line323"></a>     * @api
+<a name="line324"></a>     */</span>
+<a name="line325"></a>    <span style="color: #000000; font-weight: bold;">const</span> NODE_TYPE_MANAGEMENT_INHERITANCE_SINGLE <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;node.type.management.inheritance.single&quot;</span><span style="color: #339933;">;</span>
+<a name="line326"></a>&nbsp;
+<a name="line327"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line328"></a>     * One of three possible values for the descriptor NODE_TYPE_MANAGEMENT_INHERITANCE.
+<a name="line329"></a>     * Indicates that primary node types can be registered with one or more supertypes.
+<a name="line330"></a>     * Mixin node types can be registered with zero or more supertypes.
+<a name="line331"></a>     * @api
+<a name="line332"></a>     */</span>
+<a name="line333"></a>    <span style="color: #000000; font-weight: bold;">const</span> NODE_TYPE_MANAGEMENT_INHERITANCE_MULTIPLE <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;node.type.management.inheritance.multiple&quot;</span><span style="color: #339933;">;</span>
+<a name="line334"></a>&nbsp;
+<a name="line335"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line336"></a>     * Key to a boolean descriptor. Returns true
+<a name="line337"></a>     * if and only if override of inherited property or child node definitions is supported.
+<a name="line338"></a>     * @api
+<a name="line339"></a>     */</span>
+<a name="line340"></a>    <span style="color: #000000; font-weight: bold;">const</span> NODE_TYPE_MANAGEMENT_OVERRIDES_SUPPORTED <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;node.type.management.overrides.supported&quot;</span><span style="color: #339933;">;</span>
+<a name="line341"></a>&nbsp;
+<a name="line342"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line343"></a>     * Key to a boolean descriptor. Returns true
+<a name="line344"></a>     * if and only if primary items are supported.
+<a name="line345"></a>     * @api
+<a name="line346"></a>     */</span>
+<a name="line347"></a>    <span style="color: #000000; font-weight: bold;">const</span> NODE_TYPE_MANAGEMENT_PRIMARY_ITEM_NAME_SUPPORTED <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;node.type.management.primary.item.name.supported&quot;</span><span style="color: #339933;">;</span>
+<a name="line348"></a>&nbsp;
+<a name="line349"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line350"></a>     * Key to a boolean descriptor. Returns true
+<a name="line351"></a>     * if and only if preservation of child node ordering is supported.
+<a name="line352"></a>     * @api
+<a name="line353"></a>     */</span>
+<a name="line354"></a>    <span style="color: #000000; font-weight: bold;">const</span> NODE_TYPE_MANAGEMENT_ORDERABLE_CHILD_NODES_SUPPORTED <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;node.type.management.orderable.child.nodes.supported&quot;</span><span style="color: #339933;">;</span>
+<a name="line355"></a>&nbsp;
+<a name="line356"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line357"></a>     * Key to a boolean descriptor. Returns true
+<a name="line358"></a>     * if and only if residual property and child node definitions are supported.
+<a name="line359"></a>     * @api
+<a name="line360"></a>     */</span>
+<a name="line361"></a>    <span style="color: #000000; font-weight: bold;">const</span> NODE_TYPE_MANAGEMENT_RESIDUAL_DEFINITIONS_SUPPORTED <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;node.type.management.residual.definitions.supported&quot;</span><span style="color: #339933;">;</span>
+<a name="line362"></a>&nbsp;
+<a name="line363"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line364"></a>     * Key to a boolean descriptor. Returns true
+<a name="line365"></a>     * if and only if autocreated properties and child nodes are supported.
+<a name="line366"></a>     * @api
+<a name="line367"></a>     */</span>
+<a name="line368"></a>    <span style="color: #000000; font-weight: bold;">const</span> NODE_TYPE_MANAGEMENT_AUTOCREATED_DEFINITIONS_SUPPORTED <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;node.type.management.autocreated.definitions.supported&quot;</span><span style="color: #339933;">;</span>
+<a name="line369"></a>&nbsp;
+<a name="line370"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line371"></a>     * Key to a boolean descriptor. Returns true
+<a name="line372"></a>     * if and only if same-name sibling child nodes are supported.
+<a name="line373"></a>     * @api
+<a name="line374"></a>     */</span>
+<a name="line375"></a>    <span style="color: #000000; font-weight: bold;">const</span> NODE_TYPE_MANAGEMENT_SAME_NAME_SIBLINGS_SUPPORTED <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;node.type.management.same.name.siblings.supported&quot;</span><span style="color: #339933;">;</span>
+<a name="line376"></a>&nbsp;
+<a name="line377"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line378"></a>     * Key to an integer[] descriptor. Returns an array holding the
+<a name="line379"></a>     * javax.jcr.PropertyType constants for the property types
+<a name="line380"></a>     * (including UNDEFINED, if supported) that a registered node
+<a name="line381"></a>     * type can specify, or a zero-length array if registered node types cannot
+<a name="line382"></a>     * specify property definitions.
+<a name="line383"></a>     * @api
+<a name="line384"></a>     */</span>
+<a name="line385"></a>    <span style="color: #000000; font-weight: bold;">const</span> NODE_TYPE_MANAGEMENT_PROPERTY_TYPES <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;node.type.management.property.types&quot;</span><span style="color: #339933;">;</span>
+<a name="line386"></a>&nbsp;
+<a name="line387"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line388"></a>     * Key to a boolean descriptor. Returns true
+<a name="line389"></a>     * if and only if multivalue properties are supported.
+<a name="line390"></a>     * @api
+<a name="line391"></a>     */</span>
+<a name="line392"></a>    <span style="color: #000000; font-weight: bold;">const</span> NODE_TYPE_MANAGEMENT_MULTIVALUED_PROPERTIES_SUPPORTED <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;node.type.management.multivalued.properties.supported&quot;</span><span style="color: #339933;">;</span>
+<a name="line393"></a>&nbsp;
+<a name="line394"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line395"></a>     * Key to a boolean descriptor. Returns true
+<a name="line396"></a>     * if and only if registration of a node types with more than one BINARY
+<a name="line397"></a>     * property is permitted.
+<a name="line398"></a>     * @api
+<a name="line399"></a>     */</span>
+<a name="line400"></a>    <span style="color: #000000; font-weight: bold;">const</span> NODE_TYPE_MANAGEMENT_MULTIPLE_BINARY_PROPERTIES_SUPPORTED <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;node.type.management.multiple.binary.properties.supported&quot;</span><span style="color: #339933;">;</span>
+<a name="line401"></a>&nbsp;
+<a name="line402"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line403"></a>     * Key to a boolean descriptor. Returns true
+<a name="line404"></a>     * if and only value-constraints are supported.
+<a name="line405"></a>     * @api
+<a name="line406"></a>     */</span>
+<a name="line407"></a>    <span style="color: #000000; font-weight: bold;">const</span> NODE_TYPE_MANAGEMENT_VALUE_CONSTRAINTS_SUPPORTED <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;node.type.management.value.constraints.supported&quot;</span><span style="color: #339933;">;</span>
+<a name="line408"></a>&nbsp;
+<a name="line409"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line410"></a>     * Key to a string[] descriptor. Returns an array holding the
+<a name="line411"></a>     * constants representing the supported query languages, or a zero-length
+<a name="line412"></a>     * if query is not supported.
+<a name="line413"></a>     * @api
+<a name="line414"></a>     */</span>
+<a name="line415"></a>    <span style="color: #000000; font-weight: bold;">const</span> QUERY_LANGUAGES <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;query.languages&quot;</span><span style="color: #339933;">;</span>
+<a name="line416"></a>&nbsp;
+<a name="line417"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line418"></a>     * Key to a boolean descriptor. Returns true
+<a name="line419"></a>     * if and only if stored queries are supported.
+<a name="line420"></a>     * @api
+<a name="line421"></a>     */</span>
+<a name="line422"></a>    <span style="color: #000000; font-weight: bold;">const</span> QUERY_STORED_QUERIES_SUPPORTED <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;query.stored.queries.supported&quot;</span><span style="color: #339933;">;</span>
+<a name="line423"></a>&nbsp;
+<a name="line424"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line425"></a>     * Key to a boolean descriptor. Returns true
+<a name="line426"></a>     * if and only if full-text search is supported.
+<a name="line427"></a>     * @api
+<a name="line428"></a>     */</span>
+<a name="line429"></a>    <span style="color: #000000; font-weight: bold;">const</span> QUERY_FULL_TEXT_SEARCH_SUPPORTED <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;query.full.text.search.supported&quot;</span><span style="color: #339933;">;</span>
+<a name="line430"></a>&nbsp;
+<a name="line431"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line432"></a>     * Key to String descriptor. Returns one of the following
+<a name="line433"></a>     * javax.jcr.Repository constants indicating the level of
+<a name="line434"></a>     * support for joins in queries:
+<a name="line435"></a>     *
+<a name="line436"></a>     * QUERY_JOINS_NONE - Joins are not supported. Queries are limited to a single selector.
+<a name="line437"></a>     * QUERY_JOINS_INNER - Inner joins are supported.
+<a name="line438"></a>     * QUERY_JOINS_INNER_OUTER - Inner and outer joins are supported.
+<a name="line439"></a>     * @api
+<a name="line440"></a>     */</span>
+<a name="line441"></a>    <span style="color: #000000; font-weight: bold;">const</span> QUERY_JOINS <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;query.joins&quot;</span><span style="color: #339933;">;</span>
+<a name="line442"></a>&nbsp;
+<a name="line443"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line444"></a>     * One of three possible values for the descriptor QUERY_JOINS .
+<a name="line445"></a>     * Indicates that joins are not supported. Queries are limited to a single selector.
+<a name="line446"></a>     * @api
+<a name="line447"></a>     */</span>
+<a name="line448"></a>    <span style="color: #000000; font-weight: bold;">const</span> QUERY_JOINS_NONE <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;query.joins.none&quot;</span><span style="color: #339933;">;</span>
+<a name="line449"></a>&nbsp;
+<a name="line450"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line451"></a>     * One of three possible values for the descriptor QUERY_JOINS .
+<a name="line452"></a>     * Indicates that inner joins are supported.
+<a name="line453"></a>     * @api
+<a name="line454"></a>     */</span>
+<a name="line455"></a>    <span style="color: #000000; font-weight: bold;">const</span> QUERY_JOINS_INNER <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;query.joins.inner&quot;</span><span style="color: #339933;">;</span>
+<a name="line456"></a>&nbsp;
+<a name="line457"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line458"></a>     * One of three possible values for the descriptor QUERY_JOINS .
+<a name="line459"></a>     * Indicates that inner and outer joins are supported.
+<a name="line460"></a>     * @api
+<a name="line461"></a>     */</span>
+<a name="line462"></a>    <span style="color: #000000; font-weight: bold;">const</span> QUERY_JOINS_INNER_OUTER <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;query.joins.inner.outer&quot;</span><span style="color: #339933;">;</span>
+<a name="line463"></a>&nbsp;
+<a name="line464"></a>    <span style="color: #009933; font-style: italic;">/**#@-*/</span>
+<a name="line465"></a>&nbsp;
+<a name="line466"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line467"></a>     * Authenticates the user using the supplied credentials.
+<a name="line468"></a>     *
+<a name="line469"></a>     * If workspaceName is recognized as the name of an existing workspace in the repository and authorization
+<a name="line470"></a>     * to access that workspace is granted, then a new Session object is returned. The format of the string
+<a name="line471"></a>     * workspaceName depends upon the implementation. If credentials is null, it is assumed that authentication
+<a name="line472"></a>     * is handled by a mechanism external to the repository itself and that the repository implementation exists
+<a name="line473"></a>     * within a context (for example, an application server) that allows it to handle authorization of the request
+<a name="line474"></a>     * for access to the specified workspace.
+<a name="line475"></a>     *
+<a name="line476"></a>     * If workspaceName is null, a default workspace is automatically selected by the repository
+<a name="line477"></a>     * implementation. This may, for example, be the &quot;home workspace&quot; of the user whose credentials
+<a name="line478"></a>     * were passed, though this is entirely up to the configuration and implementation of the
+<a name="line479"></a>     * repository. Alternatively, it may be a &quot;null workspace&quot; that serves only to provide the
+<a name="line480"></a>     * method Workspace.getAccessibleWorkspaceNames(), allowing the client to select from among
+<a name="line481"></a>     * available &quot;real&quot; workspaces.
+<a name="line482"></a>     *
+<a name="line483"></a>     * &lt;b&gt;Note:&lt;/b&gt; The Java API defines this method with multiple differing signatures.
+<a name="line484"></a>     *
+<a name="line485"></a>     * @param \PHPCR\CredentialsInterface $credentials The credentials of the user
+<a name="line486"></a>     * @param string $workspaceName the name of a workspace
+<a name="line487"></a>     * @return \PHPCR\SessionInterface a valid session for the user to access the repository
+<a name="line488"></a>     *
+<a name="line489"></a>     * @throws \PHPCR\LoginException if authentication or authorization (for the specified workspace) fails
+<a name="line490"></a>     * @throws \PHPCR\NoSuchWorkspaceException if the specified workspaceName is not recognized
+<a name="line491"></a>     * @throws \PHPCR\RepositoryException if another error occurs
+<a name="line492"></a>     * @api
+<a name="line493"></a>     */</span>
+<a name="line494"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> login<span style="color: #009900;">&#40;</span><span style="color: #000088;">$credentials</span> <span style="color: #339933;">=</span> <span style="color: #009900; font-weight: bold;">null</span><span style="color: #339933;">,</span> <span style="color: #000088;">$workspaceName</span> <span style="color: #339933;">=</span> <span style="color: #009900; font-weight: bold;">null</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line495"></a>&nbsp;
+<a name="line496"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line497"></a>     * Returns a string array holding all descriptor keys available for this implementation.
+<a name="line498"></a>     *
+<a name="line499"></a>     * Both, the standard descriptors defined by the string constants in this interface and any
+<a name="line500"></a>     * implementation-specific descriptors. Used in conjunction with getDescriptor($key) to query information about
+<a name="line501"></a>     * this repository implementation.
+<a name="line502"></a>     *
+<a name="line503"></a>     * @return array a string array holding all descriptor keys
+<a name="line504"></a>     * @api
+<a name="line505"></a>     */</span>
+<a name="line506"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getDescriptorKeys<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line507"></a>&nbsp;
+<a name="line508"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line509"></a>     * Determines if the given identifier is a standard descriptor.
+<a name="line510"></a>     *
+<a name="line511"></a>     * Returns true if $key is a standard descriptor defined by the string constants in this interface and
+<a name="line512"></a>     * false if it is either a valid implementation-specific key or not a valid key.
+<a name="line513"></a>     *
+<a name="line514"></a>     * @param string $key a descriptor key.
+<a name="line515"></a>     * @return boolan whether $key is a standard descriptor.
+<a name="line516"></a>     * @api
+<a name="line517"></a>     */</span>
+<a name="line518"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> isStandardDescriptor<span style="color: #009900;">&#40;</span><span style="color: #000088;">$key</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line519"></a>&nbsp;
+<a name="line520"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line521"></a>     * Get the string value(s) for this key.
+<a name="line522"></a>     *
+<a name="line523"></a>     * @param string $key a descriptor key.
+<a name="line524"></a>     * @return a descriptor value in string form or an array of strings for multivalue descriptors
+<a name="line525"></a>     * @api
+<a name="line526"></a>     */</span>
+<a name="line527"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getDescriptor<span style="color: #009900;">&#40;</span><span style="color: #000088;">$key</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line528"></a>&nbsp;
+<a name="line529"></a><span style="color: #009900;">&#125;</span>
+<a name="line530"></a>&nbsp;</pre>
 <div class="header">
 <h1>PHPCR</h1>
 <ul>

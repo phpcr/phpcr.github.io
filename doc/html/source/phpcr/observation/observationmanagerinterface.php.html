@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="generator" content="PHPDoctor 2RC4 (http://peej.github.com/phpdoctor/)">
-<meta name="when" content="Fri, 06 May 2011 11:43:27 +0000">
+<meta name="when" content="Thu, 12 May 2011 08:50:50 +0000">
 
 <link rel="stylesheet" type="text/css" href="../../../stylesheet.css">
 <link rel="start" href="../../../overview-summary.html">
@@ -79,155 +79,154 @@ If not, see <code><a href="http://www.gnu.org/licenses/lgpl.html">http://www.gnu
 <a name="line29"></a> * @subpackage interfaces
 <a name="line30"></a> */</span>
 <a name="line31"></a>&nbsp;
-<a name="line32"></a><span style="color: #000000; font-weight: bold;">declare</span><span style="color: #009900;">&#40;</span>ENCODING <span style="color: #339933;">=</span> <span style="color: #0000ff;">'utf-8'</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line33"></a><span style="color: #000000; font-weight: bold;">namespace</span> PHPCR\Observation<span style="color: #339933;">;</span>
-<a name="line34"></a>&nbsp;
-<a name="line35"></a><span style="color: #009933; font-style: italic;">/**
-<a name="line36"></a> * The ObservationManager object.
-<a name="line37"></a> *
-<a name="line38"></a> * Acquired via Workspace.getObservationManager(). Allows for the registration
-<a name="line39"></a> * and deregistration of event listeners.
-<a name="line40"></a> *
-<a name="line41"></a> * The \Traversable interface enables the implementation to be addressed with
-<a name="line42"></a> * &lt;b&gt;foreach&lt;/b&gt;. ObservationManager has to implement either \RecursiveIterator
-<a name="line43"></a> * or \Iterator.
-<a name="line44"></a> * The iterator is equivalent to &lt;b&gt;getRegisteredEventListeners()&lt;/b&gt; returning
-<a name="line45"></a> * a list of all registered event listeners. The iterator keys have no
-<a name="line46"></a> * significant meaning.
-<a name="line47"></a> *
-<a name="line48"></a> * @package phpcr
-<a name="line49"></a> * @subpackage interfaces
-<a name="line50"></a> * @api
-<a name="line51"></a> */</span>
-<a name="line52"></a><span style="color: #000000; font-weight: bold;">interface</span> ObservationManagerInterface <span style="color: #000000; font-weight: bold;">extends</span> \Traversable <span style="color: #009900;">&#123;</span>
-<a name="line53"></a>&nbsp;
-<a name="line54"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line55"></a>     * Adds an event listener that listens for the specified eventTypes (a
-<a name="line56"></a>     * combination of one or more event types encoded as a bit mask value).
-<a name="line57"></a>     * The set of events will be further filtered by the access rights of the c
-<a name="line58"></a>     * urrent Session as well as the restrictions specified by the parameters of
-<a name="line59"></a>     * this method. These restrictions are stated in terms of characteristics of the
-<a name="line60"></a>     * associated parent node of the event.
-<a name="line61"></a>     *
-<a name="line62"></a>     * The associated parent node of an event is the parent node of the item at (or
-<a name="line63"></a>     * formerly at) the path returned by Event.getPath(). The following restrictions
-<a name="line64"></a>     * are available:
-<a name="line65"></a>     *  &lt;b&gt;absPath&lt;/b&gt;, &lt;b&gt;isDeep&lt;/b&gt;: Only events whose associated parent node is at absPath (or
-<a name="line66"></a>     *   within its subgraph, if isDeep is true) will be received. It is permissible
-<a name="line67"></a>     *   to register a listener for a path where no node currently exists.
-<a name="line68"></a>     *  &lt;b&gt;uuid&lt;/b&gt;: Only events whose associated parent node has one of the identifiers in
-<a name="line69"></a>     *   this list will be received. If his parameter is null then no identifier-
-<a name="line70"></a>     *   related restriction is placed on events received. Note that specifying an
-<a name="line71"></a>     *   empty array instead of null would result in no nodes being listened to. The
-<a name="line72"></a>     *   term &quot;UUID&quot; is used for compatibility with JCR 1.0.
-<a name="line73"></a>     *  &lt;b&gt;nodeTypeName&lt;/b&gt;: Only events whose associated parent node has one of the node
-<a name="line74"></a>     *   types (or a subtype of one of the node types) in this list will be received.
-<a name="line75"></a>     *   If his parameter is null then no node type-related restriction is placed on
-<a name="line76"></a>     *   events received. Note that specifying an empty array instead of null would
-<a name="line77"></a>     *   result in no nodes types being listened to.
-<a name="line78"></a>     *
-<a name="line79"></a>     * The restrictions are &quot;ANDed&quot; together. In other words, for a particular node
-<a name="line80"></a>     * to be &quot;listened to&quot; it must meet all the restrictions.
-<a name="line81"></a>     * Additionally, if noLocal is true, then events generated by the session
-<a name="line82"></a>     * through which the listener was registered are ignored. Otherwise, they are
-<a name="line83"></a>     * not ignored.
-<a name="line84"></a>     *
-<a name="line85"></a>     * The filters of an already-registered EventListener can be changed at runtime
-<a name="line86"></a>     * by re-registering the same EventListener object (i.e. the same actual object)
-<a name="line87"></a>     * with a new set of filter arguments. The implementation must ensure that no
-<a name="line88"></a>     * events are lost during the changeover.
-<a name="line89"></a>     *
-<a name="line90"></a>     * In addition to the filters placed on a listener above, the scope of
-<a name="line91"></a>     * observation support, in terms of which subgraphs are observable, may also be
-<a name="line92"></a>     * subject to implementation-specific restrictions. For example, in some
-<a name="line93"></a>     * repositories observation of changes in the jcr:system subgraph may not be
-<a name="line94"></a>     * supported
-<a name="line95"></a>     *
-<a name="line96"></a>     * @param \PHPCR\Observation\EventListenerInterface $listener An EventListener object.
-<a name="line97"></a>     * @param integer $eventTypes A combination of one or more event type constants encoded as a bitmask.
-<a name="line98"></a>     * @param string $absPath The absolute path identifying the node to be observed.
-<a name="line99"></a>     * @param boolean $isDeep Switch to define the given path as a reference to a child node.
-<a name="line100"></a>     * @param array $uuid List of identifiers of events to be recieved.
-<a name="line101"></a>     * @param array $nodeTypeName List of node type names to identify the events to be recieved.
-<a name="line102"></a>     * @param boolean $noLocal switch to handle local events.
-<a name="line103"></a>     * @return void
-<a name="line104"></a>     *
-<a name="line105"></a>     * @throws \PHPCR\RepositoryException if an error occurs.
-<a name="line106"></a>     * @api
-<a name="line107"></a>     */</span>
-<a name="line108"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> addEventListener<span style="color: #009900;">&#40;</span>\PHPCR\Observation\EventListenerInterface <span style="color: #000088;">$listener</span><span style="color: #339933;">,</span> <span style="color: #000088;">$eventTypes</span><span style="color: #339933;">,</span> <span style="color: #000088;">$absPath</span><span style="color: #339933;">,</span>
-<a name="line109"></a>                                     <span style="color: #000088;">$isDeep</span><span style="color: #339933;">,</span> <a href="http://www.php.net/array"><span style="color: #990000;">array</span></a> <span style="color: #000088;">$uuid</span><span style="color: #339933;">,</span> <a href="http://www.php.net/array"><span style="color: #990000;">array</span></a> <span style="color: #000088;">$nodeTypeName</span><span style="color: #339933;">,</span> <span style="color: #000088;">$noLocal</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line110"></a>&nbsp;
-<a name="line111"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line112"></a>     * Deregisters an event listener.
-<a name="line113"></a>     *
-<a name="line114"></a>     * A listener may be deregistered while it is being executed. The deregistration
-<a name="line115"></a>     * method will block until the listener has completed executing. An exception to
-<a name="line116"></a>     * this rule is a listener which deregisters itself from within the onEvent
-<a name="line117"></a>     * method. In this case, the deregistration method returns immediately, but
-<a name="line118"></a>     * deregistration will effectively be delayed until the listener completes.
-<a name="line119"></a>     *
-<a name="line120"></a>     * @param \PHPCR\Observation\EventListenerInterface $listener The listener to deregister.
-<a name="line121"></a>     * @return void
-<a name="line122"></a>     *
-<a name="line123"></a>     * @throws \PHPCR\RepositoryException if an error occurs.
-<a name="line124"></a>     * @api
-<a name="line125"></a>     */</span>
-<a name="line126"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> removeEventListener<span style="color: #009900;">&#40;</span>\PHPCR\Observation\EventListenerInterface <span style="color: #000088;">$listener</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line127"></a>&nbsp;
-<a name="line128"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line129"></a>     * Returns all event listeners that have been registered through this session.
-<a name="line130"></a>     *
-<a name="line131"></a>     * If no listeners have been registered, an empty iterator is returned.
-<a name="line132"></a>     *
-<a name="line133"></a>     * @return Iterator implementing &lt;b&gt;SeekableIterator&lt;/b&gt; and &lt;b&gt;Countable&lt;/b&gt;.
-<a name="line134"></a>     *                  Values are the EventListenerInterface instances. Keys have no meaning.
-<a name="line135"></a>     *
-<a name="line136"></a>     * @throws \PHPCR\RepositoryException if an error occurs
-<a name="line137"></a>     * @api
-<a name="line138"></a>     */</span>
-<a name="line139"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getRegisteredEventListeners<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line140"></a>&nbsp;
-<a name="line141"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line142"></a>     * Sets the user data information that will be returned by Event.getUserData().
-<a name="line143"></a>     *
-<a name="line144"></a>     * @param string $userData the user data
-<a name="line145"></a>     * @return void
-<a name="line146"></a>     *
-<a name="line147"></a>     * @throws \PHPCR\RepositoryException if an error occurs
-<a name="line148"></a>     * @api
-<a name="line149"></a>     */</span>
-<a name="line150"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> setUserData<span style="color: #009900;">&#40;</span><span style="color: #000088;">$userData</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line151"></a>&nbsp;
-<a name="line152"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line153"></a>     * Retrieves the event journal for this workspace.
-<a name="line154"></a>     *
-<a name="line155"></a>     * If journaled observation is not supported for this workspace, NULL is
-<a name="line156"></a>     * returned.
-<a name="line157"></a>     *
-<a name="line158"></a>     * Events returned in the EventJournal instance will be filtered according
-<a name="line159"></a>     * to the parameters of this method, the current session's access
-<a name="line160"></a>     * restrictions as well as any additional restrictions specified through
-<a name="line161"></a>     * implemention-specific configuration.
-<a name="line162"></a>     *
-<a name="line163"></a>     * The parameters of this method filter the event set in the same way as
-<a name="line164"></a>     * they do in addEventListener().
-<a name="line165"></a>     *
-<a name="line166"></a>     * @param integer $eventTypes A combination of one or more event type constants encoded as a bitmask.
-<a name="line167"></a>     * @param string $absPath an absolute path.
-<a name="line168"></a>     * @param boolean $isDeep Switch to define the given path as a reference to a child node.
-<a name="line169"></a>     * @param array $uuid array of identifiers.
-<a name="line170"></a>     * @param array $nodeTypeName array of node type names.
-<a name="line171"></a>     * @return \PHPCR\Observation\EventJournalInterface an EventJournal (or NULL).
-<a name="line172"></a>     *
-<a name="line173"></a>     * @throws \PHPCR\RepositoryException if an error occurs
-<a name="line174"></a>     * @api
-<a name="line175"></a>     */</span>
-<a name="line176"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getEventJournal<span style="color: #009900;">&#40;</span><span style="color: #000088;">$eventTypes</span> <span style="color: #339933;">=</span> <span style="color: #009900; font-weight: bold;">NULL</span><span style="color: #339933;">,</span> <span style="color: #000088;">$absPath</span> <span style="color: #339933;">=</span> <span style="color: #009900; font-weight: bold;">NULL</span><span style="color: #339933;">,</span> <span style="color: #000088;">$isDeep</span> <span style="color: #339933;">=</span> <span style="color: #009900; font-weight: bold;">NULL</span><span style="color: #339933;">,</span> <a href="http://www.php.net/array"><span style="color: #990000;">array</span></a> <span style="color: #000088;">$uuid</span> <span style="color: #339933;">=</span> <span style="color: #009900; font-weight: bold;">NULL</span><span style="color: #339933;">,</span>
-<a name="line177"></a>                                    <a href="http://www.php.net/array"><span style="color: #990000;">array</span></a> <span style="color: #000088;">$nodeTypeName</span> <span style="color: #339933;">=</span> <span style="color: #009900; font-weight: bold;">NULL</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line178"></a>&nbsp;
-<a name="line179"></a><span style="color: #009900;">&#125;</span>
-<a name="line180"></a>&nbsp;</pre>
+<a name="line32"></a><span style="color: #000000; font-weight: bold;">namespace</span> PHPCR\Observation<span style="color: #339933;">;</span>
+<a name="line33"></a>&nbsp;
+<a name="line34"></a><span style="color: #009933; font-style: italic;">/**
+<a name="line35"></a> * The ObservationManager object.
+<a name="line36"></a> *
+<a name="line37"></a> * Acquired via Workspace.getObservationManager(). Allows for the registration
+<a name="line38"></a> * and deregistration of event listeners.
+<a name="line39"></a> *
+<a name="line40"></a> * The \Traversable interface enables the implementation to be addressed with
+<a name="line41"></a> * &lt;b&gt;foreach&lt;/b&gt;. ObservationManager has to implement either \RecursiveIterator
+<a name="line42"></a> * or \Iterator.
+<a name="line43"></a> * The iterator is equivalent to &lt;b&gt;getRegisteredEventListeners()&lt;/b&gt; returning
+<a name="line44"></a> * a list of all registered event listeners. The iterator keys have no
+<a name="line45"></a> * significant meaning.
+<a name="line46"></a> *
+<a name="line47"></a> * @package phpcr
+<a name="line48"></a> * @subpackage interfaces
+<a name="line49"></a> * @api
+<a name="line50"></a> */</span>
+<a name="line51"></a><span style="color: #000000; font-weight: bold;">interface</span> ObservationManagerInterface <span style="color: #000000; font-weight: bold;">extends</span> \Traversable <span style="color: #009900;">&#123;</span>
+<a name="line52"></a>&nbsp;
+<a name="line53"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line54"></a>     * Adds an event listener that listens for the specified eventTypes (a
+<a name="line55"></a>     * combination of one or more event types encoded as a bit mask value).
+<a name="line56"></a>     * The set of events will be further filtered by the access rights of the c
+<a name="line57"></a>     * urrent Session as well as the restrictions specified by the parameters of
+<a name="line58"></a>     * this method. These restrictions are stated in terms of characteristics of the
+<a name="line59"></a>     * associated parent node of the event.
+<a name="line60"></a>     *
+<a name="line61"></a>     * The associated parent node of an event is the parent node of the item at (or
+<a name="line62"></a>     * formerly at) the path returned by Event.getPath(). The following restrictions
+<a name="line63"></a>     * are available:
+<a name="line64"></a>     *  &lt;b&gt;absPath&lt;/b&gt;, &lt;b&gt;isDeep&lt;/b&gt;: Only events whose associated parent node is at absPath (or
+<a name="line65"></a>     *   within its subgraph, if isDeep is true) will be received. It is permissible
+<a name="line66"></a>     *   to register a listener for a path where no node currently exists.
+<a name="line67"></a>     *  &lt;b&gt;uuid&lt;/b&gt;: Only events whose associated parent node has one of the identifiers in
+<a name="line68"></a>     *   this list will be received. If his parameter is null then no identifier-
+<a name="line69"></a>     *   related restriction is placed on events received. Note that specifying an
+<a name="line70"></a>     *   empty array instead of null would result in no nodes being listened to. The
+<a name="line71"></a>     *   term &quot;UUID&quot; is used for compatibility with JCR 1.0.
+<a name="line72"></a>     *  &lt;b&gt;nodeTypeName&lt;/b&gt;: Only events whose associated parent node has one of the node
+<a name="line73"></a>     *   types (or a subtype of one of the node types) in this list will be received.
+<a name="line74"></a>     *   If his parameter is null then no node type-related restriction is placed on
+<a name="line75"></a>     *   events received. Note that specifying an empty array instead of null would
+<a name="line76"></a>     *   result in no nodes types being listened to.
+<a name="line77"></a>     *
+<a name="line78"></a>     * The restrictions are &quot;ANDed&quot; together. In other words, for a particular node
+<a name="line79"></a>     * to be &quot;listened to&quot; it must meet all the restrictions.
+<a name="line80"></a>     * Additionally, if noLocal is true, then events generated by the session
+<a name="line81"></a>     * through which the listener was registered are ignored. Otherwise, they are
+<a name="line82"></a>     * not ignored.
+<a name="line83"></a>     *
+<a name="line84"></a>     * The filters of an already-registered EventListener can be changed at runtime
+<a name="line85"></a>     * by re-registering the same EventListener object (i.e. the same actual object)
+<a name="line86"></a>     * with a new set of filter arguments. The implementation must ensure that no
+<a name="line87"></a>     * events are lost during the changeover.
+<a name="line88"></a>     *
+<a name="line89"></a>     * In addition to the filters placed on a listener above, the scope of
+<a name="line90"></a>     * observation support, in terms of which subgraphs are observable, may also be
+<a name="line91"></a>     * subject to implementation-specific restrictions. For example, in some
+<a name="line92"></a>     * repositories observation of changes in the jcr:system subgraph may not be
+<a name="line93"></a>     * supported
+<a name="line94"></a>     *
+<a name="line95"></a>     * @param \PHPCR\Observation\EventListenerInterface $listener An EventListener object.
+<a name="line96"></a>     * @param integer $eventTypes A combination of one or more event type constants encoded as a bitmask.
+<a name="line97"></a>     * @param string $absPath The absolute path identifying the node to be observed.
+<a name="line98"></a>     * @param boolean $isDeep Switch to define the given path as a reference to a child node.
+<a name="line99"></a>     * @param array $uuid List of identifiers of events to be recieved.
+<a name="line100"></a>     * @param array $nodeTypeName List of node type names to identify the events to be recieved.
+<a name="line101"></a>     * @param boolean $noLocal switch to handle local events.
+<a name="line102"></a>     * @return void
+<a name="line103"></a>     *
+<a name="line104"></a>     * @throws \PHPCR\RepositoryException if an error occurs.
+<a name="line105"></a>     * @api
+<a name="line106"></a>     */</span>
+<a name="line107"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> addEventListener<span style="color: #009900;">&#40;</span>\PHPCR\Observation\EventListenerInterface <span style="color: #000088;">$listener</span><span style="color: #339933;">,</span> <span style="color: #000088;">$eventTypes</span><span style="color: #339933;">,</span> <span style="color: #000088;">$absPath</span><span style="color: #339933;">,</span>
+<a name="line108"></a>                                     <span style="color: #000088;">$isDeep</span><span style="color: #339933;">,</span> <a href="http://www.php.net/array"><span style="color: #990000;">array</span></a> <span style="color: #000088;">$uuid</span><span style="color: #339933;">,</span> <a href="http://www.php.net/array"><span style="color: #990000;">array</span></a> <span style="color: #000088;">$nodeTypeName</span><span style="color: #339933;">,</span> <span style="color: #000088;">$noLocal</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line109"></a>&nbsp;
+<a name="line110"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line111"></a>     * Deregisters an event listener.
+<a name="line112"></a>     *
+<a name="line113"></a>     * A listener may be deregistered while it is being executed. The deregistration
+<a name="line114"></a>     * method will block until the listener has completed executing. An exception to
+<a name="line115"></a>     * this rule is a listener which deregisters itself from within the onEvent
+<a name="line116"></a>     * method. In this case, the deregistration method returns immediately, but
+<a name="line117"></a>     * deregistration will effectively be delayed until the listener completes.
+<a name="line118"></a>     *
+<a name="line119"></a>     * @param \PHPCR\Observation\EventListenerInterface $listener The listener to deregister.
+<a name="line120"></a>     * @return void
+<a name="line121"></a>     *
+<a name="line122"></a>     * @throws \PHPCR\RepositoryException if an error occurs.
+<a name="line123"></a>     * @api
+<a name="line124"></a>     */</span>
+<a name="line125"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> removeEventListener<span style="color: #009900;">&#40;</span>\PHPCR\Observation\EventListenerInterface <span style="color: #000088;">$listener</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line126"></a>&nbsp;
+<a name="line127"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line128"></a>     * Returns all event listeners that have been registered through this session.
+<a name="line129"></a>     *
+<a name="line130"></a>     * If no listeners have been registered, an empty iterator is returned.
+<a name="line131"></a>     *
+<a name="line132"></a>     * @return Iterator implementing &lt;b&gt;SeekableIterator&lt;/b&gt; and &lt;b&gt;Countable&lt;/b&gt;.
+<a name="line133"></a>     *                  Values are the EventListenerInterface instances. Keys have no meaning.
+<a name="line134"></a>     *
+<a name="line135"></a>     * @throws \PHPCR\RepositoryException if an error occurs
+<a name="line136"></a>     * @api
+<a name="line137"></a>     */</span>
+<a name="line138"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getRegisteredEventListeners<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line139"></a>&nbsp;
+<a name="line140"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line141"></a>     * Sets the user data information that will be returned by Event.getUserData().
+<a name="line142"></a>     *
+<a name="line143"></a>     * @param string $userData the user data
+<a name="line144"></a>     * @return void
+<a name="line145"></a>     *
+<a name="line146"></a>     * @throws \PHPCR\RepositoryException if an error occurs
+<a name="line147"></a>     * @api
+<a name="line148"></a>     */</span>
+<a name="line149"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> setUserData<span style="color: #009900;">&#40;</span><span style="color: #000088;">$userData</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line150"></a>&nbsp;
+<a name="line151"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line152"></a>     * Retrieves the event journal for this workspace.
+<a name="line153"></a>     *
+<a name="line154"></a>     * If journaled observation is not supported for this workspace, null is
+<a name="line155"></a>     * returned.
+<a name="line156"></a>     *
+<a name="line157"></a>     * Events returned in the EventJournal instance will be filtered according
+<a name="line158"></a>     * to the parameters of this method, the current session's access
+<a name="line159"></a>     * restrictions as well as any additional restrictions specified through
+<a name="line160"></a>     * implemention-specific configuration.
+<a name="line161"></a>     *
+<a name="line162"></a>     * The parameters of this method filter the event set in the same way as
+<a name="line163"></a>     * they do in addEventListener().
+<a name="line164"></a>     *
+<a name="line165"></a>     * @param integer $eventTypes A combination of one or more event type constants encoded as a bitmask.
+<a name="line166"></a>     * @param string $absPath an absolute path.
+<a name="line167"></a>     * @param boolean $isDeep Switch to define the given path as a reference to a child node.
+<a name="line168"></a>     * @param array $uuid array of identifiers.
+<a name="line169"></a>     * @param array $nodeTypeName array of node type names.
+<a name="line170"></a>     * @return \PHPCR\Observation\EventJournalInterface an EventJournal (or null).
+<a name="line171"></a>     *
+<a name="line172"></a>     * @throws \PHPCR\RepositoryException if an error occurs
+<a name="line173"></a>     * @api
+<a name="line174"></a>     */</span>
+<a name="line175"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getEventJournal<span style="color: #009900;">&#40;</span><span style="color: #000088;">$eventTypes</span> <span style="color: #339933;">=</span> <span style="color: #009900; font-weight: bold;">null</span><span style="color: #339933;">,</span> <span style="color: #000088;">$absPath</span> <span style="color: #339933;">=</span> <span style="color: #009900; font-weight: bold;">null</span><span style="color: #339933;">,</span> <span style="color: #000088;">$isDeep</span> <span style="color: #339933;">=</span> <span style="color: #009900; font-weight: bold;">null</span><span style="color: #339933;">,</span> <a href="http://www.php.net/array"><span style="color: #990000;">array</span></a> <span style="color: #000088;">$uuid</span> <span style="color: #339933;">=</span> <span style="color: #009900; font-weight: bold;">null</span><span style="color: #339933;">,</span>
+<a name="line176"></a>                                    <a href="http://www.php.net/array"><span style="color: #990000;">array</span></a> <span style="color: #000088;">$nodeTypeName</span> <span style="color: #339933;">=</span> <span style="color: #009900; font-weight: bold;">null</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line177"></a>&nbsp;
+<a name="line178"></a><span style="color: #009900;">&#125;</span>
+<a name="line179"></a>&nbsp;</pre>
 <div class="header">
 <h1>PHPCR</h1>
 <ul>

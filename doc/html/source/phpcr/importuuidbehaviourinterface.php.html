@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="generator" content="PHPDoctor 2RC4 (http://peej.github.com/phpdoctor/)">
-<meta name="when" content="Fri, 06 May 2011 11:43:20 +0000">
+<meta name="when" content="Thu, 12 May 2011 08:50:43 +0000">
 
 <link rel="stylesheet" type="text/css" href="../../stylesheet.css">
 <link rel="start" href="../../overview-summary.html">
@@ -79,49 +79,47 @@ If not, see <code><a href="http://www.gnu.org/licenses/lgpl.html">http://www.gnu
 <a name="line29"></a> * @subpackage interfaces
 <a name="line30"></a> */</span>
 <a name="line31"></a>&nbsp;
-<a name="line32"></a><span style="color: #000000; font-weight: bold;">declare</span><span style="color: #009900;">&#40;</span>ENCODING <span style="color: #339933;">=</span> <span style="color: #0000ff;">'utf-8'</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line33"></a><span style="color: #000000; font-weight: bold;">namespace</span> PHPCR<span style="color: #339933;">;</span>
-<a name="line34"></a>&nbsp;
-<a name="line35"></a>&nbsp;
-<a name="line36"></a><span style="color: #009933; font-style: italic;">/**
-<a name="line37"></a> * The possible actions specified by the uuidBehavior parameter in
-<a name="line38"></a> * - Workspace::importXML()
-<a name="line39"></a> * - Session::importXML()
-<a name="line40"></a> * - Workspace::getImportContentHandler()
-<a name="line41"></a> * - Session::getImportContentHandler()
-<a name="line42"></a> *
-<a name="line43"></a> * @package phpcr
-<a name="line44"></a> * @subpackage interfaces
-<a name="line45"></a> * @api
-<a name="line46"></a> */</span>
-<a name="line47"></a><span style="color: #000000; font-weight: bold;">interface</span> ImportUUIDBehaviourInterface <span style="color: #009900;">&#123;</span>
-<a name="line48"></a>&nbsp;
-<a name="line49"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line50"></a>     * When importing remove existing item upon collision.
-<a name="line51"></a>     * @api
-<a name="line52"></a>     */</span>
-<a name="line53"></a>    <span style="color: #000000; font-weight: bold;">const</span> IMPORT_UUID_COLLISION_REMOVE_EXISTING <span style="color: #339933;">=</span> <span style="color: #cc66cc;">1</span><span style="color: #339933;">;</span>
-<a name="line54"></a>&nbsp;
-<a name="line55"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line56"></a>     * When importing replace existing item upon collision.
-<a name="line57"></a>     * @api
-<a name="line58"></a>     */</span>
-<a name="line59"></a>    <span style="color: #000000; font-weight: bold;">const</span> IMPORT_UUID_COLLISION_REPLACE_EXISTING <span style="color: #339933;">=</span> <span style="color: #cc66cc;">2</span><span style="color: #339933;">;</span>
-<a name="line60"></a>&nbsp;
-<a name="line61"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line62"></a>     * When importing throw exception upon collision.
-<a name="line63"></a>     * @api
-<a name="line64"></a>     */</span>
-<a name="line65"></a>    <span style="color: #000000; font-weight: bold;">const</span> IMPORT_UUID_COLLISION_THROW <span style="color: #339933;">=</span> <span style="color: #cc66cc;">3</span><span style="color: #339933;">;</span>
-<a name="line66"></a>&nbsp;
-<a name="line67"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line68"></a>     * When importing create new UUIDs.
-<a name="line69"></a>     * @api
-<a name="line70"></a>     */</span>
-<a name="line71"></a>    <span style="color: #000000; font-weight: bold;">const</span> IMPORT_UUID_CREATE_NEW <span style="color: #339933;">=</span> <span style="color: #cc66cc;">0</span><span style="color: #339933;">;</span>
-<a name="line72"></a>&nbsp;
-<a name="line73"></a><span style="color: #009900;">&#125;</span>
-<a name="line74"></a>&nbsp;</pre>
+<a name="line32"></a><span style="color: #000000; font-weight: bold;">namespace</span> PHPCR<span style="color: #339933;">;</span>
+<a name="line33"></a>&nbsp;
+<a name="line34"></a><span style="color: #009933; font-style: italic;">/**
+<a name="line35"></a> * The possible actions specified by the uuidBehavior parameter in
+<a name="line36"></a> * - Workspace::importXML()
+<a name="line37"></a> * - Session::importXML()
+<a name="line38"></a> * - Workspace::getImportContentHandler()
+<a name="line39"></a> * - Session::getImportContentHandler()
+<a name="line40"></a> *
+<a name="line41"></a> * @package phpcr
+<a name="line42"></a> * @subpackage interfaces
+<a name="line43"></a> * @api
+<a name="line44"></a> */</span>
+<a name="line45"></a><span style="color: #000000; font-weight: bold;">interface</span> ImportUUIDBehaviourInterface <span style="color: #009900;">&#123;</span>
+<a name="line46"></a>&nbsp;
+<a name="line47"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line48"></a>     * When importing remove existing item upon collision.
+<a name="line49"></a>     * @api
+<a name="line50"></a>     */</span>
+<a name="line51"></a>    <span style="color: #000000; font-weight: bold;">const</span> IMPORT_UUID_COLLISION_REMOVE_EXISTING <span style="color: #339933;">=</span> <span style="color: #cc66cc;">1</span><span style="color: #339933;">;</span>
+<a name="line52"></a>&nbsp;
+<a name="line53"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line54"></a>     * When importing replace existing item upon collision.
+<a name="line55"></a>     * @api
+<a name="line56"></a>     */</span>
+<a name="line57"></a>    <span style="color: #000000; font-weight: bold;">const</span> IMPORT_UUID_COLLISION_REPLACE_EXISTING <span style="color: #339933;">=</span> <span style="color: #cc66cc;">2</span><span style="color: #339933;">;</span>
+<a name="line58"></a>&nbsp;
+<a name="line59"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line60"></a>     * When importing throw exception upon collision.
+<a name="line61"></a>     * @api
+<a name="line62"></a>     */</span>
+<a name="line63"></a>    <span style="color: #000000; font-weight: bold;">const</span> IMPORT_UUID_COLLISION_THROW <span style="color: #339933;">=</span> <span style="color: #cc66cc;">3</span><span style="color: #339933;">;</span>
+<a name="line64"></a>&nbsp;
+<a name="line65"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line66"></a>     * When importing create new UUIDs.
+<a name="line67"></a>     * @api
+<a name="line68"></a>     */</span>
+<a name="line69"></a>    <span style="color: #000000; font-weight: bold;">const</span> IMPORT_UUID_CREATE_NEW <span style="color: #339933;">=</span> <span style="color: #cc66cc;">0</span><span style="color: #339933;">;</span>
+<a name="line70"></a>&nbsp;
+<a name="line71"></a><span style="color: #009900;">&#125;</span>
+<a name="line72"></a>&nbsp;</pre>
 <div class="header">
 <h1>PHPCR</h1>
 <ul>

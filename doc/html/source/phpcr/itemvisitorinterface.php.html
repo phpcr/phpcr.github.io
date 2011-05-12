@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="generator" content="PHPDoctor 2RC4 (http://peej.github.com/phpdoctor/)">
-<meta name="when" content="Fri, 06 May 2011 11:43:21 +0000">
+<meta name="when" content="Thu, 12 May 2011 08:50:44 +0000">
 
 <link rel="stylesheet" type="text/css" href="../../stylesheet.css">
 <link rel="start" href="../../overview-summary.html">
@@ -79,43 +79,42 @@ If not, see <code><a href="http://www.gnu.org/licenses/lgpl.html">http://www.gnu
 <a name="line29"></a> * @subpackage interfaces
 <a name="line30"></a> */</span>
 <a name="line31"></a>&nbsp;
-<a name="line32"></a><span style="color: #000000; font-weight: bold;">declare</span><span style="color: #009900;">&#40;</span>ENCODING <span style="color: #339933;">=</span> <span style="color: #0000ff;">'utf-8'</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line33"></a><span style="color: #000000; font-weight: bold;">namespace</span> PHPCR<span style="color: #339933;">;</span>
-<a name="line34"></a>&nbsp;
-<a name="line35"></a><span style="color: #009933; font-style: italic;">/**
-<a name="line36"></a> * Interface to define a visitor on an item.
-<a name="line37"></a> *
-<a name="line38"></a> * This interface defines two signatures of the visit method; one taking a
-<a name="line39"></a> * Node, the other a Property. When an object implementing this interface is
-<a name="line40"></a> * passed to Item-&gt;accept(ItemVisitor) the appropriate visit method is
-<a name="line41"></a> * automatically called, depending on whether the Item in question is a Node
-<a name="line42"></a> * or a Property. Different implementations of this interface can be written
-<a name="line43"></a> * for different purposes. It is, for example, possible for the visit(Node)
-<a name="line44"></a> * method to call accept on the children of the passed node and thus recurse
-<a name="line45"></a> * through the tree performing some operation on each Item.
-<a name="line46"></a> *
-<a name="line47"></a> * @package phpcr
-<a name="line48"></a> * @subpackage interfaces
-<a name="line49"></a> * @api
-<a name="line50"></a> */</span>
-<a name="line51"></a><span style="color: #000000; font-weight: bold;">interface</span> ItemVisitorInterface <span style="color: #009900;">&#123;</span>
-<a name="line52"></a>&nbsp;
-<a name="line53"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line54"></a>     * This method is called when the ItemVisitor is passed to the accept method of a Node or Property.
-<a name="line55"></a>     *
-<a name="line56"></a>     * If this method throws an exception the visiting process is aborted.
-<a name="line57"></a>     *
-<a name="line58"></a>     * PHPCR Note: you need to distinguish between Node and Property objects being
-<a name="line59"></a>     *             visited in your implementation.
-<a name="line60"></a>     *
-<a name="line61"></a>     * @param \PHPCR\ItemInterface $item a node or property accepting this visitor
-<a name="line62"></a>     * @throws \PHPCR\RepositoryException if an error occurs
-<a name="line63"></a>     * @api
-<a name="line64"></a>     */</span>
-<a name="line65"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> visit<span style="color: #009900;">&#40;</span>\PHPCR\ItemInterface <span style="color: #000088;">$item</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line66"></a>&nbsp;
-<a name="line67"></a><span style="color: #009900;">&#125;</span>
-<a name="line68"></a>&nbsp;</pre>
+<a name="line32"></a><span style="color: #000000; font-weight: bold;">namespace</span> PHPCR<span style="color: #339933;">;</span>
+<a name="line33"></a>&nbsp;
+<a name="line34"></a><span style="color: #009933; font-style: italic;">/**
+<a name="line35"></a> * Interface to define a visitor on an item.
+<a name="line36"></a> *
+<a name="line37"></a> * This interface defines two signatures of the visit method; one taking a
+<a name="line38"></a> * Node, the other a Property. When an object implementing this interface is
+<a name="line39"></a> * passed to Item-&gt;accept(ItemVisitor) the appropriate visit method is
+<a name="line40"></a> * automatically called, depending on whether the Item in question is a Node
+<a name="line41"></a> * or a Property. Different implementations of this interface can be written
+<a name="line42"></a> * for different purposes. It is, for example, possible for the visit(Node)
+<a name="line43"></a> * method to call accept on the children of the passed node and thus recurse
+<a name="line44"></a> * through the tree performing some operation on each Item.
+<a name="line45"></a> *
+<a name="line46"></a> * @package phpcr
+<a name="line47"></a> * @subpackage interfaces
+<a name="line48"></a> * @api
+<a name="line49"></a> */</span>
+<a name="line50"></a><span style="color: #000000; font-weight: bold;">interface</span> ItemVisitorInterface <span style="color: #009900;">&#123;</span>
+<a name="line51"></a>&nbsp;
+<a name="line52"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line53"></a>     * This method is called when the ItemVisitor is passed to the accept method of a Node or Property.
+<a name="line54"></a>     *
+<a name="line55"></a>     * If this method throws an exception the visiting process is aborted.
+<a name="line56"></a>     *
+<a name="line57"></a>     * PHPCR Note: you need to distinguish between Node and Property objects being
+<a name="line58"></a>     *             visited in your implementation.
+<a name="line59"></a>     *
+<a name="line60"></a>     * @param \PHPCR\ItemInterface $item a node or property accepting this visitor
+<a name="line61"></a>     * @throws \PHPCR\RepositoryException if an error occurs
+<a name="line62"></a>     * @api
+<a name="line63"></a>     */</span>
+<a name="line64"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> visit<span style="color: #009900;">&#40;</span>\PHPCR\ItemInterface <span style="color: #000088;">$item</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line65"></a>&nbsp;
+<a name="line66"></a><span style="color: #009900;">&#125;</span>
+<a name="line67"></a>&nbsp;</pre>
 <div class="header">
 <h1>PHPCR</h1>
 <ul>

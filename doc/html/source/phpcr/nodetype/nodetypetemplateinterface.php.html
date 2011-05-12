@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="generator" content="PHPDoctor 2RC4 (http://peej.github.com/phpdoctor/)">
-<meta name="when" content="Fri, 06 May 2011 11:43:26 +0000">
+<meta name="when" content="Thu, 12 May 2011 08:50:49 +0000">
 
 <link rel="stylesheet" type="text/css" href="../../../stylesheet.css">
 <link rel="start" href="../../../overview-summary.html">
@@ -79,117 +79,116 @@ If not, see <code><a href="http://www.gnu.org/licenses/lgpl.html">http://www.gnu
 <a name="line29"></a> * @subpackage interfaces
 <a name="line30"></a> */</span>
 <a name="line31"></a>&nbsp;
-<a name="line32"></a><span style="color: #000000; font-weight: bold;">declare</span><span style="color: #009900;">&#40;</span>ENCODING <span style="color: #339933;">=</span> <span style="color: #0000ff;">'utf-8'</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line33"></a><span style="color: #000000; font-weight: bold;">namespace</span> PHPCR\NodeType<span style="color: #339933;">;</span>
-<a name="line34"></a>&nbsp;
-<a name="line35"></a><span style="color: #009933; font-style: italic;">/**
-<a name="line36"></a> * The NodeTypeTemplate interface represents a simple container structure used
-<a name="line37"></a> * to define node types which are then registered through the
-<a name="line38"></a> * NodeTypeManager.registerNodeType method.
-<a name="line39"></a> *
-<a name="line40"></a> * NodeTypeTemplate, like NodeType, is a subclass of NodeTypeDefinition so it
-<a name="line41"></a> * shares with NodeType those methods that are relevant to a static definition.
-<a name="line42"></a> * In addition, NodeTypeTemplate provides methods for setting the attributes of
-<a name="line43"></a> * the definition. Implementations of this interface need not contain any
-<a name="line44"></a> * validation logic.
-<a name="line45"></a> *
-<a name="line46"></a> * See the corresponding get methods for each attribute in NodeTypeDefinition
-<a name="line47"></a> * for the default values assumed when a new empty NodeTypeTemplate is created
-<a name="line48"></a> * (as opposed to one extracted from an existing NodeType).
-<a name="line49"></a> *
-<a name="line50"></a> * @package phpcr
-<a name="line51"></a> * @subpackage interfaces
-<a name="line52"></a> * @api
-<a name="line53"></a> */</span>
-<a name="line54"></a><span style="color: #000000; font-weight: bold;">interface</span> NodeTypeTemplateInterface <span style="color: #000000; font-weight: bold;">extends</span> \PHPCR\NodeType\NodeTypeDefinitionInterface <span style="color: #009900;">&#123;</span>
-<a name="line55"></a>&nbsp;
-<a name="line56"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line57"></a>     * Sets the name of the node type.
-<a name="line58"></a>     *
-<a name="line59"></a>     * @param string $name The name of the node type to be set.
-<a name="line60"></a>     * @return void
-<a name="line61"></a>     * @api
-<a name="line62"></a>     */</span>
-<a name="line63"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> setName<span style="color: #009900;">&#40;</span><span style="color: #000088;">$name</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line64"></a>&nbsp;
-<a name="line65"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line66"></a>     * Sets the names of the supertypes of the node type.
-<a name="line67"></a>     *
-<a name="line68"></a>     * @param array $names The name of the node supertype to be set.
-<a name="line69"></a>     * @return void
-<a name="line70"></a>     * @api
-<a name="line71"></a>     */</span>
-<a name="line72"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> setDeclaredSuperTypeNames<span style="color: #009900;">&#40;</span><a href="http://www.php.net/array"><span style="color: #990000;">array</span></a> <span style="color: #000088;">$names</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line73"></a>&nbsp;
-<a name="line74"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line75"></a>     * Sets the abstract flag of the node type.
-<a name="line76"></a>     *
-<a name="line77"></a>     * @param boolean $abstractStatus The status of the node type being &lt;b&gt;abstract&lt;/b&gt;.
-<a name="line78"></a>     * @return void
-<a name="line79"></a>     * @api
-<a name="line80"></a>     */</span>
-<a name="line81"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> setAbstract<span style="color: #009900;">&#40;</span><span style="color: #000088;">$abstractStatus</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line82"></a>&nbsp;
-<a name="line83"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line84"></a>     * Sets the mixin flag of the node type.
-<a name="line85"></a>     *
-<a name="line86"></a>     * @param boolean $mixin The status of the node type being &lt;b&gt;mixin&lt;/b&gt;.
-<a name="line87"></a>     * @return void
-<a name="line88"></a>     * @api
-<a name="line89"></a>     */</span>
-<a name="line90"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> setMixin<span style="color: #009900;">&#40;</span><span style="color: #000088;">$mixin</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line91"></a>&nbsp;
-<a name="line92"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line93"></a>     * Sets the orderable child nodes flag of the node type.
-<a name="line94"></a>     *
-<a name="line95"></a>     * @param boolean $orderable The status of the node type having orderable children.
-<a name="line96"></a>     * @return void
-<a name="line97"></a>     * @api
-<a name="line98"></a>     */</span>
-<a name="line99"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> setOrderableChildNodes<span style="color: #009900;">&#40;</span><span style="color: #000088;">$orderable</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line100"></a>&nbsp;
-<a name="line101"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line102"></a>     * Sets the name of the primary item.
-<a name="line103"></a>     *
-<a name="line104"></a>     * @param string $name The name of the primary item.
-<a name="line105"></a>     * @return void
-<a name="line106"></a>     * @api
-<a name="line107"></a>     */</span>
-<a name="line108"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> setPrimaryItemName<span style="color: #009900;">&#40;</span><span style="color: #000088;">$name</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line109"></a>&nbsp;
-<a name="line110"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line111"></a>     * Sets the queryable status of the node type.
-<a name="line112"></a>     *
-<a name="line113"></a>     * @param booolean $queryable The status of the node type being queryable.
-<a name="line114"></a>     * @return void
-<a name="line115"></a>     * @api
-<a name="line116"></a>     */</span>
-<a name="line117"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> setQueryable<span style="color: #009900;">&#40;</span><span style="color: #000088;">$queryable</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line118"></a>&nbsp;
-<a name="line119"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line120"></a>     * Returns a mutable List of PropertyDefinitionTemplate objects.
-<a name="line121"></a>     *
-<a name="line122"></a>     * To define a new NodeTypeTemplate or change an existing one,
-<a name="line123"></a>     * PropertyDefinitionTemplate objects can be added to or removed from this List.
-<a name="line124"></a>     *
-<a name="line125"></a>     * @return Object A mutable List (implementing \Traversable, \ArrayAccess, and \Countable) of PropertyDefinitionTemplate objects
-<a name="line126"></a>     * @api
-<a name="line127"></a>     */</span>
-<a name="line128"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getPropertyDefinitionTemplates<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line129"></a>&nbsp;
-<a name="line130"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line131"></a>     * Returns a mutable List of NodeDefinitionTemplate objects.
-<a name="line132"></a>     *
-<a name="line133"></a>     * To define a new NodeTypeTemplate or change an existing one,
-<a name="line134"></a>     * NodeDefinitionTemplate objects can be added to or removed from this List.
-<a name="line135"></a>     *
-<a name="line136"></a>     * @return Object A mutable List (implementing \Traversable, \ArrayAccess, and \Countable) of NodeDefinitionTemplate objects
-<a name="line137"></a>     * @api
-<a name="line138"></a>     */</span>
-<a name="line139"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getNodeDefinitionTemplates<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line140"></a>&nbsp;
-<a name="line141"></a><span style="color: #009900;">&#125;</span>
-<a name="line142"></a>&nbsp;</pre>
+<a name="line32"></a><span style="color: #000000; font-weight: bold;">namespace</span> PHPCR\NodeType<span style="color: #339933;">;</span>
+<a name="line33"></a>&nbsp;
+<a name="line34"></a><span style="color: #009933; font-style: italic;">/**
+<a name="line35"></a> * The NodeTypeTemplate interface represents a simple container structure used
+<a name="line36"></a> * to define node types which are then registered through the
+<a name="line37"></a> * NodeTypeManager.registerNodeType method.
+<a name="line38"></a> *
+<a name="line39"></a> * NodeTypeTemplate, like NodeType, is a subclass of NodeTypeDefinition so it
+<a name="line40"></a> * shares with NodeType those methods that are relevant to a static definition.
+<a name="line41"></a> * In addition, NodeTypeTemplate provides methods for setting the attributes of
+<a name="line42"></a> * the definition. Implementations of this interface need not contain any
+<a name="line43"></a> * validation logic.
+<a name="line44"></a> *
+<a name="line45"></a> * See the corresponding get methods for each attribute in NodeTypeDefinition
+<a name="line46"></a> * for the default values assumed when a new empty NodeTypeTemplate is created
+<a name="line47"></a> * (as opposed to one extracted from an existing NodeType).
+<a name="line48"></a> *
+<a name="line49"></a> * @package phpcr
+<a name="line50"></a> * @subpackage interfaces
+<a name="line51"></a> * @api
+<a name="line52"></a> */</span>
+<a name="line53"></a><span style="color: #000000; font-weight: bold;">interface</span> NodeTypeTemplateInterface <span style="color: #000000; font-weight: bold;">extends</span> \PHPCR\NodeType\NodeTypeDefinitionInterface <span style="color: #009900;">&#123;</span>
+<a name="line54"></a>&nbsp;
+<a name="line55"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line56"></a>     * Sets the name of the node type.
+<a name="line57"></a>     *
+<a name="line58"></a>     * @param string $name The name of the node type to be set.
+<a name="line59"></a>     * @return void
+<a name="line60"></a>     * @api
+<a name="line61"></a>     */</span>
+<a name="line62"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> setName<span style="color: #009900;">&#40;</span><span style="color: #000088;">$name</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line63"></a>&nbsp;
+<a name="line64"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line65"></a>     * Sets the names of the supertypes of the node type.
+<a name="line66"></a>     *
+<a name="line67"></a>     * @param array $names The name of the node supertype to be set.
+<a name="line68"></a>     * @return void
+<a name="line69"></a>     * @api
+<a name="line70"></a>     */</span>
+<a name="line71"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> setDeclaredSuperTypeNames<span style="color: #009900;">&#40;</span><a href="http://www.php.net/array"><span style="color: #990000;">array</span></a> <span style="color: #000088;">$names</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line72"></a>&nbsp;
+<a name="line73"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line74"></a>     * Sets the abstract flag of the node type.
+<a name="line75"></a>     *
+<a name="line76"></a>     * @param boolean $abstractStatus The status of the node type being &lt;b&gt;abstract&lt;/b&gt;.
+<a name="line77"></a>     * @return void
+<a name="line78"></a>     * @api
+<a name="line79"></a>     */</span>
+<a name="line80"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> setAbstract<span style="color: #009900;">&#40;</span><span style="color: #000088;">$abstractStatus</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line81"></a>&nbsp;
+<a name="line82"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line83"></a>     * Sets the mixin flag of the node type.
+<a name="line84"></a>     *
+<a name="line85"></a>     * @param boolean $mixin The status of the node type being &lt;b&gt;mixin&lt;/b&gt;.
+<a name="line86"></a>     * @return void
+<a name="line87"></a>     * @api
+<a name="line88"></a>     */</span>
+<a name="line89"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> setMixin<span style="color: #009900;">&#40;</span><span style="color: #000088;">$mixin</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line90"></a>&nbsp;
+<a name="line91"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line92"></a>     * Sets the orderable child nodes flag of the node type.
+<a name="line93"></a>     *
+<a name="line94"></a>     * @param boolean $orderable The status of the node type having orderable children.
+<a name="line95"></a>     * @return void
+<a name="line96"></a>     * @api
+<a name="line97"></a>     */</span>
+<a name="line98"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> setOrderableChildNodes<span style="color: #009900;">&#40;</span><span style="color: #000088;">$orderable</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line99"></a>&nbsp;
+<a name="line100"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line101"></a>     * Sets the name of the primary item.
+<a name="line102"></a>     *
+<a name="line103"></a>     * @param string $name The name of the primary item.
+<a name="line104"></a>     * @return void
+<a name="line105"></a>     * @api
+<a name="line106"></a>     */</span>
+<a name="line107"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> setPrimaryItemName<span style="color: #009900;">&#40;</span><span style="color: #000088;">$name</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line108"></a>&nbsp;
+<a name="line109"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line110"></a>     * Sets the queryable status of the node type.
+<a name="line111"></a>     *
+<a name="line112"></a>     * @param booolean $queryable The status of the node type being queryable.
+<a name="line113"></a>     * @return void
+<a name="line114"></a>     * @api
+<a name="line115"></a>     */</span>
+<a name="line116"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> setQueryable<span style="color: #009900;">&#40;</span><span style="color: #000088;">$queryable</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line117"></a>&nbsp;
+<a name="line118"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line119"></a>     * Returns a mutable List of PropertyDefinitionTemplate objects.
+<a name="line120"></a>     *
+<a name="line121"></a>     * To define a new NodeTypeTemplate or change an existing one,
+<a name="line122"></a>     * PropertyDefinitionTemplate objects can be added to or removed from this List.
+<a name="line123"></a>     *
+<a name="line124"></a>     * @return Object A mutable List (implementing \Traversable, \ArrayAccess, and \Countable) of PropertyDefinitionTemplate objects
+<a name="line125"></a>     * @api
+<a name="line126"></a>     */</span>
+<a name="line127"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getPropertyDefinitionTemplates<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line128"></a>&nbsp;
+<a name="line129"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line130"></a>     * Returns a mutable List of NodeDefinitionTemplate objects.
+<a name="line131"></a>     *
+<a name="line132"></a>     * To define a new NodeTypeTemplate or change an existing one,
+<a name="line133"></a>     * NodeDefinitionTemplate objects can be added to or removed from this List.
+<a name="line134"></a>     *
+<a name="line135"></a>     * @return Object A mutable List (implementing \Traversable, \ArrayAccess, and \Countable) of NodeDefinitionTemplate objects
+<a name="line136"></a>     * @api
+<a name="line137"></a>     */</span>
+<a name="line138"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getNodeDefinitionTemplates<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line139"></a>&nbsp;
+<a name="line140"></a><span style="color: #009900;">&#125;</span>
+<a name="line141"></a>&nbsp;</pre>
 <div class="header">
 <h1>PHPCR</h1>
 <ul>

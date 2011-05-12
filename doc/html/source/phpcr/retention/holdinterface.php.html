@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="generator" content="PHPDoctor 2RC4 (http://peej.github.com/phpdoctor/)">
-<meta name="when" content="Fri, 06 May 2011 11:43:33 +0000">
+<meta name="when" content="Thu, 12 May 2011 08:50:56 +0000">
 
 <link rel="stylesheet" type="text/css" href="../../../stylesheet.css">
 <link rel="start" href="../../../overview-summary.html">
@@ -79,45 +79,44 @@ If not, see <code><a href="http://www.gnu.org/licenses/lgpl.html">http://www.gnu
 <a name="line29"></a> * @subpackage interfaces
 <a name="line30"></a> */</span>
 <a name="line31"></a>&nbsp;
-<a name="line32"></a><span style="color: #000000; font-weight: bold;">declare</span><span style="color: #009900;">&#40;</span>ENCODING <span style="color: #339933;">=</span> <span style="color: #0000ff;">'utf-8'</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line33"></a><span style="color: #000000; font-weight: bold;">namespace</span> PHPCR\Retention<span style="color: #339933;">;</span>
-<a name="line34"></a>&nbsp;
-<a name="line35"></a><span style="color: #009933; font-style: italic;">/**
-<a name="line36"></a> * Hold represents a hold that can be applied to an existing node in order to
-<a name="line37"></a> * prevent the node from being modified or removed. The format and interpretation
-<a name="line38"></a> * of the name are not specified. They are application-dependent.
-<a name="line39"></a> *
-<a name="line40"></a> * If isDeep() is true, the hold applies to the node and its entire subgraph.
-<a name="line41"></a> * Otherwise the hold applies to the node and its properties only.
-<a name="line42"></a> *
-<a name="line43"></a> * @package phpcr
-<a name="line44"></a> * @subpackage interfaces
-<a name="line45"></a> * @api
-<a name="line46"></a> */</span>
-<a name="line47"></a><span style="color: #000000; font-weight: bold;">interface</span> HoldInterface <span style="color: #009900;">&#123;</span>
-<a name="line48"></a>&nbsp;
-<a name="line49"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line50"></a>     * Returns true if this Hold is deep.
-<a name="line51"></a>     *
-<a name="line52"></a>     * @return boolean TRUE if this Hold is deep.
-<a name="line53"></a>     *
-<a name="line54"></a>     * @throws \PHPCR\RepositoryException if an error occurs.
-<a name="line55"></a>     * @api
-<a name="line56"></a>     */</span>
-<a name="line57"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> isDeep<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line58"></a>&nbsp;
-<a name="line59"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line60"></a>     * Returns the name of this Hold. A JCR name.
-<a name="line61"></a>     *
-<a name="line62"></a>     * @return string the name of this Hold. A JCR name.
-<a name="line63"></a>     *
-<a name="line64"></a>     * @throws \PHPCR\RepositoryException if an error occurs.
-<a name="line65"></a>     * @api
-<a name="line66"></a>     */</span>
-<a name="line67"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getName<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line68"></a>&nbsp;
-<a name="line69"></a><span style="color: #009900;">&#125;</span>
-<a name="line70"></a>&nbsp;</pre>
+<a name="line32"></a><span style="color: #000000; font-weight: bold;">namespace</span> PHPCR\Retention<span style="color: #339933;">;</span>
+<a name="line33"></a>&nbsp;
+<a name="line34"></a><span style="color: #009933; font-style: italic;">/**
+<a name="line35"></a> * Hold represents a hold that can be applied to an existing node in order to
+<a name="line36"></a> * prevent the node from being modified or removed. The format and interpretation
+<a name="line37"></a> * of the name are not specified. They are application-dependent.
+<a name="line38"></a> *
+<a name="line39"></a> * If isDeep() is true, the hold applies to the node and its entire subgraph.
+<a name="line40"></a> * Otherwise the hold applies to the node and its properties only.
+<a name="line41"></a> *
+<a name="line42"></a> * @package phpcr
+<a name="line43"></a> * @subpackage interfaces
+<a name="line44"></a> * @api
+<a name="line45"></a> */</span>
+<a name="line46"></a><span style="color: #000000; font-weight: bold;">interface</span> HoldInterface <span style="color: #009900;">&#123;</span>
+<a name="line47"></a>&nbsp;
+<a name="line48"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line49"></a>     * Returns true if this Hold is deep.
+<a name="line50"></a>     *
+<a name="line51"></a>     * @return boolean true if this Hold is deep.
+<a name="line52"></a>     *
+<a name="line53"></a>     * @throws \PHPCR\RepositoryException if an error occurs.
+<a name="line54"></a>     * @api
+<a name="line55"></a>     */</span>
+<a name="line56"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> isDeep<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line57"></a>&nbsp;
+<a name="line58"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line59"></a>     * Returns the name of this Hold. A JCR name.
+<a name="line60"></a>     *
+<a name="line61"></a>     * @return string the name of this Hold. A JCR name.
+<a name="line62"></a>     *
+<a name="line63"></a>     * @throws \PHPCR\RepositoryException if an error occurs.
+<a name="line64"></a>     * @api
+<a name="line65"></a>     */</span>
+<a name="line66"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getName<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line67"></a>&nbsp;
+<a name="line68"></a><span style="color: #009900;">&#125;</span>
+<a name="line69"></a>&nbsp;</pre>
 <div class="header">
 <h1>PHPCR</h1>
 <ul>

@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="generator" content="PHPDoctor 2RC4 (http://peej.github.com/phpdoctor/)">
-<meta name="when" content="Fri, 06 May 2011 11:43:18 +0000">
+<meta name="when" content="Thu, 12 May 2011 08:50:42 +0000">
 
 <link rel="stylesheet" type="text/css" href="../../stylesheet.css">
 <link rel="start" href="../../overview-summary.html">
@@ -41,7 +41,7 @@ Detail: <a href="#detail_field">Field</a> | <a href="#detail_method">Method</a> 
 <hr>
 
 <div class="qualifiedName">PHPCR\Lock\LockInterface</div>
-<a href="../../source/phpcr/lock/lockinterface.php.html#line42" class="location">PHPCR/Lock/LockInterface.php at line 42</a>
+<a href="../../source/phpcr/lock/lockinterface.php.html#line41" class="location">PHPCR/Lock/LockInterface.php at line 41</a>
 
 <h1>Interface LockInterface</h1>
 
@@ -109,7 +109,7 @@ timer so that the lock does not timeout and expire.
 </table>
 
 <h2 id="detail_method">Method Detail</h2>
-<a href="../../source/phpcr/lock/lockinterface.php.html#line58" class="location">PHPCR/Lock/LockInterface.php at line 58</a>
+<a href="../../source/phpcr/lock/lockinterface.php.html#line57" class="location">PHPCR/Lock/LockInterface.php at line 57</a>
 
 <h3 id="getLockOwner()">getLockOwner</h3>
 <code class="signature">public  string <strong>getLockOwner</strong>()</code>
@@ -118,7 +118,7 @@ timer so that the lock does not timeout and expire.
 client supplied owner information (see LockManager->lock()),
 an implementation-dependent string identifying the user who either
 created the lock or who is bound to the session holding the lock, or
-NULL if none of these are available.</p><p>The lock owner's identity is only provided for informational purposes.
+null if none of these are available.</p><p>The lock owner's identity is only provided for informational purposes.
 It does not govern who can perform an unlock or make changes to the
 locked nodes; that depends entirely upon who the token holder is.</p><dl>
 <dt>Returns:</dt>
@@ -129,7 +129,7 @@ locked nodes; that depends entirely upon who the token holder is.</p><dl>
 
 <hr>
 
-<a href="../../source/phpcr/lock/lockinterface.php.html#line91" class="location">PHPCR/Lock/LockInterface.php at line 91</a>
+<a href="../../source/phpcr/lock/lockinterface.php.html#line90" class="location">PHPCR/Lock/LockInterface.php at line 90</a>
 
 <h3 id="getLockToken()">getLockToken</h3>
 <code class="signature">public  string <strong>getLockToken</strong>()</code>
@@ -144,7 +144,7 @@ return null.</p><dl>
 
 <hr>
 
-<a href="../../source/phpcr/lock/lockinterface.php.html#line78" class="location">PHPCR/Lock/LockInterface.php at line 78</a>
+<a href="../../source/phpcr/lock/lockinterface.php.html#line77" class="location">PHPCR/Lock/LockInterface.php at line 77</a>
 
 <h3 id="getNode()">getNode</h3>
 <code class="signature">public  <a href="../../phpcr/nodeinterface.html">NodeInterface</a> <strong>getNode</strong>()</code>
@@ -160,7 +160,7 @@ the subgraph of the lock holder, H, then this call will return H.</p><dl>
 
 <hr>
 
-<a href="../../source/phpcr/lock/lockinterface.php.html#line105" class="location">PHPCR/Lock/LockInterface.php at line 105</a>
+<a href="../../source/phpcr/lock/lockinterface.php.html#line104" class="location">PHPCR/Lock/LockInterface.php at line 104</a>
 
 <h3 id="getSecondsRemaining()">getSecondsRemaining</h3>
 <code class="signature">public  integer <strong>getSecondsRemaining</strong>()</code>
@@ -178,7 +178,7 @@ returned.</p><dl>
 
 <hr>
 
-<a href="../../source/phpcr/lock/lockinterface.php.html#line66" class="location">PHPCR/Lock/LockInterface.php at line 66</a>
+<a href="../../source/phpcr/lock/lockinterface.php.html#line65" class="location">PHPCR/Lock/LockInterface.php at line 65</a>
 
 <h3 id="isDeep()">isDeep</h3>
 <code class="signature">public  boolean <strong>isDeep</strong>()</code>
@@ -190,7 +190,7 @@ returned.</p><dl>
 
 <hr>
 
-<a href="../../source/phpcr/lock/lockinterface.php.html#line125" class="location">PHPCR/Lock/LockInterface.php at line 125</a>
+<a href="../../source/phpcr/lock/lockinterface.php.html#line124" class="location">PHPCR/Lock/LockInterface.php at line 124</a>
 
 <h3 id="isLive()">isLive</h3>
 <code class="signature">public  boolean <strong>isLive</strong>()</code>
@@ -214,7 +214,7 @@ lock may still exist, and in that case its isLive method will return false.</p><
 
 <hr>
 
-<a href="../../source/phpcr/lock/lockinterface.php.html#line148" class="location">PHPCR/Lock/LockInterface.php at line 148</a>
+<a href="../../source/phpcr/lock/lockinterface.php.html#line147" class="location">PHPCR/Lock/LockInterface.php at line 147</a>
 
 <h3 id="isLockOwningSession()">isLockOwningSession</h3>
 <code class="signature">public  boolean <strong>isLockOwningSession</strong>()</code>
@@ -230,7 +230,7 @@ currently holds the token for this lock. Returns false otherwise.</p><dl>
 
 <hr>
 
-<a href="../../source/phpcr/lock/lockinterface.php.html#line136" class="location">PHPCR/Lock/LockInterface.php at line 136</a>
+<a href="../../source/phpcr/lock/lockinterface.php.html#line135" class="location">PHPCR/Lock/LockInterface.php at line 135</a>
 
 <h3 id="isSessionScoped()">isSessionScoped</h3>
 <code class="signature">public  boolean <strong>isSessionScoped</strong>()</code>
@@ -245,7 +245,7 @@ current session. Returns false otherwise.</p><dl>
 
 <hr>
 
-<a href="../../source/phpcr/lock/lockinterface.php.html#line160" class="location">PHPCR/Lock/LockInterface.php at line 160</a>
+<a href="../../source/phpcr/lock/lockinterface.php.html#line159" class="location">PHPCR/Lock/LockInterface.php at line 159</a>
 
 <h3 id="refresh()">refresh</h3>
 <code class="signature">public  void <strong>refresh</strong>()</code>

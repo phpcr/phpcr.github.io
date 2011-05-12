@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="generator" content="PHPDoctor 2RC4 (http://peej.github.com/phpdoctor/)">
-<meta name="when" content="Fri, 06 May 2011 11:43:22 +0000">
+<meta name="when" content="Thu, 12 May 2011 08:50:45 +0000">
 
 <link rel="stylesheet" type="text/css" href="../../stylesheet.css">
 <link rel="start" href="../../overview-summary.html">
@@ -79,839 +79,836 @@ If not, see <code><a href="http://www.gnu.org/licenses/lgpl.html">http://www.gnu
 <a name="line29"></a> * @subpackage interfaces
 <a name="line30"></a> */</span>
 <a name="line31"></a>&nbsp;
-<a name="line32"></a><span style="color: #000000; font-weight: bold;">declare</span><span style="color: #009900;">&#40;</span>ENCODING <span style="color: #339933;">=</span> <span style="color: #0000ff;">'utf-8'</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line33"></a><span style="color: #000000; font-weight: bold;">namespace</span> PHPCR<span style="color: #339933;">;</span>
-<a name="line34"></a>&nbsp;
-<a name="line35"></a><span style="color: #009933; font-style: italic;">/**
-<a name="line36"></a> * The Node interface represents a node in a workspace.
-<a name="line37"></a> *
-<a name="line38"></a> * The \Traversable interface enables the implementation to be addressed with
-<a name="line39"></a> * &lt;b&gt;foreach&lt;/b&gt;. Nodes have to implement either \IteratorAggregate or
-<a name="line40"></a> * \Iterator.
-<a name="line41"></a> * The iterator is equivalent to &lt;b&gt;getNodes()&lt;/b&gt; with no filter, returning
-<a name="line42"></a> * a list of all child nodes. Keys are the node names, values the node instances.
-<a name="line43"></a> *
-<a name="line44"></a> * @package phpcr
-<a name="line45"></a> * @subpackage interfaces
-<a name="line46"></a> * @api
-<a name="line47"></a> */</span>
-<a name="line48"></a><span style="color: #000000; font-weight: bold;">interface</span> NodeInterface <span style="color: #000000; font-weight: bold;">extends</span> \PHPCR\ItemInterface<span style="color: #339933;">,</span> \Traversable <span style="color: #009900;">&#123;</span>
-<a name="line49"></a>&nbsp;
-<a name="line50"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line51"></a>     * A constant for the JCR name jcr:content. This is the name of
-<a name="line52"></a>     * a child node declared in NodeType nt:file and a property declared in
-<a name="line53"></a>     * nt:linkedFile.
-<a name="line54"></a>     * @api
-<a name="line55"></a>     */</span>
-<a name="line56"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_CONTENT <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/1.0}content&quot;</span><span style="color: #339933;">;</span>
-<a name="line57"></a>&nbsp;
-<a name="line58"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line59"></a>     * A constant for the node name jcr:propertyDefinition declared in nt:nodeType.
-<a name="line60"></a>     * @api
-<a name="line61"></a>     */</span>
-<a name="line62"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_PROPERTY_DEFINITION <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/1.0}propertyDefinition&quot;</span><span style="color: #339933;">;</span>
-<a name="line63"></a>&nbsp;
-<a name="line64"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line65"></a>     * A constant for the node name jcr:childNodeDefinition declared in nt:nodeType.
-<a name="line66"></a>     * @api
-<a name="line67"></a>     */</span>
-<a name="line68"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_CHILD_NODE_DEFINITION <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/1.0}childNodeDefinition&quot;</span><span style="color: #339933;">;</span>
-<a name="line69"></a>&nbsp;
-<a name="line70"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line71"></a>     * A constant for the node name jcr:rootVersion declared in nt:versionHistory.
-<a name="line72"></a>     * @api
-<a name="line73"></a>     */</span>
-<a name="line74"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_ROOT_VERSION <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/1.0}rootVersion&quot;</span><span style="color: #339933;">;</span>
-<a name="line75"></a>&nbsp;
-<a name="line76"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line77"></a>     * A constant for the node name jcr:versionLabels declared in nt:versionHistory.
-<a name="line78"></a>     * @api
-<a name="line79"></a>     */</span>
-<a name="line80"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_VERSION_LABELS <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/1.0}versionLabels&quot;</span><span style="color: #339933;">;</span>
-<a name="line81"></a>&nbsp;
-<a name="line82"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line83"></a>     * A constant for the node name jcr:frozenNode declared in nt:version.
-<a name="line84"></a>     * @api
-<a name="line85"></a>     */</span>
-<a name="line86"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_FROZEN_NODE <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/1.0}frozenNode&quot;</span><span style="color: #339933;">;</span>
-<a name="line87"></a>&nbsp;
-<a name="line88"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line89"></a>     * Creates a new node at a specified path.
-<a name="line90"></a>     *
-<a name="line91"></a>     * This is session-write method, meaning that the addition of the new node
-<a name="line92"></a>     * is dispatched upon Session#save.
-<a name="line93"></a>     *
-<a name="line94"></a>     * The $relPath provided must not have an index on its final element,
-<a name="line95"></a>     * otherwise a RepositoryException is thrown.
-<a name="line96"></a>     *
-<a name="line97"></a>     * If ordering is supported by the node type of the parent node of the new
-<a name="line98"></a>     * node then the new node is appended to the end of the child node list.
-<a name="line99"></a>     *
-<a name="line100"></a>     * The new node's primary node type will be determined by the child node
-<a name="line101"></a>     * definitions in the node types of its parent. This may occur either
-<a name="line102"></a>     * immediately, on dispatch (save, whether within or without transactions)
-<a name="line103"></a>     * or on persist (save without transactions, commit within a transaction),
-<a name="line104"></a>     * depending on the implementation.
-<a name="line105"></a>     *
-<a name="line106"></a>     * If $primaryNodeTypeName is given:
-<a name="line107"></a>     * The behavior of this method is identical to addNode($relPath) except that
-<a name="line108"></a>     * the primary node type of the new node is explicitly specified.
-<a name="line109"></a>     *
-<a name="line110"></a>     * @param string $relPath The path of the new node to be created.
-<a name="line111"></a>     * @param string $primaryNodeTypeName The name of the primary node type of the new node.
-<a name="line112"></a>     * @return \PHPCR\NodeInterface The node that was added.
-<a name="line113"></a>     * @throws \PHPCR\ItemExistsException if an item at the specified path already exists, same-name siblings are not allowed and this implementation performs this validation immediately.
-<a name="line114"></a>     * @throws \PHPCR\PathNotFoundException if the specified path implies intermediary Nodes that do not exist or the last element of relPath has an index, and this implementation performs this validation immediately.
-<a name="line115"></a>     * @throws \PHPCR\ConstraintViolationException if a node type or implementation-specific constraint is violated or if an attempt is made to add a node as the child of a property and this implementation performs this validation immediately.
-<a name="line116"></a>     * @throws \PHPCR\Version\VersionException if the node to which the new child is being added is read-only due to a checked-in node and this implementation performs this validation immediately.
-<a name="line117"></a>     * @throws \PHPCR\Lock\LockException if a lock prevents the addition of the node and this implementation performs this validation immediately instead of waiting until save.
-<a name="line118"></a>     * @throws \PHPCR\RepositoryException If the last element of relPath has an index or if another error occurs.
-<a name="line119"></a>     * @api
-<a name="line120"></a>     */</span>
-<a name="line121"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> addNode<span style="color: #009900;">&#40;</span><span style="color: #000088;">$relPath</span><span style="color: #339933;">,</span> <span style="color: #000088;">$primaryNodeTypeName</span> <span style="color: #339933;">=</span> <span style="color: #009900; font-weight: bold;">NULL</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line122"></a>&nbsp;
-<a name="line123"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line124"></a>     * Insert a child node before another child identified by its path.
-<a name="line125"></a>     *
-<a name="line126"></a>     * If this node supports child node ordering, this method inserts the child
-<a name="line127"></a>     * node at srcChildRelPath into the child node list at the position
-<a name="line128"></a>     * immediately before destChildRelPath.
-<a name="line129"></a>     *
-<a name="line130"></a>     * To place the node srcChildRelPath at the end of the list, a destChildRelPath
-<a name="line131"></a>     * of null is used.
-<a name="line132"></a>     *
-<a name="line133"></a>     * Note that (apart from the case where destChildRelPath is null) both of
-<a name="line134"></a>     * these arguments must be relative paths of depth one, in other words they
-<a name="line135"></a>     * are the names of the child nodes, possibly suffixed with an index.
-<a name="line136"></a>     *
-<a name="line137"></a>     * If srcChildRelPath and destChildRelPath are the same, then no change is
-<a name="line138"></a>     * made.
-<a name="line139"></a>     *
-<a name="line140"></a>     * This is session-write method, meaning that a change made by this method
-<a name="line141"></a>     * is dispatched on save.
-<a name="line142"></a>     *
-<a name="line143"></a>     * @param string $srcChildRelPath the relative path to the child node (that is, name plus possible index) to be moved in the ordering
-<a name="line144"></a>     * @param string $destChildRelPath the the relative path to the child node (that is, name plus possible index) before which the node srcChildRelPath will be placed.
-<a name="line145"></a>     * @return void
-<a name="line146"></a>     * @throws \PHPCR\UnsupportedRepositoryOperationException if ordering is not supported on this node.
-<a name="line147"></a>     * @throws \PHPCR\ConstraintViolationException if an implementation-specific ordering restriction is violated and this implementation performs this validation immediately instead of waiting until save.
-<a name="line148"></a>     * @throws \PHPCR\ItemNotFoundException if either parameter is not the relative path of a child node of this node.
-<a name="line149"></a>     * @throws \PHPCR\Version\VersionException if this node is read-only due to a checked-in node and this implementation performs this validation immediately.
-<a name="line150"></a>     * @throws \PHPCR\Lock\LockException if a lock prevents the re-ordering and this implementation performs this validation immediately.
-<a name="line151"></a>     * @throws \PHPCR\RepositoryException if another error occurs.
-<a name="line152"></a>     * @api
-<a name="line153"></a>     */</span>
-<a name="line154"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> orderBefore<span style="color: #009900;">&#40;</span><span style="color: #000088;">$srcChildRelPath</span><span style="color: #339933;">,</span> <span style="color: #000088;">$destChildRelPath</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line155"></a>&nbsp;
-<a name="line156"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line157"></a>     * Defines a value for a property identified by its name.
-<a name="line158"></a>     *
-<a name="line159"></a>     * Sets the property of this node called $name to the specified value.
-<a name="line160"></a>     * This method works as factory method to create new properties and as a
-<a name="line161"></a>     * shortcut for PropertyInterface::setValue
-<a name="line162"></a>     *
-<a name="line163"></a>     * If the property does not yet exist, it is created and its property type
-<a name="line164"></a>     * determined by the node type of this node. If, based on the name and value
-<a name="line165"></a>     * passed, there is more than one property definition that applies, the
-<a name="line166"></a>     * repository chooses one definition according to some implementation-
-<a name="line167"></a>     * specific criteria. Once property with name P has been created, the
-<a name="line168"></a>     * behavior of a subsequent setProperty(P,V) may differ across implementations.
-<a name="line169"></a>     * Some repositories may allow P to be dynamically re-bound to a different
-<a name="line170"></a>     * property definition (based for example, on the new value being of a
-<a name="line171"></a>     * different type than the original value) while other repositories may not
-<a name="line172"></a>     * allow such dynamic re-binding.
-<a name="line173"></a>     *
-<a name="line174"></a>     * If the property type is different than the type of supplied variables, a
-<a name="line175"></a>     * best-effort conversion is attempted.
-<a name="line176"></a>     *
-<a name="line177"></a>     * If the node type of this node does not indicate a specific property type,
-<a name="line178"></a>     * then the property type of the supplied variable is used and if the
-<a name="line179"></a>     * property already exists it assumes both the new value and new property
-<a name="line180"></a>     * type. Types are mapped directly, with the same exceptions as in
-<a name="line181"></a>     * PropertyInterface::setValue:
-<a name="line182"></a>     * * if the given $value is a Node object, it's Identifier is fetched and
-<a name="line183"></a>     *   the type will be REFERENCE. To create a WEAKREFERENCE you have to
-<a name="line184"></a>     *   explicitly specify the type
-<a name="line185"></a>     * * if the given $value is a DateTime object, the type will be DATE.
+<a name="line32"></a><span style="color: #000000; font-weight: bold;">namespace</span> PHPCR<span style="color: #339933;">;</span>
+<a name="line33"></a>&nbsp;
+<a name="line34"></a><span style="color: #009933; font-style: italic;">/**
+<a name="line35"></a> * The Node interface represents a node in a workspace.
+<a name="line36"></a> *
+<a name="line37"></a> * The \Traversable interface enables the implementation to be addressed with
+<a name="line38"></a> * &lt;b&gt;foreach&lt;/b&gt;. Nodes have to implement either \IteratorAggregate or
+<a name="line39"></a> * \Iterator.
+<a name="line40"></a> * The iterator is equivalent to &lt;b&gt;getNodes()&lt;/b&gt; with no filter, returning
+<a name="line41"></a> * a list of all child nodes. Keys are the node names, values the node instances.
+<a name="line42"></a> *
+<a name="line43"></a> * @package phpcr
+<a name="line44"></a> * @subpackage interfaces
+<a name="line45"></a> * @api
+<a name="line46"></a> */</span>
+<a name="line47"></a><span style="color: #000000; font-weight: bold;">interface</span> NodeInterface <span style="color: #000000; font-weight: bold;">extends</span> \PHPCR\ItemInterface<span style="color: #339933;">,</span> \Traversable <span style="color: #009900;">&#123;</span>
+<a name="line48"></a>&nbsp;
+<a name="line49"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line50"></a>     * A constant for the JCR name jcr:content. This is the name of
+<a name="line51"></a>     * a child node declared in NodeType nt:file and a property declared in
+<a name="line52"></a>     * nt:linkedFile.
+<a name="line53"></a>     * @api
+<a name="line54"></a>     */</span>
+<a name="line55"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_CONTENT <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/1.0}content&quot;</span><span style="color: #339933;">;</span>
+<a name="line56"></a>&nbsp;
+<a name="line57"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line58"></a>     * A constant for the node name jcr:propertyDefinition declared in nt:nodeType.
+<a name="line59"></a>     * @api
+<a name="line60"></a>     */</span>
+<a name="line61"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_PROPERTY_DEFINITION <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/1.0}propertyDefinition&quot;</span><span style="color: #339933;">;</span>
+<a name="line62"></a>&nbsp;
+<a name="line63"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line64"></a>     * A constant for the node name jcr:childNodeDefinition declared in nt:nodeType.
+<a name="line65"></a>     * @api
+<a name="line66"></a>     */</span>
+<a name="line67"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_CHILD_NODE_DEFINITION <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/1.0}childNodeDefinition&quot;</span><span style="color: #339933;">;</span>
+<a name="line68"></a>&nbsp;
+<a name="line69"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line70"></a>     * A constant for the node name jcr:rootVersion declared in nt:versionHistory.
+<a name="line71"></a>     * @api
+<a name="line72"></a>     */</span>
+<a name="line73"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_ROOT_VERSION <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/1.0}rootVersion&quot;</span><span style="color: #339933;">;</span>
+<a name="line74"></a>&nbsp;
+<a name="line75"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line76"></a>     * A constant for the node name jcr:versionLabels declared in nt:versionHistory.
+<a name="line77"></a>     * @api
+<a name="line78"></a>     */</span>
+<a name="line79"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_VERSION_LABELS <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/1.0}versionLabels&quot;</span><span style="color: #339933;">;</span>
+<a name="line80"></a>&nbsp;
+<a name="line81"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line82"></a>     * A constant for the node name jcr:frozenNode declared in nt:version.
+<a name="line83"></a>     * @api
+<a name="line84"></a>     */</span>
+<a name="line85"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_FROZEN_NODE <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/1.0}frozenNode&quot;</span><span style="color: #339933;">;</span>
+<a name="line86"></a>&nbsp;
+<a name="line87"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line88"></a>     * Creates a new node at a specified path.
+<a name="line89"></a>     *
+<a name="line90"></a>     * This is session-write method, meaning that the addition of the new node
+<a name="line91"></a>     * is dispatched upon Session#save.
+<a name="line92"></a>     *
+<a name="line93"></a>     * The $relPath provided must not have an index on its final element,
+<a name="line94"></a>     * otherwise a RepositoryException is thrown.
+<a name="line95"></a>     *
+<a name="line96"></a>     * If ordering is supported by the node type of the parent node of the new
+<a name="line97"></a>     * node then the new node is appended to the end of the child node list.
+<a name="line98"></a>     *
+<a name="line99"></a>     * The new node's primary node type will be determined by the child node
+<a name="line100"></a>     * definitions in the node types of its parent. This may occur either
+<a name="line101"></a>     * immediately, on dispatch (save, whether within or without transactions)
+<a name="line102"></a>     * or on persist (save without transactions, commit within a transaction),
+<a name="line103"></a>     * depending on the implementation.
+<a name="line104"></a>     *
+<a name="line105"></a>     * If $primaryNodeTypeName is given:
+<a name="line106"></a>     * The behavior of this method is identical to addNode($relPath) except that
+<a name="line107"></a>     * the primary node type of the new node is explicitly specified.
+<a name="line108"></a>     *
+<a name="line109"></a>     * @param string $relPath The path of the new node to be created.
+<a name="line110"></a>     * @param string $primaryNodeTypeName The name of the primary node type of the new node.
+<a name="line111"></a>     * @return \PHPCR\NodeInterface The node that was added.
+<a name="line112"></a>     * @throws \PHPCR\ItemExistsException if an item at the specified path already exists, same-name siblings are not allowed and this implementation performs this validation immediately.
+<a name="line113"></a>     * @throws \PHPCR\PathNotFoundException if the specified path implies intermediary Nodes that do not exist or the last element of relPath has an index, and this implementation performs this validation immediately.
+<a name="line114"></a>     * @throws \PHPCR\ConstraintViolationException if a node type or implementation-specific constraint is violated or if an attempt is made to add a node as the child of a property and this implementation performs this validation immediately.
+<a name="line115"></a>     * @throws \PHPCR\Version\VersionException if the node to which the new child is being added is read-only due to a checked-in node and this implementation performs this validation immediately.
+<a name="line116"></a>     * @throws \PHPCR\Lock\LockException if a lock prevents the addition of the node and this implementation performs this validation immediately instead of waiting until save.
+<a name="line117"></a>     * @throws \PHPCR\RepositoryException If the last element of relPath has an index or if another error occurs.
+<a name="line118"></a>     * @api
+<a name="line119"></a>     */</span>
+<a name="line120"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> addNode<span style="color: #009900;">&#40;</span><span style="color: #000088;">$relPath</span><span style="color: #339933;">,</span> <span style="color: #000088;">$primaryNodeTypeName</span> <span style="color: #339933;">=</span> <span style="color: #009900; font-weight: bold;">null</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line121"></a>&nbsp;
+<a name="line122"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line123"></a>     * Insert a child node before another child identified by its path.
+<a name="line124"></a>     *
+<a name="line125"></a>     * If this node supports child node ordering, this method inserts the child
+<a name="line126"></a>     * node at srcChildRelPath into the child node list at the position
+<a name="line127"></a>     * immediately before destChildRelPath.
+<a name="line128"></a>     *
+<a name="line129"></a>     * To place the node srcChildRelPath at the end of the list, a destChildRelPath
+<a name="line130"></a>     * of null is used.
+<a name="line131"></a>     *
+<a name="line132"></a>     * Note that (apart from the case where destChildRelPath is null) both of
+<a name="line133"></a>     * these arguments must be relative paths of depth one, in other words they
+<a name="line134"></a>     * are the names of the child nodes, possibly suffixed with an index.
+<a name="line135"></a>     *
+<a name="line136"></a>     * If srcChildRelPath and destChildRelPath are the same, then no change is
+<a name="line137"></a>     * made.
+<a name="line138"></a>     *
+<a name="line139"></a>     * This is session-write method, meaning that a change made by this method
+<a name="line140"></a>     * is dispatched on save.
+<a name="line141"></a>     *
+<a name="line142"></a>     * @param string $srcChildRelPath the relative path to the child node (that is, name plus possible index) to be moved in the ordering
+<a name="line143"></a>     * @param string $destChildRelPath the the relative path to the child node (that is, name plus possible index) before which the node srcChildRelPath will be placed.
+<a name="line144"></a>     * @return void
+<a name="line145"></a>     * @throws \PHPCR\UnsupportedRepositoryOperationException if ordering is not supported on this node.
+<a name="line146"></a>     * @throws \PHPCR\ConstraintViolationException if an implementation-specific ordering restriction is violated and this implementation performs this validation immediately instead of waiting until save.
+<a name="line147"></a>     * @throws \PHPCR\ItemNotFoundException if either parameter is not the relative path of a child node of this node.
+<a name="line148"></a>     * @throws \PHPCR\Version\VersionException if this node is read-only due to a checked-in node and this implementation performs this validation immediately.
+<a name="line149"></a>     * @throws \PHPCR\Lock\LockException if a lock prevents the re-ordering and this implementation performs this validation immediately.
+<a name="line150"></a>     * @throws \PHPCR\RepositoryException if another error occurs.
+<a name="line151"></a>     * @api
+<a name="line152"></a>     */</span>
+<a name="line153"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> orderBefore<span style="color: #009900;">&#40;</span><span style="color: #000088;">$srcChildRelPath</span><span style="color: #339933;">,</span> <span style="color: #000088;">$destChildRelPath</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line154"></a>&nbsp;
+<a name="line155"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line156"></a>     * Defines a value for a property identified by its name.
+<a name="line157"></a>     *
+<a name="line158"></a>     * Sets the property of this node called $name to the specified value.
+<a name="line159"></a>     * This method works as factory method to create new properties and as a
+<a name="line160"></a>     * shortcut for PropertyInterface::setValue
+<a name="line161"></a>     *
+<a name="line162"></a>     * The type detection logic is exactly the same as in
+<a name="line163"></a>     * PropertyInterface::setValue
+<a name="line164"></a>     *
+<a name="line165"></a>     * If the property does not yet exist, it is created and its property type
+<a name="line166"></a>     * determined by the node type of this node. If, based on the name and value
+<a name="line167"></a>     * passed, there is more than one property definition that applies, the
+<a name="line168"></a>     * repository chooses one definition according to some implementation-
+<a name="line169"></a>     * specific criteria. Once property with name P has been created, the
+<a name="line170"></a>     * behavior of a subsequent setProperty(P,V) may differ across implementations.
+<a name="line171"></a>     * Some repositories may allow P to be dynamically re-bound to a different
+<a name="line172"></a>     * property definition (based for example, on the new value being of a
+<a name="line173"></a>     * different type than the original value) while other repositories may not
+<a name="line174"></a>     * allow such dynamic re-binding.
+<a name="line175"></a>     *
+<a name="line176"></a>     * If the property type is different than the type of supplied variables, a
+<a name="line177"></a>     * best-effort conversion is attempted.
+<a name="line178"></a>     *
+<a name="line179"></a>     * Passing a null as the second parameter removes the property. It is equivalent
+<a name="line180"></a>     * to calling remove on the Property object itself. For example,
+<a name="line181"></a>     * N.setProperty(&quot;P&quot;, null) would remove property called &quot;P&quot; of the
+<a name="line182"></a>     * node in N.
+<a name="line183"></a>     *
+<a name="line184"></a>     * This is a session-write method, meaning that changes made through this
+<a name="line185"></a>     * method are dispatched on Session#save.
 <a name="line186"></a>     *
-<a name="line187"></a>     * Passing a null as the second parameter removes the property. It is equivalent
-<a name="line188"></a>     * to calling remove on the Property object itself. For example,
-<a name="line189"></a>     * N.setProperty(&quot;P&quot;, null) would remove property called &quot;P&quot; of the
-<a name="line190"></a>     * node in N.
-<a name="line191"></a>     *
-<a name="line192"></a>     * This is a session-write method, meaning that changes made through this
-<a name="line193"></a>     * method are dispatched on Session#save.
-<a name="line194"></a>     *
-<a name="line195"></a>     * If $type is given:
-<a name="line196"></a>     * The behavior of this method is identical to that of setProperty($name,
-<a name="line197"></a>     * $value) except that the intended property type is explicitly specified.
-<a name="line198"></a>     *
-<a name="line199"></a>     * &lt;b&gt;Note:&lt;/b&gt;
-<a name="line200"></a>     * Have a look at the JSR-283 spec and/or API documentation for more details
-<a name="line201"></a>     * on what is supposed to happen for different types of values being passed
-<a name="line202"></a>     * to this method.
-<a name="line203"></a>     *
-<a name="line204"></a>     * @param string $name The name of a property of this node
-<a name="line205"></a>     * @param mixed $value The value to be assigned
-<a name="line206"></a>     * @param integer $type The type to set for the property, optional. Must be a constant from {@link PropertyType}
-<a name="line207"></a>     * @return \PHPCR\PropertyInterface The updated Property object
-<a name="line208"></a>     * @throws \PHPCR\ValueFormatException if the specified property is a DATE but the value cannot be expressed in the
-<a name="line209"></a>     *                                     ISO 8601-based format defined in the JCR 2.0 specification and the
-<a name="line210"></a>     *                                     implementation does not support dates incompatible with that format or if
-<a name="line211"></a>     *                                     value cannot be converted to the type of the specified property or if the
-<a name="line212"></a>     *                                     property already exists and is multi-valued.
-<a name="line213"></a>     * @throws \PHPCR\Version\VersionException if this node is versionable and checked-in or is non-versionable but its
-<a name="line214"></a>     *                                         nearest versionable ancestor is checked-in and this implementation
-<a name="line215"></a>     *                                         performs this validation immediately instead of waiting until save.
-<a name="line216"></a>     * @throws \PHPCR\Lock\LockException if a lock prevents the setting of the property and this implementation
-<a name="line217"></a>     *                                   performs this validation immediately instead of waiting until save.
-<a name="line218"></a>     * @throws \PHPCR\ConstraintViolationException if the change would violate a node-type or other constraint and this
-<a name="line219"></a>     *                                             implementation performs this validation immediately instead of
-<a name="line220"></a>     *                                             waiting until save.
-<a name="line221"></a>     * @throws \PHPCR\RepositoryException if another error occurs.
-<a name="line222"></a>     * @api
-<a name="line223"></a>     */</span>
-<a name="line224"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> setProperty<span style="color: #009900;">&#40;</span><span style="color: #000088;">$name</span><span style="color: #339933;">,</span> <span style="color: #000088;">$value</span><span style="color: #339933;">,</span> <span style="color: #000088;">$type</span> <span style="color: #339933;">=</span> <span style="color: #009900; font-weight: bold;">NULL</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line225"></a>&nbsp;
-<a name="line226"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line227"></a>     * Returns the node at relPath relative to this node.
-<a name="line228"></a>     *
-<a name="line229"></a>     * If relPath contains a path element that refers to a node with same-name
-<a name="line230"></a>     * sibling nodes without explicitly including an index using the array-style
-<a name="line231"></a>     * notation ([x]), then the index [1] is assumed (indexing of same name
-<a name="line232"></a>     * siblings begins at 1, not 0, in order to preserve compatibility with XPath).
-<a name="line233"></a>     *
-<a name="line234"></a>     * Within the scope of a single Session object, if a Node object has been
-<a name="line235"></a>     * acquired, any subsequent call of getNode reacquiring the same node must
-<a name="line236"></a>     * return a Node object reflecting the same state as the earlier Node object.
-<a name="line237"></a>     * Whether this object is actually the same Node instance, or simply one
-<a name="line238"></a>     * wrapping the same state, is up to the implementation.
-<a name="line239"></a>     *
-<a name="line240"></a>     * @param string $relPath The relative path of the node to retrieve.
-<a name="line241"></a>     * @return \PHPCR\NodeInterface The node at relPath.
-<a name="line242"></a>     * @throws \PHPCR\PathNotFoundException If no node exists at the specified path or the current Session does not read access to the node at the specified path.
-<a name="line243"></a>     * @throws \PHPCR\RepositoryException If another error occurs.
-<a name="line244"></a>     * @api
-<a name="line245"></a>     */</span>
-<a name="line246"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getNode<span style="color: #009900;">&#40;</span><span style="color: #000088;">$relPath</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line247"></a>&nbsp;
-<a name="line248"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line249"></a>     * Get a set of nodes gathered by the definition of a filter.
-<a name="line250"></a>     *
-<a name="line251"></a>     * If $filter is a string:
-<a name="line252"></a>     * Gets all child nodes of this node accessible through the current Session
-<a name="line253"></a>     * that match namePattern (if no pattern is given, all accessible child nodes
-<a name="line254"></a>     * are returned). Does not include properties of this Node. The pattern may
-<a name="line255"></a>     * be a full name or a partial name with one or more wildcard characters (&quot;*&quot;),
-<a name="line256"></a>     * or a disjunction (using the &quot;|&quot; character to represent logical OR) of these.
-<a name="line257"></a>     * For example,
-<a name="line258"></a>     *  N-&gt;getNodes(&quot;jcr:* | myapp:report | my doc&quot;)
-<a name="line259"></a>     * would return an iterator holding all accessible child nodes of N that
-<a name="line260"></a>     * are either called 'myapp:report', begin with the prefix 'jcr:' or are
-<a name="line261"></a>     * called 'my doc'.
+<a name="line187"></a>     * If $type is given:
+<a name="line188"></a>     * The behavior of this method is identical to that of setProperty($name,
+<a name="line189"></a>     * $value) except that the intended property type is explicitly specified.
+<a name="line190"></a>     *
+<a name="line191"></a>     * &lt;b&gt;Note:&lt;/b&gt;
+<a name="line192"></a>     * Have a look at the JSR-283 spec and/or API documentation for more details
+<a name="line193"></a>     * on what is supposed to happen for different types of values being passed
+<a name="line194"></a>     * to this method.
+<a name="line195"></a>     *
+<a name="line196"></a>     * @param string $name The name of a property of this node
+<a name="line197"></a>     * @param mixed $value The value to be assigned
+<a name="line198"></a>     * @param integer $type The type to set for the property, optional. Must be a constant from {@link PropertyType}
+<a name="line199"></a>     *
+<a name="line200"></a>     * @return \PHPCR\PropertyInterface The updated Property object
+<a name="line201"></a>     *
+<a name="line202"></a>     * @throws \PHPCR\ValueFormatException if the specified property is a DATE but the value cannot be expressed in the
+<a name="line203"></a>     *                                     ISO 8601-based format defined in the JCR 2.0 specification and the
+<a name="line204"></a>     *                                     implementation does not support dates incompatible with that format or if
+<a name="line205"></a>     *                                     value cannot be converted to the type of the specified property or if the
+<a name="line206"></a>     *                                     property already exists and is multi-valued.
+<a name="line207"></a>     * @throws \PHPCR\Version\VersionException if this node is versionable and checked-in or is non-versionable but its
+<a name="line208"></a>     *                                         nearest versionable ancestor is checked-in and this implementation
+<a name="line209"></a>     *                                         performs this validation immediately instead of waiting until save.
+<a name="line210"></a>     * @throws \PHPCR\Lock\LockException if a lock prevents the setting of the property and this implementation
+<a name="line211"></a>     *                                   performs this validation immediately instead of waiting until save.
+<a name="line212"></a>     * @throws \PHPCR\ConstraintViolationException if the change would violate a node-type or other constraint and this
+<a name="line213"></a>     *                                             implementation performs this validation immediately instead of
+<a name="line214"></a>     *                                             waiting until save.
+<a name="line215"></a>     * @throws \PHPCR\RepositoryException if another error occurs.
+<a name="line216"></a>     *
+<a name="line217"></a>     * @see \PHPCR\PropertyInterface::setValue()
+<a name="line218"></a>     *
+<a name="line219"></a>     * @api
+<a name="line220"></a>     */</span>
+<a name="line221"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> setProperty<span style="color: #009900;">&#40;</span><span style="color: #000088;">$name</span><span style="color: #339933;">,</span> <span style="color: #000088;">$value</span><span style="color: #339933;">,</span> <span style="color: #000088;">$type</span> <span style="color: #339933;">=</span> <span style="color: #009900; font-weight: bold;">null</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line222"></a>&nbsp;
+<a name="line223"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line224"></a>     * Returns the node at relPath relative to this node.
+<a name="line225"></a>     *
+<a name="line226"></a>     * If relPath contains a path element that refers to a node with same-name
+<a name="line227"></a>     * sibling nodes without explicitly including an index using the array-style
+<a name="line228"></a>     * notation ([x]), then the index [1] is assumed (indexing of same name
+<a name="line229"></a>     * siblings begins at 1, not 0, in order to preserve compatibility with XPath).
+<a name="line230"></a>     *
+<a name="line231"></a>     * Within the scope of a single Session object, if a Node object has been
+<a name="line232"></a>     * acquired, any subsequent call of getNode reacquiring the same node must
+<a name="line233"></a>     * return a Node object reflecting the same state as the earlier Node object.
+<a name="line234"></a>     * Whether this object is actually the same Node instance, or simply one
+<a name="line235"></a>     * wrapping the same state, is up to the implementation.
+<a name="line236"></a>     *
+<a name="line237"></a>     * @param string $relPath The relative path of the node to retrieve.
+<a name="line238"></a>     * @return \PHPCR\NodeInterface The node at relPath.
+<a name="line239"></a>     * @throws \PHPCR\PathNotFoundException If no node exists at the specified path or the current Session does not read access to the node at the specified path.
+<a name="line240"></a>     * @throws \PHPCR\RepositoryException If another error occurs.
+<a name="line241"></a>     * @api
+<a name="line242"></a>     */</span>
+<a name="line243"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getNode<span style="color: #009900;">&#40;</span><span style="color: #000088;">$relPath</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line244"></a>&nbsp;
+<a name="line245"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line246"></a>     * Get a set of nodes gathered by the definition of a filter.
+<a name="line247"></a>     *
+<a name="line248"></a>     * If $filter is a string:
+<a name="line249"></a>     * Gets all child nodes of this node accessible through the current Session
+<a name="line250"></a>     * that match namePattern (if no pattern is given, all accessible child nodes
+<a name="line251"></a>     * are returned). Does not include properties of this Node. The pattern may
+<a name="line252"></a>     * be a full name or a partial name with one or more wildcard characters (&quot;*&quot;),
+<a name="line253"></a>     * or a disjunction (using the &quot;|&quot; character to represent logical OR) of these.
+<a name="line254"></a>     * For example,
+<a name="line255"></a>     *  N-&gt;getNodes(&quot;jcr:* | myapp:report | my doc&quot;)
+<a name="line256"></a>     * would return an iterator holding all accessible child nodes of N that
+<a name="line257"></a>     * are either called 'myapp:report', begin with the prefix 'jcr:' or are
+<a name="line258"></a>     * called 'my doc'.
+<a name="line259"></a>     *
+<a name="line260"></a>     * The substrings within the pattern that are delimited by &quot;|&quot; characters
+<a name="line261"></a>     * and which may contain wildcard characters (&quot;*&quot;) are called &quot;globs&quot;.
 <a name="line262"></a>     *
-<a name="line263"></a>     * The substrings within the pattern that are delimited by &quot;|&quot; characters
-<a name="line264"></a>     * and which may contain wildcard characters (&quot;*&quot;) are called &quot;globs&quot;.
+<a name="line263"></a>     * Note that leading and trailing whitespace around a glob is ignored, but
+<a name="line264"></a>     * whitespace within a disjunct forms part of the pattern to be matched.
 <a name="line265"></a>     *
-<a name="line266"></a>     * Note that leading and trailing whitespace around a glob is ignored, but
-<a name="line267"></a>     * whitespace within a disjunct forms part of the pattern to be matched.
-<a name="line268"></a>     *
-<a name="line269"></a>     *If $filter is an array:
-<a name="line270"></a>     * Gets all child nodes of this node accessible through the current
-<a name="line271"></a>     * Session that match one or more of the $filter strings in the passed
-<a name="line272"></a>     * array.
-<a name="line273"></a>     *
-<a name="line274"></a>     * A glob may be a full name or a partial name with one or more wildcard
-<a name="line275"></a>     * characters (&quot;*&quot;). For example,
-<a name="line276"></a>     *  N-&gt;getNodes(array(&quot;jcr:*&quot;, &quot;myapp:report&quot;, &quot;my doc&quot;))
-<a name="line277"></a>     * would return an iterator holding all accessible child nodes of N that
-<a name="line278"></a>     * are either called 'myapp:report', begin with the prefix 'jcr:' or are
-<a name="line279"></a>     * called 'my doc'.
+<a name="line266"></a>     *If $filter is an array:
+<a name="line267"></a>     * Gets all child nodes of this node accessible through the current
+<a name="line268"></a>     * Session that match one or more of the $filter strings in the passed
+<a name="line269"></a>     * array.
+<a name="line270"></a>     *
+<a name="line271"></a>     * A glob may be a full name or a partial name with one or more wildcard
+<a name="line272"></a>     * characters (&quot;*&quot;). For example,
+<a name="line273"></a>     *  N-&gt;getNodes(array(&quot;jcr:*&quot;, &quot;myapp:report&quot;, &quot;my doc&quot;))
+<a name="line274"></a>     * would return an iterator holding all accessible child nodes of N that
+<a name="line275"></a>     * are either called 'myapp:report', begin with the prefix 'jcr:' or are
+<a name="line276"></a>     * called 'my doc'.
+<a name="line277"></a>     *
+<a name="line278"></a>     * Note that unlike in the case of the getNodes(&lt;string&gt;) leading and
+<a name="line279"></a>     * trailing whitespace around a glob is not ignored.
 <a name="line280"></a>     *
-<a name="line281"></a>     * Note that unlike in the case of the getNodes(&lt;string&gt;) leading and
-<a name="line282"></a>     * trailing whitespace around a glob is not ignored.
-<a name="line283"></a>     *
+<a name="line281"></a>     *
+<a name="line282"></a>     * The pattern is matched against the names (not the paths) of the immediate
+<a name="line283"></a>     * child nodes of this node.
 <a name="line284"></a>     *
-<a name="line285"></a>     * The pattern is matched against the names (not the paths) of the immediate
-<a name="line286"></a>     * child nodes of this node.
+<a name="line285"></a>     * If this node has no accessible matching child nodes, then an empty
+<a name="line286"></a>     * iterator is returned.
 <a name="line287"></a>     *
-<a name="line288"></a>     * If this node has no accessible matching child nodes, then an empty
-<a name="line289"></a>     * iterator is returned.
-<a name="line290"></a>     *
-<a name="line291"></a>     * The same reacquisition semantics apply as with getNode($relPath).
-<a name="line292"></a>     *
-<a name="line293"></a>     * @param string|array $filter a name pattern or an array of globbing strings.
-<a name="line294"></a>     * @return Iterator over all (matching) child Nodes implementing &lt;b&gt;SeekableIterator&lt;/b&gt; and &lt;b&gt;Countable&lt;/b&gt;.
-<a name="line295"></a>     *                  Keys are the Node names, values the corresponding NodeInterface instances.
-<a name="line296"></a>     * @throws \PHPCR\RepositoryException If an unexpected error occurs.
-<a name="line297"></a>     * @api
-<a name="line298"></a>     */</span>
-<a name="line299"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getNodes<span style="color: #009900;">&#40;</span><span style="color: #000088;">$filter</span> <span style="color: #339933;">=</span> <span style="color: #009900; font-weight: bold;">NULL</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line300"></a>&nbsp;
-<a name="line301"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line302"></a>     * Returns the property at relPath relative to this node.
-<a name="line303"></a>     *
-<a name="line304"></a>     * The same reacquisition semantics apply as with getNode(String).
-<a name="line305"></a>     *
-<a name="line306"></a>     * @param string $relPath The relative path of the property to retrieve.
-<a name="line307"></a>     * @return \PHPCR\PropertyInterface The property at relPath.
-<a name="line308"></a>     * @throws \PHPCR\PathNotFoundException if no property exists at the specified path or if the current Session does not have read access to the specified property.
-<a name="line309"></a>     * @throws \PHPCR\RepositoryException If another error occurs.
-<a name="line310"></a>     * @api
-<a name="line311"></a>     */</span>
-<a name="line312"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getProperty<span style="color: #009900;">&#40;</span><span style="color: #000088;">$relPath</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line313"></a>&nbsp;
-<a name="line314"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line315"></a>     * Returns the property of this node with name $name.
+<a name="line288"></a>     * The same reacquisition semantics apply as with getNode($relPath).
+<a name="line289"></a>     *
+<a name="line290"></a>     * @param string|array $filter a name pattern or an array of globbing strings.
+<a name="line291"></a>     * @return Iterator over all (matching) child Nodes implementing &lt;b&gt;SeekableIterator&lt;/b&gt; and &lt;b&gt;Countable&lt;/b&gt;.
+<a name="line292"></a>     *                  Keys are the Node names, values the corresponding NodeInterface instances.
+<a name="line293"></a>     * @throws \PHPCR\RepositoryException If an unexpected error occurs.
+<a name="line294"></a>     * @api
+<a name="line295"></a>     */</span>
+<a name="line296"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getNodes<span style="color: #009900;">&#40;</span><span style="color: #000088;">$filter</span> <span style="color: #339933;">=</span> <span style="color: #009900; font-weight: bold;">null</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line297"></a>&nbsp;
+<a name="line298"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line299"></a>     * Returns the property at relPath relative to this node.
+<a name="line300"></a>     *
+<a name="line301"></a>     * The same reacquisition semantics apply as with getNode(String).
+<a name="line302"></a>     *
+<a name="line303"></a>     * @param string $relPath The relative path of the property to retrieve.
+<a name="line304"></a>     * @return \PHPCR\PropertyInterface The property at relPath.
+<a name="line305"></a>     * @throws \PHPCR\PathNotFoundException if no property exists at the specified path or if the current Session does not have read access to the specified property.
+<a name="line306"></a>     * @throws \PHPCR\RepositoryException If another error occurs.
+<a name="line307"></a>     * @api
+<a name="line308"></a>     */</span>
+<a name="line309"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getProperty<span style="color: #009900;">&#40;</span><span style="color: #000088;">$relPath</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line310"></a>&nbsp;
+<a name="line311"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line312"></a>     * Returns the property of this node with name $name.
+<a name="line313"></a>     *
+<a name="line314"></a>     * If $type is set, attempts to convert the value to the specified type.
+<a name="line315"></a>     * This is a shortcut for getProperty().getXX()
 <a name="line316"></a>     *
-<a name="line317"></a>     * If $type is set, attempts to convert the value to the specified type.
-<a name="line318"></a>     * This is a shortcut for getProperty().getXX()
-<a name="line319"></a>     *
-<a name="line320"></a>     * @param string $name Name of this property
-<a name="line321"></a>     * @param integer $type Type conversion request, optional. Must be a constant from PropertyType
-<a name="line322"></a>     * @return mixed The value of the property with $name.
-<a name="line323"></a>     * @throws \PHPCR\PathNotFoundException if no property exists at the specified path or if the current Session does not have read access to the specified property.
-<a name="line324"></a>     * @throws \PHPCR\ValueFormatException if the type or format of the property can not be converted to the specified type.
-<a name="line325"></a>     * @throws \PHPCR\RepositoryException If another error occurs.
-<a name="line326"></a>     * @api
-<a name="line327"></a>     */</span>
-<a name="line328"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getPropertyValue<span style="color: #009900;">&#40;</span><span style="color: #000088;">$name</span><span style="color: #339933;">,</span> <span style="color: #000088;">$type</span><span style="color: #339933;">=</span><span style="color: #009900; font-weight: bold;">null</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line329"></a>&nbsp;
-<a name="line330"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line331"></a>     * Get an iteratable set of properties gathered on behalf of a filter.
-<a name="line332"></a>     *
-<a name="line333"></a>     * If $filter is a string:
-<a name="line334"></a>     * Gets all properties of this node accessible through the current Session
-<a name="line335"></a>     * that match namePattern (if no pattern is given, all accessible properties
-<a name="line336"></a>     * are returned). Does not include child nodes of this node. The pattern may
-<a name="line337"></a>     * be a full name or a partial name with one or more wildcard characters (&quot;*&quot;),
-<a name="line338"></a>     * or a disjunction (using the &quot;|&quot; character to represent logical OR) of
-<a name="line339"></a>     * these. For example,
-<a name="line340"></a>     * N.getProperties(&quot;jcr:* | myapp:name | my doc&quot;)
-<a name="line341"></a>     * would return an iterator holding all accessible properties of N
-<a name="line342"></a>     * that are either called 'myapp:name', begin with the prefix 'jcr:' or are
-<a name="line343"></a>     * called 'my doc'.
+<a name="line317"></a>     * @param string $name Name of this property
+<a name="line318"></a>     * @param integer $type Type conversion request, optional. Must be a constant from PropertyType
+<a name="line319"></a>     * @return mixed The value of the property with $name.
+<a name="line320"></a>     * @throws \PHPCR\PathNotFoundException if no property exists at the specified path or if the current Session does not have read access to the specified property.
+<a name="line321"></a>     * @throws \PHPCR\ValueFormatException if the type or format of the property can not be converted to the specified type.
+<a name="line322"></a>     * @throws \PHPCR\RepositoryException If another error occurs.
+<a name="line323"></a>     * @api
+<a name="line324"></a>     */</span>
+<a name="line325"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getPropertyValue<span style="color: #009900;">&#40;</span><span style="color: #000088;">$name</span><span style="color: #339933;">,</span> <span style="color: #000088;">$type</span><span style="color: #339933;">=</span><span style="color: #009900; font-weight: bold;">null</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line326"></a>&nbsp;
+<a name="line327"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line328"></a>     * Get an iteratable set of properties gathered on behalf of a filter.
+<a name="line329"></a>     *
+<a name="line330"></a>     * If $filter is a string:
+<a name="line331"></a>     * Gets all properties of this node accessible through the current Session
+<a name="line332"></a>     * that match namePattern (if no pattern is given, all accessible properties
+<a name="line333"></a>     * are returned). Does not include child nodes of this node. The pattern may
+<a name="line334"></a>     * be a full name or a partial name with one or more wildcard characters (&quot;*&quot;),
+<a name="line335"></a>     * or a disjunction (using the &quot;|&quot; character to represent logical OR) of
+<a name="line336"></a>     * these. For example,
+<a name="line337"></a>     * N.getProperties(&quot;jcr:* | myapp:name | my doc&quot;)
+<a name="line338"></a>     * would return an iterator holding all accessible properties of N
+<a name="line339"></a>     * that are either called 'myapp:name', begin with the prefix 'jcr:' or are
+<a name="line340"></a>     * called 'my doc'.
+<a name="line341"></a>     *
+<a name="line342"></a>     * The substrings within the pattern that are delimited by &quot;|&quot; characters
+<a name="line343"></a>     * and which may contain wildcard characters (&quot;*&quot;) are called globs.
 <a name="line344"></a>     *
-<a name="line345"></a>     * The substrings within the pattern that are delimited by &quot;|&quot; characters
-<a name="line346"></a>     * and which may contain wildcard characters (&quot;*&quot;) are called globs.
+<a name="line345"></a>     * Note that leading and trailing whitespace around a glob is ignored, but
+<a name="line346"></a>     * whitespace within a disjunct forms part of the pattern to be matched.
 <a name="line347"></a>     *
-<a name="line348"></a>     * Note that leading and trailing whitespace around a glob is ignored, but
-<a name="line349"></a>     * whitespace within a disjunct forms part of the pattern to be matched.
-<a name="line350"></a>     *
-<a name="line351"></a>     * If $filter is an array:
-<a name="line352"></a>     * Gets all properties of this node accessible through the current
-<a name="line353"></a>     * Session that match one or more of the $filter strings in the passed array.
-<a name="line354"></a>     *
-<a name="line355"></a>     * A glob may be a full name or a partial name with one or more wildcard
-<a name="line356"></a>     * characters (&quot;*&quot;). For example,
-<a name="line357"></a>     *  N-&gt;getProperties(array(&quot;jcr:*&quot;, &quot;myapp:report&quot;, &quot;my doc&quot;))
-<a name="line358"></a>     * would return an iterator holding all accessible properties of N
-<a name="line359"></a>     * that are either called 'myapp:report', begin with the prefix 'jcr:' or
-<a name="line360"></a>     * are called 'my doc'.
+<a name="line348"></a>     * If $filter is an array:
+<a name="line349"></a>     * Gets all properties of this node accessible through the current
+<a name="line350"></a>     * Session that match one or more of the $filter strings in the passed array.
+<a name="line351"></a>     *
+<a name="line352"></a>     * A glob may be a full name or a partial name with one or more wildcard
+<a name="line353"></a>     * characters (&quot;*&quot;). For example,
+<a name="line354"></a>     *  N-&gt;getProperties(array(&quot;jcr:*&quot;, &quot;myapp:report&quot;, &quot;my doc&quot;))
+<a name="line355"></a>     * would return an iterator holding all accessible properties of N
+<a name="line356"></a>     * that are either called 'myapp:report', begin with the prefix 'jcr:' or
+<a name="line357"></a>     * are called 'my doc'.
+<a name="line358"></a>     *
+<a name="line359"></a>     * Note that unlike in the case of getProperties(&lt;string&gt;) leading and
+<a name="line360"></a>     * trailing whitespace around a glob is not ignored.
 <a name="line361"></a>     *
-<a name="line362"></a>     * Note that unlike in the case of getProperties(&lt;string&gt;) leading and
-<a name="line363"></a>     * trailing whitespace around a glob is not ignored.
-<a name="line364"></a>     *
+<a name="line362"></a>     *
+<a name="line363"></a>     * The pattern is matched against the names (not the paths) of the immediate
+<a name="line364"></a>     * child properties of this node.
 <a name="line365"></a>     *
-<a name="line366"></a>     * The pattern is matched against the names (not the paths) of the immediate
-<a name="line367"></a>     * child properties of this node.
+<a name="line366"></a>     * If this node has no accessible matching properties, then an empty iterator
+<a name="line367"></a>     * is returned.
 <a name="line368"></a>     *
-<a name="line369"></a>     * If this node has no accessible matching properties, then an empty iterator
-<a name="line370"></a>     * is returned.
-<a name="line371"></a>     *
-<a name="line372"></a>     * The same reacquisition semantics apply as with getNode(String).
-<a name="line373"></a>     *
-<a name="line374"></a>     * @param string|array $filter a name pattern
-<a name="line375"></a>     * @return Iterator implementing &lt;b&gt;SeekableIterator&lt;/b&gt; and &lt;b&gt;Countable&lt;/b&gt;. Keys are the property names, values the corresponding PropertyInterface instances.
-<a name="line376"></a>     * @throws \PHPCR\RepositoryException If an unexpected error occurs.
-<a name="line377"></a>     * @api
-<a name="line378"></a>     */</span>
-<a name="line379"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getProperties<span style="color: #009900;">&#40;</span><span style="color: #000088;">$filter</span> <span style="color: #339933;">=</span> <span style="color: #009900; font-weight: bold;">NULL</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line380"></a>&nbsp;
-<a name="line381"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line382"></a>     * Shortcut for getProperties and then getting the values of the properties.
-<a name="line383"></a>     *
-<a name="line384"></a>     * See NodeInterface::getProperties for a full documentation
-<a name="line385"></a>     *
-<a name="line386"></a>     * @param string|array $filter a name pattern
-<a name="line387"></a>     * @return Iterator implementing &lt;b&gt;SeekableIterator&lt;/b&gt; and &lt;b&gt;Countable&lt;/b&gt;. Keys are the property names, values the corresponding property value (or array of values in case of multi-valued properties)
-<a name="line388"></a>     * @throws \PHPCR\RepositoryException If an unexpected error occurs.
-<a name="line389"></a>     * @api
-<a name="line390"></a>     */</span>
-<a name="line391"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getPropertiesValues<span style="color: #009900;">&#40;</span><span style="color: #000088;">$filter</span><span style="color: #339933;">=</span><span style="color: #009900; font-weight: bold;">null</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line392"></a>&nbsp;
-<a name="line393"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line394"></a>     * Returns the primary child item of the current node.
+<a name="line369"></a>     * The same reacquisition semantics apply as with getNode(String).
+<a name="line370"></a>     *
+<a name="line371"></a>     * @param string|array $filter a name pattern
+<a name="line372"></a>     * @return Iterator implementing &lt;b&gt;SeekableIterator&lt;/b&gt; and &lt;b&gt;Countable&lt;/b&gt;. Keys are the property names, values the corresponding PropertyInterface instances.
+<a name="line373"></a>     * @throws \PHPCR\RepositoryException If an unexpected error occurs.
+<a name="line374"></a>     * @api
+<a name="line375"></a>     */</span>
+<a name="line376"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getProperties<span style="color: #009900;">&#40;</span><span style="color: #000088;">$filter</span> <span style="color: #339933;">=</span> <span style="color: #009900; font-weight: bold;">null</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line377"></a>&nbsp;
+<a name="line378"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line379"></a>     * Shortcut for getProperties and then getting the values of the properties.
+<a name="line380"></a>     *
+<a name="line381"></a>     * See NodeInterface::getProperties for a full documentation
+<a name="line382"></a>     *
+<a name="line383"></a>     * @param string|array $filter a name pattern
+<a name="line384"></a>     * @return Iterator implementing &lt;b&gt;SeekableIterator&lt;/b&gt; and &lt;b&gt;Countable&lt;/b&gt;. Keys are the property names, values the corresponding property value (or array of values in case of multi-valued properties)
+<a name="line385"></a>     * @throws \PHPCR\RepositoryException If an unexpected error occurs.
+<a name="line386"></a>     * @api
+<a name="line387"></a>     */</span>
+<a name="line388"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getPropertiesValues<span style="color: #009900;">&#40;</span><span style="color: #000088;">$filter</span><span style="color: #339933;">=</span><span style="color: #009900; font-weight: bold;">null</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line389"></a>&nbsp;
+<a name="line390"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line391"></a>     * Returns the primary child item of the current node.
+<a name="line392"></a>     *
+<a name="line393"></a>     * The primary node type of this node may specify one child item (child node or property) of this node as
+<a name="line394"></a>     * the primary child item. This method returns that item.
 <a name="line395"></a>     *
-<a name="line396"></a>     * The primary node type of this node may specify one child item (child node or property) of this node as
-<a name="line397"></a>     * the primary child item. This method returns that item.
-<a name="line398"></a>     *
-<a name="line399"></a>     * In cases where the primary child item specifies the name of a set same-name
-<a name="line400"></a>     * sibling child nodes, the node returned will be the one among the same-name
-<a name="line401"></a>     * siblings with index [1].
-<a name="line402"></a>     *
-<a name="line403"></a>     * The same reacquisition semantics apply as with getNode(String).
-<a name="line404"></a>     *
-<a name="line405"></a>     * @return \PHPCR\ItemInterface the primary child item.
-<a name="line406"></a>     * @throws \PHPCR\ItemNotFoundException if this node does not have a primary child item, either because none is declared in the node type or because a declared primary item is not present on this node instance, or because none accessible through the current Session
-<a name="line407"></a>     * @throws \PHPCR\RepositoryException if another error occurs.
-<a name="line408"></a>     * @api
-<a name="line409"></a>     */</span>
-<a name="line410"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getPrimaryItem<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line411"></a>&nbsp;
-<a name="line412"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line413"></a>     * Returns the identifier of the current node.
-<a name="line414"></a>     *
-<a name="line415"></a>     * Applies to both referenceable and non-referenceable nodes.
-<a name="line416"></a>     *
-<a name="line417"></a>     * @return string the identifier of this node
-<a name="line418"></a>     * @throws \PHPCR\RepositoryException If an error occurs.
-<a name="line419"></a>     * @api
-<a name="line420"></a>     */</span>
-<a name="line421"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getIdentifier<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line422"></a>&nbsp;
-<a name="line423"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line424"></a>     * This method returns the index of this node within the ordered set of its same-name sibling nodes.
-<a name="line425"></a>     *
-<a name="line426"></a>     * This index is the one used to address same-name siblings using the square-bracket notation, e.g., /a[3]/b[4].
-<a name="line427"></a>     * Note that the index always starts at 1 (not 0), for compatibility with XPath. As a result, for nodes that do
-<a name="line428"></a>     * not have same-name-siblings, this method will always return 1.
-<a name="line429"></a>     *
-<a name="line430"></a>     * @return integer The index of this node within the ordered set of its same-name sibling nodes.
-<a name="line431"></a>     * @throws \PHPCR\RepositoryException if an error occurs.
-<a name="line432"></a>     * @api
-<a name="line433"></a>     */</span>
-<a name="line434"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getIndex<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line435"></a>&nbsp;
-<a name="line436"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line437"></a>     * This method returns all REFERENCE properties that refer to this node, have
-<a name="line438"></a>     * the specified name and that are accessible through the current Session.
+<a name="line396"></a>     * In cases where the primary child item specifies the name of a set same-name
+<a name="line397"></a>     * sibling child nodes, the node returned will be the one among the same-name
+<a name="line398"></a>     * siblings with index [1].
+<a name="line399"></a>     *
+<a name="line400"></a>     * The same reacquisition semantics apply as with getNode(String).
+<a name="line401"></a>     *
+<a name="line402"></a>     * @return \PHPCR\ItemInterface the primary child item.
+<a name="line403"></a>     * @throws \PHPCR\ItemNotFoundException if this node does not have a primary child item, either because none is declared in the node type or because a declared primary item is not present on this node instance, or because none accessible through the current Session
+<a name="line404"></a>     * @throws \PHPCR\RepositoryException if another error occurs.
+<a name="line405"></a>     * @api
+<a name="line406"></a>     */</span>
+<a name="line407"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getPrimaryItem<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line408"></a>&nbsp;
+<a name="line409"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line410"></a>     * Returns the identifier of the current node.
+<a name="line411"></a>     *
+<a name="line412"></a>     * Applies to both referenceable and non-referenceable nodes.
+<a name="line413"></a>     *
+<a name="line414"></a>     * @return string the identifier of this node
+<a name="line415"></a>     * @throws \PHPCR\RepositoryException If an error occurs.
+<a name="line416"></a>     * @api
+<a name="line417"></a>     */</span>
+<a name="line418"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getIdentifier<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line419"></a>&nbsp;
+<a name="line420"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line421"></a>     * This method returns the index of this node within the ordered set of its same-name sibling nodes.
+<a name="line422"></a>     *
+<a name="line423"></a>     * This index is the one used to address same-name siblings using the square-bracket notation, e.g., /a[3]/b[4].
+<a name="line424"></a>     * Note that the index always starts at 1 (not 0), for compatibility with XPath. As a result, for nodes that do
+<a name="line425"></a>     * not have same-name-siblings, this method will always return 1.
+<a name="line426"></a>     *
+<a name="line427"></a>     * @return integer The index of this node within the ordered set of its same-name sibling nodes.
+<a name="line428"></a>     * @throws \PHPCR\RepositoryException if an error occurs.
+<a name="line429"></a>     * @api
+<a name="line430"></a>     */</span>
+<a name="line431"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getIndex<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line432"></a>&nbsp;
+<a name="line433"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line434"></a>     * This method returns all REFERENCE properties that refer to this node, have
+<a name="line435"></a>     * the specified name and that are accessible through the current Session.
+<a name="line436"></a>     *
+<a name="line437"></a>     * If the name parameter is null then all referring REFERENCES are returned
+<a name="line438"></a>     * regardless of name.
 <a name="line439"></a>     *
-<a name="line440"></a>     * If the name parameter is null then all referring REFERENCES are returned
-<a name="line441"></a>     * regardless of name.
-<a name="line442"></a>     *
-<a name="line443"></a>     * Some implementations may only return properties that have been persisted.
-<a name="line444"></a>     * Some may return both properties that have been persisted and those that
-<a name="line445"></a>     * have been dispatched but not persisted (for example, those saved within a
-<a name="line446"></a>     * transaction but not yet committed) while others implementations may
-<a name="line447"></a>     * return these two categories of property as well as properties that are
-<a name="line448"></a>     * still pending and not yet dispatched.
+<a name="line440"></a>     * Some implementations may only return properties that have been persisted.
+<a name="line441"></a>     * Some may return both properties that have been persisted and those that
+<a name="line442"></a>     * have been dispatched but not persisted (for example, those saved within a
+<a name="line443"></a>     * transaction but not yet committed) while others implementations may
+<a name="line444"></a>     * return these two categories of property as well as properties that are
+<a name="line445"></a>     * still pending and not yet dispatched.
+<a name="line446"></a>     *
+<a name="line447"></a>     * In implementations that support versioning, this method does not return
+<a name="line448"></a>     * properties that are part of the frozen state of a version in version storage.
 <a name="line449"></a>     *
-<a name="line450"></a>     * In implementations that support versioning, this method does not return
-<a name="line451"></a>     * properties that are part of the frozen state of a version in version storage.
+<a name="line450"></a>     * If this node has no referring properties with the specified name, an empty
+<a name="line451"></a>     * iterator is returned.
 <a name="line452"></a>     *
-<a name="line453"></a>     * If this node has no referring properties with the specified name, an empty
-<a name="line454"></a>     * iterator is returned.
-<a name="line455"></a>     *
-<a name="line456"></a>     * @param string $name Name of referring REFERENCE properties to be returned; if null then all
-<a name="line457"></a>     *                     referring REFERENCEs are returned.
-<a name="line458"></a>     * @return Iterator implementing &lt;b&gt;SeekableIterator&lt;/b&gt; and &lt;b&gt;Countable&lt;/b&gt;. Keys are the property names, values the
-<a name="line459"></a>     *                  corresponding PropertyInterface instances.
-<a name="line460"></a>     * @throws \PHPCR\RepositoryException if an error occurs
-<a name="line461"></a>     * @api
-<a name="line462"></a>     */</span>
-<a name="line463"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getReferences<span style="color: #009900;">&#40;</span><span style="color: #000088;">$name</span> <span style="color: #339933;">=</span> <span style="color: #009900; font-weight: bold;">NULL</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line464"></a>&nbsp;
-<a name="line465"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line466"></a>     * This method returns all WEAKREFERENCE properties that refer to this node,
-<a name="line467"></a>     * have the specified name and that are accessible through the current Session.
+<a name="line453"></a>     * @param string $name Name of referring REFERENCE properties to be returned; if null then all
+<a name="line454"></a>     *                     referring REFERENCEs are returned.
+<a name="line455"></a>     * @return Iterator implementing &lt;b&gt;SeekableIterator&lt;/b&gt; and &lt;b&gt;Countable&lt;/b&gt;. Keys are the property names, values the
+<a name="line456"></a>     *                  corresponding PropertyInterface instances.
+<a name="line457"></a>     * @throws \PHPCR\RepositoryException if an error occurs
+<a name="line458"></a>     * @api
+<a name="line459"></a>     */</span>
+<a name="line460"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getReferences<span style="color: #009900;">&#40;</span><span style="color: #000088;">$name</span> <span style="color: #339933;">=</span> <span style="color: #009900; font-weight: bold;">null</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line461"></a>&nbsp;
+<a name="line462"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line463"></a>     * This method returns all WEAKREFERENCE properties that refer to this node,
+<a name="line464"></a>     * have the specified name and that are accessible through the current Session.
+<a name="line465"></a>     *
+<a name="line466"></a>     * If the name parameter is null then all referring WEAKREFERENCE are returned
+<a name="line467"></a>     * regardless of name.
 <a name="line468"></a>     *
-<a name="line469"></a>     * If the name parameter is null then all referring WEAKREFERENCE are returned
-<a name="line470"></a>     * regardless of name.
-<a name="line471"></a>     *
-<a name="line472"></a>     * Some level 2 implementations may only return properties that have been
-<a name="line473"></a>     * saved (in a transactional setting this includes both those properties that
-<a name="line474"></a>     * have been saved but not yet committed, as well as properties that have
-<a name="line475"></a>     * been committed). Other level 2 implementations may additionally return
-<a name="line476"></a>     * properties that have been added within the current Session but are not yet
-<a name="line477"></a>     * saved.
+<a name="line469"></a>     * Some level 2 implementations may only return properties that have been
+<a name="line470"></a>     * saved (in a transactional setting this includes both those properties that
+<a name="line471"></a>     * have been saved but not yet committed, as well as properties that have
+<a name="line472"></a>     * been committed). Other level 2 implementations may additionally return
+<a name="line473"></a>     * properties that have been added within the current Session but are not yet
+<a name="line474"></a>     * saved.
+<a name="line475"></a>     *
+<a name="line476"></a>     * In implementations that support versioning, this method does not return
+<a name="line477"></a>     * properties that are part of the frozen state of a version in version storage.
 <a name="line478"></a>     *
-<a name="line479"></a>     * In implementations that support versioning, this method does not return
-<a name="line480"></a>     * properties that are part of the frozen state of a version in version storage.
+<a name="line479"></a>     * If this node has no referring properties with the specified name, an empty
+<a name="line480"></a>     * iterator is returned.
 <a name="line481"></a>     *
-<a name="line482"></a>     * If this node has no referring properties with the specified name, an empty
-<a name="line483"></a>     * iterator is returned.
-<a name="line484"></a>     *
-<a name="line485"></a>     * @param string $name name of referring WEAKREFERENCE properties to be returned; if null then all referring WEAKREFERENCEs are returned
-<a name="line486"></a>     * @return Iterator implementing &lt;b&gt;SeekableIterator&lt;/b&gt; and &lt;b&gt;Countable&lt;/b&gt;. Keys are the property names, values the corresponding PropertyInterface instances.
-<a name="line487"></a>     * @throws \PHPCR\RepositoryException if an error occurs
-<a name="line488"></a>     * @api
-<a name="line489"></a>     */</span>
-<a name="line490"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getWeakReferences<span style="color: #009900;">&#40;</span><span style="color: #000088;">$name</span> <span style="color: #339933;">=</span> <span style="color: #009900; font-weight: bold;">NULL</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line491"></a>&nbsp;
-<a name="line492"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line493"></a>     * Indicates whether a node exists at relPath Returns true if a node accessible
-<a name="line494"></a>     * through the current Session exists at relPath and false otherwise.
-<a name="line495"></a>     *
-<a name="line496"></a>     * @param string $relPath The path of a (possible) node.
-<a name="line497"></a>     * @return boolean true if a node exists at relPath; false otherwise.
-<a name="line498"></a>     * @throws \PHPCR\RepositoryException if an error occurs.
-<a name="line499"></a>     * @api
-<a name="line500"></a>     */</span>
-<a name="line501"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> hasNode<span style="color: #009900;">&#40;</span><span style="color: #000088;">$relPath</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line502"></a>&nbsp;
-<a name="line503"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line504"></a>     * Determine if a property exists at the specified path.
+<a name="line482"></a>     * @param string $name name of referring WEAKREFERENCE properties to be returned; if null then all referring WEAKREFERENCEs are returned
+<a name="line483"></a>     * @return Iterator implementing &lt;b&gt;SeekableIterator&lt;/b&gt; and &lt;b&gt;Countable&lt;/b&gt;. Keys are the property names, values the corresponding PropertyInterface instances.
+<a name="line484"></a>     * @throws \PHPCR\RepositoryException if an error occurs
+<a name="line485"></a>     * @api
+<a name="line486"></a>     */</span>
+<a name="line487"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getWeakReferences<span style="color: #009900;">&#40;</span><span style="color: #000088;">$name</span> <span style="color: #339933;">=</span> <span style="color: #009900; font-weight: bold;">null</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line488"></a>&nbsp;
+<a name="line489"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line490"></a>     * Indicates whether a node exists at relPath Returns true if a node accessible
+<a name="line491"></a>     * through the current Session exists at relPath and false otherwise.
+<a name="line492"></a>     *
+<a name="line493"></a>     * @param string $relPath The path of a (possible) node.
+<a name="line494"></a>     * @return boolean true if a node exists at relPath; false otherwise.
+<a name="line495"></a>     * @throws \PHPCR\RepositoryException if an error occurs.
+<a name="line496"></a>     * @api
+<a name="line497"></a>     */</span>
+<a name="line498"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> hasNode<span style="color: #009900;">&#40;</span><span style="color: #000088;">$relPath</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line499"></a>&nbsp;
+<a name="line500"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line501"></a>     * Determine if a property exists at the specified path.
+<a name="line502"></a>     *
+<a name="line503"></a>     * Indicates whether a property exists at relPath. Returns true if a property
+<a name="line504"></a>     * accessible through the current Session exists at relPath and false otherwise.
 <a name="line505"></a>     *
-<a name="line506"></a>     * Indicates whether a property exists at relPath. Returns true if a property
-<a name="line507"></a>     * accessible through the current Session exists at relPath and false otherwise.
-<a name="line508"></a>     *
-<a name="line509"></a>     * @param string $relPath The path of a (possible) property.
-<a name="line510"></a>     * @return boolean true if a property exists at relPath; false otherwise.
-<a name="line511"></a>     * @throws \PHPCR\RepositoryException if an error occurs.
-<a name="line512"></a>     * @api
-<a name="line513"></a>     */</span>
-<a name="line514"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> hasProperty<span style="color: #009900;">&#40;</span><span style="color: #000088;">$relPath</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line515"></a>&nbsp;
-<a name="line516"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line517"></a>     * Indicates whether this node has child nodes.
-<a name="line518"></a>     *
-<a name="line519"></a>     * Returns true if this node has one or more child nodes accessible through the current Session; false otherwise.
-<a name="line520"></a>     *
-<a name="line521"></a>     * @return boolean true if this node has one or more child nodes; false otherwise.
-<a name="line522"></a>     * @throws \PHPCR\RepositoryException if an error occurs.
-<a name="line523"></a>     * @api
-<a name="line524"></a>     */</span>
-<a name="line525"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> hasNodes<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line526"></a>&nbsp;
-<a name="line527"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line528"></a>     * Indicates whether this node has properties.
-<a name="line529"></a>     *
-<a name="line530"></a>     * Returns true if this node has one or more properties accessible through the current Session; false otherwise.
-<a name="line531"></a>     *
-<a name="line532"></a>     * @return boolean true if this node has one or more properties; false otherwise.
-<a name="line533"></a>     * @throws \PHPCR\RepositoryException if an error occurs.
-<a name="line534"></a>     * @api
-<a name="line535"></a>     */</span>
-<a name="line536"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> hasProperties<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line537"></a>&nbsp;
-<a name="line538"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line539"></a>     * Returns the primary node type in effect for this node.
+<a name="line506"></a>     * @param string $relPath The path of a (possible) property.
+<a name="line507"></a>     * @return boolean true if a property exists at relPath; false otherwise.
+<a name="line508"></a>     * @throws \PHPCR\RepositoryException if an error occurs.
+<a name="line509"></a>     * @api
+<a name="line510"></a>     */</span>
+<a name="line511"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> hasProperty<span style="color: #009900;">&#40;</span><span style="color: #000088;">$relPath</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line512"></a>&nbsp;
+<a name="line513"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line514"></a>     * Indicates whether this node has child nodes.
+<a name="line515"></a>     *
+<a name="line516"></a>     * Returns true if this node has one or more child nodes accessible through the current Session; false otherwise.
+<a name="line517"></a>     *
+<a name="line518"></a>     * @return boolean true if this node has one or more child nodes; false otherwise.
+<a name="line519"></a>     * @throws \PHPCR\RepositoryException if an error occurs.
+<a name="line520"></a>     * @api
+<a name="line521"></a>     */</span>
+<a name="line522"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> hasNodes<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line523"></a>&nbsp;
+<a name="line524"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line525"></a>     * Indicates whether this node has properties.
+<a name="line526"></a>     *
+<a name="line527"></a>     * Returns true if this node has one or more properties accessible through the current Session; false otherwise.
+<a name="line528"></a>     *
+<a name="line529"></a>     * @return boolean true if this node has one or more properties; false otherwise.
+<a name="line530"></a>     * @throws \PHPCR\RepositoryException if an error occurs.
+<a name="line531"></a>     * @api
+<a name="line532"></a>     */</span>
+<a name="line533"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> hasProperties<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line534"></a>&nbsp;
+<a name="line535"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line536"></a>     * Returns the primary node type in effect for this node.
+<a name="line537"></a>     *
+<a name="line538"></a>     * Which NodeType is returned when this method is called on the root node of a workspace is up
+<a name="line539"></a>     * to the implementation.
 <a name="line540"></a>     *
-<a name="line541"></a>     * Which NodeType is returned when this method is called on the root node of a workspace is up
-<a name="line542"></a>     * to the implementation.
-<a name="line543"></a>     *
-<a name="line544"></a>     * @return \PHPCR\NodeType\NodeTypeInterface a NodeType object.
-<a name="line545"></a>     * @throws \PHPCR\RepositoryException if an error occurs
-<a name="line546"></a>     * @api
-<a name="line547"></a>     */</span>
-<a name="line548"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getPrimaryNodeType<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line549"></a>&nbsp;
-<a name="line550"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line551"></a>     * Returns an array of NodeType objects representing the mixin node types in effect for this node.
-<a name="line552"></a>     *
-<a name="line553"></a>     * This includes only those mixin types explicitly assigned to this node. It does not include mixin types
-<a name="line554"></a>     * inherited through the addition of supertypes to the primary type hierarchy or through the
-<a name="line555"></a>     * addition of supertypes to the type hierarchy of any of the declared mixin types.
-<a name="line556"></a>     *
-<a name="line557"></a>     * @return array of \PHPCR\NodeType\NodeTypeInterface objects.
-<a name="line558"></a>     * @throws \PHPCR\RepositoryException if an error occurs
-<a name="line559"></a>     * @api
-<a name="line560"></a>     */</span>
-<a name="line561"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getMixinNodeTypes<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line562"></a>&nbsp;
-<a name="line563"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line564"></a>     * Returns true if this node is of the specified primary node type or mixin type, or a subtype thereof.
-<a name="line565"></a>     *
-<a name="line566"></a>     * Returns false otherwise. This method respects the effective node type of the node.
-<a name="line567"></a>     *
-<a name="line568"></a>     * @param string $nodeTypeName the name of a node type.
-<a name="line569"></a>     * @return boolean TRUE if this node is of the specified primary node type or mixin type, or a subtype thereof.
-<a name="line570"></a>     *                 Returns FALSE otherwise.
-<a name="line571"></a>     * @throws \PHPCR\RepositoryException If an error occurs.
-<a name="line572"></a>     * @api
-<a name="line573"></a>     */</span>
-<a name="line574"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> isNodeType<span style="color: #009900;">&#40;</span><span style="color: #000088;">$nodeTypeName</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line575"></a>&nbsp;
-<a name="line576"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line577"></a>     * Changes the primary node type of this node to nodeTypeName.
-<a name="line578"></a>     *
-<a name="line579"></a>     * Also immediately changes this node's jcr:primaryType property appropriately. Semantically,
-<a name="line580"></a>     * the new node type may take effect immediately or on dispatch but must take effect on persist.
-<a name="line581"></a>     * Whichever behavior is adopted it must be the same as the behavior adopted
-<a name="line582"></a>     * for addMixin() (see below) and the behavior that occurs when a node is
-<a name="line583"></a>     * first created.
-<a name="line584"></a>     *
-<a name="line585"></a>     * @param string $nodeTypeName the name of the new node type.
-<a name="line586"></a>     * @return void
-<a name="line587"></a>     * @throws \PHPCR\ConstraintViolationException If the specified primary node type creates a type conflict and this
-<a name="line588"></a>     *                                             implementation performs this validation immediately.
-<a name="line589"></a>     * @throws \PHPCR\NodeType\NoSuchNodeTypeException If the specified nodeTypeName is not recognized and this
-<a name="line590"></a>     *                                                 implementation performs this validation immediately.
-<a name="line591"></a>     * @throws \PHPCR\Version\VersionException if this node is read-only due to a checked-in node and this
-<a name="line592"></a>     *                                         implementation performs this validation immediately.
-<a name="line593"></a>     * @throws \PHPCR\Lock\LockException if a lock prevents the change of the primary node type and this implementation
-<a name="line594"></a>     *                                   performs this validation immediately.
-<a name="line595"></a>     * @throws \PHPCR\RepositoryException if another error occurs.
-<a name="line596"></a>     * @api
-<a name="line597"></a>     */</span>
-<a name="line598"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> setPrimaryType<span style="color: #009900;">&#40;</span><span style="color: #000088;">$nodeTypeName</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line599"></a>&nbsp;
-<a name="line600"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line601"></a>     * Adds the mixin node type named $mixinName to this node.
-<a name="line602"></a>     *
-<a name="line603"></a>     * If this node is already of type $mixinName (either due to a previously added mixin or due to its
-<a name="line604"></a>     * primary type, through inheritance) then this method has no effect.
-<a name="line605"></a>     * Otherwise $mixinName is added to this node's jcr:mixinTypes property.
-<a name="line606"></a>     *
-<a name="line607"></a>     * Semantically, the new node type may take effect immediately, on disptahc
-<a name="line608"></a>     * or on persist. The behavior is adopted must be the same as the behavior
-<a name="line609"></a>     * adopted for setPrimaryType(java.lang.String) and the behavior that occurs
-<a name="line610"></a>     * when a node is first created.
-<a name="line611"></a>     *
-<a name="line612"></a>     * A ConstraintViolationException is thrown either immediately or on save if
-<a name="line613"></a>     * a conflict with another assigned mixin or the primary node type or for an
-<a name="line614"></a>     * implementation-specific reason. Implementations may differ on when this
-<a name="line615"></a>     * validation is done.
-<a name="line616"></a>     *
-<a name="line617"></a>     * In some implementations it may only be possible to add mixin types before
-<a name="line618"></a>     * a a node is persisted for the first time. In such cases any later calls to
-<a name="line619"></a>     * $addMixin will throw a ConstraintViolationException either immediately,
-<a name="line620"></a>     * on dispatch or on persist.
-<a name="line621"></a>     *
-<a name="line622"></a>     * @param string $mixinName the name of the mixin node type to be added
-<a name="line623"></a>     * @return void
-<a name="line624"></a>     * @throws \PHPCR\NodeType\NoSuchNodeTypeException If the specified mixinName is not recognized and this
-<a name="line625"></a>     *                                                 implementation performs this validation immediately instead of
-<a name="line626"></a>     *                                                 waiting until save.
-<a name="line627"></a>     * @throws \PHPCR\ConstraintViolationException If the specified mixin node type is prevented from being assigned.
-<a name="line628"></a>     * @throws \PHPCR\Version\VersionException If this node is versionable and checked-in or is non-versionable but its
-<a name="line629"></a>     *                                         nearest versionable ancestor is checked-in and this implementation
-<a name="line630"></a>     *                                         performs this validation immediately instead of waiting until save.
-<a name="line631"></a>     * @throws \PHPCR\Lock\LockException If a lock prevents the addition of the mixin and this implementation performs
-<a name="line632"></a>     *                                   this validation immediately instead of waiting until save.
-<a name="line633"></a>     * @throws \PHPCR\RepositoryException if another error occurs.
-<a name="line634"></a>     * @api
-<a name="line635"></a>     */</span>
-<a name="line636"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> addMixin<span style="color: #009900;">&#40;</span><span style="color: #000088;">$mixinName</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line637"></a>&nbsp;
-<a name="line638"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line639"></a>     * Removes the specified mixin node type from this node and removes mixinName from this node's jcr:mixinTypes property.
+<a name="line541"></a>     * @return \PHPCR\NodeType\NodeTypeInterface a NodeType object.
+<a name="line542"></a>     * @throws \PHPCR\RepositoryException if an error occurs
+<a name="line543"></a>     * @api
+<a name="line544"></a>     */</span>
+<a name="line545"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getPrimaryNodeType<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line546"></a>&nbsp;
+<a name="line547"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line548"></a>     * Returns an array of NodeType objects representing the mixin node types in effect for this node.
+<a name="line549"></a>     *
+<a name="line550"></a>     * This includes only those mixin types explicitly assigned to this node. It does not include mixin types
+<a name="line551"></a>     * inherited through the addition of supertypes to the primary type hierarchy or through the
+<a name="line552"></a>     * addition of supertypes to the type hierarchy of any of the declared mixin types.
+<a name="line553"></a>     *
+<a name="line554"></a>     * @return array of \PHPCR\NodeType\NodeTypeInterface objects.
+<a name="line555"></a>     * @throws \PHPCR\RepositoryException if an error occurs
+<a name="line556"></a>     * @api
+<a name="line557"></a>     */</span>
+<a name="line558"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getMixinNodeTypes<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line559"></a>&nbsp;
+<a name="line560"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line561"></a>     * Returns true if this node is of the specified primary node type or mixin type, or a subtype thereof.
+<a name="line562"></a>     *
+<a name="line563"></a>     * Returns false otherwise. This method respects the effective node type of the node.
+<a name="line564"></a>     *
+<a name="line565"></a>     * @param string $nodeTypeName the name of a node type.
+<a name="line566"></a>     * @return boolean true if this node is of the specified primary node type or mixin type, or a subtype thereof.
+<a name="line567"></a>     *                 Returns false otherwise.
+<a name="line568"></a>     * @throws \PHPCR\RepositoryException If an error occurs.
+<a name="line569"></a>     * @api
+<a name="line570"></a>     */</span>
+<a name="line571"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> isNodeType<span style="color: #009900;">&#40;</span><span style="color: #000088;">$nodeTypeName</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line572"></a>&nbsp;
+<a name="line573"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line574"></a>     * Changes the primary node type of this node to nodeTypeName.
+<a name="line575"></a>     *
+<a name="line576"></a>     * Also immediately changes this node's jcr:primaryType property appropriately. Semantically,
+<a name="line577"></a>     * the new node type may take effect immediately or on dispatch but must take effect on persist.
+<a name="line578"></a>     * Whichever behavior is adopted it must be the same as the behavior adopted
+<a name="line579"></a>     * for addMixin() (see below) and the behavior that occurs when a node is
+<a name="line580"></a>     * first created.
+<a name="line581"></a>     *
+<a name="line582"></a>     * @param string $nodeTypeName the name of the new node type.
+<a name="line583"></a>     * @return void
+<a name="line584"></a>     * @throws \PHPCR\ConstraintViolationException If the specified primary node type creates a type conflict and this
+<a name="line585"></a>     *                                             implementation performs this validation immediately.
+<a name="line586"></a>     * @throws \PHPCR\NodeType\NoSuchNodeTypeException If the specified nodeTypeName is not recognized and this
+<a name="line587"></a>     *                                                 implementation performs this validation immediately.
+<a name="line588"></a>     * @throws \PHPCR\Version\VersionException if this node is read-only due to a checked-in node and this
+<a name="line589"></a>     *                                         implementation performs this validation immediately.
+<a name="line590"></a>     * @throws \PHPCR\Lock\LockException if a lock prevents the change of the primary node type and this implementation
+<a name="line591"></a>     *                                   performs this validation immediately.
+<a name="line592"></a>     * @throws \PHPCR\RepositoryException if another error occurs.
+<a name="line593"></a>     * @api
+<a name="line594"></a>     */</span>
+<a name="line595"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> setPrimaryType<span style="color: #009900;">&#40;</span><span style="color: #000088;">$nodeTypeName</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line596"></a>&nbsp;
+<a name="line597"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line598"></a>     * Adds the mixin node type named $mixinName to this node.
+<a name="line599"></a>     *
+<a name="line600"></a>     * If this node is already of type $mixinName (either due to a previously added mixin or due to its
+<a name="line601"></a>     * primary type, through inheritance) then this method has no effect.
+<a name="line602"></a>     * Otherwise $mixinName is added to this node's jcr:mixinTypes property.
+<a name="line603"></a>     *
+<a name="line604"></a>     * Semantically, the new node type may take effect immediately, on disptahc
+<a name="line605"></a>     * or on persist. The behavior is adopted must be the same as the behavior
+<a name="line606"></a>     * adopted for setPrimaryType(java.lang.String) and the behavior that occurs
+<a name="line607"></a>     * when a node is first created.
+<a name="line608"></a>     *
+<a name="line609"></a>     * A ConstraintViolationException is thrown either immediately or on save if
+<a name="line610"></a>     * a conflict with another assigned mixin or the primary node type or for an
+<a name="line611"></a>     * implementation-specific reason. Implementations may differ on when this
+<a name="line612"></a>     * validation is done.
+<a name="line613"></a>     *
+<a name="line614"></a>     * In some implementations it may only be possible to add mixin types before
+<a name="line615"></a>     * a a node is persisted for the first time. In such cases any later calls to
+<a name="line616"></a>     * $addMixin will throw a ConstraintViolationException either immediately,
+<a name="line617"></a>     * on dispatch or on persist.
+<a name="line618"></a>     *
+<a name="line619"></a>     * @param string $mixinName the name of the mixin node type to be added
+<a name="line620"></a>     * @return void
+<a name="line621"></a>     * @throws \PHPCR\NodeType\NoSuchNodeTypeException If the specified mixinName is not recognized and this
+<a name="line622"></a>     *                                                 implementation performs this validation immediately instead of
+<a name="line623"></a>     *                                                 waiting until save.
+<a name="line624"></a>     * @throws \PHPCR\ConstraintViolationException If the specified mixin node type is prevented from being assigned.
+<a name="line625"></a>     * @throws \PHPCR\Version\VersionException If this node is versionable and checked-in or is non-versionable but its
+<a name="line626"></a>     *                                         nearest versionable ancestor is checked-in and this implementation
+<a name="line627"></a>     *                                         performs this validation immediately instead of waiting until save.
+<a name="line628"></a>     * @throws \PHPCR\Lock\LockException If a lock prevents the addition of the mixin and this implementation performs
+<a name="line629"></a>     *                                   this validation immediately instead of waiting until save.
+<a name="line630"></a>     * @throws \PHPCR\RepositoryException if another error occurs.
+<a name="line631"></a>     * @api
+<a name="line632"></a>     */</span>
+<a name="line633"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> addMixin<span style="color: #009900;">&#40;</span><span style="color: #000088;">$mixinName</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line634"></a>&nbsp;
+<a name="line635"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line636"></a>     * Removes the specified mixin node type from this node and removes mixinName from this node's jcr:mixinTypes property.
+<a name="line637"></a>     *
+<a name="line638"></a>     * Both the semantic change in effective node type and the persistence of the change to the jcr:mixinTypes
+<a name="line639"></a>     * property occur on persist.
 <a name="line640"></a>     *
-<a name="line641"></a>     * Both the semantic change in effective node type and the persistence of the change to the jcr:mixinTypes
-<a name="line642"></a>     * property occur on persist.
-<a name="line643"></a>     *
-<a name="line644"></a>     * @param string $mixinName the name of the mixin node type to be removed.
-<a name="line645"></a>     * @return void
-<a name="line646"></a>     * @throws \PHPCR\NodeType\NoSuchNodeTypeException If the specified mixinName is not currently assigned to this
-<a name="line647"></a>     *                                                 node and this implementation performs this validation immediately.
-<a name="line648"></a>     * @throws \PHPCR\ConstraintViolationException if the specified mixin node type is prevented from being removed and
-<a name="line649"></a>     *                                             this implementation performs this validation immediately.
-<a name="line650"></a>     * @throws \PHPCR\Version\VersionException If this node is read-only due to a checked-in node and this
-<a name="line651"></a>     *                                         implementation performs this validation immediately.
-<a name="line652"></a>     * @throws \PHPCR\Lock\LockException If a lock prevents the removal of the mixin and this implementation performs
-<a name="line653"></a>     *                                   this validation immediately.
-<a name="line654"></a>     * @throws \PHPCR\RepositoryException If another error occurs.
-<a name="line655"></a>     * @api
-<a name="line656"></a>     */</span>
-<a name="line657"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> removeMixin<span style="color: #009900;">&#40;</span><span style="color: #000088;">$mixinName</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line658"></a>&nbsp;
-<a name="line659"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line660"></a>     * Determine if a mixin node type may be added to the current node.
-<a name="line661"></a>     *
-<a name="line662"></a>     * Returns true if the specified mixin node type called $mixinName can be
-<a name="line663"></a>     * added to this node. Returns false otherwise. A result of false must be
-<a name="line664"></a>     * returned in each of the following cases:
-<a name="line665"></a>     * * The mixin's definition conflicts with an existing primary or mixin node
-<a name="line666"></a>     *   type of this node.
-<a name="line667"></a>     * * This node is versionable and checked-in or is non-versionable and its
-<a name="line668"></a>     *   nearest versionable ancestor is checked-in.
-<a name="line669"></a>     * * This node is protected (as defined in this node's NodeDefinition, found
-<a name="line670"></a>     *   in the node type of this node's parent).
-<a name="line671"></a>     * * An access control restriction would prevent the addition of the mixin.
-<a name="line672"></a>     * * A lock would prevent the addition of the mixin.
-<a name="line673"></a>     * * An implementation-specific restriction would prevent the addition of the mixin.
-<a name="line674"></a>     *
-<a name="line675"></a>     * @param string $mixinName The name of the mixin to be tested.
-<a name="line676"></a>     * @return boolean true if the specified mixin node type, mixinName, can be added to this node; false otherwise.
-<a name="line677"></a>     * @throws \PHPCR\NodeType\NoSuchNodeTypeException if the specified mixin node type name is not recognized.
-<a name="line678"></a>     * @throws \PHPCR\RepositoryException if another error occurs.
-<a name="line679"></a>     * @api
-<a name="line680"></a>     */</span>
-<a name="line681"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> canAddMixin<span style="color: #009900;">&#40;</span><span style="color: #000088;">$mixinName</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line682"></a>&nbsp;
-<a name="line683"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line684"></a>     * Returns the node definition that applies to this node.
-<a name="line685"></a>     *
-<a name="line686"></a>     * In some cases there may appear to be more than one definition that could apply to this node.
-<a name="line687"></a>     * However, it is assumed that upon creation of this node, a single particular
-<a name="line688"></a>     * definition was used and it is that definition that this method returns.
-<a name="line689"></a>     * How this governing definition is selected upon node creation from among
-<a name="line690"></a>     * others which may have been applicable is an implementation issue and is
-<a name="line691"></a>     * not covered by this specification. The NodeDefinition returned when this
-<a name="line692"></a>     * method is called on the root node of a workspace is also up to the
-<a name="line693"></a>     * implementation.
-<a name="line694"></a>     *
-<a name="line695"></a>     * @return \PHPCR\NodeType\NodeDefinitionInterface a NodeDefinition object.
-<a name="line696"></a>     * @throws \PHPCR\RepositoryException if an error occurs.
-<a name="line697"></a>     * @api
-<a name="line698"></a>     */</span>
-<a name="line699"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getDefinition<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line700"></a>&nbsp;
-<a name="line701"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line702"></a>     * Updates a node corresponding to the current one in the given workspace.
-<a name="line703"></a>     *
-<a name="line704"></a>     * If this node does have a corresponding node in the workspace srcWorkspace,
-<a name="line705"></a>     * then this replaces this node and its subgraph with a clone of the
-<a name="line706"></a>     * corresponding node and its subgraph.
-<a name="line707"></a>     * If this node does not have a corresponding node in the workspace srcWorkspace,
-<a name="line708"></a>     * then the update method has no effect.
+<a name="line641"></a>     * @param string $mixinName the name of the mixin node type to be removed.
+<a name="line642"></a>     * @return void
+<a name="line643"></a>     * @throws \PHPCR\NodeType\NoSuchNodeTypeException If the specified mixinName is not currently assigned to this
+<a name="line644"></a>     *                                                 node and this implementation performs this validation immediately.
+<a name="line645"></a>     * @throws \PHPCR\ConstraintViolationException if the specified mixin node type is prevented from being removed and
+<a name="line646"></a>     *                                             this implementation performs this validation immediately.
+<a name="line647"></a>     * @throws \PHPCR\Version\VersionException If this node is read-only due to a checked-in node and this
+<a name="line648"></a>     *                                         implementation performs this validation immediately.
+<a name="line649"></a>     * @throws \PHPCR\Lock\LockException If a lock prevents the removal of the mixin and this implementation performs
+<a name="line650"></a>     *                                   this validation immediately.
+<a name="line651"></a>     * @throws \PHPCR\RepositoryException If another error occurs.
+<a name="line652"></a>     * @api
+<a name="line653"></a>     */</span>
+<a name="line654"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> removeMixin<span style="color: #009900;">&#40;</span><span style="color: #000088;">$mixinName</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line655"></a>&nbsp;
+<a name="line656"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line657"></a>     * Determine if a mixin node type may be added to the current node.
+<a name="line658"></a>     *
+<a name="line659"></a>     * Returns true if the specified mixin node type called $mixinName can be
+<a name="line660"></a>     * added to this node. Returns false otherwise. A result of false must be
+<a name="line661"></a>     * returned in each of the following cases:
+<a name="line662"></a>     * * The mixin's definition conflicts with an existing primary or mixin node
+<a name="line663"></a>     *   type of this node.
+<a name="line664"></a>     * * This node is versionable and checked-in or is non-versionable and its
+<a name="line665"></a>     *   nearest versionable ancestor is checked-in.
+<a name="line666"></a>     * * This node is protected (as defined in this node's NodeDefinition, found
+<a name="line667"></a>     *   in the node type of this node's parent).
+<a name="line668"></a>     * * An access control restriction would prevent the addition of the mixin.
+<a name="line669"></a>     * * A lock would prevent the addition of the mixin.
+<a name="line670"></a>     * * An implementation-specific restriction would prevent the addition of the mixin.
+<a name="line671"></a>     *
+<a name="line672"></a>     * @param string $mixinName The name of the mixin to be tested.
+<a name="line673"></a>     * @return boolean true if the specified mixin node type, mixinName, can be added to this node; false otherwise.
+<a name="line674"></a>     * @throws \PHPCR\NodeType\NoSuchNodeTypeException if the specified mixin node type name is not recognized.
+<a name="line675"></a>     * @throws \PHPCR\RepositoryException if another error occurs.
+<a name="line676"></a>     * @api
+<a name="line677"></a>     */</span>
+<a name="line678"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> canAddMixin<span style="color: #009900;">&#40;</span><span style="color: #000088;">$mixinName</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line679"></a>&nbsp;
+<a name="line680"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line681"></a>     * Returns the node definition that applies to this node.
+<a name="line682"></a>     *
+<a name="line683"></a>     * In some cases there may appear to be more than one definition that could apply to this node.
+<a name="line684"></a>     * However, it is assumed that upon creation of this node, a single particular
+<a name="line685"></a>     * definition was used and it is that definition that this method returns.
+<a name="line686"></a>     * How this governing definition is selected upon node creation from among
+<a name="line687"></a>     * others which may have been applicable is an implementation issue and is
+<a name="line688"></a>     * not covered by this specification. The NodeDefinition returned when this
+<a name="line689"></a>     * method is called on the root node of a workspace is also up to the
+<a name="line690"></a>     * implementation.
+<a name="line691"></a>     *
+<a name="line692"></a>     * @return \PHPCR\NodeType\NodeDefinitionInterface a NodeDefinition object.
+<a name="line693"></a>     * @throws \PHPCR\RepositoryException if an error occurs.
+<a name="line694"></a>     * @api
+<a name="line695"></a>     */</span>
+<a name="line696"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getDefinition<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line697"></a>&nbsp;
+<a name="line698"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line699"></a>     * Updates a node corresponding to the current one in the given workspace.
+<a name="line700"></a>     *
+<a name="line701"></a>     * If this node does have a corresponding node in the workspace srcWorkspace,
+<a name="line702"></a>     * then this replaces this node and its subgraph with a clone of the
+<a name="line703"></a>     * corresponding node and its subgraph.
+<a name="line704"></a>     * If this node does not have a corresponding node in the workspace srcWorkspace,
+<a name="line705"></a>     * then the update method has no effect.
+<a name="line706"></a>     *
+<a name="line707"></a>     * If the update succeeds the changes made are persisted immediately, there
+<a name="line708"></a>     * is no need to call save.
 <a name="line709"></a>     *
-<a name="line710"></a>     * If the update succeeds the changes made are persisted immediately, there
-<a name="line711"></a>     * is no need to call save.
-<a name="line712"></a>     *
-<a name="line713"></a>     * Note that update does not respect the checked-in status of nodes. An update
-<a name="line714"></a>     * may change a node even if it is currently checked-in (This fact is only
-<a name="line715"></a>     * relevant in an implementation that supports versioning).
-<a name="line716"></a>     *
-<a name="line717"></a>     * @param string $srcWorkspace the name of the source workspace.
-<a name="line718"></a>     * @return void
-<a name="line719"></a>     * @throws \PHPCR\NoSuchWorkspaceException if srcWorkspace does not exist.
-<a name="line720"></a>     * @throws \PHPCR\InvalidItemStateException if this Session (not necessarily this Node) has pending unsaved changes.
-<a name="line721"></a>     * @throws \PHPCR\AccessDeniedException if the current session does not have sufficient access to perform the operation.
-<a name="line722"></a>     * @throws \PHPCR\Lock\LockException if a lock prevents the update.
-<a name="line723"></a>     * @throws \PHPCR\RepositoryException if another error occurs.
-<a name="line724"></a>     * @api
-<a name="line725"></a>     */</span>
-<a name="line726"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> update<span style="color: #009900;">&#40;</span><span style="color: #000088;">$srcWorkspace</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line727"></a>&nbsp;
-<a name="line728"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line729"></a>     * Returns the absolute path of the node in the specified workspace that
-<a name="line730"></a>     * corresponds to this node.
-<a name="line731"></a>     *
-<a name="line732"></a>     * @param string $workspaceName the name of the workspace.
-<a name="line733"></a>     * @return string the absolute path to the corresponding node.
-<a name="line734"></a>     * @throws \PHPCR\ItemNotFoundException if no corresponding node is found.
-<a name="line735"></a>     * @throws \PHPCR\NoSuchWorkspaceException if the workspace is unknown.
-<a name="line736"></a>     * @throws \PHPCR\AccessDeniedException if the current session has insufficient access capabilities to perform this operation.
-<a name="line737"></a>     * @throws \PHPCR\RepositoryException if another error occurs.
-<a name="line738"></a>     * @api
-<a name="line739"></a>     */</span>
-<a name="line740"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getCorrespondingNodePath<span style="color: #009900;">&#40;</span><span style="color: #000088;">$workspaceName</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line741"></a>&nbsp;
-<a name="line742"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line743"></a>     * Returns an iterator over all nodes that are in the shared set of this node.
-<a name="line744"></a>     *
-<a name="line745"></a>     * If this node is not shared then the returned iterator contains only this node.
-<a name="line746"></a>     *
-<a name="line747"></a>     * @return Iterator implementing &lt;b&gt;SeekableIterator&lt;/b&gt; and &lt;b&gt;Countable&lt;/b&gt;. Keys are the Node names, values the corresponding
-<a name="line748"></a>     *                  NodeInterface instances.
-<a name="line749"></a>     * @throws \PHPCR\RepositoryException if an error occurs.
-<a name="line750"></a>     * @api
-<a name="line751"></a>     */</span>
-<a name="line752"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getSharedSet<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line753"></a>&nbsp;
-<a name="line754"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line755"></a>     * Removes this node and every other node in the shared set of this node.
-<a name="line756"></a>     *
-<a name="line757"></a>     * This removal must be done atomically, i.e., if one of the nodes cannot be
-<a name="line758"></a>     * removed, the method throws the exception Node.remove() would have thrown
-<a name="line759"></a>     * in that case, and none of the nodes are removed.
-<a name="line760"></a>     *
-<a name="line761"></a>     * If this node is not shared this method removes only this node.
-<a name="line762"></a>     *
-<a name="line763"></a>     * @return void
-<a name="line764"></a>     * @throws \PHPCR\Version\VersionException If the parent node of this item is versionable and checked-in or is
-<a name="line765"></a>     *                                         non-versionable but its nearest versionable ancestor is checked-in and
-<a name="line766"></a>     *                                         this implementation performs this validation immediately.
-<a name="line767"></a>     * @throws \PHPCR\Lock\LockException If a lock prevents the removal of this item and this implementation performs
-<a name="line768"></a>     *                                   this validation immediately.
-<a name="line769"></a>     * @throws \PHPCR\NodeType\ConstraintViolationException If removing the specified item would violate a node type or
-<a name="line770"></a>     *                                                      implementation-specific constraint and this implementation
-<a name="line771"></a>     *                                                      performs this validation immediately.
-<a name="line772"></a>     * @throws \PHPCR\RepositoryException if another error occurs.
-<a name="line773"></a>     *
-<a name="line774"></a>     * @see removeShare()
-<a name="line775"></a>     * @see Item::remove()
-<a name="line776"></a>     * @see SessionInterface::removeItem()
-<a name="line777"></a>     *
-<a name="line778"></a>     * @api
-<a name="line779"></a>     */</span>
-<a name="line780"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> removeSharedSet<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line781"></a>&nbsp;
-<a name="line782"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line783"></a>     * Removes this node, but does not remove any other node in the shared set of this node.
-<a name="line784"></a>     *
-<a name="line785"></a>     * @return void
-<a name="line786"></a>     * @throws \PHPCR\Version\VersionException if the parent node of this item is versionable and checked-in or is
-<a name="line787"></a>     *                                         non-versionable but its nearest versionable ancestor is checked-in and
-<a name="line788"></a>     *                                         this implementation performs this validation immediately instead of
-<a name="line789"></a>     *                                         waiting until save.
-<a name="line790"></a>     * @throws \PHPCR\Lock\LockException if a lock prevents the removal of this item and this implementation performs
-<a name="line791"></a>     *                                   this validation immediately instead of waiting until save.
-<a name="line792"></a>     * @throws \PHPCR\NodeType\ConstraintViolationException if removing the specified item would violate a node type or
-<a name="line793"></a>     *                                                      implementation-specific constraint and this implementation
-<a name="line794"></a>     *                                                      performs this validation immediately instead of waiting
-<a name="line795"></a>     *                                                      until save.
-<a name="line796"></a>     * @throws \PHPCR\RepositoryException if this node cannot be removed without removing another node in the shared
-<a name="line797"></a>     *                                    set of this node or another error occurs.
-<a name="line798"></a>     * @see removeSharedSet()
-<a name="line799"></a>     * @see Item::remove()
-<a name="line800"></a>     * @see SessionInterface::removeItem
-<a name="line801"></a>     * @api
-<a name="line802"></a>     */</span>
-<a name="line803"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> removeShare<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line804"></a>&nbsp;
-<a name="line805"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line806"></a>     * Determine if the current node is currently checked out.
-<a name="line807"></a>     *
-<a name="line808"></a>     * Returns FALSE if this node is currently in the checked-in state (either
-<a name="line809"></a>     * due to its own status as a versionable node or due to the effect of
-<a name="line810"></a>     * a versionable node being checked in above it). Otherwise this method
-<a name="line811"></a>     * returns TRUE. This includes the case where the repository does not
-<a name="line812"></a>     * support versioning (and therefore all nodes are always &quot;checked-out&quot;,
-<a name="line813"></a>     * by default).
-<a name="line814"></a>     *
-<a name="line815"></a>     * @return boolean
-<a name="line816"></a>     * @throws \PHPCR\RepositoryException if an error occurs.
-<a name="line817"></a>     * @api
-<a name="line818"></a>     */</span>
-<a name="line819"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> isCheckedOut<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line820"></a>&nbsp;
-<a name="line821"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line822"></a>     * Determine if the current node has been locked.
-<a name="line823"></a>     *
-<a name="line824"></a>     * Returns TRUE if this node is locked either as a result of a lock held
-<a name="line825"></a>     * by this node or by a deep lock on a node above this node;
-<a name="line826"></a>     * otherwise returns FALSE. This includes the case where a repository does
-<a name="line827"></a>     * not support locking (in which case all nodes are &quot;unlocked&quot; by default).
-<a name="line828"></a>     *
-<a name="line829"></a>     * @return boolean.
-<a name="line830"></a>     * @throws \PHPCR\RepositoryException if an error occurs.
-<a name="line831"></a>     * @api
-<a name="line832"></a>     */</span>
-<a name="line833"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> isLocked<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line834"></a>&nbsp;
-<a name="line835"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line836"></a>     * Causes the lifecycle state of this node to undergo the specified transition.
-<a name="line837"></a>     *
-<a name="line838"></a>     * This method may change the value of the jcr:currentLifecycleState property,
-<a name="line839"></a>     * in most cases it is expected that the implementation will change the value
-<a name="line840"></a>     * to that of the passed transition parameter, though this is an
-<a name="line841"></a>     * implementation-specific issue. If the jcr:currentLifecycleState property
-<a name="line842"></a>     * is changed the change is persisted immediately, there is no need to call
-<a name="line843"></a>     * save.
-<a name="line844"></a>     *
-<a name="line845"></a>     * @param string $transition a state transition
-<a name="line846"></a>     * @return void
-<a name="line847"></a>     * @throws \PHPCR\UnsupportedRepositoryOperationException  if this implementation does not support lifecycle actions or if this node does not have the mix:lifecycle mixin.
-<a name="line848"></a>     * @throws \PHPCR\InvalidLifecycleTransitionException if the lifecycle transition is not successful.
-<a name="line849"></a>     * @throws \PHPCR\RepositoryException if another error occurs.
-<a name="line850"></a>     * @api
-<a name="line851"></a>     */</span>
-<a name="line852"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> followLifecycleTransition<span style="color: #009900;">&#40;</span><span style="color: #000088;">$transition</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line853"></a>&nbsp;
-<a name="line854"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line855"></a>     * Returns the list of valid state transitions for this node.
-<a name="line856"></a>     *
-<a name="line857"></a>     * @return array a string array.
-<a name="line858"></a>     * @throws \PHPCR\UnsupportedRepositoryOperationException  if this implementation does not support lifecycle actions or if this node does not have the mix:lifecycle mixin.
-<a name="line859"></a>     * @throws \PHPCR\RepositoryException if another error occurs.
-<a name="line860"></a>     * @api
-<a name="line861"></a>     */</span>
-<a name="line862"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getAllowedLifecycleTransitions<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line863"></a><span style="color: #009900;">&#125;</span>
-<a name="line864"></a>&nbsp;</pre>
+<a name="line710"></a>     * Note that update does not respect the checked-in status of nodes. An update
+<a name="line711"></a>     * may change a node even if it is currently checked-in (This fact is only
+<a name="line712"></a>     * relevant in an implementation that supports versioning).
+<a name="line713"></a>     *
+<a name="line714"></a>     * @param string $srcWorkspace the name of the source workspace.
+<a name="line715"></a>     * @return void
+<a name="line716"></a>     * @throws \PHPCR\NoSuchWorkspaceException if srcWorkspace does not exist.
+<a name="line717"></a>     * @throws \PHPCR\InvalidItemStateException if this Session (not necessarily this Node) has pending unsaved changes.
+<a name="line718"></a>     * @throws \PHPCR\AccessDeniedException if the current session does not have sufficient access to perform the operation.
+<a name="line719"></a>     * @throws \PHPCR\Lock\LockException if a lock prevents the update.
+<a name="line720"></a>     * @throws \PHPCR\RepositoryException if another error occurs.
+<a name="line721"></a>     * @api
+<a name="line722"></a>     */</span>
+<a name="line723"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> update<span style="color: #009900;">&#40;</span><span style="color: #000088;">$srcWorkspace</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line724"></a>&nbsp;
+<a name="line725"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line726"></a>     * Returns the absolute path of the node in the specified workspace that
+<a name="line727"></a>     * corresponds to this node.
+<a name="line728"></a>     *
+<a name="line729"></a>     * @param string $workspaceName the name of the workspace.
+<a name="line730"></a>     * @return string the absolute path to the corresponding node.
+<a name="line731"></a>     * @throws \PHPCR\ItemNotFoundException if no corresponding node is found.
+<a name="line732"></a>     * @throws \PHPCR\NoSuchWorkspaceException if the workspace is unknown.
+<a name="line733"></a>     * @throws \PHPCR\AccessDeniedException if the current session has insufficient access capabilities to perform this operation.
+<a name="line734"></a>     * @throws \PHPCR\RepositoryException if another error occurs.
+<a name="line735"></a>     * @api
+<a name="line736"></a>     */</span>
+<a name="line737"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getCorrespondingNodePath<span style="color: #009900;">&#40;</span><span style="color: #000088;">$workspaceName</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line738"></a>&nbsp;
+<a name="line739"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line740"></a>     * Returns an iterator over all nodes that are in the shared set of this node.
+<a name="line741"></a>     *
+<a name="line742"></a>     * If this node is not shared then the returned iterator contains only this node.
+<a name="line743"></a>     *
+<a name="line744"></a>     * @return Iterator implementing &lt;b&gt;SeekableIterator&lt;/b&gt; and &lt;b&gt;Countable&lt;/b&gt;. Keys are the Node names, values the corresponding
+<a name="line745"></a>     *                  NodeInterface instances.
+<a name="line746"></a>     * @throws \PHPCR\RepositoryException if an error occurs.
+<a name="line747"></a>     * @api
+<a name="line748"></a>     */</span>
+<a name="line749"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getSharedSet<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line750"></a>&nbsp;
+<a name="line751"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line752"></a>     * Removes this node and every other node in the shared set of this node.
+<a name="line753"></a>     *
+<a name="line754"></a>     * This removal must be done atomically, i.e., if one of the nodes cannot be
+<a name="line755"></a>     * removed, the method throws the exception Node.remove() would have thrown
+<a name="line756"></a>     * in that case, and none of the nodes are removed.
+<a name="line757"></a>     *
+<a name="line758"></a>     * If this node is not shared this method removes only this node.
+<a name="line759"></a>     *
+<a name="line760"></a>     * @return void
+<a name="line761"></a>     * @throws \PHPCR\Version\VersionException If the parent node of this item is versionable and checked-in or is
+<a name="line762"></a>     *                                         non-versionable but its nearest versionable ancestor is checked-in and
+<a name="line763"></a>     *                                         this implementation performs this validation immediately.
+<a name="line764"></a>     * @throws \PHPCR\Lock\LockException If a lock prevents the removal of this item and this implementation performs
+<a name="line765"></a>     *                                   this validation immediately.
+<a name="line766"></a>     * @throws \PHPCR\NodeType\ConstraintViolationException If removing the specified item would violate a node type or
+<a name="line767"></a>     *                                                      implementation-specific constraint and this implementation
+<a name="line768"></a>     *                                                      performs this validation immediately.
+<a name="line769"></a>     * @throws \PHPCR\RepositoryException if another error occurs.
+<a name="line770"></a>     *
+<a name="line771"></a>     * @see removeShare()
+<a name="line772"></a>     * @see Item::remove()
+<a name="line773"></a>     * @see SessionInterface::removeItem()
+<a name="line774"></a>     *
+<a name="line775"></a>     * @api
+<a name="line776"></a>     */</span>
+<a name="line777"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> removeSharedSet<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line778"></a>&nbsp;
+<a name="line779"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line780"></a>     * Removes this node, but does not remove any other node in the shared set of this node.
+<a name="line781"></a>     *
+<a name="line782"></a>     * @return void
+<a name="line783"></a>     * @throws \PHPCR\Version\VersionException if the parent node of this item is versionable and checked-in or is
+<a name="line784"></a>     *                                         non-versionable but its nearest versionable ancestor is checked-in and
+<a name="line785"></a>     *                                         this implementation performs this validation immediately instead of
+<a name="line786"></a>     *                                         waiting until save.
+<a name="line787"></a>     * @throws \PHPCR\Lock\LockException if a lock prevents the removal of this item and this implementation performs
+<a name="line788"></a>     *                                   this validation immediately instead of waiting until save.
+<a name="line789"></a>     * @throws \PHPCR\NodeType\ConstraintViolationException if removing the specified item would violate a node type or
+<a name="line790"></a>     *                                                      implementation-specific constraint and this implementation
+<a name="line791"></a>     *                                                      performs this validation immediately instead of waiting
+<a name="line792"></a>     *                                                      until save.
+<a name="line793"></a>     * @throws \PHPCR\RepositoryException if this node cannot be removed without removing another node in the shared
+<a name="line794"></a>     *                                    set of this node or another error occurs.
+<a name="line795"></a>     * @see removeSharedSet()
+<a name="line796"></a>     * @see Item::remove()
+<a name="line797"></a>     * @see SessionInterface::removeItem
+<a name="line798"></a>     * @api
+<a name="line799"></a>     */</span>
+<a name="line800"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> removeShare<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line801"></a>&nbsp;
+<a name="line802"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line803"></a>     * Determine if the current node is currently checked out.
+<a name="line804"></a>     *
+<a name="line805"></a>     * Returns false if this node is currently in the checked-in state (either
+<a name="line806"></a>     * due to its own status as a versionable node or due to the effect of
+<a name="line807"></a>     * a versionable node being checked in above it). Otherwise this method
+<a name="line808"></a>     * returns true. This includes the case where the repository does not
+<a name="line809"></a>     * support versioning (and therefore all nodes are always &quot;checked-out&quot;,
+<a name="line810"></a>     * by default).
+<a name="line811"></a>     *
+<a name="line812"></a>     * @return boolean
+<a name="line813"></a>     * @throws \PHPCR\RepositoryException if an error occurs.
+<a name="line814"></a>     * @api
+<a name="line815"></a>     */</span>
+<a name="line816"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> isCheckedOut<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line817"></a>&nbsp;
+<a name="line818"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line819"></a>     * Determine if the current node has been locked.
+<a name="line820"></a>     *
+<a name="line821"></a>     * Returns true if this node is locked either as a result of a lock held
+<a name="line822"></a>     * by this node or by a deep lock on a node above this node;
+<a name="line823"></a>     * otherwise returns false. This includes the case where a repository does
+<a name="line824"></a>     * not support locking (in which case all nodes are &quot;unlocked&quot; by default).
+<a name="line825"></a>     *
+<a name="line826"></a>     * @return boolean.
+<a name="line827"></a>     * @throws \PHPCR\RepositoryException if an error occurs.
+<a name="line828"></a>     * @api
+<a name="line829"></a>     */</span>
+<a name="line830"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> isLocked<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line831"></a>&nbsp;
+<a name="line832"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line833"></a>     * Causes the lifecycle state of this node to undergo the specified transition.
+<a name="line834"></a>     *
+<a name="line835"></a>     * This method may change the value of the jcr:currentLifecycleState property,
+<a name="line836"></a>     * in most cases it is expected that the implementation will change the value
+<a name="line837"></a>     * to that of the passed transition parameter, though this is an
+<a name="line838"></a>     * implementation-specific issue. If the jcr:currentLifecycleState property
+<a name="line839"></a>     * is changed the change is persisted immediately, there is no need to call
+<a name="line840"></a>     * save.
+<a name="line841"></a>     *
+<a name="line842"></a>     * @param string $transition a state transition
+<a name="line843"></a>     * @return void
+<a name="line844"></a>     * @throws \PHPCR\UnsupportedRepositoryOperationException  if this implementation does not support lifecycle actions or if this node does not have the mix:lifecycle mixin.
+<a name="line845"></a>     * @throws \PHPCR\InvalidLifecycleTransitionException if the lifecycle transition is not successful.
+<a name="line846"></a>     * @throws \PHPCR\RepositoryException if another error occurs.
+<a name="line847"></a>     * @api
+<a name="line848"></a>     */</span>
+<a name="line849"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> followLifecycleTransition<span style="color: #009900;">&#40;</span><span style="color: #000088;">$transition</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line850"></a>&nbsp;
+<a name="line851"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line852"></a>     * Returns the list of valid state transitions for this node.
+<a name="line853"></a>     *
+<a name="line854"></a>     * @return array a string array.
+<a name="line855"></a>     * @throws \PHPCR\UnsupportedRepositoryOperationException  if this implementation does not support lifecycle actions or if this node does not have the mix:lifecycle mixin.
+<a name="line856"></a>     * @throws \PHPCR\RepositoryException if another error occurs.
+<a name="line857"></a>     * @api
+<a name="line858"></a>     */</span>
+<a name="line859"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getAllowedLifecycleTransitions<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line860"></a><span style="color: #009900;">&#125;</span>
+<a name="line861"></a>&nbsp;</pre>
 <div class="header">
 <h1>PHPCR</h1>
 <ul>

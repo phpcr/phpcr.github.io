@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="generator" content="PHPDoctor 2RC4 (http://peej.github.com/phpdoctor/)">
-<meta name="when" content="Fri, 06 May 2011 11:43:18 +0000">
+<meta name="when" content="Thu, 12 May 2011 08:50:41 +0000">
 
 <link rel="stylesheet" type="text/css" href="../stylesheet.css">
 <link rel="start" href="../overview-summary.html">
@@ -41,7 +41,7 @@ Detail: <a href="#detail_field">Field</a> | <a href="#detail_method">Method</a> 
 <hr>
 
 <div class="qualifiedName">PHPCR\ItemInterface</div>
-<a href="../source/phpcr/iteminterface.php.html#line42" class="location">PHPCR/ItemInterface.php at line 42</a>
+<a href="../source/phpcr/iteminterface.php.html#line41" class="location">PHPCR/ItemInterface.php at line 41</a>
 
 <h1>Interface ItemInterface</h1>
 
@@ -127,7 +127,7 @@ Detail: <a href="#detail_field">Field</a> | <a href="#detail_method">Method</a> 
 </table>
 
 <h2 id="detail_method">Method Detail</h2>
-<a href="../source/phpcr/iteminterface.php.html#line213" class="location">PHPCR/ItemInterface.php at line 213</a>
+<a href="../source/phpcr/iteminterface.php.html#line212" class="location">PHPCR/ItemInterface.php at line 212</a>
 
 <h3 id="accept()">accept</h3>
 <code class="signature">public  void <strong>accept</strong>(<a href="../phpcr/itemvisitorinterface.html">ItemVisitorInterface</a> visitor)</code>
@@ -145,7 +145,7 @@ might wants to do.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/iteminterface.php.html#line86" class="location">PHPCR/ItemInterface.php at line 86</a>
+<a href="../source/phpcr/iteminterface.php.html#line85" class="location">PHPCR/ItemInterface.php at line 85</a>
 
 <h3 id="getAncestor()">getAncestor</h3>
 <code class="signature">public  <a href="../phpcr/iteminterface.html">ItemInterface</a> <strong>getAncestor</strong>(integer depth)</code>
@@ -175,7 +175,7 @@ dependent.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/iteminterface.php.html#line111" class="location">PHPCR/ItemInterface.php at line 111</a>
+<a href="../source/phpcr/iteminterface.php.html#line110" class="location">PHPCR/ItemInterface.php at line 110</a>
 
 <h3 id="getDepth()">getDepth</h3>
 <code class="signature">public  integer <strong>getDepth</strong>()</code>
@@ -197,7 +197,7 @@ dependent.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/iteminterface.php.html#line62" class="location">PHPCR/ItemInterface.php at line 62</a>
+<a href="../source/phpcr/iteminterface.php.html#line61" class="location">PHPCR/ItemInterface.php at line 61</a>
 
 <h3 id="getName()">getName</h3>
 <code class="signature">public  string <strong>getName</strong>()</code>
@@ -213,7 +213,7 @@ dependent.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/iteminterface.php.html#line97" class="location">PHPCR/ItemInterface.php at line 97</a>
+<a href="../source/phpcr/iteminterface.php.html#line96" class="location">PHPCR/ItemInterface.php at line 96</a>
 
 <h3 id="getParent()">getParent</h3>
 <code class="signature">public  <a href="../phpcr/nodeinterface.html">NodeInterface</a> <strong>getParent</strong>()</code>
@@ -231,7 +231,7 @@ dependent.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/iteminterface.php.html#line51" class="location">PHPCR/ItemInterface.php at line 51</a>
+<a href="../source/phpcr/iteminterface.php.html#line50" class="location">PHPCR/ItemInterface.php at line 50</a>
 
 <h3 id="getPath()">getPath</h3>
 <code class="signature">public  void <strong>getPath</strong>()</code>
@@ -247,7 +247,7 @@ dependent.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/iteminterface.php.html#line120" class="location">PHPCR/ItemInterface.php at line 120</a>
+<a href="../source/phpcr/iteminterface.php.html#line119" class="location">PHPCR/ItemInterface.php at line 119</a>
 
 <h3 id="getSession()">getSession</h3>
 <code class="signature">public  <a href="../phpcr/sessioninterface.html">SessionInterface</a> <strong>getSession</strong>()</code>
@@ -263,7 +263,7 @@ dependent.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/iteminterface.php.html#line169" class="location">PHPCR/ItemInterface.php at line 169</a>
+<a href="../source/phpcr/iteminterface.php.html#line168" class="location">PHPCR/ItemInterface.php at line 168</a>
 
 <h3 id="isModified()">isModified</h3>
 <code class="signature">public  boolean <strong>isModified</strong>()</code>
@@ -277,14 +277,14 @@ modification in question is not in persistent storage (because the
 transaction has not yet been committed).</p><p>Note that in read-only implementations, this method will always return
 false.</p><dl>
 <dt>Returns:</dt>
-<dd>TRUE if this item is modified; FALSE otherwise.</dd>
+<dd>true if this item is modified; false otherwise.</dd>
 <dt>Api.</dt>
 </dl>
 </div>
 
 <hr>
 
-<a href="../source/phpcr/iteminterface.php.html#line150" class="location">PHPCR/ItemInterface.php at line 150</a>
+<a href="../source/phpcr/iteminterface.php.html#line149" class="location">PHPCR/ItemInterface.php at line 149</a>
 
 <h3 id="isNew()">isNew</h3>
 <code class="signature">public  boolean <strong>isNew</strong>()</code>
@@ -297,28 +297,28 @@ transaction has not yet been committed).</p><p>Note that if an item returns true
 will return true on isModified.</p><p>Note that in read-only implementations, this method will always return
 false.</p><dl>
 <dt>Returns:</dt>
-<dd>TRUE if this item is new; FALSE otherwise.</dd>
+<dd>true if this item is new; false otherwise.</dd>
 <dt>Api.</dt>
 </dl>
 </div>
 
 <hr>
 
-<a href="../source/phpcr/iteminterface.php.html#line130" class="location">PHPCR/ItemInterface.php at line 130</a>
+<a href="../source/phpcr/iteminterface.php.html#line129" class="location">PHPCR/ItemInterface.php at line 129</a>
 
 <h3 id="isNode()">isNode</h3>
 <code class="signature">public  boolean <strong>isNode</strong>()</code>
 <div class="details">
 <p>Indicates whether this Item is a Node or a Property.</p><p>Returns true if this Item is a Node; Returns false if this Item is a Property.</p><dl>
 <dt>Returns:</dt>
-<dd>TRUE if this Item is a Node, FALSE if it is a Property.</dd>
+<dd>true if this Item is a Node, false if it is a Property.</dd>
 <dt>Api.</dt>
 </dl>
 </div>
 
 <hr>
 
-<a href="../source/phpcr/iteminterface.php.html#line200" class="location">PHPCR/ItemInterface.php at line 200</a>
+<a href="../source/phpcr/iteminterface.php.html#line199" class="location">PHPCR/ItemInterface.php at line 199</a>
 
 <h3 id="isSame()">isSame</h3>
 <code class="signature">public  boolean <strong>isSame</strong>(<a href="../phpcr/iteminterface.html">ItemInterface</a> otherItem)</code>
@@ -334,7 +334,7 @@ repository workspace.</li>
 objects.</li>
 <li>If they are Node objects, they have the same identifier.</li>
 <li>If they are Property objects they have identical names and
-isSame() is TRUE of their parent nodes.</li>
+isSame() is true of their parent nodes.</li>
 </ul>
 <p>This method does not compare the states of the two items. For example, if
 two Item objects representing the same actual workspace item have been
@@ -346,7 +346,7 @@ state.</p><dl>
 <dt>Parameters:</dt>
 <dd>otherItem - the Item object to be tested for identity with this Item.</dd>
 <dt>Returns:</dt>
-<dd>TRUE if this Item object and otherItem represent the same actual repository item; FALSE otherwise.</dd>
+<dd>true if this Item object and otherItem represent the same actual repository item; false otherwise.</dd>
 <dt>Throws:</dt>
 <dd><a href="../phpcr/repositoryexception.html">\PHPCR\RepositoryException</a> - if an error occurs.</dd>
 <dt>Api.</dt>
@@ -355,7 +355,7 @@ state.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/iteminterface.php.html#line239" class="location">PHPCR/ItemInterface.php at line 239</a>
+<a href="../source/phpcr/iteminterface.php.html#line238" class="location">PHPCR/ItemInterface.php at line 238</a>
 
 <h3 id="refresh()">refresh</h3>
 <code class="signature">public  void <strong>refresh</strong>(boolean keepChanges)</code>
@@ -382,7 +382,7 @@ other sessions.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/iteminterface.php.html#line272" class="location">PHPCR/ItemInterface.php at line 272</a>
+<a href="../source/phpcr/iteminterface.php.html#line271" class="location">PHPCR/ItemInterface.php at line 271</a>
 
 <h3 id="remove()">remove</h3>
 <code class="signature">public  void <strong>remove</strong>()</code>

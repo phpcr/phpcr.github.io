@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="generator" content="PHPDoctor 2RC4 (http://peej.github.com/phpdoctor/)">
-<meta name="when" content="Fri, 06 May 2011 11:43:23 +0000">
+<meta name="when" content="Thu, 12 May 2011 08:50:46 +0000">
 
 <link rel="stylesheet" type="text/css" href="../../stylesheet.css">
 <link rel="start" href="../../overview-summary.html">
@@ -79,56 +79,62 @@ If not, see <code><a href="http://www.gnu.org/licenses/lgpl.html">http://www.gnu
 <a name="line29"></a> * @subpackage interfaces
 <a name="line30"></a> */</span>
 <a name="line31"></a>&nbsp;
-<a name="line32"></a><span style="color: #000000; font-weight: bold;">declare</span><span style="color: #009900;">&#40;</span>ENCODING <span style="color: #339933;">=</span> <span style="color: #0000ff;">'utf-8'</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line33"></a><span style="color: #000000; font-weight: bold;">namespace</span> PHPCR<span style="color: #339933;">;</span>
-<a name="line34"></a>&nbsp;
-<a name="line35"></a><span style="color: #009933; font-style: italic;">/**
-<a name="line36"></a> * RepositoryFactory is an interface for factory class implementations for
-<a name="line37"></a> * Repositories.
-<a name="line38"></a> *
-<a name="line39"></a> * Examples how to obtain repository instances
-<a name="line40"></a> *
-<a name="line41"></a> * Use repository factory based on parameters (the parameters below are examples):
-<a name="line42"></a> *    $parameters = array('com.vendor.address' =&gt; 'vendor://localhost:9999/myrepo');
-<a name="line43"></a> *    $repo = \SomeRepository\RepositoryFactory::getRepository($parameters);
-<a name="line44"></a> *
-<a name="line45"></a> * Get a default repository available in this environment:
-<a name="line46"></a> *    $repo = \PHPCR\RepositoryFactory::getRepository();
-<a name="line47"></a> *
-<a name="line48"></a> * @package phpcr
-<a name="line49"></a> * @subpackage interfaces
-<a name="line50"></a> * @api
-<a name="line51"></a> */</span>
-<a name="line52"></a><span style="color: #000000; font-weight: bold;">interface</span> RepositoryFactoryInterface <span style="color: #009900;">&#123;</span>
-<a name="line53"></a>&nbsp;
-<a name="line54"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line55"></a>     * Attempts to establish a connection to a repository using the given
-<a name="line56"></a>     * parameters.
-<a name="line57"></a>     *
-<a name="line58"></a>     * Parameters are passed in an array of key/value pairs. The keys are not
-<a name="line59"></a>     * specified by JCR and are implementation specific.
-<a name="line60"></a>     * However, vendors should use keys that are namespace qualified in the
-<a name="line61"></a>     * Java package style to distinguish their key names. For example
-<a name="line62"></a>     * an address parameter might be com.vendor.address.
-<a name="line63"></a>     *
-<a name="line64"></a>     * The implementation must return NULL if it does not understand
-<a name="line65"></a>     * the given parameters. The implementation may also return null if a default
-<a name="line66"></a>     * repository instance is requested (indicated by null parameters) and this
-<a name="line67"></a>     * factory is not able to identify a default repository. An implementation
-<a name="line68"></a>     * should throw an RepositoryException if it is the right factory but has
-<a name="line69"></a>     * trouble connecting to the repository.
-<a name="line70"></a>     *
-<a name="line71"></a>     * @param array|NULL $parameters string key/value pairs as repository arguments or NULL if a client wishes
-<a name="line72"></a>     *                               to connect to a default repository.
-<a name="line73"></a>     * @return \PHPCR\RepositoryInterface a repository instance or NULL if this implementation does
-<a name="line74"></a>     *                                    not understand the passed parameters
-<a name="line75"></a>     * @throws \PHPCR\RepositoryException if no suitable repository is found or another error occurs.
-<a name="line76"></a>     * @api
-<a name="line77"></a>     */</span>
-<a name="line78"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getRepository<span style="color: #009900;">&#40;</span><a href="http://www.php.net/array"><span style="color: #990000;">array</span></a> <span style="color: #000088;">$parameters</span> <span style="color: #339933;">=</span> <span style="color: #009900; font-weight: bold;">NULL</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line79"></a>&nbsp;
-<a name="line80"></a><span style="color: #009900;">&#125;</span>
-<a name="line81"></a>&nbsp;</pre>
+<a name="line32"></a><span style="color: #000000; font-weight: bold;">namespace</span> PHPCR<span style="color: #339933;">;</span>
+<a name="line33"></a>&nbsp;
+<a name="line34"></a><span style="color: #009933; font-style: italic;">/**
+<a name="line35"></a> * RepositoryFactory is an interface for factory class implementations for
+<a name="line36"></a> * Repositories.
+<a name="line37"></a> *
+<a name="line38"></a> * Examples how to obtain repository instances
+<a name="line39"></a> *
+<a name="line40"></a> * Use repository factory based on parameters (the parameters below are examples):
+<a name="line41"></a> *    $parameters = array('com.vendor.address' =&gt; 'vendor://localhost:9999/myrepo');
+<a name="line42"></a> *    $repo = \SomeRepository\RepositoryFactory::getRepository($parameters);
+<a name="line43"></a> *
+<a name="line44"></a> * @package phpcr
+<a name="line45"></a> * @subpackage interfaces
+<a name="line46"></a> * @api
+<a name="line47"></a> */</span>
+<a name="line48"></a><span style="color: #000000; font-weight: bold;">interface</span> RepositoryFactoryInterface <span style="color: #009900;">&#123;</span>
+<a name="line49"></a>&nbsp;
+<a name="line50"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line51"></a>     * Attempts to establish a connection to a repository using the given
+<a name="line52"></a>     * parameters.
+<a name="line53"></a>     *
+<a name="line54"></a>     * Parameters are passed in an array of key/value pairs. The keys are not
+<a name="line55"></a>     * specified by JCR and are implementation specific.
+<a name="line56"></a>     * However, vendors should use keys that are namespace qualified in the
+<a name="line57"></a>     * Java package style to distinguish their key names. For example
+<a name="line58"></a>     * an address parameter might be com.vendor.address.
+<a name="line59"></a>     *
+<a name="line60"></a>     * The implementation must return null if it does not understand
+<a name="line61"></a>     * the given parameters. The implementation may also return null if a default
+<a name="line62"></a>     * repository instance is requested (indicated by null parameters) and this
+<a name="line63"></a>     * factory is not able to identify a default repository. An implementation
+<a name="line64"></a>     * should throw an RepositoryException if it is the right factory but has
+<a name="line65"></a>     * trouble connecting to the repository.
+<a name="line66"></a>     *
+<a name="line67"></a>     * @param array|null $parameters string key/value pairs as repository arguments or null if a client wishes
+<a name="line68"></a>     *                               to connect to a default repository.
+<a name="line69"></a>     * @return \PHPCR\RepositoryInterface a repository instance or null if this implementation does
+<a name="line70"></a>     *                                    not understand the passed parameters
+<a name="line71"></a>     * @throws \PHPCR\RepositoryException if no suitable repository is found or another error occurs.
+<a name="line72"></a>     * @api
+<a name="line73"></a>     */</span>
+<a name="line74"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getRepository<span style="color: #009900;">&#40;</span><a href="http://www.php.net/array"><span style="color: #990000;">array</span></a> <span style="color: #000088;">$parameters</span> <span style="color: #339933;">=</span> <span style="color: #009900; font-weight: bold;">null</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line75"></a>&nbsp;
+<a name="line76"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line77"></a>     * Get the list of configuration options that can be passed to getRepository
+<a name="line78"></a>     *
+<a name="line79"></a>     * The description string should include whether the key is mandatory or
+<a name="line80"></a>     * optional.
+<a name="line81"></a>     *
+<a name="line82"></a>     * @return array hash map of configuration key =&gt; english description
+<a name="line83"></a>     */</span>
+<a name="line84"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getConfigurationKeys<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line85"></a>&nbsp;
+<a name="line86"></a><span style="color: #009900;">&#125;</span>
+<a name="line87"></a>&nbsp;</pre>
 <div class="header">
 <h1>PHPCR</h1>
 <ul>

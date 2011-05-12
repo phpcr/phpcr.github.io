@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="generator" content="PHPDoctor 2RC4 (http://peej.github.com/phpdoctor/)">
-<meta name="when" content="Fri, 06 May 2011 11:43:28 +0000">
+<meta name="when" content="Thu, 12 May 2011 08:50:52 +0000">
 
 <link rel="stylesheet" type="text/css" href="../../../../stylesheet.css">
 <link rel="start" href="../../../../overview-summary.html">
@@ -79,86 +79,84 @@ If not, see <code><a href="http://www.gnu.org/licenses/lgpl.html">http://www.gnu
 <a name="line29"></a> * @subpackage interfaces
 <a name="line30"></a> */</span>
 <a name="line31"></a>&nbsp;
-<a name="line32"></a>&nbsp;
-<a name="line33"></a><span style="color: #000000; font-weight: bold;">declare</span><span style="color: #009900;">&#40;</span>ENCODING <span style="color: #339933;">=</span> <span style="color: #0000ff;">'utf-8'</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line34"></a><span style="color: #000000; font-weight: bold;">namespace</span> PHPCR\Query\QOM<span style="color: #339933;">;</span>
-<a name="line35"></a>&nbsp;
-<a name="line36"></a><span style="color: #009933; font-style: italic;">/**
-<a name="line37"></a> * Filters node-tuples based on the outcome of a binary operation.
-<a name="line38"></a> *
-<a name="line39"></a> * For any comparison, operand2 always evaluates to a scalar value. In contrast,
-<a name="line40"></a> * operand1 may evaluate to an array of values (for example, the value of a multi-valued
-<a name="line41"></a> * property), in which case the comparison is separately performed for each element
-<a name="line42"></a> * of the array, and the Comparison constraint is satisfied as a whole if the
-<a name="line43"></a> * comparison against any element of the array is satisfied.
-<a name="line44"></a> *
-<a name="line45"></a> * If operand1 and operand2 evaluate to values of different property types, the
-<a name="line46"></a> * value of operand2 is converted to the property type of the value of operand1.
-<a name="line47"></a> * If the type conversion fails, the query is invalid.
+<a name="line32"></a><span style="color: #000000; font-weight: bold;">namespace</span> PHPCR\Query\QOM<span style="color: #339933;">;</span>
+<a name="line33"></a>&nbsp;
+<a name="line34"></a><span style="color: #009933; font-style: italic;">/**
+<a name="line35"></a> * Filters node-tuples based on the outcome of a binary operation.
+<a name="line36"></a> *
+<a name="line37"></a> * For any comparison, operand2 always evaluates to a scalar value. In contrast,
+<a name="line38"></a> * operand1 may evaluate to an array of values (for example, the value of a multi-valued
+<a name="line39"></a> * property), in which case the comparison is separately performed for each element
+<a name="line40"></a> * of the array, and the Comparison constraint is satisfied as a whole if the
+<a name="line41"></a> * comparison against any element of the array is satisfied.
+<a name="line42"></a> *
+<a name="line43"></a> * If operand1 and operand2 evaluate to values of different property types, the
+<a name="line44"></a> * value of operand2 is converted to the property type of the value of operand1.
+<a name="line45"></a> * If the type conversion fails, the query is invalid.
+<a name="line46"></a> *
+<a name="line47"></a> * If operator is not supported for the property type of operand1, the query is invalid.
 <a name="line48"></a> *
-<a name="line49"></a> * If operator is not supported for the property type of operand1, the query is invalid.
-<a name="line50"></a> *
-<a name="line51"></a> * If operand1 evaluates to null (for example, if the operand evaluates the value
-<a name="line52"></a> * of a property which does not exist), the constraint is not satisfied.
-<a name="line53"></a> *
-<a name="line54"></a> * The JCR_OPERATOR_EQUAL_TO operator is satisfied only if the value of operand1
-<a name="line55"></a> * equals the value of operand2.
-<a name="line56"></a> *
-<a name="line57"></a> * The JCR_OPERATOR_NOT_EQUAL_TO operator is satisfied unless the value of
-<a name="line58"></a> * operand1 equals the value of operand2.
-<a name="line59"></a> *
-<a name="line60"></a> * The JCR_OPERATOR_LESSS_THAN operator is satisfied only if the value of
-<a name="line61"></a> * operand1 is ordered before the value of operand2.
-<a name="line62"></a> *
-<a name="line63"></a> * The JCR_OPERATOR_LESS_THAN_OR_EQUAL_TO operator is satisfied unless the value
-<a name="line64"></a> * of operand1 is ordered after the value of operand2.
-<a name="line65"></a> *
-<a name="line66"></a> * The JCR_OPERATOR_GREATER_THAN operator is satisfied only if the value of
-<a name="line67"></a> * operand1 is ordered after the value of operand2.
-<a name="line68"></a> *
-<a name="line69"></a> * The JCR_OPERATOR_GREATER_THAN_OR_EQUAL_TO operator is satisfied unless the
-<a name="line70"></a> * value of operand1 is ordered before the value of operand2.
-<a name="line71"></a> *
-<a name="line72"></a> * The JCR_OPERATOR_LIKE operator is satisfied only if the value of operand1
-<a name="line73"></a> * matches the pattern specified by the value of operand2, where in the pattern:
-<a name="line74"></a> * - the character &quot;%&quot; matches zero or more characters, and
-<a name="line75"></a> * - the character &quot;_&quot; (underscore) matches exactly one character, and
-<a name="line76"></a> * - the string &quot;\x&quot; matches the character &quot;x&quot;, and
-<a name="line77"></a> *   all other characters match themselves.
-<a name="line78"></a> *
-<a name="line79"></a> * @package phpcr
-<a name="line80"></a> * @subpackage interfaces
-<a name="line81"></a> * @api
-<a name="line82"></a> */</span>
-<a name="line83"></a><span style="color: #000000; font-weight: bold;">interface</span> ComparisonInterface <span style="color: #000000; font-weight: bold;">extends</span> ConstraintInterface <span style="color: #009900;">&#123;</span>
-<a name="line84"></a>&nbsp;
-<a name="line85"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line49"></a> * If operand1 evaluates to null (for example, if the operand evaluates the value
+<a name="line50"></a> * of a property which does not exist), the constraint is not satisfied.
+<a name="line51"></a> *
+<a name="line52"></a> * The JCR_OPERATOR_EQUAL_TO operator is satisfied only if the value of operand1
+<a name="line53"></a> * equals the value of operand2.
+<a name="line54"></a> *
+<a name="line55"></a> * The JCR_OPERATOR_NOT_EQUAL_TO operator is satisfied unless the value of
+<a name="line56"></a> * operand1 equals the value of operand2.
+<a name="line57"></a> *
+<a name="line58"></a> * The JCR_OPERATOR_LESSS_THAN operator is satisfied only if the value of
+<a name="line59"></a> * operand1 is ordered before the value of operand2.
+<a name="line60"></a> *
+<a name="line61"></a> * The JCR_OPERATOR_LESS_THAN_OR_EQUAL_TO operator is satisfied unless the value
+<a name="line62"></a> * of operand1 is ordered after the value of operand2.
+<a name="line63"></a> *
+<a name="line64"></a> * The JCR_OPERATOR_GREATER_THAN operator is satisfied only if the value of
+<a name="line65"></a> * operand1 is ordered after the value of operand2.
+<a name="line66"></a> *
+<a name="line67"></a> * The JCR_OPERATOR_GREATER_THAN_OR_EQUAL_TO operator is satisfied unless the
+<a name="line68"></a> * value of operand1 is ordered before the value of operand2.
+<a name="line69"></a> *
+<a name="line70"></a> * The JCR_OPERATOR_LIKE operator is satisfied only if the value of operand1
+<a name="line71"></a> * matches the pattern specified by the value of operand2, where in the pattern:
+<a name="line72"></a> * - the character &quot;%&quot; matches zero or more characters, and
+<a name="line73"></a> * - the character &quot;_&quot; (underscore) matches exactly one character, and
+<a name="line74"></a> * - the string &quot;\x&quot; matches the character &quot;x&quot;, and
+<a name="line75"></a> *   all other characters match themselves.
+<a name="line76"></a> *
+<a name="line77"></a> * @package phpcr
+<a name="line78"></a> * @subpackage interfaces
+<a name="line79"></a> * @api
+<a name="line80"></a> */</span>
+<a name="line81"></a><span style="color: #000000; font-weight: bold;">interface</span> ComparisonInterface <span style="color: #000000; font-weight: bold;">extends</span> ConstraintInterface <span style="color: #009900;">&#123;</span>
+<a name="line82"></a>&nbsp;
+<a name="line83"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line84"></a>     *
+<a name="line85"></a>     * Gets the first operand.
 <a name="line86"></a>     *
-<a name="line87"></a>     * Gets the first operand.
-<a name="line88"></a>     *
-<a name="line89"></a>     * @return \PHPCR\Query\QOM\DynamicOperandInterface the operand; non-null
-<a name="line90"></a>     * @api
-<a name="line91"></a>     */</span>
-<a name="line92"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getOperand1<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line93"></a>&nbsp;
-<a name="line94"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line95"></a>     * Gets the operator.
-<a name="line96"></a>     *
-<a name="line97"></a>     * @return string one of \PHPCR\Query\QOM\QueryObjectModelConstantsInterface.JCR_OPERATOR_*
-<a name="line98"></a>     * @api
-<a name="line99"></a>     */</span>
-<a name="line100"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getOperator<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line101"></a>&nbsp;
-<a name="line102"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line103"></a>     * Gets the second operand.
-<a name="line104"></a>     *
-<a name="line105"></a>     * @return \PHPCR\Query\QOM\StaticOperandInterface the operand; non-null
-<a name="line106"></a>     * @api
-<a name="line107"></a>     */</span>
-<a name="line108"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getOperand2<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line109"></a>&nbsp;
-<a name="line110"></a><span style="color: #009900;">&#125;</span>
-<a name="line111"></a>&nbsp;</pre>
+<a name="line87"></a>     * @return \PHPCR\Query\QOM\DynamicOperandInterface the operand; non-null
+<a name="line88"></a>     * @api
+<a name="line89"></a>     */</span>
+<a name="line90"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getOperand1<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line91"></a>&nbsp;
+<a name="line92"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line93"></a>     * Gets the operator.
+<a name="line94"></a>     *
+<a name="line95"></a>     * @return string one of \PHPCR\Query\QOM\QueryObjectModelConstantsInterface.JCR_OPERATOR_*
+<a name="line96"></a>     * @api
+<a name="line97"></a>     */</span>
+<a name="line98"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getOperator<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line99"></a>&nbsp;
+<a name="line100"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line101"></a>     * Gets the second operand.
+<a name="line102"></a>     *
+<a name="line103"></a>     * @return \PHPCR\Query\QOM\StaticOperandInterface the operand; non-null
+<a name="line104"></a>     * @api
+<a name="line105"></a>     */</span>
+<a name="line106"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getOperand2<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line107"></a>&nbsp;
+<a name="line108"></a><span style="color: #009900;">&#125;</span>
+<a name="line109"></a>&nbsp;</pre>
 <div class="header">
 <h1>PHPCR</h1>
 <ul>

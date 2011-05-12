@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="generator" content="PHPDoctor 2RC4 (http://peej.github.com/phpdoctor/)">
-<meta name="when" content="Fri, 06 May 2011 11:43:25 +0000">
+<meta name="when" content="Thu, 12 May 2011 08:50:48 +0000">
 
 <link rel="stylesheet" type="text/css" href="../../../stylesheet.css">
 <link rel="start" href="../../../overview-summary.html">
@@ -79,106 +79,105 @@ If not, see <code><a href="http://www.gnu.org/licenses/lgpl.html">http://www.gnu
 <a name="line29"></a> * @subpackage interfaces
 <a name="line30"></a> */</span>
 <a name="line31"></a>&nbsp;
-<a name="line32"></a><span style="color: #000000; font-weight: bold;">declare</span><span style="color: #009900;">&#40;</span>ENCODING <span style="color: #339933;">=</span> <span style="color: #0000ff;">'utf-8'</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line33"></a><span style="color: #000000; font-weight: bold;">namespace</span> PHPCR\NodeType<span style="color: #339933;">;</span>
-<a name="line34"></a>&nbsp;
-<a name="line35"></a><span style="color: #009933; font-style: italic;">/**
-<a name="line36"></a> * A node definition. Used in node type definitions.
-<a name="line37"></a> *
-<a name="line38"></a> * @package phpcr
-<a name="line39"></a> * @subpackage interfaces
-<a name="line40"></a> * @api
-<a name="line41"></a> */</span>
-<a name="line42"></a><span style="color: #000000; font-weight: bold;">interface</span> NodeDefinitionInterface <span style="color: #000000; font-weight: bold;">extends</span> \PHPCR\NodeType\ItemDefinitionInterface <span style="color: #009900;">&#123;</span>
-<a name="line43"></a>&nbsp;
-<a name="line44"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line45"></a>     * Gets the minimum set of primary node types that the child node must have.
-<a name="line46"></a>     *
-<a name="line47"></a>     * Returns an array to support those implementations with multiple inheritance.
-<a name="line48"></a>     * This method never returns an empty array. If this node definition places
-<a name="line49"></a>     * no requirements on the primary node type, then this method will return an
-<a name="line50"></a>     * array containing only the NodeType object representing nt:base, which is
-<a name="line51"></a>     * the base of all primary node types and therefore constitutes the least
-<a name="line52"></a>     * restrictive node type requirement. Note that any particular node instance
-<a name="line53"></a>     * still has only one assigned primary node type, but in multiple-inheritance-
-<a name="line54"></a>     * supporting implementations the RequiredPrimaryTypes attribute can be used
-<a name="line55"></a>     * to restrict that assigned node type to be a subtype of all of a specified
-<a name="line56"></a>     * set of node types.
-<a name="line57"></a>     * In implementations that support node type registration an NodeDefinition
-<a name="line58"></a>     * object may be acquired (in the form of a NodeDefinitionTemplate) that is
-<a name="line59"></a>     * not attached to a live NodeType. In such cases this method returns NULL.
-<a name="line60"></a>     *
-<a name="line61"></a>     * @return \PHPCR\NodeType\NodeTypeInterface An array of NodeType objects.
-<a name="line62"></a>     * @api
-<a name="line63"></a>     */</span>
-<a name="line64"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getRequiredPrimaryTypes<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line65"></a>&nbsp;
-<a name="line66"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line67"></a>     * Returns the names of the required primary node types.
-<a name="line68"></a>     *
-<a name="line69"></a>     * If this NodeDefinition is acquired from a live NodeType this list will
-<a name="line70"></a>     * reflect the node types returned by getRequiredPrimaryTypes, above.
-<a name="line71"></a>     *
-<a name="line72"></a>     * If this NodeDefinition is actually a NodeDefinitionTemplate that is not
-<a name="line73"></a>     * part of a registered node type, then this method will return the required
-<a name="line74"></a>     * primary types as set in that template. If that template is a newly-created
-<a name="line75"></a>     * empty one, then this method will return NULL.
-<a name="line76"></a>     *
-<a name="line77"></a>     * @return array a String array
-<a name="line78"></a>     * @api
-<a name="line79"></a>     */</span>
-<a name="line80"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getRequiredPrimaryTypeNames<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line81"></a>&nbsp;
-<a name="line82"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line83"></a>     * Gets the default primary node type that will be assigned to the child node
-<a name="line84"></a>     * if it is created without an explicitly specified primary node type.
-<a name="line85"></a>     *
-<a name="line86"></a>     * This node type must be a subtype of (or the same type as) the node types
-<a name="line87"></a>     * returned by getRequiredPrimaryTypes.
-<a name="line88"></a>     * If null is returned this indicates that no default primary type is
-<a name="line89"></a>     * specified and that therefore an attempt to create this node without
-<a name="line90"></a>     * specifying a node type will throw a ConstraintViolationException. In
-<a name="line91"></a>     * implementations that support node type registration an NodeDefinition
-<a name="line92"></a>     * object may be acquired (in the form of a NodeDefinitionTemplate) that is
-<a name="line93"></a>     * not attached to a live NodeType. In such cases this method returns null.
-<a name="line94"></a>     *
-<a name="line95"></a>     * @return \PHPCR\NodeType\NodeTypeInterface A NodeType.
-<a name="line96"></a>     * @api
-<a name="line97"></a>     */</span>
-<a name="line98"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getDefaultPrimaryType<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line99"></a>&nbsp;
-<a name="line100"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line101"></a>     * Returns the name of the default primary node type.
-<a name="line102"></a>     *
-<a name="line103"></a>     * If this NodeDefinition is acquired from a live NodeType this list will
-<a name="line104"></a>     * reflect the NodeType returned by getDefaultPrimaryType, above.
-<a name="line105"></a>     *
-<a name="line106"></a>     * If this NodeDefinition is actually a NodeDefinitionTemplate that is not
-<a name="line107"></a>     * part of a registered node type, then this method will return the required
-<a name="line108"></a>     * primary types as set in that template. If that template is a newly-created
-<a name="line109"></a>     * empty one, then this method will return null.
-<a name="line110"></a>     *
-<a name="line111"></a>     * @return string The name of the default primary type.
-<a name="line112"></a>     * @api
-<a name="line113"></a>     */</span>
-<a name="line114"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getDefaultPrimaryTypeName<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line115"></a>&nbsp;
-<a name="line116"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line117"></a>     * Reports whether this child node can have same-name siblings.
-<a name="line118"></a>     *
-<a name="line119"></a>     * In other words, whether the parent node can have more than one child
-<a name="line120"></a>     * node of this name. If this NodeDefinition is actually a NodeDefinitionTemplate
-<a name="line121"></a>     * that is not part of a registered node type, then this method will return the same
-<a name="line122"></a>     * name siblings status as set in that template. If that template is a
-<a name="line123"></a>     * newly-created empty one, then this method will return false.
-<a name="line124"></a>     *
-<a name="line125"></a>     * @return boolean True, if the node my have a same-name sibling, else false.
-<a name="line126"></a>     * @api
-<a name="line127"></a>     */</span>
-<a name="line128"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> allowsSameNameSiblings<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line129"></a>&nbsp;
-<a name="line130"></a><span style="color: #009900;">&#125;</span>
-<a name="line131"></a>&nbsp;</pre>
+<a name="line32"></a><span style="color: #000000; font-weight: bold;">namespace</span> PHPCR\NodeType<span style="color: #339933;">;</span>
+<a name="line33"></a>&nbsp;
+<a name="line34"></a><span style="color: #009933; font-style: italic;">/**
+<a name="line35"></a> * A node definition. Used in node type definitions.
+<a name="line36"></a> *
+<a name="line37"></a> * @package phpcr
+<a name="line38"></a> * @subpackage interfaces
+<a name="line39"></a> * @api
+<a name="line40"></a> */</span>
+<a name="line41"></a><span style="color: #000000; font-weight: bold;">interface</span> NodeDefinitionInterface <span style="color: #000000; font-weight: bold;">extends</span> \PHPCR\NodeType\ItemDefinitionInterface <span style="color: #009900;">&#123;</span>
+<a name="line42"></a>&nbsp;
+<a name="line43"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line44"></a>     * Gets the minimum set of primary node types that the child node must have.
+<a name="line45"></a>     *
+<a name="line46"></a>     * Returns an array to support those implementations with multiple inheritance.
+<a name="line47"></a>     * This method never returns an empty array. If this node definition places
+<a name="line48"></a>     * no requirements on the primary node type, then this method will return an
+<a name="line49"></a>     * array containing only the NodeType object representing nt:base, which is
+<a name="line50"></a>     * the base of all primary node types and therefore constitutes the least
+<a name="line51"></a>     * restrictive node type requirement. Note that any particular node instance
+<a name="line52"></a>     * still has only one assigned primary node type, but in multiple-inheritance-
+<a name="line53"></a>     * supporting implementations the RequiredPrimaryTypes attribute can be used
+<a name="line54"></a>     * to restrict that assigned node type to be a subtype of all of a specified
+<a name="line55"></a>     * set of node types.
+<a name="line56"></a>     * In implementations that support node type registration an NodeDefinition
+<a name="line57"></a>     * object may be acquired (in the form of a NodeDefinitionTemplate) that is
+<a name="line58"></a>     * not attached to a live NodeType. In such cases this method returns null.
+<a name="line59"></a>     *
+<a name="line60"></a>     * @return \PHPCR\NodeType\NodeTypeInterface An array of NodeType objects.
+<a name="line61"></a>     * @api
+<a name="line62"></a>     */</span>
+<a name="line63"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getRequiredPrimaryTypes<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line64"></a>&nbsp;
+<a name="line65"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line66"></a>     * Returns the names of the required primary node types.
+<a name="line67"></a>     *
+<a name="line68"></a>     * If this NodeDefinition is acquired from a live NodeType this list will
+<a name="line69"></a>     * reflect the node types returned by getRequiredPrimaryTypes, above.
+<a name="line70"></a>     *
+<a name="line71"></a>     * If this NodeDefinition is actually a NodeDefinitionTemplate that is not
+<a name="line72"></a>     * part of a registered node type, then this method will return the required
+<a name="line73"></a>     * primary types as set in that template. If that template is a newly-created
+<a name="line74"></a>     * empty one, then this method will return null.
+<a name="line75"></a>     *
+<a name="line76"></a>     * @return array a String array
+<a name="line77"></a>     * @api
+<a name="line78"></a>     */</span>
+<a name="line79"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getRequiredPrimaryTypeNames<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line80"></a>&nbsp;
+<a name="line81"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line82"></a>     * Gets the default primary node type that will be assigned to the child node
+<a name="line83"></a>     * if it is created without an explicitly specified primary node type.
+<a name="line84"></a>     *
+<a name="line85"></a>     * This node type must be a subtype of (or the same type as) the node types
+<a name="line86"></a>     * returned by getRequiredPrimaryTypes.
+<a name="line87"></a>     * If null is returned this indicates that no default primary type is
+<a name="line88"></a>     * specified and that therefore an attempt to create this node without
+<a name="line89"></a>     * specifying a node type will throw a ConstraintViolationException. In
+<a name="line90"></a>     * implementations that support node type registration an NodeDefinition
+<a name="line91"></a>     * object may be acquired (in the form of a NodeDefinitionTemplate) that is
+<a name="line92"></a>     * not attached to a live NodeType. In such cases this method returns null.
+<a name="line93"></a>     *
+<a name="line94"></a>     * @return \PHPCR\NodeType\NodeTypeInterface A NodeType.
+<a name="line95"></a>     * @api
+<a name="line96"></a>     */</span>
+<a name="line97"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getDefaultPrimaryType<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line98"></a>&nbsp;
+<a name="line99"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line100"></a>     * Returns the name of the default primary node type.
+<a name="line101"></a>     *
+<a name="line102"></a>     * If this NodeDefinition is acquired from a live NodeType this list will
+<a name="line103"></a>     * reflect the NodeType returned by getDefaultPrimaryType, above.
+<a name="line104"></a>     *
+<a name="line105"></a>     * If this NodeDefinition is actually a NodeDefinitionTemplate that is not
+<a name="line106"></a>     * part of a registered node type, then this method will return the required
+<a name="line107"></a>     * primary types as set in that template. If that template is a newly-created
+<a name="line108"></a>     * empty one, then this method will return null.
+<a name="line109"></a>     *
+<a name="line110"></a>     * @return string The name of the default primary type.
+<a name="line111"></a>     * @api
+<a name="line112"></a>     */</span>
+<a name="line113"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getDefaultPrimaryTypeName<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line114"></a>&nbsp;
+<a name="line115"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line116"></a>     * Reports whether this child node can have same-name siblings.
+<a name="line117"></a>     *
+<a name="line118"></a>     * In other words, whether the parent node can have more than one child
+<a name="line119"></a>     * node of this name. If this NodeDefinition is actually a NodeDefinitionTemplate
+<a name="line120"></a>     * that is not part of a registered node type, then this method will return the same
+<a name="line121"></a>     * name siblings status as set in that template. If that template is a
+<a name="line122"></a>     * newly-created empty one, then this method will return false.
+<a name="line123"></a>     *
+<a name="line124"></a>     * @return boolean True, if the node my have a same-name sibling, else false.
+<a name="line125"></a>     * @api
+<a name="line126"></a>     */</span>
+<a name="line127"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> allowsSameNameSiblings<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line128"></a>&nbsp;
+<a name="line129"></a><span style="color: #009900;">&#125;</span>
+<a name="line130"></a>&nbsp;</pre>
 <div class="header">
 <h1>PHPCR</h1>
 <ul>

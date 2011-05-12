@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="generator" content="PHPDoctor 2RC4 (http://peej.github.com/phpdoctor/)">
-<meta name="when" content="Fri, 06 May 2011 11:43:19 +0000">
+<meta name="when" content="Thu, 12 May 2011 08:50:42 +0000">
 
 <link rel="stylesheet" type="text/css" href="stylesheet.css">
 <link rel="start" href="overview-summary.html">
@@ -43,7 +43,6 @@
 <a href="#letterH">H</a>
 <a href="#letterI">I</a>
 <a href="#letterJ">J</a>
-<a href="#letterK">K</a>
 <a href="#letterL">L</a>
 <a href="#letterM">M</a>
 <a href="#letterN">N</a>
@@ -60,14 +59,14 @@
 
 <h1 id="letter_">_</h1>
 <dl>
+<dt><a href="phpcr/simplecredentials.html#__construct()">__construct()</a> - Method in class <a href="phpcr/simplecredentials.html">PHPCR\SimpleCredentials</a></dt>
+<dd>The constructor creates a new SimpleCredentials object, given a user ID
+ and password.</dd>
 <dt><a href="phpcr/lock/lockexception.html#__construct()">__construct()</a> - Method in class <a href="phpcr/lock/lockexception.html">PHPCR\Lock\LockException</a></dt>
 <dd>If a path is passed it must be an absolute path in normalized, standard form,
  that is, each path segment must be a JCR name in qualified form, the path
  must have no trailing slash, no self or parent segments and no [1]
  indexes.</dd>
-<dt><a href="phpcr/simplecredentials.html#__construct()">__construct()</a> - Method in class <a href="phpcr/simplecredentials.html">PHPCR\SimpleCredentials</a></dt>
-<dd>The constructor creates a new SimpleCredentials object, given a user ID
- and password.</dd>
 <dt><a href="phpcr/propertytype.html#__construct()">__construct()</a> - Method in class <a href="phpcr/propertytype.html">PHPCR\PropertyType</a></dt>
 <dd>Make instantiation impossible...</dd>
 <dt><a href="phpcr/version/onparentversionaction.html#__construct()">__construct()</a> - Method in class <a href="phpcr/version/onparentversionaction.html">PHPCR\Version\OnParentVersionAction</a></dt>
@@ -124,7 +123,10 @@
 <dd>Creates a new node at a specified path.
 </dd>
 <dt><a href="phpcr/propertyinterface.html#addValue()">addValue()</a> - Method in class <a href="phpcr/propertyinterface.html">PHPCR\PropertyInterface</a></dt>
-<dd>Appends a value to a multi-value property</dd>
+<dd>Appends a value to a multi-value property
+
+ <strong>PHPCR Note:</strong> This is a new method not found in Java.
+</dd>
 <dt><a href="phpcr/version/versionhistoryinterface.html#addVersionLabel()">addVersionLabel()</a> - Method in class <a href="phpcr/version/versionhistoryinterface.html">PHPCR\Version\VersionHistoryInterface</a></dt>
 <dd>Adds the specified label to the specified version.
 </dd>
@@ -140,8 +142,6 @@
 </dl>
 <h1 id="letterB">B</h1>
 <dl>
-<dt><a href="phpcr/binaryinterface.html">BinaryInterface()</a> - Interface in namespace <a href="phpcr/package-summary.html">PHPCR</a></dt>
-<dd>A Binary object holds a JCR property value of type BINARY.</dd>
 <dt><a href="phpcr/query/queryinterface.html#bindValue()">bindValue()</a> - Method in class <a href="phpcr/query/queryinterface.html">PHPCR\Query\QueryInterface</a></dt>
 <dd>Binds the given value to the variable named $varName.</dd>
 <dt><a href="phpcr/query/qom/queryobjectmodelfactoryinterface.html#bindVariable()">bindVariable()</a> - Method in class <a href="phpcr/query/qom/queryobjectmodelfactoryinterface.html">PHPCR\Query\QOM\QueryObjectModelFactoryInterface</a></dt>
@@ -203,6 +203,9 @@
 <dd>Clears the state of the current session
 
  Removes all cached objects, planned changes etc. </dd>
+<dt><a href="phpcr/workspaceinterface.html#cloneFrom()">cloneFrom()</a> - Method in class <a href="phpcr/workspaceinterface.html">PHPCR\WorkspaceInterface</a></dt>
+<dd>Clones the subgraph at the node srcAbsPath in srcWorkspace to the new location at destAbsPath in the current workspace.
+</dd>
 <dt><a href="phpcr/query/qom/queryobjectmodelfactoryinterface.html#column()">column()</a> - Method in class <a href="phpcr/query/qom/queryobjectmodelfactoryinterface.html">PHPCR\Query\QOM\QueryObjectModelFactoryInterface</a></dt>
 <dd>Identifies a property in the specified or default selector to include in
  the tabular view of query results.
@@ -279,10 +282,6 @@
 <dt><a href="phpcr/query/qom/queryobjectmodelfactoryinterface.html#descending()">descending()</a> - Method in class <a href="phpcr/query/qom/queryobjectmodelfactoryinterface.html">PHPCR\Query\QOM\QueryObjectModelFactoryInterface</a></dt>
 <dd>Orders by the value of the specified operand, in descending order.
 </dd>
-<dt><a href="phpcr/binaryinterface.html#dispose()">dispose()</a> - Method in class <a href="phpcr/binaryinterface.html">PHPCR\BinaryInterface</a></dt>
-<dd>Releases all resources associated with this Binary object and informs the
- repository that these resources may now be reclaimed.
-</dd>
 <dt><a href="phpcr/version/versionmanagerinterface.html#doneMerge()">doneMerge()</a> - Method in class <a href="phpcr/version/versionmanagerinterface.html">PHPCR\Version\VersionManagerInterface</a></dt>
 <dd>Completes the merge process with respect to the node at absPath and the
  specified version.
@@ -350,7 +349,7 @@
 <dd>Gets a set of workspace accessible to the current user.
 </dd>
 <dt><a href="phpcr/version/versionmanagerinterface.html#getActivity()">getActivity()</a> - Method in class <a href="phpcr/version/versionmanagerinterface.html">PHPCR\Version\VersionManagerInterface</a></dt>
-<dd>Returns the node representing the current activity or NULL if there is no
+<dd>Returns the node representing the current activity or null if there is no
  current activity.</dd>
 <dt><a href="phpcr/security/privilegeinterface.html#getAggregatePrivileges()">getAggregatePrivileges()</a> - Method in class <a href="phpcr/security/privilegeinterface.html">PHPCR\Security\PrivilegeInterface</a></dt>
 <dd>If this privilege is an aggregate privilege, returns the privileges it
@@ -387,7 +386,7 @@
 <dd>Returns the access control policies that are capable of being applied to
  the node at absPath.</dd>
 <dt><a href="phpcr/simplecredentials.html#getAttribute()">getAttribute()</a> - Method in class <a href="phpcr/simplecredentials.html">PHPCR\SimpleCredentials</a></dt>
-<dd>Returns the value of the named attribute, or NULL if no attribute of the
+<dd>Returns the value of the named attribute, or null if no attribute of the
  given name exists.</dd>
 <dt><a href="phpcr/sessioninterface.html#getAttribute()">getAttribute()</a> - Method in class <a href="phpcr/sessioninterface.html">PHPCR\SessionInterface</a></dt>
 <dd>Returns the value of the named attribute, or null if no
@@ -427,17 +426,22 @@
 <dd>Returns an array of all the column names in the table view of this result set.</dd>
 <dt><a href="phpcr/query/qom/queryobjectmodelinterface.html#getColumns()">getColumns()</a> - Method in class <a href="phpcr/query/qom/queryobjectmodelinterface.html">PHPCR\Query\QOM\QueryObjectModelInterface</a></dt>
 <dd>Gets the columns for this query.</dd>
+<dt><a href="phpcr/repositoryfactoryinterface.html#getConfigurationKeys()">getConfigurationKeys()</a> - Method in class <a href="phpcr/repositoryfactoryinterface.html">PHPCR\RepositoryFactoryInterface</a></dt>
+<dd>Get the list of configuration options that can be passed to getRepository
+
+ The description string should include whether the key is mandatory or
+ optional.</dd>
 <dt><a href="phpcr/query/qom/notinterface.html#getConstraint()">getConstraint()</a> - Method in class <a href="phpcr/query/qom/notinterface.html">PHPCR\Query\QOM\NotInterface</a></dt>
 <dd>Gets the constraint negated by this Not constraint.</dd>
 <dt><a href="phpcr/query/qom/queryobjectmodelinterface.html#getConstraint()">getConstraint()</a> - Method in class <a href="phpcr/query/qom/queryobjectmodelinterface.html">PHPCR\Query\QOM\QueryObjectModelInterface</a></dt>
 <dd>Gets the constraint for this query.</dd>
-<dt><a href="phpcr/query/qom/orinterface.html#getConstraint1()">getConstraint1()</a> - Method in class <a href="phpcr/query/qom/orinterface.html">PHPCR\Query\QOM\OrInterface</a></dt>
-<dd>Gets the first constraint.</dd>
 <dt><a href="phpcr/query/qom/andinterface.html#getConstraint1()">getConstraint1()</a> - Method in class <a href="phpcr/query/qom/andinterface.html">PHPCR\Query\QOM\AndInterface</a></dt>
 <dd>Gets the first constraint.</dd>
-<dt><a href="phpcr/query/qom/andinterface.html#getConstraint2()">getConstraint2()</a> - Method in class <a href="phpcr/query/qom/andinterface.html">PHPCR\Query\QOM\AndInterface</a></dt>
-<dd>Gets the second constraint.</dd>
+<dt><a href="phpcr/query/qom/orinterface.html#getConstraint1()">getConstraint1()</a> - Method in class <a href="phpcr/query/qom/orinterface.html">PHPCR\Query\QOM\OrInterface</a></dt>
+<dd>Gets the first constraint.</dd>
 <dt><a href="phpcr/query/qom/orinterface.html#getConstraint2()">getConstraint2()</a> - Method in class <a href="phpcr/query/qom/orinterface.html">PHPCR\Query\QOM\OrInterface</a></dt>
+<dd>Gets the second constraint.</dd>
+<dt><a href="phpcr/query/qom/andinterface.html#getConstraint2()">getConstraint2()</a> - Method in class <a href="phpcr/query/qom/andinterface.html">PHPCR\Query\QOM\AndInterface</a></dt>
 <dd>Gets the second constraint.</dd>
 <dt><a href="phpcr/version/versioninterface.html#getContainingHistory()">getContainingHistory()</a> - Method in class <a href="phpcr/version/versioninterface.html">PHPCR\Version\VersionInterface</a></dt>
 <dd>Returns the VersionHistory that contains this Version</dd>
@@ -453,7 +457,8 @@
 <dd>Returns a \DateTime representation of the value of this property.
 </dd>
 <dt><a href="phpcr/propertyinterface.html#getDecimal()">getDecimal()</a> - Method in class <a href="phpcr/propertyinterface.html">PHPCR\PropertyInterface</a></dt>
-<dd>Returns a double representation of this value (a BigDecimal in Java).</dd>
+<dd>Returns an arbitrary precision number (encoded as string) representation of this value (a BigDecimal in Java).
+</dd>
 <dt><a href="phpcr/security/privilegeinterface.html#getDeclaredAggregatePrivileges()">getDeclaredAggregatePrivileges()</a> - Method in class <a href="phpcr/security/privilegeinterface.html">PHPCR\Security\PrivilegeInterface</a></dt>
 <dd>If this privilege is an aggregate privilege, returns the privileges
  directly contained by the aggregate privilege. </dd>
@@ -490,11 +495,11 @@
 <dt><a href="phpcr/nodetype/propertydefinitioninterface.html#getDefaultValues()">getDefaultValues()</a> - Method in class <a href="phpcr/nodetype/propertydefinitioninterface.html">PHPCR\NodeType\PropertyDefinitionInterface</a></dt>
 <dd>Gets the default value(s) of the property.
 </dd>
+<dt><a href="phpcr/propertyinterface.html#getDefinition()">getDefinition()</a> - Method in class <a href="phpcr/propertyinterface.html">PHPCR\PropertyInterface</a></dt>
+<dd>Returns the property definition that applies to this property. </dd>
 <dt><a href="phpcr/nodeinterface.html#getDefinition()">getDefinition()</a> - Method in class <a href="phpcr/nodeinterface.html">PHPCR\NodeInterface</a></dt>
 <dd>Returns the node definition that applies to this node.
 </dd>
-<dt><a href="phpcr/propertyinterface.html#getDefinition()">getDefinition()</a> - Method in class <a href="phpcr/propertyinterface.html">PHPCR\PropertyInterface</a></dt>
-<dd>Returns the property definition that applies to this property. </dd>
 <dt><a href="phpcr/iteminterface.html#getDepth()">getDepth()</a> - Method in class <a href="phpcr/iteminterface.html">PHPCR\ItemInterface</a></dt>
 <dd>Returns the depth of this Item in the workspace item graph.
 </dd>
@@ -514,7 +519,7 @@
 <dd>Retrieves the event journal for this workspace.
 </dd>
 <dt><a href="phpcr/lock/lockexception.html#getFailureNodePath()">getFailureNodePath()</a> - Method in class <a href="phpcr/lock/lockexception.html">PHPCR\Lock\LockException</a></dt>
-<dd>Returns the absolute path of the node that caused the error or NULL
+<dd>Returns the absolute path of the node that caused the error or null
  if the implementation chooses not to, or cannot, return a path.</dd>
 <dt><a href="phpcr/version/versioninterface.html#getFrozenNode()">getFrozenNode()</a> - Method in class <a href="phpcr/version/versioninterface.html">PHPCR\Version\VersionInterface</a></dt>
 <dd>Returns the frozen node of this version.</dd>
@@ -591,33 +596,33 @@
 </dd>
 <dt><a href="phpcr/propertyinterface.html#getLong()">getLong()</a> - Method in class <a href="phpcr/propertyinterface.html">PHPCR\PropertyInterface</a></dt>
 <dd>Returns an integer representation of the value of this property.</dd>
-<dt><a href="phpcr/nodeinterface.html#getMixinNodeTypes()">getMixinNodeTypes()</a> - Method in class <a href="phpcr/nodeinterface.html">PHPCR\NodeInterface</a></dt>
-<dd>Returns an array of NodeType objects representing the mixin node types in effect for this node.
-</dd>
 <dt><a href="phpcr/nodetype/nodetypemanagerinterface.html#getMixinNodeTypes()">getMixinNodeTypes()</a> - Method in class <a href="phpcr/nodetype/nodetypemanagerinterface.html">PHPCR\NodeType\NodeTypeManagerInterface</a></dt>
 <dd>Returns an iterator over all available mixin node types.
 </dd>
-<dt><a href="phpcr/security/namedaccesscontrolpolicyinterface.html#getName()">getName()</a> - Method in class <a href="phpcr/security/namedaccesscontrolpolicyinterface.html">PHPCR\Security\NamedAccessControlPolicyInterface</a></dt>
-<dd>Returns the name of the access control policy, which is JCR name and should
- be unique among the choices applicable to any particular node.</dd>
-<dt><a href="phpcr/retention/retentionpolicyinterface.html#getName()">getName()</a> - Method in class <a href="phpcr/retention/retentionpolicyinterface.html">PHPCR\Retention\RetentionPolicyInterface</a></dt>
-<dd>Returns the name of the retention policy. </dd>
-<dt><a href="phpcr/security/privilegeinterface.html#getName()">getName()</a> - Method in class <a href="phpcr/security/privilegeinterface.html">PHPCR\Security\PrivilegeInterface</a></dt>
-<dd>Returns the name of this privilege.</dd>
-<dt><a href="phpcr/workspaceinterface.html#getName()">getName()</a> - Method in class <a href="phpcr/workspaceinterface.html">PHPCR\WorkspaceInterface</a></dt>
-<dd>Returns the name of the actual persistent workspace represented by this Workspace object.
+<dt><a href="phpcr/nodeinterface.html#getMixinNodeTypes()">getMixinNodeTypes()</a> - Method in class <a href="phpcr/nodeinterface.html">PHPCR\NodeInterface</a></dt>
+<dd>Returns an array of NodeType objects representing the mixin node types in effect for this node.
 </dd>
 <dt><a href="phpcr/nodetype/nodetypedefinitioninterface.html#getName()">getName()</a> - Method in class <a href="phpcr/nodetype/nodetypedefinitioninterface.html">PHPCR\NodeType\NodeTypeDefinitionInterface</a></dt>
 <dd>Returns the name of the node type.
 </dd>
-<dt><a href="phpcr/retention/holdinterface.html#getName()">getName()</a> - Method in class <a href="phpcr/retention/holdinterface.html">PHPCR\Retention\HoldInterface</a></dt>
-<dd>Returns the name of this Hold. </dd>
-<dt><a href="phpcr/nodetype/itemdefinitioninterface.html#getName()">getName()</a> - Method in class <a href="phpcr/nodetype/itemdefinitioninterface.html">PHPCR\NodeType\ItemDefinitionInterface</a></dt>
-<dd>Gets the name of the child item.
-</dd>
+<dt><a href="phpcr/security/namedaccesscontrolpolicyinterface.html#getName()">getName()</a> - Method in class <a href="phpcr/security/namedaccesscontrolpolicyinterface.html">PHPCR\Security\NamedAccessControlPolicyInterface</a></dt>
+<dd>Returns the name of the access control policy, which is JCR name and should
+ be unique among the choices applicable to any particular node.</dd>
+<dt><a href="phpcr/security/privilegeinterface.html#getName()">getName()</a> - Method in class <a href="phpcr/security/privilegeinterface.html">PHPCR\Security\PrivilegeInterface</a></dt>
+<dd>Returns the name of this privilege.</dd>
 <dt><a href="phpcr/iteminterface.html#getName()">getName()</a> - Method in class <a href="phpcr/iteminterface.html">PHPCR\ItemInterface</a></dt>
 <dd>Returns the name of this Item in qualified form.
 </dd>
+<dt><a href="phpcr/nodetype/itemdefinitioninterface.html#getName()">getName()</a> - Method in class <a href="phpcr/nodetype/itemdefinitioninterface.html">PHPCR\NodeType\ItemDefinitionInterface</a></dt>
+<dd>Gets the name of the child item.
+</dd>
+<dt><a href="phpcr/workspaceinterface.html#getName()">getName()</a> - Method in class <a href="phpcr/workspaceinterface.html">PHPCR\WorkspaceInterface</a></dt>
+<dd>Returns the name of the actual persistent workspace represented by this Workspace object.
+</dd>
+<dt><a href="phpcr/retention/holdinterface.html#getName()">getName()</a> - Method in class <a href="phpcr/retention/holdinterface.html">PHPCR\Retention\HoldInterface</a></dt>
+<dd>Returns the name of this Hold. </dd>
+<dt><a href="phpcr/retention/retentionpolicyinterface.html#getName()">getName()</a> - Method in class <a href="phpcr/retention/retentionpolicyinterface.html">PHPCR\Retention\RetentionPolicyInterface</a></dt>
+<dd>Returns the name of the retention policy. </dd>
 <dt><a href="phpcr/sessioninterface.html#getNamespacePrefix()">getNamespacePrefix()</a> - Method in class <a href="phpcr/sessioninterface.html">PHPCR\SessionInterface</a></dt>
 <dd>Returns the prefix to which the given uri is mapped as currently set in
  this Session.</dd>
@@ -629,22 +634,19 @@
 <dt><a href="phpcr/sessioninterface.html#getNamespaceURI()">getNamespaceURI()</a> - Method in class <a href="phpcr/sessioninterface.html">PHPCR\SessionInterface</a></dt>
 <dd>Returns the URI to which the given prefix is mapped as currently set in
  this Session.</dd>
-<dt><a href="phpcr/propertyinterface.html#getNativeValue()">getNativeValue()</a> - Method in class <a href="phpcr/propertyinterface.html">PHPCR\PropertyInterface</a></dt>
-<dd>Get the value in format default for the PropertyType of this property.
+<dt><a href="phpcr/propertyinterface.html#getNode()">getNode()</a> - Method in class <a href="phpcr/propertyinterface.html">PHPCR\PropertyInterface</a></dt>
+<dd>Gets the node the property refers to by its type.
 </dd>
 <dt><a href="phpcr/lock/lockinterface.html#getNode()">getNode()</a> - Method in class <a href="phpcr/lock/lockinterface.html">PHPCR\Lock\LockInterface</a></dt>
 <dd>Returns the lock holding node.
+</dd>
+<dt><a href="phpcr/nodeinterface.html#getNode()">getNode()</a> - Method in class <a href="phpcr/nodeinterface.html">PHPCR\NodeInterface</a></dt>
+<dd>Returns the node at relPath relative to this node.
 </dd>
 <dt><a href="phpcr/query/rowinterface.html#getNode()">getNode()</a> - Method in class <a href="phpcr/query/rowinterface.html">PHPCR\Query\RowInterface</a></dt>
 <dd>Returns the Node corresponding to this Row and the specified selector, if given.</dd>
 <dt><a href="phpcr/sessioninterface.html#getNode()">getNode()</a> - Method in class <a href="phpcr/sessioninterface.html">PHPCR\SessionInterface</a></dt>
 <dd>Returns the node at the specified absolute path in the workspace.</dd>
-<dt><a href="phpcr/nodeinterface.html#getNode()">getNode()</a> - Method in class <a href="phpcr/nodeinterface.html">PHPCR\NodeInterface</a></dt>
-<dd>Returns the node at relPath relative to this node.
-</dd>
-<dt><a href="phpcr/propertyinterface.html#getNode()">getNode()</a> - Method in class <a href="phpcr/propertyinterface.html">PHPCR\PropertyInterface</a></dt>
-<dd>Gets the node the property refers to by its type.
-</dd>
 <dt><a href="phpcr/sessioninterface.html#getNodeByIdentifier()">getNodeByIdentifier()</a> - Method in class <a href="phpcr/sessioninterface.html">PHPCR\SessionInterface</a></dt>
 <dd>Returns the node specified by the given identifier.
 </dd>
@@ -669,12 +671,12 @@
 <dt><a href="phpcr/nodetype/itemdefinitioninterface.html#getOnParentVersion()">getOnParentVersion()</a> - Method in class <a href="phpcr/nodetype/itemdefinitioninterface.html">PHPCR\NodeType\ItemDefinitionInterface</a></dt>
 <dd>Gets the OnParentVersion status of the child item.
 </dd>
-<dt><a href="phpcr/query/qom/lowercaseinterface.html#getOperand()">getOperand()</a> - Method in class <a href="phpcr/query/qom/lowercaseinterface.html">PHPCR\Query\QOM\LowerCaseInterface</a></dt>
-<dd>Gets the operand whose value is converted to a lower-case string.</dd>
 <dt><a href="phpcr/query/qom/uppercaseinterface.html#getOperand()">getOperand()</a> - Method in class <a href="phpcr/query/qom/uppercaseinterface.html">PHPCR\Query\QOM\UpperCaseInterface</a></dt>
 <dd>Gets the operand whose value is converted to a upper-case string.</dd>
 <dt><a href="phpcr/query/qom/orderinginterface.html#getOperand()">getOperand()</a> - Method in class <a href="phpcr/query/qom/orderinginterface.html">PHPCR\Query\QOM\OrderingInterface</a></dt>
 <dd>The operand by which to order.</dd>
+<dt><a href="phpcr/query/qom/lowercaseinterface.html#getOperand()">getOperand()</a> - Method in class <a href="phpcr/query/qom/lowercaseinterface.html">PHPCR\Query\QOM\LowerCaseInterface</a></dt>
+<dd>Gets the operand whose value is converted to a lower-case string.</dd>
 <dt><a href="phpcr/query/qom/comparisoninterface.html#getOperand1()">getOperand1()</a> - Method in class <a href="phpcr/query/qom/comparisoninterface.html">PHPCR\Query\QOM\ComparisonInterface</a></dt>
 <dd>Gets the first operand.</dd>
 <dt><a href="phpcr/query/qom/comparisoninterface.html#getOperand2()">getOperand2()</a> - Method in class <a href="phpcr/query/qom/comparisoninterface.html">PHPCR\Query\QOM\ComparisonInterface</a></dt>
@@ -693,17 +695,17 @@
 <dd>Gets the name of the parent selector.</dd>
 <dt><a href="phpcr/simplecredentials.html#getPassword()">getPassword()</a> - Method in class <a href="phpcr/simplecredentials.html">PHPCR\SimpleCredentials</a></dt>
 <dd>Returns the user password.</dd>
+<dt><a href="phpcr/query/qom/samenodeinterface.html#getPath()">getPath()</a> - Method in class <a href="phpcr/query/qom/samenodeinterface.html">PHPCR\Query\QOM\SameNodeInterface</a></dt>
+<dd>Gets the absolute path.</dd>
 <dt><a href="phpcr/observation/eventinterface.html#getPath()">getPath()</a> - Method in class <a href="phpcr/observation/eventinterface.html">PHPCR\Observation\EventInterface</a></dt>
-<dd>Returns the absolute path associated with this event or NULL if this
+<dd>Returns the absolute path associated with this event or null if this
  event has no associated identifier.
 </dd>
+<dt><a href="phpcr/iteminterface.html#getPath()">getPath()</a> - Method in class <a href="phpcr/iteminterface.html">PHPCR\ItemInterface</a></dt>
+<dd>Returns the normalized absolute path to this item.</dd>
 <dt><a href="phpcr/query/rowinterface.html#getPath()">getPath()</a> - Method in class <a href="phpcr/query/rowinterface.html">PHPCR\Query\RowInterface</a></dt>
 <dd>Get the path of a node identified by a selector.
 </dd>
-<dt><a href="phpcr/query/qom/samenodeinterface.html#getPath()">getPath()</a> - Method in class <a href="phpcr/query/qom/samenodeinterface.html">PHPCR\Query\QOM\SameNodeInterface</a></dt>
-<dd>Gets the absolute path.</dd>
-<dt><a href="phpcr/iteminterface.html#getPath()">getPath()</a> - Method in class <a href="phpcr/iteminterface.html">PHPCR\ItemInterface</a></dt>
-<dd>Returns the normalized absolute path to this item.</dd>
 <dt><a href="phpcr/security/accesscontrolmanagerinterface.html#getPolicies()">getPolicies()</a> - Method in class <a href="phpcr/security/accesscontrolmanagerinterface.html">PHPCR\Security\AccessControlManagerInterface</a></dt>
 <dd>Gets the access control policies previouly set to the node identified by the given path.
 </dd>
@@ -739,11 +741,11 @@
 <dt><a href="phpcr/nodeinterface.html#getPropertiesValues()">getPropertiesValues()</a> - Method in class <a href="phpcr/nodeinterface.html">PHPCR\NodeInterface</a></dt>
 <dd>Shortcut for getProperties and then getting the values of the properties.
 </dd>
+<dt><a href="phpcr/sessioninterface.html#getProperty()">getProperty()</a> - Method in class <a href="phpcr/sessioninterface.html">PHPCR\SessionInterface</a></dt>
+<dd>Returns the property at the specified absolute path in the workspace.</dd>
 <dt><a href="phpcr/nodeinterface.html#getProperty()">getProperty()</a> - Method in class <a href="phpcr/nodeinterface.html">PHPCR\NodeInterface</a></dt>
 <dd>Returns the property at relPath relative to this node.
 </dd>
-<dt><a href="phpcr/sessioninterface.html#getProperty()">getProperty()</a> - Method in class <a href="phpcr/sessioninterface.html">PHPCR\SessionInterface</a></dt>
-<dd>Returns the property at the specified absolute path in the workspace.</dd>
 <dt><a href="phpcr/propertyinterface.html#getProperty()">getProperty()</a> - Method in class <a href="phpcr/propertyinterface.html">PHPCR\PropertyInterface</a></dt>
 <dd>Gets the property the property refers to by its type.
 </dd>
@@ -757,19 +759,19 @@
 <dt><a href="phpcr/nodetype/nodetypetemplateinterface.html#getPropertyDefinitionTemplates()">getPropertyDefinitionTemplates()</a> - Method in class <a href="phpcr/nodetype/nodetypetemplateinterface.html">PHPCR\NodeType\NodeTypeTemplateInterface</a></dt>
 <dd>Returns a mutable List of PropertyDefinitionTemplate objects.
 </dd>
-<dt><a href="phpcr/query/qom/propertyvalueinterface.html#getPropertyName()">getPropertyName()</a> - Method in class <a href="phpcr/query/qom/propertyvalueinterface.html">PHPCR\Query\QOM\PropertyValueInterface</a></dt>
-<dd>Gets the name of the property.</dd>
 <dt><a href="phpcr/query/qom/columninterface.html#getPropertyName()">getPropertyName()</a> - Method in class <a href="phpcr/query/qom/columninterface.html">PHPCR\Query\QOM\ColumnInterface</a></dt>
+<dd>Gets the name of the property.</dd>
+<dt><a href="phpcr/query/qom/propertyvalueinterface.html#getPropertyName()">getPropertyName()</a> - Method in class <a href="phpcr/query/qom/propertyvalueinterface.html">PHPCR\Query\QOM\PropertyValueInterface</a></dt>
 <dd>Gets the name of the property.</dd>
 <dt><a href="phpcr/query/qom/propertyexistenceinterface.html#getPropertyName()">getPropertyName()</a> - Method in class <a href="phpcr/query/qom/propertyexistenceinterface.html">PHPCR\Query\QOM\PropertyExistenceInterface</a></dt>
 <dd>Gets the name of the property.</dd>
 <dt><a href="phpcr/query/qom/fulltextsearchinterface.html#getPropertyName()">getPropertyName()</a> - Method in class <a href="phpcr/query/qom/fulltextsearchinterface.html">PHPCR\Query\QOM\FullTextSearchInterface</a></dt>
 <dd>Gets the name of the property.</dd>
-<dt><a href="phpcr/query/qom/lengthinterface.html#getPropertyValue()">getPropertyValue()</a> - Method in class <a href="phpcr/query/qom/lengthinterface.html">PHPCR\Query\QOM\LengthInterface</a></dt>
-<dd>Gets the property value for which to compute the length.</dd>
 <dt><a href="phpcr/nodeinterface.html#getPropertyValue()">getPropertyValue()</a> - Method in class <a href="phpcr/nodeinterface.html">PHPCR\NodeInterface</a></dt>
 <dd>Returns the property of this node with name $name.
 </dd>
+<dt><a href="phpcr/query/qom/lengthinterface.html#getPropertyValue()">getPropertyValue()</a> - Method in class <a href="phpcr/query/qom/lengthinterface.html">PHPCR\Query\QOM\LengthInterface</a></dt>
+<dd>Gets the property value for which to compute the length.</dd>
 <dt><a href="phpcr/query/querymanagerinterface.html#getQOMFactory()">getQOMFactory()</a> - Method in class <a href="phpcr/query/querymanagerinterface.html">PHPCR\Query\QueryManagerInterface</a></dt>
 <dd>Returns a QueryObjectModelFactory with which a JCR-JQOM query can be built
  programmatically.</dd>
@@ -822,9 +824,9 @@
 <dt><a href="phpcr/lock/lockinterface.html#getSecondsRemaining()">getSecondsRemaining()</a> - Method in class <a href="phpcr/lock/lockinterface.html">PHPCR\Lock\LockInterface</a></dt>
 <dd>Returns the number of seconds remaining until this locks times out.
 </dd>
-<dt><a href="phpcr/query/qom/samenodejoinconditioninterface.html#getSelector1Name()">getSelector1Name()</a> - Method in class <a href="phpcr/query/qom/samenodejoinconditioninterface.html">PHPCR\Query\QOM\SameNodeJoinConditionInterface</a></dt>
-<dd>Gets the name of the first selector.</dd>
 <dt><a href="phpcr/query/qom/equijoinconditioninterface.html#getSelector1Name()">getSelector1Name()</a> - Method in class <a href="phpcr/query/qom/equijoinconditioninterface.html">PHPCR\Query\QOM\EquiJoinConditionInterface</a></dt>
+<dd>Gets the name of the first selector.</dd>
+<dt><a href="phpcr/query/qom/samenodejoinconditioninterface.html#getSelector1Name()">getSelector1Name()</a> - Method in class <a href="phpcr/query/qom/samenodejoinconditioninterface.html">PHPCR\Query\QOM\SameNodeJoinConditionInterface</a></dt>
 <dd>Gets the name of the first selector.</dd>
 <dt><a href="phpcr/query/qom/equijoinconditioninterface.html#getSelector2Name()">getSelector2Name()</a> - Method in class <a href="phpcr/query/qom/equijoinconditioninterface.html">PHPCR\Query\QOM\EquiJoinConditionInterface</a></dt>
 <dd>Gets the name of the second selector.</dd>
@@ -832,42 +834,40 @@
 <dd>Gets the name of the second selector.</dd>
 <dt><a href="phpcr/query/qom/samenodejoinconditioninterface.html#getSelector2Path()">getSelector2Path()</a> - Method in class <a href="phpcr/query/qom/samenodejoinconditioninterface.html">PHPCR\Query\QOM\SameNodeJoinConditionInterface</a></dt>
 <dd>Gets the path relative to the second selector.</dd>
+<dt><a href="phpcr/query/qom/descendantnodeinterface.html#getSelectorName()">getSelectorName()</a> - Method in class <a href="phpcr/query/qom/descendantnodeinterface.html">PHPCR\Query\QOM\DescendantNodeInterface</a></dt>
+<dd>Gets the name of the selector against which to apply this constraint.</dd>
 <dt><a href="phpcr/query/qom/columninterface.html#getSelectorName()">getSelectorName()</a> - Method in class <a href="phpcr/query/qom/columninterface.html">PHPCR\Query\QOM\ColumnInterface</a></dt>
 <dd>Gets the name of the selector.</dd>
-<dt><a href="phpcr/query/qom/propertyexistenceinterface.html#getSelectorName()">getSelectorName()</a> - Method in class <a href="phpcr/query/qom/propertyexistenceinterface.html">PHPCR\Query\QOM\PropertyExistenceInterface</a></dt>
-<dd>Gets the name of the selector against which to apply this constraint.</dd>
-<dt><a href="phpcr/query/qom/fulltextsearchinterface.html#getSelectorName()">getSelectorName()</a> - Method in class <a href="phpcr/query/qom/fulltextsearchinterface.html">PHPCR\Query\QOM\FullTextSearchInterface</a></dt>
-<dd>Gets the name of the selector against which to apply this constraint.</dd>
-<dt><a href="phpcr/query/qom/fulltextsearchscoreinterface.html#getSelectorName()">getSelectorName()</a> - Method in class <a href="phpcr/query/qom/fulltextsearchscoreinterface.html">PHPCR\Query\QOM\FullTextSearchScoreInterface</a></dt>
-<dd>Gets the name of the selector against which to evaluate this operand.</dd>
-<dt><a href="phpcr/query/qom/propertyvalueinterface.html#getSelectorName()">getSelectorName()</a> - Method in class <a href="phpcr/query/qom/propertyvalueinterface.html">PHPCR\Query\QOM\PropertyValueInterface</a></dt>
-<dd>Gets the name of the selector against which to evaluate this operand.</dd>
-<dt><a href="phpcr/query/qom/samenodeinterface.html#getSelectorName()">getSelectorName()</a> - Method in class <a href="phpcr/query/qom/samenodeinterface.html">PHPCR\Query\QOM\SameNodeInterface</a></dt>
-<dd>Gets the name of the selector against which to apply this constraint.</dd>
-<dt><a href="phpcr/query/qom/childnodeinterface.html#getSelectorName()">getSelectorName()</a> - Method in class <a href="phpcr/query/qom/childnodeinterface.html">PHPCR\Query\QOM\ChildNodeInterface</a></dt>
-<dd>Gets the name of the selector against which to apply this constraint.</dd>
 <dt><a href="phpcr/query/qom/nodelocalnameinterface.html#getSelectorName()">getSelectorName()</a> - Method in class <a href="phpcr/query/qom/nodelocalnameinterface.html">PHPCR\Query\QOM\NodeLocalNameInterface</a></dt>
 <dd>Gets the name of the selector against which to evaluate this operand.</dd>
-<dt><a href="phpcr/query/qom/nodenameinterface.html#getSelectorName()">getSelectorName()</a> - Method in class <a href="phpcr/query/qom/nodenameinterface.html">PHPCR\Query\QOM\NodeNameInterface</a></dt>
+<dt><a href="phpcr/query/qom/propertyvalueinterface.html#getSelectorName()">getSelectorName()</a> - Method in class <a href="phpcr/query/qom/propertyvalueinterface.html">PHPCR\Query\QOM\PropertyValueInterface</a></dt>
 <dd>Gets the name of the selector against which to evaluate this operand.</dd>
 <dt><a href="phpcr/query/qom/selectorinterface.html#getSelectorName()">getSelectorName()</a> - Method in class <a href="phpcr/query/qom/selectorinterface.html">PHPCR\Query\QOM\SelectorInterface</a></dt>
 <dd>Gets the selector name.
 </dd>
-<dt><a href="phpcr/query/qom/descendantnodeinterface.html#getSelectorName()">getSelectorName()</a> - Method in class <a href="phpcr/query/qom/descendantnodeinterface.html">PHPCR\Query\QOM\DescendantNodeInterface</a></dt>
+<dt><a href="phpcr/query/qom/propertyexistenceinterface.html#getSelectorName()">getSelectorName()</a> - Method in class <a href="phpcr/query/qom/propertyexistenceinterface.html">PHPCR\Query\QOM\PropertyExistenceInterface</a></dt>
+<dd>Gets the name of the selector against which to apply this constraint.</dd>
+<dt><a href="phpcr/query/qom/fulltextsearchscoreinterface.html#getSelectorName()">getSelectorName()</a> - Method in class <a href="phpcr/query/qom/fulltextsearchscoreinterface.html">PHPCR\Query\QOM\FullTextSearchScoreInterface</a></dt>
+<dd>Gets the name of the selector against which to evaluate this operand.</dd>
+<dt><a href="phpcr/query/qom/childnodeinterface.html#getSelectorName()">getSelectorName()</a> - Method in class <a href="phpcr/query/qom/childnodeinterface.html">PHPCR\Query\QOM\ChildNodeInterface</a></dt>
+<dd>Gets the name of the selector against which to apply this constraint.</dd>
+<dt><a href="phpcr/query/qom/nodenameinterface.html#getSelectorName()">getSelectorName()</a> - Method in class <a href="phpcr/query/qom/nodenameinterface.html">PHPCR\Query\QOM\NodeNameInterface</a></dt>
+<dd>Gets the name of the selector against which to evaluate this operand.</dd>
+<dt><a href="phpcr/query/qom/fulltextsearchinterface.html#getSelectorName()">getSelectorName()</a> - Method in class <a href="phpcr/query/qom/fulltextsearchinterface.html">PHPCR\Query\QOM\FullTextSearchInterface</a></dt>
+<dd>Gets the name of the selector against which to apply this constraint.</dd>
+<dt><a href="phpcr/query/qom/samenodeinterface.html#getSelectorName()">getSelectorName()</a> - Method in class <a href="phpcr/query/qom/samenodeinterface.html">PHPCR\Query\QOM\SameNodeInterface</a></dt>
 <dd>Gets the name of the selector against which to apply this constraint.</dd>
 <dt><a href="phpcr/query/queryresultinterface.html#getSelectorNames()">getSelectorNames()</a> - Method in class <a href="phpcr/query/queryresultinterface.html">PHPCR\Query\QueryResultInterface</a></dt>
 <dd>Returns an array of all the selector names that were used in the query
  that created this result.
 </dd>
-<dt><a href="phpcr/workspaceinterface.html#getSession()">getSession()</a> - Method in class <a href="phpcr/workspaceinterface.html">PHPCR\WorkspaceInterface</a></dt>
-<dd>Returns the Session object through which this Workspace object was acquired.</dd>
 <dt><a href="phpcr/iteminterface.html#getSession()">getSession()</a> - Method in class <a href="phpcr/iteminterface.html">PHPCR\ItemInterface</a></dt>
 <dd>Returns the Session through which this Item was acquired.</dd>
+<dt><a href="phpcr/workspaceinterface.html#getSession()">getSession()</a> - Method in class <a href="phpcr/workspaceinterface.html">PHPCR\WorkspaceInterface</a></dt>
+<dd>Returns the Session object through which this Workspace object was acquired.</dd>
 <dt><a href="phpcr/nodeinterface.html#getSharedSet()">getSharedSet()</a> - Method in class <a href="phpcr/nodeinterface.html">PHPCR\NodeInterface</a></dt>
 <dd>Returns an iterator over all nodes that are in the shared set of this node.
 </dd>
-<dt><a href="phpcr/binaryinterface.html#getSize()">getSize()</a> - Method in class <a href="phpcr/binaryinterface.html">PHPCR\BinaryInterface</a></dt>
-<dd>Returns the size of this Binary value in bytes.</dd>
 <dt><a href="phpcr/query/qom/queryobjectmodelinterface.html#getSource()">getSource()</a> - Method in class <a href="phpcr/query/qom/queryobjectmodelinterface.html">PHPCR\Query\QOM\QueryObjectModelInterface</a></dt>
 <dd>Gets the node-tuple source for this query.</dd>
 <dt><a href="phpcr/query/queryinterface.html#getStatement()">getStatement()</a> - Method in class <a href="phpcr/query/queryinterface.html">PHPCR\Query\QueryInterface</a></dt>
@@ -875,9 +875,6 @@
 </dd>
 <dt><a href="phpcr/query/queryinterface.html#getStoredQueryPath()">getStoredQueryPath()</a> - Method in class <a href="phpcr/query/queryinterface.html">PHPCR\Query\QueryInterface</a></dt>
 <dd>Fetches the path of the node representing this query.
-</dd>
-<dt><a href="phpcr/binaryinterface.html#getStream()">getStream()</a> - Method in class <a href="phpcr/binaryinterface.html">PHPCR\BinaryInterface</a></dt>
-<dd>Returns a stream representation of this value.
 </dd>
 <dt><a href="phpcr/propertyinterface.html#getString()">getString()</a> - Method in class <a href="phpcr/propertyinterface.html">PHPCR\PropertyInterface</a></dt>
 <dd>Returns a String representation of the value of this property.</dd>
@@ -910,16 +907,19 @@
 <dt><a href="phpcr/observation/eventinterface.html#getUserData()">getUserData()</a> - Method in class <a href="phpcr/observation/eventinterface.html">PHPCR\Observation\EventInterface</a></dt>
 <dd>Returns the user data set through ObservationManager.setUserData() on the
  ObservationManager bound to the Session that caused the event.</dd>
+<dt><a href="phpcr/sessioninterface.html#getUserID()">getUserID()</a> - Method in class <a href="phpcr/sessioninterface.html">PHPCR\SessionInterface</a></dt>
+<dd>Gets the user ID associated with this Session.
+</dd>
 <dt><a href="phpcr/simplecredentials.html#getUserID()">getUserID()</a> - Method in class <a href="phpcr/simplecredentials.html">PHPCR\SimpleCredentials</a></dt>
 <dd>Returns the user ID.</dd>
 <dt><a href="phpcr/observation/eventinterface.html#getUserID()">getUserID()</a> - Method in class <a href="phpcr/observation/eventinterface.html">PHPCR\Observation\EventInterface</a></dt>
 <dd>Returns the user ID connected with this event.
 </dd>
-<dt><a href="phpcr/sessioninterface.html#getUserID()">getUserID()</a> - Method in class <a href="phpcr/sessioninterface.html">PHPCR\SessionInterface</a></dt>
-<dd>Gets the user ID associated with this Session.
-</dd>
 <dt><a href="phpcr/query/rowinterface.html#getValue()">getValue()</a> - Method in class <a href="phpcr/query/rowinterface.html">PHPCR\Query\RowInterface</a></dt>
 <dd>Returns the value of the indicated column in this Row.</dd>
+<dt><a href="phpcr/propertyinterface.html#getValue()">getValue()</a> - Method in class <a href="phpcr/propertyinterface.html">PHPCR\PropertyInterface</a></dt>
+<dd>Get the value in format default for the PropertyType of this property.
+</dd>
 <dt><a href="phpcr/nodetype/propertydefinitioninterface.html#getValueConstraints()">getValueConstraints()</a> - Method in class <a href="phpcr/nodetype/propertydefinitioninterface.html">PHPCR\NodeType\PropertyDefinitionInterface</a></dt>
 <dd>Gets the array of constraint strings.
 </dd>
@@ -1005,12 +1005,12 @@
  - Session::importXML()
  - Workspace::getImportContentHandler()
  - Session::getImportContentHandler()</dd>
+<dt><a href="phpcr/workspaceinterface.html#importXML()">importXML()</a> - Method in class <a href="phpcr/workspaceinterface.html">PHPCR\WorkspaceInterface</a></dt>
+<dd>Deserializes an XML document and adds the resulting item subgraph as a child of the node at $parentAbsPath.
+</dd>
 <dt><a href="phpcr/sessioninterface.html#importXML()">importXML()</a> - Method in class <a href="phpcr/sessioninterface.html">PHPCR\SessionInterface</a></dt>
 <dd>Deserializes an XML document and adds the resulting item subgraph as a
  child of the node at $parentAbsPath.
-</dd>
-<dt><a href="phpcr/workspaceinterface.html#importXML()">importXML()</a> - Method in class <a href="phpcr/workspaceinterface.html">PHPCR\WorkspaceInterface</a></dt>
-<dd>Deserializes an XML document and adds the resulting item subgraph as a child of the node at $parentAbsPath.
 </dd>
 <dt><a href="phpcr/invaliditemstateexception.html">InvalidItemStateException()</a> - Class in namespace <a href="phpcr/package-summary.html">PHPCR</a></dt>
 <dd>This exception shall be thrown in case of an issue of a state of an element.
@@ -1036,33 +1036,33 @@
 <dd>Reports whether the item is to be automatically created when its parent
  node is created.
 </dd>
+<dt><a href="phpcr/nodeinterface.html#isCheckedOut()">isCheckedOut()</a> - Method in class <a href="phpcr/nodeinterface.html">PHPCR\NodeInterface</a></dt>
+<dd>Determine if the current node is currently checked out.
+</dd>
 <dt><a href="phpcr/version/versionmanagerinterface.html#isCheckedOut()">isCheckedOut()</a> - Method in class <a href="phpcr/version/versionmanagerinterface.html">PHPCR\Version\VersionManagerInterface</a></dt>
 <dd>Returns true if the node at $absPath is either
   versionable (full or simple) and currently checked-out,
   non-versionable and its nearest versionable ancestor is checked-out or
   non-versionable and it has no versionable ancestor.
 </dd>
-<dt><a href="phpcr/nodeinterface.html#isCheckedOut()">isCheckedOut()</a> - Method in class <a href="phpcr/nodeinterface.html">PHPCR\NodeInterface</a></dt>
-<dd>Determine if the current node is currently checked out.
-</dd>
-<dt><a href="phpcr/lock/lockinterface.html#isDeep()">isDeep()</a> - Method in class <a href="phpcr/lock/lockinterface.html">PHPCR\Lock\LockInterface</a></dt>
-<dd>Returns true if this is a deep lock; false otherwise.</dd>
 <dt><a href="phpcr/retention/holdinterface.html#isDeep()">isDeep()</a> - Method in class <a href="phpcr/retention/holdinterface.html">PHPCR\Retention\HoldInterface</a></dt>
 <dd>Returns true if this Hold is deep.</dd>
+<dt><a href="phpcr/lock/lockinterface.html#isDeep()">isDeep()</a> - Method in class <a href="phpcr/lock/lockinterface.html">PHPCR\Lock\LockInterface</a></dt>
+<dd>Returns true if this is a deep lock; false otherwise.</dd>
 <dt><a href="phpcr/nodetype/propertydefinitioninterface.html#isFullTextSearchable()">isFullTextSearchable()</a> - Method in class <a href="phpcr/nodetype/propertydefinitioninterface.html">PHPCR\NodeType\PropertyDefinitionInterface</a></dt>
 <dd>Determines if this property is full-text searchable.
-</dd>
-<dt><a href="phpcr/sessioninterface.html#isLive()">isLive()</a> - Method in class <a href="phpcr/sessioninterface.html">PHPCR\SessionInterface</a></dt>
-<dd>Determines if the current session is still valid.
 </dd>
 <dt><a href="phpcr/lock/lockinterface.html#isLive()">isLive()</a> - Method in class <a href="phpcr/lock/lockinterface.html">PHPCR\Lock\LockInterface</a></dt>
 <dd>Determines if the lock is still in effect.
 </dd>
-<dt><a href="phpcr/nodeinterface.html#isLocked()">isLocked()</a> - Method in class <a href="phpcr/nodeinterface.html">PHPCR\NodeInterface</a></dt>
-<dd>Determine if the current node has been locked.
+<dt><a href="phpcr/sessioninterface.html#isLive()">isLive()</a> - Method in class <a href="phpcr/sessioninterface.html">PHPCR\SessionInterface</a></dt>
+<dd>Determines if the current session is still valid.
 </dd>
 <dt><a href="phpcr/lock/lockmanagerinterface.html#isLocked()">isLocked()</a> - Method in class <a href="phpcr/lock/lockmanagerinterface.html">PHPCR\Lock\LockManagerInterface</a></dt>
 <dd>Determines if the node at absPath is locked.
+</dd>
+<dt><a href="phpcr/nodeinterface.html#isLocked()">isLocked()</a> - Method in class <a href="phpcr/nodeinterface.html">PHPCR\NodeInterface</a></dt>
+<dd>Determine if the current node has been locked.
 </dd>
 <dt><a href="phpcr/lock/lockinterface.html#isLockOwningSession()">isLockOwningSession()</a> - Method in class <a href="phpcr/lock/lockinterface.html">PHPCR\Lock\LockInterface</a></dt>
 <dd>Determines if the current session owns this lock.
@@ -1137,12 +1137,6 @@
 <dt><a href="phpcr/query/qom/joininterface.html">JoinInterface()</a> - Interface in namespace <a href="phpcr/query/qom/package-summary.html">PHPCR\Query\QOM</a></dt>
 <dd>Performs a join between two node-tuple sources.</dd>
 </dl>
-<h1 id="letterK">K</h1>
-<dl>
-<dt><a href="phpcr/workspaceinterface.html#klone()">klone()</a> - Method in class <a href="phpcr/workspaceinterface.html">PHPCR\WorkspaceInterface</a></dt>
-<dd>Clones the subgraph at the node srcAbsPath in srcWorkspace to the new location at destAbsPath in this workspace.
-</dd>
-</dl>
 <h1 id="letterL">L</h1>
 <dl>
 <dt><a href="phpcr/version/labelexistsversionexception.html">LabelExistsVersionException()</a> - Class in namespace <a href="phpcr/version/package-summary.html">PHPCR\Version</a></dt>
@@ -1197,12 +1191,12 @@
 </dd>
 <dt><a href="phpcr/mergeexception.html">MergeException()</a> - Class in namespace <a href="phpcr/package-summary.html">PHPCR</a></dt>
 <dd>Exception thrown by Node.merge(String srcWorkspace, boolean isDeep).</dd>
-<dt><a href="phpcr/workspaceinterface.html#move()">move()</a> - Method in class <a href="phpcr/workspaceinterface.html">PHPCR\WorkspaceInterface</a></dt>
-<dd>Moves the node at srcAbsPath (and its entire subgraph) to the new location at destAbsPath.
-</dd>
 <dt><a href="phpcr/sessioninterface.html#move()">move()</a> - Method in class <a href="phpcr/sessioninterface.html">PHPCR\SessionInterface</a></dt>
 <dd>Moves the node at srcAbsPath (and its entire subgraph) to the new location
  at destAbsPath.
+</dd>
+<dt><a href="phpcr/workspaceinterface.html#move()">move()</a> - Method in class <a href="phpcr/workspaceinterface.html">PHPCR\WorkspaceInterface</a></dt>
+<dd>Moves the node at srcAbsPath (and its entire subgraph) to the new location at destAbsPath.
 </dd>
 </dl>
 <h1 id="letterN">N</h1>
@@ -1210,10 +1204,10 @@
 <dt><a href="phpcr/security/namedaccesscontrolpolicyinterface.html">NamedAccessControlPolicyInterface()</a> - Interface in namespace <a href="phpcr/security/package-summary.html">PHPCR\Security</a></dt>
 <dd>An NamedAccessControlPolicy is an opaque access control policy that is described
  by a JCR name and optionally a description. </dd>
-<dt><a href="phpcr/propertytype.html#nameFromValue()">nameFromValue()</a> - Method in class <a href="phpcr/propertytype.html">PHPCR\PropertyType</a></dt>
-<dd>Returns the name of the specified type, as used in serialization.</dd>
 <dt><a href="phpcr/version/onparentversionaction.html#nameFromValue()">nameFromValue()</a> - Method in class <a href="phpcr/version/onparentversionaction.html">PHPCR\Version\OnParentVersionAction</a></dt>
 <dd>Returns the name of the specified action, as used in serialization.</dd>
+<dt><a href="phpcr/propertytype.html#nameFromValue()">nameFromValue()</a> - Method in class <a href="phpcr/propertytype.html">PHPCR\PropertyType</a></dt>
+<dd>Returns the name of the specified type, as used in serialization.</dd>
 <dt><a href="phpcr/namespaceexception.html">NamespaceException()</a> - Class in namespace <a href="phpcr/package-summary.html">PHPCR</a></dt>
 <dd>Definition of an Exception to be thrown in case of a namespace issue within a session.
 </dd>
@@ -1356,21 +1350,17 @@
 </dl>
 <h1 id="letterR">R</h1>
 <dl>
-<dt><a href="phpcr/binaryinterface.html#read()">read()</a> - Method in class <a href="phpcr/binaryinterface.html">PHPCR\BinaryInterface</a></dt>
-<dd>Reads successive bytes from the specified position in this Binary into
- the passed string until $limit or the end of the Binary is encountered
- (whichever comes first).</dd>
 <dt><a href="phpcr/referentialintegrityexception.html">ReferentialIntegrityException()</a> - Class in namespace <a href="phpcr/package-summary.html">PHPCR</a></dt>
 <dd>Exception thrown on referential integrity violation.</dd>
+<dt><a href="phpcr/iteminterface.html#refresh()">refresh()</a> - Method in class <a href="phpcr/iteminterface.html">PHPCR\ItemInterface</a></dt>
+<dd>Updates the state of the current item.
+</dd>
 <dt><a href="phpcr/lock/lockinterface.html#refresh()">refresh()</a> - Method in class <a href="phpcr/lock/lockinterface.html">PHPCR\Lock\LockInterface</a></dt>
 <dd>If this lock's time-to-live is governed by a timer, this method resets that
  timer so that the lock does not timeout and expire.
 </dd>
 <dt><a href="phpcr/sessioninterface.html#refresh()">refresh()</a> - Method in class <a href="phpcr/sessioninterface.html">PHPCR\SessionInterface</a></dt>
 <dd>Reloads the current session.
-</dd>
-<dt><a href="phpcr/iteminterface.html#refresh()">refresh()</a> - Method in class <a href="phpcr/iteminterface.html">PHPCR\ItemInterface</a></dt>
-<dd>Updates the state of the current item.
 </dd>
 <dt><a href="phpcr/namespaceregistryinterface.html#registerNamespace()">registerNamespace()</a> - Method in class <a href="phpcr/namespaceregistryinterface.html">PHPCR\NamespaceRegistryInterface</a></dt>
 <dd>Sets a one-to-one mapping between prefix and uri in the global namespace
@@ -1488,10 +1478,10 @@
 <dt><a href="phpcr/simplecredentials.html#setAttribute()">setAttribute()</a> - Method in class <a href="phpcr/simplecredentials.html">PHPCR\SimpleCredentials</a></dt>
 <dd>Stores an attribute in this credentials instance.
 </dd>
-<dt><a href="phpcr/nodetype/nodedefinitiontemplateinterface.html#setAutoCreated()">setAutoCreated()</a> - Method in class <a href="phpcr/nodetype/nodedefinitiontemplateinterface.html">PHPCR\NodeType\NodeDefinitionTemplateInterface</a></dt>
-<dd>Sets the auto-create status of the node.</dd>
 <dt><a href="phpcr/nodetype/propertydefinitiontemplateinterface.html#setAutoCreated()">setAutoCreated()</a> - Method in class <a href="phpcr/nodetype/propertydefinitiontemplateinterface.html">PHPCR\NodeType\PropertyDefinitionTemplateInterface</a></dt>
 <dd>Sets the auto-create status of the property.</dd>
+<dt><a href="phpcr/nodetype/nodedefinitiontemplateinterface.html#setAutoCreated()">setAutoCreated()</a> - Method in class <a href="phpcr/nodetype/nodedefinitiontemplateinterface.html">PHPCR\NodeType\NodeDefinitionTemplateInterface</a></dt>
+<dd>Sets the auto-create status of the node.</dd>
 <dt><a href="phpcr/nodetype/propertydefinitiontemplateinterface.html#setAvailableQueryOperators()">setAvailableQueryOperators()</a> - Method in class <a href="phpcr/nodetype/propertydefinitiontemplateinterface.html">PHPCR\NodeType\PropertyDefinitionTemplateInterface</a></dt>
 <dd>Sets the queryable status of the property.</dd>
 <dt><a href="phpcr/nodetype/nodetypetemplateinterface.html#setDeclaredSuperTypeNames()">setDeclaredSuperTypeNames()</a> - Method in class <a href="phpcr/nodetype/nodetypetemplateinterface.html">PHPCR\NodeType\NodeTypeTemplateInterface</a></dt>
@@ -1524,10 +1514,10 @@
 </dd>
 <dt><a href="phpcr/query/queryinterface.html#setOffset()">setOffset()</a> - Method in class <a href="phpcr/query/queryinterface.html">PHPCR\Query\QueryInterface</a></dt>
 <dd>Sets the start offset of the result set to offset.</dd>
-<dt><a href="phpcr/nodetype/propertydefinitiontemplateinterface.html#setOnParentVersion()">setOnParentVersion()</a> - Method in class <a href="phpcr/nodetype/propertydefinitiontemplateinterface.html">PHPCR\NodeType\PropertyDefinitionTemplateInterface</a></dt>
-<dd>Sets the on-parent-version status of the property.</dd>
 <dt><a href="phpcr/nodetype/nodedefinitiontemplateinterface.html#setOnParentVersion()">setOnParentVersion()</a> - Method in class <a href="phpcr/nodetype/nodedefinitiontemplateinterface.html">PHPCR\NodeType\NodeDefinitionTemplateInterface</a></dt>
 <dd>Sets the on-parent-version status of the node.</dd>
+<dt><a href="phpcr/nodetype/propertydefinitiontemplateinterface.html#setOnParentVersion()">setOnParentVersion()</a> - Method in class <a href="phpcr/nodetype/propertydefinitiontemplateinterface.html">PHPCR\NodeType\PropertyDefinitionTemplateInterface</a></dt>
+<dd>Sets the on-parent-version status of the property.</dd>
 <dt><a href="phpcr/nodetype/nodetypetemplateinterface.html#setOrderableChildNodes()">setOrderableChildNodes()</a> - Method in class <a href="phpcr/nodetype/nodetypetemplateinterface.html">PHPCR\NodeType\NodeTypeTemplateInterface</a></dt>
 <dd>Sets the orderable child nodes flag of the node type.</dd>
 <dt><a href="phpcr/security/accesscontrolmanagerinterface.html#setPolicy()">setPolicy()</a> - Method in class <a href="phpcr/security/accesscontrolmanagerinterface.html">PHPCR\Security\AccessControlManagerInterface</a></dt>
@@ -1561,7 +1551,7 @@
 <dt><a href="phpcr/observation/observationmanagerinterface.html#setUserData()">setUserData()</a> - Method in class <a href="phpcr/observation/observationmanagerinterface.html">PHPCR\Observation\ObservationManagerInterface</a></dt>
 <dd>Sets the user data information that will be returned by Event.getUserData().</dd>
 <dt><a href="phpcr/propertyinterface.html#setValue()">setValue()</a> - Method in class <a href="phpcr/propertyinterface.html">PHPCR\PropertyInterface</a></dt>
-<dd>Sets the value of this property to value.
+<dd>Sets the value of this property to the value.
 </dd>
 <dt><a href="phpcr/nodetype/propertydefinitiontemplateinterface.html#setValueConstraints()">setValueConstraints()</a> - Method in class <a href="phpcr/nodetype/propertydefinitiontemplateinterface.html">PHPCR\NodeType\PropertyDefinitionTemplateInterface</a></dt>
 <dd>Sets the value constraints of the property.</dd>
@@ -1615,11 +1605,11 @@
 <dt><a href="phpcr/valueformatexception.html">ValueFormatException()</a> - Class in namespace <a href="phpcr/package-summary.html">PHPCR</a></dt>
 <dd>Exception thrown when an attempt is made to assign a value to a property
  that has an invalid format, given the type of the property. </dd>
-<dt><a href="phpcr/propertytype.html#valueFromName()">valueFromName()</a> - Method in class <a href="phpcr/propertytype.html">PHPCR\PropertyType</a></dt>
-<dd>Returns the numeric constant value of the type with the specified name.</dd>
 <dt><a href="phpcr/version/onparentversionaction.html#valueFromName()">valueFromName()</a> - Method in class <a href="phpcr/version/onparentversionaction.html">PHPCR\Version\OnParentVersionAction</a></dt>
 <dd>Returns the numeric constant value of the on-version action with the
  specified name.</dd>
+<dt><a href="phpcr/propertytype.html#valueFromName()">valueFromName()</a> - Method in class <a href="phpcr/propertytype.html">PHPCR\PropertyType</a></dt>
+<dd>Returns the numeric constant value of the type with the specified name.</dd>
 <dt><a href="phpcr/propertytype.html#valueFromType()">valueFromType()</a> - Method in class <a href="phpcr/propertytype.html">PHPCR\PropertyType</a></dt>
 <dd>Returns the numeric constant value of the type for the given PHP type
  name as returned by gettype().
