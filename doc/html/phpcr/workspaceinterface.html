@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="generator" content="PHPDoctor 2RC4 (http://peej.github.com/phpdoctor/)">
-<meta name="when" content="Thu, 12 May 2011 09:07:53 +0000">
+<meta name="when" content="Thu, 26 May 2011 12:55:41 +0000">
 
 <link rel="stylesheet" type="text/css" href="../stylesheet.css">
 <link rel="start" href="../overview-summary.html">
@@ -170,7 +170,7 @@ the jcr:xmlcharacters property produced on importXML().
 </p></td>
 </tr>
 <tr>
-<td class="type"> an</td>
+<td class="type"> <a href="../phpcr/contenthandlerinterface.html">ContentHandlerInterface</a></td>
 <td class="description"><p class="name"><a href="#getImportContentHandler()">getImportContentHandler</a>(string parentAbsPath, integer uuidBehavior)</p><p class="description">Returns an \PHPCR\ContentHandlerInterface which can be used to push SAX events into the repository.
 </p></td>
 </tr>
@@ -621,7 +621,7 @@ and receives a new Session object.</p><dl>
 <a href="../source/phpcr/workspaceinterface.php.html#line528" class="location">PHPCR/WorkspaceInterface.php at line 528</a>
 
 <h3 id="getImportContentHandler()">getImportContentHandler</h3>
-<code class="signature">public  an <strong>getImportContentHandler</strong>(string parentAbsPath, integer uuidBehavior)</code>
+<code class="signature">public  <a href="../phpcr/contenthandlerinterface.html">ContentHandlerInterface</a> <strong>getImportContentHandler</strong>(string parentAbsPath, integer uuidBehavior)</code>
 <div class="details">
 <p>Returns an \PHPCR\ContentHandlerInterface which can be used to push SAX events into the repository.</p><p>If the incoming XML stream (in the form of SAX events)
 does not appear to be a JCR system view XML document then it is interpreted
@@ -671,7 +671,7 @@ one of its ancestors.</p><dl>
 <dd>parentAbsPath - the absolute path of a node under which (as child) the imported subgraph will be built.</dd>
 <dd>uuidBehavior - a four-value flag that governs how incoming identifiers are handled.</dd>
 <dt>Returns:</dt>
-<dd>\PHPCR\ContentHandlerInterface whose methods may be called to feed SAX events into the deserializer.</dd>
+<dd>whose methods may be called to feed SAX events into the deserializer.</dd>
 <dt>Throws:</dt>
 <dd><a href="../phpcr/pathnotfoundexception.html">\PHPCR\PathNotFoundException</a> - if no node exists at $parentAbsPath.</dd>
 <dd>\PHPCR\ConstraintViolationException - if the new subgraph cannot be added to the node at $parentAbsPath due to node-type or other implementation-specific constraints, and this can be determined before the first SAX event is sent. Unlike Session#getImportContentHandler, this method also enforces node type constraints by throwing SAXExceptions during deserialization. However, which node type constraints are enforced depends upon whether node type information in the imported data is respected, and this is an implementation-specific issue.</dd>
