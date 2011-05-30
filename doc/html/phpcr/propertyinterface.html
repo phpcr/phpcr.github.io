@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="generator" content="PHPDoctor 2RC4 (http://peej.github.com/phpdoctor/)">
-<meta name="when" content="Thu, 26 May 2011 12:55:41 +0000">
+<meta name="when" content="Mon, 30 May 2011 13:13:10 +0000">
 
 <link rel="stylesheet" type="text/css" href="../stylesheet.css">
 <link rel="start" href="../overview-summary.html">
@@ -41,7 +41,7 @@ Detail: <a href="#detail_field">Field</a> | <a href="#detail_method">Method</a> 
 <hr>
 
 <div class="qualifiedName">PHPCR\PropertyInterface</div>
-<a href="../source/phpcr/propertyinterface.php.html#line62" class="location">PHPCR/PropertyInterface.php at line 62</a>
+<a href="../source/phpcr/propertyinterface.php.html#line55" class="location">PHPCR/PropertyInterface.php at line 55</a>
 
 <h1>Interface PropertyInterface</h1>
 
@@ -414,14 +414,8 @@ declared in node type nt:address.</p></td>
 </tr>
 <tr>
 <td class="type"> integer</td>
-<td class="description"><p class="name"><a href="#getLength()">getLength</a>()</p><p class="description">Returns the length of the value of this property.
+<td class="description"><p class="name"><a href="#getLength()">getLength</a>()</p><p class="description">Returns the length(s) of the value(s) of this property.
 </p></td>
-</tr>
-<tr>
-<td class="type"> array</td>
-<td class="description"><p class="name"><a href="#getLengths()">getLengths</a>()</p><p class="description">Returns an array holding the lengths of the values of this (multi-value)
-property in bytes where each is individually calculated as described in
-getLength().</p></td>
 </tr>
 <tr>
 <td class="type"> integer</td>
@@ -468,7 +462,7 @@ getLength().</p></td>
 <tr><td><a href="../phpcr/iteminterface.html#accept()">accept</a>, <a href="../phpcr/iteminterface.html#getAncestor()">getAncestor</a>, <a href="../phpcr/iteminterface.html#getDepth()">getDepth</a>, <a href="../phpcr/iteminterface.html#getName()">getName</a>, <a href="../phpcr/iteminterface.html#getParent()">getParent</a>, <a href="../phpcr/iteminterface.html#getPath()">getPath</a>, <a href="../phpcr/iteminterface.html#getSession()">getSession</a>, <a href="../phpcr/iteminterface.html#isModified()">isModified</a>, <a href="../phpcr/iteminterface.html#isNew()">isNew</a>, <a href="../phpcr/iteminterface.html#isNode()">isNode</a>, <a href="../phpcr/iteminterface.html#isSame()">isSame</a>, <a href="../phpcr/iteminterface.html#refresh()">refresh</a>, <a href="../phpcr/iteminterface.html#remove()">remove</a></td></tr></table>
 
 <h2 id="detail_field">Constant Detail</h2>
-<a href="../source/phpcr/propertyinterface.php.html#line432" class="location">PHPCR/PropertyInterface.php at line 432</a>
+<a href="../source/phpcr/propertyinterface.php.html#line425" class="location">PHPCR/PropertyInterface.php at line 425</a>
 
 <h3 id="JCR_ACTIVITY">JCR_ACTIVITY</h3>
 <code class="signature">public final static  str <strong>JCR_ACTIVITY</strong> = &quot;{http://www.jcp.org/jcr/1.0}activity&quot;</code>
@@ -481,7 +475,7 @@ declared in node types mix:versionable and nt:version.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/propertyinterface.php.html#line271" class="location">PHPCR/PropertyInterface.php at line 271</a>
+<a href="../source/phpcr/propertyinterface.php.html#line264" class="location">PHPCR/PropertyInterface.php at line 264</a>
 
 <h3 id="JCR_AUTOCREATED">JCR_AUTOCREATED</h3>
 <code class="signature">public final static  str <strong>JCR_AUTOCREATED</strong> = &quot;{http://www.jcp.org/jcr/1.0}autoCreated&quot;</code>
@@ -494,7 +488,7 @@ declared in node types nt:propertyDefinition and nt:childNodeDefinition.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/propertyinterface.php.html#line411" class="location">PHPCR/PropertyInterface.php at line 411</a>
+<a href="../source/phpcr/propertyinterface.php.html#line404" class="location">PHPCR/PropertyInterface.php at line 404</a>
 
 <h3 id="JCR_BASE_VERSION">JCR_BASE_VERSION</h3>
 <code class="signature">public final static  str <strong>JCR_BASE_VERSION</strong> = &quot;{http://www.jcp.org/jcr/1.0}baseVersion&quot;</code>
@@ -507,7 +501,7 @@ declared in node type mix:versionable.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/propertyinterface.php.html#line467" class="location">PHPCR/PropertyInterface.php at line 467</a>
+<a href="../source/phpcr/propertyinterface.php.html#line460" class="location">PHPCR/PropertyInterface.php at line 460</a>
 
 <h3 id="JCR_CHILD_VERSION_HISTORY">JCR_CHILD_VERSION_HISTORY</h3>
 <code class="signature">public final static  str <strong>JCR_CHILD_VERSION_HISTORY</strong> = &quot;{http://www.jcp.org/jcr/1.0}childVersionHistory&quot;</code>
@@ -520,7 +514,7 @@ declared in node type nt:versionedChild.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/propertyinterface.php.html#line439" class="location">PHPCR/PropertyInterface.php at line 439</a>
+<a href="../source/phpcr/propertyinterface.php.html#line432" class="location">PHPCR/PropertyInterface.php at line 432</a>
 
 <h3 id="JCR_CONFIGURATION">JCR_CONFIGURATION</h3>
 <code class="signature">public final static  str <strong>JCR_CONFIGURATION</strong> = &quot;{http://www.jcp.org/jcr/1.0}configuration&quot;</code>
@@ -533,7 +527,7 @@ declared in node type mix:versionable.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/propertyinterface.php.html#line89" class="location">PHPCR/PropertyInterface.php at line 89</a>
+<a href="../source/phpcr/propertyinterface.php.html#line82" class="location">PHPCR/PropertyInterface.php at line 82</a>
 
 <h3 id="JCR_CONTENT">JCR_CONTENT</h3>
 <code class="signature">public final static  str <strong>JCR_CONTENT</strong> = &quot;{http://www.jcp.org/jcr/1.0}content&quot;</code>
@@ -546,7 +540,7 @@ declared in node type nt:linkedFile.</p><p><b>Note:</b> jcr:content is also the 
 
 <hr>
 
-<a href="../source/phpcr/propertyinterface.php.html#line453" class="location">PHPCR/PropertyInterface.php at line 453</a>
+<a href="../source/phpcr/propertyinterface.php.html#line446" class="location">PHPCR/PropertyInterface.php at line 446</a>
 
 <h3 id="JCR_COPIED_FROM">JCR_COPIED_FROM</h3>
 <code class="signature">public final static  str <strong>JCR_COPIED_FROM</strong> = &quot;{http://www.jcp.org/jcr/1.0}copiedFrom&quot;</code>
@@ -559,7 +553,7 @@ declared in node type nt:version.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/propertyinterface.php.html#line173" class="location">PHPCR/PropertyInterface.php at line 173</a>
+<a href="../source/phpcr/propertyinterface.php.html#line166" class="location">PHPCR/PropertyInterface.php at line 166</a>
 
 <h3 id="JCR_CREATED">JCR_CREATED</h3>
 <code class="signature">public final static  str <strong>JCR_CREATED</strong> = &quot;{http://www.jcp.org/jcr/1.0}created&quot;</code>
@@ -572,7 +566,7 @@ declared in node types mix:created and nt:version.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/propertyinterface.php.html#line180" class="location">PHPCR/PropertyInterface.php at line 180</a>
+<a href="../source/phpcr/propertyinterface.php.html#line173" class="location">PHPCR/PropertyInterface.php at line 173</a>
 
 <h3 id="JCR_CREATED_BY">JCR_CREATED_BY</h3>
 <code class="signature">public final static  str <strong>JCR_CREATED_BY</strong> = &quot;{http://www.jcp.org/jcr/1.0}createdBy&quot;</code>
@@ -585,7 +579,7 @@ declared in node type mix:created.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/propertyinterface.php.html#line369" class="location">PHPCR/PropertyInterface.php at line 369</a>
+<a href="../source/phpcr/propertyinterface.php.html#line362" class="location">PHPCR/PropertyInterface.php at line 362</a>
 
 <h3 id="JCR_CURRENT_LIFECYCLE_STATE">JCR_CURRENT_LIFECYCLE_STATE</h3>
 <code class="signature">public final static  str <strong>JCR_CURRENT_LIFECYCLE_STATE</strong> = &quot;{http://www.jcp.org/jcr/1.0}currentLifecycleState&quot;</code>
@@ -598,7 +592,7 @@ declared in node type mix:lifecycle.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/propertyinterface.php.html#line96" class="location">PHPCR/PropertyInterface.php at line 96</a>
+<a href="../source/phpcr/propertyinterface.php.html#line89" class="location">PHPCR/PropertyInterface.php at line 89</a>
 
 <h3 id="JCR_DATA">JCR_DATA</h3>
 <code class="signature">public final static  str <strong>JCR_DATA</strong> = &quot;{http://www.jcp.org/jcr/1.0}data&quot;</code>
@@ -611,7 +605,7 @@ declared in node type nt:resource.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/propertyinterface.php.html#line334" class="location">PHPCR/PropertyInterface.php at line 334</a>
+<a href="../source/phpcr/propertyinterface.php.html#line327" class="location">PHPCR/PropertyInterface.php at line 327</a>
 
 <h3 id="JCR_DEFAULT_PRIMARY_TYPE">JCR_DEFAULT_PRIMARY_TYPE</h3>
 <code class="signature">public final static  str <strong>JCR_DEFAULT_PRIMARY_TYPE</strong> = &quot;{http://www.jcp.org/jcr/1.0}defaultPrimaryType&quot;</code>
@@ -624,7 +618,7 @@ declared in node type nt:childNodeDefinition.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/propertyinterface.php.html#line313" class="location">PHPCR/PropertyInterface.php at line 313</a>
+<a href="../source/phpcr/propertyinterface.php.html#line306" class="location">PHPCR/PropertyInterface.php at line 306</a>
 
 <h3 id="JCR_DEFAULT_VALUES">JCR_DEFAULT_VALUES</h3>
 <code class="signature">public final static  str <strong>JCR_DEFAULT_VALUES</strong> = &quot;{http://www.jcp.org/jcr/1.0}defaultValues&quot;</code>
@@ -637,7 +631,7 @@ declared in node type nt:propertyDefinition.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/propertyinterface.php.html#line166" class="location">PHPCR/PropertyInterface.php at line 166</a>
+<a href="../source/phpcr/propertyinterface.php.html#line159" class="location">PHPCR/PropertyInterface.php at line 159</a>
 
 <h3 id="JCR_DESCRIPTION">JCR_DESCRIPTION</h3>
 <code class="signature">public final static  str <strong>JCR_DESCRIPTION</strong> = &quot;{http://www.jcp.org/jcr/1.0}description&quot;</code>
@@ -650,7 +644,7 @@ declared in node type mix:title.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/propertyinterface.php.html#line215" class="location">PHPCR/PropertyInterface.php at line 215</a>
+<a href="../source/phpcr/propertyinterface.php.html#line208" class="location">PHPCR/PropertyInterface.php at line 208</a>
 
 <h3 id="JCR_ENCODING">JCR_ENCODING</h3>
 <code class="signature">public final static  str <strong>JCR_ENCODING</strong> = &quot;{http://www.jcp.org/jcr/1.0}encoding&quot;</code>
@@ -663,7 +657,7 @@ declared in node type mix:mimeType.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/propertyinterface.php.html#line390" class="location">PHPCR/PropertyInterface.php at line 390</a>
+<a href="../source/phpcr/propertyinterface.php.html#line383" class="location">PHPCR/PropertyInterface.php at line 383</a>
 
 <h3 id="JCR_FROZEN_MIXIN_TYPES">JCR_FROZEN_MIXIN_TYPES</h3>
 <code class="signature">public final static  str <strong>JCR_FROZEN_MIXIN_TYPES</strong> = &quot;{http://www.jcp.org/jcr/1.0}frozenMixinTypes&quot;</code>
@@ -676,7 +670,7 @@ declared in node type nt:frozenNode.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/propertyinterface.php.html#line383" class="location">PHPCR/PropertyInterface.php at line 383</a>
+<a href="../source/phpcr/propertyinterface.php.html#line376" class="location">PHPCR/PropertyInterface.php at line 376</a>
 
 <h3 id="JCR_FROZEN_PRIMARY_TYPE">JCR_FROZEN_PRIMARY_TYPE</h3>
 <code class="signature">public final static  str <strong>JCR_FROZEN_PRIMARY_TYPE</strong> = &quot;{http://www.jcp.org/jcr/1.0}frozenPrimaryType&quot;</code>
@@ -689,7 +683,7 @@ declared in node type nt:frozenNode.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/propertyinterface.php.html#line397" class="location">PHPCR/PropertyInterface.php at line 397</a>
+<a href="../source/phpcr/propertyinterface.php.html#line390" class="location">PHPCR/PropertyInterface.php at line 390</a>
 
 <h3 id="JCR_FROZEN_UUID">JCR_FROZEN_UUID</h3>
 <code class="signature">public final static  str <strong>JCR_FROZEN_UUID</strong> = &quot;{http://www.jcp.org/jcr/1.0}frozenUuid&quot;</code>
@@ -702,7 +696,7 @@ declared in node type nt:frozenNode.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/propertyinterface.php.html#line250" class="location">PHPCR/PropertyInterface.php at line 250</a>
+<a href="../source/phpcr/propertyinterface.php.html#line243" class="location">PHPCR/PropertyInterface.php at line 243</a>
 
 <h3 id="JCR_HAS_ORDERABLE_CHILD_NODES">JCR_HAS_ORDERABLE_CHILD_NODES</h3>
 <code class="signature">public final static  str <strong>JCR_HAS_ORDERABLE_CHILD_NODES</strong> = &quot;{http://www.jcp.org/jcr/1.0}hasOrderableChildNodes&quot;</code>
@@ -715,7 +709,7 @@ declared in node type nt:nodeType.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/propertyinterface.php.html#line110" class="location">PHPCR/PropertyInterface.php at line 110</a>
+<a href="../source/phpcr/propertyinterface.php.html#line103" class="location">PHPCR/PropertyInterface.php at line 103</a>
 
 <h3 id="JCR_HOST">JCR_HOST</h3>
 <code class="signature">public final static  str <strong>JCR_HOST</strong> = &quot;{http://www.jcp.org/jcr/1.0}host&quot;</code>
@@ -728,7 +722,7 @@ declared in node type nt:address.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/propertyinterface.php.html#line145" class="location">PHPCR/PropertyInterface.php at line 145</a>
+<a href="../source/phpcr/propertyinterface.php.html#line138" class="location">PHPCR/PropertyInterface.php at line 138</a>
 
 <h3 id="JCR_ID">JCR_ID</h3>
 <code class="signature">public final static  str <strong>JCR_ID</strong> = &quot;{http://www.jcp.org/jcr/1.0}id&quot;</code>
@@ -741,7 +735,7 @@ declared in node type nt:address.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/propertyinterface.php.html#line236" class="location">PHPCR/PropertyInterface.php at line 236</a>
+<a href="../source/phpcr/propertyinterface.php.html#line229" class="location">PHPCR/PropertyInterface.php at line 229</a>
 
 <h3 id="JCR_IS_ABSTRACT">JCR_IS_ABSTRACT</h3>
 <code class="signature">public final static  str <strong>JCR_IS_ABSTRACT</strong> = &quot;{http://www.jcp.org/jcr/1.0}isAbstract&quot;</code>
@@ -754,7 +748,7 @@ declared in node type nt:nodeType.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/propertyinterface.php.html#line376" class="location">PHPCR/PropertyInterface.php at line 376</a>
+<a href="../source/phpcr/propertyinterface.php.html#line369" class="location">PHPCR/PropertyInterface.php at line 369</a>
 
 <h3 id="JCR_IS_CHECKED_OUT">JCR_IS_CHECKED_OUT</h3>
 <code class="signature">public final static  str <strong>JCR_IS_CHECKED_OUT</strong> = &quot;{http://www.jcp.org/jcr/1.0}isCheckedOut&quot;</code>
@@ -767,7 +761,7 @@ declared in node type mix:simpleVersionable.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/propertyinterface.php.html#line243" class="location">PHPCR/PropertyInterface.php at line 243</a>
+<a href="../source/phpcr/propertyinterface.php.html#line236" class="location">PHPCR/PropertyInterface.php at line 236</a>
 
 <h3 id="JCR_IS_MIXIN">JCR_IS_MIXIN</h3>
 <code class="signature">public final static  str <strong>JCR_IS_MIXIN</strong> = &quot;{http://www.jcp.org/jcr/1.0}isMixin&quot;</code>
@@ -780,7 +774,7 @@ declared in node type nt:nodeType.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/propertyinterface.php.html#line201" class="location">PHPCR/PropertyInterface.php at line 201</a>
+<a href="../source/phpcr/propertyinterface.php.html#line194" class="location">PHPCR/PropertyInterface.php at line 194</a>
 
 <h3 id="JCR_LANGUAGE">JCR_LANGUAGE</h3>
 <code class="signature">public final static  str <strong>JCR_LANGUAGE</strong> = &quot;{http://www.jcp.org/jcr/1.0}language&quot;</code>
@@ -793,7 +787,7 @@ declared in node types mix:language and nt:query.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/propertyinterface.php.html#line187" class="location">PHPCR/PropertyInterface.php at line 187</a>
+<a href="../source/phpcr/propertyinterface.php.html#line180" class="location">PHPCR/PropertyInterface.php at line 180</a>
 
 <h3 id="JCR_LAST_MODIFIED">JCR_LAST_MODIFIED</h3>
 <code class="signature">public final static  str <strong>JCR_LAST_MODIFIED</strong> = &quot;{http://www.jcp.org/jcr/1.0}lastModified&quot;</code>
@@ -806,7 +800,7 @@ declared in node type mix:lastModified.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/propertyinterface.php.html#line194" class="location">PHPCR/PropertyInterface.php at line 194</a>
+<a href="../source/phpcr/propertyinterface.php.html#line187" class="location">PHPCR/PropertyInterface.php at line 187</a>
 
 <h3 id="JCR_LAST_MODIFIED_BY">JCR_LAST_MODIFIED_BY</h3>
 <code class="signature">public final static  str <strong>JCR_LAST_MODIFIED_BY</strong> = &quot;{http://www.jcp.org/jcr/1.0}lastModifiedBy&quot;</code>
@@ -819,7 +813,7 @@ declared in node type mix:lastModified.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/propertyinterface.php.html#line362" class="location">PHPCR/PropertyInterface.php at line 362</a>
+<a href="../source/phpcr/propertyinterface.php.html#line355" class="location">PHPCR/PropertyInterface.php at line 355</a>
 
 <h3 id="JCR_LIFECYCLE_POLICY">JCR_LIFECYCLE_POLICY</h3>
 <code class="signature">public final static  str <strong>JCR_LIFECYCLE_POLICY</strong> = &quot;{http://www.jcp.org/jcr/1.0}lifecyclePolicy&quot;</code>
@@ -832,7 +826,7 @@ declared in node type mix:lifecycle.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/propertyinterface.php.html#line355" class="location">PHPCR/PropertyInterface.php at line 355</a>
+<a href="../source/phpcr/propertyinterface.php.html#line348" class="location">PHPCR/PropertyInterface.php at line 348</a>
 
 <h3 id="JCR_LOCK_IS_DEEP">JCR_LOCK_IS_DEEP</h3>
 <code class="signature">public final static  str <strong>JCR_LOCK_IS_DEEP</strong> = &quot;{http://www.jcp.org/jcr/1.0}lockIsDeep&quot;</code>
@@ -845,7 +839,7 @@ declared in node type mix:lockable.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/propertyinterface.php.html#line348" class="location">PHPCR/PropertyInterface.php at line 348</a>
+<a href="../source/phpcr/propertyinterface.php.html#line341" class="location">PHPCR/PropertyInterface.php at line 341</a>
 
 <h3 id="JCR_LOCK_OWNER">JCR_LOCK_OWNER</h3>
 <code class="signature">public final static  str <strong>JCR_LOCK_OWNER</strong> = &quot;{http://www.jcp.org/jcr/1.0}lockOwner&quot;</code>
@@ -858,7 +852,7 @@ declared in node type mix:lockable.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/propertyinterface.php.html#line278" class="location">PHPCR/PropertyInterface.php at line 278</a>
+<a href="../source/phpcr/propertyinterface.php.html#line271" class="location">PHPCR/PropertyInterface.php at line 271</a>
 
 <h3 id="JCR_MANDATORY">JCR_MANDATORY</h3>
 <code class="signature">public final static  str <strong>JCR_MANDATORY</strong> = &quot;{http://www.jcp.org/jcr/1.0}mandatory&quot;</code>
@@ -871,7 +865,7 @@ declared in node types nt:propertyDefinition and nt:childNodeDefinition.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/propertyinterface.php.html#line425" class="location">PHPCR/PropertyInterface.php at line 425</a>
+<a href="../source/phpcr/propertyinterface.php.html#line418" class="location">PHPCR/PropertyInterface.php at line 418</a>
 
 <h3 id="JCR_MERGE_FAILED">JCR_MERGE_FAILED</h3>
 <code class="signature">public final static  str <strong>JCR_MERGE_FAILED</strong> = &quot;{http://www.jcp.org/jcr/1.0}mergeFailed&quot;</code>
@@ -884,7 +878,7 @@ declared in node type mix:versionable.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/propertyinterface.php.html#line208" class="location">PHPCR/PropertyInterface.php at line 208</a>
+<a href="../source/phpcr/propertyinterface.php.html#line201" class="location">PHPCR/PropertyInterface.php at line 201</a>
 
 <h3 id="JCR_MIMETYPE">JCR_MIMETYPE</h3>
 <code class="signature">public final static  str <strong>JCR_MIMETYPE</strong> = &quot;{http://www.jcp.org/jcr/1.0}mimeType&quot;</code>
@@ -897,7 +891,7 @@ declared in node type mix:mimeType.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/propertyinterface.php.html#line80" class="location">PHPCR/PropertyInterface.php at line 80</a>
+<a href="../source/phpcr/propertyinterface.php.html#line73" class="location">PHPCR/PropertyInterface.php at line 73</a>
 
 <h3 id="JCR_MIXIN_TYPES">JCR_MIXIN_TYPES</h3>
 <code class="signature">public final static  str <strong>JCR_MIXIN_TYPES</strong> = &quot;{http://www.jcp.org/jcr/1.0}mixinTypes&quot;</code>
@@ -910,7 +904,7 @@ declared in node type nt:base.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/propertyinterface.php.html#line320" class="location">PHPCR/PropertyInterface.php at line 320</a>
+<a href="../source/phpcr/propertyinterface.php.html#line313" class="location">PHPCR/PropertyInterface.php at line 313</a>
 
 <h3 id="JCR_MULTIPLE">JCR_MULTIPLE</h3>
 <code class="signature">public final static  str <strong>JCR_MULTIPLE</strong> = &quot;{http://www.jcp.org/jcr/1.0}multiple&quot;</code>
@@ -923,7 +917,7 @@ declared in node type nt:propertyDefinition.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/propertyinterface.php.html#line264" class="location">PHPCR/PropertyInterface.php at line 264</a>
+<a href="../source/phpcr/propertyinterface.php.html#line257" class="location">PHPCR/PropertyInterface.php at line 257</a>
 
 <h3 id="JCR_NAME">JCR_NAME</h3>
 <code class="signature">public final static  str <strong>JCR_NAME</strong> = &quot;{http://www.jcp.org/jcr/1.0}name&quot;</code>
@@ -936,7 +930,7 @@ declared in node types nt:propertyDefinition and nt:childNodeDefinition.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/propertyinterface.php.html#line222" class="location">PHPCR/PropertyInterface.php at line 222</a>
+<a href="../source/phpcr/propertyinterface.php.html#line215" class="location">PHPCR/PropertyInterface.php at line 215</a>
 
 <h3 id="JCR_NODE_TYPE_NAME">JCR_NODE_TYPE_NAME</h3>
 <code class="signature">public final static  str <strong>JCR_NODE_TYPE_NAME</strong> = &quot;{http://www.jcp.org/jcr/1.0}nodeTypeName&quot;</code>
@@ -949,7 +943,7 @@ declared in node type nt:nodeType.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/propertyinterface.php.html#line292" class="location">PHPCR/PropertyInterface.php at line 292</a>
+<a href="../source/phpcr/propertyinterface.php.html#line285" class="location">PHPCR/PropertyInterface.php at line 285</a>
 
 <h3 id="JCR_ON_PARENT_VERSION">JCR_ON_PARENT_VERSION</h3>
 <code class="signature">public final static  str <strong>JCR_ON_PARENT_VERSION</strong> = &quot;{http://www.jcp.org/jcr/1.0}onParentVersion&quot;</code>
@@ -962,7 +956,7 @@ declared in node types nt:propertyDefinition and nt:childNodeDefinition.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/propertyinterface.php.html#line138" class="location">PHPCR/PropertyInterface.php at line 138</a>
+<a href="../source/phpcr/propertyinterface.php.html#line131" class="location">PHPCR/PropertyInterface.php at line 131</a>
 
 <h3 id="JCR_PATH">JCR_PATH</h3>
 <code class="signature">public final static  str <strong>JCR_PATH</strong> = &quot;{http://www.jcp.org/jcr/1.0}path&quot;</code>
@@ -975,7 +969,7 @@ declared in node type nt:address.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/propertyinterface.php.html#line117" class="location">PHPCR/PropertyInterface.php at line 117</a>
+<a href="../source/phpcr/propertyinterface.php.html#line110" class="location">PHPCR/PropertyInterface.php at line 110</a>
 
 <h3 id="JCR_PORT">JCR_PORT</h3>
 <code class="signature">public final static  str <strong>JCR_PORT</strong> = &quot;{http://www.jcp.org/jcr/1.0}port&quot;</code>
@@ -988,7 +982,7 @@ declared in node type nt:address.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/propertyinterface.php.html#line418" class="location">PHPCR/PropertyInterface.php at line 418</a>
+<a href="../source/phpcr/propertyinterface.php.html#line411" class="location">PHPCR/PropertyInterface.php at line 411</a>
 
 <h3 id="JCR_PREDECESSORS">JCR_PREDECESSORS</h3>
 <code class="signature">public final static  str <strong>JCR_PREDECESSORS</strong> = &quot;{http://www.jcp.org/jcr/1.0}predecessors&quot;</code>
@@ -1001,7 +995,7 @@ declared in node types mix:versionable and nt:version.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/propertyinterface.php.html#line257" class="location">PHPCR/PropertyInterface.php at line 257</a>
+<a href="../source/phpcr/propertyinterface.php.html#line250" class="location">PHPCR/PropertyInterface.php at line 250</a>
 
 <h3 id="JCR_PRIMARY_ITEM_NAME">JCR_PRIMARY_ITEM_NAME</h3>
 <code class="signature">public final static  str <strong>JCR_PRIMARY_ITEM_NAME</strong> = &quot;{http://www.jcp.org/jcr/1.0}primaryItemName&quot;</code>
@@ -1014,7 +1008,7 @@ declared in node type nt:nodeType.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/propertyinterface.php.html#line73" class="location">PHPCR/PropertyInterface.php at line 73</a>
+<a href="../source/phpcr/propertyinterface.php.html#line66" class="location">PHPCR/PropertyInterface.php at line 66</a>
 
 <h3 id="JCR_PRIMARY_TYPE">JCR_PRIMARY_TYPE</h3>
 <code class="signature">public final static  string <strong>JCR_PRIMARY_TYPE</strong> = &quot;{http://www.jcp.org/jcr/1.0}primaryType&quot;</code>
@@ -1027,7 +1021,7 @@ declared in node type nt:base.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/propertyinterface.php.html#line285" class="location">PHPCR/PropertyInterface.php at line 285</a>
+<a href="../source/phpcr/propertyinterface.php.html#line278" class="location">PHPCR/PropertyInterface.php at line 278</a>
 
 <h3 id="JCR_PROTECTED">JCR_PROTECTED</h3>
 <code class="signature">public final static  str <strong>JCR_PROTECTED</strong> = &quot;{http://www.jcp.org/jcr/1.0}protected&quot;</code>
@@ -1040,7 +1034,7 @@ declared in node types nt:propertyDefinition and nt:childNodeDefinition.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/propertyinterface.php.html#line103" class="location">PHPCR/PropertyInterface.php at line 103</a>
+<a href="../source/phpcr/propertyinterface.php.html#line96" class="location">PHPCR/PropertyInterface.php at line 96</a>
 
 <h3 id="JCR_PROTOCOL">JCR_PROTOCOL</h3>
 <code class="signature">public final static  str <strong>JCR_PROTOCOL</strong> = &quot;{http://www.jcp.org/jcr/1.0}protocol&quot;</code>
@@ -1053,7 +1047,7 @@ declared in node type nt:address.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/propertyinterface.php.html#line124" class="location">PHPCR/PropertyInterface.php at line 124</a>
+<a href="../source/phpcr/propertyinterface.php.html#line117" class="location">PHPCR/PropertyInterface.php at line 117</a>
 
 <h3 id="JCR_REPOSITORY">JCR_REPOSITORY</h3>
 <code class="signature">public final static  str <strong>JCR_REPOSITORY</strong> = &quot;{http://www.jcp.org/jcr/1.0repository&quot;</code>
@@ -1066,7 +1060,7 @@ declared in node type nt:address.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/propertyinterface.php.html#line327" class="location">PHPCR/PropertyInterface.php at line 327</a>
+<a href="../source/phpcr/propertyinterface.php.html#line320" class="location">PHPCR/PropertyInterface.php at line 320</a>
 
 <h3 id="JCR_REQUIRED_PRIMARY_TYPES">JCR_REQUIRED_PRIMARY_TYPES</h3>
 <code class="signature">public final static  str <strong>JCR_REQUIRED_PRIMARY_TYPES</strong> = &quot;{http://www.jcp.org/jcr/1.0}requiredPrimaryTypes&quot;</code>
@@ -1079,7 +1073,7 @@ declared in node type nt:childNodeDefinition.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/propertyinterface.php.html#line299" class="location">PHPCR/PropertyInterface.php at line 299</a>
+<a href="../source/phpcr/propertyinterface.php.html#line292" class="location">PHPCR/PropertyInterface.php at line 292</a>
 
 <h3 id="JCR_REQUIRED_TYPE">JCR_REQUIRED_TYPE</h3>
 <code class="signature">public final static  str <strong>JCR_REQUIRED_TYPE</strong> = &quot;{http://www.jcp.org/jcr/1.0}requiredType&quot;</code>
@@ -1092,7 +1086,7 @@ declared in node type nt:propertyDefinition.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/propertyinterface.php.html#line474" class="location">PHPCR/PropertyInterface.php at line 474</a>
+<a href="../source/phpcr/propertyinterface.php.html#line467" class="location">PHPCR/PropertyInterface.php at line 467</a>
 
 <h3 id="JCR_ROOT">JCR_ROOT</h3>
 <code class="signature">public final static  str <strong>JCR_ROOT</strong> = &quot;{http://www.jcp.org/jcr/1.0}root&quot;</code>
@@ -1105,7 +1099,7 @@ declared in node type nt:configuration.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/propertyinterface.php.html#line341" class="location">PHPCR/PropertyInterface.php at line 341</a>
+<a href="../source/phpcr/propertyinterface.php.html#line334" class="location">PHPCR/PropertyInterface.php at line 334</a>
 
 <h3 id="JCR_SAME_NAME_SIBLINGS">JCR_SAME_NAME_SIBLINGS</h3>
 <code class="signature">public final static  str <strong>JCR_SAME_NAME_SIBLINGS</strong> = &quot;{http://www.jcp.org/jcr/1.0}sameNameSiblings&quot;</code>
@@ -1118,7 +1112,7 @@ declared in node type nt:childNodeDefinition.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/propertyinterface.php.html#line481" class="location">PHPCR/PropertyInterface.php at line 481</a>
+<a href="../source/phpcr/propertyinterface.php.html#line474" class="location">PHPCR/PropertyInterface.php at line 474</a>
 
 <h3 id="JCR_STATEMENT">JCR_STATEMENT</h3>
 <code class="signature">public final static  str <strong>JCR_STATEMENT</strong> = &quot;{http://www.jcp.org/jcr/1.0}statement&quot;</code>
@@ -1131,7 +1125,7 @@ declared in node type nt:query.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/propertyinterface.php.html#line460" class="location">PHPCR/PropertyInterface.php at line 460</a>
+<a href="../source/phpcr/propertyinterface.php.html#line453" class="location">PHPCR/PropertyInterface.php at line 453</a>
 
 <h3 id="JCR_SUCCESSORS">JCR_SUCCESSORS</h3>
 <code class="signature">public final static  str <strong>JCR_SUCCESSORS</strong> = &quot;{http://www.jcp.org/jcr/1.0}successors&quot;</code>
@@ -1144,7 +1138,7 @@ declared in node type nt:version.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/propertyinterface.php.html#line229" class="location">PHPCR/PropertyInterface.php at line 229</a>
+<a href="../source/phpcr/propertyinterface.php.html#line222" class="location">PHPCR/PropertyInterface.php at line 222</a>
 
 <h3 id="JCR_SUPERTYPES">JCR_SUPERTYPES</h3>
 <code class="signature">public final static  str <strong>JCR_SUPERTYPES</strong> = &quot;{http://www.jcp.org/jcr/1.0}supertypes&quot;</code>
@@ -1157,7 +1151,7 @@ declared in node type nt:nodeType.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/propertyinterface.php.html#line159" class="location">PHPCR/PropertyInterface.php at line 159</a>
+<a href="../source/phpcr/propertyinterface.php.html#line152" class="location">PHPCR/PropertyInterface.php at line 152</a>
 
 <h3 id="JCR_TITLE">JCR_TITLE</h3>
 <code class="signature">public final static  str <strong>JCR_TITLE</strong> = &quot;{http://www.jcp.org/jcr/1.0}title&quot;</code>
@@ -1170,7 +1164,7 @@ declared in node types mix:title and nt:activity.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/propertyinterface.php.html#line152" class="location">PHPCR/PropertyInterface.php at line 152</a>
+<a href="../source/phpcr/propertyinterface.php.html#line145" class="location">PHPCR/PropertyInterface.php at line 145</a>
 
 <h3 id="JCR_UUID">JCR_UUID</h3>
 <code class="signature">public final static  str <strong>JCR_UUID</strong> = &quot;{http://www.jcp.org/jcr/1.0}uuid&quot;</code>
@@ -1183,7 +1177,7 @@ declared in node type mix:referenceable.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/propertyinterface.php.html#line306" class="location">PHPCR/PropertyInterface.php at line 306</a>
+<a href="../source/phpcr/propertyinterface.php.html#line299" class="location">PHPCR/PropertyInterface.php at line 299</a>
 
 <h3 id="JCR_VALUE_CONSTRAINTS">JCR_VALUE_CONSTRAINTS</h3>
 <code class="signature">public final static  str <strong>JCR_VALUE_CONSTRAINTS</strong> = &quot;{http://www.jcp.org/jcr/1.0}valueConstraints&quot;</code>
@@ -1196,7 +1190,7 @@ declared in node type nt:propertyDefinition.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/propertyinterface.php.html#line446" class="location">PHPCR/PropertyInterface.php at line 446</a>
+<a href="../source/phpcr/propertyinterface.php.html#line439" class="location">PHPCR/PropertyInterface.php at line 439</a>
 
 <h3 id="JCR_VERSIONABLE_UUID">JCR_VERSIONABLE_UUID</h3>
 <code class="signature">public final static  str <strong>JCR_VERSIONABLE_UUID</strong> = &quot;{http://www.jcp.org/jcr/1.0}versionableUuid&quot;</code>
@@ -1209,7 +1203,7 @@ declared in node type nt:version.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/propertyinterface.php.html#line404" class="location">PHPCR/PropertyInterface.php at line 404</a>
+<a href="../source/phpcr/propertyinterface.php.html#line397" class="location">PHPCR/PropertyInterface.php at line 397</a>
 
 <h3 id="JCR_VERSION_HISTORY">JCR_VERSION_HISTORY</h3>
 <code class="signature">public final static  str <strong>JCR_VERSION_HISTORY</strong> = &quot;{http://www.jcp.org/jcr/1.0}versionHistory&quot;</code>
@@ -1222,7 +1216,7 @@ declared in node type mix:versionable.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/propertyinterface.php.html#line131" class="location">PHPCR/PropertyInterface.php at line 131</a>
+<a href="../source/phpcr/propertyinterface.php.html#line124" class="location">PHPCR/PropertyInterface.php at line 124</a>
 
 <h3 id="JCR_WORKSPACE">JCR_WORKSPACE</h3>
 <code class="signature">public final static  str <strong>JCR_WORKSPACE</strong> = &quot;{http://www.jcp.org/jcr/1.0}workspace&quot;</code>
@@ -1236,7 +1230,7 @@ declared in node type nt:address.</p><dl>
 <hr>
 
 <h2 id="detail_method">Method Detail</h2>
-<a href="../source/phpcr/propertyinterface.php.html#line559" class="location">PHPCR/PropertyInterface.php at line 559</a>
+<a href="../source/phpcr/propertyinterface.php.html#line552" class="location">PHPCR/PropertyInterface.php at line 552</a>
 
 <h3 id="addValue()">addValue</h3>
 <code class="signature">public  void <strong>addValue</strong>(mixed value)</code>
@@ -1251,7 +1245,7 @@ getting the property and appending to the array and setting again.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/propertyinterface.php.html#line596" class="location">PHPCR/PropertyInterface.php at line 596</a>
+<a href="../source/phpcr/propertyinterface.php.html#line589" class="location">PHPCR/PropertyInterface.php at line 589</a>
 
 <h3 id="getBinary()">getBinary</h3>
 <code class="signature">public  resource <strong>getBinary</strong>()</code>
@@ -1268,7 +1262,7 @@ itself. Uses the standard conversion to binary (see JCR specification).</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/propertyinterface.php.html#line665" class="location">PHPCR/PropertyInterface.php at line 665</a>
+<a href="../source/phpcr/propertyinterface.php.html#line658" class="location">PHPCR/PropertyInterface.php at line 658</a>
 
 <h3 id="getBoolean()">getBoolean</h3>
 <code class="signature">public  boolean <strong>getBoolean</strong>()</code>
@@ -1289,7 +1283,7 @@ string 'false' will evaluate to true.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/propertyinterface.php.html#line647" class="location">PHPCR/PropertyInterface.php at line 647</a>
+<a href="../source/phpcr/propertyinterface.php.html#line640" class="location">PHPCR/PropertyInterface.php at line 640</a>
 
 <h3 id="getDate()">getDate</h3>
 <code class="signature">public  \DateTime <strong>getDate</strong>()</code>
@@ -1307,7 +1301,7 @@ not reflected in internal storage.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/propertyinterface.php.html#line632" class="location">PHPCR/PropertyInterface.php at line 632</a>
+<a href="../source/phpcr/propertyinterface.php.html#line625" class="location">PHPCR/PropertyInterface.php at line 625</a>
 
 <h3 id="getDecimal()">getDecimal</h3>
 <code class="signature">public  string <strong>getDecimal</strong>()</code>
@@ -1324,7 +1318,7 @@ not reflected in internal storage.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/propertyinterface.php.html#line773" class="location">PHPCR/PropertyInterface.php at line 773</a>
+<a href="../source/phpcr/propertyinterface.php.html#line757" class="location">PHPCR/PropertyInterface.php at line 757</a>
 
 <h3 id="getDefinition()">getDefinition</h3>
 <code class="signature">public  <a href="../phpcr/nodetype/propertydefinitioninterface.html">PropertyDefinitionInterface</a> <strong>getDefinition</strong>()</code>
@@ -1347,7 +1341,7 @@ and is not covered by this specification.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/propertyinterface.php.html#line619" class="location">PHPCR/PropertyInterface.php at line 619</a>
+<a href="../source/phpcr/propertyinterface.php.html#line612" class="location">PHPCR/PropertyInterface.php at line 612</a>
 
 <h3 id="getDouble()">getDouble</h3>
 <code class="signature">public  float <strong>getDouble</strong>()</code>
@@ -1364,19 +1358,20 @@ and is not covered by this specification.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/propertyinterface.php.html#line743" class="location">PHPCR/PropertyInterface.php at line 743</a>
+<a href="../source/phpcr/propertyinterface.php.html#line740" class="location">PHPCR/PropertyInterface.php at line 740</a>
 
 <h3 id="getLength()">getLength</h3>
 <code class="signature">public  integer <strong>getLength</strong>()</code>
 <div class="details">
-<p>Returns the length of the value of this property.</p><p>For a BINARY property, getLength returns the number of bytes.
+<p>Returns the length(s) of the value(s) of this property.</p><p>For a BINARY property, getLength returns the number of bytes.
 For other property types, getLength returns the same value that would be
 returned by calling strlen() on the value when it has been converted to a
-STRING according to standard JCR propety type conversion.</p><p>Returns -1 if the implementation cannot determine the length.</p><dl>
+STRING according to standard JCR propety type conversion.</p><p>Returns -1 if the implementation cannot determine the length.</p><p>For multivalue properties, the same rules apply, but returns an array of lengths
+with the same order as the values have in getValue</p><dl>
 <dt>Returns:</dt>
+<dd>integer with the length, for multivalue property array of lengths</dd>
 <dd>an integer.</dd>
 <dt>Throws:</dt>
-<dd><a href="../phpcr/valueformatexception.html">\PHPCR\ValueFormatException</a> - if this property is multi-valued.</dd>
 <dd><a href="../phpcr/repositoryexception.html">\PHPCR\RepositoryException</a> - if another error occurs.</dd>
 <dt>Api.</dt>
 </dl>
@@ -1384,26 +1379,7 @@ STRING according to standard JCR propety type conversion.</p><p>Returns -1 if th
 
 <hr>
 
-<a href="../source/phpcr/propertyinterface.php.html#line756" class="location">PHPCR/PropertyInterface.php at line 756</a>
-
-<h3 id="getLengths()">getLengths</h3>
-<code class="signature">public  array <strong>getLengths</strong>()</code>
-<div class="details">
-<p>Returns an array holding the lengths of the values of this (multi-value)
-property in bytes where each is individually calculated as described in
-getLength().</p><dl>
-<dt>Returns:</dt>
-<dd>an array of lengths (integers)</dd>
-<dt>Throws:</dt>
-<dd><a href="../phpcr/valueformatexception.html">\PHPCR\ValueFormatException</a> - if this property is single-valued.</dd>
-<dd><a href="../phpcr/repositoryexception.html">\PHPCR\RepositoryException</a> - if another error occurs.</dd>
-<dt>Api.</dt>
-</dl>
-</div>
-
-<hr>
-
-<a href="../source/phpcr/propertyinterface.php.html#line608" class="location">PHPCR/PropertyInterface.php at line 608</a>
+<a href="../source/phpcr/propertyinterface.php.html#line601" class="location">PHPCR/PropertyInterface.php at line 601</a>
 
 <h3 id="getLong()">getLong</h3>
 <code class="signature">public  integer <strong>getLong</strong>()</code>
@@ -1420,7 +1396,7 @@ getLength().</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/propertyinterface.php.html#line698" class="location">PHPCR/PropertyInterface.php at line 698</a>
+<a href="../source/phpcr/propertyinterface.php.html#line691" class="location">PHPCR/PropertyInterface.php at line 691</a>
 
 <h3 id="getNode()">getNode</h3>
 <code class="signature">public  <a href="../phpcr/nodeinterface.html">NodeInterface</a> <strong>getNode</strong>()</code>
@@ -1448,7 +1424,7 @@ getNodes to get the nodes with relative or absolute path.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/propertyinterface.php.html#line726" class="location">PHPCR/PropertyInterface.php at line 726</a>
+<a href="../source/phpcr/propertyinterface.php.html#line719" class="location">PHPCR/PropertyInterface.php at line 719</a>
 
 <h3 id="getProperty()">getProperty</h3>
 <code class="signature">public  <a href="../phpcr/propertyinterface.html">PropertyInterface</a> <strong>getProperty</strong>()</code>
@@ -1473,7 +1449,7 @@ property or this property itself.</p><p>For example, if this property is located
 
 <hr>
 
-<a href="../source/phpcr/propertyinterface.php.html#line583" class="location">PHPCR/PropertyInterface.php at line 583</a>
+<a href="../source/phpcr/propertyinterface.php.html#line576" class="location">PHPCR/PropertyInterface.php at line 576</a>
 
 <h3 id="getString()">getString</h3>
 <code class="signature">public  string <strong>getString</strong>()</code>
@@ -1490,7 +1466,7 @@ property or this property itself.</p><p>For example, if this property is located
 
 <hr>
 
-<a href="../source/phpcr/propertyinterface.php.html#line802" class="location">PHPCR/PropertyInterface.php at line 802</a>
+<a href="../source/phpcr/propertyinterface.php.html#line786" class="location">PHPCR/PropertyInterface.php at line 786</a>
 
 <h3 id="getType()">getType</h3>
 <code class="signature">public  integer <strong>getType</strong>()</code>
@@ -1524,7 +1500,7 @@ never UNDEFINED (it must always have some actual type).</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/propertyinterface.php.html#line571" class="location">PHPCR/PropertyInterface.php at line 571</a>
+<a href="../source/phpcr/propertyinterface.php.html#line564" class="location">PHPCR/PropertyInterface.php at line 564</a>
 
 <h3 id="getValue()">getValue</h3>
 <code class="signature">public  mixed <strong>getValue</strong>()</code>
@@ -1538,7 +1514,7 @@ with weak typing</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/propertyinterface.php.html#line815" class="location">PHPCR/PropertyInterface.php at line 815</a>
+<a href="../source/phpcr/propertyinterface.php.html#line799" class="location">PHPCR/PropertyInterface.php at line 799</a>
 
 <h3 id="isMultiple()">isMultiple</h3>
 <code class="signature">public  boolean <strong>isMultiple</strong>()</code>
@@ -1555,7 +1531,7 @@ is single-valued.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/propertyinterface.php.html#line547" class="location">PHPCR/PropertyInterface.php at line 547</a>
+<a href="../source/phpcr/propertyinterface.php.html#line540" class="location">PHPCR/PropertyInterface.php at line 540</a>
 
 <h3 id="setValue()">setValue</h3>
 <code class="signature">public  void <strong>setValue</strong>(mixed value, integer type)</code>

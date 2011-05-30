@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="generator" content="PHPDoctor 2RC4 (http://peej.github.com/phpdoctor/)">
-<meta name="when" content="Thu, 26 May 2011 12:55:49 +0000">
+<meta name="when" content="Mon, 30 May 2011 13:13:28 +0000">
 
 <link rel="stylesheet" type="text/css" href="../../../stylesheet.css">
 <link rel="start" href="../../../overview-summary.html">
@@ -34,161 +34,150 @@
 <hr>
 
 <h1>PHPCR/NodeType/NodeTypeTemplateInterface.php</h1>
-<div class="comment" id="overview_description"><p>Interface description of how to implement a node type template.</p><p>This file was ported from the Java JCR API to PHP by
-Karsten Dambekalns <karsten@typo3.org> for the FLOW3 project.</p><p>It is free software; you can redistribute it and/or modify it under
-the terms of the GNU Lesser General Public License as published by the
-Free Software Foundation, either version 3 of the License, or (at your
-option) any later version. Alternatively, you may use the Simplified
-BSD License.</p><p>This script is distributed in the hope that it will be useful, but
-WITHOUT ANY WARRANTY; without even the implied warranty of MERCHAN-
-TABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser
-General Public License for more details.</p><p>You should have received a copy of the GNU Lesser General Public
-License along with the script.
-If not, see <code><a href="http://www.gnu.org/licenses/lgpl.html">http://www.gnu.org/licenses/lgpl.html</a></code>.</p><p>The TYPO3 project - inspiring people to share!</p></div>
+<div class="comment" id="overview_description"><p>This file is part of the PHPCR API and was originally ported from the Java
+JCR API to PHP by Karsten Dambekalns for the FLOW3 project.</p><p>Copyright 2008-2011 Karsten Dambekalns <karsten@typo3.org></p><p>Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at</p><p>http://www.apache.org/licenses/LICENSE-2.0</p><p>Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.</p></div>
 
 <hr>
 
 <a name="line1"></a><pre class="php" style="font-family:monospace;"><span style="color: #000000; font-weight: bold;">&lt;?php</span>
-<a name="line2"></a><span style="color: #009933; font-style: italic;">/**
-<a name="line3"></a> * Interface description of how to implement a node type template.
-<a name="line4"></a> *
-<a name="line5"></a> * This file was ported from the Java JCR API to PHP by
-<a name="line6"></a> * Karsten Dambekalns &lt;karsten@typo3.org&gt; for the FLOW3 project.
-<a name="line7"></a> *
-<a name="line8"></a> * It is free software; you can redistribute it and/or modify it under
-<a name="line9"></a> * the terms of the GNU Lesser General Public License as published by the
-<a name="line10"></a> * Free Software Foundation, either version 3 of the License, or (at your
-<a name="line11"></a> * option) any later version. Alternatively, you may use the Simplified
-<a name="line12"></a> * BSD License.
-<a name="line13"></a> *
-<a name="line14"></a> * This script is distributed in the hope that it will be useful, but
-<a name="line15"></a> * WITHOUT ANY WARRANTY; without even the implied warranty of MERCHAN-
-<a name="line16"></a> * TABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser
-<a name="line17"></a> * General Public License for more details.
-<a name="line18"></a> *
-<a name="line19"></a> * You should have received a copy of the GNU Lesser General Public
-<a name="line20"></a> * License along with the script.
-<a name="line21"></a> * If not, see {@link http://www.gnu.org/licenses/lgpl.html}.
-<a name="line22"></a> *
-<a name="line23"></a> * The TYPO3 project - inspiring people to share!
-<a name="line24"></a> *
-<a name="line25"></a> * @license http://www.gnu.org/licenses/lgpl.html GNU Lesser General Public License, version 3 or later
-<a name="line26"></a> * @license http://opensource.org/licenses/bsd-license.php Simplified BSD License
-<a name="line27"></a> *
-<a name="line28"></a> * @package phpcr
-<a name="line29"></a> * @subpackage interfaces
-<a name="line30"></a> */</span>
-<a name="line31"></a>&nbsp;
-<a name="line32"></a><span style="color: #000000; font-weight: bold;">namespace</span> PHPCR\NodeType<span style="color: #339933;">;</span>
-<a name="line33"></a>&nbsp;
-<a name="line34"></a><span style="color: #009933; font-style: italic;">/**
-<a name="line35"></a> * The NodeTypeTemplate interface represents a simple container structure used
-<a name="line36"></a> * to define node types which are then registered through the
-<a name="line37"></a> * NodeTypeManager.registerNodeType method.
-<a name="line38"></a> *
-<a name="line39"></a> * NodeTypeTemplate, like NodeType, is a subclass of NodeTypeDefinition so it
-<a name="line40"></a> * shares with NodeType those methods that are relevant to a static definition.
-<a name="line41"></a> * In addition, NodeTypeTemplate provides methods for setting the attributes of
-<a name="line42"></a> * the definition. Implementations of this interface need not contain any
-<a name="line43"></a> * validation logic.
-<a name="line44"></a> *
-<a name="line45"></a> * See the corresponding get methods for each attribute in NodeTypeDefinition
-<a name="line46"></a> * for the default values assumed when a new empty NodeTypeTemplate is created
-<a name="line47"></a> * (as opposed to one extracted from an existing NodeType).
-<a name="line48"></a> *
-<a name="line49"></a> * @package phpcr
-<a name="line50"></a> * @subpackage interfaces
-<a name="line51"></a> * @api
-<a name="line52"></a> */</span>
-<a name="line53"></a><span style="color: #000000; font-weight: bold;">interface</span> NodeTypeTemplateInterface <span style="color: #000000; font-weight: bold;">extends</span> \PHPCR\NodeType\NodeTypeDefinitionInterface <span style="color: #009900;">&#123;</span>
-<a name="line54"></a>&nbsp;
-<a name="line55"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line56"></a>     * Sets the name of the node type.
-<a name="line57"></a>     *
-<a name="line58"></a>     * @param string $name The name of the node type to be set.
-<a name="line59"></a>     * @return void
-<a name="line60"></a>     * @api
-<a name="line61"></a>     */</span>
-<a name="line62"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> setName<span style="color: #009900;">&#40;</span><span style="color: #000088;">$name</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line63"></a>&nbsp;
-<a name="line64"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line65"></a>     * Sets the names of the supertypes of the node type.
-<a name="line66"></a>     *
-<a name="line67"></a>     * @param array $names The name of the node supertype to be set.
-<a name="line68"></a>     * @return void
-<a name="line69"></a>     * @api
-<a name="line70"></a>     */</span>
-<a name="line71"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> setDeclaredSuperTypeNames<span style="color: #009900;">&#40;</span><a href="http://www.php.net/array"><span style="color: #990000;">array</span></a> <span style="color: #000088;">$names</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line72"></a>&nbsp;
-<a name="line73"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line74"></a>     * Sets the abstract flag of the node type.
-<a name="line75"></a>     *
-<a name="line76"></a>     * @param boolean $abstractStatus The status of the node type being &lt;b&gt;abstract&lt;/b&gt;.
-<a name="line77"></a>     * @return void
-<a name="line78"></a>     * @api
-<a name="line79"></a>     */</span>
-<a name="line80"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> setAbstract<span style="color: #009900;">&#40;</span><span style="color: #000088;">$abstractStatus</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line81"></a>&nbsp;
-<a name="line82"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line83"></a>     * Sets the mixin flag of the node type.
-<a name="line84"></a>     *
-<a name="line85"></a>     * @param boolean $mixin The status of the node type being &lt;b&gt;mixin&lt;/b&gt;.
-<a name="line86"></a>     * @return void
-<a name="line87"></a>     * @api
-<a name="line88"></a>     */</span>
-<a name="line89"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> setMixin<span style="color: #009900;">&#40;</span><span style="color: #000088;">$mixin</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line90"></a>&nbsp;
-<a name="line91"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line92"></a>     * Sets the orderable child nodes flag of the node type.
-<a name="line93"></a>     *
-<a name="line94"></a>     * @param boolean $orderable The status of the node type having orderable children.
-<a name="line95"></a>     * @return void
-<a name="line96"></a>     * @api
-<a name="line97"></a>     */</span>
-<a name="line98"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> setOrderableChildNodes<span style="color: #009900;">&#40;</span><span style="color: #000088;">$orderable</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line99"></a>&nbsp;
-<a name="line100"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line101"></a>     * Sets the name of the primary item.
-<a name="line102"></a>     *
-<a name="line103"></a>     * @param string $name The name of the primary item.
-<a name="line104"></a>     * @return void
-<a name="line105"></a>     * @api
-<a name="line106"></a>     */</span>
-<a name="line107"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> setPrimaryItemName<span style="color: #009900;">&#40;</span><span style="color: #000088;">$name</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line108"></a>&nbsp;
-<a name="line109"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line110"></a>     * Sets the queryable status of the node type.
-<a name="line111"></a>     *
-<a name="line112"></a>     * @param booolean $queryable The status of the node type being queryable.
-<a name="line113"></a>     * @return void
-<a name="line114"></a>     * @api
-<a name="line115"></a>     */</span>
-<a name="line116"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> setQueryable<span style="color: #009900;">&#40;</span><span style="color: #000088;">$queryable</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line117"></a>&nbsp;
-<a name="line118"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line119"></a>     * Returns a mutable List of PropertyDefinitionTemplate objects.
-<a name="line120"></a>     *
-<a name="line121"></a>     * To define a new NodeTypeTemplate or change an existing one,
-<a name="line122"></a>     * PropertyDefinitionTemplate objects can be added to or removed from this List.
-<a name="line123"></a>     *
-<a name="line124"></a>     * @return Object A mutable List (implementing \Traversable, \ArrayAccess, and \Countable) of PropertyDefinitionTemplate objects
-<a name="line125"></a>     * @api
-<a name="line126"></a>     */</span>
-<a name="line127"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getPropertyDefinitionTemplates<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line128"></a>&nbsp;
-<a name="line129"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line130"></a>     * Returns a mutable List of NodeDefinitionTemplate objects.
-<a name="line131"></a>     *
-<a name="line132"></a>     * To define a new NodeTypeTemplate or change an existing one,
-<a name="line133"></a>     * NodeDefinitionTemplate objects can be added to or removed from this List.
-<a name="line134"></a>     *
-<a name="line135"></a>     * @return Object A mutable List (implementing \Traversable, \ArrayAccess, and \Countable) of NodeDefinitionTemplate objects
-<a name="line136"></a>     * @api
-<a name="line137"></a>     */</span>
-<a name="line138"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getNodeDefinitionTemplates<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line139"></a>&nbsp;
-<a name="line140"></a><span style="color: #009900;">&#125;</span>
-<a name="line141"></a>&nbsp;</pre>
+<a name="line2"></a>&nbsp;
+<a name="line3"></a><span style="color: #009933; font-style: italic;">/**
+<a name="line4"></a> * This file is part of the PHPCR API and was originally ported from the Java
+<a name="line5"></a> * JCR API to PHP by Karsten Dambekalns for the FLOW3 project.
+<a name="line6"></a> *
+<a name="line7"></a> * Copyright 2008-2011 Karsten Dambekalns &lt;karsten@typo3.org&gt;
+<a name="line8"></a> *
+<a name="line9"></a> * Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
+<a name="line10"></a> * you may not use this file except in compliance with the License.
+<a name="line11"></a> * You may obtain a copy of the License at
+<a name="line12"></a> *
+<a name="line13"></a> *     http://www.apache.org/licenses/LICENSE-2.0
+<a name="line14"></a> *
+<a name="line15"></a> * Unless required by applicable law or agreed to in writing, software
+<a name="line16"></a> * distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+<a name="line17"></a> * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+<a name="line18"></a> * See the License for the specific language governing permissions and
+<a name="line19"></a> * limitations under the License.
+<a name="line20"></a> *
+<a name="line21"></a> * @license http://www.apache.org/licenses/LICENSE-2.0 Apache Software License 2.0
+<a name="line22"></a> * @link http://phpcr.github.com/
+<a name="line23"></a>*/</span>
+<a name="line24"></a>&nbsp;
+<a name="line25"></a><span style="color: #000000; font-weight: bold;">namespace</span> PHPCR\NodeType<span style="color: #339933;">;</span>
+<a name="line26"></a>&nbsp;
+<a name="line27"></a><span style="color: #009933; font-style: italic;">/**
+<a name="line28"></a> * The NodeTypeTemplate interface represents a simple container structure used
+<a name="line29"></a> * to define node types which are then registered through the
+<a name="line30"></a> * NodeTypeManager.registerNodeType method.
+<a name="line31"></a> *
+<a name="line32"></a> * NodeTypeTemplate, like NodeType, is a subclass of NodeTypeDefinition so it
+<a name="line33"></a> * shares with NodeType those methods that are relevant to a static definition.
+<a name="line34"></a> * In addition, NodeTypeTemplate provides methods for setting the attributes of
+<a name="line35"></a> * the definition. Implementations of this interface need not contain any
+<a name="line36"></a> * validation logic.
+<a name="line37"></a> *
+<a name="line38"></a> * See the corresponding get methods for each attribute in NodeTypeDefinition
+<a name="line39"></a> * for the default values assumed when a new empty NodeTypeTemplate is created
+<a name="line40"></a> * (as opposed to one extracted from an existing NodeType).
+<a name="line41"></a> *
+<a name="line42"></a> * @package phpcr
+<a name="line43"></a> * @subpackage interfaces
+<a name="line44"></a> * @api
+<a name="line45"></a> */</span>
+<a name="line46"></a><span style="color: #000000; font-weight: bold;">interface</span> NodeTypeTemplateInterface <span style="color: #000000; font-weight: bold;">extends</span> \PHPCR\NodeType\NodeTypeDefinitionInterface
+<a name="line47"></a><span style="color: #009900;">&#123;</span>
+<a name="line48"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line49"></a>     * Sets the name of the node type.
+<a name="line50"></a>     *
+<a name="line51"></a>     * @param string $name The name of the node type to be set.
+<a name="line52"></a>     * @return void
+<a name="line53"></a>     * @api
+<a name="line54"></a>     */</span>
+<a name="line55"></a>    <span style="color: #000000; font-weight: bold;">function</span> setName<span style="color: #009900;">&#40;</span><span style="color: #000088;">$name</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line56"></a>&nbsp;
+<a name="line57"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line58"></a>     * Sets the names of the supertypes of the node type.
+<a name="line59"></a>     *
+<a name="line60"></a>     * @param array $names The name of the node supertype to be set.
+<a name="line61"></a>     * @return void
+<a name="line62"></a>     * @api
+<a name="line63"></a>     */</span>
+<a name="line64"></a>    <span style="color: #000000; font-weight: bold;">function</span> setDeclaredSuperTypeNames<span style="color: #009900;">&#40;</span><a href="http://www.php.net/array"><span style="color: #990000;">array</span></a> <span style="color: #000088;">$names</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line65"></a>&nbsp;
+<a name="line66"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line67"></a>     * Sets the abstract flag of the node type.
+<a name="line68"></a>     *
+<a name="line69"></a>     * @param boolean $abstractStatus The status of the node type being &lt;b&gt;abstract&lt;/b&gt;.
+<a name="line70"></a>     * @return void
+<a name="line71"></a>     * @api
+<a name="line72"></a>     */</span>
+<a name="line73"></a>    <span style="color: #000000; font-weight: bold;">function</span> setAbstract<span style="color: #009900;">&#40;</span><span style="color: #000088;">$abstractStatus</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line74"></a>&nbsp;
+<a name="line75"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line76"></a>     * Sets the mixin flag of the node type.
+<a name="line77"></a>     *
+<a name="line78"></a>     * @param boolean $mixin The status of the node type being &lt;b&gt;mixin&lt;/b&gt;.
+<a name="line79"></a>     * @return void
+<a name="line80"></a>     * @api
+<a name="line81"></a>     */</span>
+<a name="line82"></a>    <span style="color: #000000; font-weight: bold;">function</span> setMixin<span style="color: #009900;">&#40;</span><span style="color: #000088;">$mixin</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line83"></a>&nbsp;
+<a name="line84"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line85"></a>     * Sets the orderable child nodes flag of the node type.
+<a name="line86"></a>     *
+<a name="line87"></a>     * @param boolean $orderable The status of the node type having orderable children.
+<a name="line88"></a>     * @return void
+<a name="line89"></a>     * @api
+<a name="line90"></a>     */</span>
+<a name="line91"></a>    <span style="color: #000000; font-weight: bold;">function</span> setOrderableChildNodes<span style="color: #009900;">&#40;</span><span style="color: #000088;">$orderable</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line92"></a>&nbsp;
+<a name="line93"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line94"></a>     * Sets the name of the primary item.
+<a name="line95"></a>     *
+<a name="line96"></a>     * @param string $name The name of the primary item.
+<a name="line97"></a>     * @return void
+<a name="line98"></a>     * @api
+<a name="line99"></a>     */</span>
+<a name="line100"></a>    <span style="color: #000000; font-weight: bold;">function</span> setPrimaryItemName<span style="color: #009900;">&#40;</span><span style="color: #000088;">$name</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line101"></a>&nbsp;
+<a name="line102"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line103"></a>     * Sets the queryable status of the node type.
+<a name="line104"></a>     *
+<a name="line105"></a>     * @param booolean $queryable The status of the node type being queryable.
+<a name="line106"></a>     * @return void
+<a name="line107"></a>     * @api
+<a name="line108"></a>     */</span>
+<a name="line109"></a>    <span style="color: #000000; font-weight: bold;">function</span> setQueryable<span style="color: #009900;">&#40;</span><span style="color: #000088;">$queryable</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line110"></a>&nbsp;
+<a name="line111"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line112"></a>     * Returns a mutable List of PropertyDefinitionTemplate objects.
+<a name="line113"></a>     *
+<a name="line114"></a>     * To define a new NodeTypeTemplate or change an existing one,
+<a name="line115"></a>     * PropertyDefinitionTemplate objects can be added to or removed from this List.
+<a name="line116"></a>     *
+<a name="line117"></a>     * @return Object A mutable List (implementing \Traversable, \ArrayAccess, and \Countable) of PropertyDefinitionTemplate objects
+<a name="line118"></a>     * @api
+<a name="line119"></a>     */</span>
+<a name="line120"></a>    <span style="color: #000000; font-weight: bold;">function</span> getPropertyDefinitionTemplates<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line121"></a>&nbsp;
+<a name="line122"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line123"></a>     * Returns a mutable List of NodeDefinitionTemplate objects.
+<a name="line124"></a>     *
+<a name="line125"></a>     * To define a new NodeTypeTemplate or change an existing one,
+<a name="line126"></a>     * NodeDefinitionTemplate objects can be added to or removed from this List.
+<a name="line127"></a>     *
+<a name="line128"></a>     * @return Object A mutable List (implementing \Traversable, \ArrayAccess, and \Countable) of NodeDefinitionTemplate objects
+<a name="line129"></a>     * @api
+<a name="line130"></a>     */</span>
+<a name="line131"></a>    <span style="color: #000000; font-weight: bold;">function</span> getNodeDefinitionTemplates<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line132"></a><span style="color: #009900;">&#125;</span>
+<a name="line133"></a>&nbsp;</pre>
 <div class="header">
 <h1>PHPCR</h1>
 <ul>

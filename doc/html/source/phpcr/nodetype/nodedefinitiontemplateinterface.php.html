@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="generator" content="PHPDoctor 2RC4 (http://peej.github.com/phpdoctor/)">
-<meta name="when" content="Thu, 26 May 2011 12:55:48 +0000">
+<meta name="when" content="Mon, 30 May 2011 13:13:26 +0000">
 
 <link rel="stylesheet" type="text/css" href="../../../stylesheet.css">
 <link rel="start" href="../../../overview-summary.html">
@@ -34,142 +34,131 @@
 <hr>
 
 <h1>PHPCR/NodeType/NodeDefinitionTemplateInterface.php</h1>
-<div class="comment" id="overview_description"><p>Interface description of an implementation of a node template definition.</p><p>This file was ported from the Java JCR API to PHP by
-Karsten Dambekalns <karsten@typo3.org> for the FLOW3 project.</p><p>It is free software; you can redistribute it and/or modify it under
-the terms of the GNU Lesser General Public License as published by the
-Free Software Foundation, either version 3 of the License, or (at your
-option) any later version. Alternatively, you may use the Simplified
-BSD License.</p><p>This script is distributed in the hope that it will be useful, but
-WITHOUT ANY WARRANTY; without even the implied warranty of MERCHAN-
-TABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser
-General Public License for more details.</p><p>You should have received a copy of the GNU Lesser General Public
-License along with the script.
-If not, see <code><a href="http://www.gnu.org/licenses/lgpl.html">http://www.gnu.org/licenses/lgpl.html</a></code>.</p><p>The TYPO3 project - inspiring people to share!</p></div>
+<div class="comment" id="overview_description"><p>This file is part of the PHPCR API and was originally ported from the Java
+JCR API to PHP by Karsten Dambekalns for the FLOW3 project.</p><p>Copyright 2008-2011 Karsten Dambekalns <karsten@typo3.org></p><p>Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at</p><p>http://www.apache.org/licenses/LICENSE-2.0</p><p>Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.</p></div>
 
 <hr>
 
 <a name="line1"></a><pre class="php" style="font-family:monospace;"><span style="color: #000000; font-weight: bold;">&lt;?php</span>
-<a name="line2"></a><span style="color: #009933; font-style: italic;">/**
-<a name="line3"></a> * Interface description of an implementation of a node template definition.
-<a name="line4"></a> *
-<a name="line5"></a> * This file was ported from the Java JCR API to PHP by
-<a name="line6"></a> * Karsten Dambekalns &lt;karsten@typo3.org&gt; for the FLOW3 project.
-<a name="line7"></a> *
-<a name="line8"></a> * It is free software; you can redistribute it and/or modify it under
-<a name="line9"></a> * the terms of the GNU Lesser General Public License as published by the
-<a name="line10"></a> * Free Software Foundation, either version 3 of the License, or (at your
-<a name="line11"></a> * option) any later version. Alternatively, you may use the Simplified
-<a name="line12"></a> * BSD License.
-<a name="line13"></a> *
-<a name="line14"></a> * This script is distributed in the hope that it will be useful, but
-<a name="line15"></a> * WITHOUT ANY WARRANTY; without even the implied warranty of MERCHAN-
-<a name="line16"></a> * TABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser
-<a name="line17"></a> * General Public License for more details.
-<a name="line18"></a> *
-<a name="line19"></a> * You should have received a copy of the GNU Lesser General Public
-<a name="line20"></a> * License along with the script.
-<a name="line21"></a> * If not, see {@link http://www.gnu.org/licenses/lgpl.html}.
-<a name="line22"></a> *
-<a name="line23"></a> * The TYPO3 project - inspiring people to share!
-<a name="line24"></a> *
-<a name="line25"></a> * @license http://www.gnu.org/licenses/lgpl.html GNU Lesser General Public License, version 3 or later
-<a name="line26"></a> * @license http://opensource.org/licenses/bsd-license.php Simplified BSD License
-<a name="line27"></a> *
-<a name="line28"></a> * @package phpcr
-<a name="line29"></a> * @subpackage interfaces
-<a name="line30"></a> */</span>
-<a name="line31"></a>&nbsp;
-<a name="line32"></a><span style="color: #000000; font-weight: bold;">namespace</span> PHPCR\NodeType<span style="color: #339933;">;</span>
-<a name="line33"></a>&nbsp;
-<a name="line34"></a><span style="color: #009933; font-style: italic;">/**
-<a name="line35"></a> * The NodeDefinitionTemplate interface extends NodeDefinition with the addition
-<a name="line36"></a> * of write methods, enabling the characteristics of a child node definition to
-<a name="line37"></a> * be set, after which the NodeDefinitionTemplate is added to a NodeTypeTemplate.
-<a name="line38"></a> *
-<a name="line39"></a> * See the corresponding get methods for each attribute in NodeDefinition for the
-<a name="line40"></a> * default values assumed when a new empty NodeDefinitionTemplate is created (as
-<a name="line41"></a> * opposed to one extracted from an existing NodeType).
-<a name="line42"></a> *
-<a name="line43"></a> * @package phpcr
-<a name="line44"></a> * @subpackage interfaces
-<a name="line45"></a> * @api
-<a name="line46"></a> */</span>
-<a name="line47"></a><span style="color: #000000; font-weight: bold;">interface</span> NodeDefinitionTemplateInterface <span style="color: #000000; font-weight: bold;">extends</span> \PHPCR\NodeType\NodeDefinitionInterface <span style="color: #009900;">&#123;</span>
-<a name="line48"></a>&nbsp;
-<a name="line49"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line50"></a>     * Sets the name of the node.
-<a name="line51"></a>     *
-<a name="line52"></a>     * @param string $name The name of the node.
-<a name="line53"></a>     * @return void
-<a name="line54"></a>     * @api
-<a name="line55"></a>     */</span>
-<a name="line56"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> setName<span style="color: #009900;">&#40;</span><span style="color: #000088;">$name</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line57"></a>&nbsp;
-<a name="line58"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line59"></a>     * Sets the auto-create status of the node.
-<a name="line60"></a>     *
-<a name="line61"></a>     * @param boolean $autoCreated The status the autocreate attribute of the node shall have.
-<a name="line62"></a>     * @return void
-<a name="line63"></a>     * @api
-<a name="line64"></a>     */</span>
-<a name="line65"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> setAutoCreated<span style="color: #009900;">&#40;</span><span style="color: #000088;">$autoCreated</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line66"></a>&nbsp;
-<a name="line67"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line68"></a>     * Sets the mandatory status of the node.
-<a name="line69"></a>     *
-<a name="line70"></a>     * @param boolean $mandatory The status of the mandatory attribute.
-<a name="line71"></a>     * @return void
-<a name="line72"></a>     * @api
-<a name="line73"></a>     */</span>
-<a name="line74"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> setMandatory<span style="color: #009900;">&#40;</span><span style="color: #000088;">$mandatory</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line75"></a>&nbsp;
-<a name="line76"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line77"></a>     * Sets the on-parent-version status of the node.
-<a name="line78"></a>     *
-<a name="line79"></a>     * @param integer $opv An integer constant member of OnParentVersionAction.
-<a name="line80"></a>     * @return void
-<a name="line81"></a>     * @api
-<a name="line82"></a>     */</span>
-<a name="line83"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> setOnParentVersion<span style="color: #009900;">&#40;</span><span style="color: #000088;">$opv</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line84"></a>&nbsp;
-<a name="line85"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line86"></a>     * Sets the protected status of the node.
-<a name="line87"></a>     *
-<a name="line88"></a>     * @param boolean $protectedStatus The status of the protected attribute.
-<a name="line89"></a>     * @return void
-<a name="line90"></a>     * @api
-<a name="line91"></a>     */</span>
-<a name="line92"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> setProtected<span style="color: #009900;">&#40;</span><span style="color: #000088;">$protectedStatus</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line93"></a>&nbsp;
-<a name="line94"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line95"></a>     * Sets the names of the required primary types of this node.
-<a name="line96"></a>     *
-<a name="line97"></a>     * @param array $requiredPrimaryTypeNames List of primary type names to be registered.
-<a name="line98"></a>     * @return void
-<a name="line99"></a>     * @api
-<a name="line100"></a>     */</span>
-<a name="line101"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> setRequiredPrimaryTypeNames<span style="color: #009900;">&#40;</span><a href="http://www.php.net/array"><span style="color: #990000;">Array</span></a> <span style="color: #000088;">$requiredPrimaryTypeNames</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line102"></a>&nbsp;
-<a name="line103"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line104"></a>     * Sets the name of the default primary type of this node.
-<a name="line105"></a>     *
-<a name="line106"></a>     * @param string $defaultPrimaryTypeName The name of a primary type name to be registered.
-<a name="line107"></a>     * @return void
-<a name="line108"></a>     * @api
-<a name="line109"></a>     */</span>
-<a name="line110"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> setDefaultPrimaryTypeName<span style="color: #009900;">&#40;</span><span style="color: #000088;">$defaultPrimaryTypeName</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line111"></a>&nbsp;
-<a name="line112"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line113"></a>     * Sets the same-name sibling status of this node.
-<a name="line114"></a>     *
-<a name="line115"></a>     * @param boolean $allowSameNameSiblings The status the same-name sibling attribute shel be set to.
-<a name="line116"></a>     * @return void
-<a name="line117"></a>     * @api
-<a name="line118"></a>     */</span>
-<a name="line119"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> setSameNameSiblings<span style="color: #009900;">&#40;</span><span style="color: #000088;">$allowSameNameSiblings</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line120"></a>&nbsp;
-<a name="line121"></a><span style="color: #009900;">&#125;</span>
-<a name="line122"></a>&nbsp;</pre>
+<a name="line2"></a>&nbsp;
+<a name="line3"></a><span style="color: #009933; font-style: italic;">/**
+<a name="line4"></a> * This file is part of the PHPCR API and was originally ported from the Java
+<a name="line5"></a> * JCR API to PHP by Karsten Dambekalns for the FLOW3 project.
+<a name="line6"></a> *
+<a name="line7"></a> * Copyright 2008-2011 Karsten Dambekalns &lt;karsten@typo3.org&gt;
+<a name="line8"></a> *
+<a name="line9"></a> * Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
+<a name="line10"></a> * you may not use this file except in compliance with the License.
+<a name="line11"></a> * You may obtain a copy of the License at
+<a name="line12"></a> *
+<a name="line13"></a> *     http://www.apache.org/licenses/LICENSE-2.0
+<a name="line14"></a> *
+<a name="line15"></a> * Unless required by applicable law or agreed to in writing, software
+<a name="line16"></a> * distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+<a name="line17"></a> * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+<a name="line18"></a> * See the License for the specific language governing permissions and
+<a name="line19"></a> * limitations under the License.
+<a name="line20"></a> *
+<a name="line21"></a> * @license http://www.apache.org/licenses/LICENSE-2.0 Apache Software License 2.0
+<a name="line22"></a> * @link http://phpcr.github.com/
+<a name="line23"></a>*/</span>
+<a name="line24"></a>&nbsp;
+<a name="line25"></a><span style="color: #000000; font-weight: bold;">namespace</span> PHPCR\NodeType<span style="color: #339933;">;</span>
+<a name="line26"></a>&nbsp;
+<a name="line27"></a><span style="color: #009933; font-style: italic;">/**
+<a name="line28"></a> * The NodeDefinitionTemplate interface extends NodeDefinition with the addition
+<a name="line29"></a> * of write methods, enabling the characteristics of a child node definition to
+<a name="line30"></a> * be set, after which the NodeDefinitionTemplate is added to a NodeTypeTemplate.
+<a name="line31"></a> *
+<a name="line32"></a> * See the corresponding get methods for each attribute in NodeDefinition for the
+<a name="line33"></a> * default values assumed when a new empty NodeDefinitionTemplate is created (as
+<a name="line34"></a> * opposed to one extracted from an existing NodeType).
+<a name="line35"></a> *
+<a name="line36"></a> * @package phpcr
+<a name="line37"></a> * @subpackage interfaces
+<a name="line38"></a> * @api
+<a name="line39"></a> */</span>
+<a name="line40"></a><span style="color: #000000; font-weight: bold;">interface</span> NodeDefinitionTemplateInterface <span style="color: #000000; font-weight: bold;">extends</span> \PHPCR\NodeType\NodeDefinitionInterface
+<a name="line41"></a><span style="color: #009900;">&#123;</span>
+<a name="line42"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line43"></a>     * Sets the name of the node.
+<a name="line44"></a>     *
+<a name="line45"></a>     * @param string $name The name of the node.
+<a name="line46"></a>     * @return void
+<a name="line47"></a>     * @api
+<a name="line48"></a>     */</span>
+<a name="line49"></a>    <span style="color: #000000; font-weight: bold;">function</span> setName<span style="color: #009900;">&#40;</span><span style="color: #000088;">$name</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line50"></a>&nbsp;
+<a name="line51"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line52"></a>     * Sets the auto-create status of the node.
+<a name="line53"></a>     *
+<a name="line54"></a>     * @param boolean $autoCreated The status the autocreate attribute of the node shall have.
+<a name="line55"></a>     * @return void
+<a name="line56"></a>     * @api
+<a name="line57"></a>     */</span>
+<a name="line58"></a>    <span style="color: #000000; font-weight: bold;">function</span> setAutoCreated<span style="color: #009900;">&#40;</span><span style="color: #000088;">$autoCreated</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line59"></a>&nbsp;
+<a name="line60"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line61"></a>     * Sets the mandatory status of the node.
+<a name="line62"></a>     *
+<a name="line63"></a>     * @param boolean $mandatory The status of the mandatory attribute.
+<a name="line64"></a>     * @return void
+<a name="line65"></a>     * @api
+<a name="line66"></a>     */</span>
+<a name="line67"></a>    <span style="color: #000000; font-weight: bold;">function</span> setMandatory<span style="color: #009900;">&#40;</span><span style="color: #000088;">$mandatory</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line68"></a>&nbsp;
+<a name="line69"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line70"></a>     * Sets the on-parent-version status of the node.
+<a name="line71"></a>     *
+<a name="line72"></a>     * @param integer $opv An integer constant member of OnParentVersionAction.
+<a name="line73"></a>     * @return void
+<a name="line74"></a>     * @api
+<a name="line75"></a>     */</span>
+<a name="line76"></a>    <span style="color: #000000; font-weight: bold;">function</span> setOnParentVersion<span style="color: #009900;">&#40;</span><span style="color: #000088;">$opv</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line77"></a>&nbsp;
+<a name="line78"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line79"></a>     * Sets the protected status of the node.
+<a name="line80"></a>     *
+<a name="line81"></a>     * @param boolean $protectedStatus The status of the protected attribute.
+<a name="line82"></a>     * @return void
+<a name="line83"></a>     * @api
+<a name="line84"></a>     */</span>
+<a name="line85"></a>    <span style="color: #000000; font-weight: bold;">function</span> setProtected<span style="color: #009900;">&#40;</span><span style="color: #000088;">$protectedStatus</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line86"></a>&nbsp;
+<a name="line87"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line88"></a>     * Sets the names of the required primary types of this node.
+<a name="line89"></a>     *
+<a name="line90"></a>     * @param array $requiredPrimaryTypeNames List of primary type names to be registered.
+<a name="line91"></a>     * @return void
+<a name="line92"></a>     * @api
+<a name="line93"></a>     */</span>
+<a name="line94"></a>    <span style="color: #000000; font-weight: bold;">function</span> setRequiredPrimaryTypeNames<span style="color: #009900;">&#40;</span><a href="http://www.php.net/array"><span style="color: #990000;">Array</span></a> <span style="color: #000088;">$requiredPrimaryTypeNames</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line95"></a>&nbsp;
+<a name="line96"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line97"></a>     * Sets the name of the default primary type of this node.
+<a name="line98"></a>     *
+<a name="line99"></a>     * @param string $defaultPrimaryTypeName The name of a primary type name to be registered.
+<a name="line100"></a>     * @return void
+<a name="line101"></a>     * @api
+<a name="line102"></a>     */</span>
+<a name="line103"></a>    <span style="color: #000000; font-weight: bold;">function</span> setDefaultPrimaryTypeName<span style="color: #009900;">&#40;</span><span style="color: #000088;">$defaultPrimaryTypeName</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line104"></a>&nbsp;
+<a name="line105"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line106"></a>     * Sets the same-name sibling status of this node.
+<a name="line107"></a>     *
+<a name="line108"></a>     * @param boolean $allowSameNameSiblings The status the same-name sibling attribute shel be set to.
+<a name="line109"></a>     * @return void
+<a name="line110"></a>     * @api
+<a name="line111"></a>     */</span>
+<a name="line112"></a>    <span style="color: #000000; font-weight: bold;">function</span> setSameNameSiblings<span style="color: #009900;">&#40;</span><span style="color: #000088;">$allowSameNameSiblings</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line113"></a><span style="color: #009900;">&#125;</span>
+<a name="line114"></a>&nbsp;</pre>
 <div class="header">
 <h1>PHPCR</h1>
 <ul>

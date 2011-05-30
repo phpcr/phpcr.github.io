@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="generator" content="PHPDoctor 2RC4 (http://peej.github.com/phpdoctor/)">
-<meta name="when" content="Thu, 26 May 2011 12:55:42 +0000">
+<meta name="when" content="Mon, 30 May 2011 13:13:11 +0000">
 
 <link rel="stylesheet" type="text/css" href="../../stylesheet.css">
 <link rel="start" href="../../overview-summary.html">
@@ -41,7 +41,7 @@ Detail: <a href="#detail_field">Field</a> | <a href="#detail_method">Method</a> 
 <hr>
 
 <div class="qualifiedName">PHPCR\Version\VersionManagerInterface</div>
-<a href="../../source/phpcr/version/versionmanagerinterface.php.html#line49" class="location">PHPCR/Version/VersionManagerInterface.php at line 49</a>
+<a href="../../source/phpcr/version/versionmanagerinterface.php.html#line42" class="location">PHPCR/Version/VersionManagerInterface.php at line 42</a>
 
 <h1>Interface VersionManagerInterface</h1>
 
@@ -164,7 +164,7 @@ session from which this version manager has been obtained. </p></td>
 </table>
 
 <h2 id="detail_method">Method Detail</h2>
-<a href="../../source/phpcr/version/versionmanagerinterface.php.html#line474" class="location">PHPCR/Version/VersionManagerInterface.php at line 474</a>
+<a href="../../source/phpcr/version/versionmanagerinterface.php.html#line467" class="location">PHPCR/Version/VersionManagerInterface.php at line 467</a>
 
 <h3 id="cancelMerge()">cancelMerge</h3>
 <code class="signature">public  void <strong>cancelMerge</strong>(string absPath, <a href="../../phpcr/version/versioninterface.html">VersionInterface</a> version)</code>
@@ -187,7 +187,7 @@ to call save.</p><dl>
 
 <hr>
 
-<a href="../../source/phpcr/version/versionmanagerinterface.php.html#line91" class="location">PHPCR/Version/VersionManagerInterface.php at line 91</a>
+<a href="../../source/phpcr/version/versionmanagerinterface.php.html#line84" class="location">PHPCR/Version/VersionManagerInterface.php at line 84</a>
 
 <h3 id="checkin()">checkin</h3>
 <code class="signature">public  <a href="../../phpcr/version/versioninterface.html">VersionInterface</a> <strong>checkin</strong>(string absPath)</code>
@@ -228,7 +228,7 @@ dispatched immediately.</p><dl>
 
 <hr>
 
-<a href="../../source/phpcr/version/versionmanagerinterface.php.html#line118" class="location">PHPCR/Version/VersionManagerInterface.php at line 118</a>
+<a href="../../source/phpcr/version/versionmanagerinterface.php.html#line111" class="location">PHPCR/Version/VersionManagerInterface.php at line 111</a>
 
 <h3 id="checkout()">checkout</h3>
 <code class="signature">public  void <strong>checkout</strong>(string absPath)</code>
@@ -254,7 +254,7 @@ to call save.</p><p>If this node is already checked-out, this method has no effe
 
 <hr>
 
-<a href="../../source/phpcr/version/versionmanagerinterface.php.html#line137" class="location">PHPCR/Version/VersionManagerInterface.php at line 137</a>
+<a href="../../source/phpcr/version/versionmanagerinterface.php.html#line130" class="location">PHPCR/Version/VersionManagerInterface.php at line 130</a>
 
 <h3 id="checkpoint()">checkpoint</h3>
 <code class="signature">public  <a href="../../phpcr/version/versioninterface.html">VersionInterface</a> <strong>checkpoint</strong>(string absPath)</code>
@@ -277,7 +277,7 @@ $absPath.</p><p>If this node is already checked-in, this method is equivalent to
 
 <hr>
 
-<a href="../../source/phpcr/version/versionmanagerinterface.php.html#line541" class="location">PHPCR/Version/VersionManagerInterface.php at line 541</a>
+<a href="../../source/phpcr/version/versionmanagerinterface.php.html#line534" class="location">PHPCR/Version/VersionManagerInterface.php at line 534</a>
 
 <h3 id="createActivity()">createActivity</h3>
 <code class="signature">public  <a href="../../phpcr/nodeinterface.html">NodeInterface</a> <strong>createActivity</strong>(string title)</code>
@@ -298,7 +298,7 @@ what to name the new activity node. The new activity Node is returned.</p><p>The
 
 <hr>
 
-<a href="../../source/phpcr/version/versionmanagerinterface.php.html#line498" class="location">PHPCR/Version/VersionManagerInterface.php at line 498</a>
+<a href="../../source/phpcr/version/versionmanagerinterface.php.html#line491" class="location">PHPCR/Version/VersionManagerInterface.php at line 491</a>
 
 <h3 id="createConfiguration()">createConfiguration</h3>
 <code class="signature">public  <a href="../../phpcr/nodeinterface.html">NodeInterface</a> <strong>createConfiguration</strong>(string absPath, <a href="../../phpcr/version/versioninterface.html">VersionInterface</a> baseline)</code>
@@ -326,7 +326,7 @@ configuration references the specified baseline.</p><p>The changes are persisted
 
 <hr>
 
-<a href="../../source/phpcr/version/versionmanagerinterface.php.html#line450" class="location">PHPCR/Version/VersionManagerInterface.php at line 450</a>
+<a href="../../source/phpcr/version/versionmanagerinterface.php.html#line443" class="location">PHPCR/Version/VersionManagerInterface.php at line 443</a>
 
 <h3 id="doneMerge()">doneMerge</h3>
 <code class="signature">public  void <strong>doneMerge</strong>(string absPath, <a href="../../phpcr/version/versioninterface.html">VersionInterface</a> version)</code>
@@ -380,7 +380,7 @@ to call save.</p><dl>
 
 <hr>
 
-<a href="../../source/phpcr/version/versionmanagerinterface.php.html#line524" class="location">PHPCR/Version/VersionManagerInterface.php at line 524</a>
+<a href="../../source/phpcr/version/versionmanagerinterface.php.html#line517" class="location">PHPCR/Version/VersionManagerInterface.php at line 517</a>
 
 <h3 id="getActivity()">getActivity</h3>
 <code class="signature">public  <a href="../../phpcr/nodeinterface.html">NodeInterface</a> <strong>getActivity</strong>()</code>
@@ -398,7 +398,7 @@ current activity.</p><dl>
 
 <hr>
 
-<a href="../../source/phpcr/version/versionmanagerinterface.php.html#line177" class="location">PHPCR/Version/VersionManagerInterface.php at line 177</a>
+<a href="../../source/phpcr/version/versionmanagerinterface.php.html#line170" class="location">PHPCR/Version/VersionManagerInterface.php at line 170</a>
 
 <h3 id="getBaseVersion()">getBaseVersion</h3>
 <code class="signature">public  <a href="../../phpcr/version/versioninterface.html">VersionInterface</a> <strong>getBaseVersion</strong>(string absPath)</code>
@@ -417,7 +417,7 @@ current activity.</p><dl>
 
 <hr>
 
-<a href="../../source/phpcr/version/versionmanagerinterface.php.html#line166" class="location">PHPCR/Version/VersionManagerInterface.php at line 166</a>
+<a href="../../source/phpcr/version/versionmanagerinterface.php.html#line159" class="location">PHPCR/Version/VersionManagerInterface.php at line 159</a>
 
 <h3 id="getVersionHistory()">getVersionHistory</h3>
 <code class="signature">public  <a href="../../phpcr/version/versionhistoryinterface.html">VersionHistoryInterface</a> <strong>getVersionHistory</strong>(string absPath)</code>
@@ -437,7 +437,7 @@ provides access to the nt:versionHistory node holding this node's versions.</p><
 
 <hr>
 
-<a href="../../source/phpcr/version/versionmanagerinterface.php.html#line154" class="location">PHPCR/Version/VersionManagerInterface.php at line 154</a>
+<a href="../../source/phpcr/version/versionmanagerinterface.php.html#line147" class="location">PHPCR/Version/VersionManagerInterface.php at line 147</a>
 
 <h3 id="isCheckedOut()">isCheckedOut</h3>
 <code class="signature">public  boolean <strong>isCheckedOut</strong>(string absPath)</code>
@@ -460,7 +460,7 @@ non-versionable and its nearest versionable ancestor is checked-in.</p><dl>
 
 <hr>
 
-<a href="../../source/phpcr/version/versionmanagerinterface.php.html#line382" class="location">PHPCR/Version/VersionManagerInterface.php at line 382</a>
+<a href="../../source/phpcr/version/versionmanagerinterface.php.html#line375" class="location">PHPCR/Version/VersionManagerInterface.php at line 375</a>
 
 <h3 id="merge()">merge</h3>
 <code class="signature">public  Iterator <strong>merge</strong>(<a href="../../phpcr/nodeinterface.html">NodeInterface</a> source, string srcWorkspace, boolean bestEffort, boolean isShallow)</code>
@@ -515,7 +515,7 @@ method.</p><p>Note: The Java API defines this with multiple differing signatures
 
 <hr>
 
-<a href="../../source/phpcr/version/versionmanagerinterface.php.html#line554" class="location">PHPCR/Version/VersionManagerInterface.php at line 554</a>
+<a href="../../source/phpcr/version/versionmanagerinterface.php.html#line547" class="location">PHPCR/Version/VersionManagerInterface.php at line 547</a>
 
 <h3 id="removeActivity()">removeActivity</h3>
 <code class="signature">public  void <strong>removeActivity</strong>(<a href="../../phpcr/nodeinterface.html">NodeInterface</a> activityNode)</code>
@@ -532,7 +532,7 @@ method.</p><p>Note: The Java API defines this with multiple differing signatures
 
 <hr>
 
-<a href="../../source/phpcr/version/versionmanagerinterface.php.html#line262" class="location">PHPCR/Version/VersionManagerInterface.php at line 262</a>
+<a href="../../source/phpcr/version/versionmanagerinterface.php.html#line255" class="location">PHPCR/Version/VersionManagerInterface.php at line 255</a>
 
 <h3 id="restore()">restore</h3>
 <code class="signature">public  void <strong>restore</strong>(boolean removeExisting, <a href="../../phpcr/version/versioninterface.html">VersionInterface</a> version, string absPath)</code>
@@ -610,7 +610,7 @@ need to act accordingly in your implementation.</p><dl>
 
 <hr>
 
-<a href="../../source/phpcr/version/versionmanagerinterface.php.html#line301" class="location">PHPCR/Version/VersionManagerInterface.php at line 301</a>
+<a href="../../source/phpcr/version/versionmanagerinterface.php.html#line294" class="location">PHPCR/Version/VersionManagerInterface.php at line 294</a>
 
 <h3 id="restoreByLabel()">restoreByLabel</h3>
 <code class="signature">public  void <strong>restoreByLabel</strong>(string absPath, string versionLabel, boolean removeExisting)</code>
@@ -650,7 +650,7 @@ removeExisting flag.</p><dl>
 
 <hr>
 
-<a href="../../source/phpcr/version/versionmanagerinterface.php.html#line513" class="location">PHPCR/Version/VersionManagerInterface.php at line 513</a>
+<a href="../../source/phpcr/version/versionmanagerinterface.php.html#line506" class="location">PHPCR/Version/VersionManagerInterface.php at line 506</a>
 
 <h3 id="setActivity()">setActivity</h3>
 <code class="signature">public  <a href="../../phpcr/nodeinterface.html">NodeInterface</a> <strong>setActivity</strong>(<a href="../../phpcr/nodeinterface.html">NodeInterface</a> activity)</code>

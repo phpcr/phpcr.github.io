@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="generator" content="PHPDoctor 2RC4 (http://peej.github.com/phpdoctor/)">
-<meta name="when" content="Thu, 26 May 2011 12:55:44 +0000">
+<meta name="when" content="Mon, 30 May 2011 13:13:17 +0000">
 
 <link rel="stylesheet" type="text/css" href="../../stylesheet.css">
 <link rel="start" href="../../overview-summary.html">
@@ -34,233 +34,221 @@
 <hr>
 
 <h1>PHPCR/NamespaceRegistryInterface.php</h1>
-<div class="comment" id="overview_description"><p>Interface to describe the contract to implement a registry for namespaces.</p><p>This file was ported from the Java JCR API to PHP by
-Karsten Dambekalns <karsten@typo3.org> for the FLOW3 project.</p><p>It is free software; you can redistribute it and/or modify it under
-the terms of the GNU Lesser General Public License as published by the
-Free Software Foundation, either version 3 of the License, or (at your
-option) any later version. Alternatively, you may use the Simplified
-BSD License.</p><p>This script is distributed in the hope that it will be useful, but
-WITHOUT ANY WARRANTY; without even the implied warranty of MERCHAN-
-TABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser
-General Public License for more details.</p><p>You should have received a copy of the GNU Lesser General Public
-License along with the script.
-If not, see <code><a href="http://www.gnu.org/licenses/lgpl.html">http://www.gnu.org/licenses/lgpl.html</a></code>.</p><p>The TYPO3 project - inspiring people to share!</p></div>
+<div class="comment" id="overview_description"><p>This file is part of the PHPCR API and was originally ported from the Java
+JCR API to PHP by Karsten Dambekalns for the FLOW3 project.</p><p>Copyright 2008-2011 Karsten Dambekalns <karsten@typo3.org></p><p>Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at</p><p>http://www.apache.org/licenses/LICENSE-2.0</p><p>Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.</p></div>
 
 <hr>
 
 <a name="line1"></a><pre class="php" style="font-family:monospace;"><span style="color: #000000; font-weight: bold;">&lt;?php</span>
-<a name="line2"></a><span style="color: #009933; font-style: italic;">/**
-<a name="line3"></a> * Interface to describe the contract to implement a registry for namespaces.
-<a name="line4"></a> *
-<a name="line5"></a> * This file was ported from the Java JCR API to PHP by
-<a name="line6"></a> * Karsten Dambekalns &lt;karsten@typo3.org&gt; for the FLOW3 project.
-<a name="line7"></a> *
-<a name="line8"></a> * It is free software; you can redistribute it and/or modify it under
-<a name="line9"></a> * the terms of the GNU Lesser General Public License as published by the
-<a name="line10"></a> * Free Software Foundation, either version 3 of the License, or (at your
-<a name="line11"></a> * option) any later version. Alternatively, you may use the Simplified
-<a name="line12"></a> * BSD License.
-<a name="line13"></a> *
-<a name="line14"></a> * This script is distributed in the hope that it will be useful, but
-<a name="line15"></a> * WITHOUT ANY WARRANTY; without even the implied warranty of MERCHAN-
-<a name="line16"></a> * TABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser
-<a name="line17"></a> * General Public License for more details.
-<a name="line18"></a> *
-<a name="line19"></a> * You should have received a copy of the GNU Lesser General Public
-<a name="line20"></a> * License along with the script.
-<a name="line21"></a> * If not, see {@link http://www.gnu.org/licenses/lgpl.html}.
-<a name="line22"></a> *
-<a name="line23"></a> * The TYPO3 project - inspiring people to share!
-<a name="line24"></a> *
-<a name="line25"></a> * @license http://www.gnu.org/licenses/lgpl.html GNU Lesser General Public License, version 3 or later
-<a name="line26"></a> * @license http://opensource.org/licenses/bsd-license.php Simplified BSD License
-<a name="line27"></a> *
-<a name="line28"></a> * @package phpcr
-<a name="line29"></a> * @subpackage interfaces
-<a name="line30"></a> */</span>
-<a name="line31"></a>&nbsp;
-<a name="line32"></a><span style="color: #000000; font-weight: bold;">namespace</span> PHPCR<span style="color: #339933;">;</span>
-<a name="line33"></a>&nbsp;
-<a name="line34"></a><span style="color: #009933; font-style: italic;">/**
-<a name="line35"></a> * Defines an interface to implement a single namespace registry.
+<a name="line2"></a>&nbsp;
+<a name="line3"></a><span style="color: #009933; font-style: italic;">/**
+<a name="line4"></a> * This file is part of the PHPCR API and was originally ported from the Java
+<a name="line5"></a> * JCR API to PHP by Karsten Dambekalns for the FLOW3 project.
+<a name="line6"></a> *
+<a name="line7"></a> * Copyright 2008-2011 Karsten Dambekalns &lt;karsten@typo3.org&gt;
+<a name="line8"></a> *
+<a name="line9"></a> * Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
+<a name="line10"></a> * you may not use this file except in compliance with the License.
+<a name="line11"></a> * You may obtain a copy of the License at
+<a name="line12"></a> *
+<a name="line13"></a> *     http://www.apache.org/licenses/LICENSE-2.0
+<a name="line14"></a> *
+<a name="line15"></a> * Unless required by applicable law or agreed to in writing, software
+<a name="line16"></a> * distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+<a name="line17"></a> * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+<a name="line18"></a> * See the License for the specific language governing permissions and
+<a name="line19"></a> * limitations under the License.
+<a name="line20"></a> *
+<a name="line21"></a> * @license http://www.apache.org/licenses/LICENSE-2.0 Apache Software License 2.0
+<a name="line22"></a> * @link http://phpcr.github.com/
+<a name="line23"></a>*/</span>
+<a name="line24"></a>&nbsp;
+<a name="line25"></a><span style="color: #000000; font-weight: bold;">namespace</span> PHPCR<span style="color: #339933;">;</span>
+<a name="line26"></a>&nbsp;
+<a name="line27"></a><span style="color: #009933; font-style: italic;">/**
+<a name="line28"></a> * Defines an interface to implement a single namespace registry.
+<a name="line29"></a> *
+<a name="line30"></a> * Each repository has a single, persistent namespace registry represented by
+<a name="line31"></a> * the NamespaceRegistry object, accessed via Workspace.getNamespaceRegistry().
+<a name="line32"></a> * The namespace registry contains the default prefixes of the registered
+<a name="line33"></a> * namespaces. The namespace registry may contain namespaces that are not used
+<a name="line34"></a> * in repository content, and there may be repository content with namespaces
+<a name="line35"></a> * that are not included n the registry.
 <a name="line36"></a> *
-<a name="line37"></a> * Each repository has a single, persistent namespace registry represented by
-<a name="line38"></a> * the NamespaceRegistry object, accessed via Workspace.getNamespaceRegistry().
-<a name="line39"></a> * The namespace registry contains the default prefixes of the registered
-<a name="line40"></a> * namespaces. The namespace registry may contain namespaces that are not used
-<a name="line41"></a> * in repository content, and there may be repository content with namespaces
-<a name="line42"></a> * that are not included n the registry.
+<a name="line37"></a> * The \Traversable interface enables the implementation to be addressed with
+<a name="line38"></a> * &lt;b&gt;foreach&lt;/b&gt;. NamespaceRegistry has to implement either \IteratorAggregate
+<a name="line39"></a> * or \Iterator.
+<a name="line40"></a> * The iterator lets you iterate over all namespaces, with the prefixes as keys
+<a name="line41"></a> * and corresponding url as value.
+<a name="line42"></a> *
 <a name="line43"></a> *
-<a name="line44"></a> * The \Traversable interface enables the implementation to be addressed with
-<a name="line45"></a> * &lt;b&gt;foreach&lt;/b&gt;. NamespaceRegistry has to implement either \IteratorAggregate
-<a name="line46"></a> * or \Iterator.
-<a name="line47"></a> * The iterator lets you iterate over all namespaces, with the prefixes as keys
-<a name="line48"></a> * and corresponding url as value.
-<a name="line49"></a> *
-<a name="line50"></a> *
-<a name="line51"></a> * @package phpcr
-<a name="line52"></a> * @subpackage interfaces
-<a name="line53"></a> * @api
-<a name="line54"></a> */</span>
-<a name="line55"></a><span style="color: #000000; font-weight: bold;">interface</span> NamespaceRegistryInterface <span style="color: #000000; font-weight: bold;">extends</span> \Traversable <span style="color: #009900;">&#123;</span>
-<a name="line56"></a>&nbsp;
-<a name="line57"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line58"></a>     * A constant for the predefined namespace prefix &quot;jcr&quot;.
-<a name="line59"></a>     * @api
-<a name="line60"></a>     */</span>
-<a name="line61"></a>    <span style="color: #000000; font-weight: bold;">const</span> PREFIX_JCR <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;jcr&quot;</span><span style="color: #339933;">;</span>
-<a name="line62"></a>&nbsp;
-<a name="line63"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line64"></a>     * A constant for the predefined namespace prefix &quot;nt&quot;.
-<a name="line65"></a>     * @api
-<a name="line66"></a>     */</span>
-<a name="line67"></a>    <span style="color: #000000; font-weight: bold;">const</span> PREFIX_NT <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;nt&quot;</span><span style="color: #339933;">;</span>
-<a name="line68"></a>&nbsp;
-<a name="line69"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line70"></a>     * A constant for the predefined namespace prefix &quot;mix&quot;.
-<a name="line71"></a>     * @api
-<a name="line72"></a>     */</span>
-<a name="line73"></a>    <span style="color: #000000; font-weight: bold;">const</span> PREFIX_MIX <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;mix&quot;</span><span style="color: #339933;">;</span>
-<a name="line74"></a>&nbsp;
-<a name="line75"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line76"></a>     * A constant for the predefined namespace prefix &quot;xml&quot;.
-<a name="line77"></a>     * @api
-<a name="line78"></a>     */</span>
-<a name="line79"></a>    <span style="color: #000000; font-weight: bold;">const</span> PREFIX_XML <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;xml&quot;</span><span style="color: #339933;">;</span>
-<a name="line80"></a>&nbsp;
-<a name="line81"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line82"></a>     * A constant for the predefined namespace prefix &quot;&quot; (the empty prefix).
-<a name="line83"></a>     * @api
-<a name="line84"></a>     */</span>
-<a name="line85"></a>    <span style="color: #000000; font-weight: bold;">const</span> PREFIX_EMPTY <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;&quot;</span><span style="color: #339933;">;</span>
-<a name="line86"></a>&nbsp;
-<a name="line87"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line88"></a>     * A constant for the predefined namespace mapped by default to the prefix &quot;jcr&quot;
-<a name="line89"></a>     * @api
-<a name="line90"></a>     */</span>
-<a name="line91"></a>    <span style="color: #000000; font-weight: bold;">const</span> NAMESPACE_JCR <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;http://www.jcp.org/jcr/1.0&quot;</span><span style="color: #339933;">;</span>
-<a name="line92"></a>&nbsp;
-<a name="line93"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line94"></a>     * A constant for the predefined namespace mapped by default to the prefix &quot;nt&quot;
-<a name="line95"></a>     * @api
-<a name="line96"></a>     */</span>
-<a name="line97"></a>    <span style="color: #000000; font-weight: bold;">const</span> NAMESPACE_NT <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;http://www.jcp.org/jcr/nt/1.0&quot;</span><span style="color: #339933;">;</span>
-<a name="line98"></a>&nbsp;
-<a name="line99"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line100"></a>     * A constant for the predefined namespace mapped by default to the prefix &quot;mix&quot;
-<a name="line101"></a>     * @api
-<a name="line102"></a>     */</span>
-<a name="line103"></a>    <span style="color: #000000; font-weight: bold;">const</span> NAMESPACE_MIX <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;http://www.jcp.org/jcr/mix/1.0&quot;</span><span style="color: #339933;">;</span>
-<a name="line104"></a>&nbsp;
-<a name="line105"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line106"></a>     * A constant for the predefined namespace mapped by default to the prefix &quot;xml&quot;
-<a name="line107"></a>     * @api
-<a name="line108"></a>     */</span>
-<a name="line109"></a>    <span style="color: #000000; font-weight: bold;">const</span> NAMESPACE_XML <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;http://www.w3.org/XML/1998/namespace&quot;</span><span style="color: #339933;">;</span>
-<a name="line110"></a>&nbsp;
-<a name="line111"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line112"></a>     * A constant for the predefined namespace mapped by default to the prefix &quot;&quot; (the empty prefix)
-<a name="line113"></a>     * @api
-<a name="line114"></a>     */</span>
-<a name="line115"></a>    <span style="color: #000000; font-weight: bold;">const</span> NAMESPACE_EMPTY <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;&quot;</span><span style="color: #339933;">;</span>
-<a name="line116"></a>&nbsp;
-<a name="line117"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line118"></a>     * Sets a one-to-one mapping between prefix and uri in the global namespace
-<a name="line119"></a>     * registry of this repository.
-<a name="line120"></a>     * Assigning a new prefix to a URI that already exists in the namespace
-<a name="line121"></a>     * registry erases the old prefix. In general this can almost always be
-<a name="line122"></a>     * done, though an implementation is free to prevent particular
-<a name="line123"></a>     * remappings by throwing a NamespaceException.
-<a name="line124"></a>     *
-<a name="line125"></a>     * On the other hand, taking a prefix that is already assigned to a URI
-<a name="line126"></a>     * and re-assigning it to a new URI in effect unregisters that URI.
-<a name="line127"></a>     * Therefore, the same restrictions apply to this operation as to
-<a name="line128"></a>     * NamespaceRegistry.unregisterNamespace:
-<a name="line129"></a>     * * Attempting to re-assign a built-in prefix (jcr, nt, mix, sv, xml,
-<a name="line130"></a>     *   or the empty prefix) to a new URI will throw a
-<a name="line131"></a>     *   \PHPCR\NamespaceException.
-<a name="line132"></a>     * * Attempting to register a namespace with a prefix that begins with
-<a name="line133"></a>     *   the characters &quot;xml&quot; (in any combination of case) will throw a
-<a name="line134"></a>     *   \PHPCR\NamespaceException.
-<a name="line135"></a>     * * An implementation may prevent the re-assignment of any other namespace
-<a name="line136"></a>     *   prefixes for implementation-specific reasons by throwing a
-<a name="line137"></a>     *   \PHPCR\NamespaceException.
-<a name="line138"></a>     *
-<a name="line139"></a>     * @param string $prefix The prefix to be mapped.
-<a name="line140"></a>     * @param string $uri The URI to be mapped.
-<a name="line141"></a>     * @return void
-<a name="line142"></a>     * @throws \PHPCR\NamespaceException If an attempt is made to re-assign a built-in prefix to a new URI or, to register a namespace with a prefix that begins with the characters &quot;xml&quot; (in any combination of case) or an attempt is made to perform a prefix re-assignment that is forbidden for implementation-specific reasons.
-<a name="line143"></a>     * @throws \PHPCR\UnsupportedRepositoryOperationException if this repository does not support namespace registry changes.
-<a name="line144"></a>     * @throws \PHPCR\AccessDeniedException if the current session does not have sufficient access to register the namespace.
-<a name="line145"></a>     * @throws \PHPCR\RepositoryException if another error occurs.
-<a name="line146"></a>     * @api
-<a name="line147"></a>     */</span>
-<a name="line148"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> registerNamespace<span style="color: #009900;">&#40;</span><span style="color: #000088;">$prefix</span><span style="color: #339933;">,</span> <span style="color: #000088;">$uri</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line149"></a>&nbsp;
-<a name="line150"></a>&nbsp;
-<a name="line151"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line152"></a>     * Removes a namespace mapping from the registry. The following restriction
-<a name="line153"></a>     * apply:
-<a name="line154"></a>     * * Attempting to unregister a built-in namespace (jcr, nt, mix, sv, xml or
-<a name="line155"></a>     *   the empty namespace) will throw a \PHPCR\NamespaceException.
-<a name="line156"></a>     * * An attempt to unregister a namespace that is not currently registered
-<a name="line157"></a>     *   will throw a \PHPCR\NamespaceException.
-<a name="line158"></a>     * * An implementation may prevent the unregistering of any other namespace
-<a name="line159"></a>     *   for implementation-specific reasons by throwing a
-<a name="line160"></a>     *   \PHPCR\NamespaceException.
-<a name="line161"></a>     *
-<a name="line162"></a>     * @param string $prefix The prefix of the mapping to be removed.
-<a name="line163"></a>     * @return void
-<a name="line164"></a>     * @throws \PHPCR\NamespaceException unregister a built-in namespace or a namespace that is not currently registered or a namespace whose unregsitration is forbidden for implementation-specific reasons.
-<a name="line165"></a>     * @throws \PHPCR\UnsupportedRepositoryOperationException if this repository does not support namespace registry changes.
-<a name="line166"></a>     * @throws \PHPCR\AccessDeniedException if the current session does not have sufficient access to unregister the namespace.
-<a name="line167"></a>     * @throws \PHPCR\RepositoryException if another error occurs.
-<a name="line168"></a>     * @api
-<a name="line169"></a>     */</span>
-<a name="line170"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> unregisterNamespace<span style="color: #009900;">&#40;</span><span style="color: #000088;">$prefix</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line171"></a>&nbsp;
-<a name="line172"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line173"></a>     * Returns an array holding all currently registered prefixes.
-<a name="line174"></a>     *
-<a name="line175"></a>     * @return array a string array
-<a name="line176"></a>     * @throws \PHPCR\RepositoryException if an error occurs.
-<a name="line177"></a>     * @api
-<a name="line178"></a>     */</span>
-<a name="line179"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getPrefixes<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line180"></a>&nbsp;
-<a name="line181"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line182"></a>     * Returns an array holding all currently registered URIs.
-<a name="line183"></a>     *
-<a name="line184"></a>     * @return array a string array
-<a name="line185"></a>     * @throws \PHPCR\RepositoryException if an error occurs.
-<a name="line186"></a>     * @api
-<a name="line187"></a>     */</span>
-<a name="line188"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getURIs<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line189"></a>&nbsp;
-<a name="line190"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line191"></a>     * Returns the URI to which the given prefix is mapped.
-<a name="line192"></a>     *
-<a name="line193"></a>     * @param string $prefix a string
-<a name="line194"></a>     * @return string a string
-<a name="line195"></a>     * @throws \PHPCR\NamespaceException if a mapping with the specified prefix does not exist.
-<a name="line196"></a>     * @throws \PHPCR\RepositoryException if another error occurs
-<a name="line197"></a>     * @api
-<a name="line198"></a>     */</span>
-<a name="line199"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getURI<span style="color: #009900;">&#40;</span><span style="color: #000088;">$prefix</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line200"></a>&nbsp;
-<a name="line201"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line202"></a>     * Returns the prefix which is mapped to the given uri.
-<a name="line203"></a>     *
-<a name="line204"></a>     * @param string $uri a string
-<a name="line205"></a>     * @return string a string
-<a name="line206"></a>     * @throws \PHPCR\NamespaceException if a mapping with the specified uri does not exist.
-<a name="line207"></a>     * @throws \PHPCR\RepositoryException if another error occurs
-<a name="line208"></a>     * @api
-<a name="line209"></a>     */</span>
-<a name="line210"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getPrefix<span style="color: #009900;">&#40;</span><span style="color: #000088;">$uri</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line211"></a>&nbsp;
-<a name="line212"></a><span style="color: #009900;">&#125;</span>
-<a name="line213"></a>&nbsp;</pre>
+<a name="line44"></a> * @package phpcr
+<a name="line45"></a> * @subpackage interfaces
+<a name="line46"></a> * @api
+<a name="line47"></a> */</span>
+<a name="line48"></a><span style="color: #000000; font-weight: bold;">interface</span> NamespaceRegistryInterface <span style="color: #000000; font-weight: bold;">extends</span> \Traversable
+<a name="line49"></a><span style="color: #009900;">&#123;</span>
+<a name="line50"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line51"></a>     * A constant for the predefined namespace prefix &quot;jcr&quot;.
+<a name="line52"></a>     * @api
+<a name="line53"></a>     */</span>
+<a name="line54"></a>    <span style="color: #000000; font-weight: bold;">const</span> PREFIX_JCR <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;jcr&quot;</span><span style="color: #339933;">;</span>
+<a name="line55"></a>&nbsp;
+<a name="line56"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line57"></a>     * A constant for the predefined namespace prefix &quot;nt&quot;.
+<a name="line58"></a>     * @api
+<a name="line59"></a>     */</span>
+<a name="line60"></a>    <span style="color: #000000; font-weight: bold;">const</span> PREFIX_NT <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;nt&quot;</span><span style="color: #339933;">;</span>
+<a name="line61"></a>&nbsp;
+<a name="line62"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line63"></a>     * A constant for the predefined namespace prefix &quot;mix&quot;.
+<a name="line64"></a>     * @api
+<a name="line65"></a>     */</span>
+<a name="line66"></a>    <span style="color: #000000; font-weight: bold;">const</span> PREFIX_MIX <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;mix&quot;</span><span style="color: #339933;">;</span>
+<a name="line67"></a>&nbsp;
+<a name="line68"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line69"></a>     * A constant for the predefined namespace prefix &quot;xml&quot;.
+<a name="line70"></a>     * @api
+<a name="line71"></a>     */</span>
+<a name="line72"></a>    <span style="color: #000000; font-weight: bold;">const</span> PREFIX_XML <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;xml&quot;</span><span style="color: #339933;">;</span>
+<a name="line73"></a>&nbsp;
+<a name="line74"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line75"></a>     * A constant for the predefined namespace prefix &quot;&quot; (the empty prefix).
+<a name="line76"></a>     * @api
+<a name="line77"></a>     */</span>
+<a name="line78"></a>    <span style="color: #000000; font-weight: bold;">const</span> PREFIX_EMPTY <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;&quot;</span><span style="color: #339933;">;</span>
+<a name="line79"></a>&nbsp;
+<a name="line80"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line81"></a>     * A constant for the predefined namespace mapped by default to the prefix &quot;jcr&quot;
+<a name="line82"></a>     * @api
+<a name="line83"></a>     */</span>
+<a name="line84"></a>    <span style="color: #000000; font-weight: bold;">const</span> NAMESPACE_JCR <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;http://www.jcp.org/jcr/1.0&quot;</span><span style="color: #339933;">;</span>
+<a name="line85"></a>&nbsp;
+<a name="line86"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line87"></a>     * A constant for the predefined namespace mapped by default to the prefix &quot;nt&quot;
+<a name="line88"></a>     * @api
+<a name="line89"></a>     */</span>
+<a name="line90"></a>    <span style="color: #000000; font-weight: bold;">const</span> NAMESPACE_NT <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;http://www.jcp.org/jcr/nt/1.0&quot;</span><span style="color: #339933;">;</span>
+<a name="line91"></a>&nbsp;
+<a name="line92"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line93"></a>     * A constant for the predefined namespace mapped by default to the prefix &quot;mix&quot;
+<a name="line94"></a>     * @api
+<a name="line95"></a>     */</span>
+<a name="line96"></a>    <span style="color: #000000; font-weight: bold;">const</span> NAMESPACE_MIX <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;http://www.jcp.org/jcr/mix/1.0&quot;</span><span style="color: #339933;">;</span>
+<a name="line97"></a>&nbsp;
+<a name="line98"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line99"></a>     * A constant for the predefined namespace mapped by default to the prefix &quot;xml&quot;
+<a name="line100"></a>     * @api
+<a name="line101"></a>     */</span>
+<a name="line102"></a>    <span style="color: #000000; font-weight: bold;">const</span> NAMESPACE_XML <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;http://www.w3.org/XML/1998/namespace&quot;</span><span style="color: #339933;">;</span>
+<a name="line103"></a>&nbsp;
+<a name="line104"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line105"></a>     * A constant for the predefined namespace mapped by default to the prefix &quot;&quot; (the empty prefix)
+<a name="line106"></a>     * @api
+<a name="line107"></a>     */</span>
+<a name="line108"></a>    <span style="color: #000000; font-weight: bold;">const</span> NAMESPACE_EMPTY <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;&quot;</span><span style="color: #339933;">;</span>
+<a name="line109"></a>&nbsp;
+<a name="line110"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line111"></a>     * Sets a one-to-one mapping between prefix and uri in the global namespace
+<a name="line112"></a>     * registry of this repository.
+<a name="line113"></a>     * Assigning a new prefix to a URI that already exists in the namespace
+<a name="line114"></a>     * registry erases the old prefix. In general this can almost always be
+<a name="line115"></a>     * done, though an implementation is free to prevent particular
+<a name="line116"></a>     * remappings by throwing a NamespaceException.
+<a name="line117"></a>     *
+<a name="line118"></a>     * On the other hand, taking a prefix that is already assigned to a URI
+<a name="line119"></a>     * and re-assigning it to a new URI in effect unregisters that URI.
+<a name="line120"></a>     * Therefore, the same restrictions apply to this operation as to
+<a name="line121"></a>     * NamespaceRegistry.unregisterNamespace:
+<a name="line122"></a>     * * Attempting to re-assign a built-in prefix (jcr, nt, mix, sv, xml,
+<a name="line123"></a>     *   or the empty prefix) to a new URI will throw a
+<a name="line124"></a>     *   \PHPCR\NamespaceException.
+<a name="line125"></a>     * * Attempting to register a namespace with a prefix that begins with
+<a name="line126"></a>     *   the characters &quot;xml&quot; (in any combination of case) will throw a
+<a name="line127"></a>     *   \PHPCR\NamespaceException.
+<a name="line128"></a>     * * An implementation may prevent the re-assignment of any other namespace
+<a name="line129"></a>     *   prefixes for implementation-specific reasons by throwing a
+<a name="line130"></a>     *   \PHPCR\NamespaceException.
+<a name="line131"></a>     *
+<a name="line132"></a>     * @param string $prefix The prefix to be mapped.
+<a name="line133"></a>     * @param string $uri The URI to be mapped.
+<a name="line134"></a>     * @return void
+<a name="line135"></a>     * @throws \PHPCR\NamespaceException If an attempt is made to re-assign a built-in prefix to a new URI or, to register a namespace with a prefix that begins with the characters &quot;xml&quot; (in any combination of case) or an attempt is made to perform a prefix re-assignment that is forbidden for implementation-specific reasons.
+<a name="line136"></a>     * @throws \PHPCR\UnsupportedRepositoryOperationException if this repository does not support namespace registry changes.
+<a name="line137"></a>     * @throws \PHPCR\AccessDeniedException if the current session does not have sufficient access to register the namespace.
+<a name="line138"></a>     * @throws \PHPCR\RepositoryException if another error occurs.
+<a name="line139"></a>     * @api
+<a name="line140"></a>     */</span>
+<a name="line141"></a>    <span style="color: #000000; font-weight: bold;">function</span> registerNamespace<span style="color: #009900;">&#40;</span><span style="color: #000088;">$prefix</span><span style="color: #339933;">,</span> <span style="color: #000088;">$uri</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line142"></a>&nbsp;
+<a name="line143"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line144"></a>     * Removes a namespace mapping from the registry. The following restriction
+<a name="line145"></a>     * apply:
+<a name="line146"></a>     * * Attempting to unregister a built-in namespace (jcr, nt, mix, sv, xml or
+<a name="line147"></a>     *   the empty namespace) will throw a \PHPCR\NamespaceException.
+<a name="line148"></a>     * * An attempt to unregister a namespace that is not currently registered
+<a name="line149"></a>     *   will throw a \PHPCR\NamespaceException.
+<a name="line150"></a>     * * An implementation may prevent the unregistering of any other namespace
+<a name="line151"></a>     *   for implementation-specific reasons by throwing a
+<a name="line152"></a>     *   \PHPCR\NamespaceException.
+<a name="line153"></a>     *
+<a name="line154"></a>     * @param string $prefix The prefix of the mapping to be removed.
+<a name="line155"></a>     * @return void
+<a name="line156"></a>     * @throws \PHPCR\NamespaceException unregister a built-in namespace or a namespace that is not currently registered or a namespace whose unregistration is forbidden for implementation-specific reasons.
+<a name="line157"></a>     * @throws \PHPCR\UnsupportedRepositoryOperationException if this repository does not support namespace registry changes.
+<a name="line158"></a>     * @throws \PHPCR\AccessDeniedException if the current session does not have sufficient access to unregister the namespace.
+<a name="line159"></a>     * @throws \PHPCR\RepositoryException if another error occurs.
+<a name="line160"></a>     * @api
+<a name="line161"></a>     */</span>
+<a name="line162"></a>    <span style="color: #000000; font-weight: bold;">function</span> unregisterNamespace<span style="color: #009900;">&#40;</span><span style="color: #000088;">$prefix</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line163"></a>&nbsp;
+<a name="line164"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line165"></a>     * Returns an array holding all currently registered prefixes.
+<a name="line166"></a>     *
+<a name="line167"></a>     * @return array a string array
+<a name="line168"></a>     * @throws \PHPCR\RepositoryException if an error occurs.
+<a name="line169"></a>     * @api
+<a name="line170"></a>     */</span>
+<a name="line171"></a>    <span style="color: #000000; font-weight: bold;">function</span> getPrefixes<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line172"></a>&nbsp;
+<a name="line173"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line174"></a>     * Returns an array holding all currently registered URIs.
+<a name="line175"></a>     *
+<a name="line176"></a>     * @return array a string array
+<a name="line177"></a>     * @throws \PHPCR\RepositoryException if an error occurs.
+<a name="line178"></a>     * @api
+<a name="line179"></a>     */</span>
+<a name="line180"></a>    <span style="color: #000000; font-weight: bold;">function</span> getURIs<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line181"></a>&nbsp;
+<a name="line182"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line183"></a>     * Returns the URI to which the given prefix is mapped.
+<a name="line184"></a>     *
+<a name="line185"></a>     * @param string $prefix a string
+<a name="line186"></a>     * @return string a string
+<a name="line187"></a>     * @throws \PHPCR\NamespaceException if a mapping with the specified prefix does not exist.
+<a name="line188"></a>     * @throws \PHPCR\RepositoryException if another error occurs
+<a name="line189"></a>     * @api
+<a name="line190"></a>     */</span>
+<a name="line191"></a>    <span style="color: #000000; font-weight: bold;">function</span> getURI<span style="color: #009900;">&#40;</span><span style="color: #000088;">$prefix</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line192"></a>&nbsp;
+<a name="line193"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line194"></a>     * Returns the prefix which is mapped to the given uri.
+<a name="line195"></a>     *
+<a name="line196"></a>     * @param string $uri a string
+<a name="line197"></a>     * @return string a string
+<a name="line198"></a>     * @throws \PHPCR\NamespaceException if a mapping with the specified uri does not exist.
+<a name="line199"></a>     * @throws \PHPCR\RepositoryException if another error occurs
+<a name="line200"></a>     * @api
+<a name="line201"></a>     */</span>
+<a name="line202"></a>    <span style="color: #000000; font-weight: bold;">function</span> getPrefix<span style="color: #009900;">&#40;</span><span style="color: #000088;">$uri</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line203"></a><span style="color: #009900;">&#125;</span>
+<a name="line204"></a>&nbsp;</pre>
 <div class="header">
 <h1>PHPCR</h1>
 <ul>

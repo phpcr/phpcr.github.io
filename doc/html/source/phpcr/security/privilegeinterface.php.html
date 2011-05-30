@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="generator" content="PHPDoctor 2RC4 (http://peej.github.com/phpdoctor/)">
-<meta name="when" content="Thu, 26 May 2011 12:55:57 +0000">
+<meta name="when" content="Mon, 30 May 2011 13:13:48 +0000">
 
 <link rel="stylesheet" type="text/css" href="../../../stylesheet.css">
 <link rel="start" href="../../../overview-summary.html">
@@ -34,257 +34,246 @@
 <hr>
 
 <h1>PHPCR/Security/PrivilegeInterface.php</h1>
-<div class="comment" id="overview_description"><p>Interface description of an implementation of a previlege.</p><p>This file was ported from the Java JCR API to PHP by
-Karsten Dambekalns <karsten@typo3.org> for the FLOW3 project.</p><p>It is free software; you can redistribute it and/or modify it under
-the terms of the GNU Lesser General Public License as published by the
-Free Software Foundation, either version 3 of the License, or (at your
-option) any later version. Alternatively, you may use the Simplified
-BSD License.</p><p>This script is distributed in the hope that it will be useful, but
-WITHOUT ANY WARRANTY; without even the implied warranty of MERCHAN-
-TABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser
-General Public License for more details.</p><p>You should have received a copy of the GNU Lesser General Public
-License along with the script.
-If not, see <code><a href="http://www.gnu.org/licenses/lgpl.html">http://www.gnu.org/licenses/lgpl.html</a></code>.</p><p>The TYPO3 project - inspiring people to share!</p></div>
+<div class="comment" id="overview_description"><p>This file is part of the PHPCR API and was originally ported from the Java
+JCR API to PHP by Karsten Dambekalns for the FLOW3 project.</p><p>Copyright 2008-2011 Karsten Dambekalns <karsten@typo3.org></p><p>Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at</p><p>http://www.apache.org/licenses/LICENSE-2.0</p><p>Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.</p></div>
 
 <hr>
 
 <a name="line1"></a><pre class="php" style="font-family:monospace;"><span style="color: #000000; font-weight: bold;">&lt;?php</span>
-<a name="line2"></a><span style="color: #009933; font-style: italic;">/**
-<a name="line3"></a> * Interface description of an implementation of a previlege.
-<a name="line4"></a> *
-<a name="line5"></a> * This file was ported from the Java JCR API to PHP by
-<a name="line6"></a> * Karsten Dambekalns &lt;karsten@typo3.org&gt; for the FLOW3 project.
-<a name="line7"></a> *
-<a name="line8"></a> * It is free software; you can redistribute it and/or modify it under
-<a name="line9"></a> * the terms of the GNU Lesser General Public License as published by the
-<a name="line10"></a> * Free Software Foundation, either version 3 of the License, or (at your
-<a name="line11"></a> * option) any later version. Alternatively, you may use the Simplified
-<a name="line12"></a> * BSD License.
-<a name="line13"></a> *
-<a name="line14"></a> * This script is distributed in the hope that it will be useful, but
-<a name="line15"></a> * WITHOUT ANY WARRANTY; without even the implied warranty of MERCHAN-
-<a name="line16"></a> * TABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser
-<a name="line17"></a> * General Public License for more details.
-<a name="line18"></a> *
-<a name="line19"></a> * You should have received a copy of the GNU Lesser General Public
-<a name="line20"></a> * License along with the script.
-<a name="line21"></a> * If not, see {@link http://www.gnu.org/licenses/lgpl.html}.
-<a name="line22"></a> *
-<a name="line23"></a> * The TYPO3 project - inspiring people to share!
-<a name="line24"></a> *
-<a name="line25"></a> * @license http://www.gnu.org/licenses/lgpl.html GNU Lesser General Public License, version 3 or later
-<a name="line26"></a> * @license http://opensource.org/licenses/bsd-license.php Simplified BSD License
-<a name="line27"></a> *
-<a name="line28"></a> * @package phpcr
-<a name="line29"></a> * @subpackage interfaces
-<a name="line30"></a> */</span>
-<a name="line31"></a>&nbsp;
-<a name="line32"></a><span style="color: #000000; font-weight: bold;">namespace</span> PHPCR\Security<span style="color: #339933;">;</span>
-<a name="line33"></a>&nbsp;
-<a name="line34"></a><span style="color: #009933; font-style: italic;">/**
-<a name="line35"></a> * A privilege represents the capability of performing a particular set of
-<a name="line36"></a> * operations on items in the JCR repository. Each privilege is identified by a
-<a name="line37"></a> * JCR name. JCR defines a set of standard privileges in the jcr namespace.
-<a name="line38"></a> * Implementations may add additional privileges in namespaces other than jcr.
-<a name="line39"></a> *
-<a name="line40"></a> * A privilege may be an aggregate privilege. Aggregate privileges are sets of
-<a name="line41"></a> * other privileges. Granting, denying, or testing an aggregate privilege is
-<a name="line42"></a> * equivalent to individually granting, denying, or testing each privilege it
-<a name="line43"></a> * contains. The privileges contained by an aggregate privilege may themselves
-<a name="line44"></a> * be aggregate privileges if the resulting privilege graph is acyclic.
-<a name="line45"></a> *
-<a name="line46"></a> * A privilege may be an abstract privilege. Abstract privileges cannot themselves
-<a name="line47"></a> * be granted or denied, but can be composed into aggregate privileges which are
-<a name="line48"></a> * granted or denied.
-<a name="line49"></a> *
-<a name="line50"></a> * A privilege can be both aggregate and abstract.
-<a name="line51"></a> *
-<a name="line52"></a> * @package phpcr
-<a name="line53"></a> * @subpackage interfaces
-<a name="line54"></a> * @api
-<a name="line55"></a> */</span>
-<a name="line56"></a><span style="color: #000000; font-weight: bold;">interface</span> PrivilegeInterface <span style="color: #009900;">&#123;</span>
-<a name="line57"></a>&nbsp;
-<a name="line58"></a>    <span style="color: #009933; font-style: italic;">/**#@+
-<a name="line59"></a>     * @var string
-<a name="line60"></a>     */</span>
+<a name="line2"></a>&nbsp;
+<a name="line3"></a><span style="color: #009933; font-style: italic;">/**
+<a name="line4"></a> * This file is part of the PHPCR API and was originally ported from the Java
+<a name="line5"></a> * JCR API to PHP by Karsten Dambekalns for the FLOW3 project.
+<a name="line6"></a> *
+<a name="line7"></a> * Copyright 2008-2011 Karsten Dambekalns &lt;karsten@typo3.org&gt;
+<a name="line8"></a> *
+<a name="line9"></a> * Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
+<a name="line10"></a> * you may not use this file except in compliance with the License.
+<a name="line11"></a> * You may obtain a copy of the License at
+<a name="line12"></a> *
+<a name="line13"></a> *     http://www.apache.org/licenses/LICENSE-2.0
+<a name="line14"></a> *
+<a name="line15"></a> * Unless required by applicable law or agreed to in writing, software
+<a name="line16"></a> * distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+<a name="line17"></a> * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+<a name="line18"></a> * See the License for the specific language governing permissions and
+<a name="line19"></a> * limitations under the License.
+<a name="line20"></a> *
+<a name="line21"></a> * @license http://www.apache.org/licenses/LICENSE-2.0 Apache Software License 2.0
+<a name="line22"></a> * @link http://phpcr.github.com/
+<a name="line23"></a>*/</span>
+<a name="line24"></a>&nbsp;
+<a name="line25"></a><span style="color: #000000; font-weight: bold;">namespace</span> PHPCR\Security<span style="color: #339933;">;</span>
+<a name="line26"></a>&nbsp;
+<a name="line27"></a><span style="color: #009933; font-style: italic;">/**
+<a name="line28"></a> * A privilege represents the capability of performing a particular set of
+<a name="line29"></a> * operations on items in the JCR repository. Each privilege is identified by a
+<a name="line30"></a> * JCR name. JCR defines a set of standard privileges in the jcr namespace.
+<a name="line31"></a> * Implementations may add additional privileges in namespaces other than jcr.
+<a name="line32"></a> *
+<a name="line33"></a> * A privilege may be an aggregate privilege. Aggregate privileges are sets of
+<a name="line34"></a> * other privileges. Granting, denying, or testing an aggregate privilege is
+<a name="line35"></a> * equivalent to individually granting, denying, or testing each privilege it
+<a name="line36"></a> * contains. The privileges contained by an aggregate privilege may themselves
+<a name="line37"></a> * be aggregate privileges if the resulting privilege graph is acyclic.
+<a name="line38"></a> *
+<a name="line39"></a> * A privilege may be an abstract privilege. Abstract privileges cannot themselves
+<a name="line40"></a> * be granted or denied, but can be composed into aggregate privileges which are
+<a name="line41"></a> * granted or denied.
+<a name="line42"></a> *
+<a name="line43"></a> * A privilege can be both aggregate and abstract.
+<a name="line44"></a> *
+<a name="line45"></a> * @package phpcr
+<a name="line46"></a> * @subpackage interfaces
+<a name="line47"></a> * @api
+<a name="line48"></a> */</span>
+<a name="line49"></a><span style="color: #000000; font-weight: bold;">interface</span> PrivilegeInterface
+<a name="line50"></a><span style="color: #009900;">&#123;</span>
+<a name="line51"></a>    <span style="color: #009933; font-style: italic;">/**#@+
+<a name="line52"></a>     * @var string
+<a name="line53"></a>     */</span>
+<a name="line54"></a>&nbsp;
+<a name="line55"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line56"></a>     * A constant representing jcr:read (in extended form), the privilege to retrieve
+<a name="line57"></a>     * a node and get its properties and their values.
+<a name="line58"></a>     * @api
+<a name="line59"></a>     */</span>
+<a name="line60"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_READ <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/1.0}read&quot;</span><span style="color: #339933;">;</span>
 <a name="line61"></a>&nbsp;
 <a name="line62"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line63"></a>     * A constant representing jcr:read (in extended form), the privilege to retrieve
-<a name="line64"></a>     * a node and get its properties and their values.
+<a name="line63"></a>     * A constant representing jcr:modifyProperties (in extended form), the privilege
+<a name="line64"></a>     * to create, modify and remove the properties of a node.
 <a name="line65"></a>     * @api
 <a name="line66"></a>     */</span>
-<a name="line67"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_READ <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/1.0}read&quot;</span><span style="color: #339933;">;</span>
+<a name="line67"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_MODIFY_PROPERTIES <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/1.0}modifyProperties&quot;</span><span style="color: #339933;">;</span>
 <a name="line68"></a>&nbsp;
 <a name="line69"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line70"></a>     * A constant representing jcr:modifyProperties (in extended form), the privilege
-<a name="line71"></a>     * to create, modify and remove the properties of a node.
+<a name="line70"></a>     * A constant representing jcr:addChildNodes (in extended form), the privilege
+<a name="line71"></a>     * to create child nodes of a node.
 <a name="line72"></a>     * @api
 <a name="line73"></a>     */</span>
-<a name="line74"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_MODIFY_PROPERTIES <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/1.0}modifyProperties&quot;</span><span style="color: #339933;">;</span>
+<a name="line74"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_ADD_CHILD_NODES <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/1.0}addChildNodes&quot;</span><span style="color: #339933;">;</span>
 <a name="line75"></a>&nbsp;
 <a name="line76"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line77"></a>     * A constant representing jcr:addChildNodes (in extended form), the privilege
-<a name="line78"></a>     * to create child nodes of a node.
-<a name="line79"></a>     * @api
-<a name="line80"></a>     */</span>
-<a name="line81"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_ADD_CHILD_NODES <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/1.0}addChildNodes&quot;</span><span style="color: #339933;">;</span>
-<a name="line82"></a>&nbsp;
-<a name="line83"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line84"></a>     * A constant representing jcr:removeNode (in extended form), the privilege
-<a name="line85"></a>     * to remove a node.
-<a name="line86"></a>     *
-<a name="line87"></a>     * In order to actually remove a node requires jcr:removeNode on that node
-<a name="line88"></a>     * and jcr:removeChildNodes on the parent node.
-<a name="line89"></a>     *
-<a name="line90"></a>     * The distinction is provided in order to reflect implementations that internally model &quot;remove&quot;
-<a name="line91"></a>     * as a &quot;delete&quot; instead of a &quot;unlink&quot;. A repository that uses the &quot;delete&quot; model
-<a name="line92"></a>     * can have jcr:removeChildNodes in every access control policy, so that removal
-<a name="line93"></a>     * is effectively controlled by jcr:removeNode.
-<a name="line94"></a>     * @api
-<a name="line95"></a>     */</span>
-<a name="line96"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_REMOVE_NODE <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/1.0}removeNode&quot;</span><span style="color: #339933;">;</span>
-<a name="line97"></a>&nbsp;
-<a name="line98"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line99"></a>     * A constant representing jcr:removeChildNodes (in extended form), the privilege
-<a name="line100"></a>     * to remove child nodes of a node. In order to actually remove a node requires jcr:removeNode on that node
-<a name="line101"></a>     * and jcr:removeChildNodes on the parent node.
-<a name="line102"></a>     *
-<a name="line103"></a>     * The distinction is provided in order to reflect implementations that internally model &quot;remove&quot;
-<a name="line104"></a>     * as a &quot;unlink&quot; instead of a &quot;delete&quot;. A repository that uses the &quot;unlink&quot; model
-<a name="line105"></a>     * can have jcr:removeNode in every access control policy, so that removal
-<a name="line106"></a>     * is effectively controlled by jcr:removeChildNodes.
-<a name="line107"></a>     * @api
-<a name="line108"></a>     */</span>
-<a name="line109"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_REMOVE_CHILD_NODES <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/1.0}removeChildNodes&quot;</span><span style="color: #339933;">;</span>
-<a name="line110"></a>&nbsp;
-<a name="line111"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line112"></a>     * A constant representing jcr:write (in extended form), an aggregate privilege that contains:
-<a name="line113"></a>     * - jcr:modifyProperties
-<a name="line114"></a>     * - jcr:addChildNodes
-<a name="line115"></a>     * - jcr:removeNode
-<a name="line116"></a>     * - jcr:removeChildNodes
+<a name="line77"></a>     * A constant representing jcr:removeNode (in extended form), the privilege
+<a name="line78"></a>     * to remove a node.
+<a name="line79"></a>     *
+<a name="line80"></a>     * In order to actually remove a node requires jcr:removeNode on that node
+<a name="line81"></a>     * and jcr:removeChildNodes on the parent node.
+<a name="line82"></a>     *
+<a name="line83"></a>     * The distinction is provided in order to reflect implementations that internally model &quot;remove&quot;
+<a name="line84"></a>     * as a &quot;delete&quot; instead of a &quot;unlink&quot;. A repository that uses the &quot;delete&quot; model
+<a name="line85"></a>     * can have jcr:removeChildNodes in every access control policy, so that removal
+<a name="line86"></a>     * is effectively controlled by jcr:removeNode.
+<a name="line87"></a>     * @api
+<a name="line88"></a>     */</span>
+<a name="line89"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_REMOVE_NODE <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/1.0}removeNode&quot;</span><span style="color: #339933;">;</span>
+<a name="line90"></a>&nbsp;
+<a name="line91"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line92"></a>     * A constant representing jcr:removeChildNodes (in extended form), the privilege
+<a name="line93"></a>     * to remove child nodes of a node. In order to actually remove a node requires jcr:removeNode on that node
+<a name="line94"></a>     * and jcr:removeChildNodes on the parent node.
+<a name="line95"></a>     *
+<a name="line96"></a>     * The distinction is provided in order to reflect implementations that internally model &quot;remove&quot;
+<a name="line97"></a>     * as a &quot;unlink&quot; instead of a &quot;delete&quot;. A repository that uses the &quot;unlink&quot; model
+<a name="line98"></a>     * can have jcr:removeNode in every access control policy, so that removal
+<a name="line99"></a>     * is effectively controlled by jcr:removeChildNodes.
+<a name="line100"></a>     * @api
+<a name="line101"></a>     */</span>
+<a name="line102"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_REMOVE_CHILD_NODES <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/1.0}removeChildNodes&quot;</span><span style="color: #339933;">;</span>
+<a name="line103"></a>&nbsp;
+<a name="line104"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line105"></a>     * A constant representing jcr:write (in extended form), an aggregate privilege that contains:
+<a name="line106"></a>     * - jcr:modifyProperties
+<a name="line107"></a>     * - jcr:addChildNodes
+<a name="line108"></a>     * - jcr:removeNode
+<a name="line109"></a>     * - jcr:removeChildNodes
+<a name="line110"></a>     * @api
+<a name="line111"></a>     */</span>
+<a name="line112"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_WRITE <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/1.0}write&quot;</span><span style="color: #339933;">;</span>
+<a name="line113"></a>&nbsp;
+<a name="line114"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line115"></a>     * A constant representing jcr:readAccessControl (in extended form), the privilege
+<a name="line116"></a>     * to get the access control policy of a node.
 <a name="line117"></a>     * @api
 <a name="line118"></a>     */</span>
-<a name="line119"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_WRITE <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/1.0}write&quot;</span><span style="color: #339933;">;</span>
+<a name="line119"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_READ_ACCESS_CONTROL <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/1.0}readAccessControl&quot;</span><span style="color: #339933;">;</span>
 <a name="line120"></a>&nbsp;
 <a name="line121"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line122"></a>     * A constant representing jcr:readAccessControl (in extended form), the privilege
-<a name="line123"></a>     * to get the access control policy of a node.
+<a name="line122"></a>     * A constant representing jcr:modifyAccessControl (in extended form), the privilege
+<a name="line123"></a>     * to modify the access control policies of a node.
 <a name="line124"></a>     * @api
 <a name="line125"></a>     */</span>
-<a name="line126"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_READ_ACCESS_CONTROL <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/1.0}readAccessControl&quot;</span><span style="color: #339933;">;</span>
+<a name="line126"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_MODIFY_ACCESS_CONTROL <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/1.0}modifyAccessControl&quot;</span><span style="color: #339933;">;</span>
 <a name="line127"></a>&nbsp;
 <a name="line128"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line129"></a>     * A constant representing jcr:modifyAccessControl (in extended form), the privilege
-<a name="line130"></a>     * to modify the access control policies of a node.
+<a name="line129"></a>     * A constant representing jcr:lockManagement (in extended form), the
+<a name="line130"></a>     * privilege to lock and unlock a node.
 <a name="line131"></a>     * @api
 <a name="line132"></a>     */</span>
-<a name="line133"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_MODIFY_ACCESS_CONTROL <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/1.0}modifyAccessControl&quot;</span><span style="color: #339933;">;</span>
+<a name="line133"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_LOCK_MANAGEMENT <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/1.0}lockManagement&quot;</span><span style="color: #339933;">;</span>
 <a name="line134"></a>&nbsp;
 <a name="line135"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line136"></a>     * A constant representing jcr:lockManagement (in extended form), the
-<a name="line137"></a>     * privilege to lock and unlock a node.
+<a name="line136"></a>     * A constant representing jcr:versionManagment (in extended form), the
+<a name="line137"></a>     * privilege to perform versioning operations on a node.
 <a name="line138"></a>     * @api
 <a name="line139"></a>     */</span>
-<a name="line140"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_LOCK_MANAGEMENT <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/1.0}lockManagement&quot;</span><span style="color: #339933;">;</span>
+<a name="line140"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_VERSION_MANAGEMENT <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/1.0}versionManagement&quot;</span><span style="color: #339933;">;</span>
 <a name="line141"></a>&nbsp;
 <a name="line142"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line143"></a>     * A constant representing jcr:versionManagment (in extended form), the
-<a name="line144"></a>     * privilege to perform versioning operations on a node.
-<a name="line145"></a>     * @api
-<a name="line146"></a>     */</span>
-<a name="line147"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_VERSION_MANAGEMENT <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/1.0}versionManagement&quot;</span><span style="color: #339933;">;</span>
-<a name="line148"></a>&nbsp;
-<a name="line149"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line150"></a>     * A constant representing jcr:nodeTypeManagement (in extended form), the
-<a name="line151"></a>     * privilege to add and remove mixin node types and change the primary node
-<a name="line152"></a>     * type of a node.
+<a name="line143"></a>     * A constant representing jcr:nodeTypeManagement (in extended form), the
+<a name="line144"></a>     * privilege to add and remove mixin node types and change the primary node
+<a name="line145"></a>     * type of a node.
+<a name="line146"></a>     * @api
+<a name="line147"></a>     */</span>
+<a name="line148"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_NODE_TYPE_MANAGEMENT <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/1.0}nodeTypeManagement&quot;</span><span style="color: #339933;">;</span>
+<a name="line149"></a>&nbsp;
+<a name="line150"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line151"></a>     * A constant representing jcr:retentionManagement (in extended form), the
+<a name="line152"></a>     * privilege to perform retention management operations on a node.
 <a name="line153"></a>     * @api
 <a name="line154"></a>     */</span>
-<a name="line155"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_NODE_TYPE_MANAGEMENT <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/1.0}nodeTypeManagement&quot;</span><span style="color: #339933;">;</span>
+<a name="line155"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_RETENTION_MANAGEMENT <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/1.0}retentionManagement&quot;</span><span style="color: #339933;">;</span>
 <a name="line156"></a>&nbsp;
 <a name="line157"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line158"></a>     * A constant representing jcr:retentionManagement (in extended form), the
-<a name="line159"></a>     * privilege to perform retention management operations on a node.
+<a name="line158"></a>     * A constant representing jcr:lifecycleManagement (in extended form), the
+<a name="line159"></a>     * privilege to perform lifecycle operations on a node.
 <a name="line160"></a>     * @api
 <a name="line161"></a>     */</span>
-<a name="line162"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_RETENTION_MANAGEMENT <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/1.0}retentionManagement&quot;</span><span style="color: #339933;">;</span>
+<a name="line162"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_LIFECYCLE_MANAGEMENT <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/1.0}lifecycleManagement&quot;</span><span style="color: #339933;">;</span>
 <a name="line163"></a>&nbsp;
 <a name="line164"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line165"></a>     * A constant representing jcr:lifecycleManagement (in extended form), the
-<a name="line166"></a>     * privilege to perform lifecycle operations on a node.
-<a name="line167"></a>     * @api
-<a name="line168"></a>     */</span>
-<a name="line169"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_LIFECYCLE_MANAGEMENT <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/1.0}lifecycleManagement&quot;</span><span style="color: #339933;">;</span>
-<a name="line170"></a>&nbsp;
-<a name="line171"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line172"></a>     * A constant representing jcr:all (in extended form), an aggregate privilege that contains
-<a name="line173"></a>     * all predefined privileges.
-<a name="line174"></a>     * - jcr:read
-<a name="line175"></a>     * - jcr:write
-<a name="line176"></a>     * - jcr:readAccessControl
-<a name="line177"></a>     * - jcr:modifyAccessControl
-<a name="line178"></a>     * - jcr:lockManagement
-<a name="line179"></a>     * - jcr:versionManagement
-<a name="line180"></a>     * - jcr:nodeTypeManagement
-<a name="line181"></a>     * - jcr:retentionManagement
-<a name="line182"></a>     * - jcr:lifecycleManagement
-<a name="line183"></a>     *
-<a name="line184"></a>     * It should, in addition, include all implementation-defined privileges.
-<a name="line185"></a>     * @api
-<a name="line186"></a>     */</span>
-<a name="line187"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_ALL <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/1.0}all&quot;</span><span style="color: #339933;">;</span>
-<a name="line188"></a>&nbsp;
-<a name="line189"></a>    <span style="color: #009933; font-style: italic;">/**#@-*/</span>
-<a name="line190"></a>&nbsp;
-<a name="line191"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line192"></a>     * Returns the name of this privilege.
-<a name="line193"></a>     *
-<a name="line194"></a>     * @return string the name of this privilege.
-<a name="line195"></a>     * @api
-<a name="line196"></a>     */</span>
-<a name="line197"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getName<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line198"></a>&nbsp;
-<a name="line199"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line200"></a>     * Returns whether this privilege is an abstract privilege.
-<a name="line201"></a>     *
-<a name="line202"></a>     * @return boolean true if this privilege is an abstract privilege; false otherwise.
-<a name="line203"></a>     * @api
-<a name="line204"></a>     */</span>
-<a name="line205"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> isAbstract<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line206"></a>&nbsp;
-<a name="line207"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line208"></a>     * Returns whether this privilege is an aggregate privilege.
-<a name="line209"></a>     *
-<a name="line210"></a>     * @return boolean true if this privilege is an aggregate privilege; false otherwise.
-<a name="line211"></a>     * @api
-<a name="line212"></a>     */</span>
-<a name="line213"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> isAggregate<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line214"></a>&nbsp;
-<a name="line215"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line216"></a>     * If this privilege is an aggregate privilege, returns the privileges
-<a name="line217"></a>     * directly contained by the aggregate privilege. Otherwise returns an empty
-<a name="line218"></a>     * array.
-<a name="line219"></a>     *
-<a name="line220"></a>     * @return array an array of Privileges
-<a name="line221"></a>     * @api
-<a name="line222"></a>     */</span>
-<a name="line223"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getDeclaredAggregatePrivileges<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line224"></a>&nbsp;
-<a name="line225"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line226"></a>     * If this privilege is an aggregate privilege, returns the privileges it
-<a name="line227"></a>     * contains, the privileges contained by any aggregate privileges among those,
-<a name="line228"></a>     * and so on (the transitive closure of privileges contained by this
-<a name="line229"></a>     * privilege). Otherwise returns an empty array.
-<a name="line230"></a>     *
-<a name="line231"></a>     * @return array an array of Privileges
-<a name="line232"></a>     * @api
-<a name="line233"></a>     */</span>
-<a name="line234"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getAggregatePrivileges<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line235"></a>&nbsp;
-<a name="line236"></a><span style="color: #009900;">&#125;</span>
-<a name="line237"></a>&nbsp;</pre>
+<a name="line165"></a>     * A constant representing jcr:all (in extended form), an aggregate privilege that contains
+<a name="line166"></a>     * all predefined privileges.
+<a name="line167"></a>     * - jcr:read
+<a name="line168"></a>     * - jcr:write
+<a name="line169"></a>     * - jcr:readAccessControl
+<a name="line170"></a>     * - jcr:modifyAccessControl
+<a name="line171"></a>     * - jcr:lockManagement
+<a name="line172"></a>     * - jcr:versionManagement
+<a name="line173"></a>     * - jcr:nodeTypeManagement
+<a name="line174"></a>     * - jcr:retentionManagement
+<a name="line175"></a>     * - jcr:lifecycleManagement
+<a name="line176"></a>     *
+<a name="line177"></a>     * It should, in addition, include all implementation-defined privileges.
+<a name="line178"></a>     * @api
+<a name="line179"></a>     */</span>
+<a name="line180"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_ALL <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/1.0}all&quot;</span><span style="color: #339933;">;</span>
+<a name="line181"></a>&nbsp;
+<a name="line182"></a>    <span style="color: #009933; font-style: italic;">/**#@-*/</span>
+<a name="line183"></a>&nbsp;
+<a name="line184"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line185"></a>     * Returns the name of this privilege.
+<a name="line186"></a>     *
+<a name="line187"></a>     * @return string the name of this privilege.
+<a name="line188"></a>     * @api
+<a name="line189"></a>     */</span>
+<a name="line190"></a>    <span style="color: #000000; font-weight: bold;">function</span> getName<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line191"></a>&nbsp;
+<a name="line192"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line193"></a>     * Returns whether this privilege is an abstract privilege.
+<a name="line194"></a>     *
+<a name="line195"></a>     * @return boolean true if this privilege is an abstract privilege; false otherwise.
+<a name="line196"></a>     * @api
+<a name="line197"></a>     */</span>
+<a name="line198"></a>    <span style="color: #000000; font-weight: bold;">function</span> isAbstract<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line199"></a>&nbsp;
+<a name="line200"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line201"></a>     * Returns whether this privilege is an aggregate privilege.
+<a name="line202"></a>     *
+<a name="line203"></a>     * @return boolean true if this privilege is an aggregate privilege; false otherwise.
+<a name="line204"></a>     * @api
+<a name="line205"></a>     */</span>
+<a name="line206"></a>    <span style="color: #000000; font-weight: bold;">function</span> isAggregate<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line207"></a>&nbsp;
+<a name="line208"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line209"></a>     * If this privilege is an aggregate privilege, returns the privileges
+<a name="line210"></a>     * directly contained by the aggregate privilege. Otherwise returns an empty
+<a name="line211"></a>     * array.
+<a name="line212"></a>     *
+<a name="line213"></a>     * @return array an array of Privileges
+<a name="line214"></a>     * @api
+<a name="line215"></a>     */</span>
+<a name="line216"></a>    <span style="color: #000000; font-weight: bold;">function</span> getDeclaredAggregatePrivileges<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line217"></a>&nbsp;
+<a name="line218"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line219"></a>     * If this privilege is an aggregate privilege, returns the privileges it
+<a name="line220"></a>     * contains, the privileges contained by any aggregate privileges among those,
+<a name="line221"></a>     * and so on (the transitive closure of privileges contained by this
+<a name="line222"></a>     * privilege). Otherwise returns an empty array.
+<a name="line223"></a>     *
+<a name="line224"></a>     * @return array an array of Privileges
+<a name="line225"></a>     * @api
+<a name="line226"></a>     */</span>
+<a name="line227"></a>    <span style="color: #000000; font-weight: bold;">function</span> getAggregatePrivileges<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line228"></a><span style="color: #009900;">&#125;</span>
+<a name="line229"></a>&nbsp;</pre>
 <div class="header">
 <h1>PHPCR</h1>
 <ul>

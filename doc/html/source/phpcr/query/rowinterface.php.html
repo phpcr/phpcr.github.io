@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="generator" content="PHPDoctor 2RC4 (http://peej.github.com/phpdoctor/)">
-<meta name="when" content="Thu, 26 May 2011 12:55:50 +0000">
+<meta name="when" content="Mon, 30 May 2011 13:13:32 +0000">
 
 <link rel="stylesheet" type="text/css" href="../../../stylesheet.css">
 <link rel="start" href="../../../overview-summary.html">
@@ -34,147 +34,136 @@
 <hr>
 
 <h1>PHPCR/Query/RowInterface.php</h1>
-<div class="comment" id="overview_description"><p>Interface to describe the contract for an implementation of a query result row class.</p><p>This file was ported from the Java JCR API to PHP by
-Karsten Dambekalns <karsten@typo3.org> for the FLOW3 project.</p><p>It is free software; you can redistribute it and/or modify it under
-the terms of the GNU Lesser General Public License as published by the
-Free Software Foundation, either version 3 of the License, or (at your
-option) any later version. Alternatively, you may use the Simplified
-BSD License.</p><p>This script is distributed in the hope that it will be useful, but
-WITHOUT ANY WARRANTY; without even the implied warranty of MERCHAN-
-TABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser
-General Public License for more details.</p><p>You should have received a copy of the GNU Lesser General Public
-License along with the script.
-If not, see <code><a href="http://www.gnu.org/licenses/lgpl.html">http://www.gnu.org/licenses/lgpl.html</a></code>.</p><p>The TYPO3 project - inspiring people to share!</p></div>
+<div class="comment" id="overview_description"><p>This file is part of the PHPCR API and was originally ported from the Java
+JCR API to PHP by Karsten Dambekalns for the FLOW3 project.</p><p>Copyright 2008-2011 Karsten Dambekalns <karsten@typo3.org></p><p>Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at</p><p>http://www.apache.org/licenses/LICENSE-2.0</p><p>Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.</p></div>
 
 <hr>
 
 <a name="line1"></a><pre class="php" style="font-family:monospace;"><span style="color: #000000; font-weight: bold;">&lt;?php</span>
-<a name="line2"></a><span style="color: #009933; font-style: italic;">/**
-<a name="line3"></a> * Interface to describe the contract for an implementation of a query result row class.
-<a name="line4"></a> *
-<a name="line5"></a> * This file was ported from the Java JCR API to PHP by
-<a name="line6"></a> * Karsten Dambekalns &lt;karsten@typo3.org&gt; for the FLOW3 project.
-<a name="line7"></a> *
-<a name="line8"></a> * It is free software; you can redistribute it and/or modify it under
-<a name="line9"></a> * the terms of the GNU Lesser General Public License as published by the
-<a name="line10"></a> * Free Software Foundation, either version 3 of the License, or (at your
-<a name="line11"></a> * option) any later version. Alternatively, you may use the Simplified
-<a name="line12"></a> * BSD License.
-<a name="line13"></a> *
-<a name="line14"></a> * This script is distributed in the hope that it will be useful, but
-<a name="line15"></a> * WITHOUT ANY WARRANTY; without even the implied warranty of MERCHAN-
-<a name="line16"></a> * TABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser
-<a name="line17"></a> * General Public License for more details.
-<a name="line18"></a> *
-<a name="line19"></a> * You should have received a copy of the GNU Lesser General Public
-<a name="line20"></a> * License along with the script.
-<a name="line21"></a> * If not, see {@link http://www.gnu.org/licenses/lgpl.html}.
-<a name="line22"></a> *
-<a name="line23"></a> * The TYPO3 project - inspiring people to share!
-<a name="line24"></a> *
-<a name="line25"></a> * @license http://www.gnu.org/licenses/lgpl.html GNU Lesser General Public License, version 3 or later
-<a name="line26"></a> * @license http://opensource.org/licenses/bsd-license.php Simplified BSD License
-<a name="line27"></a> *
-<a name="line28"></a> * @package phpcr
-<a name="line29"></a> * @subpackage interfaces
-<a name="line30"></a> */</span>
-<a name="line31"></a>&nbsp;
-<a name="line32"></a><span style="color: #000000; font-weight: bold;">namespace</span> PHPCR\Query<span style="color: #339933;">;</span>
-<a name="line33"></a>&nbsp;
-<a name="line34"></a><span style="color: #009933; font-style: italic;">/**
-<a name="line35"></a> * A row in the query result table.
-<a name="line36"></a> *
-<a name="line37"></a> * The \Traversable interface enables the implementation to be addressed with
-<a name="line38"></a> * &lt;b&gt;foreach&lt;/b&gt;. Rows have to implement either \RecursiveIterator or
-<a name="line39"></a> * \Iterator.
-<a name="line40"></a> * The iterator is similar to &lt;b&gt;getValues()&lt;/b&gt; with keys being the column
-<a name="line41"></a> * names and the values the corresponding entry in that column for this row.
-<a name="line42"></a> *
-<a name="line43"></a> * @package phpcr
-<a name="line44"></a> * @subpackage interfaces
-<a name="line45"></a> * @api
-<a name="line46"></a> */</span>
-<a name="line47"></a><span style="color: #000000; font-weight: bold;">interface</span> RowInterface <span style="color: #000000; font-weight: bold;">extends</span> \Traversable <span style="color: #009900;">&#123;</span>
-<a name="line48"></a>&nbsp;
-<a name="line49"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line50"></a>     * Returns an array of all the values in the same order as the column names
-<a name="line51"></a>     * returned by QueryResult.getColumnNames().
-<a name="line52"></a>     *
-<a name="line53"></a>     * @return array List of values of each column of the current result row.
-<a name="line54"></a>     *
-<a name="line55"></a>     * @throws \PHPCR\RepositoryException if an error occurs
-<a name="line56"></a>     * @api
-<a name="line57"></a>     */</span>
-<a name="line58"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getValues<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line59"></a>&nbsp;
-<a name="line60"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line61"></a>     * Returns the value of the indicated column in this Row.
-<a name="line62"></a>     *
-<a name="line63"></a>     * @param string $columnName name of query result table column
-<a name="line64"></a>     * @return mixed The value of the given column of the current result row.
-<a name="line65"></a>     *
-<a name="line66"></a>     * @throws \PHPCR\ItemNotFoundException if columnName s not among the column names of the query result table.
-<a name="line67"></a>     * @throws \PHPCR\RepositoryException if another error occurs.
-<a name="line68"></a>     * @api
-<a name="line69"></a>     */</span>
-<a name="line70"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getValue<span style="color: #009900;">&#40;</span><span style="color: #000088;">$columnName</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line71"></a>&nbsp;
-<a name="line72"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line73"></a>     * Returns the Node corresponding to this Row and the specified selector, if given.
-<a name="line74"></a>     *
-<a name="line75"></a>     * @param string $selectorName The selector identifying a node within the current result row.
-<a name="line76"></a>     * @return \PHPCR\NodeInterface a Node
-<a name="line77"></a>     *
-<a name="line78"></a>     * @throws \PHPCR\RepositoryException If selectorName is not the alias of a selector in this query or if
-<a name="line79"></a>     *                                    another error occurs.
-<a name="line80"></a>     * @api
-<a name="line81"></a>     */</span>
-<a name="line82"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getNode<span style="color: #009900;">&#40;</span><span style="color: #000088;">$selectorName</span> <span style="color: #339933;">=</span> <span style="color: #009900; font-weight: bold;">null</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line83"></a>&nbsp;
-<a name="line84"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line85"></a>     * Get the path of a node identified by a selector.
-<a name="line86"></a>     *
-<a name="line87"></a>     * Equivalent to Row.getNode(selectorName).getPath(). However, some
-<a name="line88"></a>     * implementations may be able gain efficiency by not resolving the actual Node.
-<a name="line89"></a>     *
-<a name="line90"></a>     * @param string $selectorName The selector identifying a node within the current result row.
-<a name="line91"></a>     * @return string The path representing the node identified by the given selector.
-<a name="line92"></a>     *
-<a name="line93"></a>     * @throws \PHPCR\RepositoryException if selectorName is not the alias of a selector in this query or
-<a name="line94"></a>     *                                    if another error occurs.
-<a name="line95"></a>     * @api
-<a name="line96"></a>     */</span>
-<a name="line97"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getPath<span style="color: #009900;">&#40;</span><span style="color: #000088;">$selectorName</span> <span style="color: #339933;">=</span> <span style="color: #009900; font-weight: bold;">null</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line98"></a>&nbsp;
-<a name="line99"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line100"></a>     * Returns the full text search score for this row associated with the specified
-<a name="line101"></a>     * selector.
-<a name="line102"></a>     *
-<a name="line103"></a>     * This corresponds to the score of a particular node.
-<a name="line104"></a>     * If no selectorName is given, the default selector is used.
-<a name="line105"></a>     * If no FullTextSearchScore AQM object is associated with the selector
-<a name="line106"></a>     * selectorName this method will still return a value. However, in that case
-<a name="line107"></a>     * the returned value may not be meaningful or may simply reflect the minimum
-<a name="line108"></a>     * possible relevance level (for example, in some systems this might be a s
-<a name="line109"></a>     * core of 0).
+<a name="line2"></a>&nbsp;
+<a name="line3"></a><span style="color: #009933; font-style: italic;">/**
+<a name="line4"></a> * This file is part of the PHPCR API and was originally ported from the Java
+<a name="line5"></a> * JCR API to PHP by Karsten Dambekalns for the FLOW3 project.
+<a name="line6"></a> *
+<a name="line7"></a> * Copyright 2008-2011 Karsten Dambekalns &lt;karsten@typo3.org&gt;
+<a name="line8"></a> *
+<a name="line9"></a> * Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
+<a name="line10"></a> * you may not use this file except in compliance with the License.
+<a name="line11"></a> * You may obtain a copy of the License at
+<a name="line12"></a> *
+<a name="line13"></a> *     http://www.apache.org/licenses/LICENSE-2.0
+<a name="line14"></a> *
+<a name="line15"></a> * Unless required by applicable law or agreed to in writing, software
+<a name="line16"></a> * distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+<a name="line17"></a> * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+<a name="line18"></a> * See the License for the specific language governing permissions and
+<a name="line19"></a> * limitations under the License.
+<a name="line20"></a> *
+<a name="line21"></a> * @license http://www.apache.org/licenses/LICENSE-2.0 Apache Software License 2.0
+<a name="line22"></a> * @link http://phpcr.github.com/
+<a name="line23"></a>*/</span>
+<a name="line24"></a>&nbsp;
+<a name="line25"></a><span style="color: #000000; font-weight: bold;">namespace</span> PHPCR\Query<span style="color: #339933;">;</span>
+<a name="line26"></a>&nbsp;
+<a name="line27"></a><span style="color: #009933; font-style: italic;">/**
+<a name="line28"></a> * A row in the query result table.
+<a name="line29"></a> *
+<a name="line30"></a> * The \Traversable interface enables the implementation to be addressed with
+<a name="line31"></a> * &lt;b&gt;foreach&lt;/b&gt;. Rows have to implement either \RecursiveIterator or
+<a name="line32"></a> * \Iterator.
+<a name="line33"></a> * The iterator is similar to &lt;b&gt;getValues()&lt;/b&gt; with keys being the column
+<a name="line34"></a> * names and the values the corresponding entry in that column for this row.
+<a name="line35"></a> *
+<a name="line36"></a> * @package phpcr
+<a name="line37"></a> * @subpackage interfaces
+<a name="line38"></a> * @api
+<a name="line39"></a> */</span>
+<a name="line40"></a><span style="color: #000000; font-weight: bold;">interface</span> RowInterface <span style="color: #000000; font-weight: bold;">extends</span> \Traversable
+<a name="line41"></a><span style="color: #009900;">&#123;</span>
+<a name="line42"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line43"></a>     * Returns an array of all the values in the same order as the column names
+<a name="line44"></a>     * returned by QueryResult.getColumnNames().
+<a name="line45"></a>     *
+<a name="line46"></a>     * @return array List of values of each column of the current result row.
+<a name="line47"></a>     *
+<a name="line48"></a>     * @throws \PHPCR\RepositoryException if an error occurs
+<a name="line49"></a>     * @api
+<a name="line50"></a>     */</span>
+<a name="line51"></a>    <span style="color: #000000; font-weight: bold;">function</span> getValues<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line52"></a>&nbsp;
+<a name="line53"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line54"></a>     * Returns the value of the indicated column in this Row.
+<a name="line55"></a>     *
+<a name="line56"></a>     * @param string $columnName name of query result table column
+<a name="line57"></a>     * @return mixed The value of the given column of the current result row.
+<a name="line58"></a>     *
+<a name="line59"></a>     * @throws \PHPCR\ItemNotFoundException if columnName s not among the column names of the query result table.
+<a name="line60"></a>     * @throws \PHPCR\RepositoryException if another error occurs.
+<a name="line61"></a>     * @api
+<a name="line62"></a>     */</span>
+<a name="line63"></a>    <span style="color: #000000; font-weight: bold;">function</span> getValue<span style="color: #009900;">&#40;</span><span style="color: #000088;">$columnName</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line64"></a>&nbsp;
+<a name="line65"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line66"></a>     * Returns the Node corresponding to this Row and the specified selector, if given.
+<a name="line67"></a>     *
+<a name="line68"></a>     * @param string $selectorName The selector identifying a node within the current result row.
+<a name="line69"></a>     * @return \PHPCR\NodeInterface a Node
+<a name="line70"></a>     *
+<a name="line71"></a>     * @throws \PHPCR\RepositoryException If selectorName is not the alias of a selector in this query or if
+<a name="line72"></a>     *                                    another error occurs.
+<a name="line73"></a>     * @api
+<a name="line74"></a>     */</span>
+<a name="line75"></a>    <span style="color: #000000; font-weight: bold;">function</span> getNode<span style="color: #009900;">&#40;</span><span style="color: #000088;">$selectorName</span> <span style="color: #339933;">=</span> <span style="color: #009900; font-weight: bold;">null</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line76"></a>&nbsp;
+<a name="line77"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line78"></a>     * Get the path of a node identified by a selector.
+<a name="line79"></a>     *
+<a name="line80"></a>     * Equivalent to Row.getNode(selectorName).getPath(). However, some
+<a name="line81"></a>     * implementations may be able gain efficiency by not resolving the actual Node.
+<a name="line82"></a>     *
+<a name="line83"></a>     * @param string $selectorName The selector identifying a node within the current result row.
+<a name="line84"></a>     * @return string The path representing the node identified by the given selector.
+<a name="line85"></a>     *
+<a name="line86"></a>     * @throws \PHPCR\RepositoryException if selectorName is not the alias of a selector in this query or
+<a name="line87"></a>     *                                    if another error occurs.
+<a name="line88"></a>     * @api
+<a name="line89"></a>     */</span>
+<a name="line90"></a>    <span style="color: #000000; font-weight: bold;">function</span> getPath<span style="color: #009900;">&#40;</span><span style="color: #000088;">$selectorName</span> <span style="color: #339933;">=</span> <span style="color: #009900; font-weight: bold;">null</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line91"></a>&nbsp;
+<a name="line92"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line93"></a>     * Returns the full text search score for this row associated with the specified
+<a name="line94"></a>     * selector.
+<a name="line95"></a>     *
+<a name="line96"></a>     * This corresponds to the score of a particular node.
+<a name="line97"></a>     * If no selectorName is given, the default selector is used.
+<a name="line98"></a>     * If no FullTextSearchScore AQM object is associated with the selector
+<a name="line99"></a>     * selectorName this method will still return a value. However, in that case
+<a name="line100"></a>     * the returned value may not be meaningful or may simply reflect the minimum
+<a name="line101"></a>     * possible relevance level (for example, in some systems this might be a s
+<a name="line102"></a>     * core of 0).
+<a name="line103"></a>     *
+<a name="line104"></a>     * Note, in JCR-SQL2 a FullTextSearchScore AQM object is represented by a
+<a name="line105"></a>     * SCORE() function. In JCR-JQOM it is represented by a Java object of type
+<a name="line106"></a>     * \PHPCR\Query\QOM\FullTextSearchScoreInterface.
+<a name="line107"></a>     *
+<a name="line108"></a>     * @param string $selectorName The selector identifying a node within the current result row.
+<a name="line109"></a>     * @return float The full text search score for this row.
 <a name="line110"></a>     *
-<a name="line111"></a>     * Note, in JCR-SQL2 a FullTextSearchScore AQM object is represented by a
-<a name="line112"></a>     * SCORE() function. In JCR-JQOM it is represented by a Java object of type
-<a name="line113"></a>     * \PHPCR\Query\QOM\FullTextSearchScoreInterface.
-<a name="line114"></a>     *
-<a name="line115"></a>     * @param string $selectorName The selector identifying a node within the current result row.
-<a name="line116"></a>     * @return float The full text search score for this row.
-<a name="line117"></a>     *
-<a name="line118"></a>     * @throws \PHPCR\RepositoryException if selectorName is not the alias of a selector in this query or
-<a name="line119"></a>     *                                    (in case of no given selectorName) if this query has more than one
-<a name="line120"></a>     *                                    selector (and therefore, this Row corresponds to more than one Node)
-<a name="line121"></a>     *                                    or if another error occurs.
-<a name="line122"></a>     * @api
-<a name="line123"></a>     */</span>
-<a name="line124"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getScore<span style="color: #009900;">&#40;</span><span style="color: #000088;">$selectorName</span> <span style="color: #339933;">=</span> <span style="color: #009900; font-weight: bold;">null</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line125"></a>&nbsp;
-<a name="line126"></a><span style="color: #009900;">&#125;</span>
-<a name="line127"></a>&nbsp;</pre>
+<a name="line111"></a>     * @throws \PHPCR\RepositoryException if selectorName is not the alias of a selector in this query or
+<a name="line112"></a>     *                                    (in case of no given selectorName) if this query has more than one
+<a name="line113"></a>     *                                    selector (and therefore, this Row corresponds to more than one Node)
+<a name="line114"></a>     *                                    or if another error occurs.
+<a name="line115"></a>     * @api
+<a name="line116"></a>     */</span>
+<a name="line117"></a>    <span style="color: #000000; font-weight: bold;">function</span> getScore<span style="color: #009900;">&#40;</span><span style="color: #000088;">$selectorName</span> <span style="color: #339933;">=</span> <span style="color: #009900; font-weight: bold;">null</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line118"></a><span style="color: #009900;">&#125;</span>
+<a name="line119"></a>&nbsp;</pre>
 <div class="header">
 <h1>PHPCR</h1>
 <ul>

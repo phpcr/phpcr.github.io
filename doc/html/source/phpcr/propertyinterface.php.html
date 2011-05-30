@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="generator" content="PHPDoctor 2RC4 (http://peej.github.com/phpdoctor/)">
-<meta name="when" content="Thu, 26 May 2011 12:55:45 +0000">
+<meta name="when" content="Mon, 30 May 2011 13:13:19 +0000">
 
 <link rel="stylesheet" type="text/css" href="../../stylesheet.css">
 <link rel="start" href="../../overview-summary.html">
@@ -34,838 +34,818 @@
 <hr>
 
 <h1>PHPCR/PropertyInterface.php</h1>
-<div class="comment" id="overview_description"><p>Interface to describe the contract to implement an item property.</p><p>This file was ported from the Java JCR API to PHP by
-Karsten Dambekalns <karsten@typo3.org> for the FLOW3 project.</p><p>It is free software; you can redistribute it and/or modify it under
-the terms of the GNU Lesser General Public License as published by the
-Free Software Foundation, either version 3 of the License, or (at your
-option) any later version. Alternatively, you may use the Simplified
-BSD License.</p><p>This script is distributed in the hope that it will be useful, but
-WITHOUT ANY WARRANTY; without even the implied warranty of MERCHAN-
-TABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser
-General Public License for more details.</p><p>You should have received a copy of the GNU Lesser General Public
-License along with the script.
-If not, see <code><a href="http://www.gnu.org/licenses/lgpl.html">http://www.gnu.org/licenses/lgpl.html</a></code>.</p><p>The TYPO3 project - inspiring people to share!</p></div>
+<div class="comment" id="overview_description"><p>This file is part of the PHPCR API and was originally ported from the Java
+JCR API to PHP by Karsten Dambekalns for the FLOW3 project.</p><p>Copyright 2008-2011 Karsten Dambekalns <karsten@typo3.org></p><p>Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at</p><p>http://www.apache.org/licenses/LICENSE-2.0</p><p>Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.</p></div>
 
 <hr>
 
 <a name="line1"></a><pre class="php" style="font-family:monospace;"><span style="color: #000000; font-weight: bold;">&lt;?php</span>
-<a name="line2"></a><span style="color: #009933; font-style: italic;">/**
-<a name="line3"></a> * Interface to describe the contract to implement an item property.
-<a name="line4"></a> *
-<a name="line5"></a> * This file was ported from the Java JCR API to PHP by
-<a name="line6"></a> * Karsten Dambekalns &lt;karsten@typo3.org&gt; for the FLOW3 project.
-<a name="line7"></a> *
-<a name="line8"></a> * It is free software; you can redistribute it and/or modify it under
-<a name="line9"></a> * the terms of the GNU Lesser General Public License as published by the
-<a name="line10"></a> * Free Software Foundation, either version 3 of the License, or (at your
-<a name="line11"></a> * option) any later version. Alternatively, you may use the Simplified
-<a name="line12"></a> * BSD License.
-<a name="line13"></a> *
-<a name="line14"></a> * This script is distributed in the hope that it will be useful, but
-<a name="line15"></a> * WITHOUT ANY WARRANTY; without even the implied warranty of MERCHAN-
-<a name="line16"></a> * TABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser
-<a name="line17"></a> * General Public License for more details.
-<a name="line18"></a> *
-<a name="line19"></a> * You should have received a copy of the GNU Lesser General Public
-<a name="line20"></a> * License along with the script.
-<a name="line21"></a> * If not, see {@link http://www.gnu.org/licenses/lgpl.html}.
-<a name="line22"></a> *
-<a name="line23"></a> * The TYPO3 project - inspiring people to share!
-<a name="line24"></a> *
-<a name="line25"></a> * @license http://www.gnu.org/licenses/lgpl.html GNU Lesser General Public License, version 3 or later
-<a name="line26"></a> * @license http://opensource.org/licenses/bsd-license.php Simplified BSD License
-<a name="line27"></a> *
-<a name="line28"></a> * @package phpcr
-<a name="line29"></a> * @subpackage interfaces
-<a name="line30"></a> */</span>
-<a name="line31"></a>&nbsp;
-<a name="line32"></a><span style="color: #000000; font-weight: bold;">namespace</span> PHPCR<span style="color: #339933;">;</span>
-<a name="line33"></a>&nbsp;
-<a name="line34"></a><span style="color: #009933; font-style: italic;">/**
-<a name="line35"></a> * The property interface describes how an item property shall look like.
-<a name="line36"></a> *
-<a name="line37"></a> * A Property object represents the smallest granularity of content storage.
-<a name="line38"></a> * It has a single parent node and no children. A property consists of a name
-<a name="line39"></a> * and a value, or in the case of multi-value properties, a set of values all
-<a name="line40"></a> * of the same type.
+<a name="line2"></a>&nbsp;
+<a name="line3"></a><span style="color: #009933; font-style: italic;">/**
+<a name="line4"></a> * This file is part of the PHPCR API and was originally ported from the Java
+<a name="line5"></a> * JCR API to PHP by Karsten Dambekalns for the FLOW3 project.
+<a name="line6"></a> *
+<a name="line7"></a> * Copyright 2008-2011 Karsten Dambekalns &lt;karsten@typo3.org&gt;
+<a name="line8"></a> *
+<a name="line9"></a> * Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
+<a name="line10"></a> * you may not use this file except in compliance with the License.
+<a name="line11"></a> * You may obtain a copy of the License at
+<a name="line12"></a> *
+<a name="line13"></a> *     http://www.apache.org/licenses/LICENSE-2.0
+<a name="line14"></a> *
+<a name="line15"></a> * Unless required by applicable law or agreed to in writing, software
+<a name="line16"></a> * distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+<a name="line17"></a> * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+<a name="line18"></a> * See the License for the specific language governing permissions and
+<a name="line19"></a> * limitations under the License.
+<a name="line20"></a> *
+<a name="line21"></a> * @license http://www.apache.org/licenses/LICENSE-2.0 Apache Software License 2.0
+<a name="line22"></a> * @link http://phpcr.github.com/
+<a name="line23"></a>*/</span>
+<a name="line24"></a>&nbsp;
+<a name="line25"></a><span style="color: #000000; font-weight: bold;">namespace</span> PHPCR<span style="color: #339933;">;</span>
+<a name="line26"></a>&nbsp;
+<a name="line27"></a><span style="color: #009933; font-style: italic;">/**
+<a name="line28"></a> * The property interface describes how an item property shall look like.
+<a name="line29"></a> *
+<a name="line30"></a> * A Property object represents the smallest granularity of content storage.
+<a name="line31"></a> * It has a single parent node and no children. A property consists of a name
+<a name="line32"></a> * and a value, or in the case of multi-value properties, a set of values all
+<a name="line33"></a> * of the same type.
+<a name="line34"></a> *
+<a name="line35"></a> * The \Traversable interface enables the implementation to be addressed with
+<a name="line36"></a> * &lt;b&gt;foreach&lt;/b&gt;. Properties have to implement either \IteratorAggregate or
+<a name="line37"></a> * \Iterator.
+<a name="line38"></a> * The iterator is equivalent to &lt;b&gt;getValue()&lt;/b&gt; returning an iterator
+<a name="line39"></a> * of all values of this property (which is exactly one except for multivalue
+<a name="line40"></a> * properties). The iterator keys have no significant meaning.
 <a name="line41"></a> *
-<a name="line42"></a> * The \Traversable interface enables the implementation to be addressed with
-<a name="line43"></a> * &lt;b&gt;foreach&lt;/b&gt;. Properties have to implement either \IteratorAggregate or
-<a name="line44"></a> * \Iterator.
-<a name="line45"></a> * The iterator is equivalent to &lt;b&gt;getValue()&lt;/b&gt; returning an iterator
-<a name="line46"></a> * of all values of this property (which is exactly one except for multivalue
-<a name="line47"></a> * properties). The iterator keys have no significant meaning.
-<a name="line48"></a> *
-<a name="line49"></a> * &lt;b&gt;PHPCR Note:&lt;/b&gt;
-<a name="line50"></a> * We removed the Value interface and consequently the getValue() and
-<a name="line51"></a> * getValues() methods. If you just want the property value in its native type,
-<a name="line52"></a> * use getValue, or just NodeInterface::getPropertyValue.
-<a name="line53"></a> * The PropertyInterface::getXX methods also work for multivalue properties.
-<a name="line54"></a> * They return arrays in case of multivalue.
-<a name="line55"></a> * PropertyInterface::setValue completely replaces the
-<a name="line56"></a> * ValueFactory::createValue method.
-<a name="line57"></a> *
-<a name="line58"></a> * @package phpcr
-<a name="line59"></a> * @subpackage interfaces
-<a name="line60"></a> * @api
-<a name="line61"></a> */</span>
-<a name="line62"></a><span style="color: #000000; font-weight: bold;">interface</span> PropertyInterface <span style="color: #000000; font-weight: bold;">extends</span> \PHPCR\ItemInterface<span style="color: #339933;">,</span> \Traversable <span style="color: #009900;">&#123;</span>
-<a name="line63"></a>&nbsp;
-<a name="line64"></a>    <span style="color: #009933; font-style: italic;">/**#@+
-<a name="line65"></a>     * @var string
-<a name="line66"></a>     */</span>
+<a name="line42"></a> * &lt;b&gt;PHPCR Note:&lt;/b&gt;
+<a name="line43"></a> * We removed the Value interface and consequently the getValue() and
+<a name="line44"></a> * getValues() methods. If you just want the property value in its native type,
+<a name="line45"></a> * use getValue, or just NodeInterface::getPropertyValue.
+<a name="line46"></a> * The PropertyInterface::getXX methods also work for multivalue properties.
+<a name="line47"></a> * They return arrays in case of multivalue.
+<a name="line48"></a> * PropertyInterface::setValue completely replaces the
+<a name="line49"></a> * ValueFactory::createValue method.
+<a name="line50"></a> *
+<a name="line51"></a> * @package phpcr
+<a name="line52"></a> * @subpackage interfaces
+<a name="line53"></a> * @api
+<a name="line54"></a> */</span>
+<a name="line55"></a><span style="color: #000000; font-weight: bold;">interface</span> PropertyInterface <span style="color: #000000; font-weight: bold;">extends</span> \PHPCR\ItemInterface<span style="color: #339933;">,</span> \Traversable
+<a name="line56"></a><span style="color: #009900;">&#123;</span>
+<a name="line57"></a>    <span style="color: #009933; font-style: italic;">/**#@+
+<a name="line58"></a>     * @var string
+<a name="line59"></a>     */</span>
+<a name="line60"></a>&nbsp;
+<a name="line61"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line62"></a>     * A constant for the property name jcr:primaryType (in extended form),
+<a name="line63"></a>     * declared in node type nt:base.
+<a name="line64"></a>     * @api
+<a name="line65"></a>     */</span>
+<a name="line66"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_PRIMARY_TYPE <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/1.0}primaryType&quot;</span><span style="color: #339933;">;</span>
 <a name="line67"></a>&nbsp;
 <a name="line68"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line69"></a>     * A constant for the property name jcr:primaryType (in extended form),
+<a name="line69"></a>     * A constant for the property name jcr:mixinTypes (in extended form),
 <a name="line70"></a>     * declared in node type nt:base.
 <a name="line71"></a>     * @api
 <a name="line72"></a>     */</span>
-<a name="line73"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_PRIMARY_TYPE <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/1.0}primaryType&quot;</span><span style="color: #339933;">;</span>
+<a name="line73"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_MIXIN_TYPES <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/1.0}mixinTypes&quot;</span><span style="color: #339933;">;</span>
 <a name="line74"></a>&nbsp;
 <a name="line75"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line76"></a>     * A constant for the property name jcr:mixinTypes (in extended form),
-<a name="line77"></a>     * declared in node type nt:base.
-<a name="line78"></a>     * @api
-<a name="line79"></a>     */</span>
-<a name="line80"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_MIXIN_TYPES <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/1.0}mixinTypes&quot;</span><span style="color: #339933;">;</span>
-<a name="line81"></a>&nbsp;
-<a name="line82"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line83"></a>     * A constant for the property name jcr:content (in extended form),
-<a name="line84"></a>     * declared in node type nt:linkedFile.
-<a name="line85"></a>     *
-<a name="line86"></a>     * &lt;b&gt;Note:&lt;/b&gt; jcr:content is also the name of a child node declared in nt:file.
+<a name="line76"></a>     * A constant for the property name jcr:content (in extended form),
+<a name="line77"></a>     * declared in node type nt:linkedFile.
+<a name="line78"></a>     *
+<a name="line79"></a>     * &lt;b&gt;Note:&lt;/b&gt; jcr:content is also the name of a child node declared in nt:file.
+<a name="line80"></a>     * @api
+<a name="line81"></a>     */</span>
+<a name="line82"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_CONTENT <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/1.0}content&quot;</span><span style="color: #339933;">;</span>
+<a name="line83"></a>&nbsp;
+<a name="line84"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line85"></a>     * A constant for the property name jcr:data (in extended form),
+<a name="line86"></a>     * declared in node type nt:resource.
 <a name="line87"></a>     * @api
 <a name="line88"></a>     */</span>
-<a name="line89"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_CONTENT <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/1.0}content&quot;</span><span style="color: #339933;">;</span>
+<a name="line89"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_DATA <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/1.0}data&quot;</span><span style="color: #339933;">;</span>
 <a name="line90"></a>&nbsp;
 <a name="line91"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line92"></a>     * A constant for the property name jcr:data (in extended form),
-<a name="line93"></a>     * declared in node type nt:resource.
+<a name="line92"></a>     * A constant for the property name jcr:protocol (in extended form),
+<a name="line93"></a>     * declared in node type nt:address.
 <a name="line94"></a>     * @api
 <a name="line95"></a>     */</span>
-<a name="line96"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_DATA <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/1.0}data&quot;</span><span style="color: #339933;">;</span>
+<a name="line96"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_PROTOCOL <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/1.0}protocol&quot;</span><span style="color: #339933;">;</span>
 <a name="line97"></a>&nbsp;
 <a name="line98"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line99"></a>     * A constant for the property name jcr:protocol (in extended form),
+<a name="line99"></a>     * A constant for the property name jcr:host (in extended form),
 <a name="line100"></a>     * declared in node type nt:address.
 <a name="line101"></a>     * @api
 <a name="line102"></a>     */</span>
-<a name="line103"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_PROTOCOL <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/1.0}protocol&quot;</span><span style="color: #339933;">;</span>
+<a name="line103"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_HOST <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/1.0}host&quot;</span><span style="color: #339933;">;</span>
 <a name="line104"></a>&nbsp;
 <a name="line105"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line106"></a>     * A constant for the property name jcr:host (in extended form),
+<a name="line106"></a>     * A constant for the property name jcr:port (in extended form),
 <a name="line107"></a>     * declared in node type nt:address.
 <a name="line108"></a>     * @api
 <a name="line109"></a>     */</span>
-<a name="line110"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_HOST <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/1.0}host&quot;</span><span style="color: #339933;">;</span>
+<a name="line110"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_PORT <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/1.0}port&quot;</span><span style="color: #339933;">;</span>
 <a name="line111"></a>&nbsp;
 <a name="line112"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line113"></a>     * A constant for the property name jcr:port (in extended form),
+<a name="line113"></a>     * A constant for the property name jcr:repository (in extended form),
 <a name="line114"></a>     * declared in node type nt:address.
 <a name="line115"></a>     * @api
 <a name="line116"></a>     */</span>
-<a name="line117"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_PORT <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/1.0}port&quot;</span><span style="color: #339933;">;</span>
+<a name="line117"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_REPOSITORY <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/1.0repository&quot;</span><span style="color: #339933;">;</span>
 <a name="line118"></a>&nbsp;
 <a name="line119"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line120"></a>     * A constant for the property name jcr:repository (in extended form),
+<a name="line120"></a>     * A constant for the property name jcr:workspace (in extended form),
 <a name="line121"></a>     * declared in node type nt:address.
 <a name="line122"></a>     * @api
 <a name="line123"></a>     */</span>
-<a name="line124"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_REPOSITORY <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/1.0repository&quot;</span><span style="color: #339933;">;</span>
+<a name="line124"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_WORKSPACE <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/1.0}workspace&quot;</span><span style="color: #339933;">;</span>
 <a name="line125"></a>&nbsp;
 <a name="line126"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line127"></a>     * A constant for the property name jcr:workspace (in extended form),
+<a name="line127"></a>     * A constant for the property name jcr:path (in extended form),
 <a name="line128"></a>     * declared in node type nt:address.
 <a name="line129"></a>     * @api
 <a name="line130"></a>     */</span>
-<a name="line131"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_WORKSPACE <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/1.0}workspace&quot;</span><span style="color: #339933;">;</span>
+<a name="line131"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_PATH <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/1.0}path&quot;</span><span style="color: #339933;">;</span>
 <a name="line132"></a>&nbsp;
 <a name="line133"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line134"></a>     * A constant for the property name jcr:path (in extended form),
+<a name="line134"></a>     * A constant for the property name jcr:id (in extended form),
 <a name="line135"></a>     * declared in node type nt:address.
 <a name="line136"></a>     * @api
 <a name="line137"></a>     */</span>
-<a name="line138"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_PATH <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/1.0}path&quot;</span><span style="color: #339933;">;</span>
+<a name="line138"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_ID <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/1.0}id&quot;</span><span style="color: #339933;">;</span>
 <a name="line139"></a>&nbsp;
 <a name="line140"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line141"></a>     * A constant for the property name jcr:id (in extended form),
-<a name="line142"></a>     * declared in node type nt:address.
+<a name="line141"></a>     * A constant for the property name jcr:uuid (in extended form),
+<a name="line142"></a>     * declared in node type mix:referenceable.
 <a name="line143"></a>     * @api
 <a name="line144"></a>     */</span>
-<a name="line145"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_ID <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/1.0}id&quot;</span><span style="color: #339933;">;</span>
+<a name="line145"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_UUID <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/1.0}uuid&quot;</span><span style="color: #339933;">;</span>
 <a name="line146"></a>&nbsp;
 <a name="line147"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line148"></a>     * A constant for the property name jcr:uuid (in extended form),
-<a name="line149"></a>     * declared in node type mix:referenceable.
+<a name="line148"></a>     * A constant for the property name jcr:title (in extended form),
+<a name="line149"></a>     * declared in node types mix:title and nt:activity.
 <a name="line150"></a>     * @api
 <a name="line151"></a>     */</span>
-<a name="line152"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_UUID <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/1.0}uuid&quot;</span><span style="color: #339933;">;</span>
+<a name="line152"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_TITLE <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/1.0}title&quot;</span><span style="color: #339933;">;</span>
 <a name="line153"></a>&nbsp;
 <a name="line154"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line155"></a>     * A constant for the property name jcr:title (in extended form),
-<a name="line156"></a>     * declared in node types mix:title and nt:activity.
+<a name="line155"></a>     * A constant for the property name jcr:description (in extended form),
+<a name="line156"></a>     * declared in node type mix:title.
 <a name="line157"></a>     * @api
 <a name="line158"></a>     */</span>
-<a name="line159"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_TITLE <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/1.0}title&quot;</span><span style="color: #339933;">;</span>
+<a name="line159"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_DESCRIPTION <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/1.0}description&quot;</span><span style="color: #339933;">;</span>
 <a name="line160"></a>&nbsp;
 <a name="line161"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line162"></a>     * A constant for the property name jcr:description (in extended form),
-<a name="line163"></a>     * declared in node type mix:title.
+<a name="line162"></a>     * A constant for the property name jcr:created (in extended form),
+<a name="line163"></a>     * declared in node types mix:created and nt:version.
 <a name="line164"></a>     * @api
 <a name="line165"></a>     */</span>
-<a name="line166"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_DESCRIPTION <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/1.0}description&quot;</span><span style="color: #339933;">;</span>
+<a name="line166"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_CREATED <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/1.0}created&quot;</span><span style="color: #339933;">;</span>
 <a name="line167"></a>&nbsp;
 <a name="line168"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line169"></a>     * A constant for the property name jcr:created (in extended form),
-<a name="line170"></a>     * declared in node types mix:created and nt:version.
+<a name="line169"></a>     * A constant for the property name jcr:createdBy (in extended form),
+<a name="line170"></a>     * declared in node type mix:created.
 <a name="line171"></a>     * @api
 <a name="line172"></a>     */</span>
-<a name="line173"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_CREATED <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/1.0}created&quot;</span><span style="color: #339933;">;</span>
+<a name="line173"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_CREATED_BY <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/1.0}createdBy&quot;</span><span style="color: #339933;">;</span>
 <a name="line174"></a>&nbsp;
 <a name="line175"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line176"></a>     * A constant for the property name jcr:createdBy (in extended form),
-<a name="line177"></a>     * declared in node type mix:created.
+<a name="line176"></a>     * A constant for the property name jcr:lastModified (in extended form),
+<a name="line177"></a>     * declared in node type mix:lastModified.
 <a name="line178"></a>     * @api
 <a name="line179"></a>     */</span>
-<a name="line180"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_CREATED_BY <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/1.0}createdBy&quot;</span><span style="color: #339933;">;</span>
+<a name="line180"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_LAST_MODIFIED <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/1.0}lastModified&quot;</span><span style="color: #339933;">;</span>
 <a name="line181"></a>&nbsp;
 <a name="line182"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line183"></a>     * A constant for the property name jcr:lastModified (in extended form),
+<a name="line183"></a>     * A constant for the property name jcr:lastModifiedBy (in extended form),
 <a name="line184"></a>     * declared in node type mix:lastModified.
 <a name="line185"></a>     * @api
 <a name="line186"></a>     */</span>
-<a name="line187"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_LAST_MODIFIED <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/1.0}lastModified&quot;</span><span style="color: #339933;">;</span>
+<a name="line187"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_LAST_MODIFIED_BY <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/1.0}lastModifiedBy&quot;</span><span style="color: #339933;">;</span>
 <a name="line188"></a>&nbsp;
 <a name="line189"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line190"></a>     * A constant for the property name jcr:lastModifiedBy (in extended form),
-<a name="line191"></a>     * declared in node type mix:lastModified.
+<a name="line190"></a>     * A constant for the property name jcr:language (in extended form),
+<a name="line191"></a>     * declared in node types mix:language and nt:query.
 <a name="line192"></a>     * @api
 <a name="line193"></a>     */</span>
-<a name="line194"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_LAST_MODIFIED_BY <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/1.0}lastModifiedBy&quot;</span><span style="color: #339933;">;</span>
+<a name="line194"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_LANGUAGE <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/1.0}language&quot;</span><span style="color: #339933;">;</span>
 <a name="line195"></a>&nbsp;
 <a name="line196"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line197"></a>     * A constant for the property name jcr:language (in extended form),
-<a name="line198"></a>     * declared in node types mix:language and nt:query.
+<a name="line197"></a>     * A constant for the property name jcr:mimeType (in extended form),
+<a name="line198"></a>     * declared in node type mix:mimeType.
 <a name="line199"></a>     * @api
 <a name="line200"></a>     */</span>
-<a name="line201"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_LANGUAGE <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/1.0}language&quot;</span><span style="color: #339933;">;</span>
+<a name="line201"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_MIMETYPE <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/1.0}mimeType&quot;</span><span style="color: #339933;">;</span>
 <a name="line202"></a>&nbsp;
 <a name="line203"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line204"></a>     * A constant for the property name jcr:mimeType (in extended form),
+<a name="line204"></a>     * A constant for the property name jcr:encoding (in extended form),
 <a name="line205"></a>     * declared in node type mix:mimeType.
 <a name="line206"></a>     * @api
 <a name="line207"></a>     */</span>
-<a name="line208"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_MIMETYPE <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/1.0}mimeType&quot;</span><span style="color: #339933;">;</span>
+<a name="line208"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_ENCODING <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/1.0}encoding&quot;</span><span style="color: #339933;">;</span>
 <a name="line209"></a>&nbsp;
 <a name="line210"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line211"></a>     * A constant for the property name jcr:encoding (in extended form),
-<a name="line212"></a>     * declared in node type mix:mimeType.
+<a name="line211"></a>     * A constant for the property name jcr:nodeTypeName (in extended form),
+<a name="line212"></a>     * declared in node type nt:nodeType.
 <a name="line213"></a>     * @api
 <a name="line214"></a>     */</span>
-<a name="line215"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_ENCODING <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/1.0}encoding&quot;</span><span style="color: #339933;">;</span>
+<a name="line215"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_NODE_TYPE_NAME <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/1.0}nodeTypeName&quot;</span><span style="color: #339933;">;</span>
 <a name="line216"></a>&nbsp;
 <a name="line217"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line218"></a>     * A constant for the property name jcr:nodeTypeName (in extended form),
+<a name="line218"></a>     * A constant for the property name jcr:supertypes (in extended form),
 <a name="line219"></a>     * declared in node type nt:nodeType.
 <a name="line220"></a>     * @api
 <a name="line221"></a>     */</span>
-<a name="line222"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_NODE_TYPE_NAME <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/1.0}nodeTypeName&quot;</span><span style="color: #339933;">;</span>
+<a name="line222"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_SUPERTYPES <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/1.0}supertypes&quot;</span><span style="color: #339933;">;</span>
 <a name="line223"></a>&nbsp;
 <a name="line224"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line225"></a>     * A constant for the property name jcr:supertypes (in extended form),
+<a name="line225"></a>     * A constant for the property name jcr:isAbstract (in extended form),
 <a name="line226"></a>     * declared in node type nt:nodeType.
 <a name="line227"></a>     * @api
 <a name="line228"></a>     */</span>
-<a name="line229"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_SUPERTYPES <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/1.0}supertypes&quot;</span><span style="color: #339933;">;</span>
+<a name="line229"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_IS_ABSTRACT <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/1.0}isAbstract&quot;</span><span style="color: #339933;">;</span>
 <a name="line230"></a>&nbsp;
 <a name="line231"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line232"></a>     * A constant for the property name jcr:isAbstract (in extended form),
+<a name="line232"></a>     * A constant for the property name jcr:isMixin (in extended form),
 <a name="line233"></a>     * declared in node type nt:nodeType.
 <a name="line234"></a>     * @api
 <a name="line235"></a>     */</span>
-<a name="line236"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_IS_ABSTRACT <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/1.0}isAbstract&quot;</span><span style="color: #339933;">;</span>
+<a name="line236"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_IS_MIXIN <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/1.0}isMixin&quot;</span><span style="color: #339933;">;</span>
 <a name="line237"></a>&nbsp;
 <a name="line238"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line239"></a>     * A constant for the property name jcr:isMixin (in extended form),
+<a name="line239"></a>     * A constant for the property name jcr:hasOrderableChildNodes (in extended form),
 <a name="line240"></a>     * declared in node type nt:nodeType.
 <a name="line241"></a>     * @api
 <a name="line242"></a>     */</span>
-<a name="line243"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_IS_MIXIN <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/1.0}isMixin&quot;</span><span style="color: #339933;">;</span>
+<a name="line243"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_HAS_ORDERABLE_CHILD_NODES <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/1.0}hasOrderableChildNodes&quot;</span><span style="color: #339933;">;</span>
 <a name="line244"></a>&nbsp;
 <a name="line245"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line246"></a>     * A constant for the property name jcr:hasOrderableChildNodes (in extended form),
+<a name="line246"></a>     * A constant for the property name jcr:primaryItemName (in extended form),
 <a name="line247"></a>     * declared in node type nt:nodeType.
 <a name="line248"></a>     * @api
 <a name="line249"></a>     */</span>
-<a name="line250"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_HAS_ORDERABLE_CHILD_NODES <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/1.0}hasOrderableChildNodes&quot;</span><span style="color: #339933;">;</span>
+<a name="line250"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_PRIMARY_ITEM_NAME <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/1.0}primaryItemName&quot;</span><span style="color: #339933;">;</span>
 <a name="line251"></a>&nbsp;
 <a name="line252"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line253"></a>     * A constant for the property name jcr:primaryItemName (in extended form),
-<a name="line254"></a>     * declared in node type nt:nodeType.
+<a name="line253"></a>     * A constant for the property name jcr:name (in extended form),
+<a name="line254"></a>     * declared in node types nt:propertyDefinition and nt:childNodeDefinition.
 <a name="line255"></a>     * @api
 <a name="line256"></a>     */</span>
-<a name="line257"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_PRIMARY_ITEM_NAME <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/1.0}primaryItemName&quot;</span><span style="color: #339933;">;</span>
+<a name="line257"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_NAME <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/1.0}name&quot;</span><span style="color: #339933;">;</span>
 <a name="line258"></a>&nbsp;
 <a name="line259"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line260"></a>     * A constant for the property name jcr:name (in extended form),
+<a name="line260"></a>     * A constant for the property name jcr:autoCreated (in extended form),
 <a name="line261"></a>     * declared in node types nt:propertyDefinition and nt:childNodeDefinition.
 <a name="line262"></a>     * @api
 <a name="line263"></a>     */</span>
-<a name="line264"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_NAME <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/1.0}name&quot;</span><span style="color: #339933;">;</span>
+<a name="line264"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_AUTOCREATED <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/1.0}autoCreated&quot;</span><span style="color: #339933;">;</span>
 <a name="line265"></a>&nbsp;
 <a name="line266"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line267"></a>     * A constant for the property name jcr:autoCreated (in extended form),
+<a name="line267"></a>     * A constant for the property name jcr:mandatory (in extended form),
 <a name="line268"></a>     * declared in node types nt:propertyDefinition and nt:childNodeDefinition.
 <a name="line269"></a>     * @api
 <a name="line270"></a>     */</span>
-<a name="line271"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_AUTOCREATED <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/1.0}autoCreated&quot;</span><span style="color: #339933;">;</span>
+<a name="line271"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_MANDATORY <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/1.0}mandatory&quot;</span><span style="color: #339933;">;</span>
 <a name="line272"></a>&nbsp;
 <a name="line273"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line274"></a>     * A constant for the property name jcr:mandatory (in extended form),
+<a name="line274"></a>     * A constant for the property name jcr:protected (in extended form),
 <a name="line275"></a>     * declared in node types nt:propertyDefinition and nt:childNodeDefinition.
 <a name="line276"></a>     * @api
 <a name="line277"></a>     */</span>
-<a name="line278"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_MANDATORY <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/1.0}mandatory&quot;</span><span style="color: #339933;">;</span>
+<a name="line278"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_PROTECTED <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/1.0}protected&quot;</span><span style="color: #339933;">;</span>
 <a name="line279"></a>&nbsp;
 <a name="line280"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line281"></a>     * A constant for the property name jcr:protected (in extended form),
+<a name="line281"></a>     * A constant for the property name jcr:onParentVersion (in extended form),
 <a name="line282"></a>     * declared in node types nt:propertyDefinition and nt:childNodeDefinition.
 <a name="line283"></a>     * @api
 <a name="line284"></a>     */</span>
-<a name="line285"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_PROTECTED <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/1.0}protected&quot;</span><span style="color: #339933;">;</span>
+<a name="line285"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_ON_PARENT_VERSION <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/1.0}onParentVersion&quot;</span><span style="color: #339933;">;</span>
 <a name="line286"></a>&nbsp;
 <a name="line287"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line288"></a>     * A constant for the property name jcr:onParentVersion (in extended form),
-<a name="line289"></a>     * declared in node types nt:propertyDefinition and nt:childNodeDefinition.
+<a name="line288"></a>     * A constant for the property name jcr:requiredType (in extended form),
+<a name="line289"></a>     * declared in node type nt:propertyDefinition.
 <a name="line290"></a>     * @api
 <a name="line291"></a>     */</span>
-<a name="line292"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_ON_PARENT_VERSION <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/1.0}onParentVersion&quot;</span><span style="color: #339933;">;</span>
+<a name="line292"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_REQUIRED_TYPE <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/1.0}requiredType&quot;</span><span style="color: #339933;">;</span>
 <a name="line293"></a>&nbsp;
 <a name="line294"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line295"></a>     * A constant for the property name jcr:requiredType (in extended form),
+<a name="line295"></a>     * A constant for the property name jcr:valueConstraints (in extended form),
 <a name="line296"></a>     * declared in node type nt:propertyDefinition.
 <a name="line297"></a>     * @api
 <a name="line298"></a>     */</span>
-<a name="line299"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_REQUIRED_TYPE <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/1.0}requiredType&quot;</span><span style="color: #339933;">;</span>
+<a name="line299"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_VALUE_CONSTRAINTS <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/1.0}valueConstraints&quot;</span><span style="color: #339933;">;</span>
 <a name="line300"></a>&nbsp;
 <a name="line301"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line302"></a>     * A constant for the property name jcr:valueConstraints (in extended form),
+<a name="line302"></a>     * A constant for the property name jcr:defaultValues (in extended form),
 <a name="line303"></a>     * declared in node type nt:propertyDefinition.
 <a name="line304"></a>     * @api
 <a name="line305"></a>     */</span>
-<a name="line306"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_VALUE_CONSTRAINTS <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/1.0}valueConstraints&quot;</span><span style="color: #339933;">;</span>
+<a name="line306"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_DEFAULT_VALUES <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/1.0}defaultValues&quot;</span><span style="color: #339933;">;</span>
 <a name="line307"></a>&nbsp;
 <a name="line308"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line309"></a>     * A constant for the property name jcr:defaultValues (in extended form),
+<a name="line309"></a>     * A constant for the property name jcr:multiple (in extended form),
 <a name="line310"></a>     * declared in node type nt:propertyDefinition.
 <a name="line311"></a>     * @api
 <a name="line312"></a>     */</span>
-<a name="line313"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_DEFAULT_VALUES <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/1.0}defaultValues&quot;</span><span style="color: #339933;">;</span>
+<a name="line313"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_MULTIPLE <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/1.0}multiple&quot;</span><span style="color: #339933;">;</span>
 <a name="line314"></a>&nbsp;
 <a name="line315"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line316"></a>     * A constant for the property name jcr:multiple (in extended form),
-<a name="line317"></a>     * declared in node type nt:propertyDefinition.
+<a name="line316"></a>     * A constant for the property name jcr:requiredPrimaryTypes (in extended form),
+<a name="line317"></a>     * declared in node type nt:childNodeDefinition.
 <a name="line318"></a>     * @api
 <a name="line319"></a>     */</span>
-<a name="line320"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_MULTIPLE <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/1.0}multiple&quot;</span><span style="color: #339933;">;</span>
+<a name="line320"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_REQUIRED_PRIMARY_TYPES <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/1.0}requiredPrimaryTypes&quot;</span><span style="color: #339933;">;</span>
 <a name="line321"></a>&nbsp;
 <a name="line322"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line323"></a>     * A constant for the property name jcr:requiredPrimaryTypes (in extended form),
+<a name="line323"></a>     * A constant for the property name jcr:defaultPrimaryType (in extended form),
 <a name="line324"></a>     * declared in node type nt:childNodeDefinition.
 <a name="line325"></a>     * @api
 <a name="line326"></a>     */</span>
-<a name="line327"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_REQUIRED_PRIMARY_TYPES <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/1.0}requiredPrimaryTypes&quot;</span><span style="color: #339933;">;</span>
+<a name="line327"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_DEFAULT_PRIMARY_TYPE <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/1.0}defaultPrimaryType&quot;</span><span style="color: #339933;">;</span>
 <a name="line328"></a>&nbsp;
 <a name="line329"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line330"></a>     * A constant for the property name jcr:defaultPrimaryType (in extended form),
+<a name="line330"></a>     * A constant for the property name jcr:sameNameSiblings (in extended form),
 <a name="line331"></a>     * declared in node type nt:childNodeDefinition.
 <a name="line332"></a>     * @api
 <a name="line333"></a>     */</span>
-<a name="line334"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_DEFAULT_PRIMARY_TYPE <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/1.0}defaultPrimaryType&quot;</span><span style="color: #339933;">;</span>
+<a name="line334"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_SAME_NAME_SIBLINGS <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/1.0}sameNameSiblings&quot;</span><span style="color: #339933;">;</span>
 <a name="line335"></a>&nbsp;
 <a name="line336"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line337"></a>     * A constant for the property name jcr:sameNameSiblings (in extended form),
-<a name="line338"></a>     * declared in node type nt:childNodeDefinition.
+<a name="line337"></a>     * A constant for the property name jcr:lockOwner (in extended form),
+<a name="line338"></a>     * declared in node type mix:lockable.
 <a name="line339"></a>     * @api
 <a name="line340"></a>     */</span>
-<a name="line341"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_SAME_NAME_SIBLINGS <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/1.0}sameNameSiblings&quot;</span><span style="color: #339933;">;</span>
+<a name="line341"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_LOCK_OWNER <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/1.0}lockOwner&quot;</span><span style="color: #339933;">;</span>
 <a name="line342"></a>&nbsp;
 <a name="line343"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line344"></a>     * A constant for the property name jcr:lockOwner (in extended form),
+<a name="line344"></a>     * A constant for the property name jcr:lockIsDeep (in extended form),
 <a name="line345"></a>     * declared in node type mix:lockable.
 <a name="line346"></a>     * @api
 <a name="line347"></a>     */</span>
-<a name="line348"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_LOCK_OWNER <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/1.0}lockOwner&quot;</span><span style="color: #339933;">;</span>
+<a name="line348"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_LOCK_IS_DEEP <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/1.0}lockIsDeep&quot;</span><span style="color: #339933;">;</span>
 <a name="line349"></a>&nbsp;
 <a name="line350"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line351"></a>     * A constant for the property name jcr:lockIsDeep (in extended form),
-<a name="line352"></a>     * declared in node type mix:lockable.
+<a name="line351"></a>     * A constant for the property name jcr:lifecyclePolicy (in extended form),
+<a name="line352"></a>     * declared in node type mix:lifecycle.
 <a name="line353"></a>     * @api
 <a name="line354"></a>     */</span>
-<a name="line355"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_LOCK_IS_DEEP <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/1.0}lockIsDeep&quot;</span><span style="color: #339933;">;</span>
+<a name="line355"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_LIFECYCLE_POLICY <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/1.0}lifecyclePolicy&quot;</span><span style="color: #339933;">;</span>
 <a name="line356"></a>&nbsp;
 <a name="line357"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line358"></a>     * A constant for the property name jcr:lifecyclePolicy (in extended form),
+<a name="line358"></a>     * A constant for the property name jcr:currentLifecycleState (in extended form),
 <a name="line359"></a>     * declared in node type mix:lifecycle.
 <a name="line360"></a>     * @api
 <a name="line361"></a>     */</span>
-<a name="line362"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_LIFECYCLE_POLICY <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/1.0}lifecyclePolicy&quot;</span><span style="color: #339933;">;</span>
+<a name="line362"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_CURRENT_LIFECYCLE_STATE <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/1.0}currentLifecycleState&quot;</span><span style="color: #339933;">;</span>
 <a name="line363"></a>&nbsp;
 <a name="line364"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line365"></a>     * A constant for the property name jcr:currentLifecycleState (in extended form),
-<a name="line366"></a>     * declared in node type mix:lifecycle.
+<a name="line365"></a>     * A constant for the property name jcr:isCheckedOut (in extended form),
+<a name="line366"></a>     * declared in node type mix:simpleVersionable.
 <a name="line367"></a>     * @api
 <a name="line368"></a>     */</span>
-<a name="line369"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_CURRENT_LIFECYCLE_STATE <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/1.0}currentLifecycleState&quot;</span><span style="color: #339933;">;</span>
+<a name="line369"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_IS_CHECKED_OUT <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/1.0}isCheckedOut&quot;</span><span style="color: #339933;">;</span>
 <a name="line370"></a>&nbsp;
 <a name="line371"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line372"></a>     * A constant for the property name jcr:isCheckedOut (in extended form),
-<a name="line373"></a>     * declared in node type mix:simpleVersionable.
+<a name="line372"></a>     * A constant for the property name jcr:frozenPrimaryType (in extended form),
+<a name="line373"></a>     * declared in node type nt:frozenNode.
 <a name="line374"></a>     * @api
 <a name="line375"></a>     */</span>
-<a name="line376"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_IS_CHECKED_OUT <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/1.0}isCheckedOut&quot;</span><span style="color: #339933;">;</span>
+<a name="line376"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_FROZEN_PRIMARY_TYPE <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/1.0}frozenPrimaryType&quot;</span><span style="color: #339933;">;</span>
 <a name="line377"></a>&nbsp;
 <a name="line378"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line379"></a>     * A constant for the property name jcr:frozenPrimaryType (in extended form),
+<a name="line379"></a>     * A constant for the property name jcr:frozenMixinTypes (in extended form),
 <a name="line380"></a>     * declared in node type nt:frozenNode.
 <a name="line381"></a>     * @api
 <a name="line382"></a>     */</span>
-<a name="line383"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_FROZEN_PRIMARY_TYPE <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/1.0}frozenPrimaryType&quot;</span><span style="color: #339933;">;</span>
+<a name="line383"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_FROZEN_MIXIN_TYPES <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/1.0}frozenMixinTypes&quot;</span><span style="color: #339933;">;</span>
 <a name="line384"></a>&nbsp;
 <a name="line385"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line386"></a>     * A constant for the property name jcr:frozenMixinTypes (in extended form),
+<a name="line386"></a>     * A constant for the property name jcr:frozenUuid (in extended form),
 <a name="line387"></a>     * declared in node type nt:frozenNode.
 <a name="line388"></a>     * @api
 <a name="line389"></a>     */</span>
-<a name="line390"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_FROZEN_MIXIN_TYPES <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/1.0}frozenMixinTypes&quot;</span><span style="color: #339933;">;</span>
+<a name="line390"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_FROZEN_UUID <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/1.0}frozenUuid&quot;</span><span style="color: #339933;">;</span>
 <a name="line391"></a>&nbsp;
 <a name="line392"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line393"></a>     * A constant for the property name jcr:frozenUuid (in extended form),
-<a name="line394"></a>     * declared in node type nt:frozenNode.
+<a name="line393"></a>     * A constant for the property name jcr:versionHistory (in extended form),
+<a name="line394"></a>     * declared in node type mix:versionable.
 <a name="line395"></a>     * @api
 <a name="line396"></a>     */</span>
-<a name="line397"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_FROZEN_UUID <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/1.0}frozenUuid&quot;</span><span style="color: #339933;">;</span>
+<a name="line397"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_VERSION_HISTORY <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/1.0}versionHistory&quot;</span><span style="color: #339933;">;</span>
 <a name="line398"></a>&nbsp;
 <a name="line399"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line400"></a>     * A constant for the property name jcr:versionHistory (in extended form),
+<a name="line400"></a>     * A constant for the property name jcr:baseVersion (in extended form),
 <a name="line401"></a>     * declared in node type mix:versionable.
 <a name="line402"></a>     * @api
 <a name="line403"></a>     */</span>
-<a name="line404"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_VERSION_HISTORY <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/1.0}versionHistory&quot;</span><span style="color: #339933;">;</span>
+<a name="line404"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_BASE_VERSION <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/1.0}baseVersion&quot;</span><span style="color: #339933;">;</span>
 <a name="line405"></a>&nbsp;
 <a name="line406"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line407"></a>     * A constant for the property name jcr:baseVersion (in extended form),
-<a name="line408"></a>     * declared in node type mix:versionable.
+<a name="line407"></a>     * A constant for the property name jcr:predecessors (in extended form),
+<a name="line408"></a>     * declared in node types mix:versionable and nt:version.
 <a name="line409"></a>     * @api
 <a name="line410"></a>     */</span>
-<a name="line411"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_BASE_VERSION <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/1.0}baseVersion&quot;</span><span style="color: #339933;">;</span>
+<a name="line411"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_PREDECESSORS <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/1.0}predecessors&quot;</span><span style="color: #339933;">;</span>
 <a name="line412"></a>&nbsp;
 <a name="line413"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line414"></a>     * A constant for the property name jcr:predecessors (in extended form),
-<a name="line415"></a>     * declared in node types mix:versionable and nt:version.
+<a name="line414"></a>     * A constant for the property name jcr:mergeFailed (in extended form),
+<a name="line415"></a>     * declared in node type mix:versionable.
 <a name="line416"></a>     * @api
 <a name="line417"></a>     */</span>
-<a name="line418"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_PREDECESSORS <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/1.0}predecessors&quot;</span><span style="color: #339933;">;</span>
+<a name="line418"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_MERGE_FAILED <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/1.0}mergeFailed&quot;</span><span style="color: #339933;">;</span>
 <a name="line419"></a>&nbsp;
 <a name="line420"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line421"></a>     * A constant for the property name jcr:mergeFailed (in extended form),
-<a name="line422"></a>     * declared in node type mix:versionable.
+<a name="line421"></a>     * A constant for the property name jcr:activity (in extended form),
+<a name="line422"></a>     * declared in node types mix:versionable and nt:version.
 <a name="line423"></a>     * @api
 <a name="line424"></a>     */</span>
-<a name="line425"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_MERGE_FAILED <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/1.0}mergeFailed&quot;</span><span style="color: #339933;">;</span>
+<a name="line425"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_ACTIVITY <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/1.0}activity&quot;</span><span style="color: #339933;">;</span>
 <a name="line426"></a>&nbsp;
 <a name="line427"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line428"></a>     * A constant for the property name jcr:activity (in extended form),
-<a name="line429"></a>     * declared in node types mix:versionable and nt:version.
+<a name="line428"></a>     * A constant for the property name jcr:configuration (in extended form),
+<a name="line429"></a>     * declared in node type mix:versionable.
 <a name="line430"></a>     * @api
 <a name="line431"></a>     */</span>
-<a name="line432"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_ACTIVITY <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/1.0}activity&quot;</span><span style="color: #339933;">;</span>
+<a name="line432"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_CONFIGURATION <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/1.0}configuration&quot;</span><span style="color: #339933;">;</span>
 <a name="line433"></a>&nbsp;
 <a name="line434"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line435"></a>     * A constant for the property name jcr:configuration (in extended form),
-<a name="line436"></a>     * declared in node type mix:versionable.
+<a name="line435"></a>     * A constant for the property name jcr:versionableUuid (in extended form),
+<a name="line436"></a>     * declared in node type nt:version.
 <a name="line437"></a>     * @api
 <a name="line438"></a>     */</span>
-<a name="line439"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_CONFIGURATION <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/1.0}configuration&quot;</span><span style="color: #339933;">;</span>
+<a name="line439"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_VERSIONABLE_UUID <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/1.0}versionableUuid&quot;</span><span style="color: #339933;">;</span>
 <a name="line440"></a>&nbsp;
 <a name="line441"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line442"></a>     * A constant for the property name jcr:versionableUuid (in extended form),
+<a name="line442"></a>     * A constant for the property name jcr:copiedFrom (in extended form),
 <a name="line443"></a>     * declared in node type nt:version.
 <a name="line444"></a>     * @api
 <a name="line445"></a>     */</span>
-<a name="line446"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_VERSIONABLE_UUID <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/1.0}versionableUuid&quot;</span><span style="color: #339933;">;</span>
+<a name="line446"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_COPIED_FROM <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/1.0}copiedFrom&quot;</span><span style="color: #339933;">;</span>
 <a name="line447"></a>&nbsp;
 <a name="line448"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line449"></a>     * A constant for the property name jcr:copiedFrom (in extended form),
+<a name="line449"></a>     * A constant for the property name jcr:successors (in extended form),
 <a name="line450"></a>     * declared in node type nt:version.
 <a name="line451"></a>     * @api
 <a name="line452"></a>     */</span>
-<a name="line453"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_COPIED_FROM <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/1.0}copiedFrom&quot;</span><span style="color: #339933;">;</span>
+<a name="line453"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_SUCCESSORS <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/1.0}successors&quot;</span><span style="color: #339933;">;</span>
 <a name="line454"></a>&nbsp;
 <a name="line455"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line456"></a>     * A constant for the property name jcr:successors (in extended form),
-<a name="line457"></a>     * declared in node type nt:version.
+<a name="line456"></a>     * A constant for the property name jcr:childVersionHistory (in extended form),
+<a name="line457"></a>     * declared in node type nt:versionedChild.
 <a name="line458"></a>     * @api
 <a name="line459"></a>     */</span>
-<a name="line460"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_SUCCESSORS <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/1.0}successors&quot;</span><span style="color: #339933;">;</span>
+<a name="line460"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_CHILD_VERSION_HISTORY <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/1.0}childVersionHistory&quot;</span><span style="color: #339933;">;</span>
 <a name="line461"></a>&nbsp;
 <a name="line462"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line463"></a>     * A constant for the property name jcr:childVersionHistory (in extended form),
-<a name="line464"></a>     * declared in node type nt:versionedChild.
+<a name="line463"></a>     * A constant for the property name jcr:root (in extended form),
+<a name="line464"></a>     * declared in node type nt:configuration.
 <a name="line465"></a>     * @api
 <a name="line466"></a>     */</span>
-<a name="line467"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_CHILD_VERSION_HISTORY <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/1.0}childVersionHistory&quot;</span><span style="color: #339933;">;</span>
+<a name="line467"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_ROOT <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/1.0}root&quot;</span><span style="color: #339933;">;</span>
 <a name="line468"></a>&nbsp;
 <a name="line469"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line470"></a>     * A constant for the property name jcr:root (in extended form),
-<a name="line471"></a>     * declared in node type nt:configuration.
+<a name="line470"></a>     * A constant for the property name jcr:statement (in extended form),
+<a name="line471"></a>     * declared in node type nt:query.
 <a name="line472"></a>     * @api
 <a name="line473"></a>     */</span>
-<a name="line474"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_ROOT <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/1.0}root&quot;</span><span style="color: #339933;">;</span>
+<a name="line474"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_STATEMENT <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/1.0}statement&quot;</span><span style="color: #339933;">;</span>
 <a name="line475"></a>&nbsp;
-<a name="line476"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line477"></a>     * A constant for the property name jcr:statement (in extended form),
-<a name="line478"></a>     * declared in node type nt:query.
-<a name="line479"></a>     * @api
-<a name="line480"></a>     */</span>
-<a name="line481"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_STATEMENT <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/1.0}statement&quot;</span><span style="color: #339933;">;</span>
-<a name="line482"></a>&nbsp;
-<a name="line483"></a>    <span style="color: #009933; font-style: italic;">/**#@-*/</span>
-<a name="line484"></a>&nbsp;
-<a name="line485"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line486"></a>     * Sets the value of this property to the value.
-<a name="line487"></a>     *
-<a name="line488"></a>     * If the type parameter is set, the property is set to that type and the
-<a name="line489"></a>     * value converted into that type. If the node type does not allow the type
-<a name="line490"></a>     * an exception is thrown.
-<a name="line491"></a>     *
-<a name="line492"></a>     * If no explicit type is given, then it is derived from the value. (First
-<a name="line493"></a>     * value in case of multivalue property.)
-<a name="line494"></a>     * If the node type allows the type of the parameter, the property changes
-<a name="line495"></a>     * its type to the type of the value. Otherwise, a best-effort conversion
-<a name="line496"></a>     * is attempted.
-<a name="line497"></a>     *
-<a name="line498"></a>     * If value is of type PropertyInterface, the value of the property is
-<a name="line499"></a>     * copied into this property. (If type is set, the property value is
-<a name="line500"></a>     * converted into this type, otherwise the type of the property is used
-<a name="line501"></a>     * as explained above.
-<a name="line502"></a>     * This can be used to copy a binary from one property into another without
-<a name="line503"></a>     * getting the stream. The implemenation should take care to detect the
-<a name="line504"></a>     * case and copy the binary data directly in the backend for optimal
-<a name="line505"></a>     * performance.
-<a name="line506"></a>     *
-<a name="line507"></a>     * The type detection follows PropertyType::determineType. Thus, passing a
-<a name="line508"></a>     * Node object without an explicit type (REFERENCE or WEAKREFERENCE) will
-<a name="line509"></a>     * create a REFERENCE property. If the specified node is not referenceable,
-<a name="line510"></a>     * a ValueFormatException is thrown.
-<a name="line511"></a>     *
-<a name="line512"></a>     * To create a PATH property with a reference to an other property, you can
-<a name="line513"></a>     * call setValue with the path of the other property and the PATH type
-<a name="line514"></a>     * constant. Passing the property itself and the PATH type will convert the
-<a name="line515"></a>     * value of the property to a path.
+<a name="line476"></a>    <span style="color: #009933; font-style: italic;">/**#@-*/</span>
+<a name="line477"></a>&nbsp;
+<a name="line478"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line479"></a>     * Sets the value of this property to the value.
+<a name="line480"></a>     *
+<a name="line481"></a>     * If the type parameter is set, the property is set to that type and the
+<a name="line482"></a>     * value converted into that type. If the node type does not allow the type
+<a name="line483"></a>     * an exception is thrown.
+<a name="line484"></a>     *
+<a name="line485"></a>     * If no explicit type is given, then it is derived from the value. (First
+<a name="line486"></a>     * value in case of multivalue property.)
+<a name="line487"></a>     * If the node type allows the type of the parameter, the property changes
+<a name="line488"></a>     * its type to the type of the value. Otherwise, a best-effort conversion
+<a name="line489"></a>     * is attempted.
+<a name="line490"></a>     *
+<a name="line491"></a>     * If value is of type PropertyInterface, the value of the property is
+<a name="line492"></a>     * copied into this property. (If type is set, the property value is
+<a name="line493"></a>     * converted into this type, otherwise the type of the property is used
+<a name="line494"></a>     * as explained above.
+<a name="line495"></a>     * This can be used to copy a binary from one property into another without
+<a name="line496"></a>     * getting the stream. The implemenation should take care to detect the
+<a name="line497"></a>     * case and copy the binary data directly in the backend for optimal
+<a name="line498"></a>     * performance.
+<a name="line499"></a>     *
+<a name="line500"></a>     * The type detection follows PropertyType::determineType. Thus, passing a
+<a name="line501"></a>     * Node object without an explicit type (REFERENCE or WEAKREFERENCE) will
+<a name="line502"></a>     * create a REFERENCE property. If the specified node is not referenceable,
+<a name="line503"></a>     * a ValueFormatException is thrown.
+<a name="line504"></a>     *
+<a name="line505"></a>     * To create a PATH property with a reference to an other property, you can
+<a name="line506"></a>     * call setValue with the path of the other property and the PATH type
+<a name="line507"></a>     * constant. Passing the property itself and the PATH type will convert the
+<a name="line508"></a>     * value of the property to a path.
+<a name="line509"></a>     *
+<a name="line510"></a>     * This method is a session-write and therefore requires a &lt;code&gt;save&lt;/code&gt;
+<a name="line511"></a>     * to dispatch the change.
+<a name="line512"></a>     *
+<a name="line513"></a>     * If value is an array:
+<a name="line514"></a>     * If this property is not multi-valued then a ValueFormatException is
+<a name="line515"></a>     * thrown immediately.
 <a name="line516"></a>     *
-<a name="line517"></a>     * This method is a session-write and therefore requires a &lt;code&gt;save&lt;/code&gt;
-<a name="line518"></a>     * to dispatch the change.
-<a name="line519"></a>     *
-<a name="line520"></a>     * If value is an array:
-<a name="line521"></a>     * If this property is not multi-valued then a ValueFormatException is
-<a name="line522"></a>     * thrown immediately.
+<a name="line517"></a>     * &lt;strong&gt;PHPCR Note:&lt;/strong&gt; The Java API defines this method with multiple differing signatures.
+<a name="line518"></a>     * &lt;strong&gt;PHPCR Note:&lt;/strong&gt; Because we removed the Value interface, this method replaces
+<a name="line519"></a>     * ValueFactory::createValue.
+<a name="line520"></a>     *
+<a name="line521"></a>     * @param mixed $value The value to set
+<a name="line522"></a>     * @param integer $type Type request for the property, optional. Must be a constant from PropertyType
 <a name="line523"></a>     *
-<a name="line524"></a>     * &lt;strong&gt;PHPCR Note:&lt;/strong&gt; The Java API defines this method with multiple differing signatures.
-<a name="line525"></a>     * &lt;strong&gt;PHPCR Note:&lt;/strong&gt; Because we removed the Value interface, this method replaces
-<a name="line526"></a>     * ValueFactory::createValue.
-<a name="line527"></a>     *
-<a name="line528"></a>     * @param mixed $value The value to set
-<a name="line529"></a>     * @param integer $type Type request for the property, optional. Must be a constant from PropertyType
-<a name="line530"></a>     *
-<a name="line531"></a>     * @return void
-<a name="line532"></a>     *
-<a name="line533"></a>     * @throws \PHPCR\ValueFormatException if the type or format of the specified value is incompatible with the type
-<a name="line534"></a>     *                                     of this property.
-<a name="line535"></a>     * @throws \PHPCR\Version\VersionException if this property belongs to a node that is read-only due to a checked-in
-<a name="line536"></a>     *                                         node and this implementation performs this validation immediately.
-<a name="line537"></a>     * @throws \PHPCR\Lock\LockException if a lock prevents the setting of the value and this implementation performs
-<a name="line538"></a>     *                                   this validation immediately.
-<a name="line539"></a>     * @throws \PHPCR\ConstraintViolationException if the change would violate a node-type or other constraint and
-<a name="line540"></a>     *                                             this implementation performs this validation immediately.
-<a name="line541"></a>     * @throws \PHPCR\RepositoryException if another error occurs.
-<a name="line542"></a>     * @throws \InvalidArgumentException if the specified DateTime value cannot be expressed in the ISO 8601-based
-<a name="line543"></a>     *                                   format defined in the JCR 2.0 specification and the implementation does not
-<a name="line544"></a>     *                                   support dates incompatible with that format.
-<a name="line545"></a>     * @api
-<a name="line546"></a>     */</span>
-<a name="line547"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> setValue<span style="color: #009900;">&#40;</span><span style="color: #000088;">$value</span><span style="color: #339933;">,</span> <span style="color: #000088;">$type</span> <span style="color: #339933;">=</span> <span style="color: #009900; font-weight: bold;">null</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line548"></a>&nbsp;
-<a name="line549"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line550"></a>     * Appends a value to a multi-value property
-<a name="line551"></a>     *
-<a name="line552"></a>     * &lt;strong&gt;PHPCR Note:&lt;/strong&gt; This is a new method not found in Java.
-<a name="line553"></a>     * In PHP appending to strings is easy and this is more convenient than
-<a name="line554"></a>     * getting the property and appending to the array and setting again.
-<a name="line555"></a>     *
-<a name="line556"></a>     * @param mixed value
-<a name="line557"></a>     * @throws \PHPCR\ValueFormatException if the property is not multi-value
-<a name="line558"></a>     */</span>
-<a name="line559"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> addValue<span style="color: #009900;">&#40;</span><span style="color: #000088;">$value</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line560"></a>&nbsp;
-<a name="line561"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line562"></a>     * Get the value in format default for the PropertyType of this property.
-<a name="line563"></a>     *
-<a name="line564"></a>     * In case of a binary property, this is the stream of binary data.
-<a name="line565"></a>     *
-<a name="line566"></a>     * &lt;b&gt;PHPCR Note:&lt;/b&gt; We dropped the Value interface as its unnecessary
-<a name="line567"></a>     * with weak typing
+<a name="line524"></a>     * @return void
+<a name="line525"></a>     *
+<a name="line526"></a>     * @throws \PHPCR\ValueFormatException if the type or format of the specified value is incompatible with the type
+<a name="line527"></a>     *                                     of this property.
+<a name="line528"></a>     * @throws \PHPCR\Version\VersionException if this property belongs to a node that is read-only due to a checked-in
+<a name="line529"></a>     *                                         node and this implementation performs this validation immediately.
+<a name="line530"></a>     * @throws \PHPCR\Lock\LockException if a lock prevents the setting of the value and this implementation performs
+<a name="line531"></a>     *                                   this validation immediately.
+<a name="line532"></a>     * @throws \PHPCR\ConstraintViolationException if the change would violate a node-type or other constraint and
+<a name="line533"></a>     *                                             this implementation performs this validation immediately.
+<a name="line534"></a>     * @throws \PHPCR\RepositoryException if another error occurs.
+<a name="line535"></a>     * @throws \InvalidArgumentException if the specified DateTime value cannot be expressed in the ISO 8601-based
+<a name="line536"></a>     *                                   format defined in the JCR 2.0 specification and the implementation does not
+<a name="line537"></a>     *                                   support dates incompatible with that format.
+<a name="line538"></a>     * @api
+<a name="line539"></a>     */</span>
+<a name="line540"></a>    <span style="color: #000000; font-weight: bold;">function</span> setValue<span style="color: #009900;">&#40;</span><span style="color: #000088;">$value</span><span style="color: #339933;">,</span> <span style="color: #000088;">$type</span> <span style="color: #339933;">=</span> <span style="color: #009900; font-weight: bold;">null</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line541"></a>&nbsp;
+<a name="line542"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line543"></a>     * Appends a value to a multi-value property
+<a name="line544"></a>     *
+<a name="line545"></a>     * &lt;strong&gt;PHPCR Note:&lt;/strong&gt; This is a new method not found in Java.
+<a name="line546"></a>     * In PHP appending to strings is easy and this is more convenient than
+<a name="line547"></a>     * getting the property and appending to the array and setting again.
+<a name="line548"></a>     *
+<a name="line549"></a>     * @param mixed value
+<a name="line550"></a>     * @throws \PHPCR\ValueFormatException if the property is not multi-value
+<a name="line551"></a>     */</span>
+<a name="line552"></a>    <span style="color: #000000; font-weight: bold;">function</span> addValue<span style="color: #009900;">&#40;</span><span style="color: #000088;">$value</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line553"></a>&nbsp;
+<a name="line554"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line555"></a>     * Get the value in format default for the PropertyType of this property.
+<a name="line556"></a>     *
+<a name="line557"></a>     * In case of a binary property, this is the stream of binary data.
+<a name="line558"></a>     *
+<a name="line559"></a>     * &lt;b&gt;PHPCR Note:&lt;/b&gt; We dropped the Value interface as its unnecessary
+<a name="line560"></a>     * with weak typing
+<a name="line561"></a>     *
+<a name="line562"></a>     * @return mixed value of this property, or array in case of multi-value
+<a name="line563"></a>     */</span>
+<a name="line564"></a>    <span style="color: #000000; font-weight: bold;">function</span> getValue<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line565"></a>&nbsp;
+<a name="line566"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line567"></a>     * Returns a String representation of the value of this property.
 <a name="line568"></a>     *
-<a name="line569"></a>     * @return mixed value of this property, or array in case of multi-value
-<a name="line570"></a>     */</span>
-<a name="line571"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getValue<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line572"></a>&nbsp;
-<a name="line573"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line574"></a>     * Returns a String representation of the value of this property.
-<a name="line575"></a>     *
-<a name="line576"></a>     * @return string A string representation of the value of this property, or an array of string for multi-valued
-<a name="line577"></a>     *                properties.
-<a name="line578"></a>     *
-<a name="line579"></a>     * @throws \PHPCR\ValueFormatException if conversion to a String is not possible
-<a name="line580"></a>     * @throws \PHPCR\RepositoryException if another error occurs.
-<a name="line581"></a>     * @api
-<a name="line582"></a>     */</span>
-<a name="line583"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getString<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line584"></a>&nbsp;
-<a name="line585"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line586"></a>     * Returns a Binary representation of the value of this property.
-<a name="line587"></a>     *
-<a name="line588"></a>     * The Binary object in turn provides methods to access the binary data
-<a name="line589"></a>     * itself. Uses the standard conversion to binary (see JCR specification).
-<a name="line590"></a>     *
-<a name="line591"></a>     * @return resource A stream resource if the underlying binary
-<a name="line592"></a>     *
-<a name="line593"></a>     * @throws \PHPCR\RepositoryException if another error occurs
-<a name="line594"></a>     * @api
-<a name="line595"></a>     */</span>
-<a name="line596"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getBinary<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line597"></a>&nbsp;
-<a name="line598"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line599"></a>     * Returns an integer representation of the value of this property.
-<a name="line600"></a>     *
-<a name="line601"></a>     * @return integer An integer representation of the value of this property, or an array of integer for multi-valued
-<a name="line602"></a>     *                 properties.
-<a name="line603"></a>     *
-<a name="line604"></a>     * @throws \PHPCR\ValueFormatException if conversion to integer is not possible
-<a name="line605"></a>     * @throws \PHPCR\RepositoryException if another error occurs
-<a name="line606"></a>     * @api
-<a name="line607"></a>     */</span>
-<a name="line608"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getLong<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line609"></a>&nbsp;
-<a name="line610"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line611"></a>     * Returns a float representation of the value of this property.
-<a name="line612"></a>     *
-<a name="line613"></a>     * @return float A float representation of the value of this property, or an array of float for multi-valued properties.
-<a name="line614"></a>     *
-<a name="line615"></a>     * @throws \PHPCR\ValueFormatException if conversion to a double is not possible
-<a name="line616"></a>     * @throws \PHPCR\RepositoryException if another error occurs
-<a name="line617"></a>     * @api
-<a name="line618"></a>     */</span>
-<a name="line619"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getDouble<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line620"></a>&nbsp;
-<a name="line621"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line622"></a>     * Returns an arbitrary precision number (encoded as string) representation of this value (a BigDecimal in Java).
-<a name="line623"></a>     *
-<a name="line624"></a>     * The string must be encoded with the C locale because of http://bugs.php.net/bug.php?id=16532
-<a name="line625"></a>     *
-<a name="line626"></a>     * @return string A string representation of the value of this property, or an array of strings for multi-valued properties.
-<a name="line627"></a>     *
-<a name="line628"></a>     * @throws \PHPCR\ValueFormatException if conversion to a number string is not possible
-<a name="line629"></a>     * @throws \PHPCR\RepositoryException if another error occurs
-<a name="line630"></a>     * @api
-<a name="line631"></a>     */</span>
-<a name="line632"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getDecimal<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line633"></a>&nbsp;
-<a name="line634"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line635"></a>     * Returns a \DateTime representation of the value of this property.
-<a name="line636"></a>     *
-<a name="line637"></a>     * The object returned is a copy of the stored value, so changes to it are
-<a name="line638"></a>     * not reflected in internal storage.
-<a name="line639"></a>     *
-<a name="line640"></a>     * @return \DateTime A date representation of the value of this property, or an array of DateTime for
-<a name="line641"></a>     *                   multi-valued properties.
-<a name="line642"></a>     *
-<a name="line643"></a>     * @throws \PHPCR\ValueFormatException if conversion to \DateTime is not possible
-<a name="line644"></a>     * @throws \PHPCR\RepositoryException if another error occurs
-<a name="line645"></a>     * @api
-<a name="line646"></a>     */</span>
-<a name="line647"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> <a href="http://www.php.net/getdate"><span style="color: #990000;">getDate</span></a><span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line648"></a>&nbsp;
-<a name="line649"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line650"></a>     * Returns a boolean representation of the value of this property.
-<a name="line651"></a>     *
-<a name="line652"></a>     * As usual in PHP, everything that is not null, 0, or boolean false is
-<a name="line653"></a>     * considered true. Note that this might be different in Java:
-<a name="line654"></a>     * Jackrabbit uses java.lang.Boolean.valueOf(String) which evaluates to
-<a name="line655"></a>     * true only for the string &quot;true&quot; (case insensitive). In PHP, even the
-<a name="line656"></a>     * string 'false' will evaluate to true.
-<a name="line657"></a>     *
-<a name="line658"></a>     * @return boolean A boolean representation of the value of this property, or an array of boolean for
-<a name="line659"></a>     *                 multi-valued properties.
-<a name="line660"></a>     *
-<a name="line661"></a>     * @throws \PHPCR\ValueFormatException if conversion to a boolean is not possible
-<a name="line662"></a>     * @throws \PHPCR\RepositoryException if another error occurs
-<a name="line663"></a>     * @api
-<a name="line664"></a>     */</span>
-<a name="line665"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getBoolean<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line666"></a>&nbsp;
-<a name="line667"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line668"></a>     * Gets the node the property refers to by its type.
-<a name="line669"></a>     *
-<a name="line670"></a>     * If this property is of type REFERENCE, WEAKREFERENCE or PATH (or
-<a name="line671"></a>     * convertible to one of these types) this method returns the Node to
-<a name="line672"></a>     * which this property refers.
-<a name="line673"></a>     * If this property is of type PATH and it contains a relative path, it is
-<a name="line674"></a>     * interpreted relative to the parent node of this property. For example &quot;.&quot;
-<a name="line675"></a>     * refers to the parent node itself, &quot;..&quot; to the parent of the parent node
-<a name="line676"></a>     * and &quot;foo&quot; to a sibling node of this property.
-<a name="line677"></a>     *
-<a name="line678"></a>     * If you do not want to dereference the nodes yet, you can use getString
-<a name="line679"></a>     * to get the unique ids and use the SessionInterface::getNodeByIdentifier
-<a name="line680"></a>     * as all referenced nodes are referenciable and thus must have a uuid.
-<a name="line681"></a>     * If its a PATH property, you will need the node of this property and use
-<a name="line682"></a>     * getNodes to get the nodes with relative or absolute path.
-<a name="line683"></a>     *
-<a name="line684"></a>     * @return \PHPCR\NodeInterface the referenced Node, or an array of Nodes for multi-valued properties.
-<a name="line685"></a>     *
-<a name="line686"></a>     * @throws \PHPCR\ValueFormatException if this property cannot be converted to a referring type
-<a name="line687"></a>     *                                     (REFERENCE, WEAKREFERENCE or PATH) or if this property is a referring
-<a name="line688"></a>     *                                     type but is currently part of the frozen state of a version in version
-<a name="line689"></a>     *                                     storage.
-<a name="line690"></a>     * @throws \PHPCR\ItemNotFoundException If this property is of type PATH or WEAKREFERENCE and no target node
-<a name="line691"></a>     *                                      accessible by the current Session exists in this workspace. Note that this
-<a name="line692"></a>     *                                      applies even if the property is a PATH and a property exists at the
-<a name="line693"></a>     *                                      specified location. To dereference to a target property (as opposed to a
-<a name="line694"></a>     *                                      target node), the method Property.getProperty is used.
-<a name="line695"></a>     * @throws \PHPCR\RepositoryException if another error occurs.
-<a name="line696"></a>     * @api
-<a name="line697"></a>     */</span>
-<a name="line698"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getNode<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line699"></a>&nbsp;
-<a name="line700"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line701"></a>     * Gets the property the property refers to by its type.
-<a name="line702"></a>     *
-<a name="line703"></a>     * If this property is of type PATH (or convertible to this type) this
-<a name="line704"></a>     * method returns the Property to which this property refers.
-<a name="line705"></a>     * If this property contains a relative path, it is interpreted relative
-<a name="line706"></a>     * to the parent node of this property. Therefore, when resolving such a
-<a name="line707"></a>     * relative path, the segment &quot;.&quot; refers to the parent node itself, &quot;..&quot; to
-<a name="line708"></a>     * the parent of the parent node and &quot;foo&quot; to a sibling property of this
-<a name="line709"></a>     * property or this property itself.
-<a name="line710"></a>     *
-<a name="line711"></a>     * For example, if this property is located at /a/b/c and it has a value of
-<a name="line712"></a>     * &quot;../d&quot; then this method will return the property at /a/d if such exists.
-<a name="line713"></a>     *
-<a name="line714"></a>     * @return \PHPCR\PropertyInterface the referenced property, or an array of properties for multi-valued properties.
-<a name="line715"></a>     *
-<a name="line716"></a>     * @throws \PHPCR\ValueFormatException if this property cannot be converted to a PATH or if this property is a
-<a name="line717"></a>     *                                     referring type but is currently part of the frozen state of a version in
-<a name="line718"></a>     *                                     version storage.
-<a name="line719"></a>     * @throws \PHPCR\ItemNotFoundException If no property accessible by the current Session exists in this workspace
-<a name="line720"></a>     *                                      at the specified path. Note that this applies even if a node exists at
-<a name="line721"></a>     *                                      the specified location. To dereference to a target node, the method
-<a name="line722"></a>     *                                      Property.getNode is used.
-<a name="line723"></a>     * @throws \PHPCR\RepositoryException if another error occurs
-<a name="line724"></a>     * @api
-<a name="line725"></a>     */</span>
-<a name="line726"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getProperty<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line727"></a>&nbsp;
-<a name="line728"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line729"></a>     * Returns the length of the value of this property.
+<a name="line569"></a>     * @return string A string representation of the value of this property, or an array of string for multi-valued
+<a name="line570"></a>     *                properties.
+<a name="line571"></a>     *
+<a name="line572"></a>     * @throws \PHPCR\ValueFormatException if conversion to a String is not possible
+<a name="line573"></a>     * @throws \PHPCR\RepositoryException if another error occurs.
+<a name="line574"></a>     * @api
+<a name="line575"></a>     */</span>
+<a name="line576"></a>    <span style="color: #000000; font-weight: bold;">function</span> getString<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line577"></a>&nbsp;
+<a name="line578"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line579"></a>     * Returns a Binary representation of the value of this property.
+<a name="line580"></a>     *
+<a name="line581"></a>     * The Binary object in turn provides methods to access the binary data
+<a name="line582"></a>     * itself. Uses the standard conversion to binary (see JCR specification).
+<a name="line583"></a>     *
+<a name="line584"></a>     * @return resource A stream resource if the underlying binary
+<a name="line585"></a>     *
+<a name="line586"></a>     * @throws \PHPCR\RepositoryException if another error occurs
+<a name="line587"></a>     * @api
+<a name="line588"></a>     */</span>
+<a name="line589"></a>    <span style="color: #000000; font-weight: bold;">function</span> getBinary<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line590"></a>&nbsp;
+<a name="line591"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line592"></a>     * Returns an integer representation of the value of this property.
+<a name="line593"></a>     *
+<a name="line594"></a>     * @return integer An integer representation of the value of this property, or an array of integer for multi-valued
+<a name="line595"></a>     *                 properties.
+<a name="line596"></a>     *
+<a name="line597"></a>     * @throws \PHPCR\ValueFormatException if conversion to integer is not possible
+<a name="line598"></a>     * @throws \PHPCR\RepositoryException if another error occurs
+<a name="line599"></a>     * @api
+<a name="line600"></a>     */</span>
+<a name="line601"></a>    <span style="color: #000000; font-weight: bold;">function</span> getLong<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line602"></a>&nbsp;
+<a name="line603"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line604"></a>     * Returns a float representation of the value of this property.
+<a name="line605"></a>     *
+<a name="line606"></a>     * @return float A float representation of the value of this property, or an array of float for multi-valued properties.
+<a name="line607"></a>     *
+<a name="line608"></a>     * @throws \PHPCR\ValueFormatException if conversion to a double is not possible
+<a name="line609"></a>     * @throws \PHPCR\RepositoryException if another error occurs
+<a name="line610"></a>     * @api
+<a name="line611"></a>     */</span>
+<a name="line612"></a>    <span style="color: #000000; font-weight: bold;">function</span> getDouble<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line613"></a>&nbsp;
+<a name="line614"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line615"></a>     * Returns an arbitrary precision number (encoded as string) representation of this value (a BigDecimal in Java).
+<a name="line616"></a>     *
+<a name="line617"></a>     * The string must be encoded with the C locale because of http://bugs.php.net/bug.php?id=16532
+<a name="line618"></a>     *
+<a name="line619"></a>     * @return string A string representation of the value of this property, or an array of strings for multi-valued properties.
+<a name="line620"></a>     *
+<a name="line621"></a>     * @throws \PHPCR\ValueFormatException if conversion to a number string is not possible
+<a name="line622"></a>     * @throws \PHPCR\RepositoryException if another error occurs
+<a name="line623"></a>     * @api
+<a name="line624"></a>     */</span>
+<a name="line625"></a>    <span style="color: #000000; font-weight: bold;">function</span> getDecimal<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line626"></a>&nbsp;
+<a name="line627"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line628"></a>     * Returns a \DateTime representation of the value of this property.
+<a name="line629"></a>     *
+<a name="line630"></a>     * The object returned is a copy of the stored value, so changes to it are
+<a name="line631"></a>     * not reflected in internal storage.
+<a name="line632"></a>     *
+<a name="line633"></a>     * @return \DateTime A date representation of the value of this property, or an array of DateTime for
+<a name="line634"></a>     *                   multi-valued properties.
+<a name="line635"></a>     *
+<a name="line636"></a>     * @throws \PHPCR\ValueFormatException if conversion to \DateTime is not possible
+<a name="line637"></a>     * @throws \PHPCR\RepositoryException if another error occurs
+<a name="line638"></a>     * @api
+<a name="line639"></a>     */</span>
+<a name="line640"></a>    <span style="color: #000000; font-weight: bold;">function</span> <a href="http://www.php.net/getdate"><span style="color: #990000;">getDate</span></a><span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line641"></a>&nbsp;
+<a name="line642"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line643"></a>     * Returns a boolean representation of the value of this property.
+<a name="line644"></a>     *
+<a name="line645"></a>     * As usual in PHP, everything that is not null, 0, or boolean false is
+<a name="line646"></a>     * considered true. Note that this might be different in Java:
+<a name="line647"></a>     * Jackrabbit uses java.lang.Boolean.valueOf(String) which evaluates to
+<a name="line648"></a>     * true only for the string &quot;true&quot; (case insensitive). In PHP, even the
+<a name="line649"></a>     * string 'false' will evaluate to true.
+<a name="line650"></a>     *
+<a name="line651"></a>     * @return boolean A boolean representation of the value of this property, or an array of boolean for
+<a name="line652"></a>     *                 multi-valued properties.
+<a name="line653"></a>     *
+<a name="line654"></a>     * @throws \PHPCR\ValueFormatException if conversion to a boolean is not possible
+<a name="line655"></a>     * @throws \PHPCR\RepositoryException if another error occurs
+<a name="line656"></a>     * @api
+<a name="line657"></a>     */</span>
+<a name="line658"></a>    <span style="color: #000000; font-weight: bold;">function</span> getBoolean<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line659"></a>&nbsp;
+<a name="line660"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line661"></a>     * Gets the node the property refers to by its type.
+<a name="line662"></a>     *
+<a name="line663"></a>     * If this property is of type REFERENCE, WEAKREFERENCE or PATH (or
+<a name="line664"></a>     * convertible to one of these types) this method returns the Node to
+<a name="line665"></a>     * which this property refers.
+<a name="line666"></a>     * If this property is of type PATH and it contains a relative path, it is
+<a name="line667"></a>     * interpreted relative to the parent node of this property. For example &quot;.&quot;
+<a name="line668"></a>     * refers to the parent node itself, &quot;..&quot; to the parent of the parent node
+<a name="line669"></a>     * and &quot;foo&quot; to a sibling node of this property.
+<a name="line670"></a>     *
+<a name="line671"></a>     * If you do not want to dereference the nodes yet, you can use getString
+<a name="line672"></a>     * to get the unique ids and use the SessionInterface::getNodeByIdentifier
+<a name="line673"></a>     * as all referenced nodes are referenciable and thus must have a uuid.
+<a name="line674"></a>     * If its a PATH property, you will need the node of this property and use
+<a name="line675"></a>     * getNodes to get the nodes with relative or absolute path.
+<a name="line676"></a>     *
+<a name="line677"></a>     * @return \PHPCR\NodeInterface the referenced Node, or an array of Nodes for multi-valued properties.
+<a name="line678"></a>     *
+<a name="line679"></a>     * @throws \PHPCR\ValueFormatException if this property cannot be converted to a referring type
+<a name="line680"></a>     *                                     (REFERENCE, WEAKREFERENCE or PATH) or if this property is a referring
+<a name="line681"></a>     *                                     type but is currently part of the frozen state of a version in version
+<a name="line682"></a>     *                                     storage.
+<a name="line683"></a>     * @throws \PHPCR\ItemNotFoundException If this property is of type PATH or WEAKREFERENCE and no target node
+<a name="line684"></a>     *                                      accessible by the current Session exists in this workspace. Note that this
+<a name="line685"></a>     *                                      applies even if the property is a PATH and a property exists at the
+<a name="line686"></a>     *                                      specified location. To dereference to a target property (as opposed to a
+<a name="line687"></a>     *                                      target node), the method Property.getProperty is used.
+<a name="line688"></a>     * @throws \PHPCR\RepositoryException if another error occurs.
+<a name="line689"></a>     * @api
+<a name="line690"></a>     */</span>
+<a name="line691"></a>    <span style="color: #000000; font-weight: bold;">function</span> getNode<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line692"></a>&nbsp;
+<a name="line693"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line694"></a>     * Gets the property the property refers to by its type.
+<a name="line695"></a>     *
+<a name="line696"></a>     * If this property is of type PATH (or convertible to this type) this
+<a name="line697"></a>     * method returns the Property to which this property refers.
+<a name="line698"></a>     * If this property contains a relative path, it is interpreted relative
+<a name="line699"></a>     * to the parent node of this property. Therefore, when resolving such a
+<a name="line700"></a>     * relative path, the segment &quot;.&quot; refers to the parent node itself, &quot;..&quot; to
+<a name="line701"></a>     * the parent of the parent node and &quot;foo&quot; to a sibling property of this
+<a name="line702"></a>     * property or this property itself.
+<a name="line703"></a>     *
+<a name="line704"></a>     * For example, if this property is located at /a/b/c and it has a value of
+<a name="line705"></a>     * &quot;../d&quot; then this method will return the property at /a/d if such exists.
+<a name="line706"></a>     *
+<a name="line707"></a>     * @return \PHPCR\PropertyInterface the referenced property, or an array of properties for multi-valued properties.
+<a name="line708"></a>     *
+<a name="line709"></a>     * @throws \PHPCR\ValueFormatException if this property cannot be converted to a PATH or if this property is a
+<a name="line710"></a>     *                                     referring type but is currently part of the frozen state of a version in
+<a name="line711"></a>     *                                     version storage.
+<a name="line712"></a>     * @throws \PHPCR\ItemNotFoundException If no property accessible by the current Session exists in this workspace
+<a name="line713"></a>     *                                      at the specified path. Note that this applies even if a node exists at
+<a name="line714"></a>     *                                      the specified location. To dereference to a target node, the method
+<a name="line715"></a>     *                                      Property.getNode is used.
+<a name="line716"></a>     * @throws \PHPCR\RepositoryException if another error occurs
+<a name="line717"></a>     * @api
+<a name="line718"></a>     */</span>
+<a name="line719"></a>    <span style="color: #000000; font-weight: bold;">function</span> getProperty<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line720"></a>&nbsp;
+<a name="line721"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line722"></a>     * Returns the length(s) of the value(s) of this property.
+<a name="line723"></a>     *
+<a name="line724"></a>     * For a BINARY property, getLength returns the number of bytes.
+<a name="line725"></a>     * For other property types, getLength returns the same value that would be
+<a name="line726"></a>     * returned by calling strlen() on the value when it has been converted to a
+<a name="line727"></a>     * STRING according to standard JCR propety type conversion.
+<a name="line728"></a>     *
+<a name="line729"></a>     * Returns -1 if the implementation cannot determine the length.
 <a name="line730"></a>     *
-<a name="line731"></a>     * For a BINARY property, getLength returns the number of bytes.
-<a name="line732"></a>     * For other property types, getLength returns the same value that would be
-<a name="line733"></a>     * returned by calling strlen() on the value when it has been converted to a
-<a name="line734"></a>     * STRING according to standard JCR propety type conversion.
+<a name="line731"></a>     * For multivalue properties, the same rules apply, but returns an array of lengths
+<a name="line732"></a>     * with the same order as the values have in getValue
+<a name="line733"></a>     *
+<a name="line734"></a>     * @return mixed integer with the length, for multivalue property array of lengths
 <a name="line735"></a>     *
-<a name="line736"></a>     * Returns -1 if the implementation cannot determine the length.
-<a name="line737"></a>     *
-<a name="line738"></a>     * @return integer an integer.
-<a name="line739"></a>     * @throws \PHPCR\ValueFormatException if this property is multi-valued.
-<a name="line740"></a>     * @throws \PHPCR\RepositoryException if another error occurs.
-<a name="line741"></a>     * @api
-<a name="line742"></a>     */</span>
-<a name="line743"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getLength<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line744"></a>&nbsp;
-<a name="line745"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line746"></a>     * Returns an array holding the lengths of the values of this (multi-value)
-<a name="line747"></a>     * property in bytes where each is individually calculated as described in
-<a name="line748"></a>     * getLength().
-<a name="line749"></a>     *
-<a name="line750"></a>     * @return array an array of lengths (integers)
+<a name="line736"></a>     * @return integer an integer.
+<a name="line737"></a>     * @throws \PHPCR\RepositoryException if another error occurs.
+<a name="line738"></a>     * @api
+<a name="line739"></a>     */</span>
+<a name="line740"></a>    <span style="color: #000000; font-weight: bold;">function</span> getLength<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line741"></a>&nbsp;
+<a name="line742"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line743"></a>     * Returns the property definition that applies to this property. In some
+<a name="line744"></a>     * cases there may appear to be more than one definition that could apply
+<a name="line745"></a>     * to this node. However, it is assumed that upon creation or change of
+<a name="line746"></a>     * this property, a single particular definition is chosen by the
+<a name="line747"></a>     * implementation. It is that definition that this method returns. How this
+<a name="line748"></a>     * governing definition is selected upon property creation or change from
+<a name="line749"></a>     * among others which may have been applicable is an implementation issue
+<a name="line750"></a>     * and is not covered by this specification.
 <a name="line751"></a>     *
-<a name="line752"></a>     * @throws \PHPCR\ValueFormatException if this property is single-valued.
-<a name="line753"></a>     * @throws \PHPCR\RepositoryException if another error occurs.
-<a name="line754"></a>     * @api
-<a name="line755"></a>     */</span>
-<a name="line756"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getLengths<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line757"></a>&nbsp;
-<a name="line758"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line759"></a>     * Returns the property definition that applies to this property. In some
-<a name="line760"></a>     * cases there may appear to be more than one definition that could apply
-<a name="line761"></a>     * to this node. However, it is assumed that upon creation or change of
-<a name="line762"></a>     * this property, a single particular definition is chosen by the
-<a name="line763"></a>     * implementation. It is that definition that this method returns. How this
-<a name="line764"></a>     * governing definition is selected upon property creation or change from
-<a name="line765"></a>     * among others which may have been applicable is an implementation issue
-<a name="line766"></a>     * and is not covered by this specification.
-<a name="line767"></a>     *
-<a name="line768"></a>     * @return \PHPCR\NodeType\PropertyDefinitionInterface a PropertyDefinition object.
-<a name="line769"></a>     *
-<a name="line770"></a>     * @throws \PHPCR\RepositoryException if an error occurs.
-<a name="line771"></a>     * @api
-<a name="line772"></a>     */</span>
-<a name="line773"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getDefinition<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line774"></a>&nbsp;
-<a name="line775"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line776"></a>     * Returns the type of this Property.
-<a name="line777"></a>     *
-<a name="line778"></a>     * Following property types are available:
-<a name="line779"></a>     * - PropertyType.STRING
-<a name="line780"></a>     * - PropertyType.BINARY
-<a name="line781"></a>     * - PropertyType.DATE
-<a name="line782"></a>     * - PropertyType.DOUBLE
-<a name="line783"></a>     * - PropertyType.LONG
-<a name="line784"></a>     * - PropertyType.BOOLEAN
-<a name="line785"></a>     * - PropertyType.NAME
-<a name="line786"></a>     * - PropertyType.PATH
-<a name="line787"></a>     * - PropertyType.REFERENCE
-<a name="line788"></a>     * - PropertyType.WEAKREFERENCE
-<a name="line789"></a>     * - PropertyType.URI
+<a name="line752"></a>     * @return \PHPCR\NodeType\PropertyDefinitionInterface a PropertyDefinition object.
+<a name="line753"></a>     *
+<a name="line754"></a>     * @throws \PHPCR\RepositoryException if an error occurs.
+<a name="line755"></a>     * @api
+<a name="line756"></a>     */</span>
+<a name="line757"></a>    <span style="color: #000000; font-weight: bold;">function</span> getDefinition<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line758"></a>&nbsp;
+<a name="line759"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line760"></a>     * Returns the type of this Property.
+<a name="line761"></a>     *
+<a name="line762"></a>     * Following property types are available:
+<a name="line763"></a>     * - PropertyType.STRING
+<a name="line764"></a>     * - PropertyType.BINARY
+<a name="line765"></a>     * - PropertyType.DATE
+<a name="line766"></a>     * - PropertyType.DOUBLE
+<a name="line767"></a>     * - PropertyType.LONG
+<a name="line768"></a>     * - PropertyType.BOOLEAN
+<a name="line769"></a>     * - PropertyType.NAME
+<a name="line770"></a>     * - PropertyType.PATH
+<a name="line771"></a>     * - PropertyType.REFERENCE
+<a name="line772"></a>     * - PropertyType.WEAKREFERENCE
+<a name="line773"></a>     * - PropertyType.URI
+<a name="line774"></a>     *
+<a name="line775"></a>     * The type returned is that which was set at property creation. Note that
+<a name="line776"></a>     * for some property p, the type returned by p.getType() will differ from
+<a name="line777"></a>     * the type returned by p.getDefinition.getRequiredType() only in the case
+<a name="line778"></a>     * where the latter returns UNDEFINED. The type of a property instance is
+<a name="line779"></a>     * never UNDEFINED (it must always have some actual type).
+<a name="line780"></a>     *
+<a name="line781"></a>     * @return integer The numerical representation of a property type.
+<a name="line782"></a>     *
+<a name="line783"></a>     * @throws \PHPCR\RepositoryException if an error occurs
+<a name="line784"></a>     * @api
+<a name="line785"></a>     */</span>
+<a name="line786"></a>    <span style="color: #000000; font-weight: bold;">function</span> <a href="http://www.php.net/gettype"><span style="color: #990000;">getType</span></a><span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line787"></a>&nbsp;
+<a name="line788"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line789"></a>     * Determines if the current property is multi-valued.
 <a name="line790"></a>     *
-<a name="line791"></a>     * The type returned is that which was set at property creation. Note that
-<a name="line792"></a>     * for some property p, the type returned by p.getType() will differ from
-<a name="line793"></a>     * the type returned by p.getDefinition.getRequiredType() only in the case
-<a name="line794"></a>     * where the latter returns UNDEFINED. The type of a property instance is
-<a name="line795"></a>     * never UNDEFINED (it must always have some actual type).
-<a name="line796"></a>     *
-<a name="line797"></a>     * @return integer The numerical representation of a property type.
-<a name="line798"></a>     *
-<a name="line799"></a>     * @throws \PHPCR\RepositoryException if an error occurs
-<a name="line800"></a>     * @api
-<a name="line801"></a>     */</span>
-<a name="line802"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> <a href="http://www.php.net/gettype"><span style="color: #990000;">getType</span></a><span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line803"></a>&nbsp;
-<a name="line804"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line805"></a>     * Determines if the current property is multi-valued.
-<a name="line806"></a>     *
-<a name="line807"></a>     * Returns true if this property is multi-valued and false if this property
-<a name="line808"></a>     * is single-valued.
-<a name="line809"></a>     *
-<a name="line810"></a>     * @return boolean true if this property is multi-valued; false otherwise.
-<a name="line811"></a>     *
-<a name="line812"></a>     * @throws \PHPCR\RepositoryException if an error occurs.
-<a name="line813"></a>     * @api
-<a name="line814"></a>     */</span>
-<a name="line815"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> isMultiple<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line816"></a>&nbsp;
-<a name="line817"></a><span style="color: #009900;">&#125;</span>
-<a name="line818"></a>&nbsp;</pre>
+<a name="line791"></a>     * Returns true if this property is multi-valued and false if this property
+<a name="line792"></a>     * is single-valued.
+<a name="line793"></a>     *
+<a name="line794"></a>     * @return boolean true if this property is multi-valued; false otherwise.
+<a name="line795"></a>     *
+<a name="line796"></a>     * @throws \PHPCR\RepositoryException if an error occurs.
+<a name="line797"></a>     * @api
+<a name="line798"></a>     */</span>
+<a name="line799"></a>    <span style="color: #000000; font-weight: bold;">function</span> isMultiple<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line800"></a><span style="color: #009900;">&#125;</span>
+<a name="line801"></a>&nbsp;</pre>
 <div class="header">
 <h1>PHPCR</h1>
 <ul>

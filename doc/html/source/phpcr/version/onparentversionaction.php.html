@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="generator" content="PHPDoctor 2RC4 (http://peej.github.com/phpdoctor/)">
-<meta name="when" content="Thu, 26 May 2011 12:55:58 +0000">
+<meta name="when" content="Mon, 30 May 2011 13:13:50 +0000">
 
 <link rel="stylesheet" type="text/css" href="../../../stylesheet.css">
 <link rel="start" href="../../../overview-summary.html">
@@ -34,236 +34,231 @@
 <hr>
 
 <h1>PHPCR/Version/OnParentVersionAction.php</h1>
-<div class="comment" id="overview_description"><p>Final class implementation to observe an event on a parent version.</p><p>This file was ported from the Java JCR API to PHP by
-Karsten Dambekalns <karsten@typo3.org> for the FLOW3 project.</p><p>It is free software; you can redistribute it and/or modify it under
-the terms of the GNU Lesser General Public License as published by the
-Free Software Foundation, either version 3 of the License, or (at your
-option) any later version. Alternatively, you may use the Simplified
-BSD License.</p><p>This script is distributed in the hope that it will be useful, but
-WITHOUT ANY WARRANTY; without even the implied warranty of MERCHAN-
-TABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser
-General Public License for more details.</p><p>You should have received a copy of the GNU Lesser General Public
-License along with the script.
-If not, see <code><a href="http://www.gnu.org/licenses/lgpl.html">http://www.gnu.org/licenses/lgpl.html</a></code>.</p><p>The TYPO3 project - inspiring people to share!</p></div>
+<div class="comment" id="overview_description"><p>This file is part of the PHPCR API and was originally ported from the Java
+JCR API to PHP by Karsten Dambekalns for the FLOW3 project.</p><p>Copyright 2008-2011 Karsten Dambekalns <karsten@typo3.org></p><p>Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at</p><p>http://www.apache.org/licenses/LICENSE-2.0</p><p>Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.</p></div>
 
 <hr>
 
 <a name="line1"></a><pre class="php" style="font-family:monospace;"><span style="color: #000000; font-weight: bold;">&lt;?php</span>
-<a name="line2"></a><span style="color: #009933; font-style: italic;">/**
-<a name="line3"></a> * Final class implementation to observe an event on a parent version.
-<a name="line4"></a> *
-<a name="line5"></a> * This file was ported from the Java JCR API to PHP by
-<a name="line6"></a> * Karsten Dambekalns &lt;karsten@typo3.org&gt; for the FLOW3 project.
-<a name="line7"></a> *
-<a name="line8"></a> * It is free software; you can redistribute it and/or modify it under
-<a name="line9"></a> * the terms of the GNU Lesser General Public License as published by the
-<a name="line10"></a> * Free Software Foundation, either version 3 of the License, or (at your
-<a name="line11"></a> * option) any later version. Alternatively, you may use the Simplified
-<a name="line12"></a> * BSD License.
-<a name="line13"></a> *
-<a name="line14"></a> * This script is distributed in the hope that it will be useful, but
-<a name="line15"></a> * WITHOUT ANY WARRANTY; without even the implied warranty of MERCHAN-
-<a name="line16"></a> * TABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser
-<a name="line17"></a> * General Public License for more details.
-<a name="line18"></a> *
-<a name="line19"></a> * You should have received a copy of the GNU Lesser General Public
-<a name="line20"></a> * License along with the script.
-<a name="line21"></a> * If not, see {@link http://www.gnu.org/licenses/lgpl.html}.
-<a name="line22"></a> *
-<a name="line23"></a> * The TYPO3 project - inspiring people to share!
-<a name="line24"></a> *
-<a name="line25"></a> * @license http://www.gnu.org/licenses/lgpl.html GNU Lesser General Public License, version 3 or later
-<a name="line26"></a> * @license http://opensource.org/licenses/bsd-license.php Simplified BSD License
-<a name="line27"></a> *
-<a name="line28"></a> * @package phpcr
-<a name="line29"></a> * @subpackage interfaces
-<a name="line30"></a> */</span>
-<a name="line31"></a>&nbsp;
-<a name="line32"></a><span style="color: #000000; font-weight: bold;">namespace</span> PHPCR\Version<span style="color: #339933;">;</span>
-<a name="line33"></a>&nbsp;
-<a name="line34"></a><span style="color: #009933; font-style: italic;">/**
-<a name="line35"></a> * The possible actions specified by the onParentVersion attribute in a
-<a name="line36"></a> * property definition within a node type definition.
-<a name="line37"></a> *
-<a name="line38"></a> * This interface defines the following actions:
+<a name="line2"></a>&nbsp;
+<a name="line3"></a><span style="color: #009933; font-style: italic;">/**
+<a name="line4"></a> * This file is part of the PHPCR API and was originally ported from the Java
+<a name="line5"></a> * JCR API to PHP by Karsten Dambekalns for the FLOW3 project.
+<a name="line6"></a> *
+<a name="line7"></a> * Copyright 2008-2011 Karsten Dambekalns &lt;karsten@typo3.org&gt;
+<a name="line8"></a> *
+<a name="line9"></a> * Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
+<a name="line10"></a> * you may not use this file except in compliance with the License.
+<a name="line11"></a> * You may obtain a copy of the License at
+<a name="line12"></a> *
+<a name="line13"></a> *     http://www.apache.org/licenses/LICENSE-2.0
+<a name="line14"></a> *
+<a name="line15"></a> * Unless required by applicable law or agreed to in writing, software
+<a name="line16"></a> * distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+<a name="line17"></a> * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+<a name="line18"></a> * See the License for the specific language governing permissions and
+<a name="line19"></a> * limitations under the License.
+<a name="line20"></a> *
+<a name="line21"></a> * @license http://www.apache.org/licenses/LICENSE-2.0 Apache Software License 2.0
+<a name="line22"></a> * @link http://phpcr.github.com/
+<a name="line23"></a>*/</span>
+<a name="line24"></a>&nbsp;
+<a name="line25"></a><span style="color: #000000; font-weight: bold;">namespace</span> PHPCR\Version<span style="color: #339933;">;</span>
+<a name="line26"></a>&nbsp;
+<a name="line27"></a><span style="color: #009933; font-style: italic;">/**
+<a name="line28"></a> * The possible actions specified by the onParentVersion attribute in a
+<a name="line29"></a> * property definition within a node type definition.
+<a name="line30"></a> *
+<a name="line31"></a> * This interface defines the following actions:
+<a name="line32"></a> *
+<a name="line33"></a> * - COPY
+<a name="line34"></a> * - VERSION
+<a name="line35"></a> * - INITIALIZE
+<a name="line36"></a> * - COMPUTE
+<a name="line37"></a> * - IGNORE
+<a name="line38"></a> * - ABORT
 <a name="line39"></a> *
-<a name="line40"></a> * - COPY
-<a name="line41"></a> * - VERSION
-<a name="line42"></a> * - INITIALIZE
-<a name="line43"></a> * - COMPUTE
-<a name="line44"></a> * - IGNORE
-<a name="line45"></a> * - ABORT
-<a name="line46"></a> *
-<a name="line47"></a> * Every item (node or property) in the repository has a status indicator that
-<a name="line48"></a> * governs what happens to that item when its parent node is versioned. This
-<a name="line49"></a> * status is defined by the onParentVersion attribute in the PropertyDefinition
-<a name="line50"></a> * or NodeDefinition that applies to the item in question.
-<a name="line51"></a> *
-<a name="line52"></a> * @package phpcr
-<a name="line53"></a> * @subpackage interfaces
-<a name="line54"></a> * @api
-<a name="line55"></a> */</span>
-<a name="line56"></a>final <span style="color: #000000; font-weight: bold;">class</span> OnParentVersionAction <span style="color: #009900;">&#123;</span>
-<a name="line57"></a>&nbsp;
-<a name="line58"></a>    <span style="color: #009933; font-style: italic;">/**#@+
-<a name="line59"></a>     * @var integer
+<a name="line40"></a> * Every item (node or property) in the repository has a status indicator that
+<a name="line41"></a> * governs what happens to that item when its parent node is versioned. This
+<a name="line42"></a> * status is defined by the onParentVersion attribute in the PropertyDefinition
+<a name="line43"></a> * or NodeDefinition that applies to the item in question.
+<a name="line44"></a> *
+<a name="line45"></a> * @author Karsten Dambekalns &lt;karsten@typo3.org&gt;
+<a name="line46"></a> * @package phpcr
+<a name="line47"></a> * @subpackage interfaces
+<a name="line48"></a> * @api
+<a name="line49"></a> */</span>
+<a name="line50"></a>final <span style="color: #000000; font-weight: bold;">class</span> OnParentVersionAction
+<a name="line51"></a><span style="color: #009900;">&#123;</span>
+<a name="line52"></a>&nbsp;
+<a name="line53"></a>    <span style="color: #009933; font-style: italic;">/**#@+
+<a name="line54"></a>     * @var integer
+<a name="line55"></a>     */</span>
+<a name="line56"></a>&nbsp;
+<a name="line57"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line58"></a>     * The COPY action constant.
+<a name="line59"></a>     * @api
 <a name="line60"></a>     */</span>
-<a name="line61"></a>&nbsp;
-<a name="line62"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line63"></a>     * The COPY action constant.
-<a name="line64"></a>     * @api
-<a name="line65"></a>     */</span>
-<a name="line66"></a>    <span style="color: #000000; font-weight: bold;">const</span> <a href="http://www.php.net/copy"><span style="color: #990000;">COPY</span></a> <span style="color: #339933;">=</span> <span style="color: #cc66cc;">1</span><span style="color: #339933;">;</span>
-<a name="line67"></a>&nbsp;
-<a name="line68"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line69"></a>     * The VERSION action constant.
-<a name="line70"></a>     * @api
-<a name="line71"></a>     */</span>
-<a name="line72"></a>    <span style="color: #000000; font-weight: bold;">const</span> VERSION <span style="color: #339933;">=</span> <span style="color: #cc66cc;">2</span><span style="color: #339933;">;</span>
-<a name="line73"></a>&nbsp;
-<a name="line74"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line75"></a>     * The INITIALIZE action constant.
-<a name="line76"></a>     * @api
-<a name="line77"></a>     */</span>
-<a name="line78"></a>    <span style="color: #000000; font-weight: bold;">const</span> INITIALIZE <span style="color: #339933;">=</span> <span style="color: #cc66cc;">3</span><span style="color: #339933;">;</span>
-<a name="line79"></a>&nbsp;
-<a name="line80"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line81"></a>     * The COMPUTE action constant.
-<a name="line82"></a>     * @api
-<a name="line83"></a>     */</span>
-<a name="line84"></a>    <span style="color: #000000; font-weight: bold;">const</span> COMPUTE <span style="color: #339933;">=</span> <span style="color: #cc66cc;">4</span><span style="color: #339933;">;</span>
-<a name="line85"></a>&nbsp;
-<a name="line86"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line87"></a>     * The IGNORE action constant.
-<a name="line88"></a>     * @api
-<a name="line89"></a>     */</span>
-<a name="line90"></a>    <span style="color: #000000; font-weight: bold;">const</span> IGNORE <span style="color: #339933;">=</span> <span style="color: #cc66cc;">5</span><span style="color: #339933;">;</span>
-<a name="line91"></a>&nbsp;
-<a name="line92"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line93"></a>     * The ABORT action constant.
-<a name="line94"></a>     * @api
-<a name="line95"></a>     */</span>
-<a name="line96"></a>    <span style="color: #000000; font-weight: bold;">const</span> ABORT <span style="color: #339933;">=</span> <span style="color: #cc66cc;">6</span><span style="color: #339933;">;</span>
+<a name="line61"></a>    <span style="color: #000000; font-weight: bold;">const</span> <a href="http://www.php.net/copy"><span style="color: #990000;">COPY</span></a> <span style="color: #339933;">=</span> <span style="color: #cc66cc;">1</span><span style="color: #339933;">;</span>
+<a name="line62"></a>&nbsp;
+<a name="line63"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line64"></a>     * The VERSION action constant.
+<a name="line65"></a>     * @api
+<a name="line66"></a>     */</span>
+<a name="line67"></a>    <span style="color: #000000; font-weight: bold;">const</span> VERSION <span style="color: #339933;">=</span> <span style="color: #cc66cc;">2</span><span style="color: #339933;">;</span>
+<a name="line68"></a>&nbsp;
+<a name="line69"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line70"></a>     * The INITIALIZE action constant.
+<a name="line71"></a>     * @api
+<a name="line72"></a>     */</span>
+<a name="line73"></a>    <span style="color: #000000; font-weight: bold;">const</span> INITIALIZE <span style="color: #339933;">=</span> <span style="color: #cc66cc;">3</span><span style="color: #339933;">;</span>
+<a name="line74"></a>&nbsp;
+<a name="line75"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line76"></a>     * The COMPUTE action constant.
+<a name="line77"></a>     * @api
+<a name="line78"></a>     */</span>
+<a name="line79"></a>    <span style="color: #000000; font-weight: bold;">const</span> COMPUTE <span style="color: #339933;">=</span> <span style="color: #cc66cc;">4</span><span style="color: #339933;">;</span>
+<a name="line80"></a>&nbsp;
+<a name="line81"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line82"></a>     * The IGNORE action constant.
+<a name="line83"></a>     * @api
+<a name="line84"></a>     */</span>
+<a name="line85"></a>    <span style="color: #000000; font-weight: bold;">const</span> IGNORE <span style="color: #339933;">=</span> <span style="color: #cc66cc;">5</span><span style="color: #339933;">;</span>
+<a name="line86"></a>&nbsp;
+<a name="line87"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line88"></a>     * The ABORT action constant.
+<a name="line89"></a>     * @api
+<a name="line90"></a>     */</span>
+<a name="line91"></a>    <span style="color: #000000; font-weight: bold;">const</span> ABORT <span style="color: #339933;">=</span> <span style="color: #cc66cc;">6</span><span style="color: #339933;">;</span>
+<a name="line92"></a>&nbsp;
+<a name="line93"></a>    <span style="color: #009933; font-style: italic;">/**#@-*/</span>
+<a name="line94"></a>    <span style="color: #009933; font-style: italic;">/**#@+
+<a name="line95"></a>     * @var string
+<a name="line96"></a>     */</span>
 <a name="line97"></a>&nbsp;
-<a name="line98"></a>    <span style="color: #009933; font-style: italic;">/**#@-*/</span>
-<a name="line99"></a>    <span style="color: #009933; font-style: italic;">/**#@+
-<a name="line100"></a>     * @var string
+<a name="line98"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line99"></a>     * The name of the COPY on-version action, as used in serialization.
+<a name="line100"></a>     * @api
 <a name="line101"></a>     */</span>
-<a name="line102"></a>&nbsp;
-<a name="line103"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line104"></a>     * The name of the COPY on-version action, as used in serialization.
-<a name="line105"></a>     * @api
-<a name="line106"></a>     */</span>
-<a name="line107"></a>    <span style="color: #000000; font-weight: bold;">const</span> ACTIONNAME_COPY <span style="color: #339933;">=</span> <span style="color: #0000ff;">'COPY'</span><span style="color: #339933;">;</span>
-<a name="line108"></a>&nbsp;
-<a name="line109"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line110"></a>     * The name of the VERSION on-version action, as used in serialization.
-<a name="line111"></a>     * @api
-<a name="line112"></a>     */</span>
-<a name="line113"></a>    <span style="color: #000000; font-weight: bold;">const</span> ACTIONNAME_VERSION <span style="color: #339933;">=</span> <span style="color: #0000ff;">'VERSION'</span><span style="color: #339933;">;</span>
-<a name="line114"></a>&nbsp;
-<a name="line115"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line116"></a>     * The name of the INITIALIZE on-version action, as used in serialization.
-<a name="line117"></a>     * @api
-<a name="line118"></a>     */</span>
-<a name="line119"></a>    <span style="color: #000000; font-weight: bold;">const</span> ACTIONNAME_INITIALIZE <span style="color: #339933;">=</span> <span style="color: #0000ff;">'INITIALIZE'</span><span style="color: #339933;">;</span>
-<a name="line120"></a>&nbsp;
-<a name="line121"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line122"></a>     * The name of the COMPUTE on-version action, as used in serialization.
-<a name="line123"></a>     * @api
-<a name="line124"></a>     */</span>
-<a name="line125"></a>    <span style="color: #000000; font-weight: bold;">const</span> ACTIONNAME_COMPUTE <span style="color: #339933;">=</span> <span style="color: #0000ff;">'COMPUTE'</span><span style="color: #339933;">;</span>
-<a name="line126"></a>&nbsp;
-<a name="line127"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line128"></a>     * The name of the IGNORE on-version action, as used in serialization.
-<a name="line129"></a>     * @api
-<a name="line130"></a>     */</span>
-<a name="line131"></a>    <span style="color: #000000; font-weight: bold;">const</span> ACTIONNAME_IGNORE <span style="color: #339933;">=</span> <span style="color: #0000ff;">'IGNORE'</span><span style="color: #339933;">;</span>
-<a name="line132"></a>&nbsp;
-<a name="line133"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line134"></a>     * The name of the ABORT on-version action, as used in serialization.
-<a name="line135"></a>     * @api
-<a name="line136"></a>     */</span>
-<a name="line137"></a>    <span style="color: #000000; font-weight: bold;">const</span> ACTIONNAME_ABORT <span style="color: #339933;">=</span> <span style="color: #0000ff;">'ABORT'</span><span style="color: #339933;">;</span>
-<a name="line138"></a>&nbsp;
-<a name="line139"></a>    <span style="color: #009933; font-style: italic;">/**#@-*/</span>
-<a name="line140"></a>&nbsp;
-<a name="line141"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line142"></a>     * Make instantiation impossible...
-<a name="line143"></a>     *
-<a name="line144"></a>     * @return void
-<a name="line145"></a>     * @author Karsten Dambekalns &lt;karsten@typo3.org&gt;
-<a name="line146"></a>     */</span>
-<a name="line147"></a>    <span style="color: #000000; font-weight: bold;">private</span> <span style="color: #000000; font-weight: bold;">function</span> __construct<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span> <span style="color: #009900;">&#123;</span><span style="color: #009900;">&#125;</span>
-<a name="line148"></a>&nbsp;
-<a name="line149"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line150"></a>     * Returns the name of the specified action, as used in serialization.
-<a name="line151"></a>     *
-<a name="line152"></a>     * @param integer $action the on-version action
-<a name="line153"></a>     * @return string the name of the specified action
-<a name="line154"></a>     * @author Karsten Dambekalns &lt;karsten@typo3.org&gt;
-<a name="line155"></a>     * @api
-<a name="line156"></a>     */</span>
-<a name="line157"></a>    static <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> nameFromValue<span style="color: #009900;">&#40;</span><span style="color: #000088;">$action</span><span style="color: #009900;">&#41;</span> <span style="color: #009900;">&#123;</span>
-<a name="line158"></a>        <span style="color: #b1b100;">switch</span> <span style="color: #009900;">&#40;</span><a href="http://www.php.net/intval"><span style="color: #990000;">intval</span></a><span style="color: #009900;">&#40;</span><span style="color: #000088;">$action</span><span style="color: #009900;">&#41;</span><span style="color: #009900;">&#41;</span> <span style="color: #009900;">&#123;</span>
-<a name="line159"></a>            <span style="color: #b1b100;">case</span> <span style="color: #000000; font-weight: bold;">self</span><span style="color: #339933;">::</span><a href="http://www.php.net/copy"><span style="color: #990000;">COPY</span></a> <span style="color: #339933;">:</span>
-<a name="line160"></a>                <span style="color: #b1b100;">return</span> <span style="color: #000000; font-weight: bold;">self</span><span style="color: #339933;">::</span><span style="color: #004000;">ACTIONNAME_COPY</span><span style="color: #339933;">;</span>
+<a name="line102"></a>    <span style="color: #000000; font-weight: bold;">const</span> ACTIONNAME_COPY <span style="color: #339933;">=</span> <span style="color: #0000ff;">'COPY'</span><span style="color: #339933;">;</span>
+<a name="line103"></a>&nbsp;
+<a name="line104"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line105"></a>     * The name of the VERSION on-version action, as used in serialization.
+<a name="line106"></a>     * @api
+<a name="line107"></a>     */</span>
+<a name="line108"></a>    <span style="color: #000000; font-weight: bold;">const</span> ACTIONNAME_VERSION <span style="color: #339933;">=</span> <span style="color: #0000ff;">'VERSION'</span><span style="color: #339933;">;</span>
+<a name="line109"></a>&nbsp;
+<a name="line110"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line111"></a>     * The name of the INITIALIZE on-version action, as used in serialization.
+<a name="line112"></a>     * @api
+<a name="line113"></a>     */</span>
+<a name="line114"></a>    <span style="color: #000000; font-weight: bold;">const</span> ACTIONNAME_INITIALIZE <span style="color: #339933;">=</span> <span style="color: #0000ff;">'INITIALIZE'</span><span style="color: #339933;">;</span>
+<a name="line115"></a>&nbsp;
+<a name="line116"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line117"></a>     * The name of the COMPUTE on-version action, as used in serialization.
+<a name="line118"></a>     * @api
+<a name="line119"></a>     */</span>
+<a name="line120"></a>    <span style="color: #000000; font-weight: bold;">const</span> ACTIONNAME_COMPUTE <span style="color: #339933;">=</span> <span style="color: #0000ff;">'COMPUTE'</span><span style="color: #339933;">;</span>
+<a name="line121"></a>&nbsp;
+<a name="line122"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line123"></a>     * The name of the IGNORE on-version action, as used in serialization.
+<a name="line124"></a>     * @api
+<a name="line125"></a>     */</span>
+<a name="line126"></a>    <span style="color: #000000; font-weight: bold;">const</span> ACTIONNAME_IGNORE <span style="color: #339933;">=</span> <span style="color: #0000ff;">'IGNORE'</span><span style="color: #339933;">;</span>
+<a name="line127"></a>&nbsp;
+<a name="line128"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line129"></a>     * The name of the ABORT on-version action, as used in serialization.
+<a name="line130"></a>     * @api
+<a name="line131"></a>     */</span>
+<a name="line132"></a>    <span style="color: #000000; font-weight: bold;">const</span> ACTIONNAME_ABORT <span style="color: #339933;">=</span> <span style="color: #0000ff;">'ABORT'</span><span style="color: #339933;">;</span>
+<a name="line133"></a>&nbsp;
+<a name="line134"></a>    <span style="color: #009933; font-style: italic;">/**#@-*/</span>
+<a name="line135"></a>&nbsp;
+<a name="line136"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line137"></a>     * Make instantiation impossible...
+<a name="line138"></a>     *
+<a name="line139"></a>     * @return void
+<a name="line140"></a>     */</span>
+<a name="line141"></a>    <span style="color: #000000; font-weight: bold;">private</span> <span style="color: #000000; font-weight: bold;">function</span> __construct<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span>
+<a name="line142"></a>    <span style="color: #009900;">&#123;</span>
+<a name="line143"></a>    <span style="color: #009900;">&#125;</span>
+<a name="line144"></a>&nbsp;
+<a name="line145"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line146"></a>     * Returns the name of the specified action, as used in serialization.
+<a name="line147"></a>     *
+<a name="line148"></a>     * @param integer $action the on-version action
+<a name="line149"></a>     * @return string the name of the specified action
+<a name="line150"></a>     *
+<a name="line151"></a>     * @api
+<a name="line152"></a>     */</span>
+<a name="line153"></a>    static <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> nameFromValue<span style="color: #009900;">&#40;</span><span style="color: #000088;">$action</span><span style="color: #009900;">&#41;</span>
+<a name="line154"></a>    <span style="color: #009900;">&#123;</span>
+<a name="line155"></a>        <span style="color: #b1b100;">switch</span> <span style="color: #009900;">&#40;</span><a href="http://www.php.net/intval"><span style="color: #990000;">intval</span></a><span style="color: #009900;">&#40;</span><span style="color: #000088;">$action</span><span style="color: #009900;">&#41;</span><span style="color: #009900;">&#41;</span> <span style="color: #009900;">&#123;</span>
+<a name="line156"></a>            <span style="color: #b1b100;">case</span> <span style="color: #000000; font-weight: bold;">self</span><span style="color: #339933;">::</span><a href="http://www.php.net/copy"><span style="color: #990000;">COPY</span></a> <span style="color: #339933;">:</span>
+<a name="line157"></a>                <span style="color: #b1b100;">return</span> <span style="color: #000000; font-weight: bold;">self</span><span style="color: #339933;">::</span><span style="color: #004000;">ACTIONNAME_COPY</span><span style="color: #339933;">;</span>
+<a name="line158"></a>                <span style="color: #b1b100;">break</span><span style="color: #339933;">;</span>
+<a name="line159"></a>            <span style="color: #b1b100;">case</span> <span style="color: #000000; font-weight: bold;">self</span><span style="color: #339933;">::</span><span style="color: #004000;">VERSION</span> <span style="color: #339933;">:</span>
+<a name="line160"></a>                <span style="color: #b1b100;">return</span> <span style="color: #000000; font-weight: bold;">self</span><span style="color: #339933;">::</span><span style="color: #004000;">ACTIONNAME_VERSION</span><span style="color: #339933;">;</span>
 <a name="line161"></a>                <span style="color: #b1b100;">break</span><span style="color: #339933;">;</span>
-<a name="line162"></a>            <span style="color: #b1b100;">case</span> <span style="color: #000000; font-weight: bold;">self</span><span style="color: #339933;">::</span><span style="color: #004000;">VERSION</span> <span style="color: #339933;">:</span>
-<a name="line163"></a>                <span style="color: #b1b100;">return</span> <span style="color: #000000; font-weight: bold;">self</span><span style="color: #339933;">::</span><span style="color: #004000;">ACTIONNAME_VERSION</span><span style="color: #339933;">;</span>
+<a name="line162"></a>            <span style="color: #b1b100;">case</span> <span style="color: #000000; font-weight: bold;">self</span><span style="color: #339933;">::</span><span style="color: #004000;">INITIALIZE</span> <span style="color: #339933;">:</span>
+<a name="line163"></a>                <span style="color: #b1b100;">return</span> <span style="color: #000000; font-weight: bold;">self</span><span style="color: #339933;">::</span><span style="color: #004000;">ACTIONNAME_INITIALIZE</span><span style="color: #339933;">;</span>
 <a name="line164"></a>                <span style="color: #b1b100;">break</span><span style="color: #339933;">;</span>
-<a name="line165"></a>            <span style="color: #b1b100;">case</span> <span style="color: #000000; font-weight: bold;">self</span><span style="color: #339933;">::</span><span style="color: #004000;">INITIALIZE</span> <span style="color: #339933;">:</span>
-<a name="line166"></a>                <span style="color: #b1b100;">return</span> <span style="color: #000000; font-weight: bold;">self</span><span style="color: #339933;">::</span><span style="color: #004000;">ACTIONNAME_INITIALIZE</span><span style="color: #339933;">;</span>
+<a name="line165"></a>            <span style="color: #b1b100;">case</span> <span style="color: #000000; font-weight: bold;">self</span><span style="color: #339933;">::</span><span style="color: #004000;">COMPUTE</span> <span style="color: #339933;">:</span>
+<a name="line166"></a>                <span style="color: #b1b100;">return</span> <span style="color: #000000; font-weight: bold;">self</span><span style="color: #339933;">::</span><span style="color: #004000;">ACTIONNAME_COMPUTE</span><span style="color: #339933;">;</span>
 <a name="line167"></a>                <span style="color: #b1b100;">break</span><span style="color: #339933;">;</span>
-<a name="line168"></a>            <span style="color: #b1b100;">case</span> <span style="color: #000000; font-weight: bold;">self</span><span style="color: #339933;">::</span><span style="color: #004000;">COMPUTE</span> <span style="color: #339933;">:</span>
-<a name="line169"></a>                <span style="color: #b1b100;">return</span> <span style="color: #000000; font-weight: bold;">self</span><span style="color: #339933;">::</span><span style="color: #004000;">ACTIONNAME_COMPUTE</span><span style="color: #339933;">;</span>
+<a name="line168"></a>            <span style="color: #b1b100;">case</span> <span style="color: #000000; font-weight: bold;">self</span><span style="color: #339933;">::</span><span style="color: #004000;">IGNORE</span> <span style="color: #339933;">:</span>
+<a name="line169"></a>                <span style="color: #b1b100;">return</span> <span style="color: #000000; font-weight: bold;">self</span><span style="color: #339933;">::</span><span style="color: #004000;">ACTIONNAME_IGNORE</span><span style="color: #339933;">;</span>
 <a name="line170"></a>                <span style="color: #b1b100;">break</span><span style="color: #339933;">;</span>
-<a name="line171"></a>            <span style="color: #b1b100;">case</span> <span style="color: #000000; font-weight: bold;">self</span><span style="color: #339933;">::</span><span style="color: #004000;">IGNORE</span> <span style="color: #339933;">:</span>
-<a name="line172"></a>                <span style="color: #b1b100;">return</span> <span style="color: #000000; font-weight: bold;">self</span><span style="color: #339933;">::</span><span style="color: #004000;">ACTIONNAME_IGNORE</span><span style="color: #339933;">;</span>
+<a name="line171"></a>            <span style="color: #b1b100;">case</span> <span style="color: #000000; font-weight: bold;">self</span><span style="color: #339933;">::</span><span style="color: #004000;">ABORT</span> <span style="color: #339933;">:</span>
+<a name="line172"></a>                <span style="color: #b1b100;">return</span> <span style="color: #000000; font-weight: bold;">self</span><span style="color: #339933;">::</span><span style="color: #004000;">ACTIONNAME_ABORT</span><span style="color: #339933;">;</span>
 <a name="line173"></a>                <span style="color: #b1b100;">break</span><span style="color: #339933;">;</span>
-<a name="line174"></a>            <span style="color: #b1b100;">case</span> <span style="color: #000000; font-weight: bold;">self</span><span style="color: #339933;">::</span><span style="color: #004000;">ABORT</span> <span style="color: #339933;">:</span>
-<a name="line175"></a>                <span style="color: #b1b100;">return</span> <span style="color: #000000; font-weight: bold;">self</span><span style="color: #339933;">::</span><span style="color: #004000;">ACTIONNAME_ABORT</span><span style="color: #339933;">;</span>
-<a name="line176"></a>                <span style="color: #b1b100;">break</span><span style="color: #339933;">;</span>
-<a name="line177"></a>            <span style="color: #b1b100;">default</span><span style="color: #339933;">:</span>
-<a name="line178"></a>                <span style="color: #b1b100;">throw</span> <span style="color: #000000; font-weight: bold;">new</span> \InvalidArgumentException<span style="color: #009900;">&#40;</span><span style="color: #0000ff;">'Unknown action ('</span> <span style="color: #339933;">.</span> <span style="color: #000088;">$action</span> <span style="color: #339933;">.</span> <span style="color: #0000ff;">') given.'</span><span style="color: #339933;">,</span> <span style="color: #cc66cc;">1257170242</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line179"></a>        <span style="color: #009900;">&#125;</span>
-<a name="line180"></a>    <span style="color: #009900;">&#125;</span>
-<a name="line181"></a>&nbsp;
-<a name="line182"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line183"></a>     * Returns the numeric constant value of the on-version action with the
-<a name="line184"></a>     * specified name.
+<a name="line174"></a>            <span style="color: #b1b100;">default</span><span style="color: #339933;">:</span>
+<a name="line175"></a>                <span style="color: #b1b100;">throw</span> <span style="color: #000000; font-weight: bold;">new</span> \InvalidArgumentException<span style="color: #009900;">&#40;</span><span style="color: #0000ff;">'Unknown action ('</span> <span style="color: #339933;">.</span> <span style="color: #000088;">$action</span> <span style="color: #339933;">.</span> <span style="color: #0000ff;">') given.'</span><span style="color: #339933;">,</span> <span style="color: #cc66cc;">1257170242</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line176"></a>        <span style="color: #009900;">&#125;</span>
+<a name="line177"></a>    <span style="color: #009900;">&#125;</span>
+<a name="line178"></a>&nbsp;
+<a name="line179"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line180"></a>     * Returns the numeric constant value of the on-version action with the
+<a name="line181"></a>     * specified name.
+<a name="line182"></a>     *
+<a name="line183"></a>     * @param string $name the name of the on-version action
+<a name="line184"></a>     * @return int the numeric constant value
 <a name="line185"></a>     *
-<a name="line186"></a>     * @param string $name the name of the on-version action
-<a name="line187"></a>     * @return int the numeric constant value
-<a name="line188"></a>     * @author Karsten Dambekalns &lt;karsten@typo3.org&gt;
-<a name="line189"></a>     * @api
-<a name="line190"></a>     */</span>
-<a name="line191"></a>    static <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> valueFromName<span style="color: #009900;">&#40;</span><span style="color: #000088;">$name</span><span style="color: #009900;">&#41;</span> <span style="color: #009900;">&#123;</span>
-<a name="line192"></a>        <span style="color: #b1b100;">switch</span> <span style="color: #009900;">&#40;</span><span style="color: #000088;">$name</span><span style="color: #009900;">&#41;</span> <span style="color: #009900;">&#123;</span>
-<a name="line193"></a>            <span style="color: #b1b100;">case</span> <span style="color: #000000; font-weight: bold;">self</span><span style="color: #339933;">::</span><span style="color: #004000;">ACTIONNAME_COPY</span> <span style="color: #339933;">:</span>
-<a name="line194"></a>                <span style="color: #b1b100;">return</span> <span style="color: #000000; font-weight: bold;">self</span><span style="color: #339933;">::</span><a href="http://www.php.net/copy"><span style="color: #990000;">COPY</span></a><span style="color: #339933;">;</span>
-<a name="line195"></a>                <span style="color: #b1b100;">break</span><span style="color: #339933;">;</span>
-<a name="line196"></a>            <span style="color: #b1b100;">case</span> <span style="color: #000000; font-weight: bold;">self</span><span style="color: #339933;">::</span><span style="color: #004000;">ACTIONNAME_VERSION</span> <span style="color: #339933;">:</span>
-<a name="line197"></a>                <span style="color: #b1b100;">return</span> <span style="color: #000000; font-weight: bold;">self</span><span style="color: #339933;">::</span><span style="color: #004000;">VERSION</span><span style="color: #339933;">;</span>
-<a name="line198"></a>                <span style="color: #b1b100;">break</span><span style="color: #339933;">;</span>
-<a name="line199"></a>            <span style="color: #b1b100;">case</span> <span style="color: #000000; font-weight: bold;">self</span><span style="color: #339933;">::</span><span style="color: #004000;">ACTIONNAME_INITIALIZE</span> <span style="color: #339933;">:</span>
-<a name="line200"></a>                <span style="color: #b1b100;">return</span> <span style="color: #000000; font-weight: bold;">self</span><span style="color: #339933;">::</span><span style="color: #004000;">INITIALIZE</span><span style="color: #339933;">;</span>
-<a name="line201"></a>                <span style="color: #b1b100;">break</span><span style="color: #339933;">;</span>
-<a name="line202"></a>            <span style="color: #b1b100;">case</span> <span style="color: #000000; font-weight: bold;">self</span><span style="color: #339933;">::</span><span style="color: #004000;">ACTIONNAME_COMPUTE</span> <span style="color: #339933;">:</span>
-<a name="line203"></a>                <span style="color: #b1b100;">return</span> <span style="color: #000000; font-weight: bold;">self</span><span style="color: #339933;">::</span><span style="color: #004000;">COMPUTE</span><span style="color: #339933;">;</span>
-<a name="line204"></a>                <span style="color: #b1b100;">break</span><span style="color: #339933;">;</span>
-<a name="line205"></a>            <span style="color: #b1b100;">case</span> <span style="color: #000000; font-weight: bold;">self</span><span style="color: #339933;">::</span><span style="color: #004000;">ACTIONNAME_IGNORE</span> <span style="color: #339933;">:</span>
-<a name="line206"></a>                <span style="color: #b1b100;">return</span> <span style="color: #000000; font-weight: bold;">self</span><span style="color: #339933;">::</span><span style="color: #004000;">IGNORE</span><span style="color: #339933;">;</span>
-<a name="line207"></a>                <span style="color: #b1b100;">break</span><span style="color: #339933;">;</span>
-<a name="line208"></a>            <span style="color: #b1b100;">case</span> <span style="color: #000000; font-weight: bold;">self</span><span style="color: #339933;">::</span><span style="color: #004000;">ACTIONNAME_ABORT</span> <span style="color: #339933;">:</span>
-<a name="line209"></a>                <span style="color: #b1b100;">return</span> <span style="color: #000000; font-weight: bold;">self</span><span style="color: #339933;">::</span><span style="color: #004000;">ABORT</span><span style="color: #339933;">;</span>
-<a name="line210"></a>                <span style="color: #b1b100;">break</span><span style="color: #339933;">;</span>
-<a name="line211"></a>            <span style="color: #b1b100;">default</span><span style="color: #339933;">:</span>
-<a name="line212"></a>                <span style="color: #b1b100;">throw</span> <span style="color: #000000; font-weight: bold;">new</span> \InvalidArgumentException<span style="color: #009900;">&#40;</span><span style="color: #0000ff;">'Unknown name ('</span> <span style="color: #339933;">.</span> <span style="color: #000088;">$name</span> <span style="color: #339933;">.</span> <span style="color: #0000ff;">') given.'</span><span style="color: #339933;">,</span> <span style="color: #cc66cc;">1257170243</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line213"></a>        <span style="color: #009900;">&#125;</span>
-<a name="line214"></a>    <span style="color: #009900;">&#125;</span>
-<a name="line215"></a><span style="color: #009900;">&#125;</span>
-<a name="line216"></a>&nbsp;</pre>
+<a name="line186"></a>     * @api
+<a name="line187"></a>     */</span>
+<a name="line188"></a>    static <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> valueFromName<span style="color: #009900;">&#40;</span><span style="color: #000088;">$name</span><span style="color: #009900;">&#41;</span>
+<a name="line189"></a>    <span style="color: #009900;">&#123;</span>
+<a name="line190"></a>        <span style="color: #b1b100;">switch</span> <span style="color: #009900;">&#40;</span><span style="color: #000088;">$name</span><span style="color: #009900;">&#41;</span> <span style="color: #009900;">&#123;</span>
+<a name="line191"></a>            <span style="color: #b1b100;">case</span> <span style="color: #000000; font-weight: bold;">self</span><span style="color: #339933;">::</span><span style="color: #004000;">ACTIONNAME_COPY</span> <span style="color: #339933;">:</span>
+<a name="line192"></a>                <span style="color: #b1b100;">return</span> <span style="color: #000000; font-weight: bold;">self</span><span style="color: #339933;">::</span><a href="http://www.php.net/copy"><span style="color: #990000;">COPY</span></a><span style="color: #339933;">;</span>
+<a name="line193"></a>                <span style="color: #b1b100;">break</span><span style="color: #339933;">;</span>
+<a name="line194"></a>            <span style="color: #b1b100;">case</span> <span style="color: #000000; font-weight: bold;">self</span><span style="color: #339933;">::</span><span style="color: #004000;">ACTIONNAME_VERSION</span> <span style="color: #339933;">:</span>
+<a name="line195"></a>                <span style="color: #b1b100;">return</span> <span style="color: #000000; font-weight: bold;">self</span><span style="color: #339933;">::</span><span style="color: #004000;">VERSION</span><span style="color: #339933;">;</span>
+<a name="line196"></a>                <span style="color: #b1b100;">break</span><span style="color: #339933;">;</span>
+<a name="line197"></a>            <span style="color: #b1b100;">case</span> <span style="color: #000000; font-weight: bold;">self</span><span style="color: #339933;">::</span><span style="color: #004000;">ACTIONNAME_INITIALIZE</span> <span style="color: #339933;">:</span>
+<a name="line198"></a>                <span style="color: #b1b100;">return</span> <span style="color: #000000; font-weight: bold;">self</span><span style="color: #339933;">::</span><span style="color: #004000;">INITIALIZE</span><span style="color: #339933;">;</span>
+<a name="line199"></a>                <span style="color: #b1b100;">break</span><span style="color: #339933;">;</span>
+<a name="line200"></a>            <span style="color: #b1b100;">case</span> <span style="color: #000000; font-weight: bold;">self</span><span style="color: #339933;">::</span><span style="color: #004000;">ACTIONNAME_COMPUTE</span> <span style="color: #339933;">:</span>
+<a name="line201"></a>                <span style="color: #b1b100;">return</span> <span style="color: #000000; font-weight: bold;">self</span><span style="color: #339933;">::</span><span style="color: #004000;">COMPUTE</span><span style="color: #339933;">;</span>
+<a name="line202"></a>                <span style="color: #b1b100;">break</span><span style="color: #339933;">;</span>
+<a name="line203"></a>            <span style="color: #b1b100;">case</span> <span style="color: #000000; font-weight: bold;">self</span><span style="color: #339933;">::</span><span style="color: #004000;">ACTIONNAME_IGNORE</span> <span style="color: #339933;">:</span>
+<a name="line204"></a>                <span style="color: #b1b100;">return</span> <span style="color: #000000; font-weight: bold;">self</span><span style="color: #339933;">::</span><span style="color: #004000;">IGNORE</span><span style="color: #339933;">;</span>
+<a name="line205"></a>                <span style="color: #b1b100;">break</span><span style="color: #339933;">;</span>
+<a name="line206"></a>            <span style="color: #b1b100;">case</span> <span style="color: #000000; font-weight: bold;">self</span><span style="color: #339933;">::</span><span style="color: #004000;">ACTIONNAME_ABORT</span> <span style="color: #339933;">:</span>
+<a name="line207"></a>                <span style="color: #b1b100;">return</span> <span style="color: #000000; font-weight: bold;">self</span><span style="color: #339933;">::</span><span style="color: #004000;">ABORT</span><span style="color: #339933;">;</span>
+<a name="line208"></a>                <span style="color: #b1b100;">break</span><span style="color: #339933;">;</span>
+<a name="line209"></a>            <span style="color: #b1b100;">default</span><span style="color: #339933;">:</span>
+<a name="line210"></a>                <span style="color: #b1b100;">throw</span> <span style="color: #000000; font-weight: bold;">new</span> \InvalidArgumentException<span style="color: #009900;">&#40;</span><span style="color: #0000ff;">'Unknown name ('</span> <span style="color: #339933;">.</span> <span style="color: #000088;">$name</span> <span style="color: #339933;">.</span> <span style="color: #0000ff;">') given.'</span><span style="color: #339933;">,</span> <span style="color: #cc66cc;">1257170243</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line211"></a>        <span style="color: #009900;">&#125;</span>
+<a name="line212"></a>    <span style="color: #009900;">&#125;</span>
+<a name="line213"></a><span style="color: #009900;">&#125;</span>
+<a name="line214"></a>&nbsp;</pre>
 <div class="header">
 <h1>PHPCR</h1>
 <ul>

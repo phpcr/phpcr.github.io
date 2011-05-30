@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="generator" content="PHPDoctor 2RC4 (http://peej.github.com/phpdoctor/)">
-<meta name="when" content="Thu, 26 May 2011 12:55:48 +0000">
+<meta name="when" content="Mon, 30 May 2011 13:13:27 +0000">
 
 <link rel="stylesheet" type="text/css" href="../../../stylesheet.css">
 <link rel="start" href="../../../overview-summary.html">
@@ -34,206 +34,196 @@
 <hr>
 
 <h1>PHPCR/NodeType/NodeTypeDefinitionInterface.php</h1>
-<div class="comment" id="overview_description"><p>Interface description of an implementation of a node type definition.</p><p>This file was ported from the Java JCR API to PHP by
-Karsten Dambekalns <karsten@typo3.org> for the FLOW3 project.</p><p>It is free software; you can redistribute it and/or modify it under
-the terms of the GNU Lesser General Public License as published by the
-Free Software Foundation, either version 3 of the License, or (at your
-option) any later version. Alternatively, you may use the Simplified
-BSD License.</p><p>This script is distributed in the hope that it will be useful, but
-WITHOUT ANY WARRANTY; without even the implied warranty of MERCHAN-
-TABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser
-General Public License for more details.</p><p>You should have received a copy of the GNU Lesser General Public
-License along with the script.
-If not, see <code><a href="http://www.gnu.org/licenses/lgpl.html">http://www.gnu.org/licenses/lgpl.html</a></code>.</p><p>The TYPO3 project - inspiring people to share!</p></div>
+<div class="comment" id="overview_description"><p>This file is part of the PHPCR API and was originally ported from the Java
+JCR API to PHP by Karsten Dambekalns for the FLOW3 project.</p><p>Copyright 2008-2011 Karsten Dambekalns <karsten@typo3.org></p><p>Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at</p><p>http://www.apache.org/licenses/LICENSE-2.0</p><p>Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.</p></div>
 
 <hr>
 
 <a name="line1"></a><pre class="php" style="font-family:monospace;"><span style="color: #000000; font-weight: bold;">&lt;?php</span>
-<a name="line2"></a><span style="color: #009933; font-style: italic;">/**
-<a name="line3"></a> * Interface description of an implementation of a node type definition.
-<a name="line4"></a> *
-<a name="line5"></a> * This file was ported from the Java JCR API to PHP by
-<a name="line6"></a> * Karsten Dambekalns &lt;karsten@typo3.org&gt; for the FLOW3 project.
-<a name="line7"></a> *
-<a name="line8"></a> * It is free software; you can redistribute it and/or modify it under
-<a name="line9"></a> * the terms of the GNU Lesser General Public License as published by the
-<a name="line10"></a> * Free Software Foundation, either version 3 of the License, or (at your
-<a name="line11"></a> * option) any later version. Alternatively, you may use the Simplified
-<a name="line12"></a> * BSD License.
-<a name="line13"></a> *
-<a name="line14"></a> * This script is distributed in the hope that it will be useful, but
-<a name="line15"></a> * WITHOUT ANY WARRANTY; without even the implied warranty of MERCHAN-
-<a name="line16"></a> * TABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser
-<a name="line17"></a> * General Public License for more details.
-<a name="line18"></a> *
-<a name="line19"></a> * You should have received a copy of the GNU Lesser General Public
-<a name="line20"></a> * License along with the script.
-<a name="line21"></a> * If not, see {@link http://www.gnu.org/licenses/lgpl.html}.
-<a name="line22"></a> *
-<a name="line23"></a> * The TYPO3 project - inspiring people to share!
-<a name="line24"></a> *
-<a name="line25"></a> * @license http://www.gnu.org/licenses/lgpl.html GNU Lesser General Public License, version 3 or later
-<a name="line26"></a> * @license http://opensource.org/licenses/bsd-license.php Simplified BSD License
-<a name="line27"></a> *
-<a name="line28"></a> * @package phpcr
-<a name="line29"></a> * @subpackage interfaces
-<a name="line30"></a> */</span>
-<a name="line31"></a>&nbsp;
-<a name="line32"></a><span style="color: #000000; font-weight: bold;">namespace</span> PHPCR\NodeType<span style="color: #339933;">;</span>
-<a name="line33"></a>&nbsp;
-<a name="line34"></a><span style="color: #009933; font-style: italic;">/**
-<a name="line35"></a> * The NodeTypeDefinition interface provides methods for discovering the
-<a name="line36"></a> * static definition of a node type. These are accessible both before and
-<a name="line37"></a> * after the node type is registered. Its subclass NodeType adds methods
-<a name="line38"></a> * that are relevant only when the node type is &quot;live&quot;; that is, after it
-<a name="line39"></a> * has been registered. Note that the separate NodeDefinition interface only
-<a name="line40"></a> * plays a significant role in implementations that support node type
-<a name="line41"></a> * registration. In those cases it serves as the superclass of both NodeType
-<a name="line42"></a> * and NodeTypeTemplate. In implementations that do not support node type
-<a name="line43"></a> * registration, only objects implementing the subinterface NodeType will
-<a name="line44"></a> * be encountered.
-<a name="line45"></a> *
-<a name="line46"></a> * @package phpcr
-<a name="line47"></a> * @subpackage interfaces
-<a name="line48"></a> * @api
-<a name="line49"></a> */</span>
-<a name="line50"></a><span style="color: #000000; font-weight: bold;">interface</span> NodeTypeDefinitionInterface <span style="color: #009900;">&#123;</span>
-<a name="line51"></a>&nbsp;
-<a name="line52"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line53"></a>     * Returns the name of the node type.
-<a name="line54"></a>     *
-<a name="line55"></a>     * In implementations that support node type registration, if this
-<a name="line56"></a>     * NodeTypeDefinition object is actually a newly-created empty
-<a name="line57"></a>     * NodeTypeTemplate, then this method will return null.
-<a name="line58"></a>     *
-<a name="line59"></a>     * @return string The name of the node type.
-<a name="line60"></a>     * @api
-<a name="line61"></a>     */</span>
-<a name="line62"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getName<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line63"></a>&nbsp;
-<a name="line64"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line65"></a>     * Returns the names of the supertypes actually declared in this node type.
-<a name="line66"></a>     *
-<a name="line67"></a>     * In implementations that support node type registration, if this
-<a name="line68"></a>     * NodeTypeDefinition object is actually a newly-created empty
-<a name="line69"></a>     * NodeTypeTemplate, then this method will return an array containing a
-<a name="line70"></a>     * single string indicating the node type nt:base.
-<a name="line71"></a>     *
-<a name="line72"></a>     * @return array List of names of declared supertypes.
-<a name="line73"></a>     * @api
-<a name="line74"></a>     */</span>
-<a name="line75"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getDeclaredSupertypeNames<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line76"></a>&nbsp;
-<a name="line77"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line78"></a>     * Reports if this is an abstract node type.
-<a name="line79"></a>     *
-<a name="line80"></a>     * Returns true if this is an abstract node type; returns false otherwise.
-<a name="line81"></a>     * An abstract node type is one that cannot be assigned as the primary or
-<a name="line82"></a>     * mixin type of a node but can be used in the definitions of other node
-<a name="line83"></a>     * types as a superclass.
-<a name="line84"></a>     *
-<a name="line85"></a>     * In implementations that support node type registration, if this
-<a name="line86"></a>     * NodeTypeDefinition object is actually a newly-created empty
-<a name="line87"></a>     * NodeTypeTemplate, then this method will return false.
-<a name="line88"></a>     *
-<a name="line89"></a>     * @return boolean True, if the current type is abstract, else false.
-<a name="line90"></a>     * @api
-<a name="line91"></a>     */</span>
-<a name="line92"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> isAbstract<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line93"></a>&nbsp;
-<a name="line94"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line95"></a>     * Reports if this is a mixin node type.
-<a name="line96"></a>     *
-<a name="line97"></a>     * Returns true if this is a mixin type; returns false if it is primary.
-<a name="line98"></a>     * In implementations that support node type registration, if this
-<a name="line99"></a>     * NodeTypeDefinition object is actually a newly-created empty
-<a name="line100"></a>     * NodeTypeTemplate, then this method will return false.
-<a name="line101"></a>     *
-<a name="line102"></a>     * @return boolean True if this is a mixin type, else false;
-<a name="line103"></a>     * @api
-<a name="line104"></a>     */</span>
-<a name="line105"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> isMixin<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line106"></a>&nbsp;
-<a name="line107"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line108"></a>     * Determines if nodes of this type must support orderable child nodes.
-<a name="line109"></a>     *
-<a name="line110"></a>     * Returns true if nodes of this type must support orderable child nodes;
-<a name="line111"></a>     * returns false otherwise. If a node type returns true on a call to this
-<a name="line112"></a>     * method, then all nodes of that node type must support the method
-<a name="line113"></a>     * Node.orderBefore. If a node type returns false on a call to this method,
-<a name="line114"></a>     * then nodes of that node type may support Node.orderBefore. Only the primary
-<a name="line115"></a>     * node type of a node controls that node's status in this regard. This setting
-<a name="line116"></a>     * on a mixin node type will not have any effect on the node.
-<a name="line117"></a>     * In implementations that support node type registration, if this
-<a name="line118"></a>     * NodeTypeDefinition object is actually a newly-created empty
-<a name="line119"></a>     * NodeTypeTemplate, then this method will return false.
-<a name="line120"></a>     *
-<a name="line121"></a>     * @return boolean True, if nodes of this type must support orderable child nodes, else false.
-<a name="line122"></a>     * @api
-<a name="line123"></a>     */</span>
-<a name="line124"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> hasOrderableChildNodes<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line125"></a>&nbsp;
-<a name="line126"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line127"></a>     * Determins if the node type is queryable.
+<a name="line2"></a>&nbsp;
+<a name="line3"></a><span style="color: #009933; font-style: italic;">/**
+<a name="line4"></a> * This file is part of the PHPCR API and was originally ported from the Java
+<a name="line5"></a> * JCR API to PHP by Karsten Dambekalns for the FLOW3 project.
+<a name="line6"></a> *
+<a name="line7"></a> * Copyright 2008-2011 Karsten Dambekalns &lt;karsten@typo3.org&gt;
+<a name="line8"></a> *
+<a name="line9"></a> * Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
+<a name="line10"></a> * you may not use this file except in compliance with the License.
+<a name="line11"></a> * You may obtain a copy of the License at
+<a name="line12"></a> *
+<a name="line13"></a> *     http://www.apache.org/licenses/LICENSE-2.0
+<a name="line14"></a> *
+<a name="line15"></a> * Unless required by applicable law or agreed to in writing, software
+<a name="line16"></a> * distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+<a name="line17"></a> * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+<a name="line18"></a> * See the License for the specific language governing permissions and
+<a name="line19"></a> * limitations under the License.
+<a name="line20"></a> *
+<a name="line21"></a> * @license http://www.apache.org/licenses/LICENSE-2.0 Apache Software License 2.0
+<a name="line22"></a> * @link http://phpcr.github.com/
+<a name="line23"></a>*/</span>
+<a name="line24"></a>&nbsp;
+<a name="line25"></a><span style="color: #000000; font-weight: bold;">namespace</span> PHPCR\NodeType<span style="color: #339933;">;</span>
+<a name="line26"></a>&nbsp;
+<a name="line27"></a><span style="color: #009933; font-style: italic;">/**
+<a name="line28"></a> * The NodeTypeDefinition interface provides methods for discovering the
+<a name="line29"></a> * static definition of a node type. These are accessible both before and
+<a name="line30"></a> * after the node type is registered. Its subclass NodeType adds methods
+<a name="line31"></a> * that are relevant only when the node type is &quot;live&quot;; that is, after it
+<a name="line32"></a> * has been registered. Note that the separate NodeDefinition interface only
+<a name="line33"></a> * plays a significant role in implementations that support node type
+<a name="line34"></a> * registration. In those cases it serves as the superclass of both NodeType
+<a name="line35"></a> * and NodeTypeTemplate. In implementations that do not support node type
+<a name="line36"></a> * registration, only objects implementing the subinterface NodeType will
+<a name="line37"></a> * be encountered.
+<a name="line38"></a> *
+<a name="line39"></a> * @package phpcr
+<a name="line40"></a> * @subpackage interfaces
+<a name="line41"></a> * @api
+<a name="line42"></a> */</span>
+<a name="line43"></a><span style="color: #000000; font-weight: bold;">interface</span> NodeTypeDefinitionInterface
+<a name="line44"></a><span style="color: #009900;">&#123;</span>
+<a name="line45"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line46"></a>     * Returns the name of the node type.
+<a name="line47"></a>     *
+<a name="line48"></a>     * In implementations that support node type registration, if this
+<a name="line49"></a>     * NodeTypeDefinition object is actually a newly-created empty
+<a name="line50"></a>     * NodeTypeTemplate, then this method will return null.
+<a name="line51"></a>     *
+<a name="line52"></a>     * @return string The name of the node type.
+<a name="line53"></a>     * @api
+<a name="line54"></a>     */</span>
+<a name="line55"></a>    <span style="color: #000000; font-weight: bold;">function</span> getName<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line56"></a>&nbsp;
+<a name="line57"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line58"></a>     * Returns the names of the supertypes actually declared in this node type.
+<a name="line59"></a>     *
+<a name="line60"></a>     * In implementations that support node type registration, if this
+<a name="line61"></a>     * NodeTypeDefinition object is actually a newly-created empty
+<a name="line62"></a>     * NodeTypeTemplate, then this method will return an array containing a
+<a name="line63"></a>     * single string indicating the node type nt:base.
+<a name="line64"></a>     *
+<a name="line65"></a>     * @return array List of names of declared supertypes.
+<a name="line66"></a>     * @api
+<a name="line67"></a>     */</span>
+<a name="line68"></a>    <span style="color: #000000; font-weight: bold;">function</span> getDeclaredSupertypeNames<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line69"></a>&nbsp;
+<a name="line70"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line71"></a>     * Reports if this is an abstract node type.
+<a name="line72"></a>     *
+<a name="line73"></a>     * Returns true if this is an abstract node type; returns false otherwise.
+<a name="line74"></a>     * An abstract node type is one that cannot be assigned as the primary or
+<a name="line75"></a>     * mixin type of a node but can be used in the definitions of other node
+<a name="line76"></a>     * types as a superclass.
+<a name="line77"></a>     *
+<a name="line78"></a>     * In implementations that support node type registration, if this
+<a name="line79"></a>     * NodeTypeDefinition object is actually a newly-created empty
+<a name="line80"></a>     * NodeTypeTemplate, then this method will return false.
+<a name="line81"></a>     *
+<a name="line82"></a>     * @return boolean True, if the current type is abstract, else false.
+<a name="line83"></a>     * @api
+<a name="line84"></a>     */</span>
+<a name="line85"></a>    <span style="color: #000000; font-weight: bold;">function</span> isAbstract<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line86"></a>&nbsp;
+<a name="line87"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line88"></a>     * Reports if this is a mixin node type.
+<a name="line89"></a>     *
+<a name="line90"></a>     * Returns true if this is a mixin type; returns false if it is primary.
+<a name="line91"></a>     * In implementations that support node type registration, if this
+<a name="line92"></a>     * NodeTypeDefinition object is actually a newly-created empty
+<a name="line93"></a>     * NodeTypeTemplate, then this method will return false.
+<a name="line94"></a>     *
+<a name="line95"></a>     * @return boolean True if this is a mixin type, else false;
+<a name="line96"></a>     * @api
+<a name="line97"></a>     */</span>
+<a name="line98"></a>    <span style="color: #000000; font-weight: bold;">function</span> isMixin<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line99"></a>&nbsp;
+<a name="line100"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line101"></a>     * Determines if nodes of this type must support orderable child nodes.
+<a name="line102"></a>     *
+<a name="line103"></a>     * Returns true if nodes of this type must support orderable child nodes;
+<a name="line104"></a>     * returns false otherwise. If a node type returns true on a call to this
+<a name="line105"></a>     * method, then all nodes of that node type must support the method
+<a name="line106"></a>     * Node.orderBefore. If a node type returns false on a call to this method,
+<a name="line107"></a>     * then nodes of that node type may support Node.orderBefore. Only the primary
+<a name="line108"></a>     * node type of a node controls that node's status in this regard. This setting
+<a name="line109"></a>     * on a mixin node type will not have any effect on the node.
+<a name="line110"></a>     * In implementations that support node type registration, if this
+<a name="line111"></a>     * NodeTypeDefinition object is actually a newly-created empty
+<a name="line112"></a>     * NodeTypeTemplate, then this method will return false.
+<a name="line113"></a>     *
+<a name="line114"></a>     * @return boolean True, if nodes of this type must support orderable child nodes, else false.
+<a name="line115"></a>     * @api
+<a name="line116"></a>     */</span>
+<a name="line117"></a>    <span style="color: #000000; font-weight: bold;">function</span> hasOrderableChildNodes<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line118"></a>&nbsp;
+<a name="line119"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line120"></a>     * Determins if the node type is queryable.
+<a name="line121"></a>     *
+<a name="line122"></a>     * Returns true if the node type is queryable, meaning that the
+<a name="line123"></a>     * available-query-operators, full-text-searchable and query-orderable
+<a name="line124"></a>     * attributes of its property definitions take effect.
+<a name="line125"></a>     *
+<a name="line126"></a>     * If a node type is declared non-queryable then these attributes of its
+<a name="line127"></a>     * property definitions have no effect.
 <a name="line128"></a>     *
-<a name="line129"></a>     * Returns true if the node type is queryable, meaning that the
-<a name="line130"></a>     * available-query-operators, full-text-searchable and query-orderable
-<a name="line131"></a>     * attributes of its property definitions take effect.
-<a name="line132"></a>     *
-<a name="line133"></a>     * If a node type is declared non-queryable then these attributes of its
-<a name="line134"></a>     * property definitions have no effect.
-<a name="line135"></a>     *
-<a name="line136"></a>     * @return boolean True, if the node type is queryable, else false.
-<a name="line137"></a>     *
-<a name="line138"></a>     * @see PropertyDefinition::getAvailableQueryOperators()
-<a name="line139"></a>     * @see PropertyDefinition::isFullTextSearchable()
-<a name="line140"></a>     * @see PropertyDefinition::isQueryOrderable()
-<a name="line141"></a>     * @api
-<a name="line142"></a>     */</span>
-<a name="line143"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> isQueryable<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line144"></a>&nbsp;
-<a name="line145"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line146"></a>     * Returns the name of the primary item (one of the child items of the nodes
-<a name="line147"></a>     * of this node type).
-<a name="line148"></a>     *
-<a name="line149"></a>     * If this node has no primary item, then this method
-<a name="line150"></a>     * returns null. This indicator is used by the method Node.getPrimaryItem().
-<a name="line151"></a>     * In implementations that support node type registration, if this
-<a name="line152"></a>     * NodeTypeDefinition object is actually a newly-created empty
-<a name="line153"></a>     * NodeTypeTemplate, then this method will return null.
-<a name="line154"></a>     *
-<a name="line155"></a>     * @return string The name of the primary item.
-<a name="line156"></a>     * @api
-<a name="line157"></a>     */</span>
-<a name="line158"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getPrimaryItemName<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line159"></a>&nbsp;
-<a name="line160"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line161"></a>     * Returns an array containing the property definitions actually declared
-<a name="line162"></a>     * in this node type.
-<a name="line163"></a>     *
-<a name="line164"></a>     * In implementations that support node type registration, if this
-<a name="line165"></a>     * NodeTypeDefinition object is actually a newly-created empty
-<a name="line166"></a>     * NodeTypeTemplate, then this method will return null.
-<a name="line167"></a>     *
-<a name="line168"></a>     * @return array An array of PropertyDefinitions.
-<a name="line169"></a>     * @api
-<a name="line170"></a>     */</span>
-<a name="line171"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getDeclaredPropertyDefinitions<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line172"></a>&nbsp;
-<a name="line173"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line174"></a>     * Returns an array containing the child node definitions actually
-<a name="line175"></a>     * declared in this node type.
-<a name="line176"></a>     *
-<a name="line177"></a>     * In implementations that support node type registration, if this
-<a name="line178"></a>     * NodeTypeDefinition object is actually a newly-created empty
-<a name="line179"></a>     * NodeTypeTemplate, then this method will return null.
-<a name="line180"></a>     *
-<a name="line181"></a>     * @return array An array of NodeDefinitions.
-<a name="line182"></a>     * @api
-<a name="line183"></a>     */</span>
-<a name="line184"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getDeclaredChildNodeDefinitions<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line185"></a><span style="color: #009900;">&#125;</span>
-<a name="line186"></a>&nbsp;</pre>
+<a name="line129"></a>     * @return boolean True, if the node type is queryable, else false.
+<a name="line130"></a>     *
+<a name="line131"></a>     * @see PropertyDefinition::getAvailableQueryOperators()
+<a name="line132"></a>     * @see PropertyDefinition::isFullTextSearchable()
+<a name="line133"></a>     * @see PropertyDefinition::isQueryOrderable()
+<a name="line134"></a>     * @api
+<a name="line135"></a>     */</span>
+<a name="line136"></a>    <span style="color: #000000; font-weight: bold;">function</span> isQueryable<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line137"></a>&nbsp;
+<a name="line138"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line139"></a>     * Returns the name of the primary item (one of the child items of the nodes
+<a name="line140"></a>     * of this node type).
+<a name="line141"></a>     *
+<a name="line142"></a>     * If this node has no primary item, then this method
+<a name="line143"></a>     * returns null. This indicator is used by the method Node.getPrimaryItem().
+<a name="line144"></a>     * In implementations that support node type registration, if this
+<a name="line145"></a>     * NodeTypeDefinition object is actually a newly-created empty
+<a name="line146"></a>     * NodeTypeTemplate, then this method will return null.
+<a name="line147"></a>     *
+<a name="line148"></a>     * @return string The name of the primary item.
+<a name="line149"></a>     * @api
+<a name="line150"></a>     */</span>
+<a name="line151"></a>    <span style="color: #000000; font-weight: bold;">function</span> getPrimaryItemName<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line152"></a>&nbsp;
+<a name="line153"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line154"></a>     * Returns an array containing the property definitions actually declared
+<a name="line155"></a>     * in this node type.
+<a name="line156"></a>     *
+<a name="line157"></a>     * In implementations that support node type registration, if this
+<a name="line158"></a>     * NodeTypeDefinition object is actually a newly-created empty
+<a name="line159"></a>     * NodeTypeTemplate, then this method will return null.
+<a name="line160"></a>     *
+<a name="line161"></a>     * @return array An array of PropertyDefinitions.
+<a name="line162"></a>     * @api
+<a name="line163"></a>     */</span>
+<a name="line164"></a>    <span style="color: #000000; font-weight: bold;">function</span> getDeclaredPropertyDefinitions<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line165"></a>&nbsp;
+<a name="line166"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line167"></a>     * Returns an array containing the child node definitions actually
+<a name="line168"></a>     * declared in this node type.
+<a name="line169"></a>     *
+<a name="line170"></a>     * In implementations that support node type registration, if this
+<a name="line171"></a>     * NodeTypeDefinition object is actually a newly-created empty
+<a name="line172"></a>     * NodeTypeTemplate, then this method will return null.
+<a name="line173"></a>     *
+<a name="line174"></a>     * @return array An array of NodeDefinitions.
+<a name="line175"></a>     * @api
+<a name="line176"></a>     */</span>
+<a name="line177"></a>    <span style="color: #000000; font-weight: bold;">function</span> getDeclaredChildNodeDefinitions<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line178"></a><span style="color: #009900;">&#125;</span>
+<a name="line179"></a>&nbsp;</pre>
 <div class="header">
 <h1>PHPCR</h1>
 <ul>

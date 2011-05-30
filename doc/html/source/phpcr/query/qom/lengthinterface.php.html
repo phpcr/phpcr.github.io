@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="generator" content="PHPDoctor 2RC4 (http://peej.github.com/phpdoctor/)">
-<meta name="when" content="Thu, 26 May 2011 12:55:53 +0000">
+<meta name="when" content="Mon, 30 May 2011 13:13:38 +0000">
 
 <link rel="stylesheet" type="text/css" href="../../../../stylesheet.css">
 <link rel="start" href="../../../../overview-summary.html">
@@ -34,77 +34,66 @@
 <hr>
 
 <h1>PHPCR/Query/QOM/LengthInterface.php</h1>
-<div class="comment" id="overview_description"><p>Interface to describe the contract to implement a length class.</p><p>This file was ported from the Java JCR API to PHP by
-Karsten Dambekalns <karsten@typo3.org> for the FLOW3 project.</p><p>It is free software; you can redistribute it and/or modify it under
-the terms of the GNU Lesser General Public License as published by the
-Free Software Foundation, either version 3 of the License, or (at your
-option) any later version. Alternatively, you may use the Simplified
-BSD License.</p><p>This script is distributed in the hope that it will be useful, but
-WITHOUT ANY WARRANTY; without even the implied warranty of MERCHAN-
-TABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser
-General Public License for more details.</p><p>You should have received a copy of the GNU Lesser General Public
-License along with the script.
-If not, see <code><a href="http://www.gnu.org/licenses/lgpl.html">http://www.gnu.org/licenses/lgpl.html</a></code>.</p><p>The TYPO3 project - inspiring people to share!</p></div>
+<div class="comment" id="overview_description"><p>This file is part of the PHPCR API and was originally ported from the Java
+JCR API to PHP by Karsten Dambekalns for the FLOW3 project.</p><p>Copyright 2008-2011 Karsten Dambekalns <karsten@typo3.org></p><p>Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at</p><p>http://www.apache.org/licenses/LICENSE-2.0</p><p>Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.</p></div>
 
 <hr>
 
 <a name="line1"></a><pre class="php" style="font-family:monospace;"><span style="color: #000000; font-weight: bold;">&lt;?php</span>
-<a name="line2"></a><span style="color: #009933; font-style: italic;">/**
-<a name="line3"></a> * Interface to describe the contract to implement a length class.
-<a name="line4"></a> *
-<a name="line5"></a> * This file was ported from the Java JCR API to PHP by
-<a name="line6"></a> * Karsten Dambekalns &lt;karsten@typo3.org&gt; for the FLOW3 project.
-<a name="line7"></a> *
-<a name="line8"></a> * It is free software; you can redistribute it and/or modify it under
-<a name="line9"></a> * the terms of the GNU Lesser General Public License as published by the
-<a name="line10"></a> * Free Software Foundation, either version 3 of the License, or (at your
-<a name="line11"></a> * option) any later version. Alternatively, you may use the Simplified
-<a name="line12"></a> * BSD License.
-<a name="line13"></a> *
-<a name="line14"></a> * This script is distributed in the hope that it will be useful, but
-<a name="line15"></a> * WITHOUT ANY WARRANTY; without even the implied warranty of MERCHAN-
-<a name="line16"></a> * TABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser
-<a name="line17"></a> * General Public License for more details.
-<a name="line18"></a> *
-<a name="line19"></a> * You should have received a copy of the GNU Lesser General Public
-<a name="line20"></a> * License along with the script.
-<a name="line21"></a> * If not, see {@link http://www.gnu.org/licenses/lgpl.html}.
-<a name="line22"></a> *
-<a name="line23"></a> * The TYPO3 project - inspiring people to share!
-<a name="line24"></a> *
-<a name="line25"></a> * @license http://www.gnu.org/licenses/lgpl.html GNU Lesser General Public License, version 3 or later
-<a name="line26"></a> * @license http://opensource.org/licenses/bsd-license.php Simplified BSD License
-<a name="line27"></a> *
-<a name="line28"></a> * @package phpcr
-<a name="line29"></a> * @subpackage interfaces
-<a name="line30"></a> */</span>
-<a name="line31"></a>&nbsp;
-<a name="line32"></a><span style="color: #000000; font-weight: bold;">namespace</span> PHPCR\Query\QOM<span style="color: #339933;">;</span>
-<a name="line33"></a>&nbsp;
-<a name="line34"></a><span style="color: #009933; font-style: italic;">/**
-<a name="line35"></a> * Evaluates to the length (or lengths, if multi-valued) of a property.
-<a name="line36"></a> *
-<a name="line37"></a> * The length should be computed as though the getLength method (or getLengths,
-<a name="line38"></a> * if multi-valued) of \PHPCR\PropertyInterface were called.
-<a name="line39"></a> *
-<a name="line40"></a> * If propertyValue evaluates to null, the Length operand also evaluates to null.
-<a name="line41"></a> *
-<a name="line42"></a> * @package phpcr
-<a name="line43"></a> * @subpackage interfaces
-<a name="line44"></a> * @api
-<a name="line45"></a> */</span>
-<a name="line46"></a><span style="color: #000000; font-weight: bold;">interface</span> LengthInterface <span style="color: #000000; font-weight: bold;">extends</span> DynamicOperandInterface <span style="color: #009900;">&#123;</span>
-<a name="line47"></a>&nbsp;
-<a name="line48"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line49"></a>     * Gets the property value for which to compute the length.
-<a name="line50"></a>     *
-<a name="line51"></a>     * @return \PHPCR\Query\QOM\PropertyValueInterface the property value; non-null
-<a name="line52"></a>     * @api
-<a name="line53"></a>     */</span>
-<a name="line54"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getPropertyValue<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line55"></a>&nbsp;
-<a name="line56"></a><span style="color: #009900;">&#125;</span>
-<a name="line57"></a>&nbsp;</pre>
+<a name="line2"></a>&nbsp;
+<a name="line3"></a><span style="color: #009933; font-style: italic;">/**
+<a name="line4"></a> * This file is part of the PHPCR API and was originally ported from the Java
+<a name="line5"></a> * JCR API to PHP by Karsten Dambekalns for the FLOW3 project.
+<a name="line6"></a> *
+<a name="line7"></a> * Copyright 2008-2011 Karsten Dambekalns &lt;karsten@typo3.org&gt;
+<a name="line8"></a> *
+<a name="line9"></a> * Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
+<a name="line10"></a> * you may not use this file except in compliance with the License.
+<a name="line11"></a> * You may obtain a copy of the License at
+<a name="line12"></a> *
+<a name="line13"></a> *     http://www.apache.org/licenses/LICENSE-2.0
+<a name="line14"></a> *
+<a name="line15"></a> * Unless required by applicable law or agreed to in writing, software
+<a name="line16"></a> * distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+<a name="line17"></a> * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+<a name="line18"></a> * See the License for the specific language governing permissions and
+<a name="line19"></a> * limitations under the License.
+<a name="line20"></a> *
+<a name="line21"></a> * @license http://www.apache.org/licenses/LICENSE-2.0 Apache Software License 2.0
+<a name="line22"></a> * @link http://phpcr.github.com/
+<a name="line23"></a>*/</span>
+<a name="line24"></a>&nbsp;
+<a name="line25"></a><span style="color: #000000; font-weight: bold;">namespace</span> PHPCR\Query\QOM<span style="color: #339933;">;</span>
+<a name="line26"></a>&nbsp;
+<a name="line27"></a><span style="color: #009933; font-style: italic;">/**
+<a name="line28"></a> * Evaluates to the length (or lengths, if multi-valued) of a property.
+<a name="line29"></a> *
+<a name="line30"></a> * The length should be computed as though the getLength method of
+<a name="line31"></a> * \PHPCR\PropertyInterface were called.
+<a name="line32"></a> *
+<a name="line33"></a> * If propertyValue evaluates to null, the Length operand also evaluates to null.
+<a name="line34"></a> *
+<a name="line35"></a> * @package phpcr
+<a name="line36"></a> * @subpackage interfaces
+<a name="line37"></a> * @api
+<a name="line38"></a> */</span>
+<a name="line39"></a><span style="color: #000000; font-weight: bold;">interface</span> LengthInterface <span style="color: #000000; font-weight: bold;">extends</span> DynamicOperandInterface
+<a name="line40"></a><span style="color: #009900;">&#123;</span>
+<a name="line41"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line42"></a>     * Gets the property value for which to compute the length.
+<a name="line43"></a>     *
+<a name="line44"></a>     * @return \PHPCR\Query\QOM\PropertyValueInterface the property value; non-null
+<a name="line45"></a>     * @api
+<a name="line46"></a>     */</span>
+<a name="line47"></a>    <span style="color: #000000; font-weight: bold;">function</span> getPropertyValue<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line48"></a><span style="color: #009900;">&#125;</span>
+<a name="line49"></a>&nbsp;</pre>
 <div class="header">
 <h1>PHPCR</h1>
 <ul>

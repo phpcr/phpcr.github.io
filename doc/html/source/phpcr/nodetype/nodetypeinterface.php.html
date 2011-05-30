@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="generator" content="PHPDoctor 2RC4 (http://peej.github.com/phpdoctor/)">
-<meta name="when" content="Thu, 26 May 2011 12:55:48 +0000">
+<meta name="when" content="Mon, 30 May 2011 13:13:27 +0000">
 
 <link rel="stylesheet" type="text/css" href="../../../stylesheet.css">
 <link rel="start" href="../../../overview-summary.html">
@@ -34,534 +34,524 @@
 <hr>
 
 <h1>PHPCR/NodeType/NodeTypeInterface.php</h1>
-<div class="comment" id="overview_description"><p>Interface description of how to implement a node type.</p><p>This file was ported from the Java JCR API to PHP by
-Karsten Dambekalns <karsten@typo3.org> for the FLOW3 project.</p><p>It is free software; you can redistribute it and/or modify it under
-the terms of the GNU Lesser General Public License as published by the
-Free Software Foundation, either version 3 of the License, or (at your
-option) any later version. Alternatively, you may use the Simplified
-BSD License.</p><p>This script is distributed in the hope that it will be useful, but
-WITHOUT ANY WARRANTY; without even the implied warranty of MERCHAN-
-TABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser
-General Public License for more details.</p><p>You should have received a copy of the GNU Lesser General Public
-License along with the script.
-If not, see <code><a href="http://www.gnu.org/licenses/lgpl.html">http://www.gnu.org/licenses/lgpl.html</a></code>.</p><p>The TYPO3 project - inspiring people to share!</p></div>
+<div class="comment" id="overview_description"><p>This file is part of the PHPCR API and was originally ported from the Java
+JCR API to PHP by Karsten Dambekalns for the FLOW3 project.</p><p>Copyright 2008-2011 Karsten Dambekalns <karsten@typo3.org></p><p>Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at</p><p>http://www.apache.org/licenses/LICENSE-2.0</p><p>Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.</p></div>
 
 <hr>
 
 <a name="line1"></a><pre class="php" style="font-family:monospace;"><span style="color: #000000; font-weight: bold;">&lt;?php</span>
-<a name="line2"></a><span style="color: #009933; font-style: italic;">/**
-<a name="line3"></a> * Interface description of how to implement a node type.
-<a name="line4"></a> *
-<a name="line5"></a> * This file was ported from the Java JCR API to PHP by
-<a name="line6"></a> * Karsten Dambekalns &lt;karsten@typo3.org&gt; for the FLOW3 project.
-<a name="line7"></a> *
-<a name="line8"></a> * It is free software; you can redistribute it and/or modify it under
-<a name="line9"></a> * the terms of the GNU Lesser General Public License as published by the
-<a name="line10"></a> * Free Software Foundation, either version 3 of the License, or (at your
-<a name="line11"></a> * option) any later version. Alternatively, you may use the Simplified
-<a name="line12"></a> * BSD License.
-<a name="line13"></a> *
-<a name="line14"></a> * This script is distributed in the hope that it will be useful, but
-<a name="line15"></a> * WITHOUT ANY WARRANTY; without even the implied warranty of MERCHAN-
-<a name="line16"></a> * TABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser
-<a name="line17"></a> * General Public License for more details.
-<a name="line18"></a> *
-<a name="line19"></a> * You should have received a copy of the GNU Lesser General Public
-<a name="line20"></a> * License along with the script.
-<a name="line21"></a> * If not, see {@link http://www.gnu.org/licenses/lgpl.html}.
-<a name="line22"></a> *
-<a name="line23"></a> * The TYPO3 project - inspiring people to share!
-<a name="line24"></a> *
-<a name="line25"></a> * @license http://www.gnu.org/licenses/lgpl.html GNU Lesser General Public License, version 3 or later
-<a name="line26"></a> * @license http://opensource.org/licenses/bsd-license.php Simplified BSD License
-<a name="line27"></a> *
-<a name="line28"></a> * @package phpcr
-<a name="line29"></a> * @subpackage interfaces
-<a name="line30"></a> */</span>
-<a name="line31"></a>&nbsp;
-<a name="line32"></a><span style="color: #000000; font-weight: bold;">namespace</span> PHPCR\NodeType<span style="color: #339933;">;</span>
-<a name="line33"></a>&nbsp;
-<a name="line34"></a><span style="color: #009933; font-style: italic;">/**
-<a name="line35"></a> * A NodeType object represents a &quot;live&quot; node type that is registered in the repository.
-<a name="line36"></a> *
-<a name="line37"></a> * @package phpcr
-<a name="line38"></a> * @subpackage interfaces
-<a name="line39"></a> * @api
-<a name="line40"></a> */</span>
-<a name="line41"></a><span style="color: #000000; font-weight: bold;">interface</span> NodeTypeInterface <span style="color: #000000; font-weight: bold;">extends</span> \PHPCR\NodeType\NodeTypeDefinitionInterface <span style="color: #009900;">&#123;</span>
-<a name="line42"></a>&nbsp;
-<a name="line43"></a>    <span style="color: #009933; font-style: italic;">/**#@+
-<a name="line44"></a>     * @var string
-<a name="line45"></a>     */</span>
-<a name="line46"></a>&nbsp;
-<a name="line47"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line48"></a>     * A constant for the node type name nt:base (in extended form).
-<a name="line49"></a>     * Constants for the names of the properties declared by nt:base are:
-<a name="line50"></a>     *
-<a name="line51"></a>     * - Property#JCR_PRIMARY_TYPE
-<a name="line52"></a>     * - Property#JCR_MIXIN_TYPES
-<a name="line53"></a>     *
-<a name="line54"></a>     * @api
-<a name="line55"></a>     */</span>
-<a name="line56"></a>    <span style="color: #000000; font-weight: bold;">const</span> NT_BASE <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/nt/1.0}base&quot;</span><span style="color: #339933;">;</span>
-<a name="line57"></a>&nbsp;
-<a name="line58"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line59"></a>     * A constant for the node type name nt:hierarchyNode (in extended form).
-<a name="line60"></a>     * @api
-<a name="line61"></a>     */</span>
-<a name="line62"></a>    <span style="color: #000000; font-weight: bold;">const</span> NT_HIERARCHY_NODE <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/nt/1.0}hierarchyNode&quot;</span><span style="color: #339933;">;</span>
-<a name="line63"></a>&nbsp;
-<a name="line64"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line65"></a>     * A constant for the node type name nt:folder (in extended form).
-<a name="line66"></a>     * @api
-<a name="line67"></a>     */</span>
-<a name="line68"></a>    <span style="color: #000000; font-weight: bold;">const</span> NT_FOLDER <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/nt/1.0}folder&quot;</span><span style="color: #339933;">;</span>
-<a name="line69"></a>&nbsp;
-<a name="line70"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line71"></a>     * A constant for the node type name nt:file (in extended form).
-<a name="line72"></a>     * A constant for the name of the child node declared by nt:file is:
-<a name="line73"></a>     *
-<a name="line74"></a>     * - Node#JCR_CONTENT
-<a name="line75"></a>     *
-<a name="line76"></a>     * @api
-<a name="line77"></a>     */</span>
-<a name="line78"></a>    <span style="color: #000000; font-weight: bold;">const</span> NT_FILE <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/nt/1.0}file&quot;</span><span style="color: #339933;">;</span>
-<a name="line79"></a>&nbsp;
-<a name="line80"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line81"></a>     * A constant for the node type name nt:linkedFile (in extended form).
-<a name="line82"></a>     * A constant for the name of the property declared by nt:linkedFile is:
-<a name="line83"></a>     *
-<a name="line84"></a>     * - Property#JCR_CONTENT
-<a name="line85"></a>     *
-<a name="line86"></a>     * @api
-<a name="line87"></a>     */</span>
-<a name="line88"></a>    <span style="color: #000000; font-weight: bold;">const</span> NT_LINKED_FILE <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/nt/1.0}linkedFile&quot;</span><span style="color: #339933;">;</span>
-<a name="line89"></a>&nbsp;
-<a name="line90"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line91"></a>     * A constant for the node type name nt:resource (in extended form).
-<a name="line92"></a>     * A constant for the name of the property declared by nt:resource is:
-<a name="line93"></a>     *
-<a name="line94"></a>     * - Property#JCR_DATA
-<a name="line95"></a>     *
-<a name="line96"></a>     * @api
-<a name="line97"></a>     */</span>
-<a name="line98"></a>    <span style="color: #000000; font-weight: bold;">const</span> NT_RESOURCE <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/nt/1.0}resource&quot;</span><span style="color: #339933;">;</span>
-<a name="line99"></a>&nbsp;
-<a name="line100"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line101"></a>     * A constant for the node type name nt:unstructured (in extended form).
-<a name="line102"></a>     * @api
-<a name="line103"></a>     */</span>
-<a name="line104"></a>    <span style="color: #000000; font-weight: bold;">const</span> NT_UNSTRUCTURED <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/nt/1.0}unstructured&quot;</span><span style="color: #339933;">;</span>
-<a name="line105"></a>&nbsp;
-<a name="line106"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line107"></a>     * A constant for the node type name nt:address (in extended form).
-<a name="line108"></a>     * Constants for the names of the properties declared by nt:base are:
-<a name="line109"></a>     *
-<a name="line110"></a>     * - Property#JCR_PROTOCOL
-<a name="line111"></a>     * - Property#JCR_HOST
-<a name="line112"></a>     * - Property#JCR_PORT
-<a name="line113"></a>     * - Property#JCR_REPOSITORY
-<a name="line114"></a>     * - Property#JCR_WORKSPACE
-<a name="line115"></a>     * - Property#JCR_PATH
-<a name="line116"></a>     * - Property#JCR_ID
-<a name="line117"></a>     *
-<a name="line118"></a>     * @api
-<a name="line119"></a>     */</span>
-<a name="line120"></a>    <span style="color: #000000; font-weight: bold;">const</span> NT_ADDRESS <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/nt/1.0}address&quot;</span><span style="color: #339933;">;</span>
-<a name="line121"></a>&nbsp;
-<a name="line122"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line123"></a>     * A constant for the node type name mix:referenceable (in extended form).
-<a name="line124"></a>     * A constant for the name of the property declared by mix:referenceable is:
-<a name="line125"></a>     *
-<a name="line126"></a>     * - Property#JCR_UUID
-<a name="line127"></a>     *
-<a name="line128"></a>     * @api
-<a name="line129"></a>     */</span>
-<a name="line130"></a>    <span style="color: #000000; font-weight: bold;">const</span> MIX_REFERENCEABLE <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/mix/1.0}referenceable&quot;</span><span style="color: #339933;">;</span>
-<a name="line131"></a>&nbsp;
-<a name="line132"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line133"></a>     * A constant for the node type name mix:title (in extended form).
-<a name="line134"></a>     * Constants for the names of the properties declared by mix:title are:
-<a name="line135"></a>     *
-<a name="line136"></a>     * - Property#JCR_TITLE
-<a name="line137"></a>     * - Property#JCR_DESCRIPTION
-<a name="line138"></a>     *
-<a name="line139"></a>     * @api
-<a name="line140"></a>     */</span>
-<a name="line141"></a>    <span style="color: #000000; font-weight: bold;">const</span> MIX_TITLE <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/mix/1.0}title&quot;</span><span style="color: #339933;">;</span>
-<a name="line142"></a>&nbsp;
-<a name="line143"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line144"></a>     * A constant for the node type name mix:created (in extended form).
-<a name="line145"></a>     * Constants for the names of the properties declared by mix:created are:
-<a name="line146"></a>     *
-<a name="line147"></a>     * - Property#JCR_CREATED
-<a name="line148"></a>     * - Property#JCR_CREATED_BY
-<a name="line149"></a>     *
-<a name="line150"></a>     * @api
-<a name="line151"></a>     */</span>
-<a name="line152"></a>    <span style="color: #000000; font-weight: bold;">const</span> MIX_CREATED <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/mix/1.0}created&quot;</span><span style="color: #339933;">;</span>
-<a name="line153"></a>&nbsp;
-<a name="line154"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line155"></a>     * A constant for the node type name mix:lastModified (in extended form).
-<a name="line156"></a>     * Constants for the names of the properties declared by mix:lastModified are:
-<a name="line157"></a>     *
-<a name="line158"></a>     * - Property#JCR_LAST_MODIFIED
-<a name="line159"></a>     * - Property#JCR_LAST_MODIFIED_BY
-<a name="line160"></a>     *
-<a name="line161"></a>     * @api
-<a name="line162"></a>     */</span>
-<a name="line163"></a>    <span style="color: #000000; font-weight: bold;">const</span> MIX_LAST_MODIFIED <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/mix/1.0}lastModified&quot;</span><span style="color: #339933;">;</span>
-<a name="line164"></a>&nbsp;
-<a name="line165"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line166"></a>     * A constant for the node type name mix:language (in extended form).
-<a name="line167"></a>     * A constant for the name of the property declared by mix:language is:
-<a name="line168"></a>     *
-<a name="line169"></a>     * - Property#JCR_LANGUAGE
-<a name="line170"></a>     *
-<a name="line171"></a>     * @api
-<a name="line172"></a>     */</span>
-<a name="line173"></a>    <span style="color: #000000; font-weight: bold;">const</span> MIX_LANGUAGE <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/mix/1.0}language&quot;</span><span style="color: #339933;">;</span>
-<a name="line174"></a>&nbsp;
-<a name="line175"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line176"></a>     * A constant for the node type name mix:mimeType (in extended form).
-<a name="line177"></a>     * Constants for the names of the properties declared by mix:mimeType are:
-<a name="line178"></a>     *
-<a name="line179"></a>     * - Property#JCR_MIMETYPE
-<a name="line180"></a>     * - Property#JCR_ENCODING
-<a name="line181"></a>     *
-<a name="line182"></a>     * @api
-<a name="line183"></a>     */</span>
-<a name="line184"></a>    <span style="color: #000000; font-weight: bold;">const</span> MIX_MIMETYPE <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/mix/1.0}mimeType&quot;</span><span style="color: #339933;">;</span>
-<a name="line185"></a>&nbsp;
-<a name="line186"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line187"></a>     * A constant for the node type name nt:nodeType (in extended form).
-<a name="line188"></a>     * Constants for the names of the child items declared by nt:nodeType are:
-<a name="line189"></a>     *
-<a name="line190"></a>     * - Property#JCR_NODE_TYPE_NAME
-<a name="line191"></a>     * - Property#JCR_SUPERTYPES
-<a name="line192"></a>     * - Property#JCR_IS_ABSTRACT
-<a name="line193"></a>     * - Property#JCR_IS_MIXIN
-<a name="line194"></a>     * - Property#JCR_HAS_ORDERABLE_CHILD_NODES
-<a name="line195"></a>     * - Property#JCR_PRIMARY_ITEM_NAME
-<a name="line196"></a>     * - Node#JCR_PROPERTY_DEFINITION
-<a name="line197"></a>     * - Node#JCR_CHILD_NODE_DEFINITION
-<a name="line198"></a>     *
-<a name="line199"></a>     * @api
-<a name="line200"></a>     */</span>
-<a name="line201"></a>    <span style="color: #000000; font-weight: bold;">const</span> NT_NODE_TYPE <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/nt/1.0}nodeType&quot;</span><span style="color: #339933;">;</span>
-<a name="line202"></a>&nbsp;
-<a name="line203"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line204"></a>     * A constant for the node type name nt:propertyDefinition (in extended form).
-<a name="line205"></a>     * Constants for the names of the properties declared by nt:propertyDefinition are:
-<a name="line206"></a>     *
-<a name="line207"></a>     * - Property#JCR_NAME
-<a name="line208"></a>     * - Property#JCR_AUTOCREATED
-<a name="line209"></a>     * - Property#JCR_MANDATORY
-<a name="line210"></a>     * - Property#JCR_PROTECTED
-<a name="line211"></a>     * - Property#JCR_ON_PARENT_VERSION
-<a name="line212"></a>     * - Property#JCR_REQUIRED_TYPE
-<a name="line213"></a>     * - Property#JCR_VALUE_CONSTRAINTS
-<a name="line214"></a>     * - Property#JCR_DEFAULT_VALUES
-<a name="line215"></a>     * - Property#JCR_MULTIPLE
-<a name="line216"></a>     *
-<a name="line217"></a>     * @api
-<a name="line218"></a>     */</span>
-<a name="line219"></a>    <span style="color: #000000; font-weight: bold;">const</span> NT_PROPERTY_DEFINITION <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/nt/1.0}propertyDefinition&quot;</span><span style="color: #339933;">;</span>
-<a name="line220"></a>&nbsp;
-<a name="line221"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line222"></a>     * A constant for the node type name nt:childNodeDefinition (in extended form).
-<a name="line223"></a>     * Constants for the names of the properties declared by nt:childNodeDefinition are:
-<a name="line224"></a>     *
-<a name="line225"></a>     * - Property#JCR_NAME
-<a name="line226"></a>     * - Property#JCR_AUTOCREATED
-<a name="line227"></a>     * - Property#JCR_MANDATORY
-<a name="line228"></a>     * - Property#JCR_PROTECTED
-<a name="line229"></a>     * - Property#JCR_ON_PARENT_VERSION
-<a name="line230"></a>     * - Property#JCR_REQUIRED_PRIMARY_TYPES
-<a name="line231"></a>     * - Property#JCR_DEFAULT_PRIMARY_TYPE
-<a name="line232"></a>     * - Property#JCR_SAME_NAME_SIBLINGS
+<a name="line2"></a>&nbsp;
+<a name="line3"></a><span style="color: #009933; font-style: italic;">/**
+<a name="line4"></a> * This file is part of the PHPCR API and was originally ported from the Java
+<a name="line5"></a> * JCR API to PHP by Karsten Dambekalns for the FLOW3 project.
+<a name="line6"></a> *
+<a name="line7"></a> * Copyright 2008-2011 Karsten Dambekalns &lt;karsten@typo3.org&gt;
+<a name="line8"></a> *
+<a name="line9"></a> * Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
+<a name="line10"></a> * you may not use this file except in compliance with the License.
+<a name="line11"></a> * You may obtain a copy of the License at
+<a name="line12"></a> *
+<a name="line13"></a> *     http://www.apache.org/licenses/LICENSE-2.0
+<a name="line14"></a> *
+<a name="line15"></a> * Unless required by applicable law or agreed to in writing, software
+<a name="line16"></a> * distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+<a name="line17"></a> * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+<a name="line18"></a> * See the License for the specific language governing permissions and
+<a name="line19"></a> * limitations under the License.
+<a name="line20"></a> *
+<a name="line21"></a> * @license http://www.apache.org/licenses/LICENSE-2.0 Apache Software License 2.0
+<a name="line22"></a> * @link http://phpcr.github.com/
+<a name="line23"></a>*/</span>
+<a name="line24"></a>&nbsp;
+<a name="line25"></a><span style="color: #000000; font-weight: bold;">namespace</span> PHPCR\NodeType<span style="color: #339933;">;</span>
+<a name="line26"></a>&nbsp;
+<a name="line27"></a><span style="color: #009933; font-style: italic;">/**
+<a name="line28"></a> * A NodeType object represents a &quot;live&quot; node type that is registered in the repository.
+<a name="line29"></a> *
+<a name="line30"></a> * @package phpcr
+<a name="line31"></a> * @subpackage interfaces
+<a name="line32"></a> * @api
+<a name="line33"></a> */</span>
+<a name="line34"></a><span style="color: #000000; font-weight: bold;">interface</span> NodeTypeInterface <span style="color: #000000; font-weight: bold;">extends</span> \PHPCR\NodeType\NodeTypeDefinitionInterface
+<a name="line35"></a><span style="color: #009900;">&#123;</span>
+<a name="line36"></a>    <span style="color: #009933; font-style: italic;">/**#@+
+<a name="line37"></a>     * @var string
+<a name="line38"></a>     */</span>
+<a name="line39"></a>&nbsp;
+<a name="line40"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line41"></a>     * A constant for the node type name nt:base (in extended form).
+<a name="line42"></a>     * Constants for the names of the properties declared by nt:base are:
+<a name="line43"></a>     *
+<a name="line44"></a>     * - Property#JCR_PRIMARY_TYPE
+<a name="line45"></a>     * - Property#JCR_MIXIN_TYPES
+<a name="line46"></a>     *
+<a name="line47"></a>     * @api
+<a name="line48"></a>     */</span>
+<a name="line49"></a>    <span style="color: #000000; font-weight: bold;">const</span> NT_BASE <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/nt/1.0}base&quot;</span><span style="color: #339933;">;</span>
+<a name="line50"></a>&nbsp;
+<a name="line51"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line52"></a>     * A constant for the node type name nt:hierarchyNode (in extended form).
+<a name="line53"></a>     * @api
+<a name="line54"></a>     */</span>
+<a name="line55"></a>    <span style="color: #000000; font-weight: bold;">const</span> NT_HIERARCHY_NODE <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/nt/1.0}hierarchyNode&quot;</span><span style="color: #339933;">;</span>
+<a name="line56"></a>&nbsp;
+<a name="line57"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line58"></a>     * A constant for the node type name nt:folder (in extended form).
+<a name="line59"></a>     * @api
+<a name="line60"></a>     */</span>
+<a name="line61"></a>    <span style="color: #000000; font-weight: bold;">const</span> NT_FOLDER <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/nt/1.0}folder&quot;</span><span style="color: #339933;">;</span>
+<a name="line62"></a>&nbsp;
+<a name="line63"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line64"></a>     * A constant for the node type name nt:file (in extended form).
+<a name="line65"></a>     * A constant for the name of the child node declared by nt:file is:
+<a name="line66"></a>     *
+<a name="line67"></a>     * - Node#JCR_CONTENT
+<a name="line68"></a>     *
+<a name="line69"></a>     * @api
+<a name="line70"></a>     */</span>
+<a name="line71"></a>    <span style="color: #000000; font-weight: bold;">const</span> NT_FILE <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/nt/1.0}file&quot;</span><span style="color: #339933;">;</span>
+<a name="line72"></a>&nbsp;
+<a name="line73"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line74"></a>     * A constant for the node type name nt:linkedFile (in extended form).
+<a name="line75"></a>     * A constant for the name of the property declared by nt:linkedFile is:
+<a name="line76"></a>     *
+<a name="line77"></a>     * - Property#JCR_CONTENT
+<a name="line78"></a>     *
+<a name="line79"></a>     * @api
+<a name="line80"></a>     */</span>
+<a name="line81"></a>    <span style="color: #000000; font-weight: bold;">const</span> NT_LINKED_FILE <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/nt/1.0}linkedFile&quot;</span><span style="color: #339933;">;</span>
+<a name="line82"></a>&nbsp;
+<a name="line83"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line84"></a>     * A constant for the node type name nt:resource (in extended form).
+<a name="line85"></a>     * A constant for the name of the property declared by nt:resource is:
+<a name="line86"></a>     *
+<a name="line87"></a>     * - Property#JCR_DATA
+<a name="line88"></a>     *
+<a name="line89"></a>     * @api
+<a name="line90"></a>     */</span>
+<a name="line91"></a>    <span style="color: #000000; font-weight: bold;">const</span> NT_RESOURCE <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/nt/1.0}resource&quot;</span><span style="color: #339933;">;</span>
+<a name="line92"></a>&nbsp;
+<a name="line93"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line94"></a>     * A constant for the node type name nt:unstructured (in extended form).
+<a name="line95"></a>     * @api
+<a name="line96"></a>     */</span>
+<a name="line97"></a>    <span style="color: #000000; font-weight: bold;">const</span> NT_UNSTRUCTURED <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/nt/1.0}unstructured&quot;</span><span style="color: #339933;">;</span>
+<a name="line98"></a>&nbsp;
+<a name="line99"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line100"></a>     * A constant for the node type name nt:address (in extended form).
+<a name="line101"></a>     * Constants for the names of the properties declared by nt:base are:
+<a name="line102"></a>     *
+<a name="line103"></a>     * - Property#JCR_PROTOCOL
+<a name="line104"></a>     * - Property#JCR_HOST
+<a name="line105"></a>     * - Property#JCR_PORT
+<a name="line106"></a>     * - Property#JCR_REPOSITORY
+<a name="line107"></a>     * - Property#JCR_WORKSPACE
+<a name="line108"></a>     * - Property#JCR_PATH
+<a name="line109"></a>     * - Property#JCR_ID
+<a name="line110"></a>     *
+<a name="line111"></a>     * @api
+<a name="line112"></a>     */</span>
+<a name="line113"></a>    <span style="color: #000000; font-weight: bold;">const</span> NT_ADDRESS <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/nt/1.0}address&quot;</span><span style="color: #339933;">;</span>
+<a name="line114"></a>&nbsp;
+<a name="line115"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line116"></a>     * A constant for the node type name mix:referenceable (in extended form).
+<a name="line117"></a>     * A constant for the name of the property declared by mix:referenceable is:
+<a name="line118"></a>     *
+<a name="line119"></a>     * - Property#JCR_UUID
+<a name="line120"></a>     *
+<a name="line121"></a>     * @api
+<a name="line122"></a>     */</span>
+<a name="line123"></a>    <span style="color: #000000; font-weight: bold;">const</span> MIX_REFERENCEABLE <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/mix/1.0}referenceable&quot;</span><span style="color: #339933;">;</span>
+<a name="line124"></a>&nbsp;
+<a name="line125"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line126"></a>     * A constant for the node type name mix:title (in extended form).
+<a name="line127"></a>     * Constants for the names of the properties declared by mix:title are:
+<a name="line128"></a>     *
+<a name="line129"></a>     * - Property#JCR_TITLE
+<a name="line130"></a>     * - Property#JCR_DESCRIPTION
+<a name="line131"></a>     *
+<a name="line132"></a>     * @api
+<a name="line133"></a>     */</span>
+<a name="line134"></a>    <span style="color: #000000; font-weight: bold;">const</span> MIX_TITLE <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/mix/1.0}title&quot;</span><span style="color: #339933;">;</span>
+<a name="line135"></a>&nbsp;
+<a name="line136"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line137"></a>     * A constant for the node type name mix:created (in extended form).
+<a name="line138"></a>     * Constants for the names of the properties declared by mix:created are:
+<a name="line139"></a>     *
+<a name="line140"></a>     * - Property#JCR_CREATED
+<a name="line141"></a>     * - Property#JCR_CREATED_BY
+<a name="line142"></a>     *
+<a name="line143"></a>     * @api
+<a name="line144"></a>     */</span>
+<a name="line145"></a>    <span style="color: #000000; font-weight: bold;">const</span> MIX_CREATED <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/mix/1.0}created&quot;</span><span style="color: #339933;">;</span>
+<a name="line146"></a>&nbsp;
+<a name="line147"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line148"></a>     * A constant for the node type name mix:lastModified (in extended form).
+<a name="line149"></a>     * Constants for the names of the properties declared by mix:lastModified are:
+<a name="line150"></a>     *
+<a name="line151"></a>     * - Property#JCR_LAST_MODIFIED
+<a name="line152"></a>     * - Property#JCR_LAST_MODIFIED_BY
+<a name="line153"></a>     *
+<a name="line154"></a>     * @api
+<a name="line155"></a>     */</span>
+<a name="line156"></a>    <span style="color: #000000; font-weight: bold;">const</span> MIX_LAST_MODIFIED <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/mix/1.0}lastModified&quot;</span><span style="color: #339933;">;</span>
+<a name="line157"></a>&nbsp;
+<a name="line158"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line159"></a>     * A constant for the node type name mix:language (in extended form).
+<a name="line160"></a>     * A constant for the name of the property declared by mix:language is:
+<a name="line161"></a>     *
+<a name="line162"></a>     * - Property#JCR_LANGUAGE
+<a name="line163"></a>     *
+<a name="line164"></a>     * @api
+<a name="line165"></a>     */</span>
+<a name="line166"></a>    <span style="color: #000000; font-weight: bold;">const</span> MIX_LANGUAGE <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/mix/1.0}language&quot;</span><span style="color: #339933;">;</span>
+<a name="line167"></a>&nbsp;
+<a name="line168"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line169"></a>     * A constant for the node type name mix:mimeType (in extended form).
+<a name="line170"></a>     * Constants for the names of the properties declared by mix:mimeType are:
+<a name="line171"></a>     *
+<a name="line172"></a>     * - Property#JCR_MIMETYPE
+<a name="line173"></a>     * - Property#JCR_ENCODING
+<a name="line174"></a>     *
+<a name="line175"></a>     * @api
+<a name="line176"></a>     */</span>
+<a name="line177"></a>    <span style="color: #000000; font-weight: bold;">const</span> MIX_MIMETYPE <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/mix/1.0}mimeType&quot;</span><span style="color: #339933;">;</span>
+<a name="line178"></a>&nbsp;
+<a name="line179"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line180"></a>     * A constant for the node type name nt:nodeType (in extended form).
+<a name="line181"></a>     * Constants for the names of the child items declared by nt:nodeType are:
+<a name="line182"></a>     *
+<a name="line183"></a>     * - Property#JCR_NODE_TYPE_NAME
+<a name="line184"></a>     * - Property#JCR_SUPERTYPES
+<a name="line185"></a>     * - Property#JCR_IS_ABSTRACT
+<a name="line186"></a>     * - Property#JCR_IS_MIXIN
+<a name="line187"></a>     * - Property#JCR_HAS_ORDERABLE_CHILD_NODES
+<a name="line188"></a>     * - Property#JCR_PRIMARY_ITEM_NAME
+<a name="line189"></a>     * - Node#JCR_PROPERTY_DEFINITION
+<a name="line190"></a>     * - Node#JCR_CHILD_NODE_DEFINITION
+<a name="line191"></a>     *
+<a name="line192"></a>     * @api
+<a name="line193"></a>     */</span>
+<a name="line194"></a>    <span style="color: #000000; font-weight: bold;">const</span> NT_NODE_TYPE <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/nt/1.0}nodeType&quot;</span><span style="color: #339933;">;</span>
+<a name="line195"></a>&nbsp;
+<a name="line196"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line197"></a>     * A constant for the node type name nt:propertyDefinition (in extended form).
+<a name="line198"></a>     * Constants for the names of the properties declared by nt:propertyDefinition are:
+<a name="line199"></a>     *
+<a name="line200"></a>     * - Property#JCR_NAME
+<a name="line201"></a>     * - Property#JCR_AUTOCREATED
+<a name="line202"></a>     * - Property#JCR_MANDATORY
+<a name="line203"></a>     * - Property#JCR_PROTECTED
+<a name="line204"></a>     * - Property#JCR_ON_PARENT_VERSION
+<a name="line205"></a>     * - Property#JCR_REQUIRED_TYPE
+<a name="line206"></a>     * - Property#JCR_VALUE_CONSTRAINTS
+<a name="line207"></a>     * - Property#JCR_DEFAULT_VALUES
+<a name="line208"></a>     * - Property#JCR_MULTIPLE
+<a name="line209"></a>     *
+<a name="line210"></a>     * @api
+<a name="line211"></a>     */</span>
+<a name="line212"></a>    <span style="color: #000000; font-weight: bold;">const</span> NT_PROPERTY_DEFINITION <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/nt/1.0}propertyDefinition&quot;</span><span style="color: #339933;">;</span>
+<a name="line213"></a>&nbsp;
+<a name="line214"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line215"></a>     * A constant for the node type name nt:childNodeDefinition (in extended form).
+<a name="line216"></a>     * Constants for the names of the properties declared by nt:childNodeDefinition are:
+<a name="line217"></a>     *
+<a name="line218"></a>     * - Property#JCR_NAME
+<a name="line219"></a>     * - Property#JCR_AUTOCREATED
+<a name="line220"></a>     * - Property#JCR_MANDATORY
+<a name="line221"></a>     * - Property#JCR_PROTECTED
+<a name="line222"></a>     * - Property#JCR_ON_PARENT_VERSION
+<a name="line223"></a>     * - Property#JCR_REQUIRED_PRIMARY_TYPES
+<a name="line224"></a>     * - Property#JCR_DEFAULT_PRIMARY_TYPE
+<a name="line225"></a>     * - Property#JCR_SAME_NAME_SIBLINGS
+<a name="line226"></a>     *
+<a name="line227"></a>     * @api
+<a name="line228"></a>     */</span>
+<a name="line229"></a>    <span style="color: #000000; font-weight: bold;">const</span> NT_CHILD_NODE_DEFINITION <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/nt/1.0}childNodeDefinition&quot;</span><span style="color: #339933;">;</span>
+<a name="line230"></a>&nbsp;
+<a name="line231"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line232"></a>     * A constant for the node type name mix:shareable (in extended form).
 <a name="line233"></a>     *
 <a name="line234"></a>     * @api
 <a name="line235"></a>     */</span>
-<a name="line236"></a>    <span style="color: #000000; font-weight: bold;">const</span> NT_CHILD_NODE_DEFINITION <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/nt/1.0}childNodeDefinition&quot;</span><span style="color: #339933;">;</span>
+<a name="line236"></a>    <span style="color: #000000; font-weight: bold;">const</span> MIX_SHAREABLE <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/mix/1.0}shareable&quot;</span><span style="color: #339933;">;</span>
 <a name="line237"></a>&nbsp;
 <a name="line238"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line239"></a>     * A constant for the node type name mix:shareable (in extended form).
-<a name="line240"></a>     *
-<a name="line241"></a>     * @api
-<a name="line242"></a>     */</span>
-<a name="line243"></a>    <span style="color: #000000; font-weight: bold;">const</span> MIX_SHAREABLE <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/mix/1.0}shareable&quot;</span><span style="color: #339933;">;</span>
-<a name="line244"></a>&nbsp;
-<a name="line245"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line246"></a>     * A constant for the node type name mix:lockable (in extended form).
-<a name="line247"></a>     * Constants for the names of the properties declared by mix:lockable are:
-<a name="line248"></a>     *
-<a name="line249"></a>     * - Property#JCR_LOCK_OWNER
-<a name="line250"></a>     * - Property#JCR_LOCK_IS_DEEP
-<a name="line251"></a>     *
-<a name="line252"></a>     * @api
-<a name="line253"></a>     */</span>
-<a name="line254"></a>    <span style="color: #000000; font-weight: bold;">const</span> MIX_LOCKABLE <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/mix/1.0}lockable&quot;</span><span style="color: #339933;">;</span>
-<a name="line255"></a>&nbsp;
-<a name="line256"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line257"></a>     * A constant for the node type name mix:lifecycle (in extended form).
-<a name="line258"></a>     * Constants for the names of the properties declared by mix:lifecycle are:
-<a name="line259"></a>     *
-<a name="line260"></a>     * - Property#JCR_LIFECYCLE_POLICY
-<a name="line261"></a>     * - Property#JCR_CURRENT_LIFECYCLE_STATE
-<a name="line262"></a>     *
-<a name="line263"></a>     * @api
-<a name="line264"></a>     */</span>
-<a name="line265"></a>    <span style="color: #000000; font-weight: bold;">const</span> MIX_LIFECYCLE <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/mix/1.0}lifecycle&quot;</span><span style="color: #339933;">;</span>
-<a name="line266"></a>&nbsp;
-<a name="line267"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line268"></a>     * A constant for the node type name mix:simpleVersionable (in extended form).
-<a name="line269"></a>     * A constant for the name of the property declared by mix:simpleVersionable is:
-<a name="line270"></a>     *
-<a name="line271"></a>     * - Property#JCR_IS_CHECKED_OUT
-<a name="line272"></a>     *
-<a name="line273"></a>     * @api
-<a name="line274"></a>     */</span>
-<a name="line275"></a>    <span style="color: #000000; font-weight: bold;">const</span> MIX_SIMPLE_VERSIONABLE <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/mix/1.0}simpleVersionable&quot;</span><span style="color: #339933;">;</span>
-<a name="line276"></a>&nbsp;
-<a name="line277"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line278"></a>     * A constant for the node type name mix:versionable (in extended form).
-<a name="line279"></a>     * Constants for the names of the properties declared by mix:versionable are:
+<a name="line239"></a>     * A constant for the node type name mix:lockable (in extended form).
+<a name="line240"></a>     * Constants for the names of the properties declared by mix:lockable are:
+<a name="line241"></a>     *
+<a name="line242"></a>     * - Property#JCR_LOCK_OWNER
+<a name="line243"></a>     * - Property#JCR_LOCK_IS_DEEP
+<a name="line244"></a>     *
+<a name="line245"></a>     * @api
+<a name="line246"></a>     */</span>
+<a name="line247"></a>    <span style="color: #000000; font-weight: bold;">const</span> MIX_LOCKABLE <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/mix/1.0}lockable&quot;</span><span style="color: #339933;">;</span>
+<a name="line248"></a>&nbsp;
+<a name="line249"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line250"></a>     * A constant for the node type name mix:lifecycle (in extended form).
+<a name="line251"></a>     * Constants for the names of the properties declared by mix:lifecycle are:
+<a name="line252"></a>     *
+<a name="line253"></a>     * - Property#JCR_LIFECYCLE_POLICY
+<a name="line254"></a>     * - Property#JCR_CURRENT_LIFECYCLE_STATE
+<a name="line255"></a>     *
+<a name="line256"></a>     * @api
+<a name="line257"></a>     */</span>
+<a name="line258"></a>    <span style="color: #000000; font-weight: bold;">const</span> MIX_LIFECYCLE <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/mix/1.0}lifecycle&quot;</span><span style="color: #339933;">;</span>
+<a name="line259"></a>&nbsp;
+<a name="line260"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line261"></a>     * A constant for the node type name mix:simpleVersionable (in extended form).
+<a name="line262"></a>     * A constant for the name of the property declared by mix:simpleVersionable is:
+<a name="line263"></a>     *
+<a name="line264"></a>     * - Property#JCR_IS_CHECKED_OUT
+<a name="line265"></a>     *
+<a name="line266"></a>     * @api
+<a name="line267"></a>     */</span>
+<a name="line268"></a>    <span style="color: #000000; font-weight: bold;">const</span> MIX_SIMPLE_VERSIONABLE <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/mix/1.0}simpleVersionable&quot;</span><span style="color: #339933;">;</span>
+<a name="line269"></a>&nbsp;
+<a name="line270"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line271"></a>     * A constant for the node type name mix:versionable (in extended form).
+<a name="line272"></a>     * Constants for the names of the properties declared by mix:versionable are:
+<a name="line273"></a>     *
+<a name="line274"></a>     * - Property#JCR_VERSION_HISTORY
+<a name="line275"></a>     * - Property#JCR_BASE_VERSION
+<a name="line276"></a>     * - Property#JCR_PREDECESSORS
+<a name="line277"></a>     * - Property#JCR_MERGE_FAILED
+<a name="line278"></a>     * - Property#JCR_ACTIVITY
+<a name="line279"></a>     * - Property#JCR_CONFIGURATION
 <a name="line280"></a>     *
-<a name="line281"></a>     * - Property#JCR_VERSION_HISTORY
-<a name="line282"></a>     * - Property#JCR_BASE_VERSION
-<a name="line283"></a>     * - Property#JCR_PREDECESSORS
-<a name="line284"></a>     * - Property#JCR_MERGE_FAILED
-<a name="line285"></a>     * - Property#JCR_ACTIVITY
-<a name="line286"></a>     * - Property#JCR_CONFIGURATION
-<a name="line287"></a>     *
-<a name="line288"></a>     * @api
-<a name="line289"></a>     */</span>
-<a name="line290"></a>    <span style="color: #000000; font-weight: bold;">const</span> MIX_VERSIONABLE <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/mix/1.0}versionable&quot;</span><span style="color: #339933;">;</span>
-<a name="line291"></a>&nbsp;
-<a name="line292"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line293"></a>     * A constant for the node type name nt:versionHistory (in extended form).
-<a name="line294"></a>     * Constants for the names of the child items declared by nt:versionHistory are:
-<a name="line295"></a>     *
-<a name="line296"></a>     * - Property#JCR_VERSIONABLE_UUID
-<a name="line297"></a>     * - Property#JCR_COPIED_FROM
-<a name="line298"></a>     * - Node#JCR_ROOT_VERSION
-<a name="line299"></a>     * - Node#JCR_VERSION_LABELS
-<a name="line300"></a>     *
-<a name="line301"></a>     * @api
-<a name="line302"></a>     */</span>
-<a name="line303"></a>    <span style="color: #000000; font-weight: bold;">const</span> NT_VERSION_HISTORY <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/nt/1.0}versionHistory&quot;</span><span style="color: #339933;">;</span>
-<a name="line304"></a>&nbsp;
-<a name="line305"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line306"></a>     * A constant for the node type name nt:version (in extended form).
-<a name="line307"></a>     * Constants for the names of the child items declared by nt:version are:
-<a name="line308"></a>     *
-<a name="line309"></a>     * - Property#JCR_CREATED
-<a name="line310"></a>     * - Property#JCR_PREDECESSORS
-<a name="line311"></a>     * - Property#JCR_SUCCESSORS
-<a name="line312"></a>     * - Property#JCR_ACTIVITY
-<a name="line313"></a>     * - Node#JCR_FROZEN_NODE
-<a name="line314"></a>     *
-<a name="line315"></a>     * @api
-<a name="line316"></a>     */</span>
-<a name="line317"></a>    <span style="color: #000000; font-weight: bold;">const</span> NT_VERSION <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/nt/1.0}version&quot;</span><span style="color: #339933;">;</span>
-<a name="line318"></a>&nbsp;
-<a name="line319"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line320"></a>     * A constant for the node type name nt:frozenNode (in extended form).
-<a name="line321"></a>     * Constants for the names of the properties declared by nt:frozenNode are:
-<a name="line322"></a>     *
-<a name="line323"></a>     * - Property#JCR_FROZEN_PRIMARY_TYPE
-<a name="line324"></a>     * - Property#JCR_FROZEN_MIXIN_TYPES
-<a name="line325"></a>     * - Property#JCR_FROZEN_UUID
-<a name="line326"></a>     *
-<a name="line327"></a>     * @api
-<a name="line328"></a>     */</span>
-<a name="line329"></a>    <span style="color: #000000; font-weight: bold;">const</span> NT_FROZEN_NODE <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/nt/1.0}frozenNode&quot;</span><span style="color: #339933;">;</span>
-<a name="line330"></a>&nbsp;
-<a name="line331"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line332"></a>     * A constant for the node type name nt:versionedChild (in extended form).
-<a name="line333"></a>     * A constant for the name of the property declared by nt:versionedChild is:
-<a name="line334"></a>     *
-<a name="line335"></a>     * - Property#JCR_CHILD_VERSION_HISTORY
-<a name="line336"></a>     *
-<a name="line337"></a>     * @api
-<a name="line338"></a>     */</span>
-<a name="line339"></a>    <span style="color: #000000; font-weight: bold;">const</span> NT_VERSIONED_CHILD <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/nt/1.0}versionedChild&quot;</span><span style="color: #339933;">;</span>
-<a name="line340"></a>&nbsp;
-<a name="line341"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line342"></a>     * A constant for the node type name nt:activity (in extended form).
-<a name="line343"></a>     * A constant for the name of the property declared by nt:activity is:
-<a name="line344"></a>     *
-<a name="line345"></a>     * - Property#JCR_TITLE
-<a name="line346"></a>     *
-<a name="line347"></a>     * @api
-<a name="line348"></a>     */</span>
-<a name="line349"></a>    <span style="color: #000000; font-weight: bold;">const</span> NT_ACTIVITY <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/nt/1.0}activity&quot;</span><span style="color: #339933;">;</span>
-<a name="line350"></a>&nbsp;
-<a name="line351"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line352"></a>     * A constant for the node type name nt:configuration (in extended form).
-<a name="line353"></a>     * A constant for the name of the property declared by nt:configuration are:
-<a name="line354"></a>     *
-<a name="line355"></a>     * - Property#JCR_ROOT
-<a name="line356"></a>     *
-<a name="line357"></a>     * @api
-<a name="line358"></a>     */</span>
-<a name="line359"></a>    <span style="color: #000000; font-weight: bold;">const</span> NT_CONFIGURATION <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/nt/1.0}configuration&quot;</span><span style="color: #339933;">;</span>
-<a name="line360"></a>&nbsp;
-<a name="line361"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line362"></a>     * A constant for the node type name nt:query (in extended form).
-<a name="line363"></a>     * Constants for the names of the properties declared by nt:query are:
-<a name="line364"></a>     *
-<a name="line365"></a>     * - Property#JCR_STATEMENT
-<a name="line366"></a>     * - Property#JCR_LANGUAGE
-<a name="line367"></a>     *
-<a name="line368"></a>     * @api
-<a name="line369"></a>     */</span>
-<a name="line370"></a>    <span style="color: #000000; font-weight: bold;">const</span> NT_QUERY <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/nt/1.0}query&quot;</span><span style="color: #339933;">;</span>
-<a name="line371"></a>&nbsp;
-<a name="line372"></a>    <span style="color: #009933; font-style: italic;">/**#@-*/</span>
-<a name="line373"></a>&nbsp;
-<a name="line374"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line375"></a>     * Returns all supertypes of this node type in the node type inheritance
-<a name="line376"></a>     * hierarchy.
-<a name="line377"></a>     *
-<a name="line378"></a>     * For primary types apart from nt:base, this list will always
-<a name="line379"></a>     * include at least nt:base. For mixin types, there is no required supertype.
-<a name="line380"></a>     *
-<a name="line381"></a>     * @return array List of \PHPCR\NodeType\NodeType objects.
-<a name="line382"></a>     * @api
-<a name="line383"></a>     */</span>
-<a name="line384"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getSupertypes<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line385"></a>&nbsp;
-<a name="line386"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line387"></a>     * Returns the direct supertypes of this node type in the node type
-<a name="line388"></a>     * inheritance hierarchy, that is, those actually declared in this node
-<a name="line389"></a>     * type.
-<a name="line390"></a>     *
-<a name="line391"></a>     * In single-inheritance systems, this will always be an array of
-<a name="line392"></a>     * size 0 or 1. In systems that support multiple inheritance of node
-<a name="line393"></a>     * types this array may be of size greater than 1.
-<a name="line394"></a>     *
-<a name="line395"></a>     * @return array List of \PHPCR\NodeType\NodeType objects.
-<a name="line396"></a>     * @api
-<a name="line397"></a>     */</span>
-<a name="line398"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getDeclaredSupertypes<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line399"></a>&nbsp;
-<a name="line400"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line401"></a>     * Returns all subtypes of this node type in the node type inheritance
-<a name="line402"></a>     * hierarchy.
-<a name="line403"></a>     *
-<a name="line404"></a>     * @return Iterator implementing &lt;b&gt;SeekableIterator&lt;/b&gt; and &lt;b&gt;Countable&lt;/b&gt;.
-<a name="line405"></a>     *                  Keys are the node type names, values the corresponding NodeTypeInterface instances.
-<a name="line406"></a>     *
-<a name="line407"></a>     * @see getDeclaredSubtypes()
-<a name="line408"></a>     * @api
-<a name="line409"></a>     */</span>
-<a name="line410"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getSubtypes<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line411"></a>&nbsp;
-<a name="line412"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line413"></a>     * Returns the direct subtypes of this node type in the node type inheritance
-<a name="line414"></a>     * hierarchy, that is, those which actually declared this node type in their
-<a name="line415"></a>     * list of supertypes.
-<a name="line416"></a>     *
-<a name="line417"></a>     * @return Iterator implementing &lt;b&gt;SeekableIterator&lt;/b&gt; and &lt;b&gt;Countable&lt;/b&gt;.
-<a name="line418"></a>     *                  Keys are the node type names, values the corresponding NodeTypeInterface instances.
-<a name="line419"></a>     *
-<a name="line420"></a>     * @see getSubtypes()
-<a name="line421"></a>     * @api
-<a name="line422"></a>     */</span>
-<a name="line423"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getDeclaredSubtypes<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line424"></a>&nbsp;
-<a name="line425"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line426"></a>     * Reports if the name of this node type or any of its direct or indirect supertypes is equal to nodeTypeName.
-<a name="line427"></a>     *
-<a name="line428"></a>     * Returns true if the name of this node type or any of its direct or
-<a name="line429"></a>     * indirect supertypes is equal to nodeTypeName, otherwise returns false.
-<a name="line430"></a>     *
-<a name="line431"></a>     * @param string $nodeTypeName the name of a node type.
-<a name="line432"></a>     * @return boolean
-<a name="line433"></a>     * @api
-<a name="line434"></a>     */</span>
-<a name="line435"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> isNodeType<span style="color: #009900;">&#40;</span><span style="color: #000088;">$nodeTypeName</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line436"></a>&nbsp;
-<a name="line437"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line438"></a>     * Returns an array containing the property definitions of this node type.
-<a name="line439"></a>     *
-<a name="line440"></a>     * This includes both those property definitions actually declared
-<a name="line441"></a>     * in this node type and those inherited from the supertypes of this type.
-<a name="line442"></a>     *
-<a name="line443"></a>     * @return array An array of \PHPCR\NodeType\PropertyDefinition containing the property definitions.
-<a name="line444"></a>     * @api
-<a name="line445"></a>     */</span>
-<a name="line446"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getPropertyDefinitions<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line447"></a>&nbsp;
-<a name="line448"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line449"></a>     * Returns an array containing the child node definitions of this node type.
-<a name="line450"></a>     *
-<a name="line451"></a>     * This includes both those child node definitions actually declared in this
-<a name="line452"></a>     * node type and those inherited from the supertypes of this node type.
-<a name="line453"></a>     *
-<a name="line454"></a>     * @return array An array of \PHPCR\NodeType\NodeDefinition containing the child node definitions.
-<a name="line455"></a>     * @api
-<a name="line456"></a>     */</span>
-<a name="line457"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> getChildNodeDefinitions<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line458"></a>&nbsp;
-<a name="line459"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line460"></a>     * Determines if the node type allows to set the value of a property.
-<a name="line461"></a>     *
-<a name="line462"></a>     * Returns true if setting propertyName to value is allowed by this node type.
-<a name="line463"></a>     * Otherwise returns false.
-<a name="line464"></a>     *
-<a name="line465"></a>     * @param string $propertyName The name of the property
-<a name="line466"></a>     * @param mixed $value A variable or an array of variables
-<a name="line467"></a>     * @return boolean True if setting propertyName to value is allowed by this node type, else false.
-<a name="line468"></a>     * @api
-<a name="line469"></a>     */</span>
-<a name="line470"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> canSetProperty<span style="color: #009900;">&#40;</span><span style="color: #000088;">$propertyName</span><span style="color: #339933;">,</span> <span style="color: #000088;">$value</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line471"></a>&nbsp;
-<a name="line472"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line473"></a>     * Determines if this node type allows the addition of a child node.
-<a name="line474"></a>     *
-<a name="line475"></a>     * Returns true if this node type allows the addition of a child node called
-<a name="line476"></a>     * childNodeName without specific node type information (that is, given the
-<a name="line477"></a>     * definition of this parent node type, the child node name is sufficient to
-<a name="line478"></a>     * determine the intended child node type). Returns false otherwise.
-<a name="line479"></a>     * If $nodeTypeName is given returns true if this node type allows the
-<a name="line480"></a>     * addition of a child node called childNodeName of node type nodeTypeName.
-<a name="line481"></a>     * Returns false otherwise.
-<a name="line482"></a>     *
-<a name="line483"></a>     * @param string $childNodeName The name of the child node.
-<a name="line484"></a>     * @param string $nodeTypeName The name of the node type of the child node.
-<a name="line485"></a>     * @return boolean True, if the node type allows the addition of a child node, else false.
-<a name="line486"></a>     * @api
-<a name="line487"></a>     */</span>
-<a name="line488"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> canAddChildNode<span style="color: #009900;">&#40;</span><span style="color: #000088;">$childNodeName</span><span style="color: #339933;">,</span> <span style="color: #000088;">$nodeTypeName</span> <span style="color: #339933;">=</span> <span style="color: #009900; font-weight: bold;">null</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line489"></a>&nbsp;
-<a name="line490"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line491"></a>     * Reports if the node type allows the removal of the given node.
-<a name="line492"></a>     *
-<a name="line493"></a>     * Returns true if removing the child node called nodeName is allowed by this
-<a name="line494"></a>     * node type. Returns false otherwise.
-<a name="line495"></a>     *
-<a name="line496"></a>     * @param string $nodeName The name of the child node.
-<a name="line497"></a>     * @return boolean True, if the node type allows to remove the passed node, else false.
-<a name="line498"></a>     * @api
-<a name="line499"></a>     */</span>
-<a name="line500"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> canRemoveNode<span style="color: #009900;">&#40;</span><span style="color: #000088;">$nodeName</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line501"></a>&nbsp;
-<a name="line502"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line503"></a>     * Determines if the node type allows to remove the property identified by the given name.
-<a name="line504"></a>     *
-<a name="line505"></a>     * Returns true if removing the property called propertyName is allowed by this
-<a name="line506"></a>     * node type. Returns false otherwise.
-<a name="line507"></a>     *
-<a name="line508"></a>     * @param string $propertyName The name of the property
-<a name="line509"></a>     * @return boolean True, if the removal of the property is allowed, else false.
-<a name="line510"></a>     * @api
-<a name="line511"></a>     */</span>
-<a name="line512"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> canRemoveProperty<span style="color: #009900;">&#40;</span><span style="color: #000088;">$propertyName</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line513"></a><span style="color: #009900;">&#125;</span>
-<a name="line514"></a>&nbsp;</pre>
+<a name="line281"></a>     * @api
+<a name="line282"></a>     */</span>
+<a name="line283"></a>    <span style="color: #000000; font-weight: bold;">const</span> MIX_VERSIONABLE <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/mix/1.0}versionable&quot;</span><span style="color: #339933;">;</span>
+<a name="line284"></a>&nbsp;
+<a name="line285"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line286"></a>     * A constant for the node type name nt:versionHistory (in extended form).
+<a name="line287"></a>     * Constants for the names of the child items declared by nt:versionHistory are:
+<a name="line288"></a>     *
+<a name="line289"></a>     * - Property#JCR_VERSIONABLE_UUID
+<a name="line290"></a>     * - Property#JCR_COPIED_FROM
+<a name="line291"></a>     * - Node#JCR_ROOT_VERSION
+<a name="line292"></a>     * - Node#JCR_VERSION_LABELS
+<a name="line293"></a>     *
+<a name="line294"></a>     * @api
+<a name="line295"></a>     */</span>
+<a name="line296"></a>    <span style="color: #000000; font-weight: bold;">const</span> NT_VERSION_HISTORY <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/nt/1.0}versionHistory&quot;</span><span style="color: #339933;">;</span>
+<a name="line297"></a>&nbsp;
+<a name="line298"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line299"></a>     * A constant for the node type name nt:version (in extended form).
+<a name="line300"></a>     * Constants for the names of the child items declared by nt:version are:
+<a name="line301"></a>     *
+<a name="line302"></a>     * - Property#JCR_CREATED
+<a name="line303"></a>     * - Property#JCR_PREDECESSORS
+<a name="line304"></a>     * - Property#JCR_SUCCESSORS
+<a name="line305"></a>     * - Property#JCR_ACTIVITY
+<a name="line306"></a>     * - Node#JCR_FROZEN_NODE
+<a name="line307"></a>     *
+<a name="line308"></a>     * @api
+<a name="line309"></a>     */</span>
+<a name="line310"></a>    <span style="color: #000000; font-weight: bold;">const</span> NT_VERSION <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/nt/1.0}version&quot;</span><span style="color: #339933;">;</span>
+<a name="line311"></a>&nbsp;
+<a name="line312"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line313"></a>     * A constant for the node type name nt:frozenNode (in extended form).
+<a name="line314"></a>     * Constants for the names of the properties declared by nt:frozenNode are:
+<a name="line315"></a>     *
+<a name="line316"></a>     * - Property#JCR_FROZEN_PRIMARY_TYPE
+<a name="line317"></a>     * - Property#JCR_FROZEN_MIXIN_TYPES
+<a name="line318"></a>     * - Property#JCR_FROZEN_UUID
+<a name="line319"></a>     *
+<a name="line320"></a>     * @api
+<a name="line321"></a>     */</span>
+<a name="line322"></a>    <span style="color: #000000; font-weight: bold;">const</span> NT_FROZEN_NODE <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/nt/1.0}frozenNode&quot;</span><span style="color: #339933;">;</span>
+<a name="line323"></a>&nbsp;
+<a name="line324"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line325"></a>     * A constant for the node type name nt:versionedChild (in extended form).
+<a name="line326"></a>     * A constant for the name of the property declared by nt:versionedChild is:
+<a name="line327"></a>     *
+<a name="line328"></a>     * - Property#JCR_CHILD_VERSION_HISTORY
+<a name="line329"></a>     *
+<a name="line330"></a>     * @api
+<a name="line331"></a>     */</span>
+<a name="line332"></a>    <span style="color: #000000; font-weight: bold;">const</span> NT_VERSIONED_CHILD <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/nt/1.0}versionedChild&quot;</span><span style="color: #339933;">;</span>
+<a name="line333"></a>&nbsp;
+<a name="line334"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line335"></a>     * A constant for the node type name nt:activity (in extended form).
+<a name="line336"></a>     * A constant for the name of the property declared by nt:activity is:
+<a name="line337"></a>     *
+<a name="line338"></a>     * - Property#JCR_TITLE
+<a name="line339"></a>     *
+<a name="line340"></a>     * @api
+<a name="line341"></a>     */</span>
+<a name="line342"></a>    <span style="color: #000000; font-weight: bold;">const</span> NT_ACTIVITY <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/nt/1.0}activity&quot;</span><span style="color: #339933;">;</span>
+<a name="line343"></a>&nbsp;
+<a name="line344"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line345"></a>     * A constant for the node type name nt:configuration (in extended form).
+<a name="line346"></a>     * A constant for the name of the property declared by nt:configuration are:
+<a name="line347"></a>     *
+<a name="line348"></a>     * - Property#JCR_ROOT
+<a name="line349"></a>     *
+<a name="line350"></a>     * @api
+<a name="line351"></a>     */</span>
+<a name="line352"></a>    <span style="color: #000000; font-weight: bold;">const</span> NT_CONFIGURATION <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/nt/1.0}configuration&quot;</span><span style="color: #339933;">;</span>
+<a name="line353"></a>&nbsp;
+<a name="line354"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line355"></a>     * A constant for the node type name nt:query (in extended form).
+<a name="line356"></a>     * Constants for the names of the properties declared by nt:query are:
+<a name="line357"></a>     *
+<a name="line358"></a>     * - Property#JCR_STATEMENT
+<a name="line359"></a>     * - Property#JCR_LANGUAGE
+<a name="line360"></a>     *
+<a name="line361"></a>     * @api
+<a name="line362"></a>     */</span>
+<a name="line363"></a>    <span style="color: #000000; font-weight: bold;">const</span> NT_QUERY <span style="color: #339933;">=</span> <span style="color: #0000ff;">&quot;{http://www.jcp.org/jcr/nt/1.0}query&quot;</span><span style="color: #339933;">;</span>
+<a name="line364"></a>&nbsp;
+<a name="line365"></a>    <span style="color: #009933; font-style: italic;">/**#@-*/</span>
+<a name="line366"></a>&nbsp;
+<a name="line367"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line368"></a>     * Returns all supertypes of this node type in the node type inheritance
+<a name="line369"></a>     * hierarchy.
+<a name="line370"></a>     *
+<a name="line371"></a>     * For primary types apart from nt:base, this list will always
+<a name="line372"></a>     * include at least nt:base. For mixin types, there is no required supertype.
+<a name="line373"></a>     *
+<a name="line374"></a>     * @return array List of \PHPCR\NodeType\NodeType objects.
+<a name="line375"></a>     * @api
+<a name="line376"></a>     */</span>
+<a name="line377"></a>    <span style="color: #000000; font-weight: bold;">function</span> getSupertypes<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line378"></a>&nbsp;
+<a name="line379"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line380"></a>     * Returns the direct supertypes of this node type in the node type
+<a name="line381"></a>     * inheritance hierarchy, that is, those actually declared in this node
+<a name="line382"></a>     * type.
+<a name="line383"></a>     *
+<a name="line384"></a>     * In single-inheritance systems, this will always be an array of
+<a name="line385"></a>     * size 0 or 1. In systems that support multiple inheritance of node
+<a name="line386"></a>     * types this array may be of size greater than 1.
+<a name="line387"></a>     *
+<a name="line388"></a>     * @return array List of \PHPCR\NodeType\NodeType objects.
+<a name="line389"></a>     * @api
+<a name="line390"></a>     */</span>
+<a name="line391"></a>    <span style="color: #000000; font-weight: bold;">function</span> getDeclaredSupertypes<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line392"></a>&nbsp;
+<a name="line393"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line394"></a>     * Returns all subtypes of this node type in the node type inheritance
+<a name="line395"></a>     * hierarchy.
+<a name="line396"></a>     *
+<a name="line397"></a>     * @return Iterator implementing &lt;b&gt;SeekableIterator&lt;/b&gt; and &lt;b&gt;Countable&lt;/b&gt;.
+<a name="line398"></a>     *                  Keys are the node type names, values the corresponding NodeTypeInterface instances.
+<a name="line399"></a>     *
+<a name="line400"></a>     * @see getDeclaredSubtypes()
+<a name="line401"></a>     * @api
+<a name="line402"></a>     */</span>
+<a name="line403"></a>    <span style="color: #000000; font-weight: bold;">function</span> getSubtypes<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line404"></a>&nbsp;
+<a name="line405"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line406"></a>     * Returns the direct subtypes of this node type in the node type inheritance
+<a name="line407"></a>     * hierarchy, that is, those which actually declared this node type in their
+<a name="line408"></a>     * list of supertypes.
+<a name="line409"></a>     *
+<a name="line410"></a>     * @return Iterator implementing &lt;b&gt;SeekableIterator&lt;/b&gt; and &lt;b&gt;Countable&lt;/b&gt;.
+<a name="line411"></a>     *                  Keys are the node type names, values the corresponding NodeTypeInterface instances.
+<a name="line412"></a>     *
+<a name="line413"></a>     * @see getSubtypes()
+<a name="line414"></a>     * @api
+<a name="line415"></a>     */</span>
+<a name="line416"></a>    <span style="color: #000000; font-weight: bold;">function</span> getDeclaredSubtypes<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line417"></a>&nbsp;
+<a name="line418"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line419"></a>     * Reports if the name of this node type or any of its direct or indirect supertypes is equal to nodeTypeName.
+<a name="line420"></a>     *
+<a name="line421"></a>     * Returns true if the name of this node type or any of its direct or
+<a name="line422"></a>     * indirect supertypes is equal to nodeTypeName, otherwise returns false.
+<a name="line423"></a>     *
+<a name="line424"></a>     * @param string $nodeTypeName the name of a node type.
+<a name="line425"></a>     * @return boolean
+<a name="line426"></a>     * @api
+<a name="line427"></a>     */</span>
+<a name="line428"></a>    <span style="color: #000000; font-weight: bold;">function</span> isNodeType<span style="color: #009900;">&#40;</span><span style="color: #000088;">$nodeTypeName</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line429"></a>&nbsp;
+<a name="line430"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line431"></a>     * Returns an array containing the property definitions of this node type.
+<a name="line432"></a>     *
+<a name="line433"></a>     * This includes both those property definitions actually declared
+<a name="line434"></a>     * in this node type and those inherited from the supertypes of this type.
+<a name="line435"></a>     *
+<a name="line436"></a>     * @return array An array of \PHPCR\NodeType\PropertyDefinition containing the property definitions.
+<a name="line437"></a>     * @api
+<a name="line438"></a>     */</span>
+<a name="line439"></a>    <span style="color: #000000; font-weight: bold;">function</span> getPropertyDefinitions<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line440"></a>&nbsp;
+<a name="line441"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line442"></a>     * Returns an array containing the child node definitions of this node type.
+<a name="line443"></a>     *
+<a name="line444"></a>     * This includes both those child node definitions actually declared in this
+<a name="line445"></a>     * node type and those inherited from the supertypes of this node type.
+<a name="line446"></a>     *
+<a name="line447"></a>     * @return array An array of \PHPCR\NodeType\NodeDefinition containing the child node definitions.
+<a name="line448"></a>     * @api
+<a name="line449"></a>     */</span>
+<a name="line450"></a>    <span style="color: #000000; font-weight: bold;">function</span> getChildNodeDefinitions<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line451"></a>&nbsp;
+<a name="line452"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line453"></a>     * Determines if the node type allows to set the value of a property.
+<a name="line454"></a>     *
+<a name="line455"></a>     * Returns true if setting propertyName to value is allowed by this node type.
+<a name="line456"></a>     * Otherwise returns false.
+<a name="line457"></a>     *
+<a name="line458"></a>     * @param string $propertyName The name of the property
+<a name="line459"></a>     * @param mixed $value A variable or an array of variables
+<a name="line460"></a>     * @return boolean True if setting propertyName to value is allowed by this node type, else false.
+<a name="line461"></a>     * @api
+<a name="line462"></a>     */</span>
+<a name="line463"></a>    <span style="color: #000000; font-weight: bold;">function</span> canSetProperty<span style="color: #009900;">&#40;</span><span style="color: #000088;">$propertyName</span><span style="color: #339933;">,</span> <span style="color: #000088;">$value</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line464"></a>&nbsp;
+<a name="line465"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line466"></a>     * Determines if this node type allows the addition of a child node.
+<a name="line467"></a>     *
+<a name="line468"></a>     * Returns true if this node type allows the addition of a child node called
+<a name="line469"></a>     * childNodeName without specific node type information (that is, given the
+<a name="line470"></a>     * definition of this parent node type, the child node name is sufficient to
+<a name="line471"></a>     * determine the intended child node type). Returns false otherwise.
+<a name="line472"></a>     * If $nodeTypeName is given returns true if this node type allows the
+<a name="line473"></a>     * addition of a child node called childNodeName of node type nodeTypeName.
+<a name="line474"></a>     * Returns false otherwise.
+<a name="line475"></a>     *
+<a name="line476"></a>     * @param string $childNodeName The name of the child node.
+<a name="line477"></a>     * @param string $nodeTypeName The name of the node type of the child node.
+<a name="line478"></a>     * @return boolean True, if the node type allows the addition of a child node, else false.
+<a name="line479"></a>     * @api
+<a name="line480"></a>     */</span>
+<a name="line481"></a>    <span style="color: #000000; font-weight: bold;">function</span> canAddChildNode<span style="color: #009900;">&#40;</span><span style="color: #000088;">$childNodeName</span><span style="color: #339933;">,</span> <span style="color: #000088;">$nodeTypeName</span> <span style="color: #339933;">=</span> <span style="color: #009900; font-weight: bold;">null</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line482"></a>&nbsp;
+<a name="line483"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line484"></a>     * Reports if the node type allows the removal of the given node.
+<a name="line485"></a>     *
+<a name="line486"></a>     * Returns true if removing the child node called nodeName is allowed by this
+<a name="line487"></a>     * node type. Returns false otherwise.
+<a name="line488"></a>     *
+<a name="line489"></a>     * @param string $nodeName The name of the child node.
+<a name="line490"></a>     * @return boolean True, if the node type allows to remove the passed node, else false.
+<a name="line491"></a>     * @api
+<a name="line492"></a>     */</span>
+<a name="line493"></a>    <span style="color: #000000; font-weight: bold;">function</span> canRemoveNode<span style="color: #009900;">&#40;</span><span style="color: #000088;">$nodeName</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line494"></a>&nbsp;
+<a name="line495"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line496"></a>     * Determines if the node type allows to remove the property identified by the given name.
+<a name="line497"></a>     *
+<a name="line498"></a>     * Returns true if removing the property called propertyName is allowed by this
+<a name="line499"></a>     * node type. Returns false otherwise.
+<a name="line500"></a>     *
+<a name="line501"></a>     * @param string $propertyName The name of the property
+<a name="line502"></a>     * @return boolean True, if the removal of the property is allowed, else false.
+<a name="line503"></a>     * @api
+<a name="line504"></a>     */</span>
+<a name="line505"></a>    <span style="color: #000000; font-weight: bold;">function</span> canRemoveProperty<span style="color: #009900;">&#40;</span><span style="color: #000088;">$propertyName</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line506"></a><span style="color: #009900;">&#125;</span>
+<a name="line507"></a>&nbsp;</pre>
 <div class="header">
 <h1>PHPCR</h1>
 <ul>

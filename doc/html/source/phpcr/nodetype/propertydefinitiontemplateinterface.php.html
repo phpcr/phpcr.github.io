@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="generator" content="PHPDoctor 2RC4 (http://peej.github.com/phpdoctor/)">
-<meta name="when" content="Thu, 26 May 2011 12:55:49 +0000">
+<meta name="when" content="Mon, 30 May 2011 13:13:29 +0000">
 
 <link rel="stylesheet" type="text/css" href="../../../stylesheet.css">
 <link rel="start" href="../../../overview-summary.html">
@@ -34,180 +34,169 @@
 <hr>
 
 <h1>PHPCR/NodeType/PropertyDefinitionTemplateInterface.php</h1>
-<div class="comment" id="overview_description"><p>Interface description of how to implement a property definition template.</p><p>This file was ported from the Java JCR API to PHP by
-Karsten Dambekalns <karsten@typo3.org> for the FLOW3 project.</p><p>It is free software; you can redistribute it and/or modify it under
-the terms of the GNU Lesser General Public License as published by the
-Free Software Foundation, either version 3 of the License, or (at your
-option) any later version. Alternatively, you may use the Simplified
-BSD License.</p><p>This script is distributed in the hope that it will be useful, but
-WITHOUT ANY WARRANTY; without even the implied warranty of MERCHAN-
-TABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser
-General Public License for more details.</p><p>You should have received a copy of the GNU Lesser General Public
-License along with the script.
-If not, see <code><a href="http://www.gnu.org/licenses/lgpl.html">http://www.gnu.org/licenses/lgpl.html</a></code>.</p><p>The TYPO3 project - inspiring people to share!</p></div>
+<div class="comment" id="overview_description"><p>This file is part of the PHPCR API and was originally ported from the Java
+JCR API to PHP by Karsten Dambekalns for the FLOW3 project.</p><p>Copyright 2008-2011 Karsten Dambekalns <karsten@typo3.org></p><p>Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at</p><p>http://www.apache.org/licenses/LICENSE-2.0</p><p>Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.</p></div>
 
 <hr>
 
 <a name="line1"></a><pre class="php" style="font-family:monospace;"><span style="color: #000000; font-weight: bold;">&lt;?php</span>
-<a name="line2"></a><span style="color: #009933; font-style: italic;">/**
-<a name="line3"></a> * Interface description of how to implement a property definition template.
-<a name="line4"></a> *
-<a name="line5"></a> * This file was ported from the Java JCR API to PHP by
-<a name="line6"></a> * Karsten Dambekalns &lt;karsten@typo3.org&gt; for the FLOW3 project.
-<a name="line7"></a> *
-<a name="line8"></a> * It is free software; you can redistribute it and/or modify it under
-<a name="line9"></a> * the terms of the GNU Lesser General Public License as published by the
-<a name="line10"></a> * Free Software Foundation, either version 3 of the License, or (at your
-<a name="line11"></a> * option) any later version. Alternatively, you may use the Simplified
-<a name="line12"></a> * BSD License.
-<a name="line13"></a> *
-<a name="line14"></a> * This script is distributed in the hope that it will be useful, but
-<a name="line15"></a> * WITHOUT ANY WARRANTY; without even the implied warranty of MERCHAN-
-<a name="line16"></a> * TABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser
-<a name="line17"></a> * General Public License for more details.
-<a name="line18"></a> *
-<a name="line19"></a> * You should have received a copy of the GNU Lesser General Public
-<a name="line20"></a> * License along with the script.
-<a name="line21"></a> * If not, see {@link http://www.gnu.org/licenses/lgpl.html}.
-<a name="line22"></a> *
-<a name="line23"></a> * The TYPO3 project - inspiring people to share!
-<a name="line24"></a> *
-<a name="line25"></a> * @license http://www.gnu.org/licenses/lgpl.html GNU Lesser General Public License, version 3 or later
-<a name="line26"></a> * @license http://opensource.org/licenses/bsd-license.php Simplified BSD License
-<a name="line27"></a> *
-<a name="line28"></a> * @package phpcr
-<a name="line29"></a> * @subpackage interfaces
-<a name="line30"></a> */</span>
-<a name="line31"></a>&nbsp;
-<a name="line32"></a><span style="color: #000000; font-weight: bold;">namespace</span> PHPCR\NodeType<span style="color: #339933;">;</span>
-<a name="line33"></a>&nbsp;
-<a name="line34"></a><span style="color: #009933; font-style: italic;">/**
-<a name="line35"></a> * The PropertyDefinitionTemplate interface extends PropertyDefinition with the
-<a name="line36"></a> * addition of write methods, enabling the characteristics of a child property
-<a name="line37"></a> * definition to be set, after which the PropertyDefinitionTemplate is added to
-<a name="line38"></a> * a NodeTypeTemplate.
-<a name="line39"></a> *
-<a name="line40"></a> * See the corresponding get methods for each attribute in PropertyDefinition for
-<a name="line41"></a> * the default values assumed when a new empty PropertyDefinitionTemplate is created
-<a name="line42"></a> * (as opposed to one extracted from an existing NodeType).
-<a name="line43"></a> *
-<a name="line44"></a> * @package phpcr
-<a name="line45"></a> * @subpackage interfaces
-<a name="line46"></a> * @api
-<a name="line47"></a> */</span>
-<a name="line48"></a><span style="color: #000000; font-weight: bold;">interface</span> PropertyDefinitionTemplateInterface <span style="color: #000000; font-weight: bold;">extends</span> \PHPCR\NodeType\PropertyDefinitionInterface <span style="color: #009900;">&#123;</span>
-<a name="line49"></a>&nbsp;
-<a name="line50"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line51"></a>     * Sets the name of the property.
-<a name="line52"></a>     *
-<a name="line53"></a>     * @param string $name The name of the property definition template.
-<a name="line54"></a>     * @return void
-<a name="line55"></a>     * @api
-<a name="line56"></a>     */</span>
-<a name="line57"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> setName<span style="color: #009900;">&#40;</span><span style="color: #000088;">$name</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line58"></a>&nbsp;
-<a name="line59"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line60"></a>     * Sets the auto-create status of the property.
-<a name="line61"></a>     *
-<a name="line62"></a>     * @param boolean $autoCreated Flag to set the ability to be automatically created.
-<a name="line63"></a>     * @return void
-<a name="line64"></a>     * @api
-<a name="line65"></a>     */</span>
-<a name="line66"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> setAutoCreated<span style="color: #009900;">&#40;</span><span style="color: #000088;">$autoCreated</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line67"></a>&nbsp;
-<a name="line68"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line69"></a>     * Sets the mandatory status of the property.
-<a name="line70"></a>     *
-<a name="line71"></a>     * @param boolean $mandatory The mandatory status of the property.
-<a name="line72"></a>     * @return void
-<a name="line73"></a>     * @api
-<a name="line74"></a>     */</span>
-<a name="line75"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> setMandatory<span style="color: #009900;">&#40;</span><span style="color: #000088;">$mandatory</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line76"></a>&nbsp;
-<a name="line77"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line78"></a>     * Sets the on-parent-version status of the property.
-<a name="line79"></a>     *
-<a name="line80"></a>     * @param integer $opv an int constant member of OnParentVersionAction.
-<a name="line81"></a>     * @return void
-<a name="line82"></a>     * @api
-<a name="line83"></a>     */</span>
-<a name="line84"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> setOnParentVersion<span style="color: #009900;">&#40;</span><span style="color: #000088;">$opv</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line85"></a>&nbsp;
-<a name="line86"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line87"></a>     * Sets the protected status of the property.
-<a name="line88"></a>     *
-<a name="line89"></a>     * @param boolean $protectedStatus The protection status of the property.
-<a name="line90"></a>     * @return void
-<a name="line91"></a>     * @api
-<a name="line92"></a>     */</span>
-<a name="line93"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> setProtected<span style="color: #009900;">&#40;</span><span style="color: #000088;">$protectedStatus</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line94"></a>&nbsp;
-<a name="line95"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line96"></a>     * Sets the required type of the property.
-<a name="line97"></a>     *
-<a name="line98"></a>     * @param integer $type An integer constant member of PropertyType.
-<a name="line99"></a>     * @return void
-<a name="line100"></a>     * @api
-<a name="line101"></a>     */</span>
-<a name="line102"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> setRequiredType<span style="color: #009900;">&#40;</span><span style="color: #000088;">$type</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line103"></a>&nbsp;
-<a name="line104"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line105"></a>     * Sets the value constraints of the property.
-<a name="line106"></a>     *
-<a name="line107"></a>     * @param array $constraints List of constrains registered on the property.
-<a name="line108"></a>     * @return void
-<a name="line109"></a>     * @api
-<a name="line110"></a>     */</span>
-<a name="line111"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> setValueConstraints<span style="color: #009900;">&#40;</span><a href="http://www.php.net/array"><span style="color: #990000;">array</span></a> <span style="color: #000088;">$constraints</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line112"></a>&nbsp;
-<a name="line113"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line114"></a>     * Sets the default value (or values, in the case of a multi-value property)
-<a name="line115"></a>     * of the property.
-<a name="line116"></a>     *
-<a name="line117"></a>     * @param array $defaultValues A List of values in the correct type for this property.
-<a name="line118"></a>     * @return void
-<a name="line119"></a>     * @api
-<a name="line120"></a>     */</span>
-<a name="line121"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> setDefaultValues<span style="color: #009900;">&#40;</span><a href="http://www.php.net/array"><span style="color: #990000;">array</span></a> <span style="color: #000088;">$defaultValues</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line122"></a>&nbsp;
-<a name="line123"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line124"></a>     * Sets the multi-value status of the property.
-<a name="line125"></a>     *
-<a name="line126"></a>     * @param boolean $multiple The status of the ability to store multiple values.
-<a name="line127"></a>     * @return void
-<a name="line128"></a>     * @api
-<a name="line129"></a>     */</span>
-<a name="line130"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> setMultiple<span style="color: #009900;">&#40;</span><span style="color: #000088;">$multiple</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line131"></a>&nbsp;
-<a name="line132"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line133"></a>     * Sets the queryable status of the property.
-<a name="line134"></a>     *
-<a name="line135"></a>     * @param array operators An array of String constants {@link PropertyDefinition::getAvailableQueryOperators()}.
-<a name="line136"></a>     * @return void
-<a name="line137"></a>     * @api
-<a name="line138"></a>     */</span>
-<a name="line139"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> setAvailableQueryOperators<span style="color: #009900;">&#40;</span><a href="http://www.php.net/array"><span style="color: #990000;">array</span></a> <span style="color: #000088;">$operators</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line140"></a>&nbsp;
-<a name="line141"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line142"></a>     * Sets the full-text-searchable status of the property.
-<a name="line143"></a>     *
-<a name="line144"></a>     * @param boolean $fullTextSearchable The status of the ability to be fulltext-searchable..
-<a name="line145"></a>     * @return void
-<a name="line146"></a>     * @api
-<a name="line147"></a>     */</span>
-<a name="line148"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> setFullTextSearchable<span style="color: #009900;">&#40;</span><span style="color: #000088;">$fullTextSearchable</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line149"></a>&nbsp;
-<a name="line150"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line151"></a>     * Sets the query-orderable status of the property.
-<a name="line152"></a>     *
-<a name="line153"></a>     * @param boolean $queryOrderable The status of the ability being query-orderable.
-<a name="line154"></a>     * @return void
-<a name="line155"></a>     * @api
-<a name="line156"></a>     */</span>
-<a name="line157"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> setQueryOrderable<span style="color: #009900;">&#40;</span><span style="color: #000088;">$queryOrderable</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line158"></a>&nbsp;
-<a name="line159"></a><span style="color: #009900;">&#125;</span>
-<a name="line160"></a>&nbsp;</pre>
+<a name="line2"></a>&nbsp;
+<a name="line3"></a><span style="color: #009933; font-style: italic;">/**
+<a name="line4"></a> * This file is part of the PHPCR API and was originally ported from the Java
+<a name="line5"></a> * JCR API to PHP by Karsten Dambekalns for the FLOW3 project.
+<a name="line6"></a> *
+<a name="line7"></a> * Copyright 2008-2011 Karsten Dambekalns &lt;karsten@typo3.org&gt;
+<a name="line8"></a> *
+<a name="line9"></a> * Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
+<a name="line10"></a> * you may not use this file except in compliance with the License.
+<a name="line11"></a> * You may obtain a copy of the License at
+<a name="line12"></a> *
+<a name="line13"></a> *     http://www.apache.org/licenses/LICENSE-2.0
+<a name="line14"></a> *
+<a name="line15"></a> * Unless required by applicable law or agreed to in writing, software
+<a name="line16"></a> * distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+<a name="line17"></a> * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+<a name="line18"></a> * See the License for the specific language governing permissions and
+<a name="line19"></a> * limitations under the License.
+<a name="line20"></a> *
+<a name="line21"></a> * @license http://www.apache.org/licenses/LICENSE-2.0 Apache Software License 2.0
+<a name="line22"></a> * @link http://phpcr.github.com/
+<a name="line23"></a>*/</span>
+<a name="line24"></a>&nbsp;
+<a name="line25"></a><span style="color: #000000; font-weight: bold;">namespace</span> PHPCR\NodeType<span style="color: #339933;">;</span>
+<a name="line26"></a>&nbsp;
+<a name="line27"></a><span style="color: #009933; font-style: italic;">/**
+<a name="line28"></a> * The PropertyDefinitionTemplate interface extends PropertyDefinition with the
+<a name="line29"></a> * addition of write methods, enabling the characteristics of a child property
+<a name="line30"></a> * definition to be set, after which the PropertyDefinitionTemplate is added to
+<a name="line31"></a> * a NodeTypeTemplate.
+<a name="line32"></a> *
+<a name="line33"></a> * See the corresponding get methods for each attribute in PropertyDefinition for
+<a name="line34"></a> * the default values assumed when a new empty PropertyDefinitionTemplate is created
+<a name="line35"></a> * (as opposed to one extracted from an existing NodeType).
+<a name="line36"></a> *
+<a name="line37"></a> * @package phpcr
+<a name="line38"></a> * @subpackage interfaces
+<a name="line39"></a> * @api
+<a name="line40"></a> */</span>
+<a name="line41"></a><span style="color: #000000; font-weight: bold;">interface</span> PropertyDefinitionTemplateInterface <span style="color: #000000; font-weight: bold;">extends</span> \PHPCR\NodeType\PropertyDefinitionInterface
+<a name="line42"></a><span style="color: #009900;">&#123;</span>
+<a name="line43"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line44"></a>     * Sets the name of the property.
+<a name="line45"></a>     *
+<a name="line46"></a>     * @param string $name The name of the property definition template.
+<a name="line47"></a>     * @return void
+<a name="line48"></a>     * @api
+<a name="line49"></a>     */</span>
+<a name="line50"></a>    <span style="color: #000000; font-weight: bold;">function</span> setName<span style="color: #009900;">&#40;</span><span style="color: #000088;">$name</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line51"></a>&nbsp;
+<a name="line52"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line53"></a>     * Sets the auto-create status of the property.
+<a name="line54"></a>     *
+<a name="line55"></a>     * @param boolean $autoCreated Flag to set the ability to be automatically created.
+<a name="line56"></a>     * @return void
+<a name="line57"></a>     * @api
+<a name="line58"></a>     */</span>
+<a name="line59"></a>    <span style="color: #000000; font-weight: bold;">function</span> setAutoCreated<span style="color: #009900;">&#40;</span><span style="color: #000088;">$autoCreated</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line60"></a>&nbsp;
+<a name="line61"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line62"></a>     * Sets the mandatory status of the property.
+<a name="line63"></a>     *
+<a name="line64"></a>     * @param boolean $mandatory The mandatory status of the property.
+<a name="line65"></a>     * @return void
+<a name="line66"></a>     * @api
+<a name="line67"></a>     */</span>
+<a name="line68"></a>    <span style="color: #000000; font-weight: bold;">function</span> setMandatory<span style="color: #009900;">&#40;</span><span style="color: #000088;">$mandatory</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line69"></a>&nbsp;
+<a name="line70"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line71"></a>     * Sets the on-parent-version status of the property.
+<a name="line72"></a>     *
+<a name="line73"></a>     * @param integer $opv an int constant member of OnParentVersionAction.
+<a name="line74"></a>     * @return void
+<a name="line75"></a>     * @api
+<a name="line76"></a>     */</span>
+<a name="line77"></a>    <span style="color: #000000; font-weight: bold;">function</span> setOnParentVersion<span style="color: #009900;">&#40;</span><span style="color: #000088;">$opv</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line78"></a>&nbsp;
+<a name="line79"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line80"></a>     * Sets the protected status of the property.
+<a name="line81"></a>     *
+<a name="line82"></a>     * @param boolean $protectedStatus The protection status of the property.
+<a name="line83"></a>     * @return void
+<a name="line84"></a>     * @api
+<a name="line85"></a>     */</span>
+<a name="line86"></a>    <span style="color: #000000; font-weight: bold;">function</span> setProtected<span style="color: #009900;">&#40;</span><span style="color: #000088;">$protectedStatus</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line87"></a>&nbsp;
+<a name="line88"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line89"></a>     * Sets the required type of the property.
+<a name="line90"></a>     *
+<a name="line91"></a>     * @param integer $type An integer constant member of PropertyType.
+<a name="line92"></a>     * @return void
+<a name="line93"></a>     * @api
+<a name="line94"></a>     */</span>
+<a name="line95"></a>    <span style="color: #000000; font-weight: bold;">function</span> setRequiredType<span style="color: #009900;">&#40;</span><span style="color: #000088;">$type</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line96"></a>&nbsp;
+<a name="line97"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line98"></a>     * Sets the value constraints of the property.
+<a name="line99"></a>     *
+<a name="line100"></a>     * @param array $constraints List of constrains registered on the property.
+<a name="line101"></a>     * @return void
+<a name="line102"></a>     * @api
+<a name="line103"></a>     */</span>
+<a name="line104"></a>    <span style="color: #000000; font-weight: bold;">function</span> setValueConstraints<span style="color: #009900;">&#40;</span><a href="http://www.php.net/array"><span style="color: #990000;">array</span></a> <span style="color: #000088;">$constraints</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line105"></a>&nbsp;
+<a name="line106"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line107"></a>     * Sets the default value (or values, in the case of a multi-value property)
+<a name="line108"></a>     * of the property.
+<a name="line109"></a>     *
+<a name="line110"></a>     * @param array $defaultValues A List of values in the correct type for this property.
+<a name="line111"></a>     * @return void
+<a name="line112"></a>     * @api
+<a name="line113"></a>     */</span>
+<a name="line114"></a>    <span style="color: #000000; font-weight: bold;">function</span> setDefaultValues<span style="color: #009900;">&#40;</span><a href="http://www.php.net/array"><span style="color: #990000;">array</span></a> <span style="color: #000088;">$defaultValues</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line115"></a>&nbsp;
+<a name="line116"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line117"></a>     * Sets the multi-value status of the property.
+<a name="line118"></a>     *
+<a name="line119"></a>     * @param boolean $multiple The status of the ability to store multiple values.
+<a name="line120"></a>     * @return void
+<a name="line121"></a>     * @api
+<a name="line122"></a>     */</span>
+<a name="line123"></a>    <span style="color: #000000; font-weight: bold;">function</span> setMultiple<span style="color: #009900;">&#40;</span><span style="color: #000088;">$multiple</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line124"></a>&nbsp;
+<a name="line125"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line126"></a>     * Sets the queryable status of the property.
+<a name="line127"></a>     *
+<a name="line128"></a>     * @param array operators An array of String constants {@link PropertyDefinition::getAvailableQueryOperators()}.
+<a name="line129"></a>     * @return void
+<a name="line130"></a>     * @api
+<a name="line131"></a>     */</span>
+<a name="line132"></a>    <span style="color: #000000; font-weight: bold;">function</span> setAvailableQueryOperators<span style="color: #009900;">&#40;</span><a href="http://www.php.net/array"><span style="color: #990000;">array</span></a> <span style="color: #000088;">$operators</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line133"></a>&nbsp;
+<a name="line134"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line135"></a>     * Sets the full-text-searchable status of the property.
+<a name="line136"></a>     *
+<a name="line137"></a>     * @param boolean $fullTextSearchable The status of the ability to be fulltext-searchable..
+<a name="line138"></a>     * @return void
+<a name="line139"></a>     * @api
+<a name="line140"></a>     */</span>
+<a name="line141"></a>    <span style="color: #000000; font-weight: bold;">function</span> setFullTextSearchable<span style="color: #009900;">&#40;</span><span style="color: #000088;">$fullTextSearchable</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line142"></a>&nbsp;
+<a name="line143"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line144"></a>     * Sets the query-orderable status of the property.
+<a name="line145"></a>     *
+<a name="line146"></a>     * @param boolean $queryOrderable The status of the ability being query-orderable.
+<a name="line147"></a>     * @return void
+<a name="line148"></a>     * @api
+<a name="line149"></a>     */</span>
+<a name="line150"></a>    <span style="color: #000000; font-weight: bold;">function</span> setQueryOrderable<span style="color: #009900;">&#40;</span><span style="color: #000088;">$queryOrderable</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line151"></a><span style="color: #009900;">&#125;</span>
+<a name="line152"></a>&nbsp;</pre>
 <div class="header">
 <h1>PHPCR</h1>
 <ul>

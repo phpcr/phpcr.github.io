@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="generator" content="PHPDoctor 2RC4 (http://peej.github.com/phpdoctor/)">
-<meta name="when" content="Thu, 26 May 2011 12:55:41 +0000">
+<meta name="when" content="Mon, 30 May 2011 13:13:10 +0000">
 
 <link rel="stylesheet" type="text/css" href="../stylesheet.css">
 <link rel="start" href="../overview-summary.html">
@@ -41,7 +41,7 @@ Detail: <a href="#detail_field">Field</a> | <a href="#detail_method">Method</a> 
 <hr>
 
 <div class="qualifiedName">PHPCR\SessionInterface</div>
-<a href="../source/phpcr/sessioninterface.php.html#line58" class="location">PHPCR/SessionInterface.php at line 58</a>
+<a href="../source/phpcr/sessioninterface.php.html#line51" class="location">PHPCR/SessionInterface.php at line 51</a>
 
 <h1>Interface SessionInterface</h1>
 
@@ -268,7 +268,7 @@ at destAbsPath.
 </table>
 
 <h2 id="detail_field">Constant Detail</h2>
-<a href="../source/phpcr/sessioninterface.php.html#line69" class="location">PHPCR/SessionInterface.php at line 69</a>
+<a href="../source/phpcr/sessioninterface.php.html#line62" class="location">PHPCR/SessionInterface.php at line 62</a>
 
 <h3 id="ACTION_ADD_NODE">ACTION_ADD_NODE</h3>
 <code class="signature">public final static  string <strong>ACTION_ADD_NODE</strong> = 'add_node'</code>
@@ -281,7 +281,7 @@ this Session has permission to add a new node.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/sessioninterface.php.html#line77" class="location">PHPCR/SessionInterface.php at line 77</a>
+<a href="../source/phpcr/sessioninterface.php.html#line70" class="location">PHPCR/SessionInterface.php at line 70</a>
 
 <h3 id="ACTION_READ">ACTION_READ</h3>
 <code class="signature">public final static  str <strong>ACTION_READ</strong> = 'read'</code>
@@ -295,7 +295,7 @@ of a property).</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/sessioninterface.php.html#line84" class="location">PHPCR/SessionInterface.php at line 84</a>
+<a href="../source/phpcr/sessioninterface.php.html#line77" class="location">PHPCR/SessionInterface.php at line 77</a>
 
 <h3 id="ACTION_REMOVE">ACTION_REMOVE</h3>
 <code class="signature">public final static  str <strong>ACTION_REMOVE</strong> = 'remove'</code>
@@ -308,7 +308,7 @@ Session has permission to remove an item.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/sessioninterface.php.html#line91" class="location">PHPCR/SessionInterface.php at line 91</a>
+<a href="../source/phpcr/sessioninterface.php.html#line84" class="location">PHPCR/SessionInterface.php at line 84</a>
 
 <h3 id="ACTION_SET_PROPERTY">ACTION_SET_PROPERTY</h3>
 <code class="signature">public final static  str <strong>ACTION_SET_PROPERTY</strong> = 'set_property'</code>
@@ -322,7 +322,7 @@ this Session has permission to set (add or modify) a property.</p><dl>
 <hr>
 
 <h2 id="detail_method">Method Detail</h2>
-<a href="../source/phpcr/sessioninterface.php.html#line517" class="location">PHPCR/SessionInterface.php at line 517</a>
+<a href="../source/phpcr/sessioninterface.php.html#line510" class="location">PHPCR/SessionInterface.php at line 510</a>
 
 <h3 id="checkPermission()">checkPermission</h3>
 <code class="signature">public  void <strong>checkPermission</strong>(string absPath, string actions)</code>
@@ -364,7 +364,7 @@ prevent the addition of a property called C.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/sessioninterface.php.html#line803" class="location">PHPCR/SessionInterface.php at line 803</a>
+<a href="../source/phpcr/sessioninterface.php.html#line796" class="location">PHPCR/SessionInterface.php at line 796</a>
 
 <h3 id="exportDocumentView()">exportDocumentView</h3>
 <code class="signature">public  void <strong>exportDocumentView</strong>(string absPath, string out, boolean skipBinary, boolean noRecurse)</code>
@@ -398,7 +398,7 @@ the output.</p><p>The output XML will be encoded in UTF-8.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/sessioninterface.php.html#line761" class="location">PHPCR/SessionInterface.php at line 761</a>
+<a href="../source/phpcr/sessioninterface.php.html#line754" class="location">PHPCR/SessionInterface.php at line 754</a>
 
 <h3 id="exportSystemView()">exportSystemView</h3>
 <code class="signature">public  void <strong>exportSystemView</strong>(string absPath, string out, boolean skipBinary, boolean noRecurse)</code>
@@ -436,7 +436,7 @@ current session-mappings, are reflected in the output.</p><p>The output XML will
 
 <hr>
 
-<a href="../source/phpcr/sessioninterface.php.html#line897" class="location">PHPCR/SessionInterface.php at line 897</a>
+<a href="../source/phpcr/sessioninterface.php.html#line890" class="location">PHPCR/SessionInterface.php at line 890</a>
 
 <h3 id="getAccessControlManager()">getAccessControlManager</h3>
 <code class="signature">public  \PHPCR\Security\AccessControlManager <strong>getAccessControlManager</strong>()</code>
@@ -453,7 +453,7 @@ current session-mappings, are reflected in the output.</p><p>The output XML will
 
 <hr>
 
-<a href="../source/phpcr/sessioninterface.php.html#line135" class="location">PHPCR/SessionInterface.php at line 135</a>
+<a href="../source/phpcr/sessioninterface.php.html#line128" class="location">PHPCR/SessionInterface.php at line 128</a>
 
 <h3 id="getAttribute()">getAttribute</h3>
 <code class="signature">public  mixed <strong>getAttribute</strong>(string name)</code>
@@ -470,7 +470,7 @@ attribute of the given name exists. See getAttributeNames().</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/sessioninterface.php.html#line125" class="location">PHPCR/SessionInterface.php at line 125</a>
+<a href="../source/phpcr/sessioninterface.php.html#line118" class="location">PHPCR/SessionInterface.php at line 118</a>
 
 <h3 id="getAttributeNames()">getAttributeNames</h3>
 <code class="signature">public  array <strong>getAttributeNames</strong>()</code>
@@ -487,7 +487,7 @@ array if the Credentials instance did not provide attributes.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/sessioninterface.php.html#line642" class="location">PHPCR/SessionInterface.php at line 642</a>
+<a href="../source/phpcr/sessioninterface.php.html#line635" class="location">PHPCR/SessionInterface.php at line 635</a>
 
 <h3 id="getImportContentHandler()">getImportContentHandler</h3>
 <code class="signature">public  <a href="../phpcr/contenthandlerinterface.html">ContentHandlerInterface</a> <strong>getImportContentHandler</strong>(string parentAbsPath, integer uuidBehavior)</code>
@@ -556,7 +556,7 @@ the same identifier as the node at parentAbsPath or one of its ancestors.</p><dl
 
 <hr>
 
-<a href="../source/phpcr/sessioninterface.php.html#line209" class="location">PHPCR/SessionInterface.php at line 209</a>
+<a href="../source/phpcr/sessioninterface.php.html#line202" class="location">PHPCR/SessionInterface.php at line 202</a>
 
 <h3 id="getItem()">getItem</h3>
 <code class="signature">public  <a href="../phpcr/iteminterface.html">ItemInterface</a> <strong>getItem</strong>(string absPath)</code>
@@ -578,7 +578,7 @@ efficient than getItem.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/sessioninterface.php.html#line862" class="location">PHPCR/SessionInterface.php at line 862</a>
+<a href="../source/phpcr/sessioninterface.php.html#line855" class="location">PHPCR/SessionInterface.php at line 855</a>
 
 <h3 id="getNamespacePrefix()">getNamespacePrefix</h3>
 <code class="signature">public  string <strong>getNamespacePrefix</strong>(string uri)</code>
@@ -598,7 +598,7 @@ this Session.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/sessioninterface.php.html#line836" class="location">PHPCR/SessionInterface.php at line 836</a>
+<a href="../source/phpcr/sessioninterface.php.html#line829" class="location">PHPCR/SessionInterface.php at line 829</a>
 
 <h3 id="getNamespacePrefixes()">getNamespacePrefixes</h3>
 <code class="signature">public  array <strong>getNamespacePrefixes</strong>()</code>
@@ -614,7 +614,7 @@ this Session.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/sessioninterface.php.html#line849" class="location">PHPCR/SessionInterface.php at line 849</a>
+<a href="../source/phpcr/sessioninterface.php.html#line842" class="location">PHPCR/SessionInterface.php at line 842</a>
 
 <h3 id="getNamespaceURI()">getNamespaceURI</h3>
 <code class="signature">public  string <strong>getNamespaceURI</strong>(string prefix)</code>
@@ -634,7 +634,7 @@ this Session.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/sessioninterface.php.html#line221" class="location">PHPCR/SessionInterface.php at line 221</a>
+<a href="../source/phpcr/sessioninterface.php.html#line214" class="location">PHPCR/SessionInterface.php at line 214</a>
 
 <h3 id="getNode()">getNode</h3>
 <code class="signature">public  <a href="../phpcr/nodeinterface.html">NodeInterface</a> <strong>getNode</strong>(string absPath)</code>
@@ -653,7 +653,7 @@ this Session.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/sessioninterface.php.html#line188" class="location">PHPCR/SessionInterface.php at line 188</a>
+<a href="../source/phpcr/sessioninterface.php.html#line181" class="location">PHPCR/SessionInterface.php at line 181</a>
 
 <h3 id="getNodeByIdentifier()">getNodeByIdentifier</h3>
 <code class="signature">public  <a href="../phpcr/nodeinterface.html">NodeInterface</a> <strong>getNodeByIdentifier</strong>(string id)</code>
@@ -672,7 +672,7 @@ this Session.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/sessioninterface.php.html#line233" class="location">PHPCR/SessionInterface.php at line 233</a>
+<a href="../source/phpcr/sessioninterface.php.html#line226" class="location">PHPCR/SessionInterface.php at line 226</a>
 
 <h3 id="getProperty()">getProperty</h3>
 <code class="signature">public  <a href="../phpcr/propertyinterface.html">PropertyInterface</a> <strong>getProperty</strong>(string absPath)</code>
@@ -691,7 +691,7 @@ this Session.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/sessioninterface.php.html#line101" class="location">PHPCR/SessionInterface.php at line 101</a>
+<a href="../source/phpcr/sessioninterface.php.html#line94" class="location">PHPCR/SessionInterface.php at line 94</a>
 
 <h3 id="getRepository()">getRepository</h3>
 <code class="signature">public  <a href="../phpcr/repositoryinterface.html">RepositoryInterface</a> <strong>getRepository</strong>()</code>
@@ -705,7 +705,7 @@ this Session.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/sessioninterface.php.html#line908" class="location">PHPCR/SessionInterface.php at line 908</a>
+<a href="../source/phpcr/sessioninterface.php.html#line901" class="location">PHPCR/SessionInterface.php at line 901</a>
 
 <h3 id="getRetentionManager()">getRetentionManager</h3>
 <code class="signature">public  <a href="../phpcr/retention/retentionmanagerinterface.html">RetentionManagerInterface</a> <strong>getRetentionManager</strong>()</code>
@@ -722,7 +722,7 @@ this Session.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/sessioninterface.php.html#line154" class="location">PHPCR/SessionInterface.php at line 154</a>
+<a href="../source/phpcr/sessioninterface.php.html#line147" class="location">PHPCR/SessionInterface.php at line 147</a>
 
 <h3 id="getRootNode()">getRootNode</h3>
 <code class="signature">public  <a href="../phpcr/nodeinterface.html">NodeInterface</a> <strong>getRootNode</strong>()</code>
@@ -738,7 +738,7 @@ this Session.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/sessioninterface.php.html#line112" class="location">PHPCR/SessionInterface.php at line 112</a>
+<a href="../source/phpcr/sessioninterface.php.html#line105" class="location">PHPCR/SessionInterface.php at line 105</a>
 
 <h3 id="getUserID()">getUserID</h3>
 <code class="signature">public  string <strong>getUserID</strong>()</code>
@@ -753,7 +753,7 @@ or it may be a string acquired in some other way. This method is free to return 
 
 <hr>
 
-<a href="../source/phpcr/sessioninterface.php.html#line143" class="location">PHPCR/SessionInterface.php at line 143</a>
+<a href="../source/phpcr/sessioninterface.php.html#line136" class="location">PHPCR/SessionInterface.php at line 136</a>
 
 <h3 id="getWorkspace()">getWorkspace</h3>
 <code class="signature">public  <a href="../phpcr/workspaceinterface.html">WorkspaceInterface</a> <strong>getWorkspace</strong>()</code>
@@ -767,7 +767,7 @@ or it may be a string acquired in some other way. This method is free to return 
 
 <hr>
 
-<a href="../source/phpcr/sessioninterface.php.html#line562" class="location">PHPCR/SessionInterface.php at line 562</a>
+<a href="../source/phpcr/sessioninterface.php.html#line555" class="location">PHPCR/SessionInterface.php at line 555</a>
 
 <h3 id="hasCapability()">hasCapability</h3>
 <code class="signature">public  boolean <strong>hasCapability</strong>(string methodName, object target, array arguments)</code>
@@ -806,7 +806,7 @@ the node N within the session S.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/sessioninterface.php.html#line438" class="location">PHPCR/SessionInterface.php at line 438</a>
+<a href="../source/phpcr/sessioninterface.php.html#line431" class="location">PHPCR/SessionInterface.php at line 431</a>
 
 <h3 id="hasPendingChanges()">hasPendingChanges</h3>
 <code class="signature">public  boolean <strong>hasPendingChanges</strong>()</code>
@@ -823,7 +823,7 @@ otherwise returns false.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/sessioninterface.php.html#line476" class="location">PHPCR/SessionInterface.php at line 476</a>
+<a href="../source/phpcr/sessioninterface.php.html#line469" class="location">PHPCR/SessionInterface.php at line 469</a>
 
 <h3 id="hasPermission()">hasPermission</h3>
 <code class="signature">public  boolean <strong>hasPermission</strong>(string absPath, string actions)</code>
@@ -864,7 +864,7 @@ prevent the addition of a property called C.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/sessioninterface.php.html#line174" class="location">PHPCR/SessionInterface.php at line 174</a>
+<a href="../source/phpcr/sessioninterface.php.html#line167" class="location">PHPCR/SessionInterface.php at line 167</a>
 
 <h3 id="impersonate()">impersonate</h3>
 <code class="signature">public  <a href="../phpcr/sessioninterface.html">SessionInterface</a> <strong>impersonate</strong>(<a href="../phpcr/credentialsinterface.html">CredentialsInterface</a> credentials)</code>
@@ -889,7 +889,7 @@ by the Workspace object tied to this Session.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/sessioninterface.php.html#line719" class="location">PHPCR/SessionInterface.php at line 719</a>
+<a href="../source/phpcr/sessioninterface.php.html#line712" class="location">PHPCR/SessionInterface.php at line 712</a>
 
 <h3 id="importXML()">importXML</h3>
 <code class="signature">public  void <strong>importXML</strong>(string parentAbsPath, string in, integer uuidBehavior)</code>
@@ -958,7 +958,7 @@ type constraints are enforced depends upon whether node type information in the<
 
 <hr>
 
-<a href="../source/phpcr/sessioninterface.php.html#line886" class="location">PHPCR/SessionInterface.php at line 886</a>
+<a href="../source/phpcr/sessioninterface.php.html#line879" class="location">PHPCR/SessionInterface.php at line 879</a>
 
 <h3 id="isLive()">isLive</h3>
 <code class="signature">public  boolean <strong>isLive</strong>()</code>
@@ -974,7 +974,7 @@ any other way disconnected from the repository.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/sessioninterface.php.html#line247" class="location">PHPCR/SessionInterface.php at line 247</a>
+<a href="../source/phpcr/sessioninterface.php.html#line240" class="location">PHPCR/SessionInterface.php at line 240</a>
 
 <h3 id="itemExists()">itemExists</h3>
 <code class="signature">public  boolean <strong>itemExists</strong>(string absPath)</code>
@@ -993,7 +993,7 @@ access to it; otherwise returns false.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/sessioninterface.php.html#line872" class="location">PHPCR/SessionInterface.php at line 872</a>
+<a href="../source/phpcr/sessioninterface.php.html#line865" class="location">PHPCR/SessionInterface.php at line 865</a>
 
 <h3 id="logout()">logout</h3>
 <code class="signature">public  void <strong>logout</strong>()</code>
@@ -1005,7 +1005,7 @@ access to it; otherwise returns false.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/sessioninterface.php.html#line323" class="location">PHPCR/SessionInterface.php at line 323</a>
+<a href="../source/phpcr/sessioninterface.php.html#line316" class="location">PHPCR/SessionInterface.php at line 316</a>
 
 <h3 id="move()">move</h3>
 <code class="signature">public  void <strong>move</strong>(string srcAbsPath, string destAbsPath)</code>
@@ -1039,7 +1039,7 @@ moves an entire node and its subgraph.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/sessioninterface.php.html#line261" class="location">PHPCR/SessionInterface.php at line 261</a>
+<a href="../source/phpcr/sessioninterface.php.html#line254" class="location">PHPCR/SessionInterface.php at line 254</a>
 
 <h3 id="nodeExists()">nodeExists</h3>
 <code class="signature">public  boolean <strong>nodeExists</strong>(string absPath)</code>
@@ -1058,7 +1058,7 @@ access to it; otherwise returns false.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/sessioninterface.php.html#line274" class="location">PHPCR/SessionInterface.php at line 274</a>
+<a href="../source/phpcr/sessioninterface.php.html#line267" class="location">PHPCR/SessionInterface.php at line 267</a>
 
 <h3 id="propertyExists()">propertyExists</h3>
 <code class="signature">public  boolean <strong>propertyExists</strong>(string absPath)</code>
@@ -1077,7 +1077,7 @@ access to it; otherwise returns false.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/sessioninterface.php.html#line426" class="location">PHPCR/SessionInterface.php at line 426</a>
+<a href="../source/phpcr/sessioninterface.php.html#line419" class="location">PHPCR/SessionInterface.php at line 419</a>
 
 <h3 id="refresh()">refresh</h3>
 <code class="signature">public  void <strong>refresh</strong>(boolean keepChanges)</code>
@@ -1102,7 +1102,7 @@ needed.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/sessioninterface.php.html#line357" class="location">PHPCR/SessionInterface.php at line 357</a>
+<a href="../source/phpcr/sessioninterface.php.html#line350" class="location">PHPCR/SessionInterface.php at line 350</a>
 
 <h3 id="removeItem()">removeItem</h3>
 <code class="signature">public  void <strong>removeItem</strong>(string absPath)</code>
@@ -1129,7 +1129,7 @@ order but leave no gaps in the numbering.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/sessioninterface.php.html#line402" class="location">PHPCR/SessionInterface.php at line 402</a>
+<a href="../source/phpcr/sessioninterface.php.html#line395" class="location">PHPCR/SessionInterface.php at line 395</a>
 
 <h3 id="save()">save</h3>
 <code class="signature">public  void <strong>save</strong>()</code>
@@ -1156,7 +1156,7 @@ remain recorded on the Session. There is no best-effort or partial save.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/sessioninterface.php.html#line826" class="location">PHPCR/SessionInterface.php at line 826</a>
+<a href="../source/phpcr/sessioninterface.php.html#line819" class="location">PHPCR/SessionInterface.php at line 819</a>
 
 <h3 id="setNamespacePrefix()">setNamespacePrefix</h3>
 <code class="signature">public  void <strong>setNamespacePrefix</strong>(string prefix, string uri)</code>

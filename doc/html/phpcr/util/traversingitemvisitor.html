@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="generator" content="PHPDoctor 2RC4 (http://peej.github.com/phpdoctor/)">
-<meta name="when" content="Thu, 26 May 2011 12:55:42 +0000">
+<meta name="when" content="Mon, 30 May 2011 13:13:11 +0000">
 
 <link rel="stylesheet" type="text/css" href="../../stylesheet.css">
 <link rel="start" href="../../overview-summary.html">
@@ -41,7 +41,7 @@ Detail: <a href="#detail_field">Field</a> | <a href="#detail_method">Method</a> 
 <hr>
 
 <div class="qualifiedName">PHPCR\Util\TraversingItemVisitor</div>
-<a href="../../source/phpcr/util/traversingitemvisitor.php.html#line48" class="location">PHPCR/Util/TraversingItemVisitor.php at line 48</a>
+<a href="../../source/phpcr/util/traversingitemvisitor.php.html#line46" class="location">PHPCR/Util/TraversingItemVisitor.php at line 46</a>
 
 <h1>Class TraversingItemVisitor</h1>
 
@@ -58,12 +58,16 @@ Detail: <a href="#detail_field">Field</a> | <a href="#detail_method">Method</a> 
 
 <div class="comment" id="overview_description"><p>An implementation of ItemVisitor.</p><p>TraversingItemVisitor is an abstract utility class which allows to easily
 traverse an Item hierarchy.
-TraversingItemVisitor makes use of the Visitor Pattern as described in the
+You overwrite entering and leaving methods that get called for all
+properties encountered</p><p>TraversingItemVisitor makes use of the Visitor Pattern as described in the
 book 'Design Patterns' by the Gang Of Four (Gamma et al.).
 Tree traversal is done observing the left-to-right order of child Items if
 such an order is supported and exists.</p></div>
 
 <dl>
+<dt>Author:</dt>
+<dd>Karsten Dambekalns <karsten@typo3.org></dd>
+<dd>Day Management AG, Switzerland</dd>
 <dt>Subpackage:</dt>
 <dd>interfaces</dd>
 <dt>Api.</dt>
@@ -74,51 +78,43 @@ such an order is supported and exists.</p></div>
 <tr><th colspan="2">Method Summary</th></tr>
 <tr>
 <td class="type"> void</td>
-<td class="description"><p class="name"><a href="#__construct()">__construct</a>(boolean breadthFirst, integer maxLevel)</p><p class="description">Constructs a new instance of this class.</p></td>
+<td class="description"><p class="name"><a href="#__construct()">__construct</a>(boolean breadthFirst, int maxLevel, integer maxDepth)</p><p class="description">Constructs a new instance of this class.</p></td>
 </tr>
 <tr>
 <td class="type">protected abstract  void</td>
-<td class="description"><p class="name"><a href="#entering()">entering</a>(<a href="../../phpcr/iteminterface.html">ItemInterface</a> item, integer level)</p><p class="description">Implement this method to add behavior performed before an Item is visited.</p></td>
+<td class="description"><p class="name"><a href="#entering()">entering</a>(<a href="../../phpcr/iteminterface.html">ItemInterface</a> item, integer depth)</p><p class="description">Implement this method to add behavior performed before a Property is visited.</p></td>
 </tr>
 <tr>
 <td class="type">protected abstract  void</td>
-<td class="description"><p class="name"><a href="#leaving()">leaving</a>(<a href="../../phpcr/iteminterface.html">ItemInterface</a> item, integer level)</p><p class="description">Implement this method to add behavior performed after an Item is visited.</p></td>
-</tr>
-<tr>
-<td class="type"> void</td>
-<td class="description"><p class="name"><a href="#visit()">visit</a>(<a href="../../phpcr/iteminterface.html">ItemInterface</a> item)</p><p class="description">Called when the Visitor is passed to an Item.
-</p></td>
+<td class="description"><p class="name"><a href="#leaving()">leaving</a>(<a href="../../phpcr/iteminterface.html">ItemInterface</a> item, integer depth)</p><p class="description">Implement this method to add behavior performed after a Property is visited.</p></td>
 </tr>
 </table>
 
 <h2 id="detail_method">Method Detail</h2>
-<a href="../../source/phpcr/util/traversingitemvisitor.php.html#line96" class="location">PHPCR/Util/TraversingItemVisitor.php at line 96</a>
+<a href="../../source/phpcr/util/traversingitemvisitor.php.html#line92" class="location">PHPCR/Util/TraversingItemVisitor.php at line 92</a>
 
 <h3 id="__construct()">__construct</h3>
-<code class="signature">public  void <strong>__construct</strong>(boolean breadthFirst, integer maxLevel)</code>
+<code class="signature">public  void <strong>__construct</strong>(boolean breadthFirst, int maxLevel, integer maxDepth)</code>
 <div class="details">
 <p>Constructs a new instance of this class.</p><dl>
 <dt>Parameters:</dt>
 <dd>breadthFirst - if $breadthFirst is true then traversal is done in a breadth-first manner; otherwise it is done in a depth-first manner (which is the default behavior).</dd>
-<dd>maxLevel - the 0-based level up to which the hierarchy should be traversed (if it's -1, the hierarchy will be traversed until there are no more children of the current item).</dd>
-<dt>Author:</dt>
-<dd>Karsten Dambekalns <karsten@typo3.org></dd>
-<dd>Day Management AG, Switzerland</dd>
+<dd>maxDepth - the 0-based depth up to which the hierarchy should be traversed (if it's -1, the hierarchy will be traversed until there are no more children of the current item).</dd>
 <dt>Api.</dt>
 </dl>
 </div>
 
 <hr>
 
-<a href="../../source/phpcr/util/traversingitemvisitor.php.html#line117" class="location">PHPCR/Util/TraversingItemVisitor.php at line 117</a>
+<a href="../../source/phpcr/util/traversingitemvisitor.php.html#line114" class="location">PHPCR/Util/TraversingItemVisitor.php at line 114</a>
 
 <h3 id="entering()">entering</h3>
-<code class="signature">protected abstract  void <strong>entering</strong>(<a href="../../phpcr/iteminterface.html">ItemInterface</a> item, integer level)</code>
+<code class="signature">protected abstract  void <strong>entering</strong>(<a href="../../phpcr/iteminterface.html">ItemInterface</a> item, integer depth)</code>
 <div class="details">
-<p>Implement this method to add behavior performed before an Item is visited.</p><dl>
+<p>Implement this method to add behavior performed before a Property is visited.</p><dl>
 <dt>Parameters:</dt>
 <dd>item - the Item that is accepting this visitor.</dd>
-<dd>level - hierarchy level of this node (the root node starts at level 0).</dd>
+<dd>depth - hierarchy level of this node (the root node starts at depth 0).</dd>
 <dt>Throws:</dt>
 <dd><a href="../../phpcr/repositoryexception.html">\PHPCR\RepositoryException</a> - if an error occurs.</dd>
 <dt>Api.</dt>
@@ -127,39 +123,17 @@ such an order is supported and exists.</p></div>
 
 <hr>
 
-<a href="../../source/phpcr/util/traversingitemvisitor.php.html#line128" class="location">PHPCR/Util/TraversingItemVisitor.php at line 128</a>
+<a href="../../source/phpcr/util/traversingitemvisitor.php.html#line126" class="location">PHPCR/Util/TraversingItemVisitor.php at line 126</a>
 
 <h3 id="leaving()">leaving</h3>
-<code class="signature">protected abstract  void <strong>leaving</strong>(<a href="../../phpcr/iteminterface.html">ItemInterface</a> item, integer level)</code>
+<code class="signature">protected abstract  void <strong>leaving</strong>(<a href="../../phpcr/iteminterface.html">ItemInterface</a> item, integer depth)</code>
 <div class="details">
-<p>Implement this method to add behavior performed after an Item is visited.</p><dl>
+<p>Implement this method to add behavior performed after a Property is visited.</p><dl>
 <dt>Parameters:</dt>
 <dd>item - the Item that is accepting this visitor.</dd>
-<dd>level - hierarchy level of this property (the root node starts at level 0).</dd>
+<dd>depth - hierarchy level of this property (the root node starts at depth 0).</dd>
 <dt>Throws:</dt>
 <dd><a href="../../phpcr/repositoryexception.html">\PHPCR\RepositoryException</a> - if an error occurs.</dd>
-<dt>Api.</dt>
-</dl>
-</div>
-
-<hr>
-
-<a href="../../source/phpcr/util/traversingitemvisitor.php.html#line149" class="location">PHPCR/Util/TraversingItemVisitor.php at line 149</a>
-
-<h3 id="visit()">visit</h3>
-<code class="signature">public  void <strong>visit</strong>(<a href="../../phpcr/iteminterface.html">ItemInterface</a> item)</code>
-<div class="details">
-<p>Called when the Visitor is passed to an Item.</p><p>It calls TraversingItemVisitor.entering(ItemInterface, int) followed by
-TraversingItemVisitor.leaving(ItemInterface, int). Implement these
-abstract methods to specify behavior on 'arrival at' and 'after leaving'
-the $item.</p><p>If this method throws, the visiting process is aborted.</p><dl>
-<dt>Parameters:</dt>
-<dd>item - the Node or Property that is accepting this visitor.</dd>
-<dt>Throws:</dt>
-<dd><a href="../../phpcr/repositoryexception.html">\PHPCR\RepositoryException</a> - if an error occurs.</dd>
-<dt>Author:</dt>
-<dd>Karsten Dambekalns <karsten@typo3.org></dd>
-<dd>Day Management AG, Switzerland</dd>
 <dt>Api.</dt>
 </dl>
 </div>
