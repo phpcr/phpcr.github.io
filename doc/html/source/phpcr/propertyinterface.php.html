@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="generator" content="PHPDoctor 2RC4 (http://peej.github.com/phpdoctor/)">
-<meta name="when" content="Mon, 30 May 2011 13:13:19 +0000">
+<meta name="when" content="Thu, 16 Jun 2011 13:02:41 +0000">
 
 <link rel="stylesheet" type="text/css" href="../../stylesheet.css">
 <link rel="start" href="../../overview-summary.html">
@@ -554,298 +554,302 @@ limitations under the License.</p></div>
 <a name="line507"></a>     * constant. Passing the property itself and the PATH type will convert the
 <a name="line508"></a>     * value of the property to a path.
 <a name="line509"></a>     *
-<a name="line510"></a>     * This method is a session-write and therefore requires a &lt;code&gt;save&lt;/code&gt;
-<a name="line511"></a>     * to dispatch the change.
-<a name="line512"></a>     *
-<a name="line513"></a>     * If value is an array:
-<a name="line514"></a>     * If this property is not multi-valued then a ValueFormatException is
-<a name="line515"></a>     * thrown immediately.
+<a name="line510"></a>     * When assigning a stream resource to create a binary property, the client
+<a name="line511"></a>     * application must leave the stream alone afterwards. The PHPCR
+<a name="line512"></a>     * implementation is responsible for closing it after saving.
+<a name="line513"></a>     *
+<a name="line514"></a>     * This method is a session-write and therefore requires a &lt;code&gt;save&lt;/code&gt;
+<a name="line515"></a>     * to dispatch the change.
 <a name="line516"></a>     *
-<a name="line517"></a>     * &lt;strong&gt;PHPCR Note:&lt;/strong&gt; The Java API defines this method with multiple differing signatures.
-<a name="line518"></a>     * &lt;strong&gt;PHPCR Note:&lt;/strong&gt; Because we removed the Value interface, this method replaces
-<a name="line519"></a>     * ValueFactory::createValue.
+<a name="line517"></a>     * If value is an array:
+<a name="line518"></a>     * If this property is not multi-valued then a ValueFormatException is
+<a name="line519"></a>     * thrown immediately.
 <a name="line520"></a>     *
-<a name="line521"></a>     * @param mixed $value The value to set
-<a name="line522"></a>     * @param integer $type Type request for the property, optional. Must be a constant from PropertyType
-<a name="line523"></a>     *
-<a name="line524"></a>     * @return void
-<a name="line525"></a>     *
-<a name="line526"></a>     * @throws \PHPCR\ValueFormatException if the type or format of the specified value is incompatible with the type
-<a name="line527"></a>     *                                     of this property.
-<a name="line528"></a>     * @throws \PHPCR\Version\VersionException if this property belongs to a node that is read-only due to a checked-in
-<a name="line529"></a>     *                                         node and this implementation performs this validation immediately.
-<a name="line530"></a>     * @throws \PHPCR\Lock\LockException if a lock prevents the setting of the value and this implementation performs
-<a name="line531"></a>     *                                   this validation immediately.
-<a name="line532"></a>     * @throws \PHPCR\ConstraintViolationException if the change would violate a node-type or other constraint and
-<a name="line533"></a>     *                                             this implementation performs this validation immediately.
-<a name="line534"></a>     * @throws \PHPCR\RepositoryException if another error occurs.
-<a name="line535"></a>     * @throws \InvalidArgumentException if the specified DateTime value cannot be expressed in the ISO 8601-based
-<a name="line536"></a>     *                                   format defined in the JCR 2.0 specification and the implementation does not
-<a name="line537"></a>     *                                   support dates incompatible with that format.
-<a name="line538"></a>     * @api
-<a name="line539"></a>     */</span>
-<a name="line540"></a>    <span style="color: #000000; font-weight: bold;">function</span> setValue<span style="color: #009900;">&#40;</span><span style="color: #000088;">$value</span><span style="color: #339933;">,</span> <span style="color: #000088;">$type</span> <span style="color: #339933;">=</span> <span style="color: #009900; font-weight: bold;">null</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line541"></a>&nbsp;
-<a name="line542"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line543"></a>     * Appends a value to a multi-value property
-<a name="line544"></a>     *
-<a name="line545"></a>     * &lt;strong&gt;PHPCR Note:&lt;/strong&gt; This is a new method not found in Java.
-<a name="line546"></a>     * In PHP appending to strings is easy and this is more convenient than
-<a name="line547"></a>     * getting the property and appending to the array and setting again.
+<a name="line521"></a>     * &lt;strong&gt;PHPCR Note:&lt;/strong&gt; The Java API defines this method with multiple differing signatures.
+<a name="line522"></a>     * &lt;strong&gt;PHPCR Note:&lt;/strong&gt; Because we removed the Value interface, this method replaces
+<a name="line523"></a>     * ValueFactory::createValue.
+<a name="line524"></a>     *
+<a name="line525"></a>     * @param mixed $value The value to set
+<a name="line526"></a>     * @param integer $type Type request for the property, optional. Must be a constant from PropertyType
+<a name="line527"></a>     *
+<a name="line528"></a>     * @return void
+<a name="line529"></a>     *
+<a name="line530"></a>     * @throws \PHPCR\ValueFormatException if the type or format of the specified value is incompatible with the type
+<a name="line531"></a>     *                                     of this property.
+<a name="line532"></a>     * @throws \PHPCR\Version\VersionException if this property belongs to a node that is read-only due to a checked-in
+<a name="line533"></a>     *                                         node and this implementation performs this validation immediately.
+<a name="line534"></a>     * @throws \PHPCR\Lock\LockException if a lock prevents the setting of the value and this implementation performs
+<a name="line535"></a>     *                                   this validation immediately.
+<a name="line536"></a>     * @throws \PHPCR\ConstraintViolationException if the change would violate a node-type or other constraint and
+<a name="line537"></a>     *                                             this implementation performs this validation immediately.
+<a name="line538"></a>     * @throws \PHPCR\RepositoryException if another error occurs.
+<a name="line539"></a>     * @throws \InvalidArgumentException if the specified DateTime value cannot be expressed in the ISO 8601-based
+<a name="line540"></a>     *                                   format defined in the JCR 2.0 specification and the implementation does not
+<a name="line541"></a>     *                                   support dates incompatible with that format.
+<a name="line542"></a>     * @api
+<a name="line543"></a>     */</span>
+<a name="line544"></a>    <span style="color: #000000; font-weight: bold;">function</span> setValue<span style="color: #009900;">&#40;</span><span style="color: #000088;">$value</span><span style="color: #339933;">,</span> <span style="color: #000088;">$type</span> <span style="color: #339933;">=</span> <span style="color: #009900; font-weight: bold;">null</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line545"></a>&nbsp;
+<a name="line546"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line547"></a>     * Appends a value to a multi-value property
 <a name="line548"></a>     *
-<a name="line549"></a>     * @param mixed value
-<a name="line550"></a>     * @throws \PHPCR\ValueFormatException if the property is not multi-value
-<a name="line551"></a>     */</span>
-<a name="line552"></a>    <span style="color: #000000; font-weight: bold;">function</span> addValue<span style="color: #009900;">&#40;</span><span style="color: #000088;">$value</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line553"></a>&nbsp;
-<a name="line554"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line555"></a>     * Get the value in format default for the PropertyType of this property.
-<a name="line556"></a>     *
-<a name="line557"></a>     * In case of a binary property, this is the stream of binary data.
-<a name="line558"></a>     *
-<a name="line559"></a>     * &lt;b&gt;PHPCR Note:&lt;/b&gt; We dropped the Value interface as its unnecessary
-<a name="line560"></a>     * with weak typing
-<a name="line561"></a>     *
-<a name="line562"></a>     * @return mixed value of this property, or array in case of multi-value
-<a name="line563"></a>     */</span>
-<a name="line564"></a>    <span style="color: #000000; font-weight: bold;">function</span> getValue<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line565"></a>&nbsp;
-<a name="line566"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line567"></a>     * Returns a String representation of the value of this property.
-<a name="line568"></a>     *
-<a name="line569"></a>     * @return string A string representation of the value of this property, or an array of string for multi-valued
-<a name="line570"></a>     *                properties.
-<a name="line571"></a>     *
-<a name="line572"></a>     * @throws \PHPCR\ValueFormatException if conversion to a String is not possible
-<a name="line573"></a>     * @throws \PHPCR\RepositoryException if another error occurs.
-<a name="line574"></a>     * @api
-<a name="line575"></a>     */</span>
-<a name="line576"></a>    <span style="color: #000000; font-weight: bold;">function</span> getString<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line577"></a>&nbsp;
-<a name="line578"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line579"></a>     * Returns a Binary representation of the value of this property.
-<a name="line580"></a>     *
-<a name="line581"></a>     * The Binary object in turn provides methods to access the binary data
-<a name="line582"></a>     * itself. Uses the standard conversion to binary (see JCR specification).
-<a name="line583"></a>     *
-<a name="line584"></a>     * @return resource A stream resource if the underlying binary
-<a name="line585"></a>     *
-<a name="line586"></a>     * @throws \PHPCR\RepositoryException if another error occurs
-<a name="line587"></a>     * @api
-<a name="line588"></a>     */</span>
-<a name="line589"></a>    <span style="color: #000000; font-weight: bold;">function</span> getBinary<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line590"></a>&nbsp;
-<a name="line591"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line592"></a>     * Returns an integer representation of the value of this property.
-<a name="line593"></a>     *
-<a name="line594"></a>     * @return integer An integer representation of the value of this property, or an array of integer for multi-valued
-<a name="line595"></a>     *                 properties.
-<a name="line596"></a>     *
-<a name="line597"></a>     * @throws \PHPCR\ValueFormatException if conversion to integer is not possible
-<a name="line598"></a>     * @throws \PHPCR\RepositoryException if another error occurs
-<a name="line599"></a>     * @api
-<a name="line600"></a>     */</span>
-<a name="line601"></a>    <span style="color: #000000; font-weight: bold;">function</span> getLong<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line602"></a>&nbsp;
-<a name="line603"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line604"></a>     * Returns a float representation of the value of this property.
-<a name="line605"></a>     *
-<a name="line606"></a>     * @return float A float representation of the value of this property, or an array of float for multi-valued properties.
-<a name="line607"></a>     *
-<a name="line608"></a>     * @throws \PHPCR\ValueFormatException if conversion to a double is not possible
-<a name="line609"></a>     * @throws \PHPCR\RepositoryException if another error occurs
-<a name="line610"></a>     * @api
-<a name="line611"></a>     */</span>
-<a name="line612"></a>    <span style="color: #000000; font-weight: bold;">function</span> getDouble<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line613"></a>&nbsp;
-<a name="line614"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line615"></a>     * Returns an arbitrary precision number (encoded as string) representation of this value (a BigDecimal in Java).
-<a name="line616"></a>     *
-<a name="line617"></a>     * The string must be encoded with the C locale because of http://bugs.php.net/bug.php?id=16532
-<a name="line618"></a>     *
-<a name="line619"></a>     * @return string A string representation of the value of this property, or an array of strings for multi-valued properties.
+<a name="line549"></a>     * &lt;strong&gt;PHPCR Note:&lt;/strong&gt; This is a new method not found in Java.
+<a name="line550"></a>     * In PHP appending to strings is easy and this is more convenient than
+<a name="line551"></a>     * getting the property and appending to the array and setting again.
+<a name="line552"></a>     *
+<a name="line553"></a>     * @param mixed value
+<a name="line554"></a>     * @throws \PHPCR\ValueFormatException if the property is not multi-value
+<a name="line555"></a>     */</span>
+<a name="line556"></a>    <span style="color: #000000; font-weight: bold;">function</span> addValue<span style="color: #009900;">&#40;</span><span style="color: #000088;">$value</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line557"></a>&nbsp;
+<a name="line558"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line559"></a>     * Get the value in format default for the PropertyType of this property.
+<a name="line560"></a>     *
+<a name="line561"></a>     * In case of a binary property, this is the stream of binary data.
+<a name="line562"></a>     *
+<a name="line563"></a>     * &lt;b&gt;PHPCR Note:&lt;/b&gt; We dropped the Value interface as its unnecessary
+<a name="line564"></a>     * with weak typing
+<a name="line565"></a>     *
+<a name="line566"></a>     * @return mixed value of this property, or array in case of multi-value
+<a name="line567"></a>     */</span>
+<a name="line568"></a>    <span style="color: #000000; font-weight: bold;">function</span> getValue<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line569"></a>&nbsp;
+<a name="line570"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line571"></a>     * Returns a String representation of the value of this property.
+<a name="line572"></a>     *
+<a name="line573"></a>     * @return string A string representation of the value of this property, or an array of string for multi-valued
+<a name="line574"></a>     *                properties.
+<a name="line575"></a>     *
+<a name="line576"></a>     * @throws \PHPCR\ValueFormatException if conversion to a String is not possible
+<a name="line577"></a>     * @throws \PHPCR\RepositoryException if another error occurs.
+<a name="line578"></a>     * @api
+<a name="line579"></a>     */</span>
+<a name="line580"></a>    <span style="color: #000000; font-weight: bold;">function</span> getString<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line581"></a>&nbsp;
+<a name="line582"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line583"></a>     * Returns a Binary representation of the value of this property.
+<a name="line584"></a>     *
+<a name="line585"></a>     * The Binary object in turn provides methods to access the binary data
+<a name="line586"></a>     * itself. Uses the standard conversion to binary (see JCR specification).
+<a name="line587"></a>     *
+<a name="line588"></a>     * @return resource A stream resource if the underlying binary
+<a name="line589"></a>     *
+<a name="line590"></a>     * @throws \PHPCR\RepositoryException if another error occurs
+<a name="line591"></a>     * @api
+<a name="line592"></a>     */</span>
+<a name="line593"></a>    <span style="color: #000000; font-weight: bold;">function</span> getBinary<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line594"></a>&nbsp;
+<a name="line595"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line596"></a>     * Returns an integer representation of the value of this property.
+<a name="line597"></a>     *
+<a name="line598"></a>     * @return integer An integer representation of the value of this property, or an array of integer for multi-valued
+<a name="line599"></a>     *                 properties.
+<a name="line600"></a>     *
+<a name="line601"></a>     * @throws \PHPCR\ValueFormatException if conversion to integer is not possible
+<a name="line602"></a>     * @throws \PHPCR\RepositoryException if another error occurs
+<a name="line603"></a>     * @api
+<a name="line604"></a>     */</span>
+<a name="line605"></a>    <span style="color: #000000; font-weight: bold;">function</span> getLong<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line606"></a>&nbsp;
+<a name="line607"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line608"></a>     * Returns a float representation of the value of this property.
+<a name="line609"></a>     *
+<a name="line610"></a>     * @return float A float representation of the value of this property, or an array of float for multi-valued properties.
+<a name="line611"></a>     *
+<a name="line612"></a>     * @throws \PHPCR\ValueFormatException if conversion to a double is not possible
+<a name="line613"></a>     * @throws \PHPCR\RepositoryException if another error occurs
+<a name="line614"></a>     * @api
+<a name="line615"></a>     */</span>
+<a name="line616"></a>    <span style="color: #000000; font-weight: bold;">function</span> getDouble<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line617"></a>&nbsp;
+<a name="line618"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line619"></a>     * Returns an arbitrary precision number (encoded as string) representation of this value (a BigDecimal in Java).
 <a name="line620"></a>     *
-<a name="line621"></a>     * @throws \PHPCR\ValueFormatException if conversion to a number string is not possible
-<a name="line622"></a>     * @throws \PHPCR\RepositoryException if another error occurs
-<a name="line623"></a>     * @api
-<a name="line624"></a>     */</span>
-<a name="line625"></a>    <span style="color: #000000; font-weight: bold;">function</span> getDecimal<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line626"></a>&nbsp;
-<a name="line627"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line628"></a>     * Returns a \DateTime representation of the value of this property.
-<a name="line629"></a>     *
-<a name="line630"></a>     * The object returned is a copy of the stored value, so changes to it are
-<a name="line631"></a>     * not reflected in internal storage.
-<a name="line632"></a>     *
-<a name="line633"></a>     * @return \DateTime A date representation of the value of this property, or an array of DateTime for
-<a name="line634"></a>     *                   multi-valued properties.
-<a name="line635"></a>     *
-<a name="line636"></a>     * @throws \PHPCR\ValueFormatException if conversion to \DateTime is not possible
-<a name="line637"></a>     * @throws \PHPCR\RepositoryException if another error occurs
-<a name="line638"></a>     * @api
-<a name="line639"></a>     */</span>
-<a name="line640"></a>    <span style="color: #000000; font-weight: bold;">function</span> <a href="http://www.php.net/getdate"><span style="color: #990000;">getDate</span></a><span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line641"></a>&nbsp;
-<a name="line642"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line643"></a>     * Returns a boolean representation of the value of this property.
-<a name="line644"></a>     *
-<a name="line645"></a>     * As usual in PHP, everything that is not null, 0, or boolean false is
-<a name="line646"></a>     * considered true. Note that this might be different in Java:
-<a name="line647"></a>     * Jackrabbit uses java.lang.Boolean.valueOf(String) which evaluates to
-<a name="line648"></a>     * true only for the string &quot;true&quot; (case insensitive). In PHP, even the
-<a name="line649"></a>     * string 'false' will evaluate to true.
-<a name="line650"></a>     *
-<a name="line651"></a>     * @return boolean A boolean representation of the value of this property, or an array of boolean for
-<a name="line652"></a>     *                 multi-valued properties.
-<a name="line653"></a>     *
-<a name="line654"></a>     * @throws \PHPCR\ValueFormatException if conversion to a boolean is not possible
-<a name="line655"></a>     * @throws \PHPCR\RepositoryException if another error occurs
-<a name="line656"></a>     * @api
-<a name="line657"></a>     */</span>
-<a name="line658"></a>    <span style="color: #000000; font-weight: bold;">function</span> getBoolean<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line659"></a>&nbsp;
-<a name="line660"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line661"></a>     * Gets the node the property refers to by its type.
-<a name="line662"></a>     *
-<a name="line663"></a>     * If this property is of type REFERENCE, WEAKREFERENCE or PATH (or
-<a name="line664"></a>     * convertible to one of these types) this method returns the Node to
-<a name="line665"></a>     * which this property refers.
-<a name="line666"></a>     * If this property is of type PATH and it contains a relative path, it is
-<a name="line667"></a>     * interpreted relative to the parent node of this property. For example &quot;.&quot;
-<a name="line668"></a>     * refers to the parent node itself, &quot;..&quot; to the parent of the parent node
-<a name="line669"></a>     * and &quot;foo&quot; to a sibling node of this property.
-<a name="line670"></a>     *
-<a name="line671"></a>     * If you do not want to dereference the nodes yet, you can use getString
-<a name="line672"></a>     * to get the unique ids and use the SessionInterface::getNodeByIdentifier
-<a name="line673"></a>     * as all referenced nodes are referenciable and thus must have a uuid.
-<a name="line674"></a>     * If its a PATH property, you will need the node of this property and use
-<a name="line675"></a>     * getNodes to get the nodes with relative or absolute path.
-<a name="line676"></a>     *
-<a name="line677"></a>     * @return \PHPCR\NodeInterface the referenced Node, or an array of Nodes for multi-valued properties.
-<a name="line678"></a>     *
-<a name="line679"></a>     * @throws \PHPCR\ValueFormatException if this property cannot be converted to a referring type
-<a name="line680"></a>     *                                     (REFERENCE, WEAKREFERENCE or PATH) or if this property is a referring
-<a name="line681"></a>     *                                     type but is currently part of the frozen state of a version in version
-<a name="line682"></a>     *                                     storage.
-<a name="line683"></a>     * @throws \PHPCR\ItemNotFoundException If this property is of type PATH or WEAKREFERENCE and no target node
-<a name="line684"></a>     *                                      accessible by the current Session exists in this workspace. Note that this
-<a name="line685"></a>     *                                      applies even if the property is a PATH and a property exists at the
-<a name="line686"></a>     *                                      specified location. To dereference to a target property (as opposed to a
-<a name="line687"></a>     *                                      target node), the method Property.getProperty is used.
-<a name="line688"></a>     * @throws \PHPCR\RepositoryException if another error occurs.
-<a name="line689"></a>     * @api
-<a name="line690"></a>     */</span>
-<a name="line691"></a>    <span style="color: #000000; font-weight: bold;">function</span> getNode<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line692"></a>&nbsp;
-<a name="line693"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line694"></a>     * Gets the property the property refers to by its type.
-<a name="line695"></a>     *
-<a name="line696"></a>     * If this property is of type PATH (or convertible to this type) this
-<a name="line697"></a>     * method returns the Property to which this property refers.
-<a name="line698"></a>     * If this property contains a relative path, it is interpreted relative
-<a name="line699"></a>     * to the parent node of this property. Therefore, when resolving such a
-<a name="line700"></a>     * relative path, the segment &quot;.&quot; refers to the parent node itself, &quot;..&quot; to
-<a name="line701"></a>     * the parent of the parent node and &quot;foo&quot; to a sibling property of this
-<a name="line702"></a>     * property or this property itself.
-<a name="line703"></a>     *
-<a name="line704"></a>     * For example, if this property is located at /a/b/c and it has a value of
-<a name="line705"></a>     * &quot;../d&quot; then this method will return the property at /a/d if such exists.
-<a name="line706"></a>     *
-<a name="line707"></a>     * @return \PHPCR\PropertyInterface the referenced property, or an array of properties for multi-valued properties.
-<a name="line708"></a>     *
-<a name="line709"></a>     * @throws \PHPCR\ValueFormatException if this property cannot be converted to a PATH or if this property is a
-<a name="line710"></a>     *                                     referring type but is currently part of the frozen state of a version in
-<a name="line711"></a>     *                                     version storage.
-<a name="line712"></a>     * @throws \PHPCR\ItemNotFoundException If no property accessible by the current Session exists in this workspace
-<a name="line713"></a>     *                                      at the specified path. Note that this applies even if a node exists at
-<a name="line714"></a>     *                                      the specified location. To dereference to a target node, the method
-<a name="line715"></a>     *                                      Property.getNode is used.
-<a name="line716"></a>     * @throws \PHPCR\RepositoryException if another error occurs
-<a name="line717"></a>     * @api
-<a name="line718"></a>     */</span>
-<a name="line719"></a>    <span style="color: #000000; font-weight: bold;">function</span> getProperty<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line720"></a>&nbsp;
-<a name="line721"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line722"></a>     * Returns the length(s) of the value(s) of this property.
-<a name="line723"></a>     *
-<a name="line724"></a>     * For a BINARY property, getLength returns the number of bytes.
-<a name="line725"></a>     * For other property types, getLength returns the same value that would be
-<a name="line726"></a>     * returned by calling strlen() on the value when it has been converted to a
-<a name="line727"></a>     * STRING according to standard JCR propety type conversion.
-<a name="line728"></a>     *
-<a name="line729"></a>     * Returns -1 if the implementation cannot determine the length.
-<a name="line730"></a>     *
-<a name="line731"></a>     * For multivalue properties, the same rules apply, but returns an array of lengths
-<a name="line732"></a>     * with the same order as the values have in getValue
-<a name="line733"></a>     *
-<a name="line734"></a>     * @return mixed integer with the length, for multivalue property array of lengths
-<a name="line735"></a>     *
-<a name="line736"></a>     * @return integer an integer.
-<a name="line737"></a>     * @throws \PHPCR\RepositoryException if another error occurs.
-<a name="line738"></a>     * @api
-<a name="line739"></a>     */</span>
-<a name="line740"></a>    <span style="color: #000000; font-weight: bold;">function</span> getLength<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line741"></a>&nbsp;
-<a name="line742"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line743"></a>     * Returns the property definition that applies to this property. In some
-<a name="line744"></a>     * cases there may appear to be more than one definition that could apply
-<a name="line745"></a>     * to this node. However, it is assumed that upon creation or change of
-<a name="line746"></a>     * this property, a single particular definition is chosen by the
-<a name="line747"></a>     * implementation. It is that definition that this method returns. How this
-<a name="line748"></a>     * governing definition is selected upon property creation or change from
-<a name="line749"></a>     * among others which may have been applicable is an implementation issue
-<a name="line750"></a>     * and is not covered by this specification.
-<a name="line751"></a>     *
-<a name="line752"></a>     * @return \PHPCR\NodeType\PropertyDefinitionInterface a PropertyDefinition object.
-<a name="line753"></a>     *
-<a name="line754"></a>     * @throws \PHPCR\RepositoryException if an error occurs.
-<a name="line755"></a>     * @api
-<a name="line756"></a>     */</span>
-<a name="line757"></a>    <span style="color: #000000; font-weight: bold;">function</span> getDefinition<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line758"></a>&nbsp;
-<a name="line759"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line760"></a>     * Returns the type of this Property.
-<a name="line761"></a>     *
-<a name="line762"></a>     * Following property types are available:
-<a name="line763"></a>     * - PropertyType.STRING
-<a name="line764"></a>     * - PropertyType.BINARY
-<a name="line765"></a>     * - PropertyType.DATE
-<a name="line766"></a>     * - PropertyType.DOUBLE
-<a name="line767"></a>     * - PropertyType.LONG
-<a name="line768"></a>     * - PropertyType.BOOLEAN
-<a name="line769"></a>     * - PropertyType.NAME
-<a name="line770"></a>     * - PropertyType.PATH
-<a name="line771"></a>     * - PropertyType.REFERENCE
-<a name="line772"></a>     * - PropertyType.WEAKREFERENCE
-<a name="line773"></a>     * - PropertyType.URI
-<a name="line774"></a>     *
-<a name="line775"></a>     * The type returned is that which was set at property creation. Note that
-<a name="line776"></a>     * for some property p, the type returned by p.getType() will differ from
-<a name="line777"></a>     * the type returned by p.getDefinition.getRequiredType() only in the case
-<a name="line778"></a>     * where the latter returns UNDEFINED. The type of a property instance is
-<a name="line779"></a>     * never UNDEFINED (it must always have some actual type).
-<a name="line780"></a>     *
-<a name="line781"></a>     * @return integer The numerical representation of a property type.
-<a name="line782"></a>     *
-<a name="line783"></a>     * @throws \PHPCR\RepositoryException if an error occurs
-<a name="line784"></a>     * @api
-<a name="line785"></a>     */</span>
-<a name="line786"></a>    <span style="color: #000000; font-weight: bold;">function</span> <a href="http://www.php.net/gettype"><span style="color: #990000;">getType</span></a><span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line787"></a>&nbsp;
-<a name="line788"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line789"></a>     * Determines if the current property is multi-valued.
-<a name="line790"></a>     *
-<a name="line791"></a>     * Returns true if this property is multi-valued and false if this property
-<a name="line792"></a>     * is single-valued.
-<a name="line793"></a>     *
-<a name="line794"></a>     * @return boolean true if this property is multi-valued; false otherwise.
-<a name="line795"></a>     *
-<a name="line796"></a>     * @throws \PHPCR\RepositoryException if an error occurs.
-<a name="line797"></a>     * @api
-<a name="line798"></a>     */</span>
-<a name="line799"></a>    <span style="color: #000000; font-weight: bold;">function</span> isMultiple<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line800"></a><span style="color: #009900;">&#125;</span>
-<a name="line801"></a>&nbsp;</pre>
+<a name="line621"></a>     * The string must be encoded with the C locale because of http://bugs.php.net/bug.php?id=16532
+<a name="line622"></a>     *
+<a name="line623"></a>     * @return string A string representation of the value of this property, or an array of strings for multi-valued properties.
+<a name="line624"></a>     *
+<a name="line625"></a>     * @throws \PHPCR\ValueFormatException if conversion to a number string is not possible
+<a name="line626"></a>     * @throws \PHPCR\RepositoryException if another error occurs
+<a name="line627"></a>     * @api
+<a name="line628"></a>     */</span>
+<a name="line629"></a>    <span style="color: #000000; font-weight: bold;">function</span> getDecimal<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line630"></a>&nbsp;
+<a name="line631"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line632"></a>     * Returns a \DateTime representation of the value of this property.
+<a name="line633"></a>     *
+<a name="line634"></a>     * The object returned is a copy of the stored value, so changes to it are
+<a name="line635"></a>     * not reflected in internal storage.
+<a name="line636"></a>     *
+<a name="line637"></a>     * @return \DateTime A date representation of the value of this property, or an array of DateTime for
+<a name="line638"></a>     *                   multi-valued properties.
+<a name="line639"></a>     *
+<a name="line640"></a>     * @throws \PHPCR\ValueFormatException if conversion to \DateTime is not possible
+<a name="line641"></a>     * @throws \PHPCR\RepositoryException if another error occurs
+<a name="line642"></a>     * @api
+<a name="line643"></a>     */</span>
+<a name="line644"></a>    <span style="color: #000000; font-weight: bold;">function</span> <a href="http://www.php.net/getdate"><span style="color: #990000;">getDate</span></a><span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line645"></a>&nbsp;
+<a name="line646"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line647"></a>     * Returns a boolean representation of the value of this property.
+<a name="line648"></a>     *
+<a name="line649"></a>     * As usual in PHP, everything that is not null, 0, or boolean false is
+<a name="line650"></a>     * considered true. Note that this might be different in Java:
+<a name="line651"></a>     * Jackrabbit uses java.lang.Boolean.valueOf(String) which evaluates to
+<a name="line652"></a>     * true only for the string &quot;true&quot; (case insensitive). In PHP, even the
+<a name="line653"></a>     * string 'false' will evaluate to true.
+<a name="line654"></a>     *
+<a name="line655"></a>     * @return boolean A boolean representation of the value of this property, or an array of boolean for
+<a name="line656"></a>     *                 multi-valued properties.
+<a name="line657"></a>     *
+<a name="line658"></a>     * @throws \PHPCR\ValueFormatException if conversion to a boolean is not possible
+<a name="line659"></a>     * @throws \PHPCR\RepositoryException if another error occurs
+<a name="line660"></a>     * @api
+<a name="line661"></a>     */</span>
+<a name="line662"></a>    <span style="color: #000000; font-weight: bold;">function</span> getBoolean<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line663"></a>&nbsp;
+<a name="line664"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line665"></a>     * Gets the node the property refers to by its type.
+<a name="line666"></a>     *
+<a name="line667"></a>     * If this property is of type REFERENCE, WEAKREFERENCE or PATH (or
+<a name="line668"></a>     * convertible to one of these types) this method returns the Node to
+<a name="line669"></a>     * which this property refers.
+<a name="line670"></a>     * If this property is of type PATH and it contains a relative path, it is
+<a name="line671"></a>     * interpreted relative to the parent node of this property. For example &quot;.&quot;
+<a name="line672"></a>     * refers to the parent node itself, &quot;..&quot; to the parent of the parent node
+<a name="line673"></a>     * and &quot;foo&quot; to a sibling node of this property.
+<a name="line674"></a>     *
+<a name="line675"></a>     * If you do not want to dereference the nodes yet, you can use getString
+<a name="line676"></a>     * to get the unique ids and use the SessionInterface::getNodeByIdentifier
+<a name="line677"></a>     * as all referenced nodes are referenciable and thus must have a uuid.
+<a name="line678"></a>     * If its a PATH property, you will need the node of this property and use
+<a name="line679"></a>     * getNodes to get the nodes with relative or absolute path.
+<a name="line680"></a>     *
+<a name="line681"></a>     * @return \PHPCR\NodeInterface the referenced Node, or an array of Nodes for multi-valued properties.
+<a name="line682"></a>     *
+<a name="line683"></a>     * @throws \PHPCR\ValueFormatException if this property cannot be converted to a referring type
+<a name="line684"></a>     *                                     (REFERENCE, WEAKREFERENCE or PATH) or if this property is a referring
+<a name="line685"></a>     *                                     type but is currently part of the frozen state of a version in version
+<a name="line686"></a>     *                                     storage.
+<a name="line687"></a>     * @throws \PHPCR\ItemNotFoundException If this property is of type PATH or WEAKREFERENCE and no target node
+<a name="line688"></a>     *                                      accessible by the current Session exists in this workspace. Note that this
+<a name="line689"></a>     *                                      applies even if the property is a PATH and a property exists at the
+<a name="line690"></a>     *                                      specified location. To dereference to a target property (as opposed to a
+<a name="line691"></a>     *                                      target node), the method Property.getProperty is used.
+<a name="line692"></a>     * @throws \PHPCR\RepositoryException if another error occurs.
+<a name="line693"></a>     * @api
+<a name="line694"></a>     */</span>
+<a name="line695"></a>    <span style="color: #000000; font-weight: bold;">function</span> getNode<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line696"></a>&nbsp;
+<a name="line697"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line698"></a>     * Gets the property the property refers to by its type.
+<a name="line699"></a>     *
+<a name="line700"></a>     * If this property is of type PATH (or convertible to this type) this
+<a name="line701"></a>     * method returns the Property to which this property refers.
+<a name="line702"></a>     * If this property contains a relative path, it is interpreted relative
+<a name="line703"></a>     * to the parent node of this property. Therefore, when resolving such a
+<a name="line704"></a>     * relative path, the segment &quot;.&quot; refers to the parent node itself, &quot;..&quot; to
+<a name="line705"></a>     * the parent of the parent node and &quot;foo&quot; to a sibling property of this
+<a name="line706"></a>     * property or this property itself.
+<a name="line707"></a>     *
+<a name="line708"></a>     * For example, if this property is located at /a/b/c and it has a value of
+<a name="line709"></a>     * &quot;../d&quot; then this method will return the property at /a/d if such exists.
+<a name="line710"></a>     *
+<a name="line711"></a>     * @return \PHPCR\PropertyInterface the referenced property, or an array of properties for multi-valued properties.
+<a name="line712"></a>     *
+<a name="line713"></a>     * @throws \PHPCR\ValueFormatException if this property cannot be converted to a PATH or if this property is a
+<a name="line714"></a>     *                                     referring type but is currently part of the frozen state of a version in
+<a name="line715"></a>     *                                     version storage.
+<a name="line716"></a>     * @throws \PHPCR\ItemNotFoundException If no property accessible by the current Session exists in this workspace
+<a name="line717"></a>     *                                      at the specified path. Note that this applies even if a node exists at
+<a name="line718"></a>     *                                      the specified location. To dereference to a target node, the method
+<a name="line719"></a>     *                                      Property.getNode is used.
+<a name="line720"></a>     * @throws \PHPCR\RepositoryException if another error occurs
+<a name="line721"></a>     * @api
+<a name="line722"></a>     */</span>
+<a name="line723"></a>    <span style="color: #000000; font-weight: bold;">function</span> getProperty<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line724"></a>&nbsp;
+<a name="line725"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line726"></a>     * Returns the length(s) of the value(s) of this property.
+<a name="line727"></a>     *
+<a name="line728"></a>     * For a BINARY property, getLength returns the number of bytes.
+<a name="line729"></a>     * For other property types, getLength returns the same value that would be
+<a name="line730"></a>     * returned by calling strlen() on the value when it has been converted to a
+<a name="line731"></a>     * STRING according to standard JCR propety type conversion.
+<a name="line732"></a>     *
+<a name="line733"></a>     * Returns -1 if the implementation cannot determine the length.
+<a name="line734"></a>     *
+<a name="line735"></a>     * For multivalue properties, the same rules apply, but returns an array of lengths
+<a name="line736"></a>     * with the same order as the values have in getValue
+<a name="line737"></a>     *
+<a name="line738"></a>     * @return mixed integer with the length, for multivalue property array of lengths
+<a name="line739"></a>     *
+<a name="line740"></a>     * @return integer an integer.
+<a name="line741"></a>     * @throws \PHPCR\RepositoryException if another error occurs.
+<a name="line742"></a>     * @api
+<a name="line743"></a>     */</span>
+<a name="line744"></a>    <span style="color: #000000; font-weight: bold;">function</span> getLength<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line745"></a>&nbsp;
+<a name="line746"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line747"></a>     * Returns the property definition that applies to this property. In some
+<a name="line748"></a>     * cases there may appear to be more than one definition that could apply
+<a name="line749"></a>     * to this node. However, it is assumed that upon creation or change of
+<a name="line750"></a>     * this property, a single particular definition is chosen by the
+<a name="line751"></a>     * implementation. It is that definition that this method returns. How this
+<a name="line752"></a>     * governing definition is selected upon property creation or change from
+<a name="line753"></a>     * among others which may have been applicable is an implementation issue
+<a name="line754"></a>     * and is not covered by this specification.
+<a name="line755"></a>     *
+<a name="line756"></a>     * @return \PHPCR\NodeType\PropertyDefinitionInterface a PropertyDefinition object.
+<a name="line757"></a>     *
+<a name="line758"></a>     * @throws \PHPCR\RepositoryException if an error occurs.
+<a name="line759"></a>     * @api
+<a name="line760"></a>     */</span>
+<a name="line761"></a>    <span style="color: #000000; font-weight: bold;">function</span> getDefinition<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line762"></a>&nbsp;
+<a name="line763"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line764"></a>     * Returns the type of this Property.
+<a name="line765"></a>     *
+<a name="line766"></a>     * Following property types are available:
+<a name="line767"></a>     * - PropertyType.STRING
+<a name="line768"></a>     * - PropertyType.BINARY
+<a name="line769"></a>     * - PropertyType.DATE
+<a name="line770"></a>     * - PropertyType.DOUBLE
+<a name="line771"></a>     * - PropertyType.LONG
+<a name="line772"></a>     * - PropertyType.BOOLEAN
+<a name="line773"></a>     * - PropertyType.NAME
+<a name="line774"></a>     * - PropertyType.PATH
+<a name="line775"></a>     * - PropertyType.REFERENCE
+<a name="line776"></a>     * - PropertyType.WEAKREFERENCE
+<a name="line777"></a>     * - PropertyType.URI
+<a name="line778"></a>     *
+<a name="line779"></a>     * The type returned is that which was set at property creation. Note that
+<a name="line780"></a>     * for some property p, the type returned by p.getType() will differ from
+<a name="line781"></a>     * the type returned by p.getDefinition.getRequiredType() only in the case
+<a name="line782"></a>     * where the latter returns UNDEFINED. The type of a property instance is
+<a name="line783"></a>     * never UNDEFINED (it must always have some actual type).
+<a name="line784"></a>     *
+<a name="line785"></a>     * @return integer The numerical representation of a property type.
+<a name="line786"></a>     *
+<a name="line787"></a>     * @throws \PHPCR\RepositoryException if an error occurs
+<a name="line788"></a>     * @api
+<a name="line789"></a>     */</span>
+<a name="line790"></a>    <span style="color: #000000; font-weight: bold;">function</span> <a href="http://www.php.net/gettype"><span style="color: #990000;">getType</span></a><span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line791"></a>&nbsp;
+<a name="line792"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line793"></a>     * Determines if the current property is multi-valued.
+<a name="line794"></a>     *
+<a name="line795"></a>     * Returns true if this property is multi-valued and false if this property
+<a name="line796"></a>     * is single-valued.
+<a name="line797"></a>     *
+<a name="line798"></a>     * @return boolean true if this property is multi-valued; false otherwise.
+<a name="line799"></a>     *
+<a name="line800"></a>     * @throws \PHPCR\RepositoryException if an error occurs.
+<a name="line801"></a>     * @api
+<a name="line802"></a>     */</span>
+<a name="line803"></a>    <span style="color: #000000; font-weight: bold;">function</span> isMultiple<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line804"></a><span style="color: #009900;">&#125;</span>
+<a name="line805"></a>&nbsp;</pre>
 <div class="header">
 <h1>PHPCR</h1>
 <ul>

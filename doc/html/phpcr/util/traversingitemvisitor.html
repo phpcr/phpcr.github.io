@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="generator" content="PHPDoctor 2RC4 (http://peej.github.com/phpdoctor/)">
-<meta name="when" content="Mon, 30 May 2011 13:13:11 +0000">
+<meta name="when" content="Thu, 16 Jun 2011 13:02:38 +0000">
 
 <link rel="stylesheet" type="text/css" href="../../stylesheet.css">
 <link rel="start" href="../../overview-summary.html">
@@ -88,6 +88,11 @@ such an order is supported and exists.</p></div>
 <td class="type">protected abstract  void</td>
 <td class="description"><p class="name"><a href="#leaving()">leaving</a>(<a href="../../phpcr/iteminterface.html">ItemInterface</a> item, integer depth)</p><p class="description">Implement this method to add behavior performed after a Property is visited.</p></td>
 </tr>
+<tr>
+<td class="type"> void</td>
+<td class="description"><p class="name"><a href="#visit()">visit</a>(<a href="../../phpcr/iteminterface.html">ItemInterface</a> item)</p><p class="description">Called when the Visitor is passed to an Item.
+</p></td>
+</tr>
 </table>
 
 <h2 id="detail_method">Method Detail</h2>
@@ -132,6 +137,25 @@ such an order is supported and exists.</p></div>
 <dt>Parameters:</dt>
 <dd>item - the Item that is accepting this visitor.</dd>
 <dd>depth - hierarchy level of this property (the root node starts at depth 0).</dd>
+<dt>Throws:</dt>
+<dd><a href="../../phpcr/repositoryexception.html">\PHPCR\RepositoryException</a> - if an error occurs.</dd>
+<dt>Api.</dt>
+</dl>
+</div>
+
+<hr>
+
+<a href="../../source/phpcr/util/traversingitemvisitor.php.html#line144" class="location">PHPCR/Util/TraversingItemVisitor.php at line 144</a>
+
+<h3 id="visit()">visit</h3>
+<code class="signature">public  void <strong>visit</strong>(<a href="../../phpcr/iteminterface.html">ItemInterface</a> item)</code>
+<div class="details">
+<p>Called when the Visitor is passed to an Item.</p><p>It calls TraversingItemVisitor.entering(ItemInterface, int) followed by
+TraversingItemVisitor.leaving(ItemInterface, int). Implement these
+abstract methods to specify behavior on 'arrival at' and 'after leaving'
+the $item.</p><p>If this method throws, the visiting process is aborted.</p><dl>
+<dt>Parameters:</dt>
+<dd>item - the Node or Property that is accepting this visitor.</dd>
 <dt>Throws:</dt>
 <dd><a href="../../phpcr/repositoryexception.html">\PHPCR\RepositoryException</a> - if an error occurs.</dd>
 <dt>Api.</dt>

@@ -1,0 +1,578 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+
+<html lang="en">
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="generator" content="PHPDoctor 2RC4 (http://peej.github.com/phpdoctor/)">
+<meta name="when" content="Thu, 16 Jun 2011 13:02:38 +0000">
+
+<link rel="stylesheet" type="text/css" href="../../../stylesheet.css">
+<link rel="start" href="../../../overview-summary.html">
+
+<title>Sql2ToQomQueryConverter (PHPCR API)</title>
+
+</head>
+<body id="definition" onload="parent.document.title=document.title;">
+
+<div class="header">
+<h1>PHPCR</h1>
+<ul>
+<li><a href="../../../overview-summary.html">Overview</a></li>
+<li><a href="../../../phpcr/util/qom/package-summary.html">Namespace</a></li>
+<li class="active">Class</li>
+<li><a href="../../../phpcr/util/qom/package-tree.html">Tree</a></li>
+<li><a href="../../../overview-files.html">Files</a></li>
+<li><a href="../../../deprecated-list.html">Deprecated</a></li>
+<li><a href="../../../todo-list.html">Todo</a></li>
+<li><a href="../../../index-all.html">Index</a></li>
+</ul>
+</div>
+
+<div class="small_links">
+<a href="../../../index.html" target="_top">Frames</a>
+<a href="../../../phpcr/util/qom/sql2toqomqueryconverter.html" target="_top">No frames</a>
+</div>
+<div class="small_links">
+Summary: <a href="#summary_field">Field</a> | <a href="#summary_method">Method</a> | <a href="#summary_constr">Constr</a>
+Detail: <a href="#detail_field">Field</a> | <a href="#detail_method">Method</a> | <a href="#summary_constr">Constr</a>
+</div>
+<hr>
+
+<div class="qualifiedName">PHPCR\Util\QOM\Sql2ToQomQueryConverter</div>
+<a href="../../../source/phpcr/util/qom/sql2toqomqueryconverter.php.html#line13" class="location">PHPCR/Util/QOM/Sql2ToQomQueryConverter.php at line 13</a>
+
+<h1>Class Sql2ToQomQueryConverter</h1>
+
+<pre class="tree"><strong>Sql2ToQomQueryConverter</strong><br /></pre>
+
+<hr>
+
+<p class="signature">public  class <strong>Sql2ToQomQueryConverter</strong></p>
+
+<div class="comment" id="overview_description"><p>Parse SQL2 statements and output a corresponding QOM objects tree</p><p>TODO: finish implementation</p></div>
+
+<hr>
+
+<table id="summary_method">
+<tr><th colspan="2">Method Summary</th></tr>
+<tr>
+<td class="type"> void</td>
+<td class="description"><p class="name"><a href="#__construct()">__construct</a>(<a href="../../../phpcr/query/qom/queryobjectmodelfactoryinterface.html">QueryObjectModelFactoryInterface</a> factory)</p></td>
+</tr>
+<tr>
+<td class="type"> \PHPCR\Query\QOM\QueryObjectModelInterface;</td>
+<td class="description"><p class="name"><a href="#parse()">parse</a>(string sql2)</p><p class="description">6.7.1. </p></td>
+</tr>
+<tr>
+<td class="type">protected  <a href="../../../phpcr/query/qom/andinterface.html">AndInterface</a></td>
+<td class="description"><p class="name"><a href="#parseAnd()">parseAnd</a>()</p><p class="description">6.7.13 And</p></td>
+</tr>
+<tr>
+<td class="type">protected  \PHPCR\Query\QOM\BindVariableInterface</td>
+<td class="description"><p class="name"><a href="#parseBindVariable()">parseBindVariable</a>()</p><p class="description">6.7.35 BindVariable
+6.7.36 Prefix
+Parse an SQL2 bind variable</p></td>
+</tr>
+<tr>
+<td class="type">protected  void</td>
+<td class="description"><p class="name"><a href="#parseChildNode()">parseChildNode</a>()</p><p class="description">6.7.21 ChildNode</p></td>
+</tr>
+<tr>
+<td class="type">protected  <a href="../../../phpcr/query/qom/childnodejoinconditioninterface.html">ChildNodeJoinConditionInterface</a></td>
+<td class="description"><p class="name"><a href="#parseChildNodeJoinCondition()">parseChildNodeJoinCondition</a>()</p><p class="description">6.7.10 ChildNodeJoinCondition
+Parse an SQL2 child node join condition and return a QOM\ChildNodeJoinCondition</p></td>
+</tr>
+<tr>
+<td class="type">protected  <a href="../../../phpcr/query/qom/columninterface.html">ColumnInterface</a></td>
+<td class="description"><p class="name"><a href="#parseColumn()">parseColumn</a>()</p><p class="description">Parse a single SQL2 column definition and return a QOM\Column</p></td>
+</tr>
+<tr>
+<td class="type">protected  array</td>
+<td class="description"><p class="name"><a href="#parseColumns()">parseColumns</a>()</p><p class="description">6.7.39 Column
+Parse an SQL2 columns definition and return an array of QOM\Column</p></td>
+</tr>
+<tr>
+<td class="type">protected  <a href="../../../phpcr/query/qom/comparisoninterface.html">ComparisonInterface</a></td>
+<td class="description"><p class="name"><a href="#parseComparison()">parseComparison</a>()</p><p class="description">6.7.16 Comparison</p></td>
+</tr>
+<tr>
+<td class="type">protected  <a href="../../../phpcr/query/qom/constraintinterface.html">ConstraintInterface</a></td>
+<td class="description"><p class="name"><a href="#parseConstraint()">parseConstraint</a>()</p><p class="description">6.7.12 Constraint</p></td>
+</tr>
+<tr>
+<td class="type">protected  void</td>
+<td class="description"><p class="name"><a href="#parseDescendantNode()">parseDescendantNode</a>()</p><p class="description">6.7.22 DescendantNode</p></td>
+</tr>
+<tr>
+<td class="type">protected  <a href="../../../phpcr/query/qom/descendantnodejoinconditioninterface.html">DescendantNodeJoinConditionInterface</a></td>
+<td class="description"><p class="name"><a href="#parseDescendantNodeJoinCondition()">parseDescendantNodeJoinCondition</a>()</p><p class="description">6.7.11 DescendantNodeJoinCondition
+Parse an SQL2 descendant node join condition and return a QOM\DescendantNodeJoinCondition</p></td>
+</tr>
+<tr>
+<td class="type">protected  <a href="../../../phpcr/query/qom/dynamicoperandinterface.html">DynamicOperandInterface</a></td>
+<td class="description"><p class="name"><a href="#parseDynamicOperand()">parseDynamicOperand</a>()</p><p class="description">6.7.26 DynamicOperand
+6.7.28 Length
+6.7.29 NodeName
+6.7.30 NodeLocalName
+6.7.31 FullTextSearchScore
+6.7.32 LowerCase
+6.7.33 UpperCase
+Parse an SQL2 dynamic operand</p></td>
+</tr>
+<tr>
+<td class="type">protected  <a href="../../../phpcr/query/qom/equijoinconditioninterface.html">EquiJoinConditionInterface</a></td>
+<td class="description"><p class="name"><a href="#parseEquiJoin()">parseEquiJoin</a>()</p><p class="description">6.7.8. </p></td>
+</tr>
+<tr>
+<td class="type">protected  <a href="../../../phpcr/query/qom/fulltextsearchinterface.html">FullTextSearchInterface</a></td>
+<td class="description"><p class="name"><a href="#parseFullTextSearch()">parseFullTextSearch</a>()</p><p class="description">6.7.19 FullTextSearch</p></td>
+</tr>
+<tr>
+<td class="type">protected  void</td>
+<td class="description"><p class="name"><a href="#parseJoin()">parseJoin</a>(string leftSelector)</p><p class="description">6.7.5. </p></td>
+</tr>
+<tr>
+<td class="type">protected  <a href="../../../phpcr/query/qom/joinconditioninterface.html">JoinConditionInterface</a></td>
+<td class="description"><p class="name"><a href="#parseJoinCondition()">parseJoinCondition</a>()</p><p class="description">6.7.7. </p></td>
+</tr>
+<tr>
+<td class="type">protected  string</td>
+<td class="description"><p class="name"><a href="#parseJoinType()">parseJoinType</a>()</p><p class="description">6.7.6. </p></td>
+</tr>
+<tr>
+<td class="type">protected  <a href="../../../phpcr/query/qom/literalinterface.html">LiteralInterface</a></td>
+<td class="description"><p class="name"><a href="#parseLiteral()">parseLiteral</a>()</p><p class="description">6.7.34 Literal
+Parse an SQL2 literal value</p></td>
+</tr>
+<tr>
+<td class="type">protected  string</td>
+<td class="description"><p class="name"><a href="#parseName()">parseName</a>()</p><p class="description">6.7.4. </p></td>
+</tr>
+<tr>
+<td class="type">protected  <a href="../../../phpcr/query/qom/notinterface.html">NotInterface</a></td>
+<td class="description"><p class="name"><a href="#parseNot()">parseNot</a>()</p><p class="description">6.7.15 Not</p></td>
+</tr>
+<tr>
+<td class="type">protected  void</td>
+<td class="description"><p class="name"><a href="#parseOperand()">parseOperand</a>()</p><p class="description">6.7.24 Operand</p></td>
+</tr>
+<tr>
+<td class="type">protected  \PHPCR\Query\QOM\OperatorInterface</td>
+<td class="description"><p class="name"><a href="#parseOperator()">parseOperator</a>()</p><p class="description">6.7.17 Operator</p></td>
+</tr>
+<tr>
+<td class="type">protected  <a href="../../../phpcr/query/qom/orinterface.html">OrInterface</a></td>
+<td class="description"><p class="name"><a href="#parseOr()">parseOr</a>()</p><p class="description">6.7.14 Or</p></td>
+</tr>
+<tr>
+<td class="type">protected  void</td>
+<td class="description"><p class="name"><a href="#parseOrdering()">parseOrdering</a>()</p><p class="description">6.7.38 Order</p></td>
+</tr>
+<tr>
+<td class="type">protected  void</td>
+<td class="description"><p class="name"><a href="#parseOrderings()">parseOrderings</a>()</p><p class="description">6.7.37 Ordering</p></td>
+</tr>
+<tr>
+<td class="type">protected  void</td>
+<td class="description"><p class="name"><a href="#parsePath()">parsePath</a>()</p><p class="description">6.7.23 Path</p></td>
+</tr>
+<tr>
+<td class="type">protected  <a href="../../../phpcr/query/qom/propertyexistenceinterface.html">PropertyExistenceInterface</a></td>
+<td class="description"><p class="name"><a href="#parsePropertyExistence()">parsePropertyExistence</a>()</p><p class="description">6.7.18 PropertyExistence</p></td>
+</tr>
+<tr>
+<td class="type">protected  <a href="../../../phpcr/query/qom/propertyvalueinterface.html">PropertyValueInterface</a></td>
+<td class="description"><p class="name"><a href="#parsePropertyValue()">parsePropertyValue</a>()</p><p class="description">6.7.27 PropertyValue
+Parse an SQL2 property value</p></td>
+</tr>
+<tr>
+<td class="type">protected  void</td>
+<td class="description"><p class="name"><a href="#parseSameNode()">parseSameNode</a>()</p><p class="description">6.7.20 SameNode</p></td>
+</tr>
+<tr>
+<td class="type">protected  <a href="../../../phpcr/query/qom/samenodejoinconditioninterface.html">SameNodeJoinConditionInterface</a></td>
+<td class="description"><p class="name"><a href="#parseSameNodeJoinCondition()">parseSameNodeJoinCondition</a>()</p><p class="description">6.7.9 SameNodeJoinCondition
+Parse an SQL2 same node join condition and return a QOM\SameNodeJoinCondition</p></td>
+</tr>
+<tr>
+<td class="type">protected  <a href="../../../phpcr/query/qom/selectorinterface.html">SelectorInterface</a></td>
+<td class="description"><p class="name"><a href="#parseSelector()">parseSelector</a>()</p><p class="description">6.7.3. </p></td>
+</tr>
+<tr>
+<td class="type">protected  <a href="../../../phpcr/query/qom/sourceinterface.html">SourceInterface</a></td>
+<td class="description"><p class="name"><a href="#parseSource()">parseSource</a>()</p><p class="description">6.7.2. </p></td>
+</tr>
+<tr>
+<td class="type">protected  <a href="../../../phpcr/query/qom/staticoperandinterface.html">StaticOperandInterface</a></td>
+<td class="description"><p class="name"><a href="#parseStaticOperand()">parseStaticOperand</a>()</p><p class="description">Parse an SQL2 static operand</p></td>
+</tr>
+</table>
+
+<h2 id="detail_method">Method Detail</h2>
+<a href="../../../source/phpcr/util/qom/sql2toqomqueryconverter.php.html#line25" class="location">PHPCR/Util/QOM/Sql2ToQomQueryConverter.php at line 25</a>
+
+<h3 id="__construct()">__construct</h3>
+<code class="signature">public  void <strong>__construct</strong>(<a href="../../../phpcr/query/qom/queryobjectmodelfactoryinterface.html">QueryObjectModelFactoryInterface</a> factory)</code>
+<div class="details">
+</div>
+
+<hr>
+
+<a href="../../../source/phpcr/util/qom/sql2toqomqueryconverter.php.html#line37" class="location">PHPCR/Util/QOM/Sql2ToQomQueryConverter.php at line 37</a>
+
+<h3 id="parse()">parse</h3>
+<code class="signature">public  \PHPCR\Query\QOM\QueryObjectModelInterface; <strong>parse</strong>(string sql2)</code>
+<div class="details">
+<p>6.7.1. Query
+Parse an SQL2 query and return the corresponding QOM QueryObjectModel</p></div>
+
+<hr>
+
+<a href="../../../source/phpcr/util/qom/sql2toqomqueryconverter.php.html#line263" class="location">PHPCR/Util/QOM/Sql2ToQomQueryConverter.php at line 263</a>
+
+<h3 id="parseAnd()">parseAnd</h3>
+<code class="signature">protected  <a href="../../../phpcr/query/qom/andinterface.html">AndInterface</a> <strong>parseAnd</strong>()</code>
+<div class="details">
+<p>6.7.13 And</p></div>
+
+<hr>
+
+<a href="../../../source/phpcr/util/qom/sql2toqomqueryconverter.php.html#line524" class="location">PHPCR/Util/QOM/Sql2ToQomQueryConverter.php at line 524</a>
+
+<h3 id="parseBindVariable()">parseBindVariable</h3>
+<code class="signature">protected  \PHPCR\Query\QOM\BindVariableInterface <strong>parseBindVariable</strong>()</code>
+<div class="details">
+<p>6.7.35 BindVariable
+6.7.36 Prefix
+Parse an SQL2 bind variable</p></div>
+
+<hr>
+
+<a href="../../../source/phpcr/util/qom/sql2toqomqueryconverter.php.html#line346" class="location">PHPCR/Util/QOM/Sql2ToQomQueryConverter.php at line 346</a>
+
+<h3 id="parseChildNode()">parseChildNode</h3>
+<code class="signature">protected  void <strong>parseChildNode</strong>()</code>
+<div class="details">
+<p>6.7.21 ChildNode</p></div>
+
+<hr>
+
+<a href="../../../source/phpcr/util/qom/sql2toqomqueryconverter.php.html#line232" class="location">PHPCR/Util/QOM/Sql2ToQomQueryConverter.php at line 232</a>
+
+<h3 id="parseChildNodeJoinCondition()">parseChildNodeJoinCondition</h3>
+<code class="signature">protected  <a href="../../../phpcr/query/qom/childnodejoinconditioninterface.html">ChildNodeJoinConditionInterface</a> <strong>parseChildNodeJoinCondition</strong>()</code>
+<div class="details">
+<p>6.7.10 ChildNodeJoinCondition
+Parse an SQL2 child node join condition and return a QOM\ChildNodeJoinCondition</p></div>
+
+<hr>
+
+<a href="../../../source/phpcr/util/qom/sql2toqomqueryconverter.php.html#line588" class="location">PHPCR/Util/QOM/Sql2ToQomQueryConverter.php at line 588</a>
+
+<h3 id="parseColumn()">parseColumn</h3>
+<code class="signature">protected  <a href="../../../phpcr/query/qom/columninterface.html">ColumnInterface</a> <strong>parseColumn</strong>()</code>
+<div class="details">
+<p>Parse a single SQL2 column definition and return a QOM\Column</p></div>
+
+<hr>
+
+<a href="../../../source/phpcr/util/qom/sql2toqomqueryconverter.php.html#line553" class="location">PHPCR/Util/QOM/Sql2ToQomQueryConverter.php at line 553</a>
+
+<h3 id="parseColumns()">parseColumns</h3>
+<code class="signature">protected  array <strong>parseColumns</strong>()</code>
+<div class="details">
+<p>6.7.39 Column
+Parse an SQL2 columns definition and return an array of QOM\Column</p><dl>
+<dt>Returns:</dt>
+<dd>of array</dd>
+</dl>
+</div>
+
+<hr>
+
+<a href="../../../source/phpcr/util/qom/sql2toqomqueryconverter.php.html#line300" class="location">PHPCR/Util/QOM/Sql2ToQomQueryConverter.php at line 300</a>
+
+<h3 id="parseComparison()">parseComparison</h3>
+<code class="signature">protected  <a href="../../../phpcr/query/qom/comparisoninterface.html">ComparisonInterface</a> <strong>parseComparison</strong>()</code>
+<div class="details">
+<p>6.7.16 Comparison</p></div>
+
+<hr>
+
+<a href="../../../source/phpcr/util/qom/sql2toqomqueryconverter.php.html#line253" class="location">PHPCR/Util/QOM/Sql2ToQomQueryConverter.php at line 253</a>
+
+<h3 id="parseConstraint()">parseConstraint</h3>
+<code class="signature">protected  <a href="../../../phpcr/query/qom/constraintinterface.html">ConstraintInterface</a> <strong>parseConstraint</strong>()</code>
+<div class="details">
+<p>6.7.12 Constraint</p></div>
+
+<hr>
+
+<a href="../../../source/phpcr/util/qom/sql2toqomqueryconverter.php.html#line354" class="location">PHPCR/Util/QOM/Sql2ToQomQueryConverter.php at line 354</a>
+
+<h3 id="parseDescendantNode()">parseDescendantNode</h3>
+<code class="signature">protected  void <strong>parseDescendantNode</strong>()</code>
+<div class="details">
+<p>6.7.22 DescendantNode</p></div>
+
+<hr>
+
+<a href="../../../source/phpcr/util/qom/sql2toqomqueryconverter.php.html#line243" class="location">PHPCR/Util/QOM/Sql2ToQomQueryConverter.php at line 243</a>
+
+<h3 id="parseDescendantNodeJoinCondition()">parseDescendantNodeJoinCondition</h3>
+<code class="signature">protected  <a href="../../../phpcr/query/qom/descendantnodejoinconditioninterface.html">DescendantNodeJoinConditionInterface</a> <strong>parseDescendantNodeJoinCondition</strong>()</code>
+<div class="details">
+<p>6.7.11 DescendantNodeJoinCondition
+Parse an SQL2 descendant node join condition and return a QOM\DescendantNodeJoinCondition</p></div>
+
+<hr>
+
+<a href="../../../source/phpcr/util/qom/sql2toqomqueryconverter.php.html#line401" class="location">PHPCR/Util/QOM/Sql2ToQomQueryConverter.php at line 401</a>
+
+<h3 id="parseDynamicOperand()">parseDynamicOperand</h3>
+<code class="signature">protected  <a href="../../../phpcr/query/qom/dynamicoperandinterface.html">DynamicOperandInterface</a> <strong>parseDynamicOperand</strong>()</code>
+<div class="details">
+<p>6.7.26 DynamicOperand
+6.7.28 Length
+6.7.29 NodeName
+6.7.30 NodeLocalName
+6.7.31 FullTextSearchScore
+6.7.32 LowerCase
+6.7.33 UpperCase
+Parse an SQL2 dynamic operand</p></div>
+
+<hr>
+
+<a href="../../../source/phpcr/util/qom/sql2toqomqueryconverter.php.html#line208" class="location">PHPCR/Util/QOM/Sql2ToQomQueryConverter.php at line 208</a>
+
+<h3 id="parseEquiJoin()">parseEquiJoin</h3>
+<code class="signature">protected  <a href="../../../phpcr/query/qom/equijoinconditioninterface.html">EquiJoinConditionInterface</a> <strong>parseEquiJoin</strong>()</code>
+<div class="details">
+<p>6.7.8. EquiJoinCondition
+Parse an SQL2 equijoin condition and return a QOM\EquiJoinCondition</p></div>
+
+<hr>
+
+<a href="../../../source/phpcr/util/qom/sql2toqomqueryconverter.php.html#line330" class="location">PHPCR/Util/QOM/Sql2ToQomQueryConverter.php at line 330</a>
+
+<h3 id="parseFullTextSearch()">parseFullTextSearch</h3>
+<code class="signature">protected  <a href="../../../phpcr/query/qom/fulltextsearchinterface.html">FullTextSearchInterface</a> <strong>parseFullTextSearch</strong>()</code>
+<div class="details">
+<p>6.7.19 FullTextSearch</p></div>
+
+<hr>
+
+<a href="../../../source/phpcr/util/qom/sql2toqomqueryconverter.php.html#line130" class="location">PHPCR/Util/QOM/Sql2ToQomQueryConverter.php at line 130</a>
+
+<h3 id="parseJoin()">parseJoin</h3>
+<code class="signature">protected  void <strong>parseJoin</strong>(string leftSelector)</code>
+<div class="details">
+<p>6.7.5. Join
+6.7.6. Join type
+Parse an SQL2 join source and return a QOM\Join</p><dl>
+<dt>Parameters:</dt>
+<dd>leftSelector - the left selector as it has been read by parseSource return \PHPCR\Query\QOM\JoinInterface</dd>
+</dl>
+</div>
+
+<hr>
+
+<a href="../../../source/phpcr/util/qom/sql2toqomqueryconverter.php.html#line181" class="location">PHPCR/Util/QOM/Sql2ToQomQueryConverter.php at line 181</a>
+
+<h3 id="parseJoinCondition()">parseJoinCondition</h3>
+<code class="signature">protected  <a href="../../../phpcr/query/qom/joinconditioninterface.html">JoinConditionInterface</a> <strong>parseJoinCondition</strong>()</code>
+<div class="details">
+<p>6.7.7. JoinCondition
+Parse an SQL2 join condition and return a QOM\Joincondition</p></div>
+
+<hr>
+
+<a href="../../../source/phpcr/util/qom/sql2toqomqueryconverter.php.html#line148" class="location">PHPCR/Util/QOM/Sql2ToQomQueryConverter.php at line 148</a>
+
+<h3 id="parseJoinType()">parseJoinType</h3>
+<code class="signature">protected  string <strong>parseJoinType</strong>()</code>
+<div class="details">
+<p>6.7.6. Join type</p></div>
+
+<hr>
+
+<a href="../../../source/phpcr/util/qom/sql2toqomqueryconverter.php.html#line488" class="location">PHPCR/Util/QOM/Sql2ToQomQueryConverter.php at line 488</a>
+
+<h3 id="parseLiteral()">parseLiteral</h3>
+<code class="signature">protected  <a href="../../../phpcr/query/qom/literalinterface.html">LiteralInterface</a> <strong>parseLiteral</strong>()</code>
+<div class="details">
+<p>6.7.34 Literal
+Parse an SQL2 literal value</p></div>
+
+<hr>
+
+<a href="../../../source/phpcr/util/qom/sql2toqomqueryconverter.php.html#line116" class="location">PHPCR/Util/QOM/Sql2ToQomQueryConverter.php at line 116</a>
+
+<h3 id="parseName()">parseName</h3>
+<code class="signature">protected  string <strong>parseName</strong>()</code>
+<div class="details">
+<p>6.7.4. Name</p></div>
+
+<hr>
+
+<a href="../../../source/phpcr/util/qom/sql2toqomqueryconverter.php.html#line289" class="location">PHPCR/Util/QOM/Sql2ToQomQueryConverter.php at line 289</a>
+
+<h3 id="parseNot()">parseNot</h3>
+<code class="signature">protected  <a href="../../../phpcr/query/qom/notinterface.html">NotInterface</a> <strong>parseNot</strong>()</code>
+<div class="details">
+<p>6.7.15 Not</p></div>
+
+<hr>
+
+<a href="../../../source/phpcr/util/qom/sql2toqomqueryconverter.php.html#line370" class="location">PHPCR/Util/QOM/Sql2ToQomQueryConverter.php at line 370</a>
+
+<h3 id="parseOperand()">parseOperand</h3>
+<code class="signature">protected  void <strong>parseOperand</strong>()</code>
+<div class="details">
+<p>6.7.24 Operand</p></div>
+
+<hr>
+
+<a href="../../../source/phpcr/util/qom/sql2toqomqueryconverter.php.html#line310" class="location">PHPCR/Util/QOM/Sql2ToQomQueryConverter.php at line 310</a>
+
+<h3 id="parseOperator()">parseOperator</h3>
+<code class="signature">protected  \PHPCR\Query\QOM\OperatorInterface <strong>parseOperator</strong>()</code>
+<div class="details">
+<p>6.7.17 Operator</p></div>
+
+<hr>
+
+<a href="../../../source/phpcr/util/qom/sql2toqomqueryconverter.php.html#line276" class="location">PHPCR/Util/QOM/Sql2ToQomQueryConverter.php at line 276</a>
+
+<h3 id="parseOr()">parseOr</h3>
+<code class="signature">protected  <a href="../../../phpcr/query/qom/orinterface.html">OrInterface</a> <strong>parseOr</strong>()</code>
+<div class="details">
+<p>6.7.14 Or</p></div>
+
+<hr>
+
+<a href="../../../source/phpcr/util/qom/sql2toqomqueryconverter.php.html#line542" class="location">PHPCR/Util/QOM/Sql2ToQomQueryConverter.php at line 542</a>
+
+<h3 id="parseOrdering()">parseOrdering</h3>
+<code class="signature">protected  void <strong>parseOrdering</strong>()</code>
+<div class="details">
+<p>6.7.38 Order</p></div>
+
+<hr>
+
+<a href="../../../source/phpcr/util/qom/sql2toqomqueryconverter.php.html#line534" class="location">PHPCR/Util/QOM/Sql2ToQomQueryConverter.php at line 534</a>
+
+<h3 id="parseOrderings()">parseOrderings</h3>
+<code class="signature">protected  void <strong>parseOrderings</strong>()</code>
+<div class="details">
+<p>6.7.37 Ordering</p></div>
+
+<hr>
+
+<a href="../../../source/phpcr/util/qom/sql2toqomqueryconverter.php.html#line362" class="location">PHPCR/Util/QOM/Sql2ToQomQueryConverter.php at line 362</a>
+
+<h3 id="parsePath()">parsePath</h3>
+<code class="signature">protected  void <strong>parsePath</strong>()</code>
+<div class="details">
+<p>6.7.23 Path</p></div>
+
+<hr>
+
+<a href="../../../source/phpcr/util/qom/sql2toqomqueryconverter.php.html#line320" class="location">PHPCR/Util/QOM/Sql2ToQomQueryConverter.php at line 320</a>
+
+<h3 id="parsePropertyExistence()">parsePropertyExistence</h3>
+<code class="signature">protected  <a href="../../../phpcr/query/qom/propertyexistenceinterface.html">PropertyExistenceInterface</a> <strong>parsePropertyExistence</strong>()</code>
+<div class="details">
+<p>6.7.18 PropertyExistence</p></div>
+
+<hr>
+
+<a href="../../../source/phpcr/util/qom/sql2toqomqueryconverter.php.html#line472" class="location">PHPCR/Util/QOM/Sql2ToQomQueryConverter.php at line 472</a>
+
+<h3 id="parsePropertyValue()">parsePropertyValue</h3>
+<code class="signature">protected  <a href="../../../phpcr/query/qom/propertyvalueinterface.html">PropertyValueInterface</a> <strong>parsePropertyValue</strong>()</code>
+<div class="details">
+<p>6.7.27 PropertyValue
+Parse an SQL2 property value</p></div>
+
+<hr>
+
+<a href="../../../source/phpcr/util/qom/sql2toqomqueryconverter.php.html#line338" class="location">PHPCR/Util/QOM/Sql2ToQomQueryConverter.php at line 338</a>
+
+<h3 id="parseSameNode()">parseSameNode</h3>
+<code class="signature">protected  void <strong>parseSameNode</strong>()</code>
+<div class="details">
+<p>6.7.20 SameNode</p></div>
+
+<hr>
+
+<a href="../../../source/phpcr/util/qom/sql2toqomqueryconverter.php.html#line219" class="location">PHPCR/Util/QOM/Sql2ToQomQueryConverter.php at line 219</a>
+
+<h3 id="parseSameNodeJoinCondition()">parseSameNodeJoinCondition</h3>
+<code class="signature">protected  <a href="../../../phpcr/query/qom/samenodejoinconditioninterface.html">SameNodeJoinConditionInterface</a> <strong>parseSameNodeJoinCondition</strong>()</code>
+<div class="details">
+<p>6.7.9 SameNodeJoinCondition
+Parse an SQL2 same node join condition and return a QOM\SameNodeJoinCondition</p></div>
+
+<hr>
+
+<a href="../../../source/phpcr/util/qom/sql2toqomqueryconverter.php.html#line99" class="location">PHPCR/Util/QOM/Sql2ToQomQueryConverter.php at line 99</a>
+
+<h3 id="parseSelector()">parseSelector</h3>
+<code class="signature">protected  <a href="../../../phpcr/query/qom/selectorinterface.html">SelectorInterface</a> <strong>parseSelector</strong>()</code>
+<div class="details">
+<p>6.7.3. Selector
+Parse an SQL2 selector and return a QOM\Selector</p></div>
+
+<hr>
+
+<a href="../../../source/phpcr/util/qom/sql2toqomqueryconverter.php.html#line79" class="location">PHPCR/Util/QOM/Sql2ToQomQueryConverter.php at line 79</a>
+
+<h3 id="parseSource()">parseSource</h3>
+<code class="signature">protected  <a href="../../../phpcr/query/qom/sourceinterface.html">SourceInterface</a> <strong>parseSource</strong>()</code>
+<div class="details">
+<p>6.7.2. Source
+Parse an SQL2 source definition and return the corresponding QOM Source</p></div>
+
+<hr>
+
+<a href="../../../source/phpcr/util/qom/sql2toqomqueryconverter.php.html#line380" class="location">PHPCR/Util/QOM/Sql2ToQomQueryConverter.php at line 380</a>
+
+<h3 id="parseStaticOperand()">parseStaticOperand</h3>
+<code class="signature">protected  <a href="../../../phpcr/query/qom/staticoperandinterface.html">StaticOperandInterface</a> <strong>parseStaticOperand</strong>()</code>
+<div class="details">
+<p>Parse an SQL2 static operand</p></div>
+
+<hr>
+
+<div class="header">
+<h1>PHPCR</h1>
+<ul>
+<li><a href="../../../overview-summary.html">Overview</a></li>
+<li><a href="../../../phpcr/util/qom/package-summary.html">Namespace</a></li>
+<li class="active">Class</li>
+<li><a href="../../../phpcr/util/qom/package-tree.html">Tree</a></li>
+<li><a href="../../../overview-files.html">Files</a></li>
+<li><a href="../../../deprecated-list.html">Deprecated</a></li>
+<li><a href="../../../todo-list.html">Todo</a></li>
+<li><a href="../../../index-all.html">Index</a></li>
+</ul>
+</div>
+
+<div class="small_links">
+<a href="../../../index.html" target="_top">Frames</a>
+<a href="../../../phpcr/util/qom/sql2toqomqueryconverter.html" target="_top">No frames</a>
+</div>
+<div class="small_links">
+Summary: <a href="#summary_field">Field</a> | <a href="#summary_method">Method</a> | <a href="#summary_constr">Constr</a>
+Detail: <a href="#detail_field">Field</a> | <a href="#detail_method">Method</a> | <a href="#summary_constr">Constr</a>
+</div>
+<hr>
+
+<p id="footer">This document was generated by <a href="http://peej.github.com/phpdoctor/">PHPDoctor: The PHP Documentation Creator</a></p>
+
+</body>
+
+</html>

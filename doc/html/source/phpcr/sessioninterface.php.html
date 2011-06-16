@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="generator" content="PHPDoctor 2RC4 (http://peej.github.com/phpdoctor/)">
-<meta name="when" content="Mon, 30 May 2011 13:13:21 +0000">
+<meta name="when" content="Thu, 16 Jun 2011 13:02:42 +0000">
 
 <link rel="stylesheet" type="text/css" href="../../stylesheet.css">
 <link rel="start" href="../../overview-summary.html">
@@ -456,7 +456,7 @@ limitations under the License.</p></div>
 <a name="line409"></a>     * Implementors note: For performance reasons, implementations should only
 <a name="line410"></a>     * mark nodes as dirty and reload them from the backend only if actually
 <a name="line411"></a>     * needed.
-<a name="line412"></a>     * 
+<a name="line412"></a>     *
 <a name="line413"></a>     * @param boolean $keepChanges Switch to override current changes kept in the session.
 <a name="line414"></a>     * @return void
 <a name="line415"></a>     *
@@ -679,275 +679,276 @@ limitations under the License.</p></div>
 <a name="line632"></a>     * @throws \PHPCR\RepositoryException if another error occurs.
 <a name="line633"></a>     * @api
 <a name="line634"></a>     */</span>
-<a name="line635"></a>    <span style="color: #000000; font-weight: bold;">function</span> getImportContentHandler<span style="color: #009900;">&#40;</span><span style="color: #000088;">$parentAbsPath</span><span style="color: #339933;">,</span> <span style="color: #000088;">$uuidBehavior</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line636"></a>&nbsp;
-<a name="line637"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line638"></a>     * Deserializes an XML document and adds the resulting item subgraph as a
-<a name="line639"></a>     * child of the node at $parentAbsPath.
-<a name="line640"></a>     *
-<a name="line641"></a>     * If the incoming XML does not appear to be a JCR system view XML document
-<a name="line642"></a>     * then it is interpreted as a document view XML document.
-<a name="line643"></a>     *
-<a name="line644"></a>     * The tree of new items is built in the transient storage of the Session. In order
-<a name="line645"></a>     * to persist the new content, save must be called. The advantage of this
-<a name="line646"></a>     * through-the-session method is that (depending on what constraint checks the
-<a name="line647"></a>     * implementation leaves until save) structures that violate node type constraints
-<a name="line648"></a>     * can be imported, fixed and then saved. The disadvantage is that a large import
-<a name="line649"></a>     * will result in a large cache of pending nodes in the session. See
-<a name="line650"></a>     * Workspace.importXML(string, string, integer) for a version
-<a name="line651"></a>     * of this method that does not go through the Session.
-<a name="line652"></a>     *
-<a name="line653"></a>     * The flag $uuidBehavior governs how the identifiers of incoming nodes are
-<a name="line654"></a>     * handled. There are four options:
-<a name="line655"></a>     *
-<a name="line656"></a>     * - ImportUUIDBehavior.IMPORT_UUID_CREATE_NEW: Incoming nodes are added in the same
-<a name="line657"></a>     *   way that new node is added with Node.addNode. That is, they are either assigned
-<a name="line658"></a>     *   newly created identifiers upon addition or upon save (depending on the implementation,
-<a name="line659"></a>     *   see 4.9.1.1 When Identifiers are Assigned in the specification). In either case,
-<a name="line660"></a>     *   identifier collisions will not occur.
-<a name="line661"></a>     * - ImportUUIDBehavior.IMPORT_UUID_COLLISION_REMOVE_EXISTING: If an incoming node has
-<a name="line662"></a>     *   the same identifier as a node already existing in the workspace then the already
-<a name="line663"></a>     *   existing node (and its subgraph) is removed from wherever it may be in the workspace
-<a name="line664"></a>     *   before the incoming node is added. Note that this can result in nodes &quot;disappearing&quot;
-<a name="line665"></a>     *   from locations in the workspace that are remote from the location to which the
-<a name="line666"></a>     *   incoming subgraph is being written. Both the removal and the new addition will be
-<a name="line667"></a>     *   dispatched on save.
-<a name="line668"></a>     * - ImportUUIDBehavior.IMPORT_UUID_COLLISION_REPLACE_EXISTING: If an incoming node
-<a name="line669"></a>     *   has the same identifier as a node already existing in the workspace, then the
-<a name="line670"></a>     *   already-existing node is replaced by the incoming node in the same position as
-<a name="line671"></a>     *   the existing node. Note that this may result in the incoming subgraph being
-<a name="line672"></a>     *   disaggregated and &quot;spread around&quot; to different locations in the workspace. In the
-<a name="line673"></a>     *   most extreme case this behavior may result in no node at all being added as child
-<a name="line674"></a>     *   of parentAbsPath. This will occur if the topmost element of the incoming XML has
-<a name="line675"></a>     *   the same identifier as an existing node elsewhere in the workspace. The change
-<a name="line676"></a>     *   will be dispatched on save.
-<a name="line677"></a>     * - ImportUUIDBehavior.IMPORT_UUID_COLLISION_THROW: If an incoming node has the same
-<a name="line678"></a>     *   identifier as a node already existing in the workspace then an
-<a name="line679"></a>     *   ItemExistsException is thrown.
-<a name="line680"></a>     *   Unlike Workspace.importXML(string, string, integer), this method does not
-<a name="line681"></a>     *   necessarily enforce all node type constraints during deserialization.
-<a name="line682"></a>     *   Those that would be immediately enforced in a normal write method (Node.addNode,
-<a name="line683"></a>     *   Node.setProperty etc.) of this implementation cause an immediate
-<a name="line684"></a>     *   ConstraintViolationException during deserialization. All other constraints are
-<a name="line685"></a>     *   checked on save, just as they are in normal write operations. However, which node
-<a name="line686"></a>     *   type constraints are enforced depends upon whether node type information in the
-<a name="line687"></a>     *   imported data is respected, and this is an implementation-specific issue.
-<a name="line688"></a>     *
-<a name="line689"></a>     * @param string $parentAbsPath the absolute path of the node below which the deserialized subgraph is added.
-<a name="line690"></a>     * @param string $in An URI from which the XML to be deserialized is read.
-<a name="line691"></a>     * @param integer $uuidBehavior a four-value flag that governs how incoming identifiers are handled.
-<a name="line692"></a>     * @return void
-<a name="line693"></a>     *
-<a name="line694"></a>     * @throws \RuntimeException if an error during an I/O operation occurs.
-<a name="line695"></a>     * @throws \PHPCR\PathNotFoundException if no node exists at parentAbsPath and this implementation performs this
-<a name="line696"></a>     *                                      validation immediately.
-<a name="line697"></a>     * @throws \PHPCR\ItemExistsException if deserialization would overwrite an existing item and this implementation
-<a name="line698"></a>     *                                    performs this validation immediately.
-<a name="line699"></a>     * @throws \PHPCR\ConstraintViolationException if a node type or other implementation-specific constraint is
-<a name="line700"></a>     *                                             violated that would be checked on a session write method or if
-<a name="line701"></a>     *                                             uuidBehavior is set to IMPORT_UUID_COLLISION_REMOVE_EXISTING and an
-<a name="line702"></a>     *                                             incoming node has the same UUID as the node at parentAbsPath or one
-<a name="line703"></a>     *                                             of its ancestors.
-<a name="line704"></a>     * @throws \PHPCR\Version\VersionException if the node at $parentAbsPath is read-only due to a checked-in node and
-<a name="line705"></a>     *                                         this implementation performs this validation immediately.
-<a name="line706"></a>     * @throws \PHPCR\InvalidSerializedDataException if incoming stream is not a valid XML document.
-<a name="line707"></a>     * @throws \PHPCR\Lock\LockException if a lock prevents the addition of the subgraph and this implementation
-<a name="line708"></a>     *                                   performs this validation immediately.
-<a name="line709"></a>     * @throws \PHPCR\RepositoryException if another error occurs.
-<a name="line710"></a>     * @api
-<a name="line711"></a>     */</span>
-<a name="line712"></a>    <span style="color: #000000; font-weight: bold;">function</span> importXML<span style="color: #009900;">&#40;</span><span style="color: #000088;">$parentAbsPath</span><span style="color: #339933;">,</span> <span style="color: #000088;">$in</span><span style="color: #339933;">,</span> <span style="color: #000088;">$uuidBehavior</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line713"></a>&nbsp;
-<a name="line714"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line715"></a>     * Serializes the node (and if $noRecurse is false, the whole subgraph) at
-<a name="line716"></a>     * $absPath as an XML stream and outputs it to the supplied URI. The
-<a name="line717"></a>     * resulting XML is in the system view form. Note that $absPath must be
-<a name="line718"></a>     * the path of a node, not a property.
-<a name="line719"></a>     *
-<a name="line720"></a>     * If $skipBinary is true then any properties of PropertyType.BINARY will be serialized
-<a name="line721"></a>     * as if they are empty. That is, the existence of the property will be serialized,
-<a name="line722"></a>     * but its content will not appear in the serialized output (the &lt;sv:value&gt; element
-<a name="line723"></a>     * will have no content). Note that in the case of multi-value BINARY properties,
-<a name="line724"></a>     * the number of values in the property will be reflected in the serialized output,
-<a name="line725"></a>     * though they will all be empty. If $skipBinary is false then the actual value(s)
-<a name="line726"></a>     * of each BINARY property is recorded using Base64 encoding.
-<a name="line727"></a>     *
-<a name="line728"></a>     * If $noRecurse is true then only the node at $absPath and its properties, but not
-<a name="line729"></a>     * its child nodes, are serialized. If $noRecurse is false then the entire subgraph
-<a name="line730"></a>     * rooted at $absPath is serialized.
-<a name="line731"></a>     *
-<a name="line732"></a>     * If the user lacks read access to some subsection of the specified tree, that
-<a name="line733"></a>     * section simply does not get serialized, since, from the user's point of view,
-<a name="line734"></a>     * it is not there.
-<a name="line735"></a>     *
-<a name="line736"></a>     * The serialized output will reflect the state of the current workspace as
-<a name="line737"></a>     * modified by the state of this Session. This means that pending changes
-<a name="line738"></a>     * (regardless of whether they are valid according to node type constraints)
-<a name="line739"></a>     * and all namespace mappings in the namespace registry, as modified by the
-<a name="line740"></a>     * current session-mappings, are reflected in the output.
-<a name="line741"></a>     *
-<a name="line742"></a>     * The output XML will be encoded in UTF-8.
-<a name="line743"></a>     *
-<a name="line744"></a>     * @param string $absPath The path of the root of the subgraph to be serialized. This must be the path to a node, not a property
-<a name="line745"></a>     * @param string $out The URI to which the XML serialization of the subgraph will be output.
-<a name="line746"></a>     * @param boolean $skipBinary A boolean governing whether binary properties are to be serialized.
-<a name="line747"></a>     * @param boolean $noRecurse A boolean governing whether the subgraph at absPath is to be recursed.
-<a name="line748"></a>     * @return void
-<a name="line749"></a>     * @throws \PHPCR\PathNotFoundException if no node exists at absPath.
-<a name="line750"></a>     * @throws \RuntimeException if an error during an I/O operation occurs.
-<a name="line751"></a>     * @throws \PHPCR\RepositoryException if another error occurs.
-<a name="line752"></a>     * @api
-<a name="line753"></a>     */</span>
-<a name="line754"></a>    <span style="color: #000000; font-weight: bold;">function</span> exportSystemView<span style="color: #009900;">&#40;</span><span style="color: #000088;">$absPath</span><span style="color: #339933;">,</span> <span style="color: #000088;">$out</span><span style="color: #339933;">,</span> <span style="color: #000088;">$skipBinary</span><span style="color: #339933;">,</span> <span style="color: #000088;">$noRecurse</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line755"></a>&nbsp;
-<a name="line756"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line757"></a>     * Serializes the node (and if $noRecurse is false, the whole subgraph) at
-<a name="line758"></a>     * $absPath as an XML stream and outputs it to the supplied URI.
-<a name="line759"></a>     *
-<a name="line760"></a>     * The resulting XML is in the document view form. Note that $absPath must be
-<a name="line761"></a>     * the path of a node, not a property.
-<a name="line762"></a>     *
-<a name="line763"></a>     * If $skipBinary is true then any properties of PropertyType.BINARY will be serialized as if
-<a name="line764"></a>     * they are empty. That is, the existence of the property will be serialized, but its content
-<a name="line765"></a>     * will not appear in the serialized output (the value of the attribute will be empty). If
-<a name="line766"></a>     * $skipBinary is false then the actual value(s) of each BINARY property is recorded using
-<a name="line767"></a>     * Base64 encoding.
-<a name="line768"></a>     *
-<a name="line769"></a>     * If $noRecurse is true then only the node at $absPath and its properties, but not its
-<a name="line770"></a>     * child nodes, are serialized. If $noRecurse is false then the entire subgraph rooted at
-<a name="line771"></a>     * $absPath is serialized.
-<a name="line772"></a>     *
-<a name="line773"></a>     * If the user lacks read access to some subsection of the specified tree, that section
-<a name="line774"></a>     * simply does not get serialized, since, from the user's point of view, it is not there.
-<a name="line775"></a>     *
-<a name="line776"></a>     * The serialized output will reflect the state of the current workspace as modified by
-<a name="line777"></a>     * the state of this Session. This means that pending changes (regardless of whether they
-<a name="line778"></a>     * are valid according to node type constraints) and all namespace mappings in the
-<a name="line779"></a>     * namespace registry, as modified by the current session-mappings, are reflected in
-<a name="line780"></a>     * the output.
-<a name="line781"></a>     *
-<a name="line782"></a>     * The output XML will be encoded in UTF-8.
-<a name="line783"></a>     *
-<a name="line784"></a>     * @param string $absPath The path of the root of the subgraph to be serialized. This must be the path to a node,
-<a name="line785"></a>     *                        not a property
-<a name="line786"></a>     * @param string $out The URI to which the XML serialization of the subgraph will be output.
-<a name="line787"></a>     * @param boolean $skipBinary A boolean governing whether binary properties are to be serialized.
-<a name="line788"></a>     * @param boolean $noRecurse A boolean governing whether the subgraph at absPath is to be recursed.
-<a name="line789"></a>     * @return void
-<a name="line790"></a>     *
-<a name="line791"></a>     * @throws \PHPCR\PathNotFoundException if no node exists at absPath.
-<a name="line792"></a>     * @throws \RuntimeException if an error during an I/O operation occurs.
-<a name="line793"></a>     * @throws \PHPCR\RepositoryException if another error occurs.
-<a name="line794"></a>     * @api
-<a name="line795"></a>     */</span>
-<a name="line796"></a>    <span style="color: #000000; font-weight: bold;">function</span> exportDocumentView<span style="color: #009900;">&#40;</span><span style="color: #000088;">$absPath</span><span style="color: #339933;">,</span> <span style="color: #000088;">$out</span><span style="color: #339933;">,</span> <span style="color: #000088;">$skipBinary</span><span style="color: #339933;">,</span> <span style="color: #000088;">$noRecurse</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line797"></a>&nbsp;
-<a name="line798"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line799"></a>     * Sets the name of a namespace prefix.
-<a name="line800"></a>     *
-<a name="line801"></a>     * Within the scope of this Session, this method maps uri to prefix. The
-<a name="line802"></a>     * remapping only affects operations done through this Session. To clear
-<a name="line803"></a>     * all remappings, the client must acquire a new Session.
-<a name="line804"></a>     * All local mappings already present in the Session that include either
-<a name="line805"></a>     * the specified prefix or the specified uri are removed and the new mapping
-<a name="line806"></a>     * is added.
-<a name="line807"></a>     *
-<a name="line808"></a>     * @param string $prefix The namespace prefix to be set as identifier.
-<a name="line809"></a>     * @param string $uri The loaction of the namespace definition (usually a uri).
-<a name="line810"></a>     * @return void
-<a name="line811"></a>     *
-<a name="line812"></a>     * @throws \PHPCR\NamespaceException if an attempt is made to map a namespace URI to a prefix beginning with
-<a name="line813"></a>     *                                   the characters &quot;xml&quot; (in any combination of case) or if an attempt is made to
-<a name="line814"></a>     *                                   map either the empty prefix or the empty namespace (i.e., if either $prefix or
-<a name="line815"></a>     *                                   $uri are the empty string).
-<a name="line816"></a>     * @throws \PHPCR\RepositoryException if another error occurs.
-<a name="line817"></a>     * @api
-<a name="line818"></a>     */</span>
-<a name="line819"></a>    <span style="color: #000000; font-weight: bold;">function</span> setNamespacePrefix<span style="color: #009900;">&#40;</span><span style="color: #000088;">$prefix</span><span style="color: #339933;">,</span> <span style="color: #000088;">$uri</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line820"></a>&nbsp;
-<a name="line821"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line822"></a>     * Returns all prefixes currently mapped to URIs in this Session.
-<a name="line823"></a>     *
-<a name="line824"></a>     * @return array The list of currently registered namespace prefixes.
-<a name="line825"></a>     *
-<a name="line826"></a>     * @throws \PHPCR\RepositoryException if an error occurs
-<a name="line827"></a>     * @api
-<a name="line828"></a>     */</span>
-<a name="line829"></a>    <span style="color: #000000; font-weight: bold;">function</span> getNamespacePrefixes<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line830"></a>&nbsp;
-<a name="line831"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line832"></a>     * Returns the URI to which the given prefix is mapped as currently set in
-<a name="line833"></a>     * this Session.
-<a name="line834"></a>     *
-<a name="line835"></a>     * @param string $prefix The identifier of the namespace location to be returned.
-<a name="line836"></a>     * @return string The location of the namespace definition identified by its prefix.
-<a name="line837"></a>     *
-<a name="line838"></a>     * @throws \PHPCR\NamespaceException if the specified prefix is unknown.
-<a name="line839"></a>     * @throws \PHPCR\RepositoryException if another error occurs
-<a name="line840"></a>     * @api
-<a name="line841"></a>     */</span>
-<a name="line842"></a>    <span style="color: #000000; font-weight: bold;">function</span> getNamespaceURI<span style="color: #009900;">&#40;</span><span style="color: #000088;">$prefix</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line843"></a>&nbsp;
-<a name="line844"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line845"></a>     * Returns the prefix to which the given uri is mapped as currently set in
-<a name="line846"></a>     * this Session.
-<a name="line847"></a>     *
-<a name="line848"></a>     * @param string $uri The loaction of the namespace definition (usually a uri).
-<a name="line849"></a>     * @return string The prefix of a namespace identified by its uri.
-<a name="line850"></a>     *
-<a name="line851"></a>     * @throws \PHPCR\NamespaceException if the specified uri is unknown.
-<a name="line852"></a>     * @throws \PHPCR\RepositoryException if another error occurs
-<a name="line853"></a>     * @api
-<a name="line854"></a>     */</span>
-<a name="line855"></a>    <span style="color: #000000; font-weight: bold;">function</span> getNamespacePrefix<span style="color: #009900;">&#40;</span><span style="color: #000088;">$uri</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line856"></a>&nbsp;
-<a name="line857"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line858"></a>     * Releases all resources associated with this Session.
-<a name="line859"></a>     *
-<a name="line860"></a>     * This method should be called when a Session is no longer needed.
-<a name="line861"></a>     *
-<a name="line862"></a>     * @return void
-<a name="line863"></a>     * @api
-<a name="line864"></a>     */</span>
-<a name="line865"></a>    <span style="color: #000000; font-weight: bold;">function</span> logout<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line866"></a>&nbsp;
-<a name="line867"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line868"></a>     * Determines if the current session is still valid.
-<a name="line869"></a>     *
-<a name="line870"></a>     * Returns true if this Session object is usable by the client. Otherwise,
-<a name="line871"></a>     * returns false.
-<a name="line872"></a>     *
-<a name="line873"></a>     * A usable Session is one that is neither logged-out, timed-out nor in
-<a name="line874"></a>     * any other way disconnected from the repository.
-<a name="line875"></a>     *
-<a name="line876"></a>     * @return boolean true if this Session is usable, false otherwise.
-<a name="line877"></a>     * @api
-<a name="line878"></a>     */</span>
-<a name="line879"></a>    <span style="color: #000000; font-weight: bold;">function</span> isLive<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line880"></a>&nbsp;
-<a name="line881"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line882"></a>     * Returns the access control manager for this Session.
-<a name="line883"></a>     *
-<a name="line884"></a>     * @return \PHPCR\Security\AccessControlManager the access control manager for this Session
-<a name="line885"></a>     *
-<a name="line886"></a>     * @throws \PHPCR\UnsupportedRepositoryOperationException if access control is not supported.
-<a name="line887"></a>     * @throws \PHPCR\RepositoryException if another error occurs.
-<a name="line888"></a>     * @api
-<a name="line889"></a>     */</span>
-<a name="line890"></a>    <span style="color: #000000; font-weight: bold;">function</span> getAccessControlManager<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line891"></a>&nbsp;
-<a name="line892"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line893"></a>     * Returns the retention and hold manager for this Session.
-<a name="line894"></a>     *
-<a name="line895"></a>     * @return \PHPCR\Retention\RetentionManagerInterface the retention manager for this Session.
-<a name="line896"></a>     *
-<a name="line897"></a>     * @throws \PHPCR\UnsupportedRepositoryOperationException if retention and hold are not supported.
-<a name="line898"></a>     * @throws \PHPCR\RepositoryException if another error occurs.
-<a name="line899"></a>     * @api
-<a name="line900"></a>     */</span>
-<a name="line901"></a>    <span style="color: #000000; font-weight: bold;">function</span> getRetentionManager<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line902"></a><span style="color: #009900;">&#125;</span>
-<a name="line903"></a>&nbsp;</pre>
+<a name="line635"></a>    <span style="color: #666666; font-style: italic;">//Dropped for now. If you have an excellent and generic idea for this, suggestions are welcome</span>
+<a name="line636"></a>    <span style="color: #666666; font-style: italic;">//function getImportContentHandler($parentAbsPath, $uuidBehavior);</span>
+<a name="line637"></a>&nbsp;
+<a name="line638"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line639"></a>     * Deserializes an XML document and adds the resulting item subgraph as a
+<a name="line640"></a>     * child of the node at $parentAbsPath.
+<a name="line641"></a>     *
+<a name="line642"></a>     * If the incoming XML does not appear to be a JCR system view XML document
+<a name="line643"></a>     * then it is interpreted as a document view XML document.
+<a name="line644"></a>     *
+<a name="line645"></a>     * The tree of new items is built in the transient storage of the Session. In order
+<a name="line646"></a>     * to persist the new content, save must be called. The advantage of this
+<a name="line647"></a>     * through-the-session method is that (depending on what constraint checks the
+<a name="line648"></a>     * implementation leaves until save) structures that violate node type constraints
+<a name="line649"></a>     * can be imported, fixed and then saved. The disadvantage is that a large import
+<a name="line650"></a>     * will result in a large cache of pending nodes in the session. See
+<a name="line651"></a>     * Workspace.importXML(string, string, integer) for a version
+<a name="line652"></a>     * of this method that does not go through the Session.
+<a name="line653"></a>     *
+<a name="line654"></a>     * The flag $uuidBehavior governs how the identifiers of incoming nodes are
+<a name="line655"></a>     * handled. There are four options:
+<a name="line656"></a>     *
+<a name="line657"></a>     * - ImportUUIDBehavior.IMPORT_UUID_CREATE_NEW: Incoming nodes are added in the same
+<a name="line658"></a>     *   way that new node is added with Node.addNode. That is, they are either assigned
+<a name="line659"></a>     *   newly created identifiers upon addition or upon save (depending on the implementation,
+<a name="line660"></a>     *   see 4.9.1.1 When Identifiers are Assigned in the specification). In either case,
+<a name="line661"></a>     *   identifier collisions will not occur.
+<a name="line662"></a>     * - ImportUUIDBehavior.IMPORT_UUID_COLLISION_REMOVE_EXISTING: If an incoming node has
+<a name="line663"></a>     *   the same identifier as a node already existing in the workspace then the already
+<a name="line664"></a>     *   existing node (and its subgraph) is removed from wherever it may be in the workspace
+<a name="line665"></a>     *   before the incoming node is added. Note that this can result in nodes &quot;disappearing&quot;
+<a name="line666"></a>     *   from locations in the workspace that are remote from the location to which the
+<a name="line667"></a>     *   incoming subgraph is being written. Both the removal and the new addition will be
+<a name="line668"></a>     *   dispatched on save.
+<a name="line669"></a>     * - ImportUUIDBehavior.IMPORT_UUID_COLLISION_REPLACE_EXISTING: If an incoming node
+<a name="line670"></a>     *   has the same identifier as a node already existing in the workspace, then the
+<a name="line671"></a>     *   already-existing node is replaced by the incoming node in the same position as
+<a name="line672"></a>     *   the existing node. Note that this may result in the incoming subgraph being
+<a name="line673"></a>     *   disaggregated and &quot;spread around&quot; to different locations in the workspace. In the
+<a name="line674"></a>     *   most extreme case this behavior may result in no node at all being added as child
+<a name="line675"></a>     *   of parentAbsPath. This will occur if the topmost element of the incoming XML has
+<a name="line676"></a>     *   the same identifier as an existing node elsewhere in the workspace. The change
+<a name="line677"></a>     *   will be dispatched on save.
+<a name="line678"></a>     * - ImportUUIDBehavior.IMPORT_UUID_COLLISION_THROW: If an incoming node has the same
+<a name="line679"></a>     *   identifier as a node already existing in the workspace then an
+<a name="line680"></a>     *   ItemExistsException is thrown.
+<a name="line681"></a>     *   Unlike Workspace.importXML(string, string, integer), this method does not
+<a name="line682"></a>     *   necessarily enforce all node type constraints during deserialization.
+<a name="line683"></a>     *   Those that would be immediately enforced in a normal write method (Node.addNode,
+<a name="line684"></a>     *   Node.setProperty etc.) of this implementation cause an immediate
+<a name="line685"></a>     *   ConstraintViolationException during deserialization. All other constraints are
+<a name="line686"></a>     *   checked on save, just as they are in normal write operations. However, which node
+<a name="line687"></a>     *   type constraints are enforced depends upon whether node type information in the
+<a name="line688"></a>     *   imported data is respected, and this is an implementation-specific issue.
+<a name="line689"></a>     *
+<a name="line690"></a>     * @param string $parentAbsPath the absolute path of the node below which the deserialized subgraph is added.
+<a name="line691"></a>     * @param string $in An URI from which the XML to be deserialized is read.
+<a name="line692"></a>     * @param integer $uuidBehavior a four-value flag that governs how incoming identifiers are handled.
+<a name="line693"></a>     * @return void
+<a name="line694"></a>     *
+<a name="line695"></a>     * @throws \RuntimeException if an error during an I/O operation occurs.
+<a name="line696"></a>     * @throws \PHPCR\PathNotFoundException if no node exists at parentAbsPath and this implementation performs this
+<a name="line697"></a>     *                                      validation immediately.
+<a name="line698"></a>     * @throws \PHPCR\ItemExistsException if deserialization would overwrite an existing item and this implementation
+<a name="line699"></a>     *                                    performs this validation immediately.
+<a name="line700"></a>     * @throws \PHPCR\ConstraintViolationException if a node type or other implementation-specific constraint is
+<a name="line701"></a>     *                                             violated that would be checked on a session write method or if
+<a name="line702"></a>     *                                             uuidBehavior is set to IMPORT_UUID_COLLISION_REMOVE_EXISTING and an
+<a name="line703"></a>     *                                             incoming node has the same UUID as the node at parentAbsPath or one
+<a name="line704"></a>     *                                             of its ancestors.
+<a name="line705"></a>     * @throws \PHPCR\Version\VersionException if the node at $parentAbsPath is read-only due to a checked-in node and
+<a name="line706"></a>     *                                         this implementation performs this validation immediately.
+<a name="line707"></a>     * @throws \PHPCR\InvalidSerializedDataException if incoming stream is not a valid XML document.
+<a name="line708"></a>     * @throws \PHPCR\Lock\LockException if a lock prevents the addition of the subgraph and this implementation
+<a name="line709"></a>     *                                   performs this validation immediately.
+<a name="line710"></a>     * @throws \PHPCR\RepositoryException if another error occurs.
+<a name="line711"></a>     * @api
+<a name="line712"></a>     */</span>
+<a name="line713"></a>    <span style="color: #000000; font-weight: bold;">function</span> importXML<span style="color: #009900;">&#40;</span><span style="color: #000088;">$parentAbsPath</span><span style="color: #339933;">,</span> <span style="color: #000088;">$in</span><span style="color: #339933;">,</span> <span style="color: #000088;">$uuidBehavior</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line714"></a>&nbsp;
+<a name="line715"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line716"></a>     * Serializes the node (and if $noRecurse is false, the whole subgraph) at
+<a name="line717"></a>     * $absPath as an XML stream and outputs it to the supplied URI. The
+<a name="line718"></a>     * resulting XML is in the system view form. Note that $absPath must be
+<a name="line719"></a>     * the path of a node, not a property.
+<a name="line720"></a>     *
+<a name="line721"></a>     * If $skipBinary is true then any properties of PropertyType.BINARY will be serialized
+<a name="line722"></a>     * as if they are empty. That is, the existence of the property will be serialized,
+<a name="line723"></a>     * but its content will not appear in the serialized output (the &lt;sv:value&gt; element
+<a name="line724"></a>     * will have no content). Note that in the case of multi-value BINARY properties,
+<a name="line725"></a>     * the number of values in the property will be reflected in the serialized output,
+<a name="line726"></a>     * though they will all be empty. If $skipBinary is false then the actual value(s)
+<a name="line727"></a>     * of each BINARY property is recorded using Base64 encoding.
+<a name="line728"></a>     *
+<a name="line729"></a>     * If $noRecurse is true then only the node at $absPath and its properties, but not
+<a name="line730"></a>     * its child nodes, are serialized. If $noRecurse is false then the entire subgraph
+<a name="line731"></a>     * rooted at $absPath is serialized.
+<a name="line732"></a>     *
+<a name="line733"></a>     * If the user lacks read access to some subsection of the specified tree, that
+<a name="line734"></a>     * section simply does not get serialized, since, from the user's point of view,
+<a name="line735"></a>     * it is not there.
+<a name="line736"></a>     *
+<a name="line737"></a>     * The serialized output will reflect the state of the current workspace as
+<a name="line738"></a>     * modified by the state of this Session. This means that pending changes
+<a name="line739"></a>     * (regardless of whether they are valid according to node type constraints)
+<a name="line740"></a>     * and all namespace mappings in the namespace registry, as modified by the
+<a name="line741"></a>     * current session-mappings, are reflected in the output.
+<a name="line742"></a>     *
+<a name="line743"></a>     * The output XML will be encoded in UTF-8.
+<a name="line744"></a>     *
+<a name="line745"></a>     * @param string $absPath The path of the root of the subgraph to be serialized. This must be the path to a node, not a property
+<a name="line746"></a>     * @param resource $stream The stream resource (i.e. aquired with fopen) to which the XML serialization of the subgraph will be output. Must support the fwrite method.
+<a name="line747"></a>     * @param boolean $skipBinary A boolean governing whether binary properties are to be serialized.
+<a name="line748"></a>     * @param boolean $noRecurse A boolean governing whether the subgraph at absPath is to be recursed.
+<a name="line749"></a>     * @return void
+<a name="line750"></a>     * @throws \PHPCR\PathNotFoundException if no node exists at absPath.
+<a name="line751"></a>     * @throws \RuntimeException if an error during an I/O operation occurs.
+<a name="line752"></a>     * @throws \PHPCR\RepositoryException if another error occurs.
+<a name="line753"></a>     * @api
+<a name="line754"></a>     */</span>
+<a name="line755"></a>    <span style="color: #000000; font-weight: bold;">function</span> exportSystemView<span style="color: #009900;">&#40;</span><span style="color: #000088;">$absPath</span><span style="color: #339933;">,</span> <span style="color: #000088;">$stream</span><span style="color: #339933;">,</span> <span style="color: #000088;">$skipBinary</span><span style="color: #339933;">,</span> <span style="color: #000088;">$noRecurse</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line756"></a>&nbsp;
+<a name="line757"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line758"></a>     * Serializes the node (and if $noRecurse is false, the whole subgraph) at
+<a name="line759"></a>     * $absPath as an XML stream and outputs it to the supplied URI.
+<a name="line760"></a>     *
+<a name="line761"></a>     * The resulting XML is in the document view form. Note that $absPath must be
+<a name="line762"></a>     * the path of a node, not a property.
+<a name="line763"></a>     *
+<a name="line764"></a>     * If $skipBinary is true then any properties of PropertyType.BINARY will be serialized as if
+<a name="line765"></a>     * they are empty. That is, the existence of the property will be serialized, but its content
+<a name="line766"></a>     * will not appear in the serialized output (the value of the attribute will be empty). If
+<a name="line767"></a>     * $skipBinary is false then the actual value(s) of each BINARY property is recorded using
+<a name="line768"></a>     * Base64 encoding.
+<a name="line769"></a>     *
+<a name="line770"></a>     * If $noRecurse is true then only the node at $absPath and its properties, but not its
+<a name="line771"></a>     * child nodes, are serialized. If $noRecurse is false then the entire subgraph rooted at
+<a name="line772"></a>     * $absPath is serialized.
+<a name="line773"></a>     *
+<a name="line774"></a>     * If the user lacks read access to some subsection of the specified tree, that section
+<a name="line775"></a>     * simply does not get serialized, since, from the user's point of view, it is not there.
+<a name="line776"></a>     *
+<a name="line777"></a>     * The serialized output will reflect the state of the current workspace as modified by
+<a name="line778"></a>     * the state of this Session. This means that pending changes (regardless of whether they
+<a name="line779"></a>     * are valid according to node type constraints) and all namespace mappings in the
+<a name="line780"></a>     * namespace registry, as modified by the current session-mappings, are reflected in
+<a name="line781"></a>     * the output.
+<a name="line782"></a>     *
+<a name="line783"></a>     * The output XML will be encoded in UTF-8.
+<a name="line784"></a>     *
+<a name="line785"></a>     * @param string $absPath The path of the root of the subgraph to be serialized. This must be the path to a node,
+<a name="line786"></a>     *                        not a property
+<a name="line787"></a>     * @param resource $stream The stream resource (i.e. aquired with fopen) to which the XML serialization of the subgraph will be output. Must support the fwrite method.
+<a name="line788"></a>     * @param boolean $skipBinary A boolean governing whether binary properties are to be serialized.
+<a name="line789"></a>     * @param boolean $noRecurse A boolean governing whether the subgraph at absPath is to be recursed.
+<a name="line790"></a>     * @return void
+<a name="line791"></a>     *
+<a name="line792"></a>     * @throws \PHPCR\PathNotFoundException if no node exists at absPath.
+<a name="line793"></a>     * @throws \RuntimeException if an error during an I/O operation occurs.
+<a name="line794"></a>     * @throws \PHPCR\RepositoryException if another error occurs.
+<a name="line795"></a>     * @api
+<a name="line796"></a>     */</span>
+<a name="line797"></a>    <span style="color: #000000; font-weight: bold;">function</span> exportDocumentView<span style="color: #009900;">&#40;</span><span style="color: #000088;">$absPath</span><span style="color: #339933;">,</span> <span style="color: #000088;">$stream</span><span style="color: #339933;">,</span> <span style="color: #000088;">$skipBinary</span><span style="color: #339933;">,</span> <span style="color: #000088;">$noRecurse</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line798"></a>&nbsp;
+<a name="line799"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line800"></a>     * Sets the name of a namespace prefix.
+<a name="line801"></a>     *
+<a name="line802"></a>     * Within the scope of this Session, this method maps uri to prefix. The
+<a name="line803"></a>     * remapping only affects operations done through this Session. To clear
+<a name="line804"></a>     * all remappings, the client must acquire a new Session.
+<a name="line805"></a>     * All local mappings already present in the Session that include either
+<a name="line806"></a>     * the specified prefix or the specified uri are removed and the new mapping
+<a name="line807"></a>     * is added.
+<a name="line808"></a>     *
+<a name="line809"></a>     * @param string $prefix The namespace prefix to be set as identifier.
+<a name="line810"></a>     * @param string $uri The loaction of the namespace definition (usually a uri).
+<a name="line811"></a>     * @return void
+<a name="line812"></a>     *
+<a name="line813"></a>     * @throws \PHPCR\NamespaceException if an attempt is made to map a namespace URI to a prefix beginning with
+<a name="line814"></a>     *                                   the characters &quot;xml&quot; (in any combination of case) or if an attempt is made to
+<a name="line815"></a>     *                                   map either the empty prefix or the empty namespace (i.e., if either $prefix or
+<a name="line816"></a>     *                                   $uri are the empty string).
+<a name="line817"></a>     * @throws \PHPCR\RepositoryException if another error occurs.
+<a name="line818"></a>     * @api
+<a name="line819"></a>     */</span>
+<a name="line820"></a>    <span style="color: #000000; font-weight: bold;">function</span> setNamespacePrefix<span style="color: #009900;">&#40;</span><span style="color: #000088;">$prefix</span><span style="color: #339933;">,</span> <span style="color: #000088;">$uri</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line821"></a>&nbsp;
+<a name="line822"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line823"></a>     * Returns all prefixes currently mapped to URIs in this Session.
+<a name="line824"></a>     *
+<a name="line825"></a>     * @return array The list of currently registered namespace prefixes.
+<a name="line826"></a>     *
+<a name="line827"></a>     * @throws \PHPCR\RepositoryException if an error occurs
+<a name="line828"></a>     * @api
+<a name="line829"></a>     */</span>
+<a name="line830"></a>    <span style="color: #000000; font-weight: bold;">function</span> getNamespacePrefixes<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line831"></a>&nbsp;
+<a name="line832"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line833"></a>     * Returns the URI to which the given prefix is mapped as currently set in
+<a name="line834"></a>     * this Session.
+<a name="line835"></a>     *
+<a name="line836"></a>     * @param string $prefix The identifier of the namespace location to be returned.
+<a name="line837"></a>     * @return string The location of the namespace definition identified by its prefix.
+<a name="line838"></a>     *
+<a name="line839"></a>     * @throws \PHPCR\NamespaceException if the specified prefix is unknown.
+<a name="line840"></a>     * @throws \PHPCR\RepositoryException if another error occurs
+<a name="line841"></a>     * @api
+<a name="line842"></a>     */</span>
+<a name="line843"></a>    <span style="color: #000000; font-weight: bold;">function</span> getNamespaceURI<span style="color: #009900;">&#40;</span><span style="color: #000088;">$prefix</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line844"></a>&nbsp;
+<a name="line845"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line846"></a>     * Returns the prefix to which the given uri is mapped as currently set in
+<a name="line847"></a>     * this Session.
+<a name="line848"></a>     *
+<a name="line849"></a>     * @param string $uri The loaction of the namespace definition (usually a uri).
+<a name="line850"></a>     * @return string The prefix of a namespace identified by its uri.
+<a name="line851"></a>     *
+<a name="line852"></a>     * @throws \PHPCR\NamespaceException if the specified uri is unknown.
+<a name="line853"></a>     * @throws \PHPCR\RepositoryException if another error occurs
+<a name="line854"></a>     * @api
+<a name="line855"></a>     */</span>
+<a name="line856"></a>    <span style="color: #000000; font-weight: bold;">function</span> getNamespacePrefix<span style="color: #009900;">&#40;</span><span style="color: #000088;">$uri</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line857"></a>&nbsp;
+<a name="line858"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line859"></a>     * Releases all resources associated with this Session.
+<a name="line860"></a>     *
+<a name="line861"></a>     * This method should be called when a Session is no longer needed.
+<a name="line862"></a>     *
+<a name="line863"></a>     * @return void
+<a name="line864"></a>     * @api
+<a name="line865"></a>     */</span>
+<a name="line866"></a>    <span style="color: #000000; font-weight: bold;">function</span> logout<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line867"></a>&nbsp;
+<a name="line868"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line869"></a>     * Determines if the current session is still valid.
+<a name="line870"></a>     *
+<a name="line871"></a>     * Returns true if this Session object is usable by the client. Otherwise,
+<a name="line872"></a>     * returns false.
+<a name="line873"></a>     *
+<a name="line874"></a>     * A usable Session is one that is neither logged-out, timed-out nor in
+<a name="line875"></a>     * any other way disconnected from the repository.
+<a name="line876"></a>     *
+<a name="line877"></a>     * @return boolean true if this Session is usable, false otherwise.
+<a name="line878"></a>     * @api
+<a name="line879"></a>     */</span>
+<a name="line880"></a>    <span style="color: #000000; font-weight: bold;">function</span> isLive<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line881"></a>&nbsp;
+<a name="line882"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line883"></a>     * Returns the access control manager for this Session.
+<a name="line884"></a>     *
+<a name="line885"></a>     * @return \PHPCR\Security\AccessControlManager the access control manager for this Session
+<a name="line886"></a>     *
+<a name="line887"></a>     * @throws \PHPCR\UnsupportedRepositoryOperationException if access control is not supported.
+<a name="line888"></a>     * @throws \PHPCR\RepositoryException if another error occurs.
+<a name="line889"></a>     * @api
+<a name="line890"></a>     */</span>
+<a name="line891"></a>    <span style="color: #000000; font-weight: bold;">function</span> getAccessControlManager<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line892"></a>&nbsp;
+<a name="line893"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line894"></a>     * Returns the retention and hold manager for this Session.
+<a name="line895"></a>     *
+<a name="line896"></a>     * @return \PHPCR\Retention\RetentionManagerInterface the retention manager for this Session.
+<a name="line897"></a>     *
+<a name="line898"></a>     * @throws \PHPCR\UnsupportedRepositoryOperationException if retention and hold are not supported.
+<a name="line899"></a>     * @throws \PHPCR\RepositoryException if another error occurs.
+<a name="line900"></a>     * @api
+<a name="line901"></a>     */</span>
+<a name="line902"></a>    <span style="color: #000000; font-weight: bold;">function</span> getRetentionManager<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line903"></a><span style="color: #009900;">&#125;</span>
+<a name="line904"></a>&nbsp;</pre>
 <div class="header">
 <h1>PHPCR</h1>
 <ul>

@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="generator" content="PHPDoctor 2RC4 (http://peej.github.com/phpdoctor/)">
-<meta name="when" content="Mon, 30 May 2011 13:13:09 +0000">
+<meta name="when" content="Thu, 16 Jun 2011 13:02:37 +0000">
 
 <link rel="stylesheet" type="text/css" href="../stylesheet.css">
 <link rel="start" href="../overview-summary.html">
@@ -41,7 +41,7 @@ Detail: <a href="#detail_field">Field</a> | <a href="#detail_method">Method</a> 
 <hr>
 
 <div class="qualifiedName">PHPCR\NodeInterface</div>
-<a href="../source/phpcr/nodeinterface.php.html#line40" class="location">PHPCR/NodeInterface.php at line 40</a>
+<a href="../source/phpcr/nodeinterface.php.html#line41" class="location">PHPCR/NodeInterface.php at line 41</a>
 
 <h1>Interface NodeInterface</h1>
 
@@ -57,7 +57,8 @@ Detail: <a href="#detail_field">Field</a> | <a href="#detail_method">Method</a> 
 <b>foreach</b>. Nodes have to implement either \IteratorAggregate or
 \Iterator.
 The iterator is equivalent to <b>getNodes()</b> with no filter, returning
-a list of all child nodes. Keys are the node names, values the node instances.</p></div>
+a list of all child nodes. Keys are the node names, values the node
+instances.</p></div>
 
 <dl>
 <dt>Subpackage:</dt>
@@ -113,7 +114,8 @@ a list of all child nodes. Keys are the node names, values the node instances.</
 </tr>
 <tr>
 <td class="type"> void</td>
-<td class="description"><p class="name"><a href="#followLifecycleTransition()">followLifecycleTransition</a>(string transition)</p><p class="description">Causes the lifecycle state of this node to undergo the specified transition.
+<td class="description"><p class="name"><a href="#followLifecycleTransition()">followLifecycleTransition</a>(string transition)</p><p class="description">Causes the lifecycle state of this node to undergo the specified
+transition.
 </p></td>
 </tr>
 <tr>
@@ -137,12 +139,14 @@ corresponds to this node.</p></td>
 </tr>
 <tr>
 <td class="type"> integer</td>
-<td class="description"><p class="name"><a href="#getIndex()">getIndex</a>()</p><p class="description">This method returns the index of this node within the ordered set of its same-name sibling nodes.
+<td class="description"><p class="name"><a href="#getIndex()">getIndex</a>()</p><p class="description">This method returns the index of this node within the ordered set of its
+same-name sibling nodes.
 </p></td>
 </tr>
 <tr>
 <td class="type"> array</td>
-<td class="description"><p class="name"><a href="#getMixinNodeTypes()">getMixinNodeTypes</a>()</p><p class="description">Returns an array of NodeType objects representing the mixin node types in effect for this node.
+<td class="description"><p class="name"><a href="#getMixinNodeTypes()">getMixinNodeTypes</a>()</p><p class="description">Returns an array of NodeType objects representing the mixin node types
+in effect for this node.
 </p></td>
 </tr>
 <tr>
@@ -171,8 +175,8 @@ corresponds to this node.</p></td>
 </p></td>
 </tr>
 <tr>
-<td class="type"> Iterator</td>
-<td class="description"><p class="name"><a href="#getPropertiesValues()">getPropertiesValues</a>(string|array filter)</p><p class="description">Shortcut for getProperties and then getting the values of the properties.
+<td class="type"> array</td>
+<td class="description"><p class="name"><a href="#getPropertiesValues()">getPropertiesValues</a>(string|array filter, boolean dereference)</p><p class="description">Shortcut for getProperties and then getting the values of the properties.
 </p></td>
 </tr>
 <tr>
@@ -187,25 +191,29 @@ corresponds to this node.</p></td>
 </tr>
 <tr>
 <td class="type"> Iterator</td>
-<td class="description"><p class="name"><a href="#getReferences()">getReferences</a>(string name)</p><p class="description">This method returns all REFERENCE properties that refer to this node, have
-the specified name and that are accessible through the current Session.
+<td class="description"><p class="name"><a href="#getReferences()">getReferences</a>(string name)</p><p class="description">This method returns all REFERENCE properties that refer to this node,
+have the specified name and that are accessible through the current
+Session.
 </p></td>
 </tr>
 <tr>
 <td class="type"> Iterator</td>
-<td class="description"><p class="name"><a href="#getSharedSet()">getSharedSet</a>()</p><p class="description">Returns an iterator over all nodes that are in the shared set of this node.
+<td class="description"><p class="name"><a href="#getSharedSet()">getSharedSet</a>()</p><p class="description">Returns an iterator over all nodes that are in the shared set of this
+node.
 </p></td>
 </tr>
 <tr>
 <td class="type"> Iterator</td>
-<td class="description"><p class="name"><a href="#getWeakReferences()">getWeakReferences</a>(string name)</p><p class="description">This method returns all WEAKREFERENCE properties that refer to this node,
-have the specified name and that are accessible through the current Session.
+<td class="description"><p class="name"><a href="#getWeakReferences()">getWeakReferences</a>(string name)</p><p class="description">This method returns all WEAKREFERENCE properties that refer to this
+node, have the specified name and that are accessible through the
+current Session.
 </p></td>
 </tr>
 <tr>
 <td class="type"> boolean</td>
-<td class="description"><p class="name"><a href="#hasNode()">hasNode</a>(string relPath)</p><p class="description">Indicates whether a node exists at relPath Returns true if a node accessible
-through the current Session exists at relPath and false otherwise.</p></td>
+<td class="description"><p class="name"><a href="#hasNode()">hasNode</a>(string relPath)</p><p class="description">Indicates whether a node exists at relPath Returns true if a node
+accessible through the current Session exists at relPath and false
+otherwise.</p></td>
 </tr>
 <tr>
 <td class="type"> boolean</td>
@@ -234,7 +242,8 @@ through the current Session exists at relPath and false otherwise.</p></td>
 </tr>
 <tr>
 <td class="type"> boolean</td>
-<td class="description"><p class="name"><a href="#isNodeType()">isNodeType</a>(string nodeTypeName)</p><p class="description">Returns true if this node is of the specified primary node type or mixin type, or a subtype thereof.
+<td class="description"><p class="name"><a href="#isNodeType()">isNodeType</a>(string nodeTypeName)</p><p class="description">Returns true if this node is of the specified primary node type or mixin
+type, or a subtype thereof.
 </p></td>
 </tr>
 <tr>
@@ -244,12 +253,14 @@ through the current Session exists at relPath and false otherwise.</p></td>
 </tr>
 <tr>
 <td class="type"> void</td>
-<td class="description"><p class="name"><a href="#removeMixin()">removeMixin</a>(string mixinName)</p><p class="description">Removes the specified mixin node type from this node and removes mixinName from this node's jcr:mixinTypes property.
+<td class="description"><p class="name"><a href="#removeMixin()">removeMixin</a>(string mixinName)</p><p class="description">Removes the specified mixin node type from this node and removes
+mixinName from this node's jcr:mixinTypes property.
 </p></td>
 </tr>
 <tr>
 <td class="type"> void</td>
-<td class="description"><p class="name"><a href="#removeShare()">removeShare</a>()</p><p class="description">Removes this node, but does not remove any other node in the shared set of this node.</p></td>
+<td class="description"><p class="name"><a href="#removeShare()">removeShare</a>()</p><p class="description">Removes this node, but does not remove any other node in the shared set
+of this node.</p></td>
 </tr>
 <tr>
 <td class="type"> void</td>
@@ -278,7 +289,7 @@ through the current Session exists at relPath and false otherwise.</p></td>
 <tr><td><a href="../phpcr/iteminterface.html#accept()">accept</a>, <a href="../phpcr/iteminterface.html#getAncestor()">getAncestor</a>, <a href="../phpcr/iteminterface.html#getDepth()">getDepth</a>, <a href="../phpcr/iteminterface.html#getName()">getName</a>, <a href="../phpcr/iteminterface.html#getParent()">getParent</a>, <a href="../phpcr/iteminterface.html#getPath()">getPath</a>, <a href="../phpcr/iteminterface.html#getSession()">getSession</a>, <a href="../phpcr/iteminterface.html#isModified()">isModified</a>, <a href="../phpcr/iteminterface.html#isNew()">isNew</a>, <a href="../phpcr/iteminterface.html#isNode()">isNode</a>, <a href="../phpcr/iteminterface.html#isSame()">isSame</a>, <a href="../phpcr/iteminterface.html#refresh()">refresh</a>, <a href="../phpcr/iteminterface.html#remove()">remove</a></td></tr></table>
 
 <h2 id="detail_field">Constant Detail</h2>
-<a href="../source/phpcr/nodeinterface.php.html#line60" class="location">PHPCR/NodeInterface.php at line 60</a>
+<a href="../source/phpcr/nodeinterface.php.html#line61" class="location">PHPCR/NodeInterface.php at line 61</a>
 
 <h3 id="JCR_CHILD_NODE_DEFINITION">JCR_CHILD_NODE_DEFINITION</h3>
 <code class="signature">public final static  str <strong>JCR_CHILD_NODE_DEFINITION</strong> = &quot;{http://www.jcp.org/jcr/1.0}childNodeDefinition&quot;</code>
@@ -290,7 +301,7 @@ through the current Session exists at relPath and false otherwise.</p></td>
 
 <hr>
 
-<a href="../source/phpcr/nodeinterface.php.html#line48" class="location">PHPCR/NodeInterface.php at line 48</a>
+<a href="../source/phpcr/nodeinterface.php.html#line49" class="location">PHPCR/NodeInterface.php at line 49</a>
 
 <h3 id="JCR_CONTENT">JCR_CONTENT</h3>
 <code class="signature">public final static  str <strong>JCR_CONTENT</strong> = &quot;{http://www.jcp.org/jcr/1.0}content&quot;</code>
@@ -304,7 +315,7 @@ nt:linkedFile.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/nodeinterface.php.html#line78" class="location">PHPCR/NodeInterface.php at line 78</a>
+<a href="../source/phpcr/nodeinterface.php.html#line79" class="location">PHPCR/NodeInterface.php at line 79</a>
 
 <h3 id="JCR_FROZEN_NODE">JCR_FROZEN_NODE</h3>
 <code class="signature">public final static  str <strong>JCR_FROZEN_NODE</strong> = &quot;{http://www.jcp.org/jcr/1.0}frozenNode&quot;</code>
@@ -316,7 +327,7 @@ nt:linkedFile.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/nodeinterface.php.html#line54" class="location">PHPCR/NodeInterface.php at line 54</a>
+<a href="../source/phpcr/nodeinterface.php.html#line55" class="location">PHPCR/NodeInterface.php at line 55</a>
 
 <h3 id="JCR_PROPERTY_DEFINITION">JCR_PROPERTY_DEFINITION</h3>
 <code class="signature">public final static  str <strong>JCR_PROPERTY_DEFINITION</strong> = &quot;{http://www.jcp.org/jcr/1.0}propertyDefinition&quot;</code>
@@ -328,7 +339,7 @@ nt:linkedFile.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/nodeinterface.php.html#line66" class="location">PHPCR/NodeInterface.php at line 66</a>
+<a href="../source/phpcr/nodeinterface.php.html#line67" class="location">PHPCR/NodeInterface.php at line 67</a>
 
 <h3 id="JCR_ROOT_VERSION">JCR_ROOT_VERSION</h3>
 <code class="signature">public final static  str <strong>JCR_ROOT_VERSION</strong> = &quot;{http://www.jcp.org/jcr/1.0}rootVersion&quot;</code>
@@ -340,7 +351,7 @@ nt:linkedFile.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/nodeinterface.php.html#line72" class="location">PHPCR/NodeInterface.php at line 72</a>
+<a href="../source/phpcr/nodeinterface.php.html#line73" class="location">PHPCR/NodeInterface.php at line 73</a>
 
 <h3 id="JCR_VERSION_LABELS">JCR_VERSION_LABELS</h3>
 <code class="signature">public final static  str <strong>JCR_VERSION_LABELS</strong> = &quot;{http://www.jcp.org/jcr/1.0}versionLabels&quot;</code>
@@ -353,30 +364,31 @@ nt:linkedFile.</p><dl>
 <hr>
 
 <h2 id="detail_method">Method Detail</h2>
-<a href="../source/phpcr/nodeinterface.php.html#line626" class="location">PHPCR/NodeInterface.php at line 626</a>
+<a href="../source/phpcr/nodeinterface.php.html#line779" class="location">PHPCR/NodeInterface.php at line 779</a>
 
 <h3 id="addMixin()">addMixin</h3>
 <code class="signature">public  void <strong>addMixin</strong>(string mixinName)</code>
 <div class="details">
-<p>Adds the mixin node type named $mixinName to this node.</p><p>If this node is already of type $mixinName (either due to a previously added mixin or due to its
-primary type, through inheritance) then this method has no effect.
-Otherwise $mixinName is added to this node's jcr:mixinTypes property.</p><p>Semantically, the new node type may take effect immediately, on disptahc
+<p>Adds the mixin node type named $mixinName to this node.</p><p>If this node is already of type $mixinName (either due to a previously
+added mixin or due to its primary type, through inheritance) then this
+method has no effect. Otherwise $mixinName is added to this node's
+jcr:mixinTypes property.</p><p>Semantically, the new node type may take effect immediately, on dispatch
 or on persist. The behavior is adopted must be the same as the behavior
-adopted for setPrimaryType(java.lang.String) and the behavior that occurs
-when a node is first created.</p><p>A ConstraintViolationException is thrown either immediately or on save if
-a conflict with another assigned mixin or the primary node type or for an
-implementation-specific reason. Implementations may differ on when this
-validation is done.</p><p>In some implementations it may only be possible to add mixin types before
-a a node is persisted for the first time. In such cases any later calls to
-$addMixin will throw a ConstraintViolationException either immediately,
-on dispatch or on persist.</p><dl>
+adopted for setPrimaryType(java.lang.String) and the behavior that
+occurs when a node is first created.</p><p>A ConstraintViolationException is thrown either immediately or on save
+if a conflict with another assigned mixin or the primary node type or
+for an implementation-specific reason. Implementations may differ on
+when this validation is done.</p><p>In some implementations it may only be possible to add mixin types
+before a a node is persisted for the first time. In such cases any
+later calls to $addMixin will throw a ConstraintViolationException
+either immediately, on dispatch or on persist.</p><dl>
 <dt>Parameters:</dt>
 <dd>mixinName - the name of the mixin node type to be added</dd>
 <dt>Throws:</dt>
-<dd><a href="../phpcr/nodetype/nosuchnodetypeexception.html">\PHPCR\NodeType\NoSuchNodeTypeException</a> - If the specified mixinName is not recognized and this implementation performs this validation immediately instead of waiting until save.</dd>
-<dd>\PHPCR\ConstraintViolationException - If the specified mixin node type is prevented from being assigned.</dd>
-<dd><a href="../phpcr/version/versionexception.html">\PHPCR\Version\VersionException</a> - If this node is versionable and checked-in or is non-versionable but its nearest versionable ancestor is checked-in and this implementation performs this validation immediately instead of waiting until save.</dd>
-<dd><a href="../phpcr/lock/lockexception.html">\PHPCR\Lock\LockException</a> - If a lock prevents the addition of the mixin and this implementation performs this validation immediately instead of waiting until save.</dd>
+<dd><a href="../phpcr/nodetype/nosuchnodetypeexception.html">\PHPCR\NodeType\NoSuchNodeTypeException</a> - if the specified mixinName is not recognized and this implementation performs this validation immediately instead of waiting until save.</dd>
+<dd>\PHPCR\ConstraintViolationException - if the specified mixin node type is prevented from being assigned.</dd>
+<dd><a href="../phpcr/version/versionexception.html">\PHPCR\Version\VersionException</a> - if this node is versionable and checked-in or is non-versionable but its nearest versionable ancestor is checked-in and this implementation performs this validation immediately instead of waiting until save.</dd>
+<dd><a href="../phpcr/lock/lockexception.html">\PHPCR\Lock\LockException</a> - if a lock prevents the addition of the mixin and this implementation performs this validation immediately instead of waiting until save.</dd>
 <dd><a href="../phpcr/repositoryexception.html">\PHPCR\RepositoryException</a> - if another error occurs.</dd>
 <dt>Api.</dt>
 </dl>
@@ -384,7 +396,7 @@ on dispatch or on persist.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/nodeinterface.php.html#line113" class="location">PHPCR/NodeInterface.php at line 113</a>
+<a href="../source/phpcr/nodeinterface.php.html#line130" class="location">PHPCR/NodeInterface.php at line 130</a>
 
 <h3 id="addNode()">addNode</h3>
 <code class="signature">public  <a href="../phpcr/nodeinterface.html">NodeInterface</a> <strong>addNode</strong>(string relPath, string primaryNodeTypeName)</code>
@@ -392,16 +404,16 @@ on dispatch or on persist.</p><dl>
 <p>Creates a new node at a specified path.</p><p>This is session-write method, meaning that the addition of the new node
 is dispatched upon Session#save.</p><p>The $relPath provided must not have an index on its final element,
 otherwise a RepositoryException is thrown.</p><p>If ordering is supported by the node type of the parent node of the new
-node then the new node is appended to the end of the child node list.</p><p>The new node's primary node type will be determined by the child node
-definitions in the node types of its parent. This may occur either
-immediately, on dispatch (save, whether within or without transactions)
-or on persist (save without transactions, commit within a transaction),
-depending on the implementation.</p><p>If $primaryNodeTypeName is given:
-The behavior of this method is identical to addNode($relPath) except that
-the primary node type of the new node is explicitly specified.</p><dl>
+node then the new node is appended to the end of the child node list.</p><p>If $primaryNodeTypeName is specified, this type will be used (or a
+ConstraintViolationException thrown if this child type is not allowed).
+Otherwise the new node's primary node type will be determined by the
+child node definitions in the node types of its parent. This may occur
+either immediately, on dispatch (save, whether within or without
+transactions) or on persist (save without transactions, commit within
+a transaction), depending on the implementation.</p><dl>
 <dt>Parameters:</dt>
 <dd>relPath - The path of the new node to be created.</dd>
-<dd>primaryNodeTypeName - The name of the primary node type of the new node.</dd>
+<dd>primaryNodeTypeName - The name of the primary node type of the new node. Optional.</dd>
 <dt>Returns:</dt>
 <dd>The node that was added.</dd>
 <dt>Throws:</dt>
@@ -410,30 +422,42 @@ the primary node type of the new node is explicitly specified.</p><dl>
 <dd>\PHPCR\ConstraintViolationException - if a node type or implementation-specific constraint is violated or if an attempt is made to add a node as the child of a property and this implementation performs this validation immediately.</dd>
 <dd><a href="../phpcr/version/versionexception.html">\PHPCR\Version\VersionException</a> - if the node to which the new child is being added is read-only due to a checked-in node and this implementation performs this validation immediately.</dd>
 <dd><a href="../phpcr/lock/lockexception.html">\PHPCR\Lock\LockException</a> - if a lock prevents the addition of the node and this implementation performs this validation immediately instead of waiting until save.</dd>
-<dd><a href="../phpcr/repositoryexception.html">\PHPCR\RepositoryException</a> - If the last element of relPath has an index or if another error occurs.</dd>
+<dd>InvalidArgumentException - if $relPath is an absolute path</dd>
+<dd><a href="../phpcr/repositoryexception.html">\PHPCR\RepositoryException</a> - if the last element of relPath has an index or if another error occurs.</dd>
 <dt>Api.</dt>
 </dl>
 </div>
 
 <hr>
 
-<a href="../source/phpcr/nodeinterface.php.html#line671" class="location">PHPCR/NodeInterface.php at line 671</a>
+<a href="../source/phpcr/nodeinterface.php.html#line847" class="location">PHPCR/NodeInterface.php at line 847</a>
 
 <h3 id="canAddMixin()">canAddMixin</h3>
 <code class="signature">public  boolean <strong>canAddMixin</strong>(string mixinName)</code>
 <div class="details">
 <p>Determine if a mixin node type may be added to the current node.</p><p>Returns true if the specified mixin node type called $mixinName can be
 added to this node. Returns false otherwise. A result of false must be
-returned in each of the following cases:
-* The mixin's definition conflicts with an existing primary or mixin node
-type of this node.
-* This node is versionable and checked-in or is non-versionable and its
-nearest versionable ancestor is checked-in.
-* This node is protected (as defined in this node's NodeDefinition, found
-in the node type of this node's parent).
-* An access control restriction would prevent the addition of the mixin.
-* A lock would prevent the addition of the mixin.
-* An implementation-specific restriction would prevent the addition of the mixin.</p><dl>
+returned in each of the following cases:</p>
+<ul>
+<li>
+The mixin's definition conflicts with an existing primary or mixin
+node type of this node.</li>
+<li>
+This node is versionable and checked-in or is non-versionable and
+its nearest versionable ancestor is checked-in.</li>
+<li>
+This node is protected (as defined in this node's NodeDefinition,
+found in the node type of this node's parent).</li>
+<li>
+An access control restriction would prevent the addition of the
+mixin.</li>
+<li>
+A lock would prevent the addition of the mixin.</li>
+<li>
+An implementation-specific restriction would prevent the addition
+of the mixin.</li>
+</ul>
+<p></p><dl>
 <dt>Parameters:</dt>
 <dd>mixinName - The name of the mixin to be tested.</dd>
 <dt>Returns:</dt>
@@ -447,17 +471,18 @@ in the node type of this node's parent).
 
 <hr>
 
-<a href="../source/phpcr/nodeinterface.php.html#line842" class="location">PHPCR/NodeInterface.php at line 842</a>
+<a href="../source/phpcr/nodeinterface.php.html#line1054" class="location">PHPCR/NodeInterface.php at line 1054</a>
 
 <h3 id="followLifecycleTransition()">followLifecycleTransition</h3>
 <code class="signature">public  void <strong>followLifecycleTransition</strong>(string transition)</code>
 <div class="details">
-<p>Causes the lifecycle state of this node to undergo the specified transition.</p><p>This method may change the value of the jcr:currentLifecycleState property,
-in most cases it is expected that the implementation will change the value
-to that of the passed transition parameter, though this is an
-implementation-specific issue. If the jcr:currentLifecycleState property
-is changed the change is persisted immediately, there is no need to call
-save.</p><dl>
+<p>Causes the lifecycle state of this node to undergo the specified
+transition.</p><p>This method may change the value of the jcr:currentLifecycleState
+property, in most cases it is expected that the implementation will
+change the value to that of the passed transition parameter, though this
+is an implementation-specific issue. If the jcr:currentLifecycleState
+property is changed the change is persisted immediately, there is no
+need to call save.</p><dl>
 <dt>Parameters:</dt>
 <dd>transition - a state transition</dd>
 <dt>Throws:</dt>
@@ -470,7 +495,7 @@ save.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/nodeinterface.php.html#line852" class="location">PHPCR/NodeInterface.php at line 852</a>
+<a href="../source/phpcr/nodeinterface.php.html#line1068" class="location">PHPCR/NodeInterface.php at line 1068</a>
 
 <h3 id="getAllowedLifecycleTransitions()">getAllowedLifecycleTransitions</h3>
 <code class="signature">public  array <strong>getAllowedLifecycleTransitions</strong>()</code>
@@ -487,7 +512,7 @@ save.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/nodeinterface.php.html#line730" class="location">PHPCR/NodeInterface.php at line 730</a>
+<a href="../source/phpcr/nodeinterface.php.html#line918" class="location">PHPCR/NodeInterface.php at line 918</a>
 
 <h3 id="getCorrespondingNodePath()">getCorrespondingNodePath</h3>
 <code class="signature">public  string <strong>getCorrespondingNodePath</strong>(string workspaceName)</code>
@@ -509,12 +534,13 @@ corresponds to this node.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/nodeinterface.php.html#line689" class="location">PHPCR/NodeInterface.php at line 689</a>
+<a href="../source/phpcr/nodeinterface.php.html#line868" class="location">PHPCR/NodeInterface.php at line 868</a>
 
 <h3 id="getDefinition()">getDefinition</h3>
 <code class="signature">public  <a href="../phpcr/nodetype/nodedefinitioninterface.html">NodeDefinitionInterface</a> <strong>getDefinition</strong>()</code>
 <div class="details">
-<p>Returns the node definition that applies to this node.</p><p>In some cases there may appear to be more than one definition that could apply to this node.
+<p>Returns the node definition that applies to this node.</p><p>In some cases there may appear to be more than one definition that could
+apply to this node.
 However, it is assumed that upon creation of this node, a single particular
 definition was used and it is that definition that this method returns.
 How this governing definition is selected upon node creation from among
@@ -532,7 +558,7 @@ implementation.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/nodeinterface.php.html#line411" class="location">PHPCR/NodeInterface.php at line 411</a>
+<a href="../source/phpcr/nodeinterface.php.html#line500" class="location">PHPCR/NodeInterface.php at line 500</a>
 
 <h3 id="getIdentifier()">getIdentifier</h3>
 <code class="signature">public  string <strong>getIdentifier</strong>()</code>
@@ -541,21 +567,24 @@ implementation.</p><dl>
 <dt>Returns:</dt>
 <dd>the identifier of this node</dd>
 <dt>Throws:</dt>
-<dd><a href="../phpcr/repositoryexception.html">\PHPCR\RepositoryException</a> - If an error occurs.</dd>
+<dd><a href="../phpcr/repositoryexception.html">\PHPCR\RepositoryException</a> - if an error occurs.</dd>
 <dt>Api.</dt>
 </dl>
 </div>
 
 <hr>
 
-<a href="../source/phpcr/nodeinterface.php.html#line424" class="location">PHPCR/NodeInterface.php at line 424</a>
+<a href="../source/phpcr/nodeinterface.php.html#line519" class="location">PHPCR/NodeInterface.php at line 519</a>
 
 <h3 id="getIndex()">getIndex</h3>
 <code class="signature">public  integer <strong>getIndex</strong>()</code>
 <div class="details">
-<p>This method returns the index of this node within the ordered set of its same-name sibling nodes.</p><p>This index is the one used to address same-name siblings using the square-bracket notation, e.g., /a[3]/b[4].
-Note that the index always starts at 1 (not 0), for compatibility with XPath. As a result, for nodes that do
-not have same-name-siblings, this method will always return 1.</p><dl>
+<p>This method returns the index of this node within the ordered set of its
+same-name sibling nodes.</p><p>This index is the one used to address same-name siblings using the
+square-bracket notation, e.g., /a[3]/b[4]. Note that the index always
+starts at 1 (not 0), for compatibility with XPath. As a result, for
+nodes that do not have same-name-siblings, this method will always
+return 1.</p><dl>
 <dt>Returns:</dt>
 <dd>The index of this node within the ordered set of its same-name sibling nodes.</dd>
 <dt>Throws:</dt>
@@ -566,14 +595,16 @@ not have same-name-siblings, this method will always return 1.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/nodeinterface.php.html#line551" class="location">PHPCR/NodeInterface.php at line 551</a>
+<a href="../source/phpcr/nodeinterface.php.html#line684" class="location">PHPCR/NodeInterface.php at line 684</a>
 
 <h3 id="getMixinNodeTypes()">getMixinNodeTypes</h3>
 <code class="signature">public  array <strong>getMixinNodeTypes</strong>()</code>
 <div class="details">
-<p>Returns an array of NodeType objects representing the mixin node types in effect for this node.</p><p>This includes only those mixin types explicitly assigned to this node. It does not include mixin types
-inherited through the addition of supertypes to the primary type hierarchy or through the
-addition of supertypes to the type hierarchy of any of the declared mixin types.</p><dl>
+<p>Returns an array of NodeType objects representing the mixin node types
+in effect for this node.</p><p>This includes only those mixin types explicitly assigned to this node.
+It does not include mixin types inherited through the addition of
+supertypes to the primary type hierarchy or through the addition of
+supertypes to the type hierarchy of any of the declared mixin types.</p><dl>
 <dt>Returns:</dt>
 <dd>of \PHPCR\NodeType\NodeTypeInterface objects.</dd>
 <dt>Throws:</dt>
@@ -584,45 +615,48 @@ addition of supertypes to the type hierarchy of any of the declared mixin types.
 
 <hr>
 
-<a href="../source/phpcr/nodeinterface.php.html#line236" class="location">PHPCR/NodeInterface.php at line 236</a>
+<a href="../source/phpcr/nodeinterface.php.html#line281" class="location">PHPCR/NodeInterface.php at line 281</a>
 
 <h3 id="getNode()">getNode</h3>
 <code class="signature">public  <a href="../phpcr/nodeinterface.html">NodeInterface</a> <strong>getNode</strong>(string relPath)</code>
 <div class="details">
 <p>Returns the node at relPath relative to this node.</p><p>If relPath contains a path element that refers to a node with same-name
-sibling nodes without explicitly including an index using the array-style
-notation ([x]), then the index [1] is assumed (indexing of same name
-siblings begins at 1, not 0, in order to preserve compatibility with XPath).</p><p>Within the scope of a single Session object, if a Node object has been
+sibling nodes without explicitly including an index using the
+array-style notation ([x]), then the index [1] is assumed (indexing of
+same name siblings begins at 1, not 0, in order to preserve
+compatibility with XPath).</p><p>Within the scope of a single Session object, if a Node object has been
 acquired, any subsequent call of getNode reacquiring the same node must
-return a Node object reflecting the same state as the earlier Node object.
-Whether this object is actually the same Node instance, or simply one
-wrapping the same state, is up to the implementation.</p><dl>
+return a Node object reflecting the same state as the earlier Node
+object. Whether this object is actually the same Node instance, or
+simply one wrapping the same state, is up to the implementation.</p><dl>
 <dt>Parameters:</dt>
 <dd>relPath - The relative path of the node to retrieve.</dd>
 <dt>Returns:</dt>
 <dd>The node at relPath.</dd>
 <dt>Throws:</dt>
-<dd><a href="../phpcr/pathnotfoundexception.html">\PHPCR\PathNotFoundException</a> - If no node exists at the specified path or the current Session does not read access to the node at the specified path.</dd>
-<dd><a href="../phpcr/repositoryexception.html">\PHPCR\RepositoryException</a> - If another error occurs.</dd>
+<dd><a href="../phpcr/pathnotfoundexception.html">\PHPCR\PathNotFoundException</a> - if no node exists at the specified path or the current Session does not read access to the node at the specified path.</dd>
+<dd>InvalidArgumentException - if $relPath is an absolute path</dd>
+<dd><a href="../phpcr/repositoryexception.html">\PHPCR\RepositoryException</a> - if another error occurs.</dd>
 <dt>Api.</dt>
 </dl>
 </div>
 
 <hr>
 
-<a href="../source/phpcr/nodeinterface.php.html#line289" class="location">PHPCR/NodeInterface.php at line 289</a>
+<a href="../source/phpcr/nodeinterface.php.html#line340" class="location">PHPCR/NodeInterface.php at line 340</a>
 
 <h3 id="getNodes()">getNodes</h3>
 <code class="signature">public  Iterator <strong>getNodes</strong>(string|array filter)</code>
 <div class="details">
 <p>Get a set of nodes gathered by the definition of a filter.</p><p>If $filter is a string:
 Gets all child nodes of this node accessible through the current Session
-that match namePattern (if no pattern is given, all accessible child nodes
-are returned). Does not include properties of this Node. The pattern may
-be a full name or a partial name with one or more wildcard characters ("*"),
-or a disjunction (using the "|" character to represent logical OR) of these.
+that match namePattern (if no pattern is given, all accessible child
+nodes are returned). Does not include properties of this Node. The
+pattern may be a full name or a partial name with one or more wildcard
+characters ("*"), or a disjunction (using the "|" character to represent
+logical OR) of these.
 For example,
-N->getNodes("jcr:* | myapp:report | my doc")
+<pre>N->getNodes("jcr:* | myapp:report | my doc")</pre>
 would return an iterator holding all accessible child nodes of N that
 are either called 'myapp:report', begin with the prefix 'jcr:' or are
 called 'my doc'.</p><p>The substrings within the pattern that are delimited by "|" characters
@@ -637,30 +671,31 @@ would return an iterator holding all accessible child nodes of N that
 are either called 'myapp:report', begin with the prefix 'jcr:' or are
 called 'my doc'.</p><p>Note that unlike in the case of the getNodes(<string>) leading and
 trailing whitespace around a glob is not ignored.</p><p>
-The pattern is matched against the names (not the paths) of the immediate
-child nodes of this node.</p><p>If this node has no accessible matching child nodes, then an empty
+The pattern is matched against the names (not the paths) of the
+immediate child nodes of this node.</p><p>If this node has no accessible matching child nodes, then an empty
 iterator is returned.</p><p>The same reacquisition semantics apply as with getNode($relPath).</p><dl>
 <dt>Parameters:</dt>
 <dd>filter - a name pattern or an array of globbing strings.</dd>
 <dt>Returns:</dt>
 <dd>over all (matching) child Nodes implementing <b>SeekableIterator</b> and <b>Countable</b>. Keys are the Node names, values the corresponding NodeInterface instances.</dd>
 <dt>Throws:</dt>
-<dd><a href="../phpcr/repositoryexception.html">\PHPCR\RepositoryException</a> - If an unexpected error occurs.</dd>
+<dd><a href="../phpcr/repositoryexception.html">\PHPCR\RepositoryException</a> - if an error occurs.</dd>
 <dt>Api.</dt>
 </dl>
 </div>
 
 <hr>
 
-<a href="../source/phpcr/nodeinterface.php.html#line400" class="location">PHPCR/NodeInterface.php at line 400</a>
+<a href="../source/phpcr/nodeinterface.php.html#line487" class="location">PHPCR/NodeInterface.php at line 487</a>
 
 <h3 id="getPrimaryItem()">getPrimaryItem</h3>
 <code class="signature">public  <a href="../phpcr/iteminterface.html">ItemInterface</a> <strong>getPrimaryItem</strong>()</code>
 <div class="details">
-<p>Returns the primary child item of the current node.</p><p>The primary node type of this node may specify one child item (child node or property) of this node as
-the primary child item. This method returns that item.</p><p>In cases where the primary child item specifies the name of a set same-name
-sibling child nodes, the node returned will be the one among the same-name
-siblings with index [1].</p><p>The same reacquisition semantics apply as with getNode(String).</p><dl>
+<p>Returns the primary child item of the current node.</p><p>The primary node type of this node may specify one child item (child
+node or property) of this node as the primary child item. This method
+returns that item.</p><p>In cases where the primary child item specifies the name of a set
+same-name sibling child nodes, the node returned will be the one among
+the same-name siblings with index [1].</p><p>The same reacquisition semantics apply as with getNode(String).</p><dl>
 <dt>Returns:</dt>
 <dd>the primary child item.</dd>
 <dt>Throws:</dt>
@@ -672,13 +707,13 @@ siblings with index [1].</p><p>The same reacquisition semantics apply as with ge
 
 <hr>
 
-<a href="../source/phpcr/nodeinterface.php.html#line538" class="location">PHPCR/NodeInterface.php at line 538</a>
+<a href="../source/phpcr/nodeinterface.php.html#line667" class="location">PHPCR/NodeInterface.php at line 667</a>
 
 <h3 id="getPrimaryNodeType()">getPrimaryNodeType</h3>
 <code class="signature">public  <a href="../phpcr/nodetype/nodetypeinterface.html">NodeTypeInterface</a> <strong>getPrimaryNodeType</strong>()</code>
 <div class="details">
-<p>Returns the primary node type in effect for this node.</p><p>Which NodeType is returned when this method is called on the root node of a workspace is up
-to the implementation.</p><dl>
+<p>Returns the primary node type in effect for this node.</p><p>Which NodeType is returned when this method is called on the root node
+of a workspace is up to the implementation.</p><dl>
 <dt>Returns:</dt>
 <dd>a NodeType object.</dd>
 <dt>Throws:</dt>
@@ -689,66 +724,69 @@ to the implementation.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/nodeinterface.php.html#line369" class="location">PHPCR/NodeInterface.php at line 369</a>
+<a href="../source/phpcr/nodeinterface.php.html#line439" class="location">PHPCR/NodeInterface.php at line 439</a>
 
 <h3 id="getProperties()">getProperties</h3>
 <code class="signature">public  Iterator <strong>getProperties</strong>(string|array filter)</code>
 <div class="details">
 <p>Get an iteratable set of properties gathered on behalf of a filter.</p><p>If $filter is a string:
 Gets all properties of this node accessible through the current Session
-that match namePattern (if no pattern is given, all accessible properties
-are returned). Does not include child nodes of this node. The pattern may
-be a full name or a partial name with one or more wildcard characters ("*"),
-or a disjunction (using the "|" character to represent logical OR) of
-these. For example,
-N.getProperties("jcr:* | myapp:name | my doc")
+that match namePattern (if no pattern is given, all accessible
+properties are returned). Does not include child nodes of this node. The
+pattern may be a full name or a partial name with one or more wildcard
+characters ("*"), or a disjunction (using the "|" character to represent
+logical OR) of these. For example,
+<pre>N.getProperties("jcr:* | myapp:name | my doc")</pre>
 would return an iterator holding all accessible properties of N
 that are either called 'myapp:name', begin with the prefix 'jcr:' or are
 called 'my doc'.</p><p>The substrings within the pattern that are delimited by "|" characters
 and which may contain wildcard characters ("*") are called globs.</p><p>Note that leading and trailing whitespace around a glob is ignored, but
 whitespace within a disjunct forms part of the pattern to be matched.</p><p>If $filter is an array:
 Gets all properties of this node accessible through the current
-Session that match one or more of the $filter strings in the passed array.</p><p>A glob may be a full name or a partial name with one or more wildcard
+Session that match one or more of the $filter strings in the passed
+array.</p><p>A glob may be a full name or a partial name with one or more wildcard
 characters ("*"). For example,
 N->getProperties(array("jcr:*", "myapp:report", "my doc"))
 would return an iterator holding all accessible properties of N
 that are either called 'myapp:report', begin with the prefix 'jcr:' or
 are called 'my doc'.</p><p>Note that unlike in the case of getProperties(<string>) leading and
 trailing whitespace around a glob is not ignored.</p><p>
-The pattern is matched against the names (not the paths) of the immediate
-child properties of this node.</p><p>If this node has no accessible matching properties, then an empty iterator
-is returned.</p><p>The same reacquisition semantics apply as with getNode(String).</p><dl>
+The pattern is matched against the names (not the paths) of the
+immediate child properties of this node.</p><p>If this node has no accessible matching properties, then an empty
+iterator is returned.</p><p>The same reacquisition semantics apply as with getNode(String).</p><dl>
 <dt>Parameters:</dt>
 <dd>filter - a name pattern</dd>
 <dt>Returns:</dt>
 <dd>implementing <b>SeekableIterator</b> and <b>Countable</b>. Keys are the property names, values the corresponding PropertyInterface instances.</dd>
 <dt>Throws:</dt>
-<dd><a href="../phpcr/repositoryexception.html">\PHPCR\RepositoryException</a> - If an unexpected error occurs.</dd>
+<dd><a href="../phpcr/repositoryexception.html">\PHPCR\RepositoryException</a> - if an error occurs.</dd>
 <dt>Api.</dt>
 </dl>
 </div>
 
 <hr>
 
-<a href="../source/phpcr/nodeinterface.php.html#line381" class="location">PHPCR/NodeInterface.php at line 381</a>
+<a href="../source/phpcr/nodeinterface.php.html#line462" class="location">PHPCR/NodeInterface.php at line 462</a>
 
 <h3 id="getPropertiesValues()">getPropertiesValues</h3>
-<code class="signature">public  Iterator <strong>getPropertiesValues</strong>(string|array filter)</code>
+<code class="signature">public  array <strong>getPropertiesValues</strong>(string|array filter, boolean dereference)</code>
 <div class="details">
-<p>Shortcut for getProperties and then getting the values of the properties.</p><p>See NodeInterface::getProperties for a full documentation</p><dl>
+<p>Shortcut for getProperties and then getting the values of the properties.</p><p>To improve performance, implementations should avoid instantiating the
+property objects for this method</p><p>See NodeInterface::getProperties for a full documentation</p><dl>
 <dt>Parameters:</dt>
 <dd>filter - a name pattern</dd>
+<dd>dereference - whether to dereference REFERENCE, WEAKREFERENCE and PATH properties or just return id/path strings</dd>
 <dt>Returns:</dt>
-<dd>implementing <b>SeekableIterator</b> and <b>Countable</b>. Keys are the property names, values the corresponding property value (or array of values in case of multi-valued properties)</dd>
+<dd>Keys are the property names, values the corresponding property value (or array of values in case of multi-valued properties) If $dereference is false, reference properties are uuid strings and path properties path strings instead of the referenced node instances.</dd>
 <dt>Throws:</dt>
-<dd><a href="../phpcr/repositoryexception.html">\PHPCR\RepositoryException</a> - If an unexpected error occurs.</dd>
+<dd><a href="../phpcr/repositoryexception.html">\PHPCR\RepositoryException</a> - if an error occurs.</dd>
 <dt>Api.</dt>
 </dl>
 </div>
 
 <hr>
 
-<a href="../source/phpcr/nodeinterface.php.html#line302" class="location">PHPCR/NodeInterface.php at line 302</a>
+<a href="../source/phpcr/nodeinterface.php.html#line359" class="location">PHPCR/NodeInterface.php at line 359</a>
 
 <h3 id="getProperty()">getProperty</h3>
 <code class="signature">public  <a href="../phpcr/propertyinterface.html">PropertyInterface</a> <strong>getProperty</strong>(string relPath)</code>
@@ -760,14 +798,15 @@ is returned.</p><p>The same reacquisition semantics apply as with getNode(String
 <dd>The property at relPath.</dd>
 <dt>Throws:</dt>
 <dd><a href="../phpcr/pathnotfoundexception.html">\PHPCR\PathNotFoundException</a> - if no property exists at the specified path or if the current Session does not have read access to the specified property.</dd>
-<dd><a href="../phpcr/repositoryexception.html">\PHPCR\RepositoryException</a> - If another error occurs.</dd>
+<dd>InvalidArgumentException - if $relPath is an absolute path</dd>
+<dd><a href="../phpcr/repositoryexception.html">\PHPCR\RepositoryException</a> - if another error occurs.</dd>
 <dt>Api.</dt>
 </dl>
 </div>
 
 <hr>
 
-<a href="../source/phpcr/nodeinterface.php.html#line318" class="location">PHPCR/NodeInterface.php at line 318</a>
+<a href="../source/phpcr/nodeinterface.php.html#line382" class="location">PHPCR/NodeInterface.php at line 382</a>
 
 <h3 id="getPropertyValue()">getPropertyValue</h3>
 <code class="signature">public  mixed <strong>getPropertyValue</strong>(string name, integer type)</code>
@@ -776,34 +815,36 @@ is returned.</p><p>The same reacquisition semantics apply as with getNode(String
 This is a shortcut for getProperty().getXX()</p><dl>
 <dt>Parameters:</dt>
 <dd>name - Name of this property</dd>
-<dd>type - Type conversion request, optional. Must be a constant from PropertyType</dd>
+<dd>type - Type conversion request, optional. Must be a constant from {@link PropertyType}</dd>
 <dt>Returns:</dt>
 <dd>The value of the property with $name.</dd>
 <dt>Throws:</dt>
 <dd><a href="../phpcr/pathnotfoundexception.html">\PHPCR\PathNotFoundException</a> - if no property exists at the specified path or if the current Session does not have read access to the specified property.</dd>
 <dd><a href="../phpcr/valueformatexception.html">\PHPCR\ValueFormatException</a> - if the type or format of the property can not be converted to the specified type.</dd>
-<dd><a href="../phpcr/repositoryexception.html">\PHPCR\RepositoryException</a> - If another error occurs.</dd>
+<dd><a href="../phpcr/repositoryexception.html">\PHPCR\RepositoryException</a> - if another error occurs.</dd>
 <dt>Api.</dt>
 </dl>
 </div>
 
 <hr>
 
-<a href="../source/phpcr/nodeinterface.php.html#line453" class="location">PHPCR/NodeInterface.php at line 453</a>
+<a href="../source/phpcr/nodeinterface.php.html#line554" class="location">PHPCR/NodeInterface.php at line 554</a>
 
 <h3 id="getReferences()">getReferences</h3>
 <code class="signature">public  Iterator <strong>getReferences</strong>(string name)</code>
 <div class="details">
-<p>This method returns all REFERENCE properties that refer to this node, have
-the specified name and that are accessible through the current Session.</p><p>If the name parameter is null then all referring REFERENCES are returned
-regardless of name.</p><p>Some implementations may only return properties that have been persisted.
-Some may return both properties that have been persisted and those that
-have been dispatched but not persisted (for example, those saved within a
-transaction but not yet committed) while others implementations may
-return these two categories of property as well as properties that are
-still pending and not yet dispatched.</p><p>In implementations that support versioning, this method does not return
-properties that are part of the frozen state of a version in version storage.</p><p>If this node has no referring properties with the specified name, an empty
-iterator is returned.</p><dl>
+<p>This method returns all REFERENCE properties that refer to this node,
+have the specified name and that are accessible through the current
+Session.</p><p>If the name parameter is null then all referring REFERENCES are returned
+regardless of name.</p><p>Some implementations may only return properties that have been
+persisted. Some may return both properties that have been persisted and
+those that have been dispatched but not persisted (for example, those
+saved within a transaction but not yet committed) while others
+implementations may return these two categories of property as well as
+properties that are still pending and not yet dispatched.</p><p>In implementations that support versioning, this method does not return
+properties that are part of the frozen state of a version in version
+storage.</p><p>If this node has no referring properties with the specified name, an
+empty iterator is returned.</p><dl>
 <dt>Parameters:</dt>
 <dd>name - Name of referring REFERENCE properties to be returned; if null then all referring REFERENCEs are returned.</dd>
 <dt>Returns:</dt>
@@ -816,12 +857,14 @@ iterator is returned.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/nodeinterface.php.html#line742" class="location">PHPCR/NodeInterface.php at line 742</a>
+<a href="../source/phpcr/nodeinterface.php.html#line935" class="location">PHPCR/NodeInterface.php at line 935</a>
 
 <h3 id="getSharedSet()">getSharedSet</h3>
 <code class="signature">public  Iterator <strong>getSharedSet</strong>()</code>
 <div class="details">
-<p>Returns an iterator over all nodes that are in the shared set of this node.</p><p>If this node is not shared then the returned iterator contains only this node.</p><dl>
+<p>Returns an iterator over all nodes that are in the shared set of this
+node.</p><p>If this node is not shared then the returned iterator contains only this
+node.</p><dl>
 <dt>Returns:</dt>
 <dd>implementing <b>SeekableIterator</b> and <b>Countable</b>. Keys are the Node names, values the corresponding NodeInterface instances.</dd>
 <dt>Throws:</dt>
@@ -832,21 +875,23 @@ iterator is returned.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/nodeinterface.php.html#line480" class="location">PHPCR/NodeInterface.php at line 480</a>
+<a href="../source/phpcr/nodeinterface.php.html#line589" class="location">PHPCR/NodeInterface.php at line 589</a>
 
 <h3 id="getWeakReferences()">getWeakReferences</h3>
 <code class="signature">public  Iterator <strong>getWeakReferences</strong>(string name)</code>
 <div class="details">
-<p>This method returns all WEAKREFERENCE properties that refer to this node,
-have the specified name and that are accessible through the current Session.</p><p>If the name parameter is null then all referring WEAKREFERENCE are returned
-regardless of name.</p><p>Some level 2 implementations may only return properties that have been
-saved (in a transactional setting this includes both those properties that
-have been saved but not yet committed, as well as properties that have
-been committed). Other level 2 implementations may additionally return
-properties that have been added within the current Session but are not yet
-saved.</p><p>In implementations that support versioning, this method does not return
-properties that are part of the frozen state of a version in version storage.</p><p>If this node has no referring properties with the specified name, an empty
-iterator is returned.</p><dl>
+<p>This method returns all WEAKREFERENCE properties that refer to this
+node, have the specified name and that are accessible through the
+current Session.</p><p>If the name parameter is null then all referring WEAKREFERENCE are
+returned regardless of name.</p><p>Some level 2 implementations may only return properties that have been
+saved (in a transactional setting this includes both those properties
+that have been saved but not yet committed, as well as properties that
+have been committed). Other level 2 implementations may additionally
+return properties that have been added within the current Session but
+are not yet saved.</p><p>In implementations that support versioning, this method does not return
+properties that are part of the frozen state of a version in version
+storage.</p><p>If this node has no referring properties with the specified name, an
+empty iterator is returned.</p><dl>
 <dt>Parameters:</dt>
 <dd>name - name of referring WEAKREFERENCE properties to be returned; if null then all referring WEAKREFERENCEs are returned</dd>
 <dt>Returns:</dt>
@@ -859,18 +904,20 @@ iterator is returned.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/nodeinterface.php.html#line491" class="location">PHPCR/NodeInterface.php at line 491</a>
+<a href="../source/phpcr/nodeinterface.php.html#line605" class="location">PHPCR/NodeInterface.php at line 605</a>
 
 <h3 id="hasNode()">hasNode</h3>
 <code class="signature">public  boolean <strong>hasNode</strong>(string relPath)</code>
 <div class="details">
-<p>Indicates whether a node exists at relPath Returns true if a node accessible
-through the current Session exists at relPath and false otherwise.</p><dl>
+<p>Indicates whether a node exists at relPath Returns true if a node
+accessible through the current Session exists at relPath and false
+otherwise.</p><dl>
 <dt>Parameters:</dt>
 <dd>relPath - The path of a (possible) node.</dd>
 <dt>Returns:</dt>
 <dd>true if a node exists at relPath; false otherwise.</dd>
 <dt>Throws:</dt>
+<dd>InvalidArgumentException - if $relPath is an absolute path</dd>
 <dd><a href="../phpcr/repositoryexception.html">\PHPCR\RepositoryException</a> - if an error occurs.</dd>
 <dt>Api.</dt>
 </dl>
@@ -878,12 +925,13 @@ through the current Session exists at relPath and false otherwise.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/nodeinterface.php.html#line515" class="location">PHPCR/NodeInterface.php at line 515</a>
+<a href="../source/phpcr/nodeinterface.php.html#line638" class="location">PHPCR/NodeInterface.php at line 638</a>
 
 <h3 id="hasNodes()">hasNodes</h3>
 <code class="signature">public  boolean <strong>hasNodes</strong>()</code>
 <div class="details">
-<p>Indicates whether this node has child nodes.</p><p>Returns true if this node has one or more child nodes accessible through the current Session; false otherwise.</p><dl>
+<p>Indicates whether this node has child nodes.</p><p>Returns true if this node has one or more child nodes accessible through
+the current Session; false otherwise.</p><dl>
 <dt>Returns:</dt>
 <dd>true if this node has one or more child nodes; false otherwise.</dd>
 <dt>Throws:</dt>
@@ -894,12 +942,13 @@ through the current Session exists at relPath and false otherwise.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/nodeinterface.php.html#line526" class="location">PHPCR/NodeInterface.php at line 526</a>
+<a href="../source/phpcr/nodeinterface.php.html#line653" class="location">PHPCR/NodeInterface.php at line 653</a>
 
 <h3 id="hasProperties()">hasProperties</h3>
 <code class="signature">public  boolean <strong>hasProperties</strong>()</code>
 <div class="details">
-<p>Indicates whether this node has properties.</p><p>Returns true if this node has one or more properties accessible through the current Session; false otherwise.</p><dl>
+<p>Indicates whether this node has properties.</p><p>Returns true if this node has one or more properties accessible through
+the current Session; false otherwise.</p><dl>
 <dt>Returns:</dt>
 <dd>true if this node has one or more properties; false otherwise.</dd>
 <dt>Throws:</dt>
@@ -910,18 +959,20 @@ through the current Session exists at relPath and false otherwise.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/nodeinterface.php.html#line504" class="location">PHPCR/NodeInterface.php at line 504</a>
+<a href="../source/phpcr/nodeinterface.php.html#line623" class="location">PHPCR/NodeInterface.php at line 623</a>
 
 <h3 id="hasProperty()">hasProperty</h3>
 <code class="signature">public  boolean <strong>hasProperty</strong>(string relPath)</code>
 <div class="details">
-<p>Determine if a property exists at the specified path.</p><p>Indicates whether a property exists at relPath. Returns true if a property
-accessible through the current Session exists at relPath and false otherwise.</p><dl>
+<p>Determine if a property exists at the specified path.</p><p>Indicates whether a property exists at relPath. Returns true if a
+property accessible through the current Session exists at relPath and
+false otherwise.</p><dl>
 <dt>Parameters:</dt>
 <dd>relPath - The path of a (possible) property.</dd>
 <dt>Returns:</dt>
 <dd>true if a property exists at relPath; false otherwise.</dd>
 <dt>Throws:</dt>
+<dd>InvalidArgumentException - if $relPath is an absolute path</dd>
 <dd><a href="../phpcr/repositoryexception.html">\PHPCR\RepositoryException</a> - if an error occurs.</dd>
 <dt>Api.</dt>
 </dl>
@@ -929,7 +980,7 @@ accessible through the current Session exists at relPath and false otherwise.</p
 
 <hr>
 
-<a href="../source/phpcr/nodeinterface.php.html#line809" class="location">PHPCR/NodeInterface.php at line 809</a>
+<a href="../source/phpcr/nodeinterface.php.html#line1012" class="location">PHPCR/NodeInterface.php at line 1012</a>
 
 <h3 id="isCheckedOut()">isCheckedOut</h3>
 <code class="signature">public  boolean <strong>isCheckedOut</strong>()</code>
@@ -948,7 +999,7 @@ by default).</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/nodeinterface.php.html#line823" class="location">PHPCR/NodeInterface.php at line 823</a>
+<a href="../source/phpcr/nodeinterface.php.html#line1028" class="location">PHPCR/NodeInterface.php at line 1028</a>
 
 <h3 id="isLocked()">isLocked</h3>
 <code class="signature">public  boolean. <strong>isLocked</strong>()</code>
@@ -965,33 +1016,35 @@ not support locking (in which case all nodes are "unlocked" by default).</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/nodeinterface.php.html#line564" class="location">PHPCR/NodeInterface.php at line 564</a>
+<a href="../source/phpcr/nodeinterface.php.html#line702" class="location">PHPCR/NodeInterface.php at line 702</a>
 
 <h3 id="isNodeType()">isNodeType</h3>
 <code class="signature">public  boolean <strong>isNodeType</strong>(string nodeTypeName)</code>
 <div class="details">
-<p>Returns true if this node is of the specified primary node type or mixin type, or a subtype thereof.</p><p>Returns false otherwise. This method respects the effective node type of the node.</p><dl>
+<p>Returns true if this node is of the specified primary node type or mixin
+type, or a subtype thereof.</p><p>Returns false otherwise. This method respects the effective node type of
+the node.</p><dl>
 <dt>Parameters:</dt>
 <dd>nodeTypeName - the name of a node type.</dd>
 <dt>Returns:</dt>
 <dd>true if this node is of the specified primary node type or mixin type, or a subtype thereof. Returns false otherwise.</dd>
 <dt>Throws:</dt>
-<dd><a href="../phpcr/repositoryexception.html">\PHPCR\RepositoryException</a> - If an error occurs.</dd>
+<dd><a href="../phpcr/repositoryexception.html">\PHPCR\RepositoryException</a> - if an error occurs.</dd>
 <dt>Api.</dt>
 </dl>
 </div>
 
 <hr>
 
-<a href="../source/phpcr/nodeinterface.php.html#line146" class="location">PHPCR/NodeInterface.php at line 146</a>
+<a href="../source/phpcr/nodeinterface.php.html#line179" class="location">PHPCR/NodeInterface.php at line 179</a>
 
 <h3 id="orderBefore()">orderBefore</h3>
 <code class="signature">public  void <strong>orderBefore</strong>(string srcChildRelPath, string destChildRelPath)</code>
 <div class="details">
 <p>Insert a child node before another child identified by its path.</p><p>If this node supports child node ordering, this method inserts the child
 node at srcChildRelPath into the child node list at the position
-immediately before destChildRelPath.</p><p>To place the node srcChildRelPath at the end of the list, a destChildRelPath
-of null is used.</p><p>Note that (apart from the case where destChildRelPath is null) both of
+immediately before destChildRelPath.</p><p>To place the node srcChildRelPath at the end of the list, a
+destChildRelPath of null is used.</p><p>Note that (apart from the case where destChildRelPath is null) both of
 these arguments must be relative paths of depth one, in other words they
 are the names of the child nodes, possibly suffixed with an index.</p><p>If srcChildRelPath and destChildRelPath are the same, then no change is
 made.</p><p>This is session-write method, meaning that a change made by this method
@@ -1001,10 +1054,11 @@ is dispatched on save.</p><dl>
 <dd>destChildRelPath - the the relative path to the child node (that is, name plus possible index) before which the node srcChildRelPath will be placed.</dd>
 <dt>Throws:</dt>
 <dd><a href="../phpcr/unsupportedrepositoryoperationexception.html">\PHPCR\UnsupportedRepositoryOperationException</a> - if ordering is not supported on this node.</dd>
-<dd>\PHPCR\ConstraintViolationException - if an implementation-specific ordering restriction is violated and this implementation performs this validation immediately instead of waiting until save.</dd>
+<dd>\PHPCR\ConstraintViolationException - if an implementation- specific ordering restriction is violated and this implementation performs this validation immediately instead of waiting until save.</dd>
 <dd><a href="../phpcr/itemnotfoundexception.html">\PHPCR\ItemNotFoundException</a> - if either parameter is not the relative path of a child node of this node.</dd>
 <dd><a href="../phpcr/version/versionexception.html">\PHPCR\Version\VersionException</a> - if this node is read-only due to a checked-in node and this implementation performs this validation immediately.</dd>
 <dd><a href="../phpcr/lock/lockexception.html">\PHPCR\Lock\LockException</a> - if a lock prevents the re-ordering and this implementation performs this validation immediately.</dd>
+<dd>InvalidArgumentException - if $srcChildRelPath is an absolute path or $destChildRelPath is non-null and any of the two paths is of depth more than 1.</dd>
 <dd><a href="../phpcr/repositoryexception.html">\PHPCR\RepositoryException</a> - if another error occurs.</dd>
 <dt>Api.</dt>
 </dl>
@@ -1012,33 +1066,35 @@ is dispatched on save.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/nodeinterface.php.html#line647" class="location">PHPCR/NodeInterface.php at line 647</a>
+<a href="../source/phpcr/nodeinterface.php.html#line807" class="location">PHPCR/NodeInterface.php at line 807</a>
 
 <h3 id="removeMixin()">removeMixin</h3>
 <code class="signature">public  void <strong>removeMixin</strong>(string mixinName)</code>
 <div class="details">
-<p>Removes the specified mixin node type from this node and removes mixinName from this node's jcr:mixinTypes property.</p><p>Both the semantic change in effective node type and the persistence of the change to the jcr:mixinTypes
-property occur on persist.</p><dl>
+<p>Removes the specified mixin node type from this node and removes
+mixinName from this node's jcr:mixinTypes property.</p><p>Both the semantic change in effective node type and the persistence of
+the change to the jcr:mixinTypes  property occur on persist.</p><dl>
 <dt>Parameters:</dt>
 <dd>mixinName - the name of the mixin node type to be removed.</dd>
 <dt>Throws:</dt>
-<dd><a href="../phpcr/nodetype/nosuchnodetypeexception.html">\PHPCR\NodeType\NoSuchNodeTypeException</a> - If the specified mixinName is not currently assigned to this node and this implementation performs this validation immediately.</dd>
+<dd><a href="../phpcr/nodetype/nosuchnodetypeexception.html">\PHPCR\NodeType\NoSuchNodeTypeException</a> - if the specified mixinName is not currently assigned to this node and this implementation performs this validation immediately.</dd>
 <dd>\PHPCR\ConstraintViolationException - if the specified mixin node type is prevented from being removed and this implementation performs this validation immediately.</dd>
-<dd><a href="../phpcr/version/versionexception.html">\PHPCR\Version\VersionException</a> - If this node is read-only due to a checked-in node and this implementation performs this validation immediately.</dd>
-<dd><a href="../phpcr/lock/lockexception.html">\PHPCR\Lock\LockException</a> - If a lock prevents the removal of the mixin and this implementation performs this validation immediately.</dd>
-<dd><a href="../phpcr/repositoryexception.html">\PHPCR\RepositoryException</a> - If another error occurs.</dd>
+<dd><a href="../phpcr/version/versionexception.html">\PHPCR\Version\VersionException</a> - if this node is read-only due to a checked-in node and this implementation performs this validation immediately.</dd>
+<dd><a href="../phpcr/lock/lockexception.html">\PHPCR\Lock\LockException</a> - if a lock prevents the removal of the mixin and this implementation performs this validation immediately.</dd>
+<dd><a href="../phpcr/repositoryexception.html">\PHPCR\RepositoryException</a> - if another error occurs.</dd>
 <dt>Api.</dt>
 </dl>
 </div>
 
 <hr>
 
-<a href="../source/phpcr/nodeinterface.php.html#line793" class="location">PHPCR/NodeInterface.php at line 793</a>
+<a href="../source/phpcr/nodeinterface.php.html#line994" class="location">PHPCR/NodeInterface.php at line 994</a>
 
 <h3 id="removeShare()">removeShare</h3>
 <code class="signature">public  void <strong>removeShare</strong>()</code>
 <div class="details">
-<p>Removes this node, but does not remove any other node in the shared set of this node.</p><dl>
+<p>Removes this node, but does not remove any other node in the shared set
+of this node.</p><dl>
 <dt>Throws:</dt>
 <dd><a href="../phpcr/version/versionexception.html">\PHPCR\Version\VersionException</a> - if the parent node of this item is versionable and checked-in or is non-versionable but its nearest versionable ancestor is checked-in and this implementation performs this validation immediately instead of waiting until save.</dd>
 <dd><a href="../phpcr/lock/lockexception.html">\PHPCR\Lock\LockException</a> - if a lock prevents the removal of this item and this implementation performs this validation immediately instead of waiting until save.</dd>
@@ -1054,18 +1110,18 @@ property occur on persist.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/nodeinterface.php.html#line770" class="location">PHPCR/NodeInterface.php at line 770</a>
+<a href="../source/phpcr/nodeinterface.php.html#line965" class="location">PHPCR/NodeInterface.php at line 965</a>
 
 <h3 id="removeSharedSet()">removeSharedSet</h3>
 <code class="signature">public  void <strong>removeSharedSet</strong>()</code>
 <div class="details">
-<p>Removes this node and every other node in the shared set of this node.</p><p>This removal must be done atomically, i.e., if one of the nodes cannot be
-removed, the method throws the exception Node.remove() would have thrown
-in that case, and none of the nodes are removed.</p><p>If this node is not shared this method removes only this node.</p><dl>
+<p>Removes this node and every other node in the shared set of this node.</p><p>This removal must be done atomically, i.e., if one of the nodes cannot
+be removed, the method throws the exception Node.remove() would have
+thrown in that case, and none of the nodes are removed.</p><p>If this node is not shared this method removes only this node.</p><dl>
 <dt>Throws:</dt>
-<dd><a href="../phpcr/version/versionexception.html">\PHPCR\Version\VersionException</a> - If the parent node of this item is versionable and checked-in or is non-versionable but its nearest versionable ancestor is checked-in and this implementation performs this validation immediately.</dd>
-<dd><a href="../phpcr/lock/lockexception.html">\PHPCR\Lock\LockException</a> - If a lock prevents the removal of this item and this implementation performs this validation immediately.</dd>
-<dd><a href="../phpcr/nodetype/constraintviolationexception.html">\PHPCR\NodeType\ConstraintViolationException</a> - If removing the specified item would violate a node type or implementation-specific constraint and this implementation performs this validation immediately.</dd>
+<dd><a href="../phpcr/version/versionexception.html">\PHPCR\Version\VersionException</a> - if the parent node of this item is versionable and checked-in or is non-versionable but its nearest versionable ancestor is checked-in and this implementation performs this validation immediately.</dd>
+<dd><a href="../phpcr/lock/lockexception.html">\PHPCR\Lock\LockException</a> - if a lock prevents the removal of this item and this implementation performs this validation immediately.</dd>
+<dd><a href="../phpcr/nodetype/constraintviolationexception.html">\PHPCR\NodeType\ConstraintViolationException</a> - if removing the specified item would violate a node type or implementation-specific constraint and this implementation performs this validation immediately.</dd>
 <dd><a href="../phpcr/repositoryexception.html">\PHPCR\RepositoryException</a> - if another error occurs.</dd>
 <dt>See Also:</dt>
 <dd><a href="../phpcr/nodeinterface.html#removeShare()">removeShare()</a></dd>
@@ -1077,21 +1133,22 @@ in that case, and none of the nodes are removed.</p><p>If this node is not share
 
 <hr>
 
-<a href="../source/phpcr/nodeinterface.php.html#line588" class="location">PHPCR/NodeInterface.php at line 588</a>
+<a href="../source/phpcr/nodeinterface.php.html#line734" class="location">PHPCR/NodeInterface.php at line 734</a>
 
 <h3 id="setPrimaryType()">setPrimaryType</h3>
 <code class="signature">public  void <strong>setPrimaryType</strong>(string nodeTypeName)</code>
 <div class="details">
-<p>Changes the primary node type of this node to nodeTypeName.</p><p>Also immediately changes this node's jcr:primaryType property appropriately. Semantically,
-the new node type may take effect immediately or on dispatch but must take effect on persist.
-Whichever behavior is adopted it must be the same as the behavior adopted
-for addMixin() (see below) and the behavior that occurs when a node is
-first created.</p><dl>
+<p>Changes the primary node type of this node to nodeTypeName.</p><p>Also immediately changes this node's jcr:primaryType property
+appropriately. Semantically, the new node type may take effect
+immediately or on dispatch but must take effect on persist. Whichever
+behavior is adopted it must be the same as the behavior adopted for
+addMixin() (see below) and the behavior that occurs when a node is first
+created.</p><dl>
 <dt>Parameters:</dt>
 <dd>nodeTypeName - the name of the new node type.</dd>
 <dt>Throws:</dt>
-<dd>\PHPCR\ConstraintViolationException - If the specified primary node type creates a type conflict and this implementation performs this validation immediately.</dd>
-<dd><a href="../phpcr/nodetype/nosuchnodetypeexception.html">\PHPCR\NodeType\NoSuchNodeTypeException</a> - If the specified nodeTypeName is not recognized and this implementation performs this validation immediately.</dd>
+<dd>\PHPCR\ConstraintViolationException - if the specified primary node type creates a type conflict and this implementation performs this validation immediately.</dd>
+<dd><a href="../phpcr/nodetype/nosuchnodetypeexception.html">\PHPCR\NodeType\NoSuchNodeTypeException</a> - if the specified nodeTypeName is not recognized and this implementation performs this validation immediately.</dd>
 <dd><a href="../phpcr/version/versionexception.html">\PHPCR\Version\VersionException</a> - if this node is read-only due to a checked-in node and this implementation performs this validation immediately.</dd>
 <dd><a href="../phpcr/lock/lockexception.html">\PHPCR\Lock\LockException</a> - if a lock prevents the change of the primary node type and this implementation performs this validation immediately.</dd>
 <dd><a href="../phpcr/repositoryexception.html">\PHPCR\RepositoryException</a> - if another error occurs.</dd>
@@ -1101,7 +1158,7 @@ first created.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/nodeinterface.php.html#line214" class="location">PHPCR/NodeInterface.php at line 214</a>
+<a href="../source/phpcr/nodeinterface.php.html#line252" class="location">PHPCR/NodeInterface.php at line 252</a>
 
 <h3 id="setProperty()">setProperty</h3>
 <code class="signature">public  <a href="../phpcr/propertyinterface.html">PropertyInterface</a> <strong>setProperty</strong>(string name, mixed value, integer type)</code>
@@ -1110,17 +1167,18 @@ first created.</p><dl>
 This method works as factory method to create new properties and as a
 shortcut for PropertyInterface::setValue</p><p>The type detection logic is exactly the same as in
 PropertyInterface::setValue</p><p>If the property does not yet exist, it is created and its property type
-determined by the node type of this node. If, based on the name and value
-passed, there is more than one property definition that applies, the
-repository chooses one definition according to some implementation-
+determined by the node type of this node. If, based on the name and
+value passed, there is more than one property definition that applies,
+the repository chooses one definition according to some implementation-
 specific criteria. Once property with name P has been created, the
-behavior of a subsequent setProperty(P,V) may differ across implementations.
+behavior of a subsequent setProperty(P,V) may differ across
+implementations.
 Some repositories may allow P to be dynamically re-bound to a different
 property definition (based for example, on the new value being of a
 different type than the original value) while other repositories may not
 allow such dynamic re-binding.</p><p>If the property type is different than the type of supplied variables, a
-best-effort conversion is attempted.</p><p>Passing a null as the second parameter removes the property. It is equivalent
-to calling remove on the Property object itself. For example,
+best-effort conversion is attempted.</p><p>Passing a null as the second parameter removes the property. It is
+equivalent to calling remove on the Property object itself. For example,
 N.setProperty("P", null) would remove property called "P" of the
 node in N.</p><p>This is a session-write method, meaning that changes made through this
 method are dispatched on Session#save.</p><p>If $type is given:
@@ -1149,19 +1207,19 @@ to this method.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/nodeinterface.php.html#line716" class="location">PHPCR/NodeInterface.php at line 716</a>
+<a href="../source/phpcr/nodeinterface.php.html#line900" class="location">PHPCR/NodeInterface.php at line 900</a>
 
 <h3 id="update()">update</h3>
 <code class="signature">public  void <strong>update</strong>(string srcWorkspace)</code>
 <div class="details">
-<p>Updates a node corresponding to the current one in the given workspace.</p><p>If this node does have a corresponding node in the workspace srcWorkspace,
-then this replaces this node and its subgraph with a clone of the
-corresponding node and its subgraph.
-If this node does not have a corresponding node in the workspace srcWorkspace,
-then the update method has no effect.</p><p>If the update succeeds the changes made are persisted immediately, there
-is no need to call save.</p><p>Note that update does not respect the checked-in status of nodes. An update
-may change a node even if it is currently checked-in (This fact is only
-relevant in an implementation that supports versioning).</p><dl>
+<p>Updates a node corresponding to the current one in the given workspace.</p><p>If this node does have a corresponding node in the workspace
+srcWorkspace, then this replaces this node and its subgraph with a clone
+of the corresponding node and its subgraph.
+If this node does not have a corresponding node in the workspace
+srcWorkspace, then the update method has no effect.</p><p>If the update succeeds the changes made are persisted immediately, there
+is no need to call save.</p><p>Note that update does not respect the checked-in status of nodes. An
+update may change a node even if it is currently checked-in (This fact
+is only relevant in an implementation that supports versioning).</p><dl>
 <dt>Parameters:</dt>
 <dd>srcWorkspace - the name of the source workspace.</dd>
 <dt>Throws:</dt>
