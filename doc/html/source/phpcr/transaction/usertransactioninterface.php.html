@@ -1,0 +1,197 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+
+<html lang="en">
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="generator" content="PHPDoctor 2RC4 (http://peej.github.com/phpdoctor/)">
+<meta name="when" content="Wed, 20 Jul 2011 12:10:26 +0000">
+
+<link rel="stylesheet" type="text/css" href="../../../stylesheet.css">
+<link rel="start" href="../../../overview-summary.html">
+
+<title>PHPCR/Transaction/UserTransactionInterface.php (PHPCR API)</title>
+
+</head>
+<body id="file" onload="parent.document.title=document.title;">
+
+<div class="header">
+<h1>PHPCR</h1>
+<ul>
+<li><a href="../../../overview-summary.html">Overview</a></li>
+<li>Package</li><li>Class</li><li>Tree</li><li><a href="../../../overview-files.html">Files</a></li>
+<li><a href="../../../deprecated-list.html">Deprecated</a></li>
+<li><a href="../../../todo-list.html">Todo</a></li>
+<li><a href="../../../index-all.html">Index</a></li>
+</ul>
+</div>
+
+<div class="small_links">
+<a href="../../../index.html" target="_top">Frames</a>
+<a href="../../../source/phpcr/transaction/usertransactioninterface.php.html" target="_top">No frames</a>
+</div>
+<hr>
+
+<h1>PHPCR/Transaction/UserTransactionInterface.php</h1>
+<div class="comment" id="overview_description"><p>This file is part of the PHPCR API and was originally ported from the Java
+JCR API to PHP by Karsten Dambekalns for the FLOW3 project.</p><p>Copyright 2008-2011 Karsten Dambekalns <karsten@typo3.org></p><p>This file in particular is derived from the Java UserTransaction Interface
+of the package javax.transaction. For more information about the Java
+interface have a look at
+http://download.oracle.com/javaee/6/api/javax/transaction/package-summary.html</p><p>Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at</p><p>http://www.apache.org/licenses/LICENSE-2.0</p><p>Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.</p></div>
+
+<hr>
+
+<a name="line1"></a><pre class="php" style="font-family:monospace;"><span style="color: #000000; font-weight: bold;">&lt;?php</span>
+<a name="line2"></a>&nbsp;
+<a name="line3"></a><span style="color: #009933; font-style: italic;">/**
+<a name="line4"></a> * This file is part of the PHPCR API and was originally ported from the Java
+<a name="line5"></a> * JCR API to PHP by Karsten Dambekalns for the FLOW3 project.
+<a name="line6"></a> *
+<a name="line7"></a> * Copyright 2008-2011 Karsten Dambekalns &lt;karsten@typo3.org&gt;
+<a name="line8"></a> *
+<a name="line9"></a> * This file in particular is derived from the Java UserTransaction Interface
+<a name="line10"></a> * of the package javax.transaction. For more information about the Java
+<a name="line11"></a> * interface have a look at
+<a name="line12"></a> * http://download.oracle.com/javaee/6/api/javax/transaction/package-summary.html
+<a name="line13"></a> *
+<a name="line14"></a> * Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
+<a name="line15"></a> * you may not use this file except in compliance with the License.
+<a name="line16"></a> * You may obtain a copy of the License at
+<a name="line17"></a> *
+<a name="line18"></a> *     http://www.apache.org/licenses/LICENSE-2.0
+<a name="line19"></a> *
+<a name="line20"></a> * Unless required by applicable law or agreed to in writing, software
+<a name="line21"></a> * distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+<a name="line22"></a> * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+<a name="line23"></a> * See the License for the specific language governing permissions and
+<a name="line24"></a> * limitations under the License.
+<a name="line25"></a> *
+<a name="line26"></a> * @license http://www.apache.org/licenses/LICENSE-2.0 Apache Software License 2.0
+<a name="line27"></a> * @link http://phpcr.github.com/
+<a name="line28"></a> */</span>
+<a name="line29"></a>&nbsp;
+<a name="line30"></a><span style="color: #000000; font-weight: bold;">namespace</span> PHPCR\Transaction<span style="color: #339933;">;</span>
+<a name="line31"></a>&nbsp;
+<a name="line32"></a><span style="color: #009933; font-style: italic;">/**
+<a name="line33"></a> * As there is no transaction standard in PHP this interface should provide a
+<a name="line34"></a> * transaction mechanism in a way the original Java UserTransaction interface
+<a name="line35"></a> * can be used for transactions while working with the JCR API.
+<a name="line36"></a> *
+<a name="line37"></a> * Have a look at the JCR spec for an example how you can work with transactions.
+<a name="line38"></a> * You can obtain a UserTransaction object by calling
+<a name="line39"></a> * Session::getTransactionManager().
+<a name="line40"></a> *
+<a name="line41"></a> * @author Johannes Stark &lt;starkj@gmx.de&gt;
+<a name="line42"></a> * @package phpcr
+<a name="line43"></a> * @subpackage interfaces
+<a name="line44"></a> * @api
+<a name="line45"></a> */</span>
+<a name="line46"></a><span style="color: #000000; font-weight: bold;">interface</span> UserTransactionInterface
+<a name="line47"></a><span style="color: #009900;">&#123;</span>
+<a name="line48"></a>&nbsp;
+<a name="line49"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line50"></a>     * Begin new transaction associated with current session.
+<a name="line51"></a>     *
+<a name="line52"></a>     * @return void
+<a name="line53"></a>     *
+<a name="line54"></a>     * @throws \PHPCR\UnsupportedRepositoryOperationException Thrown if a transaction
+<a name="line55"></a>     *      is already started and the transaction implementation or backend does not
+<a name="line56"></a>     *      support nested transactions.
+<a name="line57"></a>     *
+<a name="line58"></a>     * @throws \PHPCR\RepositoryException Thrown if the transaction implementation
+<a name="line59"></a>     *      encounters an unexpected error condition.
+<a name="line60"></a>     */</span>
+<a name="line61"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> begin<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line62"></a>&nbsp;
+<a name="line63"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line64"></a>     *
+<a name="line65"></a>     * Complete the transaction associated with the current session.
+<a name="line66"></a>     *
+<a name="line67"></a>     * @return void
+<a name="line68"></a>     *
+<a name="line69"></a>     * @throws \PHPCR\Transaction\RollbackException Thrown to indicate that the
+<a name="line70"></a>     *      transaction has been rolled back rather than committed.
+<a name="line71"></a>     * @throws \PHPCR\AccessDeniedException Thrown to indicate that the
+<a name="line72"></a>     *      application is not allowed to commit the transaction.
+<a name="line73"></a>     * @throws LogicException Thrown if the current session is not associated 
+<a name="line74"></a>     *      with a transaction.
+<a name="line75"></a>     * @throws \PHPCR\RepositoryException Thrown if the transaction implementation
+<a name="line76"></a>     *      encounters an unexpected error condition.
+<a name="line77"></a>     */</span>
+<a name="line78"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> commit<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line79"></a>&nbsp;
+<a name="line80"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line81"></a>     *
+<a name="line82"></a>     * Obtain the status if the current session is inside of a transaction or not.
+<a name="line83"></a>     *
+<a name="line84"></a>     * @return boolean
+<a name="line85"></a>     *
+<a name="line86"></a>     * @throws \PHPCR\RepositoryException Thrown if the transaction implementation
+<a name="line87"></a>     *      encounters an unexpected error condition.
+<a name="line88"></a>     */</span>
+<a name="line89"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> inTransaction<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line90"></a>&nbsp;
+<a name="line91"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line92"></a>     *
+<a name="line93"></a>     * Roll back the transaction associated with the current session.
+<a name="line94"></a>     *
+<a name="line95"></a>     * @return void
+<a name="line96"></a>     *
+<a name="line97"></a>     * @throws \PHPCR\AccessDeniedException Thrown to indicate that the
+<a name="line98"></a>     *      application is not allowed to roll back the transaction.
+<a name="line99"></a>     * @throws LogicException Thrown if the current session is not associated with
+<a name="line100"></a>     *      a transaction.
+<a name="line101"></a>     * @throws \PHPCR\RepositoryException Thrown if the transaction implementation
+<a name="line102"></a>     *      encounters an unexpected error condition.
+<a name="line103"></a>     */</span>
+<a name="line104"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> rollback<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line105"></a>&nbsp;
+<a name="line106"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line107"></a>     *
+<a name="line108"></a>     * Modify the timeout value that is associated with the transaction started by
+<a name="line109"></a>     * the current application with the begin method. If an application has not
+<a name="line110"></a>     * called this method, the transaction service uses some default value for the
+<a name="line111"></a>     * transaction timeout.
+<a name="line112"></a>     *
+<a name="line113"></a>     * @param int $seconds The value of the timeout in seconds. If the value is zero,
+<a name="line114"></a>     *      the transaction service restores the default value. If the value is
+<a name="line115"></a>     *      negative a RepositoryException is thrown.
+<a name="line116"></a>     *
+<a name="line117"></a>     * @return void
+<a name="line118"></a>     *
+<a name="line119"></a>     * @throws \PHPCR\RepositoryException Thrown if the transaction implementation
+<a name="line120"></a>     *      encounters an unexpected error condition.
+<a name="line121"></a>     */</span>
+<a name="line122"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> setTransactionTimeout<span style="color: #009900;">&#40;</span><span style="color: #000088;">$seconds</span> <span style="color: #339933;">=</span> <span style="color: #cc66cc;">0</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line123"></a>&nbsp;
+<a name="line124"></a><span style="color: #009900;">&#125;</span>
+<a name="line125"></a>&nbsp;</pre>
+<div class="header">
+<h1>PHPCR</h1>
+<ul>
+<li><a href="../../../overview-summary.html">Overview</a></li>
+<li>Package</li><li>Class</li><li>Tree</li><li><a href="../../../overview-files.html">Files</a></li>
+<li><a href="../../../deprecated-list.html">Deprecated</a></li>
+<li><a href="../../../todo-list.html">Todo</a></li>
+<li><a href="../../../index-all.html">Index</a></li>
+</ul>
+</div>
+
+<div class="small_links">
+<a href="../../../index.html" target="_top">Frames</a>
+<a href="../../../source/phpcr/transaction/usertransactioninterface.php.html" target="_top">No frames</a>
+</div>
+<hr>
+
+<p id="footer">This document was generated by <a href="http://peej.github.com/phpdoctor/">PHPDoctor: The PHP Documentation Creator</a></p>
+
+</body>
+
+</html>

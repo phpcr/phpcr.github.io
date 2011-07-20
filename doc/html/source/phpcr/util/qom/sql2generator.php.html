@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="generator" content="PHPDoctor 2RC4 (http://peej.github.com/phpdoctor/)">
-<meta name="when" content="Thu, 16 Jun 2011 13:02:54 +0000">
+<meta name="when" content="Wed, 20 Jul 2011 12:10:27 +0000">
 
 <link rel="stylesheet" type="text/css" href="../../../../stylesheet.css">
 <link rel="start" href="../../../../overview-summary.html">
@@ -498,20 +498,23 @@
 <a name="line460"></a>     */</span>
 <a name="line461"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> evalPath<span style="color: #009900;">&#40;</span><span style="color: #000088;">$path</span><span style="color: #009900;">&#41;</span>
 <a name="line462"></a>    <span style="color: #009900;">&#123;</span>
-<a name="line463"></a>        <span style="color: #b1b100;">return</span> <span style="color: #0000ff;">&quot;[<span style="color: #006699; font-weight: bold;">$path</span>]&quot;</span><span style="color: #339933;">;</span>
-<a name="line464"></a>    <span style="color: #009900;">&#125;</span>
-<a name="line465"></a>&nbsp;
-<a name="line466"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> evalBindVariable<span style="color: #009900;">&#40;</span><span style="color: #000088;">$var</span><span style="color: #009900;">&#41;</span>
-<a name="line467"></a>    <span style="color: #009900;">&#123;</span>
-<a name="line468"></a>        <span style="color: #b1b100;">return</span> <span style="color: #0000ff;">'$'</span> <span style="color: #339933;">.</span> <span style="color: #000088;">$var</span><span style="color: #339933;">;</span>
-<a name="line469"></a>    <span style="color: #009900;">&#125;</span>
-<a name="line470"></a>&nbsp;
-<a name="line471"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> evalLiteral<span style="color: #009900;">&#40;</span><span style="color: #000088;">$literal</span><span style="color: #009900;">&#41;</span>
-<a name="line472"></a>    <span style="color: #009900;">&#123;</span>
-<a name="line473"></a>        <span style="color: #b1b100;">return</span> <span style="color: #0000ff;">&quot;'<span style="color: #006699; font-weight: bold;">$literal</span>'&quot;</span><span style="color: #339933;">;</span>
-<a name="line474"></a>    <span style="color: #009900;">&#125;</span>
-<a name="line475"></a><span style="color: #009900;">&#125;</span>
-<a name="line476"></a>&nbsp;</pre>
+<a name="line463"></a>        <span style="color: #b1b100;">if</span> <span style="color: #009900;">&#40;</span><span style="color: #000088;">$path</span><span style="color: #009900;">&#41;</span> <span style="color: #009900;">&#123;</span>
+<a name="line464"></a>            <span style="color: #b1b100;">return</span> <span style="color: #0000ff;">&quot;[<span style="color: #006699; font-weight: bold;">$path</span>]&quot;</span><span style="color: #339933;">;</span>
+<a name="line465"></a>        <span style="color: #009900;">&#125;</span>
+<a name="line466"></a>        <span style="color: #b1b100;">return</span> <span style="color: #009900; font-weight: bold;">null</span><span style="color: #339933;">;</span>
+<a name="line467"></a>    <span style="color: #009900;">&#125;</span>
+<a name="line468"></a>&nbsp;
+<a name="line469"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> evalBindVariable<span style="color: #009900;">&#40;</span><span style="color: #000088;">$var</span><span style="color: #009900;">&#41;</span>
+<a name="line470"></a>    <span style="color: #009900;">&#123;</span>
+<a name="line471"></a>        <span style="color: #b1b100;">return</span> <span style="color: #0000ff;">'$'</span> <span style="color: #339933;">.</span> <span style="color: #000088;">$var</span><span style="color: #339933;">;</span>
+<a name="line472"></a>    <span style="color: #009900;">&#125;</span>
+<a name="line473"></a>&nbsp;
+<a name="line474"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> evalLiteral<span style="color: #009900;">&#40;</span><span style="color: #000088;">$literal</span><span style="color: #009900;">&#41;</span>
+<a name="line475"></a>    <span style="color: #009900;">&#123;</span>
+<a name="line476"></a>        <span style="color: #b1b100;">return</span> <span style="color: #0000ff;">&quot;'<span style="color: #006699; font-weight: bold;">$literal</span>'&quot;</span><span style="color: #339933;">;</span>
+<a name="line477"></a>    <span style="color: #009900;">&#125;</span>
+<a name="line478"></a><span style="color: #009900;">&#125;</span>
+<a name="line479"></a>&nbsp;</pre>
 <div class="header">
 <h1>PHPCR</h1>
 <ul>

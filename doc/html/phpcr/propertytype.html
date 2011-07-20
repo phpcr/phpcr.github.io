@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="generator" content="PHPDoctor 2RC4 (http://peej.github.com/phpdoctor/)">
-<meta name="when" content="Thu, 16 Jun 2011 13:02:37 +0000">
+<meta name="when" content="Wed, 20 Jul 2011 12:10:10 +0000">
 
 <link rel="stylesheet" type="text/css" href="../stylesheet.css">
 <link rel="start" href="../overview-summary.html">
@@ -41,7 +41,7 @@ Detail: <a href="#detail_field">Field</a> | <a href="#detail_method">Method</a> 
 <hr>
 
 <div class="qualifiedName">PHPCR\PropertyType</div>
-<a href="../source/phpcr/propertytype.php.html#line60" class="location">PHPCR/PropertyType.php at line 60</a>
+<a href="../source/phpcr/propertytype.php.html#line64" class="location">PHPCR/PropertyType.php at line 64</a>
 
 <h1>Class PropertyType</h1>
 
@@ -74,7 +74,9 @@ syntax of a URI-reference as defined in RFC 3986. See also 4.2.6.6 URI in the sp
 <b>UNDEFINED</b> can be used within a property definition (see 4.7.5 Property Definitions) to specify that the
 property in question may be of any type. However, it cannot be the actual type of any property instance.
 For example it will never be returned by Property.getType() and (in level 2 implementations) it cannot be assigned
-as the type when creating a new property.</p></div>
+as the type when creating a new property.</p><p>Date formatting:
+Since there is no formatting for milliseconds in PHP we construct the date formatting by cutting the microseconds
+to 3 positions. Unfortunately this might cause an inacuracy of one millisecond in the worst case.</p></div>
 
 <dl>
 <dt>Author:</dt>
@@ -206,6 +208,16 @@ in RFC 3986.</p></td>
 <td class="description"><p class="name"><a href="#__construct()">__construct</a>()</p><p class="description">Make instantiation impossible...</p></td>
 </tr>
 <tr>
+<td class="type">static  the</td>
+<td class="description"><p class="name"><a href="#convertType()">convertType</a>(mixed values, int type)</p><p class="description">Attempt to convert $values into the proper format for $type.
+</p></td>
+</tr>
+<tr>
+<td class="type">static  One</td>
+<td class="description"><p class="name"><a href="#determineType()">determineType</a>(mixed value, boolean weak)</p><p class="description">Determine PropertyType from on variable type.
+</p></td>
+</tr>
+<tr>
 <td class="type">static  string</td>
 <td class="description"><p class="name"><a href="#nameFromValue()">nameFromValue</a>(integer type)</p><p class="description">Returns the name of the specified type, as used in serialization.</p></td>
 </tr>
@@ -213,16 +225,10 @@ in RFC 3986.</p></td>
 <td class="type">static  int</td>
 <td class="description"><p class="name"><a href="#valueFromName()">valueFromName</a>(string name)</p><p class="description">Returns the numeric constant value of the type with the specified name.</p></td>
 </tr>
-<tr>
-<td class="type">static  integer</td>
-<td class="description"><p class="name"><a href="#valueFromType()">valueFromType</a>(string type)</p><p class="description">Returns the numeric constant value of the type for the given PHP type
-name as returned by gettype().
-</p></td>
-</tr>
 </table>
 
 <h2 id="detail_field">Constant Detail</h2>
-<a href="../source/phpcr/propertytype.php.html#line84" class="location">PHPCR/PropertyType.php at line 84</a>
+<a href="../source/phpcr/propertytype.php.html#line88" class="location">PHPCR/PropertyType.php at line 88</a>
 
 <h3 id="BINARY">BINARY</h3>
 <code class="signature">public final static  int <strong>BINARY</strong> = 2</code>
@@ -231,7 +237,7 @@ name as returned by gettype().
 
 <hr>
 
-<a href="../source/phpcr/propertytype.php.html#line104" class="location">PHPCR/PropertyType.php at line 104</a>
+<a href="../source/phpcr/propertytype.php.html#line108" class="location">PHPCR/PropertyType.php at line 108</a>
 
 <h3 id="BOOLEAN">BOOLEAN</h3>
 <code class="signature">public final static  int <strong>BOOLEAN</strong> = 6</code>
@@ -240,7 +246,7 @@ name as returned by gettype().
 
 <hr>
 
-<a href="../source/phpcr/propertytype.php.html#line99" class="location">PHPCR/PropertyType.php at line 99</a>
+<a href="../source/phpcr/propertytype.php.html#line103" class="location">PHPCR/PropertyType.php at line 103</a>
 
 <h3 id="DATE">DATE</h3>
 <code class="signature">public final static  int <strong>DATE</strong> = 5</code>
@@ -249,7 +255,7 @@ name as returned by gettype().
 
 <hr>
 
-<a href="../source/phpcr/propertytype.php.html#line145" class="location">PHPCR/PropertyType.php at line 145</a>
+<a href="../source/phpcr/propertytype.php.html#line149" class="location">PHPCR/PropertyType.php at line 149</a>
 
 <h3 id="DECIMAL">DECIMAL</h3>
 <code class="signature">public final static  int <strong>DECIMAL</strong> = 12</code>
@@ -258,7 +264,7 @@ name as returned by gettype().
 
 <hr>
 
-<a href="../source/phpcr/propertytype.php.html#line94" class="location">PHPCR/PropertyType.php at line 94</a>
+<a href="../source/phpcr/propertytype.php.html#line98" class="location">PHPCR/PropertyType.php at line 98</a>
 
 <h3 id="DOUBLE">DOUBLE</h3>
 <code class="signature">public final static  int <strong>DOUBLE</strong> = 4</code>
@@ -267,7 +273,7 @@ name as returned by gettype().
 
 <hr>
 
-<a href="../source/phpcr/propertytype.php.html#line89" class="location">PHPCR/PropertyType.php at line 89</a>
+<a href="../source/phpcr/propertytype.php.html#line93" class="location">PHPCR/PropertyType.php at line 93</a>
 
 <h3 id="LONG">LONG</h3>
 <code class="signature">public final static  int <strong>LONG</strong> = 3</code>
@@ -276,7 +282,7 @@ name as returned by gettype().
 
 <hr>
 
-<a href="../source/phpcr/propertytype.php.html#line110" class="location">PHPCR/PropertyType.php at line 110</a>
+<a href="../source/phpcr/propertytype.php.html#line114" class="location">PHPCR/PropertyType.php at line 114</a>
 
 <h3 id="NAME">NAME</h3>
 <code class="signature">public final static  int <strong>NAME</strong> = 7</code>
@@ -286,7 +292,7 @@ namespace is mapped to the current prefix.</p></div>
 
 <hr>
 
-<a href="../source/phpcr/propertytype.php.html#line117" class="location">PHPCR/PropertyType.php at line 117</a>
+<a href="../source/phpcr/propertytype.php.html#line121" class="location">PHPCR/PropertyType.php at line 121</a>
 
 <h3 id="PATH">PATH</h3>
 <code class="signature">public final static  int <strong>PATH</strong> = 8</code>
@@ -297,7 +303,7 @@ mapped to their current prefix. A path may be absolute or relative.</p></div>
 
 <hr>
 
-<a href="../source/phpcr/propertytype.php.html#line126" class="location">PHPCR/PropertyType.php at line 126</a>
+<a href="../source/phpcr/propertytype.php.html#line130" class="location">PHPCR/PropertyType.php at line 130</a>
 
 <h3 id="REFERENCE">REFERENCE</h3>
 <code class="signature">public final static  int <strong>REFERENCE</strong> = 9</code>
@@ -310,7 +316,7 @@ target node.</p></div>
 
 <hr>
 
-<a href="../source/phpcr/propertytype.php.html#line79" class="location">PHPCR/PropertyType.php at line 79</a>
+<a href="../source/phpcr/propertytype.php.html#line83" class="location">PHPCR/PropertyType.php at line 83</a>
 
 <h3 id="STRING">STRING</h3>
 <code class="signature">public final static  int <strong>STRING</strong> = 1</code>
@@ -319,7 +325,7 @@ target node.</p></div>
 
 <hr>
 
-<a href="../source/phpcr/propertytype.php.html#line165" class="location">PHPCR/PropertyType.php at line 165</a>
+<a href="../source/phpcr/propertytype.php.html#line169" class="location">PHPCR/PropertyType.php at line 169</a>
 
 <h3 id="TYPENAME_BINARY">TYPENAME_BINARY</h3>
 <code class="signature">public final static  str <strong>TYPENAME_BINARY</strong> = 'Binary'</code>
@@ -328,7 +334,7 @@ target node.</p></div>
 
 <hr>
 
-<a href="../source/phpcr/propertytype.php.html#line185" class="location">PHPCR/PropertyType.php at line 185</a>
+<a href="../source/phpcr/propertytype.php.html#line189" class="location">PHPCR/PropertyType.php at line 189</a>
 
 <h3 id="TYPENAME_BOOLEAN">TYPENAME_BOOLEAN</h3>
 <code class="signature">public final static  str <strong>TYPENAME_BOOLEAN</strong> = 'Boolean'</code>
@@ -337,7 +343,7 @@ target node.</p></div>
 
 <hr>
 
-<a href="../source/phpcr/propertytype.php.html#line180" class="location">PHPCR/PropertyType.php at line 180</a>
+<a href="../source/phpcr/propertytype.php.html#line184" class="location">PHPCR/PropertyType.php at line 184</a>
 
 <h3 id="TYPENAME_DATE">TYPENAME_DATE</h3>
 <code class="signature">public final static  str <strong>TYPENAME_DATE</strong> = 'Date'</code>
@@ -346,7 +352,7 @@ target node.</p></div>
 
 <hr>
 
-<a href="../source/phpcr/propertytype.php.html#line215" class="location">PHPCR/PropertyType.php at line 215</a>
+<a href="../source/phpcr/propertytype.php.html#line219" class="location">PHPCR/PropertyType.php at line 219</a>
 
 <h3 id="TYPENAME_DECIMAL">TYPENAME_DECIMAL</h3>
 <code class="signature">public final static  str <strong>TYPENAME_DECIMAL</strong> = 'Decimal'</code>
@@ -355,7 +361,7 @@ target node.</p></div>
 
 <hr>
 
-<a href="../source/phpcr/propertytype.php.html#line175" class="location">PHPCR/PropertyType.php at line 175</a>
+<a href="../source/phpcr/propertytype.php.html#line179" class="location">PHPCR/PropertyType.php at line 179</a>
 
 <h3 id="TYPENAME_DOUBLE">TYPENAME_DOUBLE</h3>
 <code class="signature">public final static  str <strong>TYPENAME_DOUBLE</strong> = 'Double'</code>
@@ -364,7 +370,7 @@ target node.</p></div>
 
 <hr>
 
-<a href="../source/phpcr/propertytype.php.html#line170" class="location">PHPCR/PropertyType.php at line 170</a>
+<a href="../source/phpcr/propertytype.php.html#line174" class="location">PHPCR/PropertyType.php at line 174</a>
 
 <h3 id="TYPENAME_LONG">TYPENAME_LONG</h3>
 <code class="signature">public final static  str <strong>TYPENAME_LONG</strong> = 'Long'</code>
@@ -373,7 +379,7 @@ target node.</p></div>
 
 <hr>
 
-<a href="../source/phpcr/propertytype.php.html#line190" class="location">PHPCR/PropertyType.php at line 190</a>
+<a href="../source/phpcr/propertytype.php.html#line194" class="location">PHPCR/PropertyType.php at line 194</a>
 
 <h3 id="TYPENAME_NAME">TYPENAME_NAME</h3>
 <code class="signature">public final static  str <strong>TYPENAME_NAME</strong> = 'Name'</code>
@@ -382,7 +388,7 @@ target node.</p></div>
 
 <hr>
 
-<a href="../source/phpcr/propertytype.php.html#line195" class="location">PHPCR/PropertyType.php at line 195</a>
+<a href="../source/phpcr/propertytype.php.html#line199" class="location">PHPCR/PropertyType.php at line 199</a>
 
 <h3 id="TYPENAME_PATH">TYPENAME_PATH</h3>
 <code class="signature">public final static  str <strong>TYPENAME_PATH</strong> = 'Path'</code>
@@ -391,7 +397,7 @@ target node.</p></div>
 
 <hr>
 
-<a href="../source/phpcr/propertytype.php.html#line200" class="location">PHPCR/PropertyType.php at line 200</a>
+<a href="../source/phpcr/propertytype.php.html#line204" class="location">PHPCR/PropertyType.php at line 204</a>
 
 <h3 id="TYPENAME_REFERENCE">TYPENAME_REFERENCE</h3>
 <code class="signature">public final static  str <strong>TYPENAME_REFERENCE</strong> = 'Reference'</code>
@@ -400,7 +406,7 @@ target node.</p></div>
 
 <hr>
 
-<a href="../source/phpcr/propertytype.php.html#line160" class="location">PHPCR/PropertyType.php at line 160</a>
+<a href="../source/phpcr/propertytype.php.html#line164" class="location">PHPCR/PropertyType.php at line 164</a>
 
 <h3 id="TYPENAME_STRING">TYPENAME_STRING</h3>
 <code class="signature">public final static  str <strong>TYPENAME_STRING</strong> = 'String'</code>
@@ -409,7 +415,7 @@ target node.</p></div>
 
 <hr>
 
-<a href="../source/phpcr/propertytype.php.html#line155" class="location">PHPCR/PropertyType.php at line 155</a>
+<a href="../source/phpcr/propertytype.php.html#line159" class="location">PHPCR/PropertyType.php at line 159</a>
 
 <h3 id="TYPENAME_UNDEFINED">TYPENAME_UNDEFINED</h3>
 <code class="signature">public final static  string <strong>TYPENAME_UNDEFINED</strong> = 'undefined'</code>
@@ -418,7 +424,7 @@ target node.</p></div>
 
 <hr>
 
-<a href="../source/phpcr/propertytype.php.html#line210" class="location">PHPCR/PropertyType.php at line 210</a>
+<a href="../source/phpcr/propertytype.php.html#line214" class="location">PHPCR/PropertyType.php at line 214</a>
 
 <h3 id="TYPENAME_URI">TYPENAME_URI</h3>
 <code class="signature">public final static  str <strong>TYPENAME_URI</strong> = 'URI'</code>
@@ -427,7 +433,7 @@ target node.</p></div>
 
 <hr>
 
-<a href="../source/phpcr/propertytype.php.html#line205" class="location">PHPCR/PropertyType.php at line 205</a>
+<a href="../source/phpcr/propertytype.php.html#line209" class="location">PHPCR/PropertyType.php at line 209</a>
 
 <h3 id="TYPENAME_WEAKREFERENCE">TYPENAME_WEAKREFERENCE</h3>
 <code class="signature">public final static  str <strong>TYPENAME_WEAKREFERENCE</strong> = 'WeakReference'</code>
@@ -436,7 +442,7 @@ target node.</p></div>
 
 <hr>
 
-<a href="../source/phpcr/propertytype.php.html#line74" class="location">PHPCR/PropertyType.php at line 74</a>
+<a href="../source/phpcr/propertytype.php.html#line78" class="location">PHPCR/PropertyType.php at line 78</a>
 
 <h3 id="UNDEFINED">UNDEFINED</h3>
 <code class="signature">public final static  integer <strong>UNDEFINED</strong> = 0</code>
@@ -448,7 +454,7 @@ assigned as the type when creating a new property.</p></div>
 
 <hr>
 
-<a href="../source/phpcr/propertytype.php.html#line140" class="location">PHPCR/PropertyType.php at line 140</a>
+<a href="../source/phpcr/propertytype.php.html#line144" class="location">PHPCR/PropertyType.php at line 144</a>
 
 <h3 id="URI">URI</h3>
 <code class="signature">public final static  int <strong>URI</strong> = 11</code>
@@ -459,7 +465,7 @@ in RFC 3986.</p></div>
 
 <hr>
 
-<a href="../source/phpcr/propertytype.php.html#line133" class="location">PHPCR/PropertyType.php at line 133</a>
+<a href="../source/phpcr/propertytype.php.html#line137" class="location">PHPCR/PropertyType.php at line 137</a>
 
 <h3 id="WEAKREFERENCE">WEAKREFERENCE</h3>
 <code class="signature">public final static  int <strong>WEAKREFERENCE</strong> = 10</code>
@@ -471,7 +477,7 @@ enforce referential integrity.</p></div>
 <hr>
 
 <h2 id="detail_method">Method Detail</h2>
-<a href="../source/phpcr/propertytype.php.html#line224" class="location">PHPCR/PropertyType.php at line 224</a>
+<a href="../source/phpcr/propertytype.php.html#line228" class="location">PHPCR/PropertyType.php at line 228</a>
 
 <h3 id="__construct()">__construct</h3>
 <code class="signature">private  void <strong>__construct</strong>()</code>
@@ -480,7 +486,48 @@ enforce referential integrity.</p></div>
 
 <hr>
 
-<a href="../source/phpcr/propertytype.php.html#line237" class="location">PHPCR/PropertyType.php at line 237</a>
+<a href="../source/phpcr/propertytype.php.html#line380" class="location">PHPCR/PropertyType.php at line 380</a>
+
+<h3 id="convertType()">convertType</h3>
+<code class="signature">public static  the <strong>convertType</strong>(mixed values, int type)</code>
+<div class="details">
+<p>Attempt to convert $values into the proper format for $type.</p><p>This is the other remaining part of ValueFactory functionality that is
+still needed.</p><p>Note that for converting to boolean, we follow the PHP convention of
+treating any non-empty string as true, not just the word "true".</p><dl>
+<dt>Parameters:</dt>
+<dd>values - The value or value array to check and convert</dd>
+<dd>type - Target type to convert into. One of the type constants in \PHPCR\PropertyType</dd>
+<dt>Returns:</dt>
+<dd>value typecasted into the proper format (throws an exception if conversion is not possible)</dd>
+<dt>Throws:</dt>
+<dd><a href="../phpcr/valueformatexception.html">\PHPCR\ValueFormatException</a> - is thrown if the specified value cannot be converted to the specified type.</dd>
+<dd><a href="../phpcr/repositoryexception.html">\PHPCR\RepositoryException</a> - if the specified Node is not referenceable, the current Session is no longer active, or another error occurs.</dd>
+<dd>\InvalidArgumentException - if the specified DateTime value cannot be expressed in the ISO 8601-based format defined in the JCR 2.0 specification and the implementation does not support dates incompatible with that format.</dd>
+</dl>
+</div>
+
+<hr>
+
+<a href="../source/phpcr/propertytype.php.html#line332" class="location">PHPCR/PropertyType.php at line 332</a>
+
+<h3 id="determineType()">determineType</h3>
+<code class="signature">public static  One <strong>determineType</strong>(mixed value, boolean weak)</code>
+<div class="details">
+<p>Determine PropertyType from on variable type.</p><p>This is most of the remainder of ValueFactory that is still needed.</p><p>* if the given $value is a Node object, type will be REFERENCE, unless
+$weak is set to true which results in WEAKREFERENCE
+* if the given $value is a DateTime object, the type will be DATE.</p><dl>
+<dt>Parameters:</dt>
+<dd>value - The variable we need to know the type of</dd>
+<dd>weak - When a Node is given as $value this can be given as true to create a WEAKREFERENCE.</dd>
+<dt>Returns:</dt>
+<dd>of the self constants</dd>
+<dt>Api.</dt>
+</dl>
+</div>
+
+<hr>
+
+<a href="../source/phpcr/propertytype.php.html#line241" class="location">PHPCR/PropertyType.php at line 241</a>
 
 <h3 id="nameFromValue()">nameFromValue</h3>
 <code class="signature">public static  string <strong>nameFromValue</strong>(integer type)</code>
@@ -498,7 +545,7 @@ enforce referential integrity.</p></div>
 
 <hr>
 
-<a href="../source/phpcr/propertytype.php.html#line293" class="location">PHPCR/PropertyType.php at line 293</a>
+<a href="../source/phpcr/propertytype.php.html#line284" class="location">PHPCR/PropertyType.php at line 284</a>
 
 <h3 id="valueFromName()">valueFromName</h3>
 <code class="signature">public static  int <strong>valueFromName</strong>(string name)</code>
@@ -510,19 +557,6 @@ enforce referential integrity.</p></div>
 <dd>The numeric constant value</dd>
 <dt>Throws:</dt>
 <dd>\InvalidArgumentException - if the given name is unknown.</dd>
-<dt>Api.</dt>
-</dl>
-</div>
-
-<hr>
-
-<a href="../source/phpcr/propertytype.php.html#line351" class="location">PHPCR/PropertyType.php at line 351</a>
-
-<h3 id="valueFromType()">valueFromType</h3>
-<code class="signature">public static  integer <strong>valueFromType</strong>(string type)</code>
-<div class="details">
-<p>Returns the numeric constant value of the type for the given PHP type
-name as returned by gettype().</p><p><b>Note:</b> this is an addition not defined in JSR-283.</p><dl>
 <dt>Api.</dt>
 </dl>
 </div>

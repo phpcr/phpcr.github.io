@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="generator" content="PHPDoctor 2RC4 (http://peej.github.com/phpdoctor/)">
-<meta name="when" content="Thu, 16 Jun 2011 13:02:37 +0000">
+<meta name="when" content="Wed, 20 Jul 2011 12:10:10 +0000">
 
 <link rel="stylesheet" type="text/css" href="../stylesheet.css">
 <link rel="start" href="../overview-summary.html">
@@ -41,7 +41,7 @@ Detail: <a href="#detail_field">Field</a> | <a href="#detail_method">Method</a> 
 <hr>
 
 <div class="qualifiedName">PHPCR\RepositoryFactoryInterface</div>
-<a href="../source/phpcr/repositoryfactoryinterface.php.html#line41" class="location">PHPCR/RepositoryFactoryInterface.php at line 41</a>
+<a href="../source/phpcr/repositoryfactoryinterface.php.html#line42" class="location">PHPCR/RepositoryFactoryInterface.php at line 42</a>
 
 <h1>Interface RepositoryFactoryInterface</h1>
 
@@ -52,9 +52,8 @@ Detail: <a href="#detail_field">Field</a> | <a href="#detail_method">Method</a> 
 <p class="signature">public  interface <strong>RepositoryFactoryInterface</strong></p>
 
 <div class="comment" id="overview_description"><p>RepositoryFactory is an interface for factory class implementations for
-Repositories.</p><p>Examples how to obtain repository instances</p><p>Use repository factory based on parameters (the parameters below are examples):
-$parameters = array('com.vendor.address' => 'vendor://localhost:9999/myrepo');
-$repo = \SomeRepository\RepositoryFactory::getRepository($parameters);</p></div>
+Repositories.</p><p>Examples how to obtain repository instances</p><p>$factory = new \SomeRepository\RepositoryFactory;</p><p>$parameters = array('com.vendor.address' => 'vendor://localhost:9999/myrepo');
+$repo = $factory->getRepository($parameters);</p></div>
 
 <dl>
 <dt>Subpackage:</dt>
@@ -79,7 +78,7 @@ parameters.
 </table>
 
 <h2 id="detail_method">Method Detail</h2>
-<a href="../source/phpcr/repositoryfactoryinterface.php.html#line77" class="location">PHPCR/RepositoryFactoryInterface.php at line 77</a>
+<a href="../source/phpcr/repositoryfactoryinterface.php.html#line78" class="location">PHPCR/RepositoryFactoryInterface.php at line 78</a>
 
 <h3 id="getConfigurationKeys()">getConfigurationKeys</h3>
 <code class="signature">public  array <strong>getConfigurationKeys</strong>()</code>
@@ -93,7 +92,7 @@ optional.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/repositoryfactoryinterface.php.html#line67" class="location">PHPCR/RepositoryFactoryInterface.php at line 67</a>
+<a href="../source/phpcr/repositoryfactoryinterface.php.html#line68" class="location">PHPCR/RepositoryFactoryInterface.php at line 68</a>
 
 <h3 id="getRepository()">getRepository</h3>
 <code class="signature">public  <a href="../phpcr/repositoryinterface.html">RepositoryInterface</a> <strong>getRepository</strong>(array|null parameters)</code>
@@ -102,8 +101,8 @@ optional.</p><dl>
 parameters.</p><p>Parameters are passed in an array of key/value pairs. The keys are not
 specified by JCR and are implementation specific.
 However, vendors should use keys that are namespace qualified in the
-Java package style to distinguish their key names. For example
-an address parameter might be com.vendor.address.</p><p>The implementation must return null if it does not understand
+php style to distinguish their key names. For example an address
+parameter might be jackalope.jackrabbit_url.</p><p>The implementation must return null if it does not understand
 the given parameters. The implementation may also return null if a default
 repository instance is requested (indicated by null parameters) and this
 factory is not able to identify a default repository. An implementation
