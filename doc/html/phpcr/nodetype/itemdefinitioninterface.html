@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="generator" content="PHPDoctor 2RC4 (http://peej.github.com/phpdoctor/)">
-<meta name="when" content="Wed, 20 Jul 2011 12:10:10 +0000">
+<meta name="when" content="Wed, 20 Jul 2011 15:20:04 +0000">
 
 <link rel="stylesheet" type="text/css" href="../../stylesheet.css">
 <link rel="start" href="../../overview-summary.html">
@@ -140,17 +140,17 @@ will return null.</p><dl>
 <p>Gets the OnParentVersion status of the child item.</p><p>This governs what occurs (in implementations that support versioning)
 when the parent node of this item is checked-in. One of:</p>
 <ul>
-<li>OnParentVersionAction.COPY</li>
-<li>OnParentVersionAction.VERSION</li>
-<li>OnParentVersionAction.IGNORE</li>
-<li>OnParentVersionAction.INITIALIZE</li>
-<li>OnParentVersionAction.COMPUTE</li>
-<li>OnParentVersionAction.ABORT</li>
+<li>OnParentVersionAction::COPY</li>
+<li>OnParentVersionAction::VERSION</li>
+<li>OnParentVersionAction::IGNORE</li>
+<li>OnParentVersionAction::INITIALIZE</li>
+<li>OnParentVersionAction::COMPUTE</li>
+<li>OnParentVersionAction::ABORT</li>
 </ul>
 <p>In implementations that support node type registration, if this
 ItemDefinition object is actually a newly-created empty
-PropertyDefinitionTemplate or NodeDefinitionTemplate, then this method
-will return OnParentVersionAction.COPY.</p><dl>
+PropertyDefinitionTemplateInterface or NodeDefinitionTemplateInterface, then this method
+will return OnParentVersionAction::COPY.</p><dl>
 <dt>Returns:</dt>
 <dd>An int constant member of OnParentVersionAction.</dd>
 <dt>Api.</dt>
@@ -213,12 +213,12 @@ will return false.</p><p>An item definition cannot be both residual and mandator
 <div class="details">
 <p>Reports whether the child item is protected.</p><p>In level 2 implementations, a protected item is one that cannot be removed
 (except by removing its parent) or modified through the the standard write
-methods of this API (that is, Item.remove, Node.addNode, Node.setProperty
-and Property.setValue).</p><p>A protected node may be removed or modified (in a level 2 implementation),
+methods of this API (that is, ItemInterface::remove(), NodeInterface::addNode(), NodeInterface::setProperty()
+and PropertyInterface::setValue()).</p><p>A protected node may be removed or modified (in a level 2 implementation),
 however, through some mechanism not defined by this specification or as a
 side-effect of operations other than the standard write methods of the API.</p><p>In implementations that support node type registration, if this
 ItemDefinition object is actually a newly-created empty
-PropertyDefinitionTemplate or NodeDefinitionTemplate, then this method
+PropertyDefinitionTemplateInterface or NodeDefinitionTemplateInterface, then this method
 will return false.</p><dl>
 <dt>Returns:</dt>
 <dd>True, if the child item is protected, else false.</dd>

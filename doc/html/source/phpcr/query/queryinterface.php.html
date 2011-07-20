@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="generator" content="PHPDoctor 2RC4 (http://peej.github.com/phpdoctor/)">
-<meta name="when" content="Wed, 20 Jul 2011 12:10:19 +0000">
+<meta name="when" content="Wed, 20 Jul 2011 15:20:12 +0000">
 
 <link rel="stylesheet" type="text/css" href="../../../stylesheet.css">
 <link rel="start" href="../../../overview-summary.html">
@@ -175,7 +175,7 @@ limitations under the License.</p></div>
 <a name="line128"></a>     * Returns the language set for this query.
 <a name="line129"></a>     *
 <a name="line130"></a>     * This will be one of the query language constants returned by
-<a name="line131"></a>     * QueryManager.getSupportedQueryLanguages().
+<a name="line131"></a>     * QueryManagerInterface::getSupportedQueryLanguages().
 <a name="line132"></a>     *
 <a name="line133"></a>     * @return string The query language.
 <a name="line134"></a>     * @api
@@ -185,9 +185,9 @@ limitations under the License.</p></div>
 <a name="line138"></a>    <span style="color: #009933; font-style: italic;">/**
 <a name="line139"></a>     * Fetches the path of the node representing this query.
 <a name="line140"></a>     *
-<a name="line141"></a>     * If this is a Query object that has been stored using storeAsNode(java.lang.String)
+<a name="line141"></a>     * If this is a Query object that has been stored using self::storeAsNode()
 <a name="line142"></a>     * (regardless of whether it has been saved yet) or retrieved using
-<a name="line143"></a>     * QueryManager.getQuery(javax.jcr.Node)), then this method returns the path
+<a name="line143"></a>     * QueryManagerInterface::getQuery()), then this method returns the path
 <a name="line144"></a>     * of the nt:query node that stores the query.
 <a name="line145"></a>     *
 <a name="line146"></a>     * @return string Path of the node representing this query.
@@ -203,7 +203,7 @@ limitations under the License.</p></div>
 <a name="line156"></a>     * returns that node.
 <a name="line157"></a>     *
 <a name="line158"></a>     * This is  a session-write method and therefore requires a
-<a name="line159"></a>     * Session.save() to dispatch the change.
+<a name="line159"></a>     * SessionInterface::save() to dispatch the change.
 <a name="line160"></a>     *
 <a name="line161"></a>     * The $absPath provided must not have an index on its final element. If
 <a name="line162"></a>     * ordering is supported by the node type of the parent node then the new

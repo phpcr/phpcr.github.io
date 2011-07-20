@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="generator" content="PHPDoctor 2RC4 (http://peej.github.com/phpdoctor/)">
-<meta name="when" content="Wed, 20 Jul 2011 12:10:14 +0000">
+<meta name="when" content="Wed, 20 Jul 2011 15:20:08 +0000">
 
 <link rel="stylesheet" type="text/css" href="../../stylesheet.css">
 <link rel="start" href="../../overview-summary.html">
@@ -77,54 +77,57 @@ limitations under the License.</p></div>
 <a name="line30"></a> *
 <a name="line31"></a> * Examples how to obtain repository instances
 <a name="line32"></a> *
-<a name="line33"></a> *    $factory = new \SomeRepository\RepositoryFactory;
+<a name="line33"></a> * &lt;pre&gt;
 <a name="line34"></a> *
-<a name="line35"></a> *    $parameters = array('com.vendor.address' =&gt; 'vendor://localhost:9999/myrepo');
-<a name="line36"></a> *    $repo = $factory-&gt;getRepository($parameters);
-<a name="line37"></a> *
-<a name="line38"></a> * @package phpcr
-<a name="line39"></a> * @subpackage interfaces
-<a name="line40"></a> * @api
-<a name="line41"></a> */</span>
-<a name="line42"></a><span style="color: #000000; font-weight: bold;">interface</span> RepositoryFactoryInterface
-<a name="line43"></a><span style="color: #009900;">&#123;</span>
-<a name="line44"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line45"></a>     * Attempts to establish a connection to a repository using the given
-<a name="line46"></a>     * parameters.
-<a name="line47"></a>     *
-<a name="line48"></a>     * Parameters are passed in an array of key/value pairs. The keys are not
-<a name="line49"></a>     * specified by JCR and are implementation specific.
-<a name="line50"></a>     * However, vendors should use keys that are namespace qualified in the
-<a name="line51"></a>     * php style to distinguish their key names. For example an address
-<a name="line52"></a>     * parameter might be jackalope.jackrabbit_url.
-<a name="line53"></a>     *
-<a name="line54"></a>     * The implementation must return null if it does not understand
-<a name="line55"></a>     * the given parameters. The implementation may also return null if a default
-<a name="line56"></a>     * repository instance is requested (indicated by null parameters) and this
-<a name="line57"></a>     * factory is not able to identify a default repository. An implementation
-<a name="line58"></a>     * should throw an RepositoryException if it is the right factory but has
-<a name="line59"></a>     * trouble connecting to the repository.
-<a name="line60"></a>     *
-<a name="line61"></a>     * @param array|null $parameters string key/value pairs as repository arguments or null if a client wishes
-<a name="line62"></a>     *                               to connect to a default repository.
-<a name="line63"></a>     * @return \PHPCR\RepositoryInterface a repository instance or null if this implementation does
-<a name="line64"></a>     *                                    not understand the passed parameters
-<a name="line65"></a>     * @throws \PHPCR\RepositoryException if no suitable repository is found or another error occurs.
-<a name="line66"></a>     * @api
-<a name="line67"></a>     */</span>
-<a name="line68"></a>    <span style="color: #000000; font-weight: bold;">function</span> getRepository<span style="color: #009900;">&#40;</span><a href="http://www.php.net/array"><span style="color: #990000;">array</span></a> <span style="color: #000088;">$parameters</span> <span style="color: #339933;">=</span> <span style="color: #009900; font-weight: bold;">null</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line69"></a>&nbsp;
-<a name="line70"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line71"></a>     * Get the list of configuration options that can be passed to getRepository
-<a name="line72"></a>     *
-<a name="line73"></a>     * The description string should include whether the key is mandatory or
-<a name="line74"></a>     * optional.
+<a name="line35"></a> *    $factory = new \SomeRepository\RepositoryFactory;
+<a name="line36"></a> *
+<a name="line37"></a> *    $parameters = array('com.vendor.address' =&gt; 'vendor://localhost:9999/myrepo');
+<a name="line38"></a> *    $repo = $factory-&gt;getRepository($parameters);
+<a name="line39"></a> * &lt;/pre&gt;
+<a name="line40"></a> *
+<a name="line41"></a> * @package phpcr
+<a name="line42"></a> * @subpackage interfaces
+<a name="line43"></a> * @api
+<a name="line44"></a> */</span>
+<a name="line45"></a><span style="color: #000000; font-weight: bold;">interface</span> RepositoryFactoryInterface
+<a name="line46"></a><span style="color: #009900;">&#123;</span>
+<a name="line47"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line48"></a>     * Attempts to establish a connection to a repository using the given
+<a name="line49"></a>     * parameters.
+<a name="line50"></a>     *
+<a name="line51"></a>     * Parameters are passed in an array of key/value pairs. The keys are not
+<a name="line52"></a>     * specified by JCR and are implementation specific.
+<a name="line53"></a>     * However, vendors should use keys that are namespace qualified in the
+<a name="line54"></a>     * php style to distinguish their key names. For example an address
+<a name="line55"></a>     * parameter might be jackalope.jackrabbit_url.
+<a name="line56"></a>     *
+<a name="line57"></a>     * The implementation must return null if it does not understand
+<a name="line58"></a>     * the given parameters. The implementation may also return null if a default
+<a name="line59"></a>     * repository instance is requested (indicated by null parameters) and this
+<a name="line60"></a>     * factory is not able to identify a default repository. An implementation
+<a name="line61"></a>     * should throw an RepositoryException if it is the right factory but has
+<a name="line62"></a>     * trouble connecting to the repository.
+<a name="line63"></a>     *
+<a name="line64"></a>     * @param array|null $parameters string key/value pairs as repository arguments or null if a client wishes
+<a name="line65"></a>     *                               to connect to a default repository.
+<a name="line66"></a>     * @return \PHPCR\RepositoryInterface a repository instance or null if this implementation does
+<a name="line67"></a>     *                                    not understand the passed parameters
+<a name="line68"></a>     * @throws \PHPCR\RepositoryException if no suitable repository is found or another error occurs.
+<a name="line69"></a>     * @api
+<a name="line70"></a>     */</span>
+<a name="line71"></a>    <span style="color: #000000; font-weight: bold;">function</span> getRepository<span style="color: #009900;">&#40;</span><a href="http://www.php.net/array"><span style="color: #990000;">array</span></a> <span style="color: #000088;">$parameters</span> <span style="color: #339933;">=</span> <span style="color: #009900; font-weight: bold;">null</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line72"></a>&nbsp;
+<a name="line73"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line74"></a>     * Get the list of configuration options that can be passed to getRepository
 <a name="line75"></a>     *
-<a name="line76"></a>     * @return array hash map of configuration key =&gt; english description
-<a name="line77"></a>     */</span>
-<a name="line78"></a>    <span style="color: #000000; font-weight: bold;">function</span> getConfigurationKeys<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line79"></a><span style="color: #009900;">&#125;</span>
-<a name="line80"></a>&nbsp;</pre>
+<a name="line76"></a>     * The description string should include whether the key is mandatory or
+<a name="line77"></a>     * optional.
+<a name="line78"></a>     *
+<a name="line79"></a>     * @return array hash map of configuration key =&gt; english description
+<a name="line80"></a>     */</span>
+<a name="line81"></a>    <span style="color: #000000; font-weight: bold;">function</span> getConfigurationKeys<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line82"></a><span style="color: #009900;">&#125;</span>
+<a name="line83"></a>&nbsp;</pre>
 <div class="header">
 <h1>PHPCR</h1>
 <ul>

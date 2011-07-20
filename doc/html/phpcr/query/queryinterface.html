@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="generator" content="PHPDoctor 2RC4 (http://peej.github.com/phpdoctor/)">
-<meta name="when" content="Wed, 20 Jul 2011 12:10:10 +0000">
+<meta name="when" content="Wed, 20 Jul 2011 15:20:04 +0000">
 
 <link rel="stylesheet" type="text/css" href="../../stylesheet.css">
 <link rel="start" href="../../overview-summary.html">
@@ -201,7 +201,7 @@ returns that node.
 <code class="signature">public  string <strong>getLanguage</strong>()</code>
 <div class="details">
 <p>Returns the language set for this query.</p><p>This will be one of the query language constants returned by
-QueryManager.getSupportedQueryLanguages().</p><dl>
+QueryManagerInterface::getSupportedQueryLanguages().</p><dl>
 <dt>Returns:</dt>
 <dd>The query language.</dd>
 <dt>Api.</dt>
@@ -232,9 +232,9 @@ in the jcr:statement property if the query is persisted. See storeAsNode($absPat
 <h3 id="getStoredQueryPath()">getStoredQueryPath</h3>
 <code class="signature">public  string <strong>getStoredQueryPath</strong>()</code>
 <div class="details">
-<p>Fetches the path of the node representing this query.</p><p>If this is a Query object that has been stored using storeAsNode(java.lang.String)
+<p>Fetches the path of the node representing this query.</p><p>If this is a Query object that has been stored using self::storeAsNode()
 (regardless of whether it has been saved yet) or retrieved using
-QueryManager.getQuery(javax.jcr.Node)), then this method returns the path
+QueryManagerInterface::getQuery()), then this method returns the path
 of the nt:query node that stores the query.</p><dl>
 <dt>Returns:</dt>
 <dd>Path of the node representing this query.</dd>
@@ -282,7 +282,7 @@ of the nt:query node that stores the query.</p><dl>
 <div class="details">
 <p>Creates a node of type nt:query holding this query at $absPath and
 returns that node.</p><p>This is  a session-write method and therefore requires a
-Session.save() to dispatch the change.</p><p>The $absPath provided must not have an index on its final element. If
+SessionInterface::save() to dispatch the change.</p><p>The $absPath provided must not have an index on its final element. If
 ordering is supported by the node type of the parent node then the new
 node is appended to the end of the child node list.</p><dl>
 <dt>Parameters:</dt>

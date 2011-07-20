@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="generator" content="PHPDoctor 2RC4 (http://peej.github.com/phpdoctor/)">
-<meta name="when" content="Wed, 20 Jul 2011 12:10:10 +0000">
+<meta name="when" content="Wed, 20 Jul 2011 15:20:04 +0000">
 
 <link rel="stylesheet" type="text/css" href="../../stylesheet.css">
 <link rel="start" href="../../overview-summary.html">
@@ -138,7 +138,7 @@ Comparison of Values).</p><dl>
 <div class="details">
 <p>Gets the default value(s) of the property.</p><p>These are the values that the property defined by this PropertyDefinition
 will be assigned if it is automatically created (that is, if
-ItemDefinition.isAutoCreated() returns true).
+ItemDefinitionInterface::isAutoCreated() returns true).
 This method returns an array of values. If the property is multi-
 valued, then this array represents the full set of values that the property
 will be assigned upon being auto-created. Note that this could be the empty
@@ -168,23 +168,23 @@ PropertyDefinitionTemplate, then this method will return null.</p><dl>
 <div class="details">
 <p>Gets the required type of the property.</p><p>Possible property types of:</p>
 <ul>
-<li>PropertyType.STRING</li>
-<li>PropertyType.DATE</li>
-<li>PropertyType.BINARY</li>
-<li>PropertyType.DOUBLE</li>
-<li>PropertyType.DECIMAL</li>
-<li>PropertyType.LONG</li>
-<li>PropertyType.BOOLEAN</li>
-<li>PropertyType.NAME</li>
-<li>PropertyType.PATH</li>
-<li>PropertyType.URI</li>
-<li>PropertyType.REFERENCE</li>
-<li>PropertyType.WEAKREFERENCE</li>
-<li>PropertyType.UNDEFINED</li>
+<li>PropertyType::STRING</li>
+<li>PropertyType::DATE</li>
+<li>PropertyType::BINARY</li>
+<li>PropertyType::DOUBLE</li>
+<li>PropertyType::DECIMAL</li>
+<li>PropertyType::LONG</li>
+<li>PropertyType::BOOLEAN</li>
+<li>PropertyType::NAME</li>
+<li>PropertyType::PATH</li>
+<li>PropertyType::URI</li>
+<li>PropertyType::REFERENCE</li>
+<li>PropertyType::WEAKREFERENCE</li>
+<li>PropertyType::UNDEFINED</li>
 </ul>
-<p>PropertyType.UNDEFINED is returned if this property may be of any type.</p><p>In implementations that support node type registration, if this
+<p>PropertyType::UNDEFINED is returned if this property may be of any type.</p><p>In implementations that support node type registration, if this
 PropertyDefinition object is actually a newly-created empty
-PropertyDefinitionTemplate, then this method will return PropertyType.STRING.</p><dl>
+PropertyDefinitionTemplate, then this method will return PropertyType::STRING.</p><dl>
 <dt>Returns:</dt>
 <dd>An integer constant member of PropertyType.</dd>
 <dt>Api.</dt>
@@ -247,7 +247,7 @@ with any session-specific mappings). Constraint strings for PATH
 properties should be stored in fully-qualified form (using the actual
 URI instead of the prefix) and then be converted to prefix form
 according to the current mapping upon the
-PropertyDefinition.getValueConstraints call.</p><p><b>NAME</b>: The constraint string is a JCR name in prefix form. For example
+PropertyDefinitionInterface::getValueConstraints() call.</p><p><b>NAME</b>: The constraint string is a JCR name in prefix form. For example
 "myapp:products". No wildcards or other pattern matching are supported.
 As with PATH properties, the string returned must reflect the namespace
 mapping in the current Session. Constraint strings for NAME properties
@@ -285,7 +285,7 @@ where c is the constant. For example, to indicate that particular LONG
 property is constrained to be one of the values 2, 4, or 8, the constraint
 string array {"2", "4", "8"} can be used instead of the standard notation,
 {"[2,2]", "[4,4]", "[8,8]"}. However, even if this shorthand is used on
-registration, the value returned by PropertyDefinition.getValueConstraints()
+registration, the value returned by PropertyDefinitionInterface::getValueConstraints()
 will always use the standard notation.</p><p>Because constraints are returned as an array of disjunctive constraints,
 in many cases the elements of the array can serve directly as a "choice list".
 This may, for example, be used by an application to display options to

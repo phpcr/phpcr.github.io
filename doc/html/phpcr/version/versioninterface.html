@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="generator" content="PHPDoctor 2RC4 (http://peej.github.com/phpdoctor/)">
-<meta name="when" content="Wed, 20 Jul 2011 12:10:10 +0000">
+<meta name="when" content="Wed, 20 Jul 2011 15:20:04 +0000">
 
 <link rel="stylesheet" type="text/css" href="../../stylesheet.css">
 <link rel="start" href="../../overview-summary.html">
@@ -79,18 +79,18 @@ version information.</p></div>
 </tr>
 <tr>
 <td class="type"> <a href="../../phpcr/version/versioninterface.html">VersionInterface</a></td>
-<td class="description"><p class="name"><a href="#getLinearPredecessor()">getLinearPredecessor</a>()</p><p class="description">Assuming that this Version object was acquired through a Workspace W and
-is within the VersionHistory H, this method returns the predecessor of
+<td class="description"><p class="name"><a href="#getLinearPredecessor()">getLinearPredecessor</a>()</p><p class="description">Assuming that this Version object was acquired through a Workspace $w and
+is within the VersionHistory $h, this method returns the predecessor of
 this version along the same line of descent as is returned by
-H.getAllLinearVersions() where H was also acquired through W.
+$h->getAllLinearVersions() where $h was also acquired through $w.
 </p></td>
 </tr>
 <tr>
 <td class="type"> <a href="../../phpcr/version/versioninterface.html">VersionInterface</a></td>
-<td class="description"><p class="name"><a href="#getLinearSuccessor()">getLinearSuccessor</a>()</p><p class="description">Assuming that this Version object was acquired through a Workspace W and
-is within the VersionHistory H, this method returns the successor of this
+<td class="description"><p class="name"><a href="#getLinearSuccessor()">getLinearSuccessor</a>()</p><p class="description">Assuming that this Version object was acquired through a Workspace $w and
+is within the VersionHistory $h, this method returns the successor of this
 version along the same line of descent as is returned by
-H.getAllLinearVersions() where H was also acquired through W.
+$h->getAllLinearVersions() where $h was also acquired through $w.
 </p></td>
 </tr>
 <tr>
@@ -168,10 +168,10 @@ this version.</p><dl>
 <h3 id="getLinearPredecessor()">getLinearPredecessor</h3>
 <code class="signature">public  <a href="../../phpcr/version/versioninterface.html">VersionInterface</a> <strong>getLinearPredecessor</strong>()</code>
 <div class="details">
-<p>Assuming that this Version object was acquired through a Workspace W and
-is within the VersionHistory H, this method returns the predecessor of
+<p>Assuming that this Version object was acquired through a Workspace $w and
+is within the VersionHistory $h, this method returns the predecessor of
 this version along the same line of descent as is returned by
-H.getAllLinearVersions() where H was also acquired through W.</p><p>Note that under simple versioning the behavior of this method is equivalent
+$h->getAllLinearVersions() where $h was also acquired through $w.</p><p>Note that under simple versioning the behavior of this method is equivalent
 to getting the unique predecessor (if any) of this version.</p><dl>
 <dt>Returns:</dt>
 <dd>a Version or null if no linear predecessor exists.</dd>
@@ -190,10 +190,10 @@ to getting the unique predecessor (if any) of this version.</p><dl>
 <h3 id="getLinearSuccessor()">getLinearSuccessor</h3>
 <code class="signature">public  <a href="../../phpcr/version/versioninterface.html">VersionInterface</a> <strong>getLinearSuccessor</strong>()</code>
 <div class="details">
-<p>Assuming that this Version object was acquired through a Workspace W and
-is within the VersionHistory H, this method returns the successor of this
+<p>Assuming that this Version object was acquired through a Workspace $w and
+is within the VersionHistory $h, this method returns the successor of this
 version along the same line of descent as is returned by
-H.getAllLinearVersions() where H was also acquired through W.</p><p>Note that under simple versioning the behavior of this method is equivalent
+$h->getAllLinearVersions() where $h was also acquired through $w.</p><p>Note that under simple versioning the behavior of this method is equivalent
 to getting the unique successor (if any) of this version.</p><dl>
 <dt>Returns:</dt>
 <dd>a Version or null if no linear successor exists.</dd>

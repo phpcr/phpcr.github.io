@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="generator" content="PHPDoctor 2RC4 (http://peej.github.com/phpdoctor/)">
-<meta name="when" content="Wed, 20 Jul 2011 12:10:17 +0000">
+<meta name="when" content="Wed, 20 Jul 2011 15:20:11 +0000">
 
 <link rel="stylesheet" type="text/css" href="../../../stylesheet.css">
 <link rel="start" href="../../../overview-summary.html">
@@ -73,7 +73,7 @@ limitations under the License.</p></div>
 <a name="line26"></a>&nbsp;
 <a name="line27"></a><span style="color: #009933; font-style: italic;">/**
 <a name="line28"></a> * Allows for the retrieval and (in implementations that support it) the
-<a name="line29"></a> * registration of node types. Accessed via Workspace.getNodeTypeManager().
+<a name="line29"></a> * registration of node types. Accessed via WorkspaceInterface::getNodeTypeManager().
 <a name="line30"></a> *
 <a name="line31"></a> * The \Traversable interface enables the implementation to be addressed with
 <a name="line32"></a> * &lt;b&gt;foreach&lt;/b&gt;. NodeTypeManager has to implement either \RecursiveIterator
@@ -150,11 +150,11 @@ limitations under the License.</p></div>
 <a name="line103"></a>&nbsp;
 <a name="line104"></a>    <span style="color: #009933; font-style: italic;">/**
 <a name="line105"></a>     * Returns an empty NodeTypeTemplate which can then be used to define a node type
-<a name="line106"></a>     * and passed to NodeTypeManager.registerNodeType.
+<a name="line106"></a>     * and passed to NodeTypeManagerInterface::registerNodeType().
 <a name="line107"></a>     *
 <a name="line108"></a>     * If &lt;b&gt;$ntd&lt;/b&gt; is given:
-<a name="line109"></a>     * Returns a NodeTypeTemplate holding the specified node type definition. This
-<a name="line110"></a>     * template can then be altered and passed to NodeTypeManager.registerNodeType.
+<a name="line109"></a>     * Returns a NodeTypeTemplateInterface holding the specified node type definition. This
+<a name="line110"></a>     * template can then be altered and passed to NodeTypeManagerInterface::registerNodeType().
 <a name="line111"></a>     *
 <a name="line112"></a>     * @param \PHPCR\NodeType\NodeTypeDefinitionInterface $ntd a NodeTypeDefinition.
 <a name="line113"></a>     * @return \PHPCR\NodeType\NodeTypeTemplateInterface A NodeTypeTemplate.
@@ -196,80 +196,81 @@ limitations under the License.</p></div>
 <a name="line149"></a>     * Registers a new node type or updates an existing node type using the specified
 <a name="line150"></a>     * definition and returns the resulting NodeType object.
 <a name="line151"></a>     *
-<a name="line152"></a>     * Typically, the object passed to this method will be a NodeTypeTemplate (a
-<a name="line153"></a>     * subclass of NodeTypeDefinition) acquired from NodeTypeManager.createNodeTypeTemplate
-<a name="line154"></a>     * and then filled-in with definition information.
-<a name="line155"></a>     *
-<a name="line156"></a>     * @param \PHPCR\NodeType\NodeTypeDefinitionInterface $ntd an NodeTypeDefinition.
-<a name="line157"></a>     * @param boolean $allowUpdate whether to fail if node already exists or to update it
-<a name="line158"></a>     * @return \PHPCR\NodeType\NodeTypeInterface the registered node type
-<a name="line159"></a>     *
-<a name="line160"></a>     * @throws \PHPCR\InvalidNodeTypeDefinitionException if the NodeTypeDefinition is invalid.
-<a name="line161"></a>     * @throws \PHPCR\NodeType\NodeTypeExistsException if allowUpdate is false and the NodeTypeDefinition
-<a name="line162"></a>     *                                                 specifies a node type name that is already registered.
-<a name="line163"></a>     * @throws \PHPCR\UnsupportedRepositoryOperationException if this implementation does not support
-<a name="line164"></a>     *                                                        node type registration.
-<a name="line165"></a>     * @throws \PHPCR\RepositoryException if another error occurs.
-<a name="line166"></a>     * @api
-<a name="line167"></a>     */</span>
-<a name="line168"></a>    <span style="color: #000000; font-weight: bold;">function</span> registerNodeType<span style="color: #009900;">&#40;</span>\PHPCR\NodeType\NodeTypeDefinitionInterface <span style="color: #000088;">$ntd</span><span style="color: #339933;">,</span> <span style="color: #000088;">$allowUpdate</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line169"></a>&nbsp;
-<a name="line170"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line171"></a>     * Registers or updates the specified array of NodeTypeDefinition objects.
-<a name="line172"></a>     *
-<a name="line173"></a>     * This method is used to register or update a set of node types with mutual
-<a name="line174"></a>     * dependencies. Returns an iterator over the resulting NodeType objects.
-<a name="line175"></a>     * The effect of the method is &quot;all or nothing&quot;; if an error occurs, no node
-<a name="line176"></a>     * types are registered or updated.
-<a name="line177"></a>     *
-<a name="line178"></a>     * @param array $definitions an array of NodeTypeDefinitions
-<a name="line179"></a>     * @param boolean $allowUpdate whether to fail if node already exists or to update it
-<a name="line180"></a>     * @return Iterator over the registered node types implementing &lt;b&gt;SeekableIterator&lt;/b&gt; and &lt;b&gt;Countable&lt;/b&gt;.
-<a name="line181"></a>     *                  Keys are the node type names, values the corresponding NodeTypeInterface instances.
-<a name="line182"></a>     *
-<a name="line183"></a>     * @throws \PHPCR\InvalidNodeTypeDefinitionException if a NodeTypeDefinition within the Collection is
-<a name="line184"></a>     *                                                   invalid or if the Collection contains an object of a
-<a name="line185"></a>     *                                                   type other than NodeTypeDefinition.
-<a name="line186"></a>     * @throws \PHPCR\NodeType\NodeTypeExistsException if allowUpdate is false and a NodeTypeDefinition within
-<a name="line187"></a>     *                                                 the Collection specifies a node type name that is already
-<a name="line188"></a>     *                                                 registered.
-<a name="line189"></a>     * @throws \PHPCR\UnsupportedRepositoryOperationException if this implementation does not support node type
-<a name="line190"></a>     *                                                        registration.
-<a name="line191"></a>     * @throws \PHPCR\RepositoryException if another error occurs.
-<a name="line192"></a>     * @api
-<a name="line193"></a>     */</span>
-<a name="line194"></a>    <span style="color: #000000; font-weight: bold;">function</span> registerNodeTypes<span style="color: #009900;">&#40;</span><a href="http://www.php.net/array"><span style="color: #990000;">array</span></a> <span style="color: #000088;">$definitions</span><span style="color: #339933;">,</span> <span style="color: #000088;">$allowUpdate</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line195"></a>&nbsp;
-<a name="line196"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line197"></a>     * Unregisters the specified node type.
-<a name="line198"></a>     *
-<a name="line199"></a>     * @param string $name The name of the node type to be removed from the registry.
-<a name="line200"></a>     * @return void
-<a name="line201"></a>     *
-<a name="line202"></a>     * @throws \PHPCR\UnsupportedRepositoryOperationException if this implementation does not
-<a name="line203"></a>     *                                                        support node type registration.
-<a name="line204"></a>     * @throws \PHPCR\NodeType\NoSuchNodeTypeException if no registered node type exists with the specified name.
-<a name="line205"></a>     * @throws \PHPCR\RepositoryException if another error occurs.
-<a name="line206"></a>     * @api
-<a name="line207"></a>     */</span>
-<a name="line208"></a>    <span style="color: #000000; font-weight: bold;">function</span> unregisterNodeType<span style="color: #009900;">&#40;</span><span style="color: #000088;">$name</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line209"></a>&nbsp;
-<a name="line210"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line211"></a>     * Unregisters the specified set of node types. Used to unregister a set of node
-<a name="line212"></a>     * types with mutual dependencies.
-<a name="line213"></a>     *
-<a name="line214"></a>     * @param array $names List of node type names to be removed from the registry.
-<a name="line215"></a>     * @return void
-<a name="line216"></a>     *
-<a name="line217"></a>     * @throws \PHPCR\UnsupportedRepositoryOperationException if this implementation does not support
-<a name="line218"></a>     *                                                        node type registration.
-<a name="line219"></a>     * @throws \PHPCR\NodeType\NoSuchNodeTypeException if one of the names listed is not a registered node type.
-<a name="line220"></a>     * @throws \PHPCR\RepositoryException if another error occurs.
-<a name="line221"></a>     * @api
-<a name="line222"></a>     */</span>
-<a name="line223"></a>    <span style="color: #000000; font-weight: bold;">function</span> unregisterNodeTypes<span style="color: #009900;">&#40;</span><a href="http://www.php.net/array"><span style="color: #990000;">array</span></a> <span style="color: #000088;">$names</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line224"></a><span style="color: #009900;">&#125;</span>
-<a name="line225"></a>&nbsp;</pre>
+<a name="line152"></a>     * Typically, the object passed to this method will be a 
+<a name="line153"></a>     * NodeTypeTemplateInterface (a subclass of NodeTypeDefinitionInterface)
+<a name="line154"></a>     * acquired from NodeTypeManagerInterface::createNodeTypeTemplate()
+<a name="line155"></a>     * and then filled-in with definition information.
+<a name="line156"></a>     *
+<a name="line157"></a>     * @param \PHPCR\NodeType\NodeTypeDefinitionInterface $ntd an NodeTypeDefinition.
+<a name="line158"></a>     * @param boolean $allowUpdate whether to fail if node already exists or to update it
+<a name="line159"></a>     * @return \PHPCR\NodeType\NodeTypeInterface the registered node type
+<a name="line160"></a>     *
+<a name="line161"></a>     * @throws \PHPCR\InvalidNodeTypeDefinitionException if the NodeTypeDefinition is invalid.
+<a name="line162"></a>     * @throws \PHPCR\NodeType\NodeTypeExistsException if allowUpdate is false and the NodeTypeDefinition
+<a name="line163"></a>     *                                                 specifies a node type name that is already registered.
+<a name="line164"></a>     * @throws \PHPCR\UnsupportedRepositoryOperationException if this implementation does not support
+<a name="line165"></a>     *                                                        node type registration.
+<a name="line166"></a>     * @throws \PHPCR\RepositoryException if another error occurs.
+<a name="line167"></a>     * @api
+<a name="line168"></a>     */</span>
+<a name="line169"></a>    <span style="color: #000000; font-weight: bold;">function</span> registerNodeType<span style="color: #009900;">&#40;</span>\PHPCR\NodeType\NodeTypeDefinitionInterface <span style="color: #000088;">$ntd</span><span style="color: #339933;">,</span> <span style="color: #000088;">$allowUpdate</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line170"></a>&nbsp;
+<a name="line171"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line172"></a>     * Registers or updates the specified array of NodeTypeDefinition objects.
+<a name="line173"></a>     *
+<a name="line174"></a>     * This method is used to register or update a set of node types with mutual
+<a name="line175"></a>     * dependencies. Returns an iterator over the resulting NodeType objects.
+<a name="line176"></a>     * The effect of the method is &quot;all or nothing&quot;; if an error occurs, no node
+<a name="line177"></a>     * types are registered or updated.
+<a name="line178"></a>     *
+<a name="line179"></a>     * @param array $definitions an array of NodeTypeDefinitions
+<a name="line180"></a>     * @param boolean $allowUpdate whether to fail if node already exists or to update it
+<a name="line181"></a>     * @return Iterator over the registered node types implementing &lt;b&gt;SeekableIterator&lt;/b&gt; and &lt;b&gt;Countable&lt;/b&gt;.
+<a name="line182"></a>     *                  Keys are the node type names, values the corresponding NodeTypeInterface instances.
+<a name="line183"></a>     *
+<a name="line184"></a>     * @throws \PHPCR\InvalidNodeTypeDefinitionException if a NodeTypeDefinition within the Collection is
+<a name="line185"></a>     *                                                   invalid or if the Collection contains an object of a
+<a name="line186"></a>     *                                                   type other than NodeTypeDefinition.
+<a name="line187"></a>     * @throws \PHPCR\NodeType\NodeTypeExistsException if allowUpdate is false and a NodeTypeDefinition within
+<a name="line188"></a>     *                                                 the Collection specifies a node type name that is already
+<a name="line189"></a>     *                                                 registered.
+<a name="line190"></a>     * @throws \PHPCR\UnsupportedRepositoryOperationException if this implementation does not support node type
+<a name="line191"></a>     *                                                        registration.
+<a name="line192"></a>     * @throws \PHPCR\RepositoryException if another error occurs.
+<a name="line193"></a>     * @api
+<a name="line194"></a>     */</span>
+<a name="line195"></a>    <span style="color: #000000; font-weight: bold;">function</span> registerNodeTypes<span style="color: #009900;">&#40;</span><a href="http://www.php.net/array"><span style="color: #990000;">array</span></a> <span style="color: #000088;">$definitions</span><span style="color: #339933;">,</span> <span style="color: #000088;">$allowUpdate</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line196"></a>&nbsp;
+<a name="line197"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line198"></a>     * Unregisters the specified node type.
+<a name="line199"></a>     *
+<a name="line200"></a>     * @param string $name The name of the node type to be removed from the registry.
+<a name="line201"></a>     * @return void
+<a name="line202"></a>     *
+<a name="line203"></a>     * @throws \PHPCR\UnsupportedRepositoryOperationException if this implementation does not
+<a name="line204"></a>     *                                                        support node type registration.
+<a name="line205"></a>     * @throws \PHPCR\NodeType\NoSuchNodeTypeException if no registered node type exists with the specified name.
+<a name="line206"></a>     * @throws \PHPCR\RepositoryException if another error occurs.
+<a name="line207"></a>     * @api
+<a name="line208"></a>     */</span>
+<a name="line209"></a>    <span style="color: #000000; font-weight: bold;">function</span> unregisterNodeType<span style="color: #009900;">&#40;</span><span style="color: #000088;">$name</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line210"></a>&nbsp;
+<a name="line211"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line212"></a>     * Unregisters the specified set of node types. Used to unregister a set of node
+<a name="line213"></a>     * types with mutual dependencies.
+<a name="line214"></a>     *
+<a name="line215"></a>     * @param array $names List of node type names to be removed from the registry.
+<a name="line216"></a>     * @return void
+<a name="line217"></a>     *
+<a name="line218"></a>     * @throws \PHPCR\UnsupportedRepositoryOperationException if this implementation does not support
+<a name="line219"></a>     *                                                        node type registration.
+<a name="line220"></a>     * @throws \PHPCR\NodeType\NoSuchNodeTypeException if one of the names listed is not a registered node type.
+<a name="line221"></a>     * @throws \PHPCR\RepositoryException if another error occurs.
+<a name="line222"></a>     * @api
+<a name="line223"></a>     */</span>
+<a name="line224"></a>    <span style="color: #000000; font-weight: bold;">function</span> unregisterNodeTypes<span style="color: #009900;">&#40;</span><a href="http://www.php.net/array"><span style="color: #990000;">array</span></a> <span style="color: #000088;">$names</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line225"></a><span style="color: #009900;">&#125;</span>
+<a name="line226"></a>&nbsp;</pre>
 <div class="header">
 <h1>PHPCR</h1>
 <ul>

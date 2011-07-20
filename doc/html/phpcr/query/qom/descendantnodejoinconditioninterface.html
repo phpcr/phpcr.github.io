@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="generator" content="PHPDoctor 2RC4 (http://peej.github.com/phpdoctor/)">
-<meta name="when" content="Wed, 20 Jul 2011 12:10:10 +0000">
+<meta name="when" content="Wed, 20 Jul 2011 15:20:04 +0000">
 
 <link rel="stylesheet" type="text/css" href="../../../stylesheet.css">
 <link rel="start" href="../../../overview-summary.html">
@@ -54,8 +54,8 @@ Detail: <a href="#detail_field">Field</a> | <a href="#detail_method">Method</a> 
 </p>
 
 <div class="comment" id="overview_description"><p>Tests whether the descendantSelector node is a descendant of the
-ancestorSelector node. A node-tuple satisfies the constraint only if:</p><p>descendantSelectorNode.getAncestor(n).isSame(ancestorSelectorNode) && descendantSelectorNode.getDepth() > n</p><p>would return true some some non-negative integer n, where descendantSelectorNode
-is the node for descendantSelector and ancestorSelectorNode is the node for
+ancestorSelector node. A node-tuple satisfies the constraint only if:</p><p><code>$descendantSelectorNode->getAncestor($n)->isSame($ancestorSelectorNode) && $descendantSelectorNode->getDepth() > $n</code></p><p>would return true some some non-negative integer $n, where $descendantSelectorNode
+is the node for descendantSelector and $ancestorSelectorNode is the node for
 ancestorSelector.</p></div>
 
 <dl>

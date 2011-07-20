@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="generator" content="PHPDoctor 2RC4 (http://peej.github.com/phpdoctor/)">
-<meta name="when" content="Wed, 20 Jul 2011 12:10:13 +0000">
+<meta name="when" content="Wed, 20 Jul 2011 15:20:07 +0000">
 
 <link rel="stylesheet" type="text/css" href="../../stylesheet.css">
 <link rel="start" href="../../overview-summary.html">
@@ -75,7 +75,7 @@ limitations under the License.</p></div>
 <a name="line28"></a> * Defines an interface to implement a single namespace registry.
 <a name="line29"></a> *
 <a name="line30"></a> * Each repository has a single, persistent namespace registry represented by
-<a name="line31"></a> * the NamespaceRegistry object, accessed via Workspace.getNamespaceRegistry().
+<a name="line31"></a> * the NamespaceRegistry object, accessed via WorkspaceInterface::getNamespaceRegistry().
 <a name="line32"></a> * The namespace registry contains the default prefixes of the registered
 <a name="line33"></a> * namespaces. The namespace registry may contain namespaces that are not used
 <a name="line34"></a> * in repository content, and there may be repository content with namespaces
@@ -165,90 +165,94 @@ limitations under the License.</p></div>
 <a name="line118"></a>     * On the other hand, taking a prefix that is already assigned to a URI
 <a name="line119"></a>     * and re-assigning it to a new URI in effect unregisters that URI.
 <a name="line120"></a>     * Therefore, the same restrictions apply to this operation as to
-<a name="line121"></a>     * NamespaceRegistry.unregisterNamespace:
-<a name="line122"></a>     * * Attempting to re-assign a built-in prefix (jcr, nt, mix, sv, xml,
+<a name="line121"></a>     * NamespaceRegistryInterface::unregisterNamespace():
+<a name="line122"></a>     * - Attempting to re-assign a built-in prefix (jcr, nt, mix, sv, xml,
 <a name="line123"></a>     *   or the empty prefix) to a new URI will throw a
 <a name="line124"></a>     *   \PHPCR\NamespaceException.
-<a name="line125"></a>     * * Attempting to register a namespace with a prefix that begins with
+<a name="line125"></a>     * - Attempting to register a namespace with a prefix that begins with
 <a name="line126"></a>     *   the characters &quot;xml&quot; (in any combination of case) will throw a
 <a name="line127"></a>     *   \PHPCR\NamespaceException.
-<a name="line128"></a>     * * An implementation may prevent the re-assignment of any other namespace
+<a name="line128"></a>     * - An implementation may prevent the re-assignment of any other namespace
 <a name="line129"></a>     *   prefixes for implementation-specific reasons by throwing a
 <a name="line130"></a>     *   \PHPCR\NamespaceException.
 <a name="line131"></a>     *
-<a name="line132"></a>     * @param string $prefix The prefix to be mapped.
-<a name="line133"></a>     * @param string $uri The URI to be mapped.
-<a name="line134"></a>     * @return void
-<a name="line135"></a>     * @throws \PHPCR\NamespaceException If an attempt is made to re-assign a built-in prefix to a new URI or, to register a namespace with a prefix that begins with the characters &quot;xml&quot; (in any combination of case) or an attempt is made to perform a prefix re-assignment that is forbidden for implementation-specific reasons.
-<a name="line136"></a>     * @throws \PHPCR\UnsupportedRepositoryOperationException if this repository does not support namespace registry changes.
-<a name="line137"></a>     * @throws \PHPCR\AccessDeniedException if the current session does not have sufficient access to register the namespace.
-<a name="line138"></a>     * @throws \PHPCR\RepositoryException if another error occurs.
-<a name="line139"></a>     * @api
-<a name="line140"></a>     */</span>
-<a name="line141"></a>    <span style="color: #000000; font-weight: bold;">function</span> registerNamespace<span style="color: #009900;">&#40;</span><span style="color: #000088;">$prefix</span><span style="color: #339933;">,</span> <span style="color: #000088;">$uri</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line142"></a>&nbsp;
-<a name="line143"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line144"></a>     * Removes a namespace mapping from the registry. The following restriction
-<a name="line145"></a>     * apply:
-<a name="line146"></a>     * * Attempting to unregister a built-in namespace (jcr, nt, mix, sv, xml or
-<a name="line147"></a>     *   the empty namespace) will throw a \PHPCR\NamespaceException.
-<a name="line148"></a>     * * An attempt to unregister a namespace that is not currently registered
-<a name="line149"></a>     *   will throw a \PHPCR\NamespaceException.
-<a name="line150"></a>     * * An implementation may prevent the unregistering of any other namespace
-<a name="line151"></a>     *   for implementation-specific reasons by throwing a
-<a name="line152"></a>     *   \PHPCR\NamespaceException.
-<a name="line153"></a>     *
-<a name="line154"></a>     * @param string $prefix The prefix of the mapping to be removed.
-<a name="line155"></a>     * @return void
-<a name="line156"></a>     * @throws \PHPCR\NamespaceException unregister a built-in namespace or a namespace that is not currently registered or a namespace whose unregistration is forbidden for implementation-specific reasons.
-<a name="line157"></a>     * @throws \PHPCR\UnsupportedRepositoryOperationException if this repository does not support namespace registry changes.
-<a name="line158"></a>     * @throws \PHPCR\AccessDeniedException if the current session does not have sufficient access to unregister the namespace.
-<a name="line159"></a>     * @throws \PHPCR\RepositoryException if another error occurs.
-<a name="line160"></a>     * @api
-<a name="line161"></a>     */</span>
-<a name="line162"></a>    <span style="color: #000000; font-weight: bold;">function</span> unregisterNamespace<span style="color: #009900;">&#40;</span><span style="color: #000088;">$prefix</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line163"></a>&nbsp;
-<a name="line164"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line165"></a>     * Returns an array holding all currently registered prefixes.
-<a name="line166"></a>     *
-<a name="line167"></a>     * @return array a string array
-<a name="line168"></a>     * @throws \PHPCR\RepositoryException if an error occurs.
-<a name="line169"></a>     * @api
-<a name="line170"></a>     */</span>
-<a name="line171"></a>    <span style="color: #000000; font-weight: bold;">function</span> getPrefixes<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line172"></a>&nbsp;
-<a name="line173"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line174"></a>     * Returns an array holding all currently registered URIs.
-<a name="line175"></a>     *
-<a name="line176"></a>     * @return array a string array
-<a name="line177"></a>     * @throws \PHPCR\RepositoryException if an error occurs.
-<a name="line178"></a>     * @api
-<a name="line179"></a>     */</span>
-<a name="line180"></a>    <span style="color: #000000; font-weight: bold;">function</span> getURIs<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line181"></a>&nbsp;
-<a name="line182"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line183"></a>     * Returns the URI to which the given prefix is mapped.
-<a name="line184"></a>     *
-<a name="line185"></a>     * @param string $prefix a string
-<a name="line186"></a>     * @return string a string
-<a name="line187"></a>     * @throws \PHPCR\NamespaceException if a mapping with the specified prefix does not exist.
-<a name="line188"></a>     * @throws \PHPCR\RepositoryException if another error occurs
-<a name="line189"></a>     * @api
-<a name="line190"></a>     */</span>
-<a name="line191"></a>    <span style="color: #000000; font-weight: bold;">function</span> getURI<span style="color: #009900;">&#40;</span><span style="color: #000088;">$prefix</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line192"></a>&nbsp;
-<a name="line193"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line194"></a>     * Returns the prefix which is mapped to the given uri.
-<a name="line195"></a>     *
-<a name="line196"></a>     * @param string $uri a string
-<a name="line197"></a>     * @return string a string
-<a name="line198"></a>     * @throws \PHPCR\NamespaceException if a mapping with the specified uri does not exist.
-<a name="line199"></a>     * @throws \PHPCR\RepositoryException if another error occurs
-<a name="line200"></a>     * @api
-<a name="line201"></a>     */</span>
-<a name="line202"></a>    <span style="color: #000000; font-weight: bold;">function</span> getPrefix<span style="color: #009900;">&#40;</span><span style="color: #000088;">$uri</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line203"></a><span style="color: #009900;">&#125;</span>
-<a name="line204"></a>&nbsp;</pre>
+<a name="line132"></a>     * &amp;nbsp;
+<a name="line133"></a>     *
+<a name="line134"></a>     * @param string $prefix The prefix to be mapped.
+<a name="line135"></a>     * @param string $uri The URI to be mapped.
+<a name="line136"></a>     * @return void
+<a name="line137"></a>     * @throws \PHPCR\NamespaceException If an attempt is made to re-assign a built-in prefix to a new URI or, to register a namespace with a prefix that begins with the characters &quot;xml&quot; (in any combination of case) or an attempt is made to perform a prefix re-assignment that is forbidden for implementation-specific reasons.
+<a name="line138"></a>     * @throws \PHPCR\UnsupportedRepositoryOperationException if this repository does not support namespace registry changes.
+<a name="line139"></a>     * @throws \PHPCR\AccessDeniedException if the current session does not have sufficient access to register the namespace.
+<a name="line140"></a>     * @throws \PHPCR\RepositoryException if another error occurs.
+<a name="line141"></a>     * @api
+<a name="line142"></a>     */</span>
+<a name="line143"></a>    <span style="color: #000000; font-weight: bold;">function</span> registerNamespace<span style="color: #009900;">&#40;</span><span style="color: #000088;">$prefix</span><span style="color: #339933;">,</span> <span style="color: #000088;">$uri</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line144"></a>&nbsp;
+<a name="line145"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line146"></a>     * Removes a namespace mapping from the registry. The following restriction
+<a name="line147"></a>     * apply:
+<a name="line148"></a>     * - Attempting to unregister a built-in namespace (jcr, nt, mix, sv, xml or
+<a name="line149"></a>     *   the empty namespace) will throw a \PHPCR\NamespaceException.
+<a name="line150"></a>     * - An attempt to unregister a namespace that is not currently registered
+<a name="line151"></a>     *   will throw a \PHPCR\NamespaceException.
+<a name="line152"></a>     * - An implementation may prevent the unregistering of any other namespace
+<a name="line153"></a>     *   for implementation-specific reasons by throwing a
+<a name="line154"></a>     *   \PHPCR\NamespaceException.
+<a name="line155"></a>     *
+<a name="line156"></a>     * &amp;nbsp;
+<a name="line157"></a>     *
+<a name="line158"></a>     * @param string $prefix The prefix of the mapping to be removed.
+<a name="line159"></a>     * @return void
+<a name="line160"></a>     * @throws \PHPCR\NamespaceException unregister a built-in namespace or a namespace that is not currently registered or a namespace whose unregistration is forbidden for implementation-specific reasons.
+<a name="line161"></a>     * @throws \PHPCR\UnsupportedRepositoryOperationException if this repository does not support namespace registry changes.
+<a name="line162"></a>     * @throws \PHPCR\AccessDeniedException if the current session does not have sufficient access to unregister the namespace.
+<a name="line163"></a>     * @throws \PHPCR\RepositoryException if another error occurs.
+<a name="line164"></a>     * @api
+<a name="line165"></a>     */</span>
+<a name="line166"></a>    <span style="color: #000000; font-weight: bold;">function</span> unregisterNamespace<span style="color: #009900;">&#40;</span><span style="color: #000088;">$prefix</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line167"></a>&nbsp;
+<a name="line168"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line169"></a>     * Returns an array holding all currently registered prefixes.
+<a name="line170"></a>     *
+<a name="line171"></a>     * @return array a string array
+<a name="line172"></a>     * @throws \PHPCR\RepositoryException if an error occurs.
+<a name="line173"></a>     * @api
+<a name="line174"></a>     */</span>
+<a name="line175"></a>    <span style="color: #000000; font-weight: bold;">function</span> getPrefixes<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line176"></a>&nbsp;
+<a name="line177"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line178"></a>     * Returns an array holding all currently registered URIs.
+<a name="line179"></a>     *
+<a name="line180"></a>     * @return array a string array
+<a name="line181"></a>     * @throws \PHPCR\RepositoryException if an error occurs.
+<a name="line182"></a>     * @api
+<a name="line183"></a>     */</span>
+<a name="line184"></a>    <span style="color: #000000; font-weight: bold;">function</span> getURIs<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line185"></a>&nbsp;
+<a name="line186"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line187"></a>     * Returns the URI to which the given prefix is mapped.
+<a name="line188"></a>     *
+<a name="line189"></a>     * @param string $prefix a string
+<a name="line190"></a>     * @return string a string
+<a name="line191"></a>     * @throws \PHPCR\NamespaceException if a mapping with the specified prefix does not exist.
+<a name="line192"></a>     * @throws \PHPCR\RepositoryException if another error occurs
+<a name="line193"></a>     * @api
+<a name="line194"></a>     */</span>
+<a name="line195"></a>    <span style="color: #000000; font-weight: bold;">function</span> getURI<span style="color: #009900;">&#40;</span><span style="color: #000088;">$prefix</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line196"></a>&nbsp;
+<a name="line197"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line198"></a>     * Returns the prefix which is mapped to the given uri.
+<a name="line199"></a>     *
+<a name="line200"></a>     * @param string $uri a string
+<a name="line201"></a>     * @return string a string
+<a name="line202"></a>     * @throws \PHPCR\NamespaceException if a mapping with the specified uri does not exist.
+<a name="line203"></a>     * @throws \PHPCR\RepositoryException if another error occurs
+<a name="line204"></a>     * @api
+<a name="line205"></a>     */</span>
+<a name="line206"></a>    <span style="color: #000000; font-weight: bold;">function</span> getPrefix<span style="color: #009900;">&#40;</span><span style="color: #000088;">$uri</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line207"></a><span style="color: #009900;">&#125;</span>
+<a name="line208"></a>&nbsp;</pre>
 <div class="header">
 <h1>PHPCR</h1>
 <ul>

@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="generator" content="PHPDoctor 2RC4 (http://peej.github.com/phpdoctor/)">
-<meta name="when" content="Wed, 20 Jul 2011 12:10:10 +0000">
+<meta name="when" content="Wed, 20 Jul 2011 15:20:04 +0000">
 
 <link rel="stylesheet" type="text/css" href="../stylesheet.css">
 <link rel="start" href="../overview-summary.html">
@@ -58,7 +58,7 @@ Detail: <a href="#detail_field">Field</a> | <a href="#detail_method">Method</a> 
 <li>removed getDescriptorValue and getDescriptorValues as ValueInterface has been dropped.
 Use getDescriptor to get the variable value.</li>
 </ul>
-<p></p></div>
+<p>&nbsp;</p></div>
 
 <dl>
 <dt>Subpackage:</dt>
@@ -323,24 +323,27 @@ that this repository implements. </p></td>
 </table>
 
 <h2 id="detail_field">Constant Detail</h2>
-<a href="../source/phpcr/repositoryinterface.php.html#line114" class="location">PHPCR/RepositoryInterface.php at line 114</a>
+<a href="../source/phpcr/repositoryinterface.php.html#line116" class="location">PHPCR/RepositoryInterface.php at line 116</a>
 
 <h3 id="IDENTIFIER_STABILITY">IDENTIFIER_STABILITY</h3>
 <code class="signature">public final static  str <strong>IDENTIFIER_STABILITY</strong> = &quot;identifier.stability&quot;</code>
 <div class="details">
 <p>Key to a String descriptor. Returns one of the following
-javax.jcr.Repository constants indicating the stability
-of identifiers:</p><p>IDENTIFIER_STABILITY_METHOD_DURATION - Identifiers may change between method calls.<br />
-IDENTIFIER_STABILITY_SAVE_DURATION - Identifers are guaranteed stable within a single save/refresh cycle.<br />
-IDENTIFIER_STABILITY_SESSION_DURATION - Identifiers are guaranteed stable within a single session.<br />
-IDENTIFIER_STABILITY_INDEFINITE_DURATION - Identifers are guaranteed to be stable forever.<br /></p><dl>
+RepositoryInterface constants indicating the stability of identifiers:</p>
+<ul>
+<li>IDENTIFIER_STABILITY_METHOD_DURATION - Identifiers may change between method calls.</li>
+<li>IDENTIFIER_STABILITY_SAVE_DURATION - Identifers are guaranteed stable within a single save/refresh cycle.</li>
+<li>IDENTIFIER_STABILITY_SESSION_DURATION - Identifiers are guaranteed stable within a single session.</li>
+<li>IDENTIFIER_STABILITY_INDEFINITE_DURATION - Identifers are guaranteed to be stable forever.</li>
+</ul>
+<p>&nbsp;</p><dl>
 <dt>Api.</dt>
 </dl>
 </div>
 
 <hr>
 
-<a href="../source/phpcr/repositoryinterface.php.html#line142" class="location">PHPCR/RepositoryInterface.php at line 142</a>
+<a href="../source/phpcr/repositoryinterface.php.html#line144" class="location">PHPCR/RepositoryInterface.php at line 144</a>
 
 <h3 id="IDENTIFIER_STABILITY_INDEFINITE_DURATION">IDENTIFIER_STABILITY_INDEFINITE_DURATION</h3>
 <code class="signature">public final static  str <strong>IDENTIFIER_STABILITY_INDEFINITE_DURATION</strong> = &quot;identifier.stability.indefinite.duration&quot;</code>
@@ -353,7 +356,7 @@ Indicates that identifiers are guaranteed to be stable forever.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/repositoryinterface.php.html#line121" class="location">PHPCR/RepositoryInterface.php at line 121</a>
+<a href="../source/phpcr/repositoryinterface.php.html#line123" class="location">PHPCR/RepositoryInterface.php at line 123</a>
 
 <h3 id="IDENTIFIER_STABILITY_METHOD_DURATION">IDENTIFIER_STABILITY_METHOD_DURATION</h3>
 <code class="signature">public final static  str <strong>IDENTIFIER_STABILITY_METHOD_DURATION</strong> = &quot;identifier.stability.method.duration&quot;</code>
@@ -366,7 +369,7 @@ Indicates that identifiers may change between method calls.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/repositoryinterface.php.html#line128" class="location">PHPCR/RepositoryInterface.php at line 128</a>
+<a href="../source/phpcr/repositoryinterface.php.html#line130" class="location">PHPCR/RepositoryInterface.php at line 130</a>
 
 <h3 id="IDENTIFIER_STABILITY_SAVE_DURATION">IDENTIFIER_STABILITY_SAVE_DURATION</h3>
 <code class="signature">public final static  str <strong>IDENTIFIER_STABILITY_SAVE_DURATION</strong> = &quot;identifier.stability.save.duration&quot;</code>
@@ -379,7 +382,7 @@ Indicates that identifiers are guaranteed stable within a single save/refresh cy
 
 <hr>
 
-<a href="../source/phpcr/repositoryinterface.php.html#line135" class="location">PHPCR/RepositoryInterface.php at line 135</a>
+<a href="../source/phpcr/repositoryinterface.php.html#line137" class="location">PHPCR/RepositoryInterface.php at line 137</a>
 
 <h3 id="IDENTIFIER_STABILITY_SESSION_DURATION">IDENTIFIER_STABILITY_SESSION_DURATION</h3>
 <code class="signature">public final static  str <strong>IDENTIFIER_STABILITY_SESSION_DURATION</strong> = &quot;identifier.stability.session.duration&quot;</code>
@@ -392,7 +395,7 @@ Indicates that identifiers are guaranteed stable within a single session.</p><dl
 
 <hr>
 
-<a href="../source/phpcr/repositoryinterface.php.html#line363" class="location">PHPCR/RepositoryInterface.php at line 363</a>
+<a href="../source/phpcr/repositoryinterface.php.html#line365" class="location">PHPCR/RepositoryInterface.php at line 365</a>
 
 <h3 id="NODE_TYPE_MANAGEMENT_AUTOCREATED_DEFINITIONS_SUPPORTED">NODE_TYPE_MANAGEMENT_AUTOCREATED_DEFINITIONS_SUPPORTED</h3>
 <code class="signature">public final static  str <strong>NODE_TYPE_MANAGEMENT_AUTOCREATED_DEFINITIONS_SUPPORTED</strong> = &quot;node.type.management.autocreated.definitions.supported&quot;</code>
@@ -405,14 +408,14 @@ if and only if autocreated properties and child nodes are supported.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/repositoryinterface.php.html#line304" class="location">PHPCR/RepositoryInterface.php at line 304</a>
+<a href="../source/phpcr/repositoryinterface.php.html#line306" class="location">PHPCR/RepositoryInterface.php at line 306</a>
 
 <h3 id="NODE_TYPE_MANAGEMENT_INHERITANCE">NODE_TYPE_MANAGEMENT_INHERITANCE</h3>
 <code class="signature">public final static  str <strong>NODE_TYPE_MANAGEMENT_INHERITANCE</strong> = &quot;node.type.management.inheritance&quot;</code>
 <div class="details">
 <p>Key to string descriptor. Returns one of the following
-javax.jcr.Repository constants indicating the level of
-support for node type inheritance:</p><p>NODE_TYPE_MANAGEMENT_INHERITANCE_MINIMAL<br />
+RepositoryInterface constants indicating the level of support for node
+type inheritance:</p><p>NODE_TYPE_MANAGEMENT_INHERITANCE_MINIMAL<br />
 Registration of primary node types is limited to those which have only
 nt:base as supertype. Registration of mixin node types is limited to
 those without any supertypes.</p><p>NODE_TYPE_MANAGEMENT_INHERITANCE_SINGLE<br />
@@ -427,7 +430,7 @@ types can be registered with zero or more supertypes.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/repositoryinterface.php.html#line312" class="location">PHPCR/RepositoryInterface.php at line 312</a>
+<a href="../source/phpcr/repositoryinterface.php.html#line314" class="location">PHPCR/RepositoryInterface.php at line 314</a>
 
 <h3 id="NODE_TYPE_MANAGEMENT_INHERITANCE_MINIMAL">NODE_TYPE_MANAGEMENT_INHERITANCE_MINIMAL</h3>
 <code class="signature">public final static  str <strong>NODE_TYPE_MANAGEMENT_INHERITANCE_MINIMAL</strong> = &quot;node.type.management.inheritance.minimal&quot;</code>
@@ -441,7 +444,7 @@ as supertype. Registration of mixin node types is limited to those without any s
 
 <hr>
 
-<a href="../source/phpcr/repositoryinterface.php.html#line328" class="location">PHPCR/RepositoryInterface.php at line 328</a>
+<a href="../source/phpcr/repositoryinterface.php.html#line330" class="location">PHPCR/RepositoryInterface.php at line 330</a>
 
 <h3 id="NODE_TYPE_MANAGEMENT_INHERITANCE_MULTIPLE">NODE_TYPE_MANAGEMENT_INHERITANCE_MULTIPLE</h3>
 <code class="signature">public final static  str <strong>NODE_TYPE_MANAGEMENT_INHERITANCE_MULTIPLE</strong> = &quot;node.type.management.inheritance.multiple&quot;</code>
@@ -455,7 +458,7 @@ Mixin node types can be registered with zero or more supertypes.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/repositoryinterface.php.html#line320" class="location">PHPCR/RepositoryInterface.php at line 320</a>
+<a href="../source/phpcr/repositoryinterface.php.html#line322" class="location">PHPCR/RepositoryInterface.php at line 322</a>
 
 <h3 id="NODE_TYPE_MANAGEMENT_INHERITANCE_SINGLE">NODE_TYPE_MANAGEMENT_INHERITANCE_SINGLE</h3>
 <code class="signature">public final static  str <strong>NODE_TYPE_MANAGEMENT_INHERITANCE_SINGLE</strong> = &quot;node.type.management.inheritance.single&quot;</code>
@@ -469,7 +472,7 @@ Registration of mixin node types is limited to those with at most one supertype.
 
 <hr>
 
-<a href="../source/phpcr/repositoryinterface.php.html#line395" class="location">PHPCR/RepositoryInterface.php at line 395</a>
+<a href="../source/phpcr/repositoryinterface.php.html#line397" class="location">PHPCR/RepositoryInterface.php at line 397</a>
 
 <h3 id="NODE_TYPE_MANAGEMENT_MULTIPLE_BINARY_PROPERTIES_SUPPORTED">NODE_TYPE_MANAGEMENT_MULTIPLE_BINARY_PROPERTIES_SUPPORTED</h3>
 <code class="signature">public final static  str <strong>NODE_TYPE_MANAGEMENT_MULTIPLE_BINARY_PROPERTIES_SUPPORTED</strong> = &quot;node.type.management.multiple.binary.properties.supported&quot;</code>
@@ -483,7 +486,7 @@ property is permitted.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/repositoryinterface.php.html#line387" class="location">PHPCR/RepositoryInterface.php at line 387</a>
+<a href="../source/phpcr/repositoryinterface.php.html#line389" class="location">PHPCR/RepositoryInterface.php at line 389</a>
 
 <h3 id="NODE_TYPE_MANAGEMENT_MULTIVALUED_PROPERTIES_SUPPORTED">NODE_TYPE_MANAGEMENT_MULTIVALUED_PROPERTIES_SUPPORTED</h3>
 <code class="signature">public final static  str <strong>NODE_TYPE_MANAGEMENT_MULTIVALUED_PROPERTIES_SUPPORTED</strong> = &quot;node.type.management.multivalued.properties.supported&quot;</code>
@@ -496,7 +499,7 @@ if and only if multivalue properties are supported.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/repositoryinterface.php.html#line349" class="location">PHPCR/RepositoryInterface.php at line 349</a>
+<a href="../source/phpcr/repositoryinterface.php.html#line351" class="location">PHPCR/RepositoryInterface.php at line 351</a>
 
 <h3 id="NODE_TYPE_MANAGEMENT_ORDERABLE_CHILD_NODES_SUPPORTED">NODE_TYPE_MANAGEMENT_ORDERABLE_CHILD_NODES_SUPPORTED</h3>
 <code class="signature">public final static  str <strong>NODE_TYPE_MANAGEMENT_ORDERABLE_CHILD_NODES_SUPPORTED</strong> = &quot;node.type.management.orderable.child.nodes.supported&quot;</code>
@@ -509,7 +512,7 @@ if and only if preservation of child node ordering is supported.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/repositoryinterface.php.html#line335" class="location">PHPCR/RepositoryInterface.php at line 335</a>
+<a href="../source/phpcr/repositoryinterface.php.html#line337" class="location">PHPCR/RepositoryInterface.php at line 337</a>
 
 <h3 id="NODE_TYPE_MANAGEMENT_OVERRIDES_SUPPORTED">NODE_TYPE_MANAGEMENT_OVERRIDES_SUPPORTED</h3>
 <code class="signature">public final static  str <strong>NODE_TYPE_MANAGEMENT_OVERRIDES_SUPPORTED</strong> = &quot;node.type.management.overrides.supported&quot;</code>
@@ -522,7 +525,7 @@ if and only if override of inherited property or child node definitions is suppo
 
 <hr>
 
-<a href="../source/phpcr/repositoryinterface.php.html#line342" class="location">PHPCR/RepositoryInterface.php at line 342</a>
+<a href="../source/phpcr/repositoryinterface.php.html#line344" class="location">PHPCR/RepositoryInterface.php at line 344</a>
 
 <h3 id="NODE_TYPE_MANAGEMENT_PRIMARY_ITEM_NAME_SUPPORTED">NODE_TYPE_MANAGEMENT_PRIMARY_ITEM_NAME_SUPPORTED</h3>
 <code class="signature">public final static  str <strong>NODE_TYPE_MANAGEMENT_PRIMARY_ITEM_NAME_SUPPORTED</strong> = &quot;node.type.management.primary.item.name.supported&quot;</code>
@@ -535,13 +538,13 @@ if and only if primary items are supported.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/repositoryinterface.php.html#line380" class="location">PHPCR/RepositoryInterface.php at line 380</a>
+<a href="../source/phpcr/repositoryinterface.php.html#line382" class="location">PHPCR/RepositoryInterface.php at line 382</a>
 
 <h3 id="NODE_TYPE_MANAGEMENT_PROPERTY_TYPES">NODE_TYPE_MANAGEMENT_PROPERTY_TYPES</h3>
 <code class="signature">public final static  str <strong>NODE_TYPE_MANAGEMENT_PROPERTY_TYPES</strong> = &quot;node.type.management.property.types&quot;</code>
 <div class="details">
 <p>Key to an integer[] descriptor. Returns an array holding the
-javax.jcr.PropertyType constants for the property types
+\PHPCR\PropertyType constants for the property types
 (including UNDEFINED, if supported) that a registered node
 type can specify, or a zero-length array if registered node types cannot
 specify property definitions.</p><dl>
@@ -551,7 +554,7 @@ specify property definitions.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/repositoryinterface.php.html#line356" class="location">PHPCR/RepositoryInterface.php at line 356</a>
+<a href="../source/phpcr/repositoryinterface.php.html#line358" class="location">PHPCR/RepositoryInterface.php at line 358</a>
 
 <h3 id="NODE_TYPE_MANAGEMENT_RESIDUAL_DEFINITIONS_SUPPORTED">NODE_TYPE_MANAGEMENT_RESIDUAL_DEFINITIONS_SUPPORTED</h3>
 <code class="signature">public final static  str <strong>NODE_TYPE_MANAGEMENT_RESIDUAL_DEFINITIONS_SUPPORTED</strong> = &quot;node.type.management.residual.definitions.supported&quot;</code>
@@ -564,7 +567,7 @@ if and only if residual property and child node definitions are supported.</p><d
 
 <hr>
 
-<a href="../source/phpcr/repositoryinterface.php.html#line370" class="location">PHPCR/RepositoryInterface.php at line 370</a>
+<a href="../source/phpcr/repositoryinterface.php.html#line372" class="location">PHPCR/RepositoryInterface.php at line 372</a>
 
 <h3 id="NODE_TYPE_MANAGEMENT_SAME_NAME_SIBLINGS_SUPPORTED">NODE_TYPE_MANAGEMENT_SAME_NAME_SIBLINGS_SUPPORTED</h3>
 <code class="signature">public final static  str <strong>NODE_TYPE_MANAGEMENT_SAME_NAME_SIBLINGS_SUPPORTED</strong> = &quot;node.type.management.same.name.siblings.supported&quot;</code>
@@ -577,7 +580,7 @@ if and only if same-name sibling child nodes are supported.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/repositoryinterface.php.html#line402" class="location">PHPCR/RepositoryInterface.php at line 402</a>
+<a href="../source/phpcr/repositoryinterface.php.html#line404" class="location">PHPCR/RepositoryInterface.php at line 404</a>
 
 <h3 id="NODE_TYPE_MANAGEMENT_VALUE_CONSTRAINTS_SUPPORTED">NODE_TYPE_MANAGEMENT_VALUE_CONSTRAINTS_SUPPORTED</h3>
 <code class="signature">public final static  str <strong>NODE_TYPE_MANAGEMENT_VALUE_CONSTRAINTS_SUPPORTED</strong> = &quot;node.type.management.value.constraints.supported&quot;</code>
@@ -590,7 +593,7 @@ if and only value-constraints are supported.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/repositoryinterface.php.html#line198" class="location">PHPCR/RepositoryInterface.php at line 198</a>
+<a href="../source/phpcr/repositoryinterface.php.html#line200" class="location">PHPCR/RepositoryInterface.php at line 200</a>
 
 <h3 id="OPTION_ACCESS_CONTROL_SUPPORTED">OPTION_ACCESS_CONTROL_SUPPORTED</h3>
 <code class="signature">public final static  str <strong>OPTION_ACCESS_CONTROL_SUPPORTED</strong> = &quot;option.access.control.supported&quot;</code>
@@ -603,7 +606,7 @@ if and only if access control is supported.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/repositoryinterface.php.html#line184" class="location">PHPCR/RepositoryInterface.php at line 184</a>
+<a href="../source/phpcr/repositoryinterface.php.html#line186" class="location">PHPCR/RepositoryInterface.php at line 186</a>
 
 <h3 id="OPTION_ACTIVITIES_SUPPORTED">OPTION_ACTIVITIES_SUPPORTED</h3>
 <code class="signature">public final static  str <strong>OPTION_ACTIVITIES_SUPPORTED</strong> = &quot;option.activities.supported&quot;</code>
@@ -616,7 +619,7 @@ supported.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/repositoryinterface.php.html#line191" class="location">PHPCR/RepositoryInterface.php at line 191</a>
+<a href="../source/phpcr/repositoryinterface.php.html#line193" class="location">PHPCR/RepositoryInterface.php at line 193</a>
 
 <h3 id="OPTION_BASELINES_SUPPORTED">OPTION_BASELINES_SUPPORTED</h3>
 <code class="signature">public final static  str <strong>OPTION_BASELINES_SUPPORTED</strong> = &quot;option.baselines.supported&quot;</code>
@@ -629,7 +632,7 @@ and baselines are supported.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/repositoryinterface.php.html#line219" class="location">PHPCR/RepositoryInterface.php at line 219</a>
+<a href="../source/phpcr/repositoryinterface.php.html#line221" class="location">PHPCR/RepositoryInterface.php at line 221</a>
 
 <h3 id="OPTION_JOURNALED_OBSERVATION_SUPPORTED">OPTION_JOURNALED_OBSERVATION_SUPPORTED</h3>
 <code class="signature">public final static  str <strong>OPTION_JOURNALED_OBSERVATION_SUPPORTED</strong> = &quot;option.journaled.observation.supported&quot;</code>
@@ -642,7 +645,7 @@ if and only if journaled observation is supported.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/repositoryinterface.php.html#line233" class="location">PHPCR/RepositoryInterface.php at line 233</a>
+<a href="../source/phpcr/repositoryinterface.php.html#line235" class="location">PHPCR/RepositoryInterface.php at line 235</a>
 
 <h3 id="OPTION_LIFECYCLE_SUPPORTED">OPTION_LIFECYCLE_SUPPORTED</h3>
 <code class="signature">public final static  str <strong>OPTION_LIFECYCLE_SUPPORTED</strong> = &quot;option.lifecycle.supported&quot;</code>
@@ -655,7 +658,7 @@ if and only if lifecycles are supported.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/repositoryinterface.php.html#line205" class="location">PHPCR/RepositoryInterface.php at line 205</a>
+<a href="../source/phpcr/repositoryinterface.php.html#line207" class="location">PHPCR/RepositoryInterface.php at line 207</a>
 
 <h3 id="OPTION_LOCKING_SUPPORTED">OPTION_LOCKING_SUPPORTED</h3>
 <code class="signature">public final static  str <strong>OPTION_LOCKING_SUPPORTED</strong> = &quot;option.locking.supported&quot;</code>
@@ -668,7 +671,7 @@ if and only if locking is supported.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/repositoryinterface.php.html#line282" class="location">PHPCR/RepositoryInterface.php at line 282</a>
+<a href="../source/phpcr/repositoryinterface.php.html#line284" class="location">PHPCR/RepositoryInterface.php at line 284</a>
 
 <h3 id="OPTION_NODE_AND_PROPERTY_WITH_SAME_NAME_SUPPORTED">OPTION_NODE_AND_PROPERTY_WITH_SAME_NAME_SUPPORTED</h3>
 <code class="signature">public final static  str <strong>OPTION_NODE_AND_PROPERTY_WITH_SAME_NAME_SUPPORTED</strong> = &quot;option.node.and.property.with.same.name.supported&quot;</code>
@@ -681,7 +684,7 @@ property with same name is supported.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/repositoryinterface.php.html#line275" class="location">PHPCR/RepositoryInterface.php at line 275</a>
+<a href="../source/phpcr/repositoryinterface.php.html#line277" class="location">PHPCR/RepositoryInterface.php at line 277</a>
 
 <h3 id="OPTION_NODE_TYPE_MANAGEMENT_SUPPORTED">OPTION_NODE_TYPE_MANAGEMENT_SUPPORTED</h3>
 <code class="signature">public final static  str <strong>OPTION_NODE_TYPE_MANAGEMENT_SUPPORTED</strong> = &quot;option.node.type.management.supported&quot;</code>
@@ -694,7 +697,7 @@ if and only if node type management is supported.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/repositoryinterface.php.html#line212" class="location">PHPCR/RepositoryInterface.php at line 212</a>
+<a href="../source/phpcr/repositoryinterface.php.html#line214" class="location">PHPCR/RepositoryInterface.php at line 214</a>
 
 <h3 id="OPTION_OBSERVATION_SUPPORTED">OPTION_OBSERVATION_SUPPORTED</h3>
 <code class="signature">public final static  str <strong>OPTION_OBSERVATION_SUPPORTED</strong> = &quot;option.observation.supported&quot;</code>
@@ -707,7 +710,7 @@ if and only if asynchronous observation is supported.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/repositoryinterface.php.html#line226" class="location">PHPCR/RepositoryInterface.php at line 226</a>
+<a href="../source/phpcr/repositoryinterface.php.html#line228" class="location">PHPCR/RepositoryInterface.php at line 228</a>
 
 <h3 id="OPTION_RETENTION_SUPPORTED">OPTION_RETENTION_SUPPORTED</h3>
 <code class="signature">public final static  str <strong>OPTION_RETENTION_SUPPORTED</strong> = &quot;option.retention.supported&quot;</code>
@@ -720,7 +723,7 @@ if and only if retention and hold are supported.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/repositoryinterface.php.html#line268" class="location">PHPCR/RepositoryInterface.php at line 268</a>
+<a href="../source/phpcr/repositoryinterface.php.html#line270" class="location">PHPCR/RepositoryInterface.php at line 270</a>
 
 <h3 id="OPTION_SHAREABLE_NODES_SUPPORTED">OPTION_SHAREABLE_NODES_SUPPORTED</h3>
 <code class="signature">public final static  str <strong>OPTION_SHAREABLE_NODES_SUPPORTED</strong> = &quot;option.shareable.nodes.supported&quot;</code>
@@ -733,7 +736,7 @@ if and only if the creation of shareable nodes is supported.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/repositoryinterface.php.html#line177" class="location">PHPCR/RepositoryInterface.php at line 177</a>
+<a href="../source/phpcr/repositoryinterface.php.html#line179" class="location">PHPCR/RepositoryInterface.php at line 179</a>
 
 <h3 id="OPTION_SIMPLE_VERSIONING_SUPPORTED">OPTION_SIMPLE_VERSIONING_SUPPORTED</h3>
 <code class="signature">public final static  str <strong>OPTION_SIMPLE_VERSIONING_SUPPORTED</strong> = &quot;option.simple.versioning.supported&quot;</code>
@@ -746,7 +749,7 @@ if and only if simple versioning is supported.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/repositoryinterface.php.html#line240" class="location">PHPCR/RepositoryInterface.php at line 240</a>
+<a href="../source/phpcr/repositoryinterface.php.html#line242" class="location">PHPCR/RepositoryInterface.php at line 242</a>
 
 <h3 id="OPTION_TRANSACTIONS_SUPPORTED">OPTION_TRANSACTIONS_SUPPORTED</h3>
 <code class="signature">public final static  str <strong>OPTION_TRANSACTIONS_SUPPORTED</strong> = &quot;option.transactions.supported&quot;</code>
@@ -759,7 +762,7 @@ if and only if transactions are supported.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/repositoryinterface.php.html#line163" class="location">PHPCR/RepositoryInterface.php at line 163</a>
+<a href="../source/phpcr/repositoryinterface.php.html#line165" class="location">PHPCR/RepositoryInterface.php at line 165</a>
 
 <h3 id="OPTION_UNFILED_CONTENT_SUPPORTED">OPTION_UNFILED_CONTENT_SUPPORTED</h3>
 <code class="signature">public final static  str <strong>OPTION_UNFILED_CONTENT_SUPPORTED</strong> = &quot;option.unfiled.content.supported&quot;</code>
@@ -772,7 +775,7 @@ if and only if unfiled content is supported.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/repositoryinterface.php.html#line261" class="location">PHPCR/RepositoryInterface.php at line 261</a>
+<a href="../source/phpcr/repositoryinterface.php.html#line263" class="location">PHPCR/RepositoryInterface.php at line 263</a>
 
 <h3 id="OPTION_UPDATE_MIXIN_NODETYPES_SUPPORTED">OPTION_UPDATE_MIXIN_NODETYPES_SUPPORTED</h3>
 <code class="signature">public final static  str <strong>OPTION_UPDATE_MIXIN_NODETYPES_SUPPORTED</strong> = &quot;option.update.mixin.nodetypes.supported&quot;</code>
@@ -785,7 +788,7 @@ if and only if the mixin node types of an existing node can be added and removed
 
 <hr>
 
-<a href="../source/phpcr/repositoryinterface.php.html#line254" class="location">PHPCR/RepositoryInterface.php at line 254</a>
+<a href="../source/phpcr/repositoryinterface.php.html#line256" class="location">PHPCR/RepositoryInterface.php at line 256</a>
 
 <h3 id="OPTION_UPDATE_PRIMARY_NODETYPE_SUPPORTED">OPTION_UPDATE_PRIMARY_NODETYPE_SUPPORTED</h3>
 <code class="signature">public final static  str <strong>OPTION_UPDATE_PRIMARY_NODETYPE_SUPPORTED</strong> = &quot;option.update.primary.nodetype.supported&quot;</code>
@@ -798,7 +801,7 @@ if and only if the primary node type of an existing node can be updated.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/repositoryinterface.php.html#line170" class="location">PHPCR/RepositoryInterface.php at line 170</a>
+<a href="../source/phpcr/repositoryinterface.php.html#line172" class="location">PHPCR/RepositoryInterface.php at line 172</a>
 
 <h3 id="OPTION_VERSIONING_SUPPORTED">OPTION_VERSIONING_SUPPORTED</h3>
 <code class="signature">public final static  str <strong>OPTION_VERSIONING_SUPPORTED</strong> = &quot;option.versioning.supported&quot;</code>
@@ -811,7 +814,7 @@ if and only if full versioning is supported.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/repositoryinterface.php.html#line247" class="location">PHPCR/RepositoryInterface.php at line 247</a>
+<a href="../source/phpcr/repositoryinterface.php.html#line249" class="location">PHPCR/RepositoryInterface.php at line 249</a>
 
 <h3 id="OPTION_WORKSPACE_MANAGEMENT_SUPPORTED">OPTION_WORKSPACE_MANAGEMENT_SUPPORTED</h3>
 <code class="signature">public final static  str <strong>OPTION_WORKSPACE_MANAGEMENT_SUPPORTED</strong> = &quot;option.workspace.management.supported&quot;</code>
@@ -824,7 +827,7 @@ if and only if workspace management is supported.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/repositoryinterface.php.html#line149" class="location">PHPCR/RepositoryInterface.php at line 149</a>
+<a href="../source/phpcr/repositoryinterface.php.html#line151" class="location">PHPCR/RepositoryInterface.php at line 151</a>
 
 <h3 id="OPTION_XML_EXPORT_SUPPORTED">OPTION_XML_EXPORT_SUPPORTED</h3>
 <code class="signature">public final static  str <strong>OPTION_XML_EXPORT_SUPPORTED</strong> = &quot;option.xml.export.supported&quot;</code>
@@ -837,7 +840,7 @@ if and only if XML export is supported.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/repositoryinterface.php.html#line156" class="location">PHPCR/RepositoryInterface.php at line 156</a>
+<a href="../source/phpcr/repositoryinterface.php.html#line158" class="location">PHPCR/RepositoryInterface.php at line 158</a>
 
 <h3 id="OPTION_XML_IMPORT_SUPPORTED">OPTION_XML_IMPORT_SUPPORTED</h3>
 <code class="signature">public final static  str <strong>OPTION_XML_IMPORT_SUPPORTED</strong> = &quot;option.xml.import.supported&quot;</code>
@@ -850,7 +853,7 @@ if and only if XML import is supported.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/repositoryinterface.php.html#line424" class="location">PHPCR/RepositoryInterface.php at line 424</a>
+<a href="../source/phpcr/repositoryinterface.php.html#line426" class="location">PHPCR/RepositoryInterface.php at line 426</a>
 
 <h3 id="QUERY_FULL_TEXT_SEARCH_SUPPORTED">QUERY_FULL_TEXT_SEARCH_SUPPORTED</h3>
 <code class="signature">public final static  str <strong>QUERY_FULL_TEXT_SEARCH_SUPPORTED</strong> = &quot;query.full.text.search.supported&quot;</code>
@@ -863,23 +866,27 @@ if and only if full-text search is supported.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/repositoryinterface.php.html#line436" class="location">PHPCR/RepositoryInterface.php at line 436</a>
+<a href="../source/phpcr/repositoryinterface.php.html#line441" class="location">PHPCR/RepositoryInterface.php at line 441</a>
 
 <h3 id="QUERY_JOINS">QUERY_JOINS</h3>
 <code class="signature">public final static  str <strong>QUERY_JOINS</strong> = &quot;query.joins&quot;</code>
 <div class="details">
 <p>Key to String descriptor. Returns one of the following
-javax.jcr.Repository constants indicating the level of
-support for joins in queries:</p><p>QUERY_JOINS_NONE - Joins are not supported. Queries are limited to a single selector.<br />
-QUERY_JOINS_INNER - Inner joins are supported.<br />
-QUERY_JOINS_INNER_OUTER - Inner and outer joins are supported.<br /></p><dl>
+RepositoryInterface constants indicating the level of support for joins
+in queries:</p>
+<ul>
+<li>QUERY_JOINS_NONE - Joins are not supported. Queries are limited to a single selector.</li>
+<li>QUERY_JOINS_INNER - Inner joins are supported.</li>
+<li>QUERY_JOINS_INNER_OUTER - Inner and outer joins are supported.</li>
+</ul>
+<p>&nbsp;</p><dl>
 <dt>Api.</dt>
 </dl>
 </div>
 
 <hr>
 
-<a href="../source/phpcr/repositoryinterface.php.html#line450" class="location">PHPCR/RepositoryInterface.php at line 450</a>
+<a href="../source/phpcr/repositoryinterface.php.html#line455" class="location">PHPCR/RepositoryInterface.php at line 455</a>
 
 <h3 id="QUERY_JOINS_INNER">QUERY_JOINS_INNER</h3>
 <code class="signature">public final static  str <strong>QUERY_JOINS_INNER</strong> = &quot;query.joins.inner&quot;</code>
@@ -892,7 +899,7 @@ Indicates that inner joins are supported.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/repositoryinterface.php.html#line457" class="location">PHPCR/RepositoryInterface.php at line 457</a>
+<a href="../source/phpcr/repositoryinterface.php.html#line462" class="location">PHPCR/RepositoryInterface.php at line 462</a>
 
 <h3 id="QUERY_JOINS_INNER_OUTER">QUERY_JOINS_INNER_OUTER</h3>
 <code class="signature">public final static  str <strong>QUERY_JOINS_INNER_OUTER</strong> = &quot;query.joins.inner.outer&quot;</code>
@@ -905,7 +912,7 @@ Indicates that inner and outer joins are supported.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/repositoryinterface.php.html#line443" class="location">PHPCR/RepositoryInterface.php at line 443</a>
+<a href="../source/phpcr/repositoryinterface.php.html#line448" class="location">PHPCR/RepositoryInterface.php at line 448</a>
 
 <h3 id="QUERY_JOINS_NONE">QUERY_JOINS_NONE</h3>
 <code class="signature">public final static  str <strong>QUERY_JOINS_NONE</strong> = &quot;query.joins.none&quot;</code>
@@ -918,7 +925,7 @@ Indicates that joins are not supported. Queries are limited to a single selector
 
 <hr>
 
-<a href="../source/phpcr/repositoryinterface.php.html#line410" class="location">PHPCR/RepositoryInterface.php at line 410</a>
+<a href="../source/phpcr/repositoryinterface.php.html#line412" class="location">PHPCR/RepositoryInterface.php at line 412</a>
 
 <h3 id="QUERY_LANGUAGES">QUERY_LANGUAGES</h3>
 <code class="signature">public final static  str <strong>QUERY_LANGUAGES</strong> = &quot;query.languages&quot;</code>
@@ -932,7 +939,7 @@ if query is not supported.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/repositoryinterface.php.html#line417" class="location">PHPCR/RepositoryInterface.php at line 417</a>
+<a href="../source/phpcr/repositoryinterface.php.html#line419" class="location">PHPCR/RepositoryInterface.php at line 419</a>
 
 <h3 id="QUERY_STORED_QUERIES_SUPPORTED">QUERY_STORED_QUERIES_SUPPORTED</h3>
 <code class="signature">public final static  str <strong>QUERY_STORED_QUERIES_SUPPORTED</strong> = &quot;query.stored.queries.supported&quot;</code>
@@ -1041,7 +1048,7 @@ if and only if repository content can be updated through the JCR API
 <hr>
 
 <h2 id="detail_method">Method Detail</h2>
-<a href="../source/phpcr/repositoryinterface.php.html#line522" class="location">PHPCR/RepositoryInterface.php at line 522</a>
+<a href="../source/phpcr/repositoryinterface.php.html#line527" class="location">PHPCR/RepositoryInterface.php at line 527</a>
 
 <h3 id="getDescriptor()">getDescriptor</h3>
 <code class="signature">public  mixed <strong>getDescriptor</strong>(string key)</code>
@@ -1057,7 +1064,7 @@ if and only if repository content can be updated through the JCR API
 
 <hr>
 
-<a href="../source/phpcr/repositoryinterface.php.html#line501" class="location">PHPCR/RepositoryInterface.php at line 501</a>
+<a href="../source/phpcr/repositoryinterface.php.html#line506" class="location">PHPCR/RepositoryInterface.php at line 506</a>
 
 <h3 id="getDescriptorKeys()">getDescriptorKeys</h3>
 <code class="signature">public  array <strong>getDescriptorKeys</strong>()</code>
@@ -1073,7 +1080,7 @@ this repository implementation.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/repositoryinterface.php.html#line513" class="location">PHPCR/RepositoryInterface.php at line 513</a>
+<a href="../source/phpcr/repositoryinterface.php.html#line518" class="location">PHPCR/RepositoryInterface.php at line 518</a>
 
 <h3 id="isStandardDescriptor()">isStandardDescriptor</h3>
 <code class="signature">public  boolean <strong>isStandardDescriptor</strong>(string key)</code>
@@ -1090,7 +1097,7 @@ false if it is either a valid implementation-specific key or not a valid key.</p
 
 <hr>
 
-<a href="../source/phpcr/repositoryinterface.php.html#line489" class="location">PHPCR/RepositoryInterface.php at line 489</a>
+<a href="../source/phpcr/repositoryinterface.php.html#line494" class="location">PHPCR/RepositoryInterface.php at line 494</a>
 
 <h3 id="login()">login</h3>
 <code class="signature">public  <a href="../phpcr/sessioninterface.html">SessionInterface</a> <strong>login</strong>(<a href="../phpcr/credentialsinterface.html">CredentialsInterface</a> credentials, string workspaceName)</code>
@@ -1104,7 +1111,7 @@ for access to the specified workspace.</p><p>If workspaceName is null, a default
 implementation. This may, for example, be the "home workspace" of the user whose credentials
 were passed, though this is entirely up to the configuration and implementation of the
 repository. Alternatively, it may be a "null workspace" that serves only to provide the
-method Workspace.getAccessibleWorkspaceNames(), allowing the client to select from among
+method WorkspaceInterface::getAccessibleWorkspaceNames(), allowing the client to select from among
 available "real" workspaces.</p><p><b>Note:</b> The Java API defines this method with multiple differing signatures.</p><dl>
 <dt>Parameters:</dt>
 <dd>credentials - The credentials of the user</dd>

@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="generator" content="PHPDoctor 2RC4 (http://peej.github.com/phpdoctor/)">
-<meta name="when" content="Wed, 20 Jul 2011 12:10:10 +0000">
+<meta name="when" content="Wed, 20 Jul 2011 15:20:04 +0000">
 
 <link rel="stylesheet" type="text/css" href="../../stylesheet.css">
 <link rel="start" href="../../overview-summary.html">
@@ -190,7 +190,7 @@ lock held by a node above.</p><dl>
 
 <hr>
 
-<a href="../../source/phpcr/lock/lockmanagerinterface.php.html#line182" class="location">PHPCR/Lock/LockManagerInterface.php at line 182</a>
+<a href="../../source/phpcr/lock/lockmanagerinterface.php.html#line183" class="location">PHPCR/Lock/LockManagerInterface.php at line 183</a>
 
 <h3 id="isLocked()">isLocked</h3>
 <code class="signature">public  boolean <strong>isLocked</strong>(string absPath)</code>
@@ -211,7 +211,7 @@ returns false.</p><dl>
 
 <hr>
 
-<a href="../../source/phpcr/lock/lockmanagerinterface.php.html#line166" class="location">PHPCR/Lock/LockManagerInterface.php at line 166</a>
+<a href="../../source/phpcr/lock/lockmanagerinterface.php.html#line167" class="location">PHPCR/Lock/LockManagerInterface.php at line 167</a>
 
 <h3 id="lock()">lock</h3>
 <code class="signature">public  <a href="../../phpcr/lock/lockinterface.html">LockInterface</a> <strong>lock</strong>(string absPath, boolean isDeep, boolean isSessionScoped, integer timeoutHint, string ownerInfo)</code>
@@ -220,21 +220,22 @@ returns false.</p><dl>
 descendant nodes; if false, the lock applies only to the specified node.
 On a successful lock, the jcr:lockIsDeep property of the locked node is
 set to this value.</p><p>If <b>isSessionScoped</b> is true then this lock will expire upon the expiration
-of the current session (either through an automatic or explicit Session.logout);
+of the current session (either through an automatic or explicit SessionInterface::logout());
 if false, this lock does not expire until it is explicitly unlocked, it
 times out, or it is automatically unlocked due to a implementation-specific
 limitation.</p><p>The <b>timeout</b> parameter specifies the number of seconds until the lock times
-out (if it is not refreshed with Lock.refresh in the meantime). An
+out (if it is not refreshed with LockInterface::refresh() in the meantime). An
 implementation may use this information as a hint or ignore it altogether.
 Clients can discover the actual timeout by inspecting the returned Lock
 object.</p><p>The <b>ownerInfo</b> parameter can be used to pass a string holding owner
 information relevant to the client. An implementation may either use or
 ignore this parameter. If it uses the parameter it must set the jcr:lockOwner
 property of the locked node to this value and return this value on
-Lock.getLockOwner. If it ignores this parameter the jcr:lockOwner property
-(and the value returned by Lock.getLockOwner) is set to either the value
-returned by Session.getUserID of the owning session or an implementation-
-specific string identifying the owner.</p><p>The method returns a Lock object representing the new lock. If the lock is
+LockInterface::getLockOwner(). If it ignores this parameter the
+jcr:lockOwner property (and the value returned by LockInterface::getLockOwner())
+is set to either the value returned by SessionInterface::getUserID() of
+the owning session or an implementation-specific string identifying the
+owner.</p><p>The method returns a Lock object representing the new lock. If the lock is
 open-scoped the returned lock will include a lock token. The lock token is
 also automatically added to the set of lock tokens held by the current session.</p><p>The addition or change of the properties jcr:lockIsDeep and jcr:lockOwner
 are persisted immediately; there is no need to call save.</p><p>It is possible to lock a node even if it is checked-in.</p><dl>
@@ -242,7 +243,7 @@ are persisted immediately; there is no need to call save.</p><p>It is possible t
 <dd>absPath - The absolute path of node to be locked</dd>
 <dd>isDeep - If true this lock will apply to this node and all its descendants; if false, it applies only to this node.</dd>
 <dd>isSessionScoped - If true, this lock expires with the current session; if false it expires when explicitly or automatically unlocked for some other reason.</dd>
-<dd>timeoutHint - Desired lock timeout in seconds (servers are free to ignore this value); specify Long.MAX_VALUE for no timeout.</dd>
+<dd>timeoutHint - Desired lock timeout in seconds (servers are free to ignore this value); specify PHP_INT_MAX for no timeout.</dd>
 <dd>ownerInfo - A string containing owner information supplied by the client; servers are free to ignore this value.</dd>
 <dt>Returns:</dt>
 <dd>A Lock object containing a lock token.</dd>
@@ -258,7 +259,7 @@ are persisted immediately; there is no need to call save.</p><p>It is possible t
 
 <hr>
 
-<a href="../../source/phpcr/lock/lockmanagerinterface.php.html#line194" class="location">PHPCR/Lock/LockManagerInterface.php at line 194</a>
+<a href="../../source/phpcr/lock/lockmanagerinterface.php.html#line195" class="location">PHPCR/Lock/LockManagerInterface.php at line 195</a>
 
 <h3 id="removeLockToken()">removeLockToken</h3>
 <code class="signature">public  void <strong>removeLockToken</strong>(string lockToken)</code>
@@ -275,7 +276,7 @@ are persisted immediately; there is no need to call save.</p><p>It is possible t
 
 <hr>
 
-<a href="../../source/phpcr/lock/lockmanagerinterface.php.html#line226" class="location">PHPCR/Lock/LockManagerInterface.php at line 226</a>
+<a href="../../source/phpcr/lock/lockmanagerinterface.php.html#line227" class="location">PHPCR/Lock/LockManagerInterface.php at line 227</a>
 
 <h3 id="unlock()">unlock</h3>
 <code class="signature">public  void <strong>unlock</strong>(string absPath)</code>

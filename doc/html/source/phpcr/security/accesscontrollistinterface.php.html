@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="generator" content="PHPDoctor 2RC4 (http://peej.github.com/phpdoctor/)">
-<meta name="when" content="Wed, 20 Jul 2011 12:10:25 +0000">
+<meta name="when" content="Wed, 20 Jul 2011 15:20:19 +0000">
 
 <link rel="stylesheet" type="text/css" href="../../../stylesheet.css">
 <link rel="start" href="../../../overview-summary.html">
@@ -117,10 +117,10 @@ limitations under the License.</p></div>
 <a name="line70"></a>     * Privilege added by a previous call.
 <a name="line71"></a>     *
 <a name="line72"></a>     * The modification does not take effect until this policy has been set to a node
-<a name="line73"></a>     * by calling AccessControlManager.setPolicy(String, AccessControlPolicy) and
+<a name="line73"></a>     * by calling AccessControlManagerInterface::setPolicy() and
 <a name="line74"></a>     * save is performed.
 <a name="line75"></a>     *
-<a name="line76"></a>     * @param java.security.Principal $principal - a Principal.
+<a name="line76"></a>     * @param ? $principal - a Principal. TODO: define a type for this. JCR has javax.security.Principal
 <a name="line77"></a>     * @param array $privileges - an array of Privileges.
 <a name="line78"></a>     * @return boolean true if this policy was modify; false otherwise.
 <a name="line79"></a>     *
@@ -138,7 +138,7 @@ limitations under the License.</p></div>
 <a name="line91"></a>     *
 <a name="line92"></a>     * Only exactly those entries obtained through getAccessControlEntries can be
 <a name="line93"></a>     * removed. This method does not take effect until this policy has been re-set
-<a name="line94"></a>     * to a node by calling AccessControlManager.setPolicy(String, AccessControlPolicy)
+<a name="line94"></a>     * to a node by calling AccessControlManagerInterface::setPolicy()
 <a name="line95"></a>     * and save is performed.
 <a name="line96"></a>     *
 <a name="line97"></a>     * @param \PHPCR\Security\AccessControlEntryInterface $ace the access control entry to be removed.

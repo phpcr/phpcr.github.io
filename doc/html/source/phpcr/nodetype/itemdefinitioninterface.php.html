@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="generator" content="PHPDoctor 2RC4 (http://peej.github.com/phpdoctor/)">
-<meta name="when" content="Wed, 20 Jul 2011 12:10:16 +0000">
+<meta name="when" content="Wed, 20 Jul 2011 15:20:10 +0000">
 
 <link rel="stylesheet" type="text/css" href="../../../stylesheet.css">
 <link rel="start" href="../../../overview-summary.html">
@@ -166,17 +166,17 @@ limitations under the License.</p></div>
 <a name="line119"></a>     *
 <a name="line120"></a>     * This governs what occurs (in implementations that support versioning)
 <a name="line121"></a>     * when the parent node of this item is checked-in. One of:
-<a name="line122"></a>     * - OnParentVersionAction.COPY
-<a name="line123"></a>     * - OnParentVersionAction.VERSION
-<a name="line124"></a>     * - OnParentVersionAction.IGNORE
-<a name="line125"></a>     * - OnParentVersionAction.INITIALIZE
-<a name="line126"></a>     * - OnParentVersionAction.COMPUTE
-<a name="line127"></a>     * - OnParentVersionAction.ABORT
+<a name="line122"></a>     * - OnParentVersionAction::COPY
+<a name="line123"></a>     * - OnParentVersionAction::VERSION
+<a name="line124"></a>     * - OnParentVersionAction::IGNORE
+<a name="line125"></a>     * - OnParentVersionAction::INITIALIZE
+<a name="line126"></a>     * - OnParentVersionAction::COMPUTE
+<a name="line127"></a>     * - OnParentVersionAction::ABORT
 <a name="line128"></a>     *
 <a name="line129"></a>     * In implementations that support node type registration, if this
 <a name="line130"></a>     * ItemDefinition object is actually a newly-created empty
-<a name="line131"></a>     * PropertyDefinitionTemplate or NodeDefinitionTemplate, then this method
-<a name="line132"></a>     * will return OnParentVersionAction.COPY.
+<a name="line131"></a>     * PropertyDefinitionTemplateInterface or NodeDefinitionTemplateInterface, then this method
+<a name="line132"></a>     * will return OnParentVersionAction::COPY.
 <a name="line133"></a>     *
 <a name="line134"></a>     * @return integer An int constant member of OnParentVersionAction.
 <a name="line135"></a>     * @api
@@ -188,8 +188,8 @@ limitations under the License.</p></div>
 <a name="line141"></a>     *
 <a name="line142"></a>     * In level 2 implementations, a protected item is one that cannot be removed
 <a name="line143"></a>     * (except by removing its parent) or modified through the the standard write
-<a name="line144"></a>     * methods of this API (that is, Item.remove, Node.addNode, Node.setProperty
-<a name="line145"></a>     * and Property.setValue).
+<a name="line144"></a>     * methods of this API (that is, ItemInterface::remove(), NodeInterface::addNode(), NodeInterface::setProperty()
+<a name="line145"></a>     * and PropertyInterface::setValue()).
 <a name="line146"></a>     *
 <a name="line147"></a>     * A protected node may be removed or modified (in a level 2 implementation),
 <a name="line148"></a>     * however, through some mechanism not defined by this specification or as a
@@ -197,7 +197,7 @@ limitations under the License.</p></div>
 <a name="line150"></a>     *
 <a name="line151"></a>     * In implementations that support node type registration, if this
 <a name="line152"></a>     * ItemDefinition object is actually a newly-created empty
-<a name="line153"></a>     * PropertyDefinitionTemplate or NodeDefinitionTemplate, then this method
+<a name="line153"></a>     * PropertyDefinitionTemplateInterface or NodeDefinitionTemplateInterface, then this method
 <a name="line154"></a>     * will return false.
 <a name="line155"></a>     *
 <a name="line156"></a>     * @return boolean True, if the child item is protected, else false.

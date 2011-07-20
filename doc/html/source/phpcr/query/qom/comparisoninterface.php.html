@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="generator" content="PHPDoctor 2RC4 (http://peej.github.com/phpdoctor/)">
-<meta name="when" content="Wed, 20 Jul 2011 12:10:20 +0000">
+<meta name="when" content="Wed, 20 Jul 2011 15:20:14 +0000">
 
 <link rel="stylesheet" type="text/css" href="../../../../stylesheet.css">
 <link rel="start" href="../../../../overview-summary.html">
@@ -112,40 +112,42 @@ limitations under the License.</p></div>
 <a name="line65"></a> * - the character &quot;%&quot; matches zero or more characters, and
 <a name="line66"></a> * - the character &quot;_&quot; (underscore) matches exactly one character, and
 <a name="line67"></a> * - the string &quot;\x&quot; matches the character &quot;x&quot;, and
-<a name="line68"></a> *   all other characters match themselves.
+<a name="line68"></a> * - all other characters match themselves.
 <a name="line69"></a> *
-<a name="line70"></a> * @package phpcr
-<a name="line71"></a> * @subpackage interfaces
-<a name="line72"></a> * @api
-<a name="line73"></a> */</span>
-<a name="line74"></a><span style="color: #000000; font-weight: bold;">interface</span> ComparisonInterface <span style="color: #000000; font-weight: bold;">extends</span> ConstraintInterface
-<a name="line75"></a><span style="color: #009900;">&#123;</span>
-<a name="line76"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line77"></a>     *
-<a name="line78"></a>     * Gets the first operand.
+<a name="line70"></a> * &amp;nbsp;
+<a name="line71"></a> *
+<a name="line72"></a> * @package phpcr
+<a name="line73"></a> * @subpackage interfaces
+<a name="line74"></a> * @api
+<a name="line75"></a> */</span>
+<a name="line76"></a><span style="color: #000000; font-weight: bold;">interface</span> ComparisonInterface <span style="color: #000000; font-weight: bold;">extends</span> ConstraintInterface
+<a name="line77"></a><span style="color: #009900;">&#123;</span>
+<a name="line78"></a>    <span style="color: #009933; font-style: italic;">/**
 <a name="line79"></a>     *
-<a name="line80"></a>     * @return \PHPCR\Query\QOM\DynamicOperandInterface the operand; non-null
-<a name="line81"></a>     * @api
-<a name="line82"></a>     */</span>
-<a name="line83"></a>    <span style="color: #000000; font-weight: bold;">function</span> getOperand1<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line84"></a>&nbsp;
-<a name="line85"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line86"></a>     * Gets the operator.
-<a name="line87"></a>     *
-<a name="line88"></a>     * @return string one of \PHPCR\Query\QOM\QueryObjectModelConstantsInterface.JCR_OPERATOR_*
-<a name="line89"></a>     * @api
-<a name="line90"></a>     */</span>
-<a name="line91"></a>    <span style="color: #000000; font-weight: bold;">function</span> getOperator<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line92"></a>&nbsp;
-<a name="line93"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line94"></a>     * Gets the second operand.
-<a name="line95"></a>     *
-<a name="line96"></a>     * @return \PHPCR\Query\QOM\StaticOperandInterface the operand; non-null
-<a name="line97"></a>     * @api
-<a name="line98"></a>     */</span>
-<a name="line99"></a>    <span style="color: #000000; font-weight: bold;">function</span> getOperand2<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line100"></a><span style="color: #009900;">&#125;</span>
-<a name="line101"></a>&nbsp;</pre>
+<a name="line80"></a>     * Gets the first operand.
+<a name="line81"></a>     *
+<a name="line82"></a>     * @return \PHPCR\Query\QOM\DynamicOperandInterface the operand; non-null
+<a name="line83"></a>     * @api
+<a name="line84"></a>     */</span>
+<a name="line85"></a>    <span style="color: #000000; font-weight: bold;">function</span> getOperand1<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line86"></a>&nbsp;
+<a name="line87"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line88"></a>     * Gets the operator.
+<a name="line89"></a>     *
+<a name="line90"></a>     * @return string one of \PHPCR\Query\QOM\QueryObjectModelConstantsInterface.JCR_OPERATOR_*
+<a name="line91"></a>     * @api
+<a name="line92"></a>     */</span>
+<a name="line93"></a>    <span style="color: #000000; font-weight: bold;">function</span> getOperator<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line94"></a>&nbsp;
+<a name="line95"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line96"></a>     * Gets the second operand.
+<a name="line97"></a>     *
+<a name="line98"></a>     * @return \PHPCR\Query\QOM\StaticOperandInterface the operand; non-null
+<a name="line99"></a>     * @api
+<a name="line100"></a>     */</span>
+<a name="line101"></a>    <span style="color: #000000; font-weight: bold;">function</span> getOperand2<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line102"></a><span style="color: #009900;">&#125;</span>
+<a name="line103"></a>&nbsp;</pre>
 <div class="header">
 <h1>PHPCR</h1>
 <ul>

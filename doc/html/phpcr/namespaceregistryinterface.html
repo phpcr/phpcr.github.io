@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="generator" content="PHPDoctor 2RC4 (http://peej.github.com/phpdoctor/)">
-<meta name="when" content="Wed, 20 Jul 2011 12:10:09 +0000">
+<meta name="when" content="Wed, 20 Jul 2011 15:20:03 +0000">
 
 <link rel="stylesheet" type="text/css" href="../stylesheet.css">
 <link rel="start" href="../overview-summary.html">
@@ -54,7 +54,7 @@ Detail: <a href="#detail_field">Field</a> | <a href="#detail_method">Method</a> 
 </p>
 
 <div class="comment" id="overview_description"><p>Defines an interface to implement a single namespace registry.</p><p>Each repository has a single, persistent namespace registry represented by
-the NamespaceRegistry object, accessed via Workspace.getNamespaceRegistry().
+the NamespaceRegistry object, accessed via WorkspaceInterface::getNamespaceRegistry().
 The namespace registry contains the default prefixes of the registered
 namespaces. The namespace registry may contain namespaces that are not used
 in repository content, and there may be repository content with namespaces
@@ -267,7 +267,7 @@ registry of this repository.
 <hr>
 
 <h2 id="detail_method">Method Detail</h2>
-<a href="../source/phpcr/namespaceregistryinterface.php.html#line202" class="location">PHPCR/NamespaceRegistryInterface.php at line 202</a>
+<a href="../source/phpcr/namespaceregistryinterface.php.html#line206" class="location">PHPCR/NamespaceRegistryInterface.php at line 206</a>
 
 <h3 id="getPrefix()">getPrefix</h3>
 <code class="signature">public  string <strong>getPrefix</strong>(string uri)</code>
@@ -286,7 +286,7 @@ registry of this repository.
 
 <hr>
 
-<a href="../source/phpcr/namespaceregistryinterface.php.html#line171" class="location">PHPCR/NamespaceRegistryInterface.php at line 171</a>
+<a href="../source/phpcr/namespaceregistryinterface.php.html#line175" class="location">PHPCR/NamespaceRegistryInterface.php at line 175</a>
 
 <h3 id="getPrefixes()">getPrefixes</h3>
 <code class="signature">public  array <strong>getPrefixes</strong>()</code>
@@ -302,7 +302,7 @@ registry of this repository.
 
 <hr>
 
-<a href="../source/phpcr/namespaceregistryinterface.php.html#line191" class="location">PHPCR/NamespaceRegistryInterface.php at line 191</a>
+<a href="../source/phpcr/namespaceregistryinterface.php.html#line195" class="location">PHPCR/NamespaceRegistryInterface.php at line 195</a>
 
 <h3 id="getURI()">getURI</h3>
 <code class="signature">public  string <strong>getURI</strong>(string prefix)</code>
@@ -321,7 +321,7 @@ registry of this repository.
 
 <hr>
 
-<a href="../source/phpcr/namespaceregistryinterface.php.html#line180" class="location">PHPCR/NamespaceRegistryInterface.php at line 180</a>
+<a href="../source/phpcr/namespaceregistryinterface.php.html#line184" class="location">PHPCR/NamespaceRegistryInterface.php at line 184</a>
 
 <h3 id="getURIs()">getURIs</h3>
 <code class="signature">public  array <strong>getURIs</strong>()</code>
@@ -337,7 +337,7 @@ registry of this repository.
 
 <hr>
 
-<a href="../source/phpcr/namespaceregistryinterface.php.html#line141" class="location">PHPCR/NamespaceRegistryInterface.php at line 141</a>
+<a href="../source/phpcr/namespaceregistryinterface.php.html#line143" class="location">PHPCR/NamespaceRegistryInterface.php at line 143</a>
 
 <h3 id="registerNamespace()">registerNamespace</h3>
 <code class="signature">public  void <strong>registerNamespace</strong>(string prefix, string uri)</code>
@@ -350,16 +350,19 @@ done, though an implementation is free to prevent particular
 remappings by throwing a NamespaceException.</p><p>On the other hand, taking a prefix that is already assigned to a URI
 and re-assigning it to a new URI in effect unregisters that URI.
 Therefore, the same restrictions apply to this operation as to
-NamespaceRegistry.unregisterNamespace:
-* Attempting to re-assign a built-in prefix (jcr, nt, mix, sv, xml,
+NamespaceRegistryInterface::unregisterNamespace():</p>
+<ul>
+<li>Attempting to re-assign a built-in prefix (jcr, nt, mix, sv, xml,
 or the empty prefix) to a new URI will throw a
-\PHPCR\NamespaceException.
-* Attempting to register a namespace with a prefix that begins with
+\PHPCR\NamespaceException.</li>
+<li>Attempting to register a namespace with a prefix that begins with
 the characters "xml" (in any combination of case) will throw a
-\PHPCR\NamespaceException.
-* An implementation may prevent the re-assignment of any other namespace
+\PHPCR\NamespaceException.</li>
+<li>An implementation may prevent the re-assignment of any other namespace
 prefixes for implementation-specific reasons by throwing a
-\PHPCR\NamespaceException.</p><dl>
+\PHPCR\NamespaceException.</li>
+</ul>
+<p>&nbsp;</p><dl>
 <dt>Parameters:</dt>
 <dd>prefix - The prefix to be mapped.</dd>
 <dd>uri - The URI to be mapped.</dd>
@@ -374,20 +377,23 @@ prefixes for implementation-specific reasons by throwing a
 
 <hr>
 
-<a href="../source/phpcr/namespaceregistryinterface.php.html#line162" class="location">PHPCR/NamespaceRegistryInterface.php at line 162</a>
+<a href="../source/phpcr/namespaceregistryinterface.php.html#line166" class="location">PHPCR/NamespaceRegistryInterface.php at line 166</a>
 
 <h3 id="unregisterNamespace()">unregisterNamespace</h3>
 <code class="signature">public  void <strong>unregisterNamespace</strong>(string prefix)</code>
 <div class="details">
 <p>Removes a namespace mapping from the registry. The following restriction
-apply:
-* Attempting to unregister a built-in namespace (jcr, nt, mix, sv, xml or
-the empty namespace) will throw a \PHPCR\NamespaceException.
-* An attempt to unregister a namespace that is not currently registered
-will throw a \PHPCR\NamespaceException.
-* An implementation may prevent the unregistering of any other namespace
+apply:</p>
+<ul>
+<li>Attempting to unregister a built-in namespace (jcr, nt, mix, sv, xml or
+the empty namespace) will throw a \PHPCR\NamespaceException.</li>
+<li>An attempt to unregister a namespace that is not currently registered
+will throw a \PHPCR\NamespaceException.</li>
+<li>An implementation may prevent the unregistering of any other namespace
 for implementation-specific reasons by throwing a
-\PHPCR\NamespaceException.</p><dl>
+\PHPCR\NamespaceException.</li>
+</ul>
+<p>&nbsp;</p><dl>
 <dt>Parameters:</dt>
 <dd>prefix - The prefix of the mapping to be removed.</dd>
 <dt>Throws:</dt>

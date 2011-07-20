@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="generator" content="PHPDoctor 2RC4 (http://peej.github.com/phpdoctor/)">
-<meta name="when" content="Wed, 20 Jul 2011 12:10:20 +0000">
+<meta name="when" content="Wed, 20 Jul 2011 15:20:14 +0000">
 
 <link rel="stylesheet" type="text/css" href="../../../../stylesheet.css">
 <link rel="start" href="../../../../overview-summary.html">
@@ -77,7 +77,7 @@ limitations under the License.</p></div>
 <a name="line30"></a> *
 <a name="line31"></a> * A node-tuple satisfies the constraint only if:
 <a name="line32"></a> *
-<a name="line33"></a> *   selectorNode.getAncestor(n).isSame(session.getNode(path)) &amp;&amp; selectorNode.getDepth() &gt; n
+<a name="line33"></a> *   &lt;code&gt;$selectorNode-&gt;getAncestor($n)-&gt;isSame(session-&gt;getNode($path)) &amp;&amp; $selectorNode-&gt;getDepth() &gt; $n&lt;/code&gt;
 <a name="line34"></a> *
 <a name="line35"></a> * would return true for some non-negative integer n, where selectorNode is the
 <a name="line36"></a> * node for the specified selector.

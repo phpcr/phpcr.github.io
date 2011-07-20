@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="generator" content="PHPDoctor 2RC4 (http://peej.github.com/phpdoctor/)">
-<meta name="when" content="Wed, 20 Jul 2011 12:10:10 +0000">
+<meta name="when" content="Wed, 20 Jul 2011 15:20:04 +0000">
 
 <link rel="stylesheet" type="text/css" href="../../stylesheet.css">
 <link rel="start" href="../../overview-summary.html">
@@ -131,7 +131,7 @@ event has no associated identifier.
 </tr>
 <tr>
 <td class="type"> string</td>
-<td class="description"><p class="name"><a href="#getUserData()">getUserData</a>()</p><p class="description">Returns the user data set through ObservationManager.setUserData() on the
+<td class="description"><p class="name"><a href="#getUserData()">getUserData</a>()</p><p class="description">Returns the user data set through ObservationManagerInterface::setUserData() on the
 ObservationManager bound to the Session that caused the event.</p></td>
 </tr>
 <tr>
@@ -169,9 +169,9 @@ ObservationManager bound to the Session that caused the event.</p></td>
 <li>getPath() returns the absolute path of the destination of the move.</li>
 <li>getIdentifier() returns the identifier of the moved node.</li>
 <li><p class="list">getInfo() If the method that caused this event was a
-SessionInterface->move() or WorkspaceInterface->move() then the
+SessionInterface::move() or WorkspaceInterface::move() then the
 returned array has keys srcAbsPath and destAbsPath with values
-corresponding to the parameters passed to the move() method.</p><p class="list">If the method that caused this event was a NodeInterface.orderBefore()
+corresponding to the parameters passed to the move() method.</p><p class="list">If the method that caused this event was a NodeInterface::orderBefore()
 then the returned aray has keys srcChildRelPath and destChildRelPath
 with values corresponding to the parameters passed to the orderBefore()</p></li>
 </ul>
@@ -369,7 +369,7 @@ One of:</p>
 <h3 id="getUserData()">getUserData</h3>
 <code class="signature">public  string <strong>getUserData</strong>()</code>
 <div class="details">
-<p>Returns the user data set through ObservationManager.setUserData() on the
+<p>Returns the user data set through ObservationManagerInterface::setUserData() on the
 ObservationManager bound to the Session that caused the event.</p><dl>
 <dt>Returns:</dt>
 <dd>The user data string.</dd>
@@ -386,7 +386,7 @@ ObservationManager bound to the Session that caused the event.</p><dl>
 <h3 id="getUserID()">getUserID</h3>
 <code class="signature">public  string <strong>getUserID</strong>()</code>
 <div class="details">
-<p>Returns the user ID connected with this event.</p><p>This is the string returned by Session.getUserID() of the session that caused the event.</p><dl>
+<p>Returns the user ID connected with this event.</p><p>This is the string returned by SessionInterface::getUserID() of the session that caused the event.</p><dl>
 <dt>Returns:</dt>
 <dd>The identifier of the user connected to the event.</dd>
 <dt>Api.</dt>

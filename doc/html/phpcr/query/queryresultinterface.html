@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="generator" content="PHPDoctor 2RC4 (http://peej.github.com/phpdoctor/)">
-<meta name="when" content="Wed, 20 Jul 2011 12:10:10 +0000">
+<meta name="when" content="Wed, 20 Jul 2011 15:20:04 +0000">
 
 <link rel="stylesheet" type="text/css" href="../../stylesheet.css">
 <link rel="start" href="../../overview-summary.html">
@@ -77,7 +77,7 @@ rows.</p></div>
 </tr>
 <tr>
 <td class="type"> Iterator</td>
-<td class="description"><p class="name"><a href="#getNodes()">getNodes</a>()</p><p class="description">Returns an iterator over all nodes that match the query.
+<td class="description"><p class="name"><a href="#getNodes()">getNodes</a>(bool|int prefetch)</p><p class="description">Returns an iterator over all nodes that match the query.
 </p></td>
 </tr>
 <tr>
@@ -110,14 +110,16 @@ that created this result.
 
 <hr>
 
-<a href="../../source/phpcr/query/queryresultinterface.php.html#line81" class="location">PHPCR/Query/QueryResultInterface.php at line 81</a>
+<a href="../../source/phpcr/query/queryresultinterface.php.html#line83" class="location">PHPCR/Query/QueryResultInterface.php at line 83</a>
 
 <h3 id="getNodes()">getNodes</h3>
-<code class="signature">public  Iterator <strong>getNodes</strong>()</code>
+<code class="signature">public  Iterator <strong>getNodes</strong>(bool|int prefetch)</code>
 <div class="details">
 <p>Returns an iterator over all nodes that match the query.</p><p>The nodes are returned according to the ordering specified in the query.</p><dl>
+<dt>Parameters:</dt>
+<dd>prefetch - If to prefetch or not int < 0/true means all, 0/false means none, int > 0 means the prefetch chunk size or none</dd>
 <dt>Returns:</dt>
-<dd>implementing <b>SeekableIterator</b> and <b>Countable</b>. Keys are the Node names, values the corresponding NodeInterface instances.</dd>
+<dd>implementing <b>SeekableIterator</b> and <b>Countable</b>. Keys are the paths, Values the given Node instances.</dd>
 <dt>Throws:</dt>
 <dd><a href="../../phpcr/repositoryexception.html">\PHPCR\RepositoryException</a> - if the query contains more than one selector, if this call is the second time either getRows() or getNodes() has been called on the same QueryResult object or if another error occurs.</dd>
 <dt>Api.</dt>
@@ -142,7 +144,7 @@ that created this result.
 
 <hr>
 
-<a href="../../source/phpcr/query/queryresultinterface.php.html#line94" class="location">PHPCR/Query/QueryResultInterface.php at line 94</a>
+<a href="../../source/phpcr/query/queryresultinterface.php.html#line96" class="location">PHPCR/Query/QueryResultInterface.php at line 96</a>
 
 <h3 id="getSelectorNames()">getSelectorNames</h3>
 <code class="signature">public  array <strong>getSelectorNames</strong>()</code>

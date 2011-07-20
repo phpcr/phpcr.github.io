@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="generator" content="PHPDoctor 2RC4 (http://peej.github.com/phpdoctor/)">
-<meta name="when" content="Wed, 20 Jul 2011 12:10:10 +0000">
+<meta name="when" content="Wed, 20 Jul 2011 15:20:04 +0000">
 
 <link rel="stylesheet" type="text/css" href="../../stylesheet.css">
 <link rel="start" href="../../overview-summary.html">
@@ -93,8 +93,8 @@ this repository.
 <code class="signature">public  <a href="../../phpcr/query/queryinterface.html">QueryInterface</a> <strong>createQuery</strong>(string statement, string language)</code>
 <div class="details">
 <p>Creates a new query by specifying the query statement itself and the language
-in which the query is stated.</p><p>The $language must be a string from among
-those returned by QueryManager.getSupportedQueryLanguages().</p><dl>
+in which the query is stated.</p><p>The $language must be a string from among those returned by
+QueryManagerInterface::getSupportedQueryLanguages().</p><dl>
 <dt>Parameters:</dt>
 <dd>statement - The query statement to be executed.</dd>
 <dd>language - The language of the query to be created.</dd>
@@ -129,8 +129,8 @@ programmatically.</p><dl>
 <h3 id="getQuery()">getQuery</h3>
 <code class="signature">public  <a href="../../phpcr/query/queryinterface.html">QueryInterface</a> <strong>getQuery</strong>(<a href="../../phpcr/nodeinterface.html">NodeInterface</a> node)</code>
 <div class="details">
-<p>Retrieves an existing persistent query.</p><p>Persistent queries are created by first using QueryManager.createQuery to
-create a Query object and then calling Query.save to persist the query to
+<p>Retrieves an existing persistent query.</p><p>Persistent queries are created by first using QueryManagerInterface::createQuery to
+create a Query object and then calling QueryInterface::save() to persist the query to
 a location in the workspace.</p><dl>
 <dt>Parameters:</dt>
 <dd>node - a persisted query (that is, a node of type nt:query).</dd>
@@ -151,9 +151,9 @@ a location in the workspace.</p><dl>
 <code class="signature">public  array <strong>getSupportedQueryLanguages</strong>()</code>
 <div class="details">
 <p>Returns an array of strings representing all query languages supported by
-this repository.</p><p>This set must include at least the strings represented
-by the constants Query.JCR_SQL2 and Query.JCR_JQOM. An implementation may
-also support other languages.</p><dl>
+this repository.</p><p>This set must include at least the strings represented by the constants
+QueryInterface::JCR_SQL2 and QueryInterface::JCR_JQOM. An implementation
+may also support other languages.</p><dl>
 <dt>Returns:</dt>
 <dd>A list of supported languages by the query.</dd>
 <dt>Throws:</dt>

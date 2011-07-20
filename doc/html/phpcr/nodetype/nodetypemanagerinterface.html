@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="generator" content="PHPDoctor 2RC4 (http://peej.github.com/phpdoctor/)">
-<meta name="when" content="Wed, 20 Jul 2011 12:10:10 +0000">
+<meta name="when" content="Wed, 20 Jul 2011 15:20:04 +0000">
 
 <link rel="stylesheet" type="text/css" href="../../stylesheet.css">
 <link rel="start" href="../../overview-summary.html">
@@ -54,7 +54,7 @@ Detail: <a href="#detail_field">Field</a> | <a href="#detail_method">Method</a> 
 </p>
 
 <div class="comment" id="overview_description"><p>Allows for the retrieval and (in implementations that support it) the
-registration of node types. Accessed via Workspace.getNodeTypeManager().</p><p>The \Traversable interface enables the implementation to be addressed with
+registration of node types. Accessed via WorkspaceInterface::getNodeTypeManager().</p><p>The \Traversable interface enables the implementation to be addressed with
 <b>foreach</b>. NodeTypeManager has to implement either \RecursiveIterator
 or \Iterator.
 The iterator is equivalent to <b>getAllNodeTypes()</b> returning a list of
@@ -77,7 +77,7 @@ child node definition and attached to a NodeTypeTemplate.</p></td>
 <tr>
 <td class="type"> <a href="../../phpcr/nodetype/nodetypetemplateinterface.html">NodeTypeTemplateInterface</a></td>
 <td class="description"><p class="name"><a href="#createNodeTypeTemplate()">createNodeTypeTemplate</a>(<a href="../../phpcr/nodetype/nodetypedefinitioninterface.html">NodeTypeDefinitionInterface</a> ntd)</p><p class="description">Returns an empty NodeTypeTemplate which can then be used to define a node type
-and passed to NodeTypeManager.registerNodeType.
+and passed to NodeTypeManagerInterface::registerNodeType().
 </p></td>
 </tr>
 <tr>
@@ -153,9 +153,9 @@ child node definition and attached to a NodeTypeTemplate.</p><dl>
 <code class="signature">public  <a href="../../phpcr/nodetype/nodetypetemplateinterface.html">NodeTypeTemplateInterface</a> <strong>createNodeTypeTemplate</strong>(<a href="../../phpcr/nodetype/nodetypedefinitioninterface.html">NodeTypeDefinitionInterface</a> ntd)</code>
 <div class="details">
 <p>Returns an empty NodeTypeTemplate which can then be used to define a node type
-and passed to NodeTypeManager.registerNodeType.</p><p>If <b>$ntd</b> is given:
-Returns a NodeTypeTemplate holding the specified node type definition. This
-template can then be altered and passed to NodeTypeManager.registerNodeType.</p><dl>
+and passed to NodeTypeManagerInterface::registerNodeType().</p><p>If <b>$ntd</b> is given:
+Returns a NodeTypeTemplateInterface holding the specified node type definition. This
+template can then be altered and passed to NodeTypeManagerInterface::registerNodeType().</p><dl>
 <dt>Parameters:</dt>
 <dd>ntd - a NodeTypeDefinition.</dd>
 <dt>Returns:</dt>
@@ -273,14 +273,15 @@ false otherwise.</p><dl>
 
 <hr>
 
-<a href="../../source/phpcr/nodetype/nodetypemanagerinterface.php.html#line168" class="location">PHPCR/NodeType/NodeTypeManagerInterface.php at line 168</a>
+<a href="../../source/phpcr/nodetype/nodetypemanagerinterface.php.html#line169" class="location">PHPCR/NodeType/NodeTypeManagerInterface.php at line 169</a>
 
 <h3 id="registerNodeType()">registerNodeType</h3>
 <code class="signature">public  <a href="../../phpcr/nodetype/nodetypeinterface.html">NodeTypeInterface</a> <strong>registerNodeType</strong>(<a href="../../phpcr/nodetype/nodetypedefinitioninterface.html">NodeTypeDefinitionInterface</a> ntd, boolean allowUpdate)</code>
 <div class="details">
 <p>Registers a new node type or updates an existing node type using the specified
-definition and returns the resulting NodeType object.</p><p>Typically, the object passed to this method will be a NodeTypeTemplate (a
-subclass of NodeTypeDefinition) acquired from NodeTypeManager.createNodeTypeTemplate
+definition and returns the resulting NodeType object.</p><p>Typically, the object passed to this method will be a
+NodeTypeTemplateInterface (a subclass of NodeTypeDefinitionInterface)
+acquired from NodeTypeManagerInterface::createNodeTypeTemplate()
 and then filled-in with definition information.</p><dl>
 <dt>Parameters:</dt>
 <dd>ntd - an NodeTypeDefinition.</dd>
@@ -298,7 +299,7 @@ and then filled-in with definition information.</p><dl>
 
 <hr>
 
-<a href="../../source/phpcr/nodetype/nodetypemanagerinterface.php.html#line194" class="location">PHPCR/NodeType/NodeTypeManagerInterface.php at line 194</a>
+<a href="../../source/phpcr/nodetype/nodetypemanagerinterface.php.html#line195" class="location">PHPCR/NodeType/NodeTypeManagerInterface.php at line 195</a>
 
 <h3 id="registerNodeTypes()">registerNodeTypes</h3>
 <code class="signature">public  Iterator <strong>registerNodeTypes</strong>(array definitions, boolean allowUpdate)</code>
@@ -323,7 +324,7 @@ types are registered or updated.</p><dl>
 
 <hr>
 
-<a href="../../source/phpcr/nodetype/nodetypemanagerinterface.php.html#line208" class="location">PHPCR/NodeType/NodeTypeManagerInterface.php at line 208</a>
+<a href="../../source/phpcr/nodetype/nodetypemanagerinterface.php.html#line209" class="location">PHPCR/NodeType/NodeTypeManagerInterface.php at line 209</a>
 
 <h3 id="unregisterNodeType()">unregisterNodeType</h3>
 <code class="signature">public  void <strong>unregisterNodeType</strong>(string name)</code>
@@ -341,7 +342,7 @@ types are registered or updated.</p><dl>
 
 <hr>
 
-<a href="../../source/phpcr/nodetype/nodetypemanagerinterface.php.html#line223" class="location">PHPCR/NodeType/NodeTypeManagerInterface.php at line 223</a>
+<a href="../../source/phpcr/nodetype/nodetypemanagerinterface.php.html#line224" class="location">PHPCR/NodeType/NodeTypeManagerInterface.php at line 224</a>
 
 <h3 id="unregisterNodeTypes()">unregisterNodeTypes</h3>
 <code class="signature">public  void <strong>unregisterNodeTypes</strong>(array names)</code>

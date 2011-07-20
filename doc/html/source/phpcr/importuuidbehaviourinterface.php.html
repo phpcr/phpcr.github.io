@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="generator" content="PHPDoctor 2RC4 (http://peej.github.com/phpdoctor/)">
-<meta name="when" content="Wed, 20 Jul 2011 12:10:11 +0000">
+<meta name="when" content="Wed, 20 Jul 2011 15:20:05 +0000">
 
 <link rel="stylesheet" type="text/css" href="../../stylesheet.css">
 <link rel="start" href="../../overview-summary.html">
@@ -73,42 +73,46 @@ limitations under the License.</p></div>
 <a name="line26"></a>&nbsp;
 <a name="line27"></a><span style="color: #009933; font-style: italic;">/**
 <a name="line28"></a> * The possible actions specified by the uuidBehavior parameter in
-<a name="line29"></a> * - Workspace::importXML()
-<a name="line30"></a> * - Session::importXML()
-<a name="line31"></a> * - Workspace::getImportContentHandler()
-<a name="line32"></a> * - Session::getImportContentHandler()
-<a name="line33"></a> *
-<a name="line34"></a> * @package phpcr
-<a name="line35"></a> * @subpackage interfaces
-<a name="line36"></a> * @api
-<a name="line37"></a> */</span>
-<a name="line38"></a><span style="color: #000000; font-weight: bold;">interface</span> ImportUUIDBehaviourInterface
-<a name="line39"></a><span style="color: #009900;">&#123;</span>
-<a name="line40"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line41"></a>     * When importing remove existing item upon collision.
-<a name="line42"></a>     * @api
-<a name="line43"></a>     */</span>
-<a name="line44"></a>    <span style="color: #000000; font-weight: bold;">const</span> IMPORT_UUID_COLLISION_REMOVE_EXISTING <span style="color: #339933;">=</span> <span style="color: #cc66cc;">1</span><span style="color: #339933;">;</span>
-<a name="line45"></a>&nbsp;
-<a name="line46"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line47"></a>     * When importing replace existing item upon collision.
-<a name="line48"></a>     * @api
-<a name="line49"></a>     */</span>
-<a name="line50"></a>    <span style="color: #000000; font-weight: bold;">const</span> IMPORT_UUID_COLLISION_REPLACE_EXISTING <span style="color: #339933;">=</span> <span style="color: #cc66cc;">2</span><span style="color: #339933;">;</span>
-<a name="line51"></a>&nbsp;
-<a name="line52"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line53"></a>     * When importing throw exception upon collision.
-<a name="line54"></a>     * @api
-<a name="line55"></a>     */</span>
-<a name="line56"></a>    <span style="color: #000000; font-weight: bold;">const</span> IMPORT_UUID_COLLISION_THROW <span style="color: #339933;">=</span> <span style="color: #cc66cc;">3</span><span style="color: #339933;">;</span>
-<a name="line57"></a>&nbsp;
-<a name="line58"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line59"></a>     * When importing create new UUIDs.
-<a name="line60"></a>     * @api
-<a name="line61"></a>     */</span>
-<a name="line62"></a>    <span style="color: #000000; font-weight: bold;">const</span> IMPORT_UUID_CREATE_NEW <span style="color: #339933;">=</span> <span style="color: #cc66cc;">0</span><span style="color: #339933;">;</span>
-<a name="line63"></a><span style="color: #009900;">&#125;</span>
-<a name="line64"></a>&nbsp;</pre>
+<a name="line29"></a> * - WorkspaceInterface::importXML()
+<a name="line30"></a> * - SessionInterface::importXML()
+<a name="line31"></a> * 
+<a name="line32"></a> * If we implement a content handler, the UUID would also be relevant for
+<a name="line33"></a> * - WorkspaceInterface::getImportContentHandler()
+<a name="line34"></a> * - SessionInterface::getImportContentHandler() 
+<a name="line35"></a> *
+<a name="line36"></a> * &amp;nbsp;
+<a name="line37"></a> *
+<a name="line38"></a> * @package phpcr
+<a name="line39"></a> * @subpackage interfaces
+<a name="line40"></a> * @api
+<a name="line41"></a> */</span>
+<a name="line42"></a><span style="color: #000000; font-weight: bold;">interface</span> ImportUUIDBehaviourInterface
+<a name="line43"></a><span style="color: #009900;">&#123;</span>
+<a name="line44"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line45"></a>     * When importing remove existing item upon collision.
+<a name="line46"></a>     * @api
+<a name="line47"></a>     */</span>
+<a name="line48"></a>    <span style="color: #000000; font-weight: bold;">const</span> IMPORT_UUID_COLLISION_REMOVE_EXISTING <span style="color: #339933;">=</span> <span style="color: #cc66cc;">1</span><span style="color: #339933;">;</span>
+<a name="line49"></a>&nbsp;
+<a name="line50"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line51"></a>     * When importing replace existing item upon collision.
+<a name="line52"></a>     * @api
+<a name="line53"></a>     */</span>
+<a name="line54"></a>    <span style="color: #000000; font-weight: bold;">const</span> IMPORT_UUID_COLLISION_REPLACE_EXISTING <span style="color: #339933;">=</span> <span style="color: #cc66cc;">2</span><span style="color: #339933;">;</span>
+<a name="line55"></a>&nbsp;
+<a name="line56"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line57"></a>     * When importing throw exception upon collision.
+<a name="line58"></a>     * @api
+<a name="line59"></a>     */</span>
+<a name="line60"></a>    <span style="color: #000000; font-weight: bold;">const</span> IMPORT_UUID_COLLISION_THROW <span style="color: #339933;">=</span> <span style="color: #cc66cc;">3</span><span style="color: #339933;">;</span>
+<a name="line61"></a>&nbsp;
+<a name="line62"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line63"></a>     * When importing create new UUIDs.
+<a name="line64"></a>     * @api
+<a name="line65"></a>     */</span>
+<a name="line66"></a>    <span style="color: #000000; font-weight: bold;">const</span> IMPORT_UUID_CREATE_NEW <span style="color: #339933;">=</span> <span style="color: #cc66cc;">0</span><span style="color: #339933;">;</span>
+<a name="line67"></a><span style="color: #009900;">&#125;</span>
+<a name="line68"></a>&nbsp;</pre>
 <div class="header">
 <h1>PHPCR</h1>
 <ul>

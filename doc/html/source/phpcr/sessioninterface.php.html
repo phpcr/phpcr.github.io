@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="generator" content="PHPDoctor 2RC4 (http://peej.github.com/phpdoctor/)">
-<meta name="when" content="Wed, 20 Jul 2011 12:10:14 +0000">
+<meta name="when" content="Wed, 20 Jul 2011 15:20:08 +0000">
 
 <link rel="stylesheet" type="text/css" href="../../stylesheet.css">
 <link rel="start" href="../../overview-summary.html">
@@ -241,7 +241,7 @@ limitations under the License.</p></div>
 <a name="line194"></a>     * Applies to both referenceable and non-referenceable nodes.
 <a name="line195"></a>     *
 <a name="line196"></a>     * Note uuid's that cannot be found will be ignored
-<a name="line197"></a>     * 
+<a name="line197"></a>     *
 <a name="line198"></a>     * @param string $ids An array of identifier.
 <a name="line199"></a>     * @return array containing \PHPCR\NodeInterface nodes keyed by uuid
 <a name="line200"></a>     *
@@ -255,10 +255,10 @@ limitations under the License.</p></div>
 <a name="line208"></a>     *
 <a name="line209"></a>     * If no such node exists, then it returns the property at the specified path.
 <a name="line210"></a>     *
-<a name="line211"></a>     * This method should only be used if the application does not know whether the
-<a name="line212"></a>     * item at the indicated path is property or node. In cases where the application
-<a name="line213"></a>     * has this information, either getNode(java.lang.String) or
-<a name="line214"></a>     * getProperty(java.lang.String) should be used, as appropriate. In many repository
+<a name="line211"></a>     * This method should only be used if the application does not know whether
+<a name="line212"></a>     * the item at the indicated path is property or node. In cases where the
+<a name="line213"></a>     * application has this information, either self::getNode() or
+<a name="line214"></a>     * self::getProperty() should be used, as appropriate. In many repository
 <a name="line215"></a>     * implementations the node and property-specific methods are likely to be more
 <a name="line216"></a>     * efficient than getItem.
 <a name="line217"></a>     *
@@ -287,7 +287,7 @@ limitations under the License.</p></div>
 <a name="line240"></a>     * Returns all nodes specified in the absPath array.
 <a name="line241"></a>     *
 <a name="line242"></a>     * Note path's that cannot be found will be ignored
-<a name="line243"></a>     * 
+<a name="line243"></a>     *
 <a name="line244"></a>     * @param array $absPaths An array containing absolute paths.
 <a name="line245"></a>     * @return array containing \PHPCR\NodeInterface nodes keyed by path
 <a name="line246"></a>     *
@@ -367,7 +367,7 @@ limitations under the License.</p></div>
 <a name="line320"></a>     * As well, a ConstraintViolationException will be thrown on persist if an
 <a name="line321"></a>     * attempt is made to separately save either the source or destination node.
 <a name="line322"></a>     *
-<a name="line323"></a>     * Note that this behaviour differs from that of Workspace.move($srcAbsPath,
+<a name="line323"></a>     * Note that this behaviour differs from that of WorkspaceInterface::move($srcAbsPath,
 <a name="line324"></a>     * $destAbsPath), which is a workspace-write method and therefore
 <a name="line325"></a>     * immediately dispatches changes.
 <a name="line326"></a>     *
@@ -608,23 +608,23 @@ limitations under the License.</p></div>
 <a name="line561"></a>     * the opposite.
 <a name="line562"></a>     *
 <a name="line563"></a>     * The methodName parameter identifies the method in question by its name
-<a name="line564"></a>     * as defined in the Javadoc.
+<a name="line564"></a>     * as defined in the phpdoc.
 <a name="line565"></a>     *
 <a name="line566"></a>     * The target parameter identifies the object on which the specified method
 <a name="line567"></a>     * is called.
 <a name="line568"></a>     *
-<a name="line569"></a>     * The arguments parameter contains a Map object consisting of
-<a name="line570"></a>     * name/value pairs where the name is a String holding the parameter name of
-<a name="line571"></a>     * the method as defined in the Javadoc and the value is a variable.
-<a name="line572"></a>     *
-<a name="line573"></a>     * For example, given a Session S and Node N then
+<a name="line569"></a>     * The arguments parameter contains a hash map consisting of parameter name
+<a name="line570"></a>     * mapping to parameter value.
+<a name="line571"></a>     *
+<a name="line572"></a>     * For example, given a Session $s and Node $n then
+<a name="line573"></a>     * &lt;pre&gt;
 <a name="line574"></a>     *
-<a name="line575"></a>     * Map p = new HashMap();
-<a name="line576"></a>     * p.put(&quot;relPath&quot;, &quot;foo&quot;);
-<a name="line577"></a>     * boolean b = S.hasCapability(&quot;addNode&quot;, N, p);
+<a name="line575"></a>     * $p['relPath'] = 'foo';
+<a name="line576"></a>     * $b = $s-&amp;gt;hasCapability(&quot;addNode&quot;, $n, $p);
+<a name="line577"></a>     * &lt;/pre&gt;
 <a name="line578"></a>     *
-<a name="line579"></a>     * will result in b == false if a child node called foo cannot be added to
-<a name="line580"></a>     * the node N within the session S.
+<a name="line579"></a>     * will result in $b === false if a child node called foo cannot be added to
+<a name="line580"></a>     * the node $n within the session $s.
 <a name="line581"></a>     *
 <a name="line582"></a>     * @param string $methodName the nakme of the method.
 <a name="line583"></a>     * @param object $target the target object of the operation.
@@ -654,18 +654,18 @@ limitations under the License.</p></div>
 <a name="line607"></a>     *
 <a name="line608"></a>     * As SAX events are fed into the ContentHandler, the tree of new items is built
 <a name="line609"></a>     * in the transient storage of the session. In order to dispatch the new
-<a name="line610"></a>     * content, save must be called. See Workspace.getImportContentHandler() for
+<a name="line610"></a>     * content, save must be called. See WorkspaceInterface::getImportContentHandler() for
 <a name="line611"></a>     * a workspace-write version of this method.
 <a name="line612"></a>     *
 <a name="line613"></a>     * The flag uuidBehavior governs how the identifiers of incoming nodes are
 <a name="line614"></a>     * handled. There are four options:
 <a name="line615"></a>     *
-<a name="line616"></a>     * - ImportUUIDBehavior.IMPORT_UUID_CREATE_NEW: Incoming identifiers nodes are added
-<a name="line617"></a>     *   in the same way that new node is added with Node.addNode. That is, they are either
+<a name="line616"></a>     * - ImportUUIDBehavior::IMPORT_UUID_CREATE_NEW: Incoming identifiers nodes are added
+<a name="line617"></a>     *   in the same way that new node is added with NodeInterface::addNode(). That is, they are either
 <a name="line618"></a>     *   assigned newly created identifiers upon addition or upon save (depending on the
 <a name="line619"></a>     *   implementation). In either case, identifier collisions will not occur.
 <a name="line620"></a>     *
-<a name="line621"></a>     * - ImportUUIDBehavior.IMPORT_UUID_COLLISION_REMOVE_EXISTING: If an incoming node has
+<a name="line621"></a>     * - ImportUUIDBehavior::IMPORT_UUID_COLLISION_REMOVE_EXISTING: If an incoming node has
 <a name="line622"></a>     *   the same identifier as a node already existing in the workspace then the already
 <a name="line623"></a>     *   existing node (and its subgraph) is removed from wherever it may be in the workspace
 <a name="line624"></a>     *   before the incoming node is added. Note that this can result in nodes &quot;disappearing&quot;
@@ -673,7 +673,7 @@ limitations under the License.</p></div>
 <a name="line626"></a>     *   incoming subgraph is being written. Both the removal and the new addition will be
 <a name="line627"></a>     *   persisted on save.
 <a name="line628"></a>     *
-<a name="line629"></a>     * -  ImportUUIDBehavior.IMPORT_UUID_COLLISION_REPLACE_EXISTING: If an incoming node has
+<a name="line629"></a>     * -  ImportUUIDBehavior::IMPORT_UUID_COLLISION_REPLACE_EXISTING: If an incoming node has
 <a name="line630"></a>     *   the same identifier as a node already existing in the workspace, then the
 <a name="line631"></a>     *   already-existing node is replaced by the incoming node in the same position as the
 <a name="line632"></a>     *   existing node. Note that this may result in the incoming subgraph being disaggregated
@@ -682,14 +682,14 @@ limitations under the License.</p></div>
 <a name="line635"></a>     *   This will occur if the topmost element of the incoming XML has the same identifier as
 <a name="line636"></a>     *   an existing node elsewhere in the workspace. The change will be persisted on save.
 <a name="line637"></a>     *
-<a name="line638"></a>     * - ImportUUIDBehavior.IMPORT_UUID_COLLISION_THROW: If an incoming node has the same
+<a name="line638"></a>     * - ImportUUIDBehavior::IMPORT_UUID_COLLISION_THROW: If an incoming node has the same
 <a name="line639"></a>     *   identifier as a node already existing in the workspace then a SAXException is thrown
 <a name="line640"></a>     *   by the ContentHandler during deserialization.
 <a name="line641"></a>     *
-<a name="line642"></a>     * Unlike Workspace.getImportContentHandler, this method does not necessarily enforce
+<a name="line642"></a>     * Unlike WorkspaceInterface::getImportContentHandler, this method does not necessarily enforce
 <a name="line643"></a>     * all node type constraints during deserialization. Those that would be immediately
-<a name="line644"></a>     * enforced in a session-write method (Node.addNode, Node.setProperty etc.) of this
-<a name="line645"></a>     * implementation cause the returned ContentHandler to throw an immediate SAXException
+<a name="line644"></a>     * enforced in a session-write method (NodeInterface::addNode(), NodeInterface::setProperty() etc.) of this
+<a name="line645"></a>     * implementation cause the returned ContentHandler to throw an immediate SAXException (todo: or whatever)
 <a name="line646"></a>     * during deserialization. All other constraints are checked on save, just as they are
 <a name="line647"></a>     * in normal write operations. However, which node type constraints are enforced depends
 <a name="line648"></a>     * upon whether node type information in the imported data is respected, and this is an
@@ -731,25 +731,25 @@ limitations under the License.</p></div>
 <a name="line684"></a>     * implementation leaves until save) structures that violate node type constraints
 <a name="line685"></a>     * can be imported, fixed and then saved. The disadvantage is that a large import
 <a name="line686"></a>     * will result in a large cache of pending nodes in the session. See
-<a name="line687"></a>     * Workspace.importXML(string, string, integer) for a version
+<a name="line687"></a>     * WorkspaceInterface::importXML() for a version
 <a name="line688"></a>     * of this method that does not go through the Session.
 <a name="line689"></a>     *
 <a name="line690"></a>     * The flag $uuidBehavior governs how the identifiers of incoming nodes are
 <a name="line691"></a>     * handled. There are four options:
 <a name="line692"></a>     *
-<a name="line693"></a>     * - ImportUUIDBehavior.IMPORT_UUID_CREATE_NEW: Incoming nodes are added in the same
-<a name="line694"></a>     *   way that new node is added with Node.addNode. That is, they are either assigned
+<a name="line693"></a>     * - ImportUUIDBehavior::IMPORT_UUID_CREATE_NEW: Incoming nodes are added in the same
+<a name="line694"></a>     *   way that new node is added with Node::addNode(). That is, they are either assigned
 <a name="line695"></a>     *   newly created identifiers upon addition or upon save (depending on the implementation,
 <a name="line696"></a>     *   see 4.9.1.1 When Identifiers are Assigned in the specification). In either case,
 <a name="line697"></a>     *   identifier collisions will not occur.
-<a name="line698"></a>     * - ImportUUIDBehavior.IMPORT_UUID_COLLISION_REMOVE_EXISTING: If an incoming node has
+<a name="line698"></a>     * - ImportUUIDBehavior::IMPORT_UUID_COLLISION_REMOVE_EXISTING: If an incoming node has
 <a name="line699"></a>     *   the same identifier as a node already existing in the workspace then the already
 <a name="line700"></a>     *   existing node (and its subgraph) is removed from wherever it may be in the workspace
 <a name="line701"></a>     *   before the incoming node is added. Note that this can result in nodes &quot;disappearing&quot;
 <a name="line702"></a>     *   from locations in the workspace that are remote from the location to which the
 <a name="line703"></a>     *   incoming subgraph is being written. Both the removal and the new addition will be
 <a name="line704"></a>     *   dispatched on save.
-<a name="line705"></a>     * - ImportUUIDBehavior.IMPORT_UUID_COLLISION_REPLACE_EXISTING: If an incoming node
+<a name="line705"></a>     * - ImportUUIDBehavior::IMPORT_UUID_COLLISION_REPLACE_EXISTING: If an incoming node
 <a name="line706"></a>     *   has the same identifier as a node already existing in the workspace, then the
 <a name="line707"></a>     *   already-existing node is replaced by the incoming node in the same position as
 <a name="line708"></a>     *   the existing node. Note that this may result in the incoming subgraph being
@@ -758,13 +758,13 @@ limitations under the License.</p></div>
 <a name="line711"></a>     *   of parentAbsPath. This will occur if the topmost element of the incoming XML has
 <a name="line712"></a>     *   the same identifier as an existing node elsewhere in the workspace. The change
 <a name="line713"></a>     *   will be dispatched on save.
-<a name="line714"></a>     * - ImportUUIDBehavior.IMPORT_UUID_COLLISION_THROW: If an incoming node has the same
+<a name="line714"></a>     * - ImportUUIDBehavior::IMPORT_UUID_COLLISION_THROW: If an incoming node has the same
 <a name="line715"></a>     *   identifier as a node already existing in the workspace then an
 <a name="line716"></a>     *   ItemExistsException is thrown.
-<a name="line717"></a>     *   Unlike Workspace.importXML(string, string, integer), this method does not
+<a name="line717"></a>     *   Unlike WorkspaceInterface::importXML(), this method does not
 <a name="line718"></a>     *   necessarily enforce all node type constraints during deserialization.
-<a name="line719"></a>     *   Those that would be immediately enforced in a normal write method (Node.addNode,
-<a name="line720"></a>     *   Node.setProperty etc.) of this implementation cause an immediate
+<a name="line719"></a>     *   Those that would be immediately enforced in a normal write method (NodeInterface::addNode(),
+<a name="line720"></a>     *   NodeInterface::setProperty() etc.) of this implementation cause an immediate
 <a name="line721"></a>     *   ConstraintViolationException during deserialization. All other constraints are
 <a name="line722"></a>     *   checked on save, just as they are in normal write operations. However, which node
 <a name="line723"></a>     *   type constraints are enforced depends upon whether node type information in the
@@ -801,7 +801,7 @@ limitations under the License.</p></div>
 <a name="line754"></a>     * resulting XML is in the system view form. Note that $absPath must be
 <a name="line755"></a>     * the path of a node, not a property.
 <a name="line756"></a>     *
-<a name="line757"></a>     * If $skipBinary is true then any properties of PropertyType.BINARY will be serialized
+<a name="line757"></a>     * If $skipBinary is true then any properties of PropertyType::BINARY will be serialized
 <a name="line758"></a>     * as if they are empty. That is, the existence of the property will be serialized,
 <a name="line759"></a>     * but its content will not appear in the serialized output (the &lt;sv:value&gt; element
 <a name="line760"></a>     * will have no content). Note that in the case of multi-value BINARY properties,
@@ -844,7 +844,7 @@ limitations under the License.</p></div>
 <a name="line797"></a>     * The resulting XML is in the document view form. Note that $absPath must be
 <a name="line798"></a>     * the path of a node, not a property.
 <a name="line799"></a>     *
-<a name="line800"></a>     * If $skipBinary is true then any properties of PropertyType.BINARY will be serialized as if
+<a name="line800"></a>     * If $skipBinary is true then any properties of PropertyType::BINARY will be serialized as if
 <a name="line801"></a>     * they are empty. That is, the existence of the property will be serialized, but its content
 <a name="line802"></a>     * will not appear in the serialized output (the value of the attribute will be empty). If
 <a name="line803"></a>     * $skipBinary is false then the actual value(s) of each BINARY property is recorded using

@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="generator" content="PHPDoctor 2RC4 (http://peej.github.com/phpdoctor/)">
-<meta name="when" content="Wed, 20 Jul 2011 12:10:28 +0000">
+<meta name="when" content="Wed, 20 Jul 2011 15:20:22 +0000">
 
 <link rel="stylesheet" type="text/css" href="../../../stylesheet.css">
 <link rel="start" href="../../../overview-summary.html">
@@ -102,10 +102,10 @@ limitations under the License.</p></div>
 <a name="line55"></a>    <span style="color: #000000; font-weight: bold;">function</span> getCreated<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
 <a name="line56"></a>&nbsp;
 <a name="line57"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line58"></a>     * Assuming that this Version object was acquired through a Workspace W and
-<a name="line59"></a>     * is within the VersionHistory H, this method returns the successor of this
+<a name="line58"></a>     * Assuming that this Version object was acquired through a Workspace $w and
+<a name="line59"></a>     * is within the VersionHistory $h, this method returns the successor of this
 <a name="line60"></a>     * version along the same line of descent as is returned by
-<a name="line61"></a>     * H.getAllLinearVersions() where H was also acquired through W.
+<a name="line61"></a>     * $h-&gt;getAllLinearVersions() where $h was also acquired through $w.
 <a name="line62"></a>     *
 <a name="line63"></a>     * Note that under simple versioning the behavior of this method is equivalent
 <a name="line64"></a>     * to getting the unique successor (if any) of this version.
@@ -129,10 +129,10 @@ limitations under the License.</p></div>
 <a name="line82"></a>    <span style="color: #000000; font-weight: bold;">function</span> getSuccessors<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
 <a name="line83"></a>&nbsp;
 <a name="line84"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line85"></a>     * Assuming that this Version object was acquired through a Workspace W and
-<a name="line86"></a>     * is within the VersionHistory H, this method returns the predecessor of
+<a name="line85"></a>     * Assuming that this Version object was acquired through a Workspace $w and
+<a name="line86"></a>     * is within the VersionHistory $h, this method returns the predecessor of
 <a name="line87"></a>     * this version along the same line of descent as is returned by
-<a name="line88"></a>     * H.getAllLinearVersions() where H was also acquired through W.
+<a name="line88"></a>     * $h-&gt;getAllLinearVersions() where $h was also acquired through $w.
 <a name="line89"></a>     *
 <a name="line90"></a>     * Note that under simple versioning the behavior of this method is equivalent
 <a name="line91"></a>     * to getting the unique predecessor (if any) of this version.

@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="generator" content="PHPDoctor 2RC4 (http://peej.github.com/phpdoctor/)">
-<meta name="when" content="Wed, 20 Jul 2011 12:10:18 +0000">
+<meta name="when" content="Wed, 20 Jul 2011 15:20:12 +0000">
 
 <link rel="stylesheet" type="text/css" href="../../../stylesheet.css">
 <link rel="start" href="../../../overview-summary.html">
@@ -74,8 +74,8 @@ limitations under the License.</p></div>
 <a name="line27"></a><span style="color: #009933; font-style: italic;">/**
 <a name="line28"></a> * The ObservationManager object.
 <a name="line29"></a> *
-<a name="line30"></a> * Acquired via Workspace.getObservationManager(). Allows for the registration
-<a name="line31"></a> * and deregistration of event listeners.
+<a name="line30"></a> * Acquired via WorkspaceInterface::getObservationManager(). Allows for the
+<a name="line31"></a> * registration and deregistration of event listeners.
 <a name="line32"></a> *
 <a name="line33"></a> * The \Traversable interface enables the implementation to be addressed with
 <a name="line34"></a> * &lt;b&gt;foreach&lt;/b&gt;. ObservationManager has to implement either \RecursiveIterator
@@ -99,17 +99,17 @@ limitations under the License.</p></div>
 <a name="line52"></a>     * associated parent node of the event.
 <a name="line53"></a>     *
 <a name="line54"></a>     * The associated parent node of an event is the parent node of the item at (or
-<a name="line55"></a>     * formerly at) the path returned by Event.getPath(). The following restrictions
-<a name="line56"></a>     * are available:
-<a name="line57"></a>     *  &lt;b&gt;absPath&lt;/b&gt;, &lt;b&gt;isDeep&lt;/b&gt;: Only events whose associated parent node is at absPath (or
+<a name="line55"></a>     * formerly at) the path returned by EventInterface::getPath(). The following
+<a name="line56"></a>     * restrictions are available:
+<a name="line57"></a>     * - &lt;b&gt;absPath&lt;/b&gt;, &lt;b&gt;isDeep&lt;/b&gt;: Only events whose associated parent node is at absPath (or
 <a name="line58"></a>     *   within its subgraph, if isDeep is true) will be received. It is permissible
 <a name="line59"></a>     *   to register a listener for a path where no node currently exists.
-<a name="line60"></a>     *  &lt;b&gt;uuid&lt;/b&gt;: Only events whose associated parent node has one of the identifiers in
+<a name="line60"></a>     * - &lt;b&gt;uuid&lt;/b&gt;: Only events whose associated parent node has one of the identifiers in
 <a name="line61"></a>     *   this list will be received. If his parameter is null then no identifier-
 <a name="line62"></a>     *   related restriction is placed on events received. Note that specifying an
 <a name="line63"></a>     *   empty array instead of null would result in no nodes being listened to. The
 <a name="line64"></a>     *   term &quot;UUID&quot; is used for compatibility with JCR 1.0.
-<a name="line65"></a>     *  &lt;b&gt;nodeTypeName&lt;/b&gt;: Only events whose associated parent node has one of the node
+<a name="line65"></a>     * - &lt;b&gt;nodeTypeName&lt;/b&gt;: Only events whose associated parent node has one of the node
 <a name="line66"></a>     *   types (or a subtype of one of the node types) in this list will be received.
 <a name="line67"></a>     *   If his parameter is null then no node type-related restriction is placed on
 <a name="line68"></a>     *   events received. Note that specifying an empty array instead of null would
@@ -178,7 +178,7 @@ limitations under the License.</p></div>
 <a name="line131"></a>    <span style="color: #000000; font-weight: bold;">function</span> getRegisteredEventListeners<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
 <a name="line132"></a>&nbsp;
 <a name="line133"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line134"></a>     * Sets the user data information that will be returned by Event.getUserData().
+<a name="line134"></a>     * Sets the user data information that will be returned by EventInterface::getUserData().
 <a name="line135"></a>     *
 <a name="line136"></a>     * @param string $userData the user data
 <a name="line137"></a>     * @return void

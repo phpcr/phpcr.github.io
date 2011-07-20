@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="generator" content="PHPDoctor 2RC4 (http://peej.github.com/phpdoctor/)">
-<meta name="when" content="Wed, 20 Jul 2011 12:10:10 +0000">
+<meta name="when" content="Wed, 20 Jul 2011 15:20:04 +0000">
 
 <link rel="stylesheet" type="text/css" href="../../stylesheet.css">
 <link rel="start" href="../../overview-summary.html">
@@ -196,10 +196,10 @@ NodeTypeTemplate, then this method will return null.</p><dl>
 <div class="details">
 <p>Returns the name of the primary item (one of the child items of the nodes
 of this node type).</p><p>If this node has no primary item, then this method
-returns null. This indicator is used by the method Node.getPrimaryItem().
+returns null. This indicator is used by the method NodeInterface::getPrimaryItem().
 In implementations that support node type registration, if this
-NodeTypeDefinition object is actually a newly-created empty
-NodeTypeTemplate, then this method will return null.</p><dl>
+NodeTypeDefinitionInterface object is actually a newly-created empty
+NodeTypeTemplateInterface, then this method will return null.</p><dl>
 <dt>Returns:</dt>
 <dd>The name of the primary item.</dd>
 <dt>Api.</dt>
@@ -216,13 +216,13 @@ NodeTypeTemplate, then this method will return null.</p><dl>
 <p>Determines if nodes of this type must support orderable child nodes.</p><p>Returns true if nodes of this type must support orderable child nodes;
 returns false otherwise. If a node type returns true on a call to this
 method, then all nodes of that node type must support the method
-Node.orderBefore. If a node type returns false on a call to this method,
-then nodes of that node type may support Node.orderBefore. Only the primary
+NodeInterface::orderBefore(). If a node type returns false on a call to this method,
+then nodes of that node type may support NodeInterface::orderBefore(). Only the primary
 node type of a node controls that node's status in this regard. This setting
 on a mixin node type will not have any effect on the node.
 In implementations that support node type registration, if this
-NodeTypeDefinition object is actually a newly-created empty
-NodeTypeTemplate, then this method will return false.</p><dl>
+NodeTypeDefinitionInterface object is actually a newly-created empty
+NodeTypeTemplateInterface, then this method will return false.</p><dl>
 <dt>Returns:</dt>
 <dd>True, if nodes of this type must support orderable child nodes, else false.</dd>
 <dt>Api.</dt>

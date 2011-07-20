@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="generator" content="PHPDoctor 2RC4 (http://peej.github.com/phpdoctor/)">
-<meta name="when" content="Wed, 20 Jul 2011 12:10:15 +0000">
+<meta name="when" content="Wed, 20 Jul 2011 15:20:09 +0000">
 
 <link rel="stylesheet" type="text/css" href="../../../stylesheet.css">
 <link rel="start" href="../../../overview-summary.html">
@@ -82,7 +82,7 @@ limitations under the License.</p></div>
 <a name="line35"></a><span style="color: #009900;">&#123;</span>
 <a name="line36"></a>    <span style="color: #009933; font-style: italic;">/**
 <a name="line37"></a>     * Returns the value of the jcr:lockOwner property. This is either the
-<a name="line38"></a>     * client supplied owner information (see LockManager-&gt;lock()),
+<a name="line38"></a>     * client supplied owner information (see LockManager::lock()),
 <a name="line39"></a>     * an implementation-dependent string identifying the user who either
 <a name="line40"></a>     * created the lock or who is bound to the session holding the lock, or
 <a name="line41"></a>     * null if none of these are available.
@@ -107,9 +107,9 @@ limitations under the License.</p></div>
 <a name="line60"></a>    <span style="color: #009933; font-style: italic;">/**
 <a name="line61"></a>     * Returns the lock holding node.
 <a name="line62"></a>     *
-<a name="line63"></a>     * Note that N.getLock().getNode() (where N
-<a name="line64"></a>     * is a locked node) will only return N if N is the lock holder. If N is in
-<a name="line65"></a>     * the subgraph of the lock holder, H, then this call will return H.
+<a name="line63"></a>     * Note that $n-&gt;getLock()-&gt;getNode() (where $n is a locked node) will only
+<a name="line64"></a>     * return $n if $n is the lock holder. If $n is in the subgraph of the lock
+<a name="line65"></a>     * holder, $h, then this call will return $h.
 <a name="line66"></a>     *
 <a name="line67"></a>     * @return \PHPCR\NodeInterface a Node
 <a name="line68"></a>     * @api

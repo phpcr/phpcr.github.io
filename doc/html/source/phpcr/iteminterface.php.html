@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="generator" content="PHPDoctor 2RC4 (http://peej.github.com/phpdoctor/)">
-<meta name="when" content="Wed, 20 Jul 2011 12:10:12 +0000">
+<meta name="when" content="Wed, 20 Jul 2011 15:20:06 +0000">
 
 <link rel="stylesheet" type="text/css" href="../../stylesheet.css">
 <link rel="start" href="../../overview-summary.html">
@@ -128,7 +128,7 @@ limitations under the License.</p></div>
 <a name="line81"></a>     * Returns the parent of this Item.
 <a name="line82"></a>     *
 <a name="line83"></a>     * @return \PHPCR\NodeInterface The parent of this Item.
-<a name="line84"></a>     * @throws \PHPCR\ItemNotFoundException if this Item&lt; is the root node of a workspace.
+<a name="line84"></a>     * @throws \PHPCR\ItemNotFoundException if this Item is the root node of a workspace.
 <a name="line85"></a>     * @throws \PHPCR\AccessDeniedException if the current session does not have sufficent access to retrieve the parent of this item.
 <a name="line86"></a>     * @throws \PHPCR\RepositoryException if another error occurs.
 <a name="line87"></a>     * @api
@@ -143,174 +143,176 @@ limitations under the License.</p></div>
 <a name="line96"></a>     * - A property or child node of a child node of the root returns 2.
 <a name="line97"></a>     * - And so on to this Item.
 <a name="line98"></a>     *
-<a name="line99"></a>     * @return integer The depth of this Item in the workspace item graph.
-<a name="line100"></a>     * @throws \PHPCR\RepositoryException if an error occurs.
-<a name="line101"></a>     * @api
-<a name="line102"></a>     */</span>
-<a name="line103"></a>    <span style="color: #000000; font-weight: bold;">function</span> getDepth<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line104"></a>&nbsp;
-<a name="line105"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line106"></a>     * Returns the Session through which this Item was acquired.
-<a name="line107"></a>     *
-<a name="line108"></a>     * @return \PHPCR\SessionInterface the Session through which this Item was acquired.
-<a name="line109"></a>     * @throws \PHPCR\RepositoryException if an error occurs.
-<a name="line110"></a>     * @api
-<a name="line111"></a>     */</span>
-<a name="line112"></a>    <span style="color: #000000; font-weight: bold;">function</span> getSession<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line113"></a>&nbsp;
-<a name="line114"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line115"></a>     * Indicates whether this Item is a Node or a Property.
-<a name="line116"></a>     *
-<a name="line117"></a>     * Returns true if this Item is a Node; Returns false if this Item is a Property.
+<a name="line99"></a>     * &amp;nbsp;
+<a name="line100"></a>     *
+<a name="line101"></a>     * @return integer The depth of this Item in the workspace item graph.
+<a name="line102"></a>     * @throws \PHPCR\RepositoryException if an error occurs.
+<a name="line103"></a>     * @api
+<a name="line104"></a>     */</span>
+<a name="line105"></a>    <span style="color: #000000; font-weight: bold;">function</span> getDepth<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line106"></a>&nbsp;
+<a name="line107"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line108"></a>     * Returns the Session through which this Item was acquired.
+<a name="line109"></a>     *
+<a name="line110"></a>     * @return \PHPCR\SessionInterface the Session through which this Item was acquired.
+<a name="line111"></a>     * @throws \PHPCR\RepositoryException if an error occurs.
+<a name="line112"></a>     * @api
+<a name="line113"></a>     */</span>
+<a name="line114"></a>    <span style="color: #000000; font-weight: bold;">function</span> getSession<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line115"></a>&nbsp;
+<a name="line116"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line117"></a>     * Indicates whether this Item is a Node or a Property.
 <a name="line118"></a>     *
-<a name="line119"></a>     * @return boolean true if this Item is a Node, false if it is a Property.
-<a name="line120"></a>     * @api
-<a name="line121"></a>     */</span>
-<a name="line122"></a>    <span style="color: #000000; font-weight: bold;">function</span> isNode<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line123"></a>&nbsp;
-<a name="line124"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line125"></a>     * Determines if the current item is a new one.
-<a name="line126"></a>     *
-<a name="line127"></a>     * Returns true if this is a new item, meaning that it exists only in
-<a name="line128"></a>     * transient storage on the Session and has not yet been saved. Within a
-<a name="line129"></a>     * transaction, isNew on an Item may return false (because the item has
-<a name="line130"></a>     * been saved) even if that Item is not in persistent storage (because the
-<a name="line131"></a>     * transaction has not yet been committed).
-<a name="line132"></a>     *
-<a name="line133"></a>     * Note that if an item returns true on isNew, then by definition is parent
-<a name="line134"></a>     * will return true on isModified.
-<a name="line135"></a>     *
-<a name="line136"></a>     * Note that in read-only implementations, this method will always return
-<a name="line137"></a>     * false.
-<a name="line138"></a>     *
-<a name="line139"></a>     * @return boolean true if this item is new; false otherwise.
-<a name="line140"></a>     * @api
-<a name="line141"></a>     */</span>
-<a name="line142"></a>    <span style="color: #000000; font-weight: bold;">function</span> isNew<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line143"></a>&nbsp;
-<a name="line144"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line145"></a>     * Indicates if the current item has been modified.
-<a name="line146"></a>     *
-<a name="line147"></a>     * Returns true if this Item has been saved but has subsequently been
-<a name="line148"></a>     * modified through the current session and therefore the state of this
-<a name="line149"></a>     * item as recorded in the session differs from the state of this item as
-<a name="line150"></a>     * saved. Within a transaction, isModified on an Item may return false
-<a name="line151"></a>     * (because the Item has been saved since the modification) even if the
-<a name="line152"></a>     * modification in question is not in persistent storage (because the
-<a name="line153"></a>     * transaction has not yet been committed).
-<a name="line154"></a>     *
-<a name="line155"></a>     * Note that in read-only implementations, this method will always return
-<a name="line156"></a>     * false.
-<a name="line157"></a>     *
-<a name="line158"></a>     * @return boolean true if this item is modified; false otherwise.
-<a name="line159"></a>     * @api
-<a name="line160"></a>     */</span>
-<a name="line161"></a>    <span style="color: #000000; font-weight: bold;">function</span> isModified<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line162"></a>&nbsp;
-<a name="line163"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line164"></a>     * Determines if this Item object represents the same actual workspace item as the object otherItem.
-<a name="line165"></a>     *
-<a name="line166"></a>     * Two Item objects represent the same workspace item if all the following
-<a name="line167"></a>     * are true:
-<a name="line168"></a>     *
-<a name="line169"></a>     * - Both objects were acquired through Session objects that were created
-<a name="line170"></a>     *   by the same Repository object.
-<a name="line171"></a>     * - Both objects were acquired through Session objects bound to the same
-<a name="line172"></a>     *   repository workspace.
-<a name="line173"></a>     * - The objects are either both Node objects or both Property
-<a name="line174"></a>     *   objects.
-<a name="line175"></a>     * - If they are Node objects, they have the same identifier.
-<a name="line176"></a>     * - If they are Property objects they have identical names and
-<a name="line177"></a>     *   isSame() is true of their parent nodes.
-<a name="line178"></a>     *
-<a name="line179"></a>     * This method does not compare the states of the two items. For example, if
-<a name="line180"></a>     * two Item objects representing the same actual workspace item have been
-<a name="line181"></a>     * retrieved through two different sessions and one has been modified, then
-<a name="line182"></a>     * this method will still return true when comparing these two objects.
-<a name="line183"></a>     * Note that if two Item objects representing the same workspace item are
-<a name="line184"></a>     * retrieved through the same session they will always reflect the same
-<a name="line185"></a>     * state.
-<a name="line186"></a>     *
-<a name="line187"></a>     * @param \PHPCR\ItemInterface $otherItem the Item object to be tested for identity with this Item.
-<a name="line188"></a>     * @return boolean true if this Item object and otherItem represent the same actual repository item; false otherwise.
-<a name="line189"></a>     * @throws \PHPCR\RepositoryException if an error occurs.
-<a name="line190"></a>     * @api
-<a name="line191"></a>     */</span>
-<a name="line192"></a>    <span style="color: #000000; font-weight: bold;">function</span> isSame<span style="color: #009900;">&#40;</span>\PHPCR\ItemInterface <span style="color: #000088;">$otherItem</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line193"></a>&nbsp;
-<a name="line194"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line195"></a>     * Call the ItemVisitor::visit() method.
-<a name="line196"></a>     *
-<a name="line197"></a>     * This is less relevant in PHP (Java had it to avoid typecasting in the visitor)
-<a name="line198"></a>     * We leave it here, to allow sanity checks or other operations an implementation
-<a name="line199"></a>     * might wants to do.
-<a name="line200"></a>     *
-<a name="line201"></a>     * @param \PHPCR\ItemVisitorInterface $visitor The ItemVisitor to be accepted.
-<a name="line202"></a>     * @throws \PHPCR\RepositoryException if an error occurs.
-<a name="line203"></a>     * @api
-<a name="line204"></a>     */</span>
-<a name="line205"></a>    <span style="color: #000000; font-weight: bold;">function</span> accept<span style="color: #009900;">&#40;</span>\PHPCR\ItemVisitorInterface <span style="color: #000088;">$visitor</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line206"></a>&nbsp;
-<a name="line207"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line208"></a>     * Updates the state of the current item.
-<a name="line209"></a>     *
-<a name="line210"></a>     * If keepChanges is false, this method discards all pending changes
-<a name="line211"></a>     * currently recorded in this Session that apply to this Item or any
-<a name="line212"></a>     * of its descendants (that is, the subgraph rooted at this Item) and
-<a name="line213"></a>     * returns all items to reflect the current saved state. Outside a
-<a name="line214"></a>     * transaction this state is simple the current state of persistent
-<a name="line215"></a>     * storage. Within a transaction, this state will reflect persistent
-<a name="line216"></a>     * storage as modified by changes that have been saved but not yet
-<a name="line217"></a>     * committed.
-<a name="line218"></a>     *
-<a name="line219"></a>     * If keepChanges is true then pending change are not discarded but
-<a name="line220"></a>     * items that do not have changes pending have their state refreshed
-<a name="line221"></a>     * to reflect the current saved state, thus revealing changes made by
-<a name="line222"></a>     * other sessions.
-<a name="line223"></a>     *
-<a name="line224"></a>     * @param boolean $keepChanges a boolean
-<a name="line225"></a>     * @return void
-<a name="line226"></a>     * @throws \PHPCR\InvalidItemStateException if this Item object represents a workspace item that has been removed
-<a name="line227"></a>     *                                          (either by this session or another).
-<a name="line228"></a>     * @throws \PHPCR\RepositoryException if another error occurs.
-<a name="line229"></a>     * @api
-<a name="line230"></a>     */</span>
-<a name="line231"></a>    <span style="color: #000000; font-weight: bold;">function</span> refresh<span style="color: #009900;">&#40;</span><span style="color: #000088;">$keepChanges</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line232"></a>&nbsp;
-<a name="line233"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line234"></a>     * Removes this item (and its subgraph).
-<a name="line235"></a>     *
-<a name="line236"></a>     * To persist a removal, a save must be performed that includes the (former)
-<a name="line237"></a>     * parent of the removed item within its scope.
-<a name="line238"></a>     *
-<a name="line239"></a>     * If a node with same-name siblings is removed, this decrements by one the
-<a name="line240"></a>     * indices of all the siblings with indices greater than that of the removed
-<a name="line241"></a>     * node. In other words, a removal compacts the array of same-name siblings
-<a name="line242"></a>     * and causes the minimal re-numbering required to maintain the original
-<a name="line243"></a>     * order but leave no gaps in the numbering.
-<a name="line244"></a>     *
-<a name="line245"></a>     * @return void
-<a name="line246"></a>     * @throws \PHPCR\Version\VersionException if the parent node of this item is versionable and checked-in or is
-<a name="line247"></a>     *                                         non-versionable but its nearest versionable ancestor is checked-in and
-<a name="line248"></a>     *                                         this implementation performs this validation immediately instead of
-<a name="line249"></a>     *                                         waiting until save.
-<a name="line250"></a>     * @throws \PHPCR\Lock\LockException if a lock prevents the removal of this item and this implementation performs
-<a name="line251"></a>     *                                   this validation immediately instead of waiting until save.
-<a name="line252"></a>     * @throws \PHPCR\ConstraintViolationException if removing the specified item would violate a node type or
-<a name="line253"></a>     *                                             implementation-specific constraint and this implementation performs
-<a name="line254"></a>     *                                             this validation immediately instead of waiting until save.
-<a name="line255"></a>     * @throws \PHPCR\AccessDeniedException if this item or an item in its subgraph is currently the target of a
-<a name="line256"></a>     *                                      REFERENCE property located in this workspace but outside this item's
-<a name="line257"></a>     *                                      subgraph and the current Session does not have read access to that
-<a name="line258"></a>     *                                      REFERENCE property or if the current Session does not have sufficent
-<a name="line259"></a>     *                                      privileges to remove the item.
-<a name="line260"></a>     * @throws \PHPCR\RepositoryException if another error occurs.
-<a name="line261"></a>     * @see SessionInterface::removeItem(String)
-<a name="line262"></a>     * @api
-<a name="line263"></a>     */</span>
-<a name="line264"></a>    <span style="color: #000000; font-weight: bold;">function</span> remove<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line265"></a><span style="color: #009900;">&#125;</span>
-<a name="line266"></a>&nbsp;</pre>
+<a name="line119"></a>     * Returns true if this Item is a Node; Returns false if this Item is a Property.
+<a name="line120"></a>     *
+<a name="line121"></a>     * @return boolean true if this Item is a Node, false if it is a Property.
+<a name="line122"></a>     * @api
+<a name="line123"></a>     */</span>
+<a name="line124"></a>    <span style="color: #000000; font-weight: bold;">function</span> isNode<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line125"></a>&nbsp;
+<a name="line126"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line127"></a>     * Determines if the current item is a new one.
+<a name="line128"></a>     *
+<a name="line129"></a>     * Returns true if this is a new item, meaning that it exists only in
+<a name="line130"></a>     * transient storage on the Session and has not yet been saved. Within a
+<a name="line131"></a>     * transaction, isNew on an Item may return false (because the item has
+<a name="line132"></a>     * been saved) even if that Item is not in persistent storage (because the
+<a name="line133"></a>     * transaction has not yet been committed).
+<a name="line134"></a>     *
+<a name="line135"></a>     * Note that if an item returns true on isNew, then by definition is parent
+<a name="line136"></a>     * will return true on isModified.
+<a name="line137"></a>     *
+<a name="line138"></a>     * Note that in read-only implementations, this method will always return
+<a name="line139"></a>     * false.
+<a name="line140"></a>     *
+<a name="line141"></a>     * @return boolean true if this item is new; false otherwise.
+<a name="line142"></a>     * @api
+<a name="line143"></a>     */</span>
+<a name="line144"></a>    <span style="color: #000000; font-weight: bold;">function</span> isNew<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line145"></a>&nbsp;
+<a name="line146"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line147"></a>     * Indicates if the current item has been modified.
+<a name="line148"></a>     *
+<a name="line149"></a>     * Returns true if this Item has been saved but has subsequently been
+<a name="line150"></a>     * modified through the current session and therefore the state of this
+<a name="line151"></a>     * item as recorded in the session differs from the state of this item as
+<a name="line152"></a>     * saved. Within a transaction, isModified on an Item may return false
+<a name="line153"></a>     * (because the Item has been saved since the modification) even if the
+<a name="line154"></a>     * modification in question is not in persistent storage (because the
+<a name="line155"></a>     * transaction has not yet been committed).
+<a name="line156"></a>     *
+<a name="line157"></a>     * Note that in read-only implementations, this method will always return
+<a name="line158"></a>     * false.
+<a name="line159"></a>     *
+<a name="line160"></a>     * @return boolean true if this item is modified; false otherwise.
+<a name="line161"></a>     * @api
+<a name="line162"></a>     */</span>
+<a name="line163"></a>    <span style="color: #000000; font-weight: bold;">function</span> isModified<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line164"></a>&nbsp;
+<a name="line165"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line166"></a>     * Determines if this Item object represents the same actual workspace item as the object otherItem.
+<a name="line167"></a>     *
+<a name="line168"></a>     * Two Item objects represent the same workspace item if all the following
+<a name="line169"></a>     * are true:
+<a name="line170"></a>     *
+<a name="line171"></a>     * - Both objects were acquired through Session objects that were created
+<a name="line172"></a>     *   by the same Repository object.
+<a name="line173"></a>     * - Both objects were acquired through Session objects bound to the same
+<a name="line174"></a>     *   repository workspace.
+<a name="line175"></a>     * - The objects are either both Node objects or both Property
+<a name="line176"></a>     *   objects.
+<a name="line177"></a>     * - If they are Node objects, they have the same identifier.
+<a name="line178"></a>     * - If they are Property objects they have identical names and
+<a name="line179"></a>     *   isSame() is true of their parent nodes.
+<a name="line180"></a>     *
+<a name="line181"></a>     * This method does not compare the states of the two items. For example, if
+<a name="line182"></a>     * two Item objects representing the same actual workspace item have been
+<a name="line183"></a>     * retrieved through two different sessions and one has been modified, then
+<a name="line184"></a>     * this method will still return true when comparing these two objects.
+<a name="line185"></a>     * Note that if two Item objects representing the same workspace item are
+<a name="line186"></a>     * retrieved through the same session they will always reflect the same
+<a name="line187"></a>     * state.
+<a name="line188"></a>     *
+<a name="line189"></a>     * @param \PHPCR\ItemInterface $otherItem the Item object to be tested for identity with this Item.
+<a name="line190"></a>     * @return boolean true if this Item object and otherItem represent the same actual repository item; false otherwise.
+<a name="line191"></a>     * @throws \PHPCR\RepositoryException if an error occurs.
+<a name="line192"></a>     * @api
+<a name="line193"></a>     */</span>
+<a name="line194"></a>    <span style="color: #000000; font-weight: bold;">function</span> isSame<span style="color: #009900;">&#40;</span>\PHPCR\ItemInterface <span style="color: #000088;">$otherItem</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line195"></a>&nbsp;
+<a name="line196"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line197"></a>     * Call the ItemVisitor::visit() method.
+<a name="line198"></a>     *
+<a name="line199"></a>     * This is less relevant in PHP (Java had it to avoid typecasting in the visitor)
+<a name="line200"></a>     * We leave it here, to allow sanity checks or other operations an implementation
+<a name="line201"></a>     * might wants to do.
+<a name="line202"></a>     *
+<a name="line203"></a>     * @param \PHPCR\ItemVisitorInterface $visitor The ItemVisitor to be accepted.
+<a name="line204"></a>     * @throws \PHPCR\RepositoryException if an error occurs.
+<a name="line205"></a>     * @api
+<a name="line206"></a>     */</span>
+<a name="line207"></a>    <span style="color: #000000; font-weight: bold;">function</span> accept<span style="color: #009900;">&#40;</span>\PHPCR\ItemVisitorInterface <span style="color: #000088;">$visitor</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line208"></a>&nbsp;
+<a name="line209"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line210"></a>     * Updates the state of the current item.
+<a name="line211"></a>     *
+<a name="line212"></a>     * If keepChanges is false, this method discards all pending changes
+<a name="line213"></a>     * currently recorded in this Session that apply to this Item or any
+<a name="line214"></a>     * of its descendants (that is, the subgraph rooted at this Item) and
+<a name="line215"></a>     * returns all items to reflect the current saved state. Outside a
+<a name="line216"></a>     * transaction this state is simple the current state of persistent
+<a name="line217"></a>     * storage. Within a transaction, this state will reflect persistent
+<a name="line218"></a>     * storage as modified by changes that have been saved but not yet
+<a name="line219"></a>     * committed.
+<a name="line220"></a>     *
+<a name="line221"></a>     * If keepChanges is true then pending change are not discarded but
+<a name="line222"></a>     * items that do not have changes pending have their state refreshed
+<a name="line223"></a>     * to reflect the current saved state, thus revealing changes made by
+<a name="line224"></a>     * other sessions.
+<a name="line225"></a>     *
+<a name="line226"></a>     * @param boolean $keepChanges a boolean
+<a name="line227"></a>     * @return void
+<a name="line228"></a>     * @throws \PHPCR\InvalidItemStateException if this Item object represents a workspace item that has been removed
+<a name="line229"></a>     *                                          (either by this session or another).
+<a name="line230"></a>     * @throws \PHPCR\RepositoryException if another error occurs.
+<a name="line231"></a>     * @api
+<a name="line232"></a>     */</span>
+<a name="line233"></a>    <span style="color: #000000; font-weight: bold;">function</span> refresh<span style="color: #009900;">&#40;</span><span style="color: #000088;">$keepChanges</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line234"></a>&nbsp;
+<a name="line235"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line236"></a>     * Removes this item (and its subgraph).
+<a name="line237"></a>     *
+<a name="line238"></a>     * To persist a removal, a save must be performed that includes the (former)
+<a name="line239"></a>     * parent of the removed item within its scope.
+<a name="line240"></a>     *
+<a name="line241"></a>     * If a node with same-name siblings is removed, this decrements by one the
+<a name="line242"></a>     * indices of all the siblings with indices greater than that of the removed
+<a name="line243"></a>     * node. In other words, a removal compacts the array of same-name siblings
+<a name="line244"></a>     * and causes the minimal re-numbering required to maintain the original
+<a name="line245"></a>     * order but leave no gaps in the numbering.
+<a name="line246"></a>     *
+<a name="line247"></a>     * @return void
+<a name="line248"></a>     * @throws \PHPCR\Version\VersionException if the parent node of this item is versionable and checked-in or is
+<a name="line249"></a>     *                                         non-versionable but its nearest versionable ancestor is checked-in and
+<a name="line250"></a>     *                                         this implementation performs this validation immediately instead of
+<a name="line251"></a>     *                                         waiting until save.
+<a name="line252"></a>     * @throws \PHPCR\Lock\LockException if a lock prevents the removal of this item and this implementation performs
+<a name="line253"></a>     *                                   this validation immediately instead of waiting until save.
+<a name="line254"></a>     * @throws \PHPCR\ConstraintViolationException if removing the specified item would violate a node type or
+<a name="line255"></a>     *                                             implementation-specific constraint and this implementation performs
+<a name="line256"></a>     *                                             this validation immediately instead of waiting until save.
+<a name="line257"></a>     * @throws \PHPCR\AccessDeniedException if this item or an item in its subgraph is currently the target of a
+<a name="line258"></a>     *                                      REFERENCE property located in this workspace but outside this item's
+<a name="line259"></a>     *                                      subgraph and the current Session does not have read access to that
+<a name="line260"></a>     *                                      REFERENCE property or if the current Session does not have sufficent
+<a name="line261"></a>     *                                      privileges to remove the item.
+<a name="line262"></a>     * @throws \PHPCR\RepositoryException if another error occurs.
+<a name="line263"></a>     * @see SessionInterface::removeItem(String)
+<a name="line264"></a>     * @api
+<a name="line265"></a>     */</span>
+<a name="line266"></a>    <span style="color: #000000; font-weight: bold;">function</span> remove<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line267"></a><span style="color: #009900;">&#125;</span>
+<a name="line268"></a>&nbsp;</pre>
 <div class="header">
 <h1>PHPCR</h1>
 <ul>

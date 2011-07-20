@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="generator" content="PHPDoctor 2RC4 (http://peej.github.com/phpdoctor/)">
-<meta name="when" content="Wed, 20 Jul 2011 12:10:18 +0000">
+<meta name="when" content="Wed, 20 Jul 2011 15:20:12 +0000">
 
 <link rel="stylesheet" type="text/css" href="../../../stylesheet.css">
 <link rel="start" href="../../../overview-summary.html">
@@ -138,11 +138,11 @@ limitations under the License.</p></div>
 <a name="line91"></a>     * - getPath() returns the absolute path of the destination of the move.
 <a name="line92"></a>     * - getIdentifier() returns the identifier of the moved node.
 <a name="line93"></a>     * - getInfo() If the method that caused this event was a
-<a name="line94"></a>     *    SessionInterface-&gt;move() or WorkspaceInterface-&gt;move() then the
+<a name="line94"></a>     *    SessionInterface::move() or WorkspaceInterface::move() then the
 <a name="line95"></a>     *    returned array has keys srcAbsPath and destAbsPath with values
 <a name="line96"></a>     *    corresponding to the parameters passed to the move() method.
 <a name="line97"></a>     *
-<a name="line98"></a>     *  If the method that caused this event was a NodeInterface.orderBefore()
+<a name="line98"></a>     *  If the method that caused this event was a NodeInterface::orderBefore()
 <a name="line99"></a>     *  then the returned aray has keys srcChildRelPath and destChildRelPath
 <a name="line100"></a>     *  with values corresponding to the parameters passed to the orderBefore()
 <a name="line101"></a>     *  method.
@@ -197,7 +197,7 @@ limitations under the License.</p></div>
 <a name="line150"></a>    <span style="color: #009933; font-style: italic;">/**
 <a name="line151"></a>     * Returns the user ID connected with this event.
 <a name="line152"></a>     *
-<a name="line153"></a>     * This is the string returned by Session.getUserID() of the session that caused the event.
+<a name="line153"></a>     * This is the string returned by SessionInterface::getUserID() of the session that caused the event.
 <a name="line154"></a>     *
 <a name="line155"></a>     * @return string The identifier of the user connected to the event.
 <a name="line156"></a>     * @api
@@ -232,7 +232,7 @@ limitations under the License.</p></div>
 <a name="line185"></a>    <span style="color: #000000; font-weight: bold;">function</span> getInfo<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
 <a name="line186"></a>&nbsp;
 <a name="line187"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line188"></a>     * Returns the user data set through ObservationManager.setUserData() on the
+<a name="line188"></a>     * Returns the user data set through ObservationManagerInterface::setUserData() on the
 <a name="line189"></a>     * ObservationManager bound to the Session that caused the event.
 <a name="line190"></a>     *
 <a name="line191"></a>     * @return string The user data string.

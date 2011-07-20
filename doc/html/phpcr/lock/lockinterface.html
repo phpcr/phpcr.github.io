@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="generator" content="PHPDoctor 2RC4 (http://peej.github.com/phpdoctor/)">
-<meta name="when" content="Wed, 20 Jul 2011 12:10:10 +0000">
+<meta name="when" content="Wed, 20 Jul 2011 15:20:04 +0000">
 
 <link rel="stylesheet" type="text/css" href="../../stylesheet.css">
 <link rel="start" href="../../overview-summary.html">
@@ -115,7 +115,7 @@ timer so that the lock does not timeout and expire.
 <code class="signature">public  string <strong>getLockOwner</strong>()</code>
 <div class="details">
 <p>Returns the value of the jcr:lockOwner property. This is either the
-client supplied owner information (see LockManager->lock()),
+client supplied owner information (see LockManager::lock()),
 an implementation-dependent string identifying the user who either
 created the lock or who is bound to the session holding the lock, or
 null if none of these are available.</p><p>The lock owner's identity is only provided for informational purposes.
@@ -149,9 +149,9 @@ return null.</p><dl>
 <h3 id="getNode()">getNode</h3>
 <code class="signature">public  <a href="../../phpcr/nodeinterface.html">NodeInterface</a> <strong>getNode</strong>()</code>
 <div class="details">
-<p>Returns the lock holding node.</p><p>Note that N.getLock().getNode() (where N
-is a locked node) will only return N if N is the lock holder. If N is in
-the subgraph of the lock holder, H, then this call will return H.</p><dl>
+<p>Returns the lock holding node.</p><p>Note that $n->getLock()->getNode() (where $n is a locked node) will only
+return $n if $n is the lock holder. If $n is in the subgraph of the lock
+holder, $h, then this call will return $h.</p><dl>
 <dt>Returns:</dt>
 <dd>a Node</dd>
 <dt>Api.</dt>

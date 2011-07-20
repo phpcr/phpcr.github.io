@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="generator" content="PHPDoctor 2RC4 (http://peej.github.com/phpdoctor/)">
-<meta name="when" content="Wed, 20 Jul 2011 12:10:19 +0000">
+<meta name="when" content="Wed, 20 Jul 2011 15:20:13 +0000">
 
 <link rel="stylesheet" type="text/css" href="../../../stylesheet.css">
 <link rel="start" href="../../../overview-summary.html">
@@ -117,30 +117,32 @@ limitations under the License.</p></div>
 <a name="line70"></a>     *
 <a name="line71"></a>     * The nodes are returned according to the ordering specified in the query.
 <a name="line72"></a>     *
-<a name="line73"></a>     * @return Iterator implementing &lt;b&gt;SeekableIterator&lt;/b&gt; and &lt;b&gt;Countable&lt;/b&gt;.
-<a name="line74"></a>     *                  Keys are the Node names, values the corresponding NodeInterface instances.
-<a name="line75"></a>     *
-<a name="line76"></a>     * @throws \PHPCR\RepositoryException if the query contains more than one selector, if this call is
-<a name="line77"></a>     *                                    the second time either getRows() or getNodes() has been called on the
-<a name="line78"></a>     *                                    same QueryResult object or if another error occurs.
-<a name="line79"></a>     * @api
-<a name="line80"></a>     */</span>
-<a name="line81"></a>    <span style="color: #000000; font-weight: bold;">function</span> getNodes<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line82"></a>&nbsp;
-<a name="line83"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line84"></a>     * Returns an array of all the selector names that were used in the query
-<a name="line85"></a>     * that created this result.
-<a name="line86"></a>     *
-<a name="line87"></a>     * If the query did not have a selector name then an empty array is returned.
+<a name="line73"></a>     * @param  bool|int $prefetch If to prefetch or not
+<a name="line74"></a>     *                              int &lt; 0/true means all, 0/false means none, int &gt; 0 means the prefetch chunk size or none
+<a name="line75"></a>     * @return Iterator implementing &lt;b&gt;SeekableIterator&lt;/b&gt; and &lt;b&gt;Countable&lt;/b&gt;.
+<a name="line76"></a>     *                  Keys are the paths, Values the given Node instances.
+<a name="line77"></a>     *
+<a name="line78"></a>     * @throws \PHPCR\RepositoryException if the query contains more than one selector, if this call is
+<a name="line79"></a>     *                                    the second time either getRows() or getNodes() has been called on the
+<a name="line80"></a>     *                                    same QueryResult object or if another error occurs.
+<a name="line81"></a>     * @api
+<a name="line82"></a>     */</span>
+<a name="line83"></a>    <span style="color: #000000; font-weight: bold;">function</span> getNodes<span style="color: #009900;">&#40;</span><span style="color: #000088;">$prefetch</span> <span style="color: #339933;">=</span> <span style="color: #009900; font-weight: bold;">false</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line84"></a>&nbsp;
+<a name="line85"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line86"></a>     * Returns an array of all the selector names that were used in the query
+<a name="line87"></a>     * that created this result.
 <a name="line88"></a>     *
-<a name="line89"></a>     * @return array A String array holding the selector names.
+<a name="line89"></a>     * If the query did not have a selector name then an empty array is returned.
 <a name="line90"></a>     *
-<a name="line91"></a>     * @throws \PHPCR\RepositoryException if an error occurs.
-<a name="line92"></a>     * @api
-<a name="line93"></a>     */</span>
-<a name="line94"></a>    <span style="color: #000000; font-weight: bold;">function</span> getSelectorNames<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line95"></a><span style="color: #009900;">&#125;</span>
-<a name="line96"></a>&nbsp;</pre>
+<a name="line91"></a>     * @return array A String array holding the selector names.
+<a name="line92"></a>     *
+<a name="line93"></a>     * @throws \PHPCR\RepositoryException if an error occurs.
+<a name="line94"></a>     * @api
+<a name="line95"></a>     */</span>
+<a name="line96"></a>    <span style="color: #000000; font-weight: bold;">function</span> getSelectorNames<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line97"></a><span style="color: #009900;">&#125;</span>
+<a name="line98"></a>&nbsp;</pre>
 <div class="header">
 <h1>PHPCR</h1>
 <ul>

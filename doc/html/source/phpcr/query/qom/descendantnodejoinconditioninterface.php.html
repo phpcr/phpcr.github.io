@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="generator" content="PHPDoctor 2RC4 (http://peej.github.com/phpdoctor/)">
-<meta name="when" content="Wed, 20 Jul 2011 12:10:20 +0000">
+<meta name="when" content="Wed, 20 Jul 2011 15:20:14 +0000">
 
 <link rel="stylesheet" type="text/css" href="../../../../stylesheet.css">
 <link rel="start" href="../../../../overview-summary.html">
@@ -75,10 +75,10 @@ limitations under the License.</p></div>
 <a name="line28"></a> * Tests whether the descendantSelector node is a descendant of the
 <a name="line29"></a> * ancestorSelector node. A node-tuple satisfies the constraint only if:
 <a name="line30"></a> *
-<a name="line31"></a> *   descendantSelectorNode.getAncestor(n).isSame(ancestorSelectorNode) &amp;&amp; descendantSelectorNode.getDepth() &gt; n
+<a name="line31"></a> *   &lt;code&gt;$descendantSelectorNode-&gt;getAncestor($n)-&gt;isSame($ancestorSelectorNode) &amp;&amp; $descendantSelectorNode-&gt;getDepth() &gt; $n&lt;/code&gt;
 <a name="line32"></a> *
-<a name="line33"></a> * would return true some some non-negative integer n, where descendantSelectorNode
-<a name="line34"></a> * is the node for descendantSelector and ancestorSelectorNode is the node for
+<a name="line33"></a> * would return true some some non-negative integer $n, where $descendantSelectorNode
+<a name="line34"></a> * is the node for descendantSelector and $ancestorSelectorNode is the node for
 <a name="line35"></a> * ancestorSelector.
 <a name="line36"></a> *
 <a name="line37"></a> * @package phpcr

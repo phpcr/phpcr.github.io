@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="generator" content="PHPDoctor 2RC4 (http://peej.github.com/phpdoctor/)">
-<meta name="when" content="Wed, 20 Jul 2011 12:10:10 +0000">
+<meta name="when" content="Wed, 20 Jul 2011 15:20:04 +0000">
 
 <link rel="stylesheet" type="text/css" href="../../stylesheet.css">
 <link rel="start" href="../../overview-summary.html">
@@ -73,7 +73,7 @@ AccessControlEntry. The iterator keys have no significant meaning.</p></div>
 <tr><th colspan="2">Method Summary</th></tr>
 <tr>
 <td class="type"> boolean</td>
-<td class="description"><p class="name"><a href="#addAccessControlEntry()">addAccessControlEntry</a>(java.security.Principal principal, array privileges)</p><p class="description">Registers an access control entry object to the registry.
+<td class="description"><p class="name"><a href="#addAccessControlEntry()">addAccessControlEntry</a>(? principal, array privileges)</p><p class="description">Registers an access control entry object to the registry.
 </p></td>
 </tr>
 <tr>
@@ -92,7 +92,7 @@ AccessControlEntry. The iterator keys have no significant meaning.</p></div>
 <a href="../../source/phpcr/security/accesscontrollistinterface.php.html#line87" class="location">PHPCR/Security/AccessControlListInterface.php at line 87</a>
 
 <h3 id="addAccessControlEntry()">addAccessControlEntry</h3>
-<code class="signature">public  boolean <strong>addAccessControlEntry</strong>(java.security.Principal principal, array privileges)</code>
+<code class="signature">public  boolean <strong>addAccessControlEntry</strong>(? principal, array privileges)</code>
 <div class="details">
 <p>Registers an access control entry object to the registry.</p><p>Adds an access control entry to this policy consisting of the specified
 principal and the specified privileges.
@@ -101,10 +101,10 @@ implementation may e.g. combine the specified privileges with those added by
 a previous call to addAccessControlEntry for the same Principal. However, a
 call to addAccessControlEntry for a given Principal can never remove a
 Privilege added by a previous call.</p><p>The modification does not take effect until this policy has been set to a node
-by calling AccessControlManager.setPolicy(String, AccessControlPolicy) and
+by calling AccessControlManagerInterface::setPolicy() and
 save is performed.</p><dl>
 <dt>Parameters:</dt>
-<dd>principal - - a Principal.</dd>
+<dd>principal - - a Principal. TODO: define a type for this. JCR has javax.security.Principal</dd>
 <dd>privileges - - an array of Privileges.</dd>
 <dt>Returns:</dt>
 <dd>true if this policy was modify; false otherwise.</dd>
@@ -144,7 +144,7 @@ AccessControlEntry has been assigned through this API.</p><dl>
 <div class="details">
 <p>Removes the specified access control entry object from this policy.</p><p>Only exactly those entries obtained through getAccessControlEntries can be
 removed. This method does not take effect until this policy has been re-set
-to a node by calling AccessControlManager.setPolicy(String, AccessControlPolicy)
+to a node by calling AccessControlManagerInterface::setPolicy()
 and save is performed.</p><dl>
 <dt>Parameters:</dt>
 <dd>ace - the access control entry to be removed.</dd>

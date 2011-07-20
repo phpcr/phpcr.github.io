@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="generator" content="PHPDoctor 2RC4 (http://peej.github.com/phpdoctor/)">
-<meta name="when" content="Wed, 20 Jul 2011 12:10:19 +0000">
+<meta name="when" content="Wed, 20 Jul 2011 15:20:13 +0000">
 
 <link rel="stylesheet" type="text/css" href="../../../stylesheet.css">
 <link rel="start" href="../../../overview-summary.html">
@@ -88,7 +88,7 @@ limitations under the License.</p></div>
 <a name="line41"></a><span style="color: #009900;">&#123;</span>
 <a name="line42"></a>    <span style="color: #009933; font-style: italic;">/**
 <a name="line43"></a>     * Returns an array of all the values in the same order as the column names
-<a name="line44"></a>     * returned by QueryResult.getColumnNames().
+<a name="line44"></a>     * returned by QueryResultInterface::getColumnNames().
 <a name="line45"></a>     *
 <a name="line46"></a>     * @return array Hashmap of column name to value of each column of the current result row.
 <a name="line47"></a>     *
@@ -124,7 +124,7 @@ limitations under the License.</p></div>
 <a name="line77"></a>    <span style="color: #009933; font-style: italic;">/**
 <a name="line78"></a>     * Get the path of a node identified by a selector.
 <a name="line79"></a>     *
-<a name="line80"></a>     * Equivalent to Row.getNode(selectorName).getPath(). However, some
+<a name="line80"></a>     * Equivalent to $row-&gt;getNode($selectorName)-&gt;getPath(). However, some
 <a name="line81"></a>     * implementations may be able gain efficiency by not resolving the actual Node.
 <a name="line82"></a>     *
 <a name="line83"></a>     * @param string $selectorName The selector identifying a node within the current result row.
@@ -149,7 +149,7 @@ limitations under the License.</p></div>
 <a name="line102"></a>     * core of 0).
 <a name="line103"></a>     *
 <a name="line104"></a>     * Note, in JCR-SQL2 a FullTextSearchScore AQM object is represented by a
-<a name="line105"></a>     * SCORE() function. In JCR-JQOM it is represented by a Java object of type
+<a name="line105"></a>     * SCORE() function. In JCR-JQOM it is represented by a PHP object of type
 <a name="line106"></a>     * \PHPCR\Query\QOM\FullTextSearchScoreInterface.
 <a name="line107"></a>     *
 <a name="line108"></a>     * @param string $selectorName The selector identifying a node within the current result row.

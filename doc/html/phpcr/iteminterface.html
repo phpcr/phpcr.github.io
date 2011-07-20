@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="generator" content="PHPDoctor 2RC4 (http://peej.github.com/phpdoctor/)">
-<meta name="when" content="Wed, 20 Jul 2011 12:10:09 +0000">
+<meta name="when" content="Wed, 20 Jul 2011 15:20:03 +0000">
 
 <link rel="stylesheet" type="text/css" href="../stylesheet.css">
 <link rel="start" href="../overview-summary.html">
@@ -127,7 +127,7 @@ Detail: <a href="#detail_field">Field</a> | <a href="#detail_method">Method</a> 
 </table>
 
 <h2 id="detail_method">Method Detail</h2>
-<a href="../source/phpcr/iteminterface.php.html#line205" class="location">PHPCR/ItemInterface.php at line 205</a>
+<a href="../source/phpcr/iteminterface.php.html#line207" class="location">PHPCR/ItemInterface.php at line 207</a>
 
 <h3 id="accept()">accept</h3>
 <code class="signature">public  void <strong>accept</strong>(<a href="../phpcr/itemvisitorinterface.html">ItemVisitorInterface</a> visitor)</code>
@@ -175,7 +175,7 @@ dependent.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/iteminterface.php.html#line103" class="location">PHPCR/ItemInterface.php at line 103</a>
+<a href="../source/phpcr/iteminterface.php.html#line105" class="location">PHPCR/ItemInterface.php at line 105</a>
 
 <h3 id="getDepth()">getDepth</h3>
 <code class="signature">public  integer <strong>getDepth</strong>()</code>
@@ -185,8 +185,9 @@ dependent.</p><dl>
 <li>The root node returns 0.</li>
 <li>A property or child node of the root node returns 1.</li>
 <li>A property or child node of a child node of the root returns 2.</li>
+<li>And so on to this Item.</li>
 </ul>
-<p>- And so on to this Item.</p><dl>
+<p>&nbsp;</p><dl>
 <dt>Returns:</dt>
 <dd>The depth of this Item in the workspace item graph.</dd>
 <dt>Throws:</dt>
@@ -222,7 +223,7 @@ dependent.</p><dl>
 <dt>Returns:</dt>
 <dd>The parent of this Item.</dd>
 <dt>Throws:</dt>
-<dd><a href="../phpcr/itemnotfoundexception.html">\PHPCR\ItemNotFoundException</a> - if this Item< is the root node of a workspace.</dd>
+<dd><a href="../phpcr/itemnotfoundexception.html">\PHPCR\ItemNotFoundException</a> - if this Item is the root node of a workspace.</dd>
 <dd><a href="../phpcr/accessdeniedexception.html">\PHPCR\AccessDeniedException</a> - if the current session does not have sufficent access to retrieve the parent of this item.</dd>
 <dd><a href="../phpcr/repositoryexception.html">\PHPCR\RepositoryException</a> - if another error occurs.</dd>
 <dt>Api.</dt>
@@ -247,7 +248,7 @@ dependent.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/iteminterface.php.html#line112" class="location">PHPCR/ItemInterface.php at line 112</a>
+<a href="../source/phpcr/iteminterface.php.html#line114" class="location">PHPCR/ItemInterface.php at line 114</a>
 
 <h3 id="getSession()">getSession</h3>
 <code class="signature">public  <a href="../phpcr/sessioninterface.html">SessionInterface</a> <strong>getSession</strong>()</code>
@@ -263,7 +264,7 @@ dependent.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/iteminterface.php.html#line161" class="location">PHPCR/ItemInterface.php at line 161</a>
+<a href="../source/phpcr/iteminterface.php.html#line163" class="location">PHPCR/ItemInterface.php at line 163</a>
 
 <h3 id="isModified()">isModified</h3>
 <code class="signature">public  boolean <strong>isModified</strong>()</code>
@@ -284,7 +285,7 @@ false.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/iteminterface.php.html#line142" class="location">PHPCR/ItemInterface.php at line 142</a>
+<a href="../source/phpcr/iteminterface.php.html#line144" class="location">PHPCR/ItemInterface.php at line 144</a>
 
 <h3 id="isNew()">isNew</h3>
 <code class="signature">public  boolean <strong>isNew</strong>()</code>
@@ -304,7 +305,7 @@ false.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/iteminterface.php.html#line122" class="location">PHPCR/ItemInterface.php at line 122</a>
+<a href="../source/phpcr/iteminterface.php.html#line124" class="location">PHPCR/ItemInterface.php at line 124</a>
 
 <h3 id="isNode()">isNode</h3>
 <code class="signature">public  boolean <strong>isNode</strong>()</code>
@@ -318,7 +319,7 @@ false.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/iteminterface.php.html#line192" class="location">PHPCR/ItemInterface.php at line 192</a>
+<a href="../source/phpcr/iteminterface.php.html#line194" class="location">PHPCR/ItemInterface.php at line 194</a>
 
 <h3 id="isSame()">isSame</h3>
 <code class="signature">public  boolean <strong>isSame</strong>(<a href="../phpcr/iteminterface.html">ItemInterface</a> otherItem)</code>
@@ -355,7 +356,7 @@ state.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/iteminterface.php.html#line231" class="location">PHPCR/ItemInterface.php at line 231</a>
+<a href="../source/phpcr/iteminterface.php.html#line233" class="location">PHPCR/ItemInterface.php at line 233</a>
 
 <h3 id="refresh()">refresh</h3>
 <code class="signature">public  void <strong>refresh</strong>(boolean keepChanges)</code>
@@ -382,7 +383,7 @@ other sessions.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/iteminterface.php.html#line264" class="location">PHPCR/ItemInterface.php at line 264</a>
+<a href="../source/phpcr/iteminterface.php.html#line266" class="location">PHPCR/ItemInterface.php at line 266</a>
 
 <h3 id="remove()">remove</h3>
 <code class="signature">public  void <strong>remove</strong>()</code>

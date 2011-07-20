@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="generator" content="PHPDoctor 2RC4 (http://peej.github.com/phpdoctor/)">
-<meta name="when" content="Wed, 20 Jul 2011 12:10:17 +0000">
+<meta name="when" content="Wed, 20 Jul 2011 15:20:11 +0000">
 
 <link rel="stylesheet" type="text/css" href="../../../stylesheet.css">
 <link rel="start" href="../../../overview-summary.html">
@@ -84,25 +84,25 @@ limitations under the License.</p></div>
 <a name="line37"></a>     * Gets the required type of the property.
 <a name="line38"></a>     *
 <a name="line39"></a>     * Possible property types of:
-<a name="line40"></a>     * - PropertyType.STRING
-<a name="line41"></a>     * - PropertyType.DATE
-<a name="line42"></a>     * - PropertyType.BINARY
-<a name="line43"></a>     * - PropertyType.DOUBLE
-<a name="line44"></a>     * - PropertyType.DECIMAL
-<a name="line45"></a>     * - PropertyType.LONG
-<a name="line46"></a>     * - PropertyType.BOOLEAN
-<a name="line47"></a>     * - PropertyType.NAME
-<a name="line48"></a>     * - PropertyType.PATH
-<a name="line49"></a>     * - PropertyType.URI
-<a name="line50"></a>     * - PropertyType.REFERENCE
-<a name="line51"></a>     * - PropertyType.WEAKREFERENCE
-<a name="line52"></a>     * - PropertyType.UNDEFINED
+<a name="line40"></a>     * - PropertyType::STRING
+<a name="line41"></a>     * - PropertyType::DATE
+<a name="line42"></a>     * - PropertyType::BINARY
+<a name="line43"></a>     * - PropertyType::DOUBLE
+<a name="line44"></a>     * - PropertyType::DECIMAL
+<a name="line45"></a>     * - PropertyType::LONG
+<a name="line46"></a>     * - PropertyType::BOOLEAN
+<a name="line47"></a>     * - PropertyType::NAME
+<a name="line48"></a>     * - PropertyType::PATH
+<a name="line49"></a>     * - PropertyType::URI
+<a name="line50"></a>     * - PropertyType::REFERENCE
+<a name="line51"></a>     * - PropertyType::WEAKREFERENCE
+<a name="line52"></a>     * - PropertyType::UNDEFINED
 <a name="line53"></a>     *
-<a name="line54"></a>     * PropertyType.UNDEFINED is returned if this property may be of any type.
+<a name="line54"></a>     * PropertyType::UNDEFINED is returned if this property may be of any type.
 <a name="line55"></a>     *
 <a name="line56"></a>     * In implementations that support node type registration, if this
 <a name="line57"></a>     * PropertyDefinition object is actually a newly-created empty
-<a name="line58"></a>     * PropertyDefinitionTemplate, then this method will return PropertyType.STRING.
+<a name="line58"></a>     * PropertyDefinitionTemplate, then this method will return PropertyType::STRING.
 <a name="line59"></a>     *
 <a name="line60"></a>     * @return integer An integer constant member of PropertyType.
 <a name="line61"></a>     * @api
@@ -173,7 +173,7 @@ limitations under the License.</p></div>
 <a name="line126"></a>     *  properties should be stored in fully-qualified form (using the actual
 <a name="line127"></a>     *  URI instead of the prefix) and then be converted to prefix form
 <a name="line128"></a>     *  according to the current mapping upon the
-<a name="line129"></a>     *  PropertyDefinition.getValueConstraints call.
+<a name="line129"></a>     *  PropertyDefinitionInterface::getValueConstraints() call.
 <a name="line130"></a>     *
 <a name="line131"></a>     * &lt;b&gt;NAME&lt;/b&gt;: The constraint string is a JCR name in prefix form. For example
 <a name="line132"></a>     * &quot;myapp:products&quot;. No wildcards or other pattern matching are supported.
@@ -223,7 +223,7 @@ limitations under the License.</p></div>
 <a name="line176"></a>     * property is constrained to be one of the values 2, 4, or 8, the constraint
 <a name="line177"></a>     * string array {&quot;2&quot;, &quot;4&quot;, &quot;8&quot;} can be used instead of the standard notation,
 <a name="line178"></a>     * {&quot;[2,2]&quot;, &quot;[4,4]&quot;, &quot;[8,8]&quot;}. However, even if this shorthand is used on
-<a name="line179"></a>     * registration, the value returned by PropertyDefinition.getValueConstraints()
+<a name="line179"></a>     * registration, the value returned by PropertyDefinitionInterface::getValueConstraints()
 <a name="line180"></a>     * will always use the standard notation.
 <a name="line181"></a>     *
 <a name="line182"></a>     * Because constraints are returned as an array of disjunctive constraints,
@@ -245,7 +245,7 @@ limitations under the License.</p></div>
 <a name="line198"></a>     *
 <a name="line199"></a>     * These are the values that the property defined by this PropertyDefinition
 <a name="line200"></a>     * will be assigned if it is automatically created (that is, if
-<a name="line201"></a>     * ItemDefinition.isAutoCreated() returns true).
+<a name="line201"></a>     * ItemDefinitionInterface::isAutoCreated() returns true).
 <a name="line202"></a>     * This method returns an array of values. If the property is multi-
 <a name="line203"></a>     * valued, then this array represents the full set of values that the property
 <a name="line204"></a>     * will be assigned upon being auto-created. Note that this could be the empty

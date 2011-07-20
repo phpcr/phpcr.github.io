@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="generator" content="PHPDoctor 2RC4 (http://peej.github.com/phpdoctor/)">
-<meta name="when" content="Wed, 20 Jul 2011 12:10:10 +0000">
+<meta name="when" content="Wed, 20 Jul 2011 15:20:04 +0000">
 
 <link rel="stylesheet" type="text/css" href="../stylesheet.css">
 <link rel="start" href="../overview-summary.html">
@@ -1416,7 +1416,7 @@ getNodes to get the nodes with relative or absolute path.</p><dl>
 <dd>the referenced Node, or an array of Nodes for multi-valued properties.</dd>
 <dt>Throws:</dt>
 <dd><a href="../phpcr/valueformatexception.html">\PHPCR\ValueFormatException</a> - if this property cannot be converted to a referring type (REFERENCE, WEAKREFERENCE or PATH) or if this property is a referring type but is currently part of the frozen state of a version in version storage.</dd>
-<dd><a href="../phpcr/itemnotfoundexception.html">\PHPCR\ItemNotFoundException</a> - If this property is of type PATH or WEAKREFERENCE and no target node accessible by the current Session exists in this workspace. Note that this applies even if the property is a PATH and a property exists at the specified location. To dereference to a target property (as opposed to a target node), the method Property.getProperty is used.</dd>
+<dd><a href="../phpcr/itemnotfoundexception.html">\PHPCR\ItemNotFoundException</a> - If this property is of type PATH or WEAKREFERENCE and no target node accessible by the current Session exists in this workspace. Note that this applies even if the property is a PATH and a property exists at the specified location. To dereference to a target property (as opposed to a target node), the method PropertyInterface::getProperty() is used.</dd>
 <dd><a href="../phpcr/repositoryexception.html">\PHPCR\RepositoryException</a> - if another error occurs.</dd>
 <dt>Api.</dt>
 </dl>
@@ -1441,7 +1441,7 @@ property or this property itself.</p><p>For example, if this property is located
 <dd>the referenced property, or an array of properties for multi-valued properties.</dd>
 <dt>Throws:</dt>
 <dd><a href="../phpcr/valueformatexception.html">\PHPCR\ValueFormatException</a> - if this property cannot be converted to a PATH or if this property is a referring type but is currently part of the frozen state of a version in version storage.</dd>
-<dd><a href="../phpcr/itemnotfoundexception.html">\PHPCR\ItemNotFoundException</a> - If no property accessible by the current Session exists in this workspace at the specified path. Note that this applies even if a node exists at the specified location. To dereference to a target node, the method Property.getNode is used.</dd>
+<dd><a href="../phpcr/itemnotfoundexception.html">\PHPCR\ItemNotFoundException</a> - If no property accessible by the current Session exists in this workspace at the specified path. Note that this applies even if a node exists at the specified location. To dereference to a target node, the method PropertyInterface::getNode() is used.</dd>
 <dd><a href="../phpcr/repositoryexception.html">\PHPCR\RepositoryException</a> - if another error occurs</dd>
 <dt>Api.</dt>
 </dl>
@@ -1473,21 +1473,21 @@ property or this property itself.</p><p>For example, if this property is located
 <div class="details">
 <p>Returns the type of this Property.</p><p>Following property types are available:</p>
 <ul>
-<li>PropertyType.STRING</li>
-<li>PropertyType.BINARY</li>
-<li>PropertyType.DATE</li>
-<li>PropertyType.DOUBLE</li>
-<li>PropertyType.LONG</li>
-<li>PropertyType.BOOLEAN</li>
-<li>PropertyType.NAME</li>
-<li>PropertyType.PATH</li>
-<li>PropertyType.REFERENCE</li>
-<li>PropertyType.WEAKREFERENCE</li>
-<li>PropertyType.URI</li>
+<li>PropertyType::STRING</li>
+<li>PropertyType::BINARY</li>
+<li>PropertyType::DATE</li>
+<li>PropertyType::DOUBLE</li>
+<li>PropertyType::LONG</li>
+<li>PropertyType::BOOLEAN</li>
+<li>PropertyType::NAME</li>
+<li>PropertyType::PATH</li>
+<li>PropertyType::REFERENCE</li>
+<li>PropertyType::WEAKREFERENCE</li>
+<li>PropertyType::URI</li>
 </ul>
 <p>The type returned is that which was set at property creation. Note that
-for some property p, the type returned by p.getType() will differ from
-the type returned by p.getDefinition.getRequiredType() only in the case
+for some property p, the type returned by $p->getType() will differ from
+the type returned by $p->getDefinition()->getRequiredType() only in the case
 where the latter returns UNDEFINED. The type of a property instance is
 never UNDEFINED (it must always have some actual type).</p><dl>
 <dt>Returns:</dt>

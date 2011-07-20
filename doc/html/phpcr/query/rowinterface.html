@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="generator" content="PHPDoctor 2RC4 (http://peej.github.com/phpdoctor/)">
-<meta name="when" content="Wed, 20 Jul 2011 12:10:10 +0000">
+<meta name="when" content="Wed, 20 Jul 2011 15:20:04 +0000">
 
 <link rel="stylesheet" type="text/css" href="../../stylesheet.css">
 <link rel="start" href="../../overview-summary.html">
@@ -90,7 +90,7 @@ selector.
 <tr>
 <td class="type"> array</td>
 <td class="description"><p class="name"><a href="#getValues()">getValues</a>()</p><p class="description">Returns an array of all the values in the same order as the column names
-returned by QueryResult.getColumnNames().</p></td>
+returned by QueryResultInterface::getColumnNames().</p></td>
 </tr>
 </table>
 
@@ -118,7 +118,7 @@ returned by QueryResult.getColumnNames().</p></td>
 <h3 id="getPath()">getPath</h3>
 <code class="signature">public  string <strong>getPath</strong>(string selectorName)</code>
 <div class="details">
-<p>Get the path of a node identified by a selector.</p><p>Equivalent to Row.getNode(selectorName).getPath(). However, some
+<p>Get the path of a node identified by a selector.</p><p>Equivalent to $row->getNode($selectorName)->getPath(). However, some
 implementations may be able gain efficiency by not resolving the actual Node.</p><dl>
 <dt>Parameters:</dt>
 <dd>selectorName - The selector identifying a node within the current result row.</dd>
@@ -145,7 +145,7 @@ selectorName this method will still return a value. However, in that case
 the returned value may not be meaningful or may simply reflect the minimum
 possible relevance level (for example, in some systems this might be a s
 core of 0).</p><p>Note, in JCR-SQL2 a FullTextSearchScore AQM object is represented by a
-SCORE() function. In JCR-JQOM it is represented by a Java object of type
+SCORE() function. In JCR-JQOM it is represented by a PHP object of type
 \PHPCR\Query\QOM\FullTextSearchScoreInterface.</p><dl>
 <dt>Parameters:</dt>
 <dd>selectorName - The selector identifying a node within the current result row.</dd>
@@ -184,7 +184,7 @@ SCORE() function. In JCR-JQOM it is represented by a Java object of type
 <code class="signature">public  array <strong>getValues</strong>()</code>
 <div class="details">
 <p>Returns an array of all the values in the same order as the column names
-returned by QueryResult.getColumnNames().</p><dl>
+returned by QueryResultInterface::getColumnNames().</p><dl>
 <dt>Returns:</dt>
 <dd>Hashmap of column name to value of each column of the current result row.</dd>
 <dt>Throws:</dt>

@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="generator" content="PHPDoctor 2RC4 (http://peej.github.com/phpdoctor/)">
-<meta name="when" content="Wed, 20 Jul 2011 12:10:19 +0000">
+<meta name="when" content="Wed, 20 Jul 2011 15:20:13 +0000">
 
 <link rel="stylesheet" type="text/css" href="../../../stylesheet.css">
 <link rel="start" href="../../../overview-summary.html">
@@ -86,8 +86,8 @@ limitations under the License.</p></div>
 <a name="line39"></a>     * Creates a new query by specifying the query statement itself and the language
 <a name="line40"></a>     * in which the query is stated.
 <a name="line41"></a>     *
-<a name="line42"></a>     * The $language must be a string from among
-<a name="line43"></a>     * those returned by QueryManager.getSupportedQueryLanguages().
+<a name="line42"></a>     * The $language must be a string from among those returned by
+<a name="line43"></a>     * QueryManagerInterface::getSupportedQueryLanguages().
 <a name="line44"></a>     *
 <a name="line45"></a>     * @param string $statement The query statement to be executed.
 <a name="line46"></a>     * @param string $language The language of the query to be created.
@@ -111,8 +111,8 @@ limitations under the License.</p></div>
 <a name="line64"></a>    <span style="color: #009933; font-style: italic;">/**
 <a name="line65"></a>     * Retrieves an existing persistent query.
 <a name="line66"></a>     *
-<a name="line67"></a>     * Persistent queries are created by first using QueryManager.createQuery to
-<a name="line68"></a>     * create a Query object and then calling Query.save to persist the query to
+<a name="line67"></a>     * Persistent queries are created by first using QueryManagerInterface::createQuery to
+<a name="line68"></a>     * create a Query object and then calling QueryInterface::save() to persist the query to
 <a name="line69"></a>     * a location in the workspace.
 <a name="line70"></a>     *
 <a name="line71"></a>     * @param \PHPCR\NodeInterface $node a persisted query (that is, a node of type nt:query).
@@ -128,9 +128,9 @@ limitations under the License.</p></div>
 <a name="line81"></a>     * Returns an array of strings representing all query languages supported by
 <a name="line82"></a>     * this repository.
 <a name="line83"></a>     *
-<a name="line84"></a>     * This set must include at least the strings represented
-<a name="line85"></a>     * by the constants Query.JCR_SQL2 and Query.JCR_JQOM. An implementation may
-<a name="line86"></a>     * also support other languages.
+<a name="line84"></a>     * This set must include at least the strings represented by the constants
+<a name="line85"></a>     * QueryInterface::JCR_SQL2 and QueryInterface::JCR_JQOM. An implementation
+<a name="line86"></a>     * may also support other languages.
 <a name="line87"></a>     *
 <a name="line88"></a>     * @return array A list of supported languages by the query.
 <a name="line89"></a>     *

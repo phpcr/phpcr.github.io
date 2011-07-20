@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="generator" content="PHPDoctor 2RC4 (http://peej.github.com/phpdoctor/)">
-<meta name="when" content="Wed, 20 Jul 2011 12:10:10 +0000">
+<meta name="when" content="Wed, 20 Jul 2011 15:20:04 +0000">
 
 <link rel="stylesheet" type="text/css" href="../stylesheet.css">
 <link rel="start" href="../overview-summary.html">
@@ -51,30 +51,34 @@ Detail: <a href="#detail_field">Field</a> | <a href="#detail_method">Method</a> 
 
 <p class="signature">public final  class <strong>PropertyType</strong></p>
 
-<div class="comment" id="overview_description"><p>The property types supported by the JCR standard.</p><p>The <b>STRING</b> property type is used to store strings.
-<b>BINARY</b> properties are used to store binary data.
-The <b>LONG</b> property type is used to store integers.
-The <b>DECIMAL</b> property type is used to store precise decimal numbers.
-The <b>DOUBLE</b> property type is used to store floating point numbers.
-The <b>DATE</b> property type is used to store time and date information. See 4.2.6.1 Date in the specification.
-The <b>BOOLEAN</b> property type is used to store boolean values.
-A <b>NAME</b> is a pairing of a namespace and a local name. When read, the namespace is mapped to the current prefix.
-See 4.2.6.2 Name in the specification.
-A <b>PATH</b> property is an ordered list of path elements. A path element is a NAME with an optional index.
+<div class="comment" id="overview_description"><p>The property types supported by the JCR standard.</p>
+<ul>
+<li>The <b>STRING</b> property type is used to store strings.</li>
+<li><b>BINARY</b> properties are used to store binary data.</li>
+<li>The <b>LONG</b> property type is used to store integers.</li>
+<li>The <b>DECIMAL</b> property type is used to store precise decimal numbers.</li>
+<li>The <b>DOUBLE</b> property type is used to store floating point numbers.</li>
+<li>The <b>DATE</b> property type is used to store time and date information. See 4.2.6.1 Date in the specification.</li>
+<li>The <b>BOOLEAN</b> property type is used to store boolean values.</li>
+<li>A <b>NAME</b> is a pairing of a namespace and a local name. When read, the namespace is mapped to the current prefix.
+See 4.2.6.2 Name in the specification.</li>
+<li>A <b>PATH</b> property is an ordered list of path elements. A path element is a NAME with an optional index.
 When read, the NAMEs within the path are mapped to their current prefix. A path may be absolute or relative.
-See 4.2.6.3 Path in the specification.
-A <b>REFERENCE</b> property stores the identifier of a referenceable node (one having type mix:referenceable),
+See 4.2.6.3 Path in the specification.</li>
+<li>A <b>REFERENCE</b> property stores the identifier of a referenceable node (one having type mix:referenceable),
 which must exist within the same workspace or session as the REFERENCE property. A REFERENCE property enforces this
 referential integrity by preventing (in level 2 implementations) the removal of its target node.
-See 4.2.6.4 Reference in the specification.
-A <b>WEAKREFERENCE</b> property stores the identifier of a referenceable node (one having type mix:referenceable).
-A WEAKREFERENCE property does not enforce referential integrity. See 4.2.6.5 Weak Reference in the specification.
-A <b>URI</b> property is identical to STRING property except that it only accepts values that conform to the
-syntax of a URI-reference as defined in RFC 3986. See also 4.2.6.6 URI in the specification.
-<b>UNDEFINED</b> can be used within a property definition (see 4.7.5 Property Definitions) to specify that the
+See 4.2.6.4 Reference in the specification.</li>
+<li>A <b>WEAKREFERENCE</b> property stores the identifier of a referenceable node (one having type mix:referenceable).</li>
+<li>A WEAKREFERENCE property does not enforce referential integrity. See 4.2.6.5 Weak Reference in the specification.</li>
+<li>A <b>URI</b> property is identical to STRING property except that it only accepts values that conform to the
+syntax of a URI-reference as defined in RFC 3986. See also 4.2.6.6 URI in the specification.</li>
+<li><b>UNDEFINED</b> can be used within a property definition (see 4.7.5 Property Definitions) to specify that the
 property in question may be of any type. However, it cannot be the actual type of any property instance.
-For example it will never be returned by Property.getType() and (in level 2 implementations) it cannot be assigned
-as the type when creating a new property.</p><p>Date formatting:
+For example it will never be returned by PropertyInterface::getType() and (in level 2 implementations) it cannot be assigned
+as the type when creating a new property.</li>
+</ul>
+<p>PHP Note on date formatting:
 Since there is no formatting for milliseconds in PHP we construct the date formatting by cutting the microseconds
 to 3 positions. Unfortunately this might cause an inacuracy of one millisecond in the worst case.</p></div>
 
@@ -486,7 +490,7 @@ enforce referential integrity.</p></div>
 
 <hr>
 
-<a href="../source/phpcr/propertytype.php.html#line380" class="location">PHPCR/PropertyType.php at line 380</a>
+<a href="../source/phpcr/propertytype.php.html#line382" class="location">PHPCR/PropertyType.php at line 382</a>
 
 <h3 id="convertType()">convertType</h3>
 <code class="signature">public static  the <strong>convertType</strong>(mixed values, int type)</code>
@@ -508,14 +512,18 @@ treating any non-empty string as true, not just the word "true".</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/propertytype.php.html#line332" class="location">PHPCR/PropertyType.php at line 332</a>
+<a href="../source/phpcr/propertytype.php.html#line334" class="location">PHPCR/PropertyType.php at line 334</a>
 
 <h3 id="determineType()">determineType</h3>
 <code class="signature">public static  One <strong>determineType</strong>(mixed value, boolean weak)</code>
 <div class="details">
-<p>Determine PropertyType from on variable type.</p><p>This is most of the remainder of ValueFactory that is still needed.</p><p>* if the given $value is a Node object, type will be REFERENCE, unless
-$weak is set to true which results in WEAKREFERENCE
-* if the given $value is a DateTime object, the type will be DATE.</p><dl>
+<p>Determine PropertyType from on variable type.</p><p>This is most of the remainder of ValueFactory that is still needed.</p>
+<ul>
+<li>if the given $value is a Node object, type will be REFERENCE, unless
+$weak is set to true which results in WEAKREFERENCE</li>
+<li>if the given $value is a DateTime object, the type will be DATE.</li>
+</ul>
+<p>&nbsp;</p><dl>
 <dt>Parameters:</dt>
 <dd>value - The variable we need to know the type of</dd>
 <dd>weak - When a Node is given as $value this can be given as true to create a WEAKREFERENCE.</dd>

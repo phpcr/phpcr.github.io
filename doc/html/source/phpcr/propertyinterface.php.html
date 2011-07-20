@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="generator" content="PHPDoctor 2RC4 (http://peej.github.com/phpdoctor/)">
-<meta name="when" content="Wed, 20 Jul 2011 12:10:13 +0000">
+<meta name="when" content="Wed, 20 Jul 2011 15:20:07 +0000">
 
 <link rel="stylesheet" type="text/css" href="../../stylesheet.css">
 <link rel="start" href="../../overview-summary.html">
@@ -735,7 +735,7 @@ limitations under the License.</p></div>
 <a name="line688"></a>     *                                      accessible by the current Session exists in this workspace. Note that this
 <a name="line689"></a>     *                                      applies even if the property is a PATH and a property exists at the
 <a name="line690"></a>     *                                      specified location. To dereference to a target property (as opposed to a
-<a name="line691"></a>     *                                      target node), the method Property.getProperty is used.
+<a name="line691"></a>     *                                      target node), the method PropertyInterface::getProperty() is used.
 <a name="line692"></a>     * @throws \PHPCR\RepositoryException if another error occurs.
 <a name="line693"></a>     * @api
 <a name="line694"></a>     */</span>
@@ -763,7 +763,7 @@ limitations under the License.</p></div>
 <a name="line716"></a>     * @throws \PHPCR\ItemNotFoundException If no property accessible by the current Session exists in this workspace
 <a name="line717"></a>     *                                      at the specified path. Note that this applies even if a node exists at
 <a name="line718"></a>     *                                      the specified location. To dereference to a target node, the method
-<a name="line719"></a>     *                                      Property.getNode is used.
+<a name="line719"></a>     *                                      PropertyInterface::getNode() is used.
 <a name="line720"></a>     * @throws \PHPCR\RepositoryException if another error occurs
 <a name="line721"></a>     * @api
 <a name="line722"></a>     */</span>
@@ -811,21 +811,21 @@ limitations under the License.</p></div>
 <a name="line764"></a>     * Returns the type of this Property.
 <a name="line765"></a>     *
 <a name="line766"></a>     * Following property types are available:
-<a name="line767"></a>     * - PropertyType.STRING
-<a name="line768"></a>     * - PropertyType.BINARY
-<a name="line769"></a>     * - PropertyType.DATE
-<a name="line770"></a>     * - PropertyType.DOUBLE
-<a name="line771"></a>     * - PropertyType.LONG
-<a name="line772"></a>     * - PropertyType.BOOLEAN
-<a name="line773"></a>     * - PropertyType.NAME
-<a name="line774"></a>     * - PropertyType.PATH
-<a name="line775"></a>     * - PropertyType.REFERENCE
-<a name="line776"></a>     * - PropertyType.WEAKREFERENCE
-<a name="line777"></a>     * - PropertyType.URI
+<a name="line767"></a>     * - PropertyType::STRING
+<a name="line768"></a>     * - PropertyType::BINARY
+<a name="line769"></a>     * - PropertyType::DATE
+<a name="line770"></a>     * - PropertyType::DOUBLE
+<a name="line771"></a>     * - PropertyType::LONG
+<a name="line772"></a>     * - PropertyType::BOOLEAN
+<a name="line773"></a>     * - PropertyType::NAME
+<a name="line774"></a>     * - PropertyType::PATH
+<a name="line775"></a>     * - PropertyType::REFERENCE
+<a name="line776"></a>     * - PropertyType::WEAKREFERENCE
+<a name="line777"></a>     * - PropertyType::URI
 <a name="line778"></a>     *
 <a name="line779"></a>     * The type returned is that which was set at property creation. Note that
-<a name="line780"></a>     * for some property p, the type returned by p.getType() will differ from
-<a name="line781"></a>     * the type returned by p.getDefinition.getRequiredType() only in the case
+<a name="line780"></a>     * for some property p, the type returned by $p-&gt;getType() will differ from
+<a name="line781"></a>     * the type returned by $p-&gt;getDefinition()-&gt;getRequiredType() only in the case
 <a name="line782"></a>     * where the latter returns UNDEFINED. The type of a property instance is
 <a name="line783"></a>     * never UNDEFINED (it must always have some actual type).
 <a name="line784"></a>     *

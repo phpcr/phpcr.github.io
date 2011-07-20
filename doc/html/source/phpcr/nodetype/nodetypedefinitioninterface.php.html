@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="generator" content="PHPDoctor 2RC4 (http://peej.github.com/phpdoctor/)">
-<meta name="when" content="Wed, 20 Jul 2011 12:10:17 +0000">
+<meta name="when" content="Wed, 20 Jul 2011 15:20:11 +0000">
 
 <link rel="stylesheet" type="text/css" href="../../../stylesheet.css">
 <link rel="start" href="../../../overview-summary.html">
@@ -150,13 +150,13 @@ limitations under the License.</p></div>
 <a name="line103"></a>     * Returns true if nodes of this type must support orderable child nodes;
 <a name="line104"></a>     * returns false otherwise. If a node type returns true on a call to this
 <a name="line105"></a>     * method, then all nodes of that node type must support the method
-<a name="line106"></a>     * Node.orderBefore. If a node type returns false on a call to this method,
-<a name="line107"></a>     * then nodes of that node type may support Node.orderBefore. Only the primary
+<a name="line106"></a>     * NodeInterface::orderBefore(). If a node type returns false on a call to this method,
+<a name="line107"></a>     * then nodes of that node type may support NodeInterface::orderBefore(). Only the primary
 <a name="line108"></a>     * node type of a node controls that node's status in this regard. This setting
 <a name="line109"></a>     * on a mixin node type will not have any effect on the node.
 <a name="line110"></a>     * In implementations that support node type registration, if this
-<a name="line111"></a>     * NodeTypeDefinition object is actually a newly-created empty
-<a name="line112"></a>     * NodeTypeTemplate, then this method will return false.
+<a name="line111"></a>     * NodeTypeDefinitionInterface object is actually a newly-created empty
+<a name="line112"></a>     * NodeTypeTemplateInterface, then this method will return false.
 <a name="line113"></a>     *
 <a name="line114"></a>     * @return boolean True, if nodes of this type must support orderable child nodes, else false.
 <a name="line115"></a>     * @api
@@ -187,10 +187,10 @@ limitations under the License.</p></div>
 <a name="line140"></a>     * of this node type).
 <a name="line141"></a>     *
 <a name="line142"></a>     * If this node has no primary item, then this method
-<a name="line143"></a>     * returns null. This indicator is used by the method Node.getPrimaryItem().
+<a name="line143"></a>     * returns null. This indicator is used by the method NodeInterface::getPrimaryItem().
 <a name="line144"></a>     * In implementations that support node type registration, if this
-<a name="line145"></a>     * NodeTypeDefinition object is actually a newly-created empty
-<a name="line146"></a>     * NodeTypeTemplate, then this method will return null.
+<a name="line145"></a>     * NodeTypeDefinitionInterface object is actually a newly-created empty
+<a name="line146"></a>     * NodeTypeTemplateInterface, then this method will return null.
 <a name="line147"></a>     *
 <a name="line148"></a>     * @return string The name of the primary item.
 <a name="line149"></a>     * @api

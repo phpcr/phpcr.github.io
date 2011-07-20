@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="generator" content="PHPDoctor 2RC4 (http://peej.github.com/phpdoctor/)">
-<meta name="when" content="Wed, 20 Jul 2011 12:10:25 +0000">
+<meta name="when" content="Wed, 20 Jul 2011 15:20:19 +0000">
 
 <link rel="stylesheet" type="text/css" href="../../../stylesheet.css">
 <link rel="start" href="../../../overview-summary.html">
@@ -72,7 +72,7 @@ limitations under the License.</p></div>
 <a name="line25"></a><span style="color: #000000; font-weight: bold;">namespace</span> PHPCR\Security<span style="color: #339933;">;</span>
 <a name="line26"></a>&nbsp;
 <a name="line27"></a><span style="color: #009933; font-style: italic;">/**
-<a name="line28"></a> * The AccessControlManager object is accessed via Session.getAccessControlManager().
+<a name="line28"></a> * The AccessControlManager object is accessed via SessionInterface::getAccessControlManager().
 <a name="line29"></a> *
 <a name="line30"></a> *  It provides methods for:
 <a name="line31"></a> *  - Access control discovery
@@ -120,13 +120,13 @@ limitations under the License.</p></div>
 <a name="line73"></a>     * Returns whether the session has the specified privileges for absolute
 <a name="line74"></a>     * path $absPath, which must be an existing node.
 <a name="line75"></a>     * Testing an aggregate privilege is equivalent to testing each non aggregate
-<a name="line76"></a>     * privilege among the set returned by calling Privilege.getAggregatePrivileges()
+<a name="line76"></a>     * privilege among the set returned by calling PrivilegeInterface::getAggregatePrivileges()
 <a name="line77"></a>     * for that privilege.
 <a name="line78"></a>     *
 <a name="line79"></a>     * The results reported by the this method reflect the net effect of the
 <a name="line80"></a>     * currently applied control mechanisms. It does not reflect unsaved access
 <a name="line81"></a>     * control policies or unsaved access control entries. Changes to access
-<a name="line82"></a>     * control status caused by these mechanisms only take effect on Session.save()
+<a name="line82"></a>     * control status caused by these mechanisms only take effect on SessionInterface::save()
 <a name="line83"></a>     * and are only then reflected in the results of the privilege test methods.
 <a name="line84"></a>     *
 <a name="line85"></a>     * @param string $absPath The absolute path to a node the prvileges shall be fetched of.
@@ -145,142 +145,143 @@ limitations under the License.</p></div>
 <a name="line98"></a>     *
 <a name="line99"></a>     * Returns the privileges the session has for absolute path absPath, which
 <a name="line100"></a>     * must be an existing node.
-<a name="line101"></a>     * The returned privileges are those for which hasPrivileges(java.lang.String,
-<a name="line102"></a>     * javax.jcr.security.Privilege[]) would return true.
+<a name="line101"></a>     * The returned privileges are those for which self::hasPrivileges() would
+<a name="line102"></a>     * return true.
 <a name="line103"></a>     *
 <a name="line104"></a>     * The results reported by the this method reflect the net effect of the
 <a name="line105"></a>     * currently applied control mechanisms. It does not reflect unsaved access
 <a name="line106"></a>     * control policies or unsaved access control entries. Changes to access
-<a name="line107"></a>     * control status caused by these mechanisms only take effect on Session.save()
-<a name="line108"></a>     * and are only then reflected in the results of the privilege test methods.
-<a name="line109"></a>     *
-<a name="line110"></a>     * @param string $absPath The absolute path to a node the prvileges shall be fetched of.
-<a name="line111"></a>     * @return array an array of Privileges.
-<a name="line112"></a>     *
-<a name="line113"></a>     * @throws \PHPCR\PathNotFoundException if no node at absPath exists or the session does not have sufficent access to retrieve a node at that location.
-<a name="line114"></a>     * @throws \PHPCR\RepositoryException if another error occurs.
-<a name="line115"></a>     * @api
-<a name="line116"></a>     */</span>
-<a name="line117"></a>    <span style="color: #000000; font-weight: bold;">function</span> getPrivileges<span style="color: #009900;">&#40;</span><span style="color: #000088;">$absPath</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line118"></a>&nbsp;
-<a name="line119"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line120"></a>     * Gets the access control policies previouly set to the node identified by the given path.
-<a name="line121"></a>     *
-<a name="line122"></a>     * Returns the AccessControlPolicy objects that have been set to the node at
-<a name="line123"></a>     * $absPath or an empty array if no policy has been set. This method reflects
-<a name="line124"></a>     * the binding state, including transient policy modifications.
-<a name="line125"></a>     * Use getEffectivePolicies(String) in order to determine the policy that
-<a name="line126"></a>     * effectively applies at absPath.
-<a name="line127"></a>     *
-<a name="line128"></a>     * @param string $absPath The absolute path to a node the prvileges shall be fetched of.
-<a name="line129"></a>     * @return array an array of AccessControlPolicy objects or an empty array if no policy has been set.
-<a name="line130"></a>     *
-<a name="line131"></a>     * @throws \PHPCR\PathNotFoundException if no node at absPath exists or the session does not have sufficent
-<a name="line132"></a>     *                                      access to retrieve a node at that location.
-<a name="line133"></a>     * @throws \PHPCR\AccessDeniedException if the session lacks READ_ACCESS_CONTROL privilege for the absPath node.
-<a name="line134"></a>     * @throws \PHPCR\RepositoryException if another error occurs.
-<a name="line135"></a>     * @api
-<a name="line136"></a>     */</span>
-<a name="line137"></a>    <span style="color: #000000; font-weight: bold;">function</span> getPolicies<span style="color: #009900;">&#40;</span><span style="color: #000088;">$absPath</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line138"></a>&nbsp;
-<a name="line139"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line140"></a>     * Gets the access control policies currently in effect on the node identified by the given path.
-<a name="line141"></a>     *
-<a name="line142"></a>     * Returns the AccessControlPolicy objects that currently are in effect at
-<a name="line143"></a>     * the node at $absPath. This may be policies set through this API or some
-<a name="line144"></a>     * implementation specific (default) policies.
-<a name="line145"></a>     *
-<a name="line146"></a>     * @param string $absPath The absolute path to a node the prvileges shall be fetched of.
-<a name="line147"></a>     * @return array an array of AccessControlPolicy objects.
-<a name="line148"></a>     *
-<a name="line149"></a>     * @throws \PHPCR\PathNotFoundException if no node at absPath exists or the session does not have
-<a name="line150"></a>     *                                      sufficent access to retrieve a node at that location.
-<a name="line151"></a>     * @throws \PHPCR\AccessDeniedException - if the session lacks READ_ACCESS_CONTROL privilege for the absPath node.
-<a name="line152"></a>     * @throws \PHPCR\RepositoryException if another error occurs.
-<a name="line153"></a>     * @api
-<a name="line154"></a>     */</span>
-<a name="line155"></a>    <span style="color: #000000; font-weight: bold;">function</span> getEffectivePolicies<span style="color: #009900;">&#40;</span><span style="color: #000088;">$absPath</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line156"></a>&nbsp;
-<a name="line157"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line158"></a>     * Returns the access control policies that are capable of being applied to
-<a name="line159"></a>     * the node at absPath.
-<a name="line160"></a>     *
-<a name="line161"></a>     * @param string $absPath The absolute path to a node the prvileges shall be fetched of.
-<a name="line162"></a>     * @return Iterator over the applicable access control policies implementing
-<a name="line163"></a>     *                  &lt;b&gt;SeekableIterator&lt;/b&gt; and &lt;b&gt;Countable&lt;/b&gt;. Values are the AccessControlPolicyInterface
-<a name="line164"></a>     *                  instances. Keys have no meaning. Returns an empty iterator if no policies are applicable.
-<a name="line165"></a>     *
-<a name="line166"></a>     * @throws \PHPCR\PathNotFoundException if no node at absPath exists or the session does not have sufficent
-<a name="line167"></a>     *                                      access to retrieve a node at that location.
-<a name="line168"></a>     * @throws \PHPCR\AccessDeniedException if the session lacks READ_ACCESS_CONTROL privilege for the absPath node.
-<a name="line169"></a>     * @throws \PHPCR\RepositoryException if another error occurs.
-<a name="line170"></a>     * @api
-<a name="line171"></a>     */</span>
-<a name="line172"></a>    <span style="color: #000000; font-weight: bold;">function</span> getApplicablePolicies<span style="color: #009900;">&#40;</span><span style="color: #000088;">$absPath</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line173"></a>&nbsp;
-<a name="line174"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line175"></a>     * Binds the policy to the node at absPath.
-<a name="line176"></a>     *
-<a name="line177"></a>     * The behavior of the call acm.setPolicy(absPath, policy) differs depending
-<a name="line178"></a>     * on how the policy object was originally acquired.
-<a name="line179"></a>     *
-<a name="line180"></a>     * If policy was acquired through acm.getApplicablePolicies(absPath) then
-<a name="line181"></a>     * that policy object is added to the node at absPath.
-<a name="line182"></a>     *
-<a name="line183"></a>     * On the other hand, if &lt;code&gt;policy&lt;/code&gt; was acquired through
-<a name="line184"></a>     * acm.getPolicies(absPath) then that policy object (usually after being
-<a name="line185"></a>     * altered) replaces its former version on the node at $absPath.
-<a name="line186"></a>     *
-<a name="line187"></a>     * This is session-write method and therefore the access control policy
-<a name="line188"></a>     * is only dispatched on &lt;code&gt;save&lt;/code&gt; and will only take effect upon
-<a name="line189"></a>     * persist.
-<a name="line190"></a>     *
-<a name="line191"></a>     * @param string $absPath The absolute path to a node the prvileges shall be fetched of.
-<a name="line192"></a>     * @param \PHPCR\Security\AccessControlPolicyInterface $policy The AccessControlPolicy to be applied.
-<a name="line193"></a>     * @return void
-<a name="line194"></a>     *
-<a name="line195"></a>     * @throws \PHPCR\PathNotFoundException if no node at absPath exists or the session does not have sufficent
-<a name="line196"></a>     *                                      access to retrieve a node at that location.
-<a name="line197"></a>     * @throws \PHPCR\Security\AccessControlException if the policy is not applicable.
-<a name="line198"></a>     * @throws \PHPCR\AccessDeniedException if the session lacks MODIFY_ACCESS_CONTROL privilege for the absPath node.
-<a name="line199"></a>     * @throws \PHPCR\Lock\LockException if a lock applies at the node at absPath and this implementation performs
-<a name="line200"></a>     *                                   this validation immediately instead of waiting until save.
-<a name="line201"></a>     * @throws \PHPCR\Version\VersionException if the node at absPath is read-only due to a checked-in node and
-<a name="line202"></a>     *                                         this implementation performs this validation immediately.
-<a name="line203"></a>     * @throws \PHPCR\RepositoryException if another error occurs.
-<a name="line204"></a>     * @api
-<a name="line205"></a>     */</span>
-<a name="line206"></a>    <span style="color: #000000; font-weight: bold;">function</span> setPolicy<span style="color: #009900;">&#40;</span><span style="color: #000088;">$absPath</span><span style="color: #339933;">,</span> \PHPCR\Security\AccessControlPolicyInterface <span style="color: #000088;">$policy</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line207"></a>&nbsp;
-<a name="line208"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line209"></a>     * Removes the specified AccessControlPolicy from the node at $absPath.
-<a name="line210"></a>     *
-<a name="line211"></a>     * An AccessControlPolicy can only be removed if it was bound to the specified
-<a name="line212"></a>     * node through this API before. The effect of the removal only takes place
-<a name="line213"></a>     * upon Session.save(). Note, that an implementation default or any other
-<a name="line214"></a>     * effective AccessControlPolicy that has not been applied to the node before
-<a name="line215"></a>     * may never be removed using this method.
-<a name="line216"></a>     *
-<a name="line217"></a>     * @param string $absPath The absolute path to a node the prvileges shall be fetched of.
-<a name="line218"></a>     * @param \PHPCR\Security\AccessControlPolicyInterface $policy - the policy to be removed.
-<a name="line219"></a>     * @return void
-<a name="line220"></a>     *
-<a name="line221"></a>     * @throws \HPPCR\PathNotFoundException if no node at absPath exists or the session does not have sufficent
-<a name="line222"></a>     *                                      access to retrieve a node at that location.
-<a name="line223"></a>     * @throws \PHPCR\Security\AccessControlException if no policy exists.
-<a name="line224"></a>     * @throws \PHPCR\AccessDeniedException if the session lacks MODIFY_ACCESS_CONTROL privilege for the absPath node.
-<a name="line225"></a>     * @throws \PHPCR\Lock\LockException if a lock applies at the node at absPath and this implementation performs
-<a name="line226"></a>     *                                   this validation immediately instead of waiting until save.
-<a name="line227"></a>     * @throws \PHPCR\Version\VersionException if the node at absPath is versionable and checked-in or is
-<a name="line228"></a>     *                                         non-versionable but its nearest versionable ancestor is checked-in
-<a name="line229"></a>     *                                         and this implementation performs this validation immediately instead
-<a name="line230"></a>     *                                         of waiting until save.
-<a name="line231"></a>     * @throws \PHPCR\RepositoryException if another error occurs.
-<a name="line232"></a>     * @api
-<a name="line233"></a>     */</span>
-<a name="line234"></a>    <span style="color: #000000; font-weight: bold;">function</span> removePolicy<span style="color: #009900;">&#40;</span><span style="color: #000088;">$absPath</span><span style="color: #339933;">,</span> \PHPCR\Security\AccessControlPolicyInterface <span style="color: #000088;">$policy</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line235"></a><span style="color: #009900;">&#125;</span>
-<a name="line236"></a>&nbsp;</pre>
+<a name="line107"></a>     * control status caused by these mechanisms only take effect on
+<a name="line108"></a>     * SessionInterface::save() and are only then reflected in the results of
+<a name="line109"></a>     * the privilege test methods.
+<a name="line110"></a>     *
+<a name="line111"></a>     * @param string $absPath The absolute path to a node the prvileges shall be fetched of.
+<a name="line112"></a>     * @return array an array of Privileges.
+<a name="line113"></a>     *
+<a name="line114"></a>     * @throws \PHPCR\PathNotFoundException if no node at absPath exists or the session does not have sufficent access to retrieve a node at that location.
+<a name="line115"></a>     * @throws \PHPCR\RepositoryException if another error occurs.
+<a name="line116"></a>     * @api
+<a name="line117"></a>     */</span>
+<a name="line118"></a>    <span style="color: #000000; font-weight: bold;">function</span> getPrivileges<span style="color: #009900;">&#40;</span><span style="color: #000088;">$absPath</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line119"></a>&nbsp;
+<a name="line120"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line121"></a>     * Gets the access control policies previouly set to the node identified by the given path.
+<a name="line122"></a>     *
+<a name="line123"></a>     * Returns the AccessControlPolicy objects that have been set to the node at
+<a name="line124"></a>     * $absPath or an empty array if no policy has been set. This method reflects
+<a name="line125"></a>     * the binding state, including transient policy modifications.
+<a name="line126"></a>     * Use getEffectivePolicies(String) in order to determine the policy that
+<a name="line127"></a>     * effectively applies at absPath.
+<a name="line128"></a>     *
+<a name="line129"></a>     * @param string $absPath The absolute path to a node the prvileges shall be fetched of.
+<a name="line130"></a>     * @return array an array of AccessControlPolicy objects or an empty array if no policy has been set.
+<a name="line131"></a>     *
+<a name="line132"></a>     * @throws \PHPCR\PathNotFoundException if no node at absPath exists or the session does not have sufficent
+<a name="line133"></a>     *                                      access to retrieve a node at that location.
+<a name="line134"></a>     * @throws \PHPCR\AccessDeniedException if the session lacks READ_ACCESS_CONTROL privilege for the absPath node.
+<a name="line135"></a>     * @throws \PHPCR\RepositoryException if another error occurs.
+<a name="line136"></a>     * @api
+<a name="line137"></a>     */</span>
+<a name="line138"></a>    <span style="color: #000000; font-weight: bold;">function</span> getPolicies<span style="color: #009900;">&#40;</span><span style="color: #000088;">$absPath</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line139"></a>&nbsp;
+<a name="line140"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line141"></a>     * Gets the access control policies currently in effect on the node identified by the given path.
+<a name="line142"></a>     *
+<a name="line143"></a>     * Returns the AccessControlPolicy objects that currently are in effect at
+<a name="line144"></a>     * the node at $absPath. This may be policies set through this API or some
+<a name="line145"></a>     * implementation specific (default) policies.
+<a name="line146"></a>     *
+<a name="line147"></a>     * @param string $absPath The absolute path to a node the prvileges shall be fetched of.
+<a name="line148"></a>     * @return array an array of AccessControlPolicy objects.
+<a name="line149"></a>     *
+<a name="line150"></a>     * @throws \PHPCR\PathNotFoundException if no node at absPath exists or the session does not have
+<a name="line151"></a>     *                                      sufficent access to retrieve a node at that location.
+<a name="line152"></a>     * @throws \PHPCR\AccessDeniedException - if the session lacks READ_ACCESS_CONTROL privilege for the absPath node.
+<a name="line153"></a>     * @throws \PHPCR\RepositoryException if another error occurs.
+<a name="line154"></a>     * @api
+<a name="line155"></a>     */</span>
+<a name="line156"></a>    <span style="color: #000000; font-weight: bold;">function</span> getEffectivePolicies<span style="color: #009900;">&#40;</span><span style="color: #000088;">$absPath</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line157"></a>&nbsp;
+<a name="line158"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line159"></a>     * Returns the access control policies that are capable of being applied to
+<a name="line160"></a>     * the node at absPath.
+<a name="line161"></a>     *
+<a name="line162"></a>     * @param string $absPath The absolute path to a node the prvileges shall be fetched of.
+<a name="line163"></a>     * @return Iterator over the applicable access control policies implementing
+<a name="line164"></a>     *                  &lt;b&gt;SeekableIterator&lt;/b&gt; and &lt;b&gt;Countable&lt;/b&gt;. Values are the AccessControlPolicyInterface
+<a name="line165"></a>     *                  instances. Keys have no meaning. Returns an empty iterator if no policies are applicable.
+<a name="line166"></a>     *
+<a name="line167"></a>     * @throws \PHPCR\PathNotFoundException if no node at absPath exists or the session does not have sufficent
+<a name="line168"></a>     *                                      access to retrieve a node at that location.
+<a name="line169"></a>     * @throws \PHPCR\AccessDeniedException if the session lacks READ_ACCESS_CONTROL privilege for the absPath node.
+<a name="line170"></a>     * @throws \PHPCR\RepositoryException if another error occurs.
+<a name="line171"></a>     * @api
+<a name="line172"></a>     */</span>
+<a name="line173"></a>    <span style="color: #000000; font-weight: bold;">function</span> getApplicablePolicies<span style="color: #009900;">&#40;</span><span style="color: #000088;">$absPath</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line174"></a>&nbsp;
+<a name="line175"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line176"></a>     * Binds the policy to the node at absPath.
+<a name="line177"></a>     *
+<a name="line178"></a>     * The behavior of the call $acm-&gt;setPolicy($absPath, $policy) differs depending
+<a name="line179"></a>     * on how the policy object was originally acquired.
+<a name="line180"></a>     *
+<a name="line181"></a>     * If policy was acquired through $acm-&gt;getApplicablePolicies($absPath) then
+<a name="line182"></a>     * that policy object is added to the node at absPath.
+<a name="line183"></a>     *
+<a name="line184"></a>     * On the other hand, if &lt;code&gt;$policy&lt;/code&gt; was acquired through
+<a name="line185"></a>     * $acm-&gt;getPolicies(absPath) then that policy object (usually after being
+<a name="line186"></a>     * altered) replaces its former version on the node at $absPath.
+<a name="line187"></a>     *
+<a name="line188"></a>     * This is session-write method and therefore the access control policy
+<a name="line189"></a>     * is only dispatched on &lt;code&gt;save()&lt;/code&gt; and will only take effect upon
+<a name="line190"></a>     * persist.
+<a name="line191"></a>     *
+<a name="line192"></a>     * @param string $absPath The absolute path to a node the prvileges shall be fetched of.
+<a name="line193"></a>     * @param \PHPCR\Security\AccessControlPolicyInterface $policy The AccessControlPolicy to be applied.
+<a name="line194"></a>     * @return void
+<a name="line195"></a>     *
+<a name="line196"></a>     * @throws \PHPCR\PathNotFoundException if no node at absPath exists or the session does not have sufficent
+<a name="line197"></a>     *                                      access to retrieve a node at that location.
+<a name="line198"></a>     * @throws \PHPCR\Security\AccessControlException if the policy is not applicable.
+<a name="line199"></a>     * @throws \PHPCR\AccessDeniedException if the session lacks MODIFY_ACCESS_CONTROL privilege for the absPath node.
+<a name="line200"></a>     * @throws \PHPCR\Lock\LockException if a lock applies at the node at absPath and this implementation performs
+<a name="line201"></a>     *                                   this validation immediately instead of waiting until save.
+<a name="line202"></a>     * @throws \PHPCR\Version\VersionException if the node at absPath is read-only due to a checked-in node and
+<a name="line203"></a>     *                                         this implementation performs this validation immediately.
+<a name="line204"></a>     * @throws \PHPCR\RepositoryException if another error occurs.
+<a name="line205"></a>     * @api
+<a name="line206"></a>     */</span>
+<a name="line207"></a>    <span style="color: #000000; font-weight: bold;">function</span> setPolicy<span style="color: #009900;">&#40;</span><span style="color: #000088;">$absPath</span><span style="color: #339933;">,</span> \PHPCR\Security\AccessControlPolicyInterface <span style="color: #000088;">$policy</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line208"></a>&nbsp;
+<a name="line209"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line210"></a>     * Removes the specified AccessControlPolicy from the node at $absPath.
+<a name="line211"></a>     *
+<a name="line212"></a>     * An AccessControlPolicy can only be removed if it was bound to the specified
+<a name="line213"></a>     * node through this API before. The effect of the removal only takes place
+<a name="line214"></a>     * upon SessionInterface::save(). Note, that an implementation default or any other
+<a name="line215"></a>     * effective AccessControlPolicy that has not been applied to the node before
+<a name="line216"></a>     * may never be removed using this method.
+<a name="line217"></a>     *
+<a name="line218"></a>     * @param string $absPath The absolute path to a node the prvileges shall be fetched of.
+<a name="line219"></a>     * @param \PHPCR\Security\AccessControlPolicyInterface $policy - the policy to be removed.
+<a name="line220"></a>     * @return void
+<a name="line221"></a>     *
+<a name="line222"></a>     * @throws \HPPCR\PathNotFoundException if no node at absPath exists or the session does not have sufficent
+<a name="line223"></a>     *                                      access to retrieve a node at that location.
+<a name="line224"></a>     * @throws \PHPCR\Security\AccessControlException if no policy exists.
+<a name="line225"></a>     * @throws \PHPCR\AccessDeniedException if the session lacks MODIFY_ACCESS_CONTROL privilege for the absPath node.
+<a name="line226"></a>     * @throws \PHPCR\Lock\LockException if a lock applies at the node at absPath and this implementation performs
+<a name="line227"></a>     *                                   this validation immediately instead of waiting until save.
+<a name="line228"></a>     * @throws \PHPCR\Version\VersionException if the node at absPath is versionable and checked-in or is
+<a name="line229"></a>     *                                         non-versionable but its nearest versionable ancestor is checked-in
+<a name="line230"></a>     *                                         and this implementation performs this validation immediately instead
+<a name="line231"></a>     *                                         of waiting until save.
+<a name="line232"></a>     * @throws \PHPCR\RepositoryException if another error occurs.
+<a name="line233"></a>     * @api
+<a name="line234"></a>     */</span>
+<a name="line235"></a>    <span style="color: #000000; font-weight: bold;">function</span> removePolicy<span style="color: #009900;">&#40;</span><span style="color: #000088;">$absPath</span><span style="color: #339933;">,</span> \PHPCR\Security\AccessControlPolicyInterface <span style="color: #000088;">$policy</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line236"></a><span style="color: #009900;">&#125;</span>
+<a name="line237"></a>&nbsp;</pre>
 <div class="header">
 <h1>PHPCR</h1>
 <ul>

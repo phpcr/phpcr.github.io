@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="generator" content="PHPDoctor 2RC4 (http://peej.github.com/phpdoctor/)">
-<meta name="when" content="Wed, 20 Jul 2011 12:10:10 +0000">
+<meta name="when" content="Wed, 20 Jul 2011 15:20:04 +0000">
 
 <link rel="stylesheet" type="text/css" href="../../stylesheet.css">
 <link rel="start" href="../../overview-summary.html">
@@ -150,8 +150,8 @@ such an order is supported and exists.</p></div>
 <h3 id="visit()">visit</h3>
 <code class="signature">public  void <strong>visit</strong>(<a href="../../phpcr/iteminterface.html">ItemInterface</a> item)</code>
 <div class="details">
-<p>Called when the Visitor is passed to an Item.</p><p>It calls TraversingItemVisitor.entering(ItemInterface, int) followed by
-TraversingItemVisitor.leaving(ItemInterface, int). Implement these
+<p>Called when the Visitor is passed to an Item.</p><p>It calls TraversingItemVisitor::entering() followed by
+TraversingItemVisitor::leaving(). Implement these
 abstract methods to specify behavior on 'arrival at' and 'after leaving'
 the $item.</p><p>If this method throws, the visiting process is aborted.</p><dl>
 <dt>Parameters:</dt>

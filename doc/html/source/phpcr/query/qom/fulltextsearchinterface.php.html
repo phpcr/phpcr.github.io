@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="generator" content="PHPDoctor 2RC4 (http://peej.github.com/phpdoctor/)">
-<meta name="when" content="Wed, 20 Jul 2011 12:10:21 +0000">
+<meta name="when" content="Wed, 20 Jul 2011 15:20:15 +0000">
 
 <link rel="stylesheet" type="text/css" href="../../../../stylesheet.css">
 <link rel="start" href="../../../../overview-summary.html">
@@ -114,39 +114,41 @@ limitations under the License.</p></div>
 <a name="line67"></a> * - Within a term, each double quote (&quot;), &quot;-&quot; (minus sign), and &quot;\&quot; (backslash) must be escaped by a
 <a name="line68"></a> *   preceding &quot;\&quot; (backslash).
 <a name="line69"></a> *
-<a name="line70"></a> * @package phpcr
-<a name="line71"></a> * @subpackage interfaces
-<a name="line72"></a> * @api
-<a name="line73"></a> */</span>
-<a name="line74"></a><span style="color: #000000; font-weight: bold;">interface</span> FullTextSearchInterface <span style="color: #000000; font-weight: bold;">extends</span> ConstraintInterface
-<a name="line75"></a><span style="color: #009900;">&#123;</span>
-<a name="line76"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line77"></a>     * Gets the name of the selector against which to apply this constraint.
-<a name="line78"></a>     *
-<a name="line79"></a>     * @return string the selector name; non-null
-<a name="line80"></a>     * @api
-<a name="line81"></a>     */</span>
-<a name="line82"></a>    <span style="color: #000000; font-weight: bold;">function</span> getSelectorName<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line83"></a>&nbsp;
-<a name="line84"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line85"></a>     * Gets the name of the property.
-<a name="line86"></a>     *
-<a name="line87"></a>     * @return string the property name if the full-text search scope is a property,
-<a name="line88"></a>     *                otherwise null if the full-text search scope is the node
-<a name="line89"></a>     *                (or node subgraph, in some implementations).
-<a name="line90"></a>     * @api
-<a name="line91"></a>     */</span>
-<a name="line92"></a>    <span style="color: #000000; font-weight: bold;">function</span> getPropertyName<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line93"></a>&nbsp;
-<a name="line94"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line95"></a>     * Gets the full-text search expression.
-<a name="line96"></a>     *
-<a name="line97"></a>     * @return \PHPCR\Query\QOM\StaticOperandInterface the full-text search expression; non-null
-<a name="line98"></a>     * @api
-<a name="line99"></a>     */</span>
-<a name="line100"></a>    <span style="color: #000000; font-weight: bold;">function</span> getFullTextSearchExpression<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line101"></a><span style="color: #009900;">&#125;</span>
-<a name="line102"></a>&nbsp;</pre>
+<a name="line70"></a> * &amp;nbsp;
+<a name="line71"></a> *
+<a name="line72"></a> * @package phpcr
+<a name="line73"></a> * @subpackage interfaces
+<a name="line74"></a> * @api
+<a name="line75"></a> */</span>
+<a name="line76"></a><span style="color: #000000; font-weight: bold;">interface</span> FullTextSearchInterface <span style="color: #000000; font-weight: bold;">extends</span> ConstraintInterface
+<a name="line77"></a><span style="color: #009900;">&#123;</span>
+<a name="line78"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line79"></a>     * Gets the name of the selector against which to apply this constraint.
+<a name="line80"></a>     *
+<a name="line81"></a>     * @return string the selector name; non-null
+<a name="line82"></a>     * @api
+<a name="line83"></a>     */</span>
+<a name="line84"></a>    <span style="color: #000000; font-weight: bold;">function</span> getSelectorName<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line85"></a>&nbsp;
+<a name="line86"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line87"></a>     * Gets the name of the property.
+<a name="line88"></a>     *
+<a name="line89"></a>     * @return string the property name if the full-text search scope is a property,
+<a name="line90"></a>     *                otherwise null if the full-text search scope is the node
+<a name="line91"></a>     *                (or node subgraph, in some implementations).
+<a name="line92"></a>     * @api
+<a name="line93"></a>     */</span>
+<a name="line94"></a>    <span style="color: #000000; font-weight: bold;">function</span> getPropertyName<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line95"></a>&nbsp;
+<a name="line96"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line97"></a>     * Gets the full-text search expression.
+<a name="line98"></a>     *
+<a name="line99"></a>     * @return \PHPCR\Query\QOM\StaticOperandInterface the full-text search expression; non-null
+<a name="line100"></a>     * @api
+<a name="line101"></a>     */</span>
+<a name="line102"></a>    <span style="color: #000000; font-weight: bold;">function</span> getFullTextSearchExpression<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line103"></a><span style="color: #009900;">&#125;</span>
+<a name="line104"></a>&nbsp;</pre>
 <div class="header">
 <h1>PHPCR</h1>
 <ul>
