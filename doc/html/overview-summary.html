@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="generator" content="PHPDoctor 2RC4 (http://peej.github.com/phpdoctor/)">
-<meta name="when" content="Tue, 26 Jul 2011 15:50:46 +0000">
+<meta name="when" content="Tue, 26 Jul 2011 15:56:34 +0000">
 
 <link rel="stylesheet" type="text/css" href="stylesheet.css">
 <link rel="start" href="overview-summary.html">
@@ -56,11 +56,11 @@
 <tr><td class="name"><a href="phpcr/version/package-summary.html">PHPCR\Version</a></td><td class="description"></td></tr>
 </table>
 
-<div class="comment" id="overview_description"><p><p>PHP Content Repository API based on the Java Content Repository specification (<a href="http://java.net/projects/jsr-283/">JSR-283</a>). If you know JCR, get the <a href="https://raw.github.com/phpcr/phpcr/master/doc/JCR_TO_PHPCR.txt">differences between PHPCR and JCR at a glance</a>.</p>
+<div class="comment" id="overview_description"><p><p>PHP Content Repository API based on the Java Content Repository specification (<a href="http://java.net/projects/jsr-283/">JSR-283</a>). If you know JCR, get the <a href="https://raw.github.com/phpcr/phpcr/master/doc/JCR_TO_PHPCR.txt">differences between PHPCR and JCR at a glance</a>. To learn PHPCR, please have a look at our <a href="https://github.com/phpcr/phpcr/blob/master/doc/Tutorial.md">tutorial</a>.</p>
 <br />
 <h2>Basic Workflow</h2></p><p><p>
 <img src="meta/media/PHPCR.png" alt="" style="float:left; padding-right: 12px;"/>
-<code>
+<pre>
 $factoryclass = '\Jackalope\RepositoryFactoryJackrabbit';
 $parameters = array('jackalope.jackrabbit_uri' =&gt; 'http://localhost:8080/server');
 end of implementation specific configuration
@@ -74,7 +74,7 @@ $session-&gt;save();
 ...
 $node = $session-&gt;getNode('/test');
 echo $node->getPropertyValue('prop');
-</code>
+</pre>
 <br clear="all"/>
 </p>
 <br />
