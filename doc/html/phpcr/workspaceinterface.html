@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="generator" content="PHPDoctor 2RC4 (http://peej.github.com/phpdoctor/)">
-<meta name="when" content="Wed, 20 Jul 2011 15:20:04 +0000">
+<meta name="when" content="Tue, 26 Jul 2011 15:50:47 +0000">
 
 <link rel="stylesheet" type="text/css" href="../stylesheet.css">
 <link rel="start" href="../overview-summary.html">
@@ -199,6 +199,10 @@ the jcr:xmlcharacters property produced on importXML().
 <tr>
 <td class="type"> <a href="../phpcr/sessioninterface.html">SessionInterface</a></td>
 <td class="description"><p class="name"><a href="#getSession()">getSession</a>()</p><p class="description">Returns the Session object through which this Workspace object was acquired.</p></td>
+</tr>
+<tr>
+<td class="type"> <a href="../phpcr/transaction/usertransactioninterface.html">UserTransactionInterface</a></td>
+<td class="description"><p class="name"><a href="#getTransactionManager()">getTransactionManager</a>()</p><p class="description">Returns the UserTransaction object associated with this session</p></td>
 </tr>
 <tr>
 <td class="type"> <a href="../phpcr/version/versionmanagerinterface.html">VersionManagerInterface</a></td>
@@ -550,7 +554,7 @@ properties contained therein).</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/workspaceinterface.php.html#line607" class="location">PHPCR/WorkspaceInterface.php at line 607</a>
+<a href="../source/phpcr/workspaceinterface.php.html#line615" class="location">PHPCR/WorkspaceInterface.php at line 615</a>
 
 <h3 id="createWorkspace()">createWorkspace</h3>
 <code class="signature">public  void <strong>createWorkspace</strong>(string name, string srcWorkspace)</code>
@@ -576,7 +580,7 @@ NodeInterface::merge() calls between the new workspace and its source.</p><p>The
 
 <hr>
 
-<a href="../source/phpcr/workspaceinterface.php.html#line621" class="location">PHPCR/WorkspaceInterface.php at line 621</a>
+<a href="../source/phpcr/workspaceinterface.php.html#line629" class="location">PHPCR/WorkspaceInterface.php at line 629</a>
 
 <h3 id="deleteWorkspace()">deleteWorkspace</h3>
 <code class="signature">public  void <strong>deleteWorkspace</strong>(string name)</code>
@@ -595,7 +599,7 @@ NodeInterface::merge() calls between the new workspace and its source.</p><p>The
 
 <hr>
 
-<a href="../source/phpcr/workspaceinterface.php.html#line442" class="location">PHPCR/WorkspaceInterface.php at line 442</a>
+<a href="../source/phpcr/workspaceinterface.php.html#line450" class="location">PHPCR/WorkspaceInterface.php at line 450</a>
 
 <h3 id="getAccessibleWorkspaceNames()">getAccessibleWorkspaceNames</h3>
 <code class="signature">public  array <strong>getAccessibleWorkspaceNames</strong>()</code>
@@ -645,7 +649,7 @@ and receives a new Session object.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/workspaceinterface.php.html#line392" class="location">PHPCR/WorkspaceInterface.php at line 392</a>
+<a href="../source/phpcr/workspaceinterface.php.html#line400" class="location">PHPCR/WorkspaceInterface.php at line 400</a>
 
 <h3 id="getNamespaceRegistry()">getNamespaceRegistry</h3>
 <code class="signature">public  <a href="../phpcr/namespaceregistryinterface.html">NamespaceRegistryInterface</a> <strong>getNamespaceRegistry</strong>()</code>
@@ -661,7 +665,7 @@ and receives a new Session object.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/workspaceinterface.php.html#line406" class="location">PHPCR/WorkspaceInterface.php at line 406</a>
+<a href="../source/phpcr/workspaceinterface.php.html#line414" class="location">PHPCR/WorkspaceInterface.php at line 414</a>
 
 <h3 id="getNodeTypeManager()">getNodeTypeManager</h3>
 <code class="signature">public  <a href="../phpcr/nodetype/nodetypemanagerinterface.html">NodeTypeManagerInterface</a> <strong>getNodeTypeManager</strong>()</code>
@@ -680,7 +684,7 @@ the NodeTypeManager can also be used to register new node types.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/workspaceinterface.php.html#line416" class="location">PHPCR/WorkspaceInterface.php at line 416</a>
+<a href="../source/phpcr/workspaceinterface.php.html#line424" class="location">PHPCR/WorkspaceInterface.php at line 424</a>
 
 <h3 id="getObservationManager()">getObservationManager</h3>
 <code class="signature">public  <a href="../phpcr/observation/observationmanagerinterface.html">ObservationManagerInterface</a> <strong>getObservationManager</strong>()</code>
@@ -727,7 +731,21 @@ the NodeTypeManager can also be used to register new node types.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/workspaceinterface.php.html#line426" class="location">PHPCR/WorkspaceInterface.php at line 426</a>
+<a href="../source/phpcr/workspaceinterface.php.html#line389" class="location">PHPCR/WorkspaceInterface.php at line 389</a>
+
+<h3 id="getTransactionManager()">getTransactionManager</h3>
+<code class="signature">public  <a href="../phpcr/transaction/usertransactioninterface.html">UserTransactionInterface</a> <strong>getTransactionManager</strong>()</code>
+<div class="details">
+<p>Returns the UserTransaction object associated with this session</p><dl>
+<dt>Returns:</dt>
+<dd>a UserTransaction object.</dd>
+<dt>Api.</dt>
+</dl>
+</div>
+
+<hr>
+
+<a href="../source/phpcr/workspaceinterface.php.html#line434" class="location">PHPCR/WorkspaceInterface.php at line 434</a>
 
 <h3 id="getVersionManager()">getVersionManager</h3>
 <code class="signature">public  <a href="../phpcr/version/versionmanagerinterface.html">VersionManagerInterface</a> <strong>getVersionManager</strong>()</code>
@@ -744,7 +762,7 @@ the NodeTypeManager can also be used to register new node types.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/workspaceinterface.php.html#line582" class="location">PHPCR/WorkspaceInterface.php at line 582</a>
+<a href="../source/phpcr/workspaceinterface.php.html#line590" class="location">PHPCR/WorkspaceInterface.php at line 590</a>
 
 <h3 id="importXML()">importXML</h3>
 <code class="signature">public  void <strong>importXML</strong>(string parentAbsPath, string in, integer uuidBehavior)</code>

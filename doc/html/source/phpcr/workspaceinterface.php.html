@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="generator" content="PHPDoctor 2RC4 (http://peej.github.com/phpdoctor/)">
-<meta name="when" content="Wed, 20 Jul 2011 15:20:09 +0000">
+<meta name="when" content="Tue, 26 Jul 2011 15:50:53 +0000">
 
 <link rel="stylesheet" type="text/css" href="../../stylesheet.css">
 <link rel="start" href="../../overview-summary.html">
@@ -428,246 +428,254 @@ limitations under the License.</p></div>
 <a name="line381"></a>    <span style="color: #000000; font-weight: bold;">function</span> getQueryManager<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
 <a name="line382"></a>&nbsp;
 <a name="line383"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line384"></a>     * Returns the NamespaceRegistry object, which is used to access the mapping between prefixes and namespaces.
+<a name="line384"></a>     * Returns the UserTransaction object associated with this session
 <a name="line385"></a>     *
-<a name="line386"></a>     * In level 2 repositories the NamespaceRegistry can also be used to change the namespace mappings.
-<a name="line387"></a>     *
-<a name="line388"></a>     * @return \PHPCR\NamespaceRegistryInterface the NamespaceRegistry.
-<a name="line389"></a>     * @throws \PHPCR\RepositoryException if an error occurs.
-<a name="line390"></a>     * @api
-<a name="line391"></a>     */</span>
-<a name="line392"></a>    <span style="color: #000000; font-weight: bold;">function</span> getNamespaceRegistry<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line393"></a>&nbsp;
-<a name="line394"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line395"></a>     * Returns the NodeTypeManager through which node type information can be queried.
-<a name="line396"></a>     *
-<a name="line397"></a>     * There is one node type registry per repository, therefore the NodeTypeManager
-<a name="line398"></a>     * is not workspace-specific; it provides introspection methods for the global,
-<a name="line399"></a>     * repository-wide set of available node types. In repositories that support it,
-<a name="line400"></a>     * the NodeTypeManager can also be used to register new node types.
-<a name="line401"></a>     *
-<a name="line402"></a>     * @return \PHPCR\NodeType\NodeTypeManagerInterface a NodeTypeManager object.
-<a name="line403"></a>     * @throws \PHPCR\RepositoryException if an error occurs.
-<a name="line404"></a>     * @api
-<a name="line405"></a>     */</span>
-<a name="line406"></a>    <span style="color: #000000; font-weight: bold;">function</span> getNodeTypeManager<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line407"></a>&nbsp;
-<a name="line408"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line409"></a>     * Returns the ObservationManager object.
-<a name="line410"></a>     *
-<a name="line411"></a>     * @return \PHPCR\Observation\ObservationManagerInterface an ObservationManager object.
-<a name="line412"></a>     * @throws \PHPCR\UnsupportedRepositoryOperationException if the implementation does not support observation.
-<a name="line413"></a>     * @throws \PHPCR\RepositoryException if an error occurs.
-<a name="line414"></a>     * @api
-<a name="line415"></a>     */</span>
-<a name="line416"></a>    <span style="color: #000000; font-weight: bold;">function</span> getObservationManager<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line417"></a>&nbsp;
-<a name="line418"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line419"></a>     * Returns the VersionManager object.
-<a name="line420"></a>     *
-<a name="line421"></a>     * @return \PHPCR\Version\VersionManagerInterface a VersionManager object.
-<a name="line422"></a>     * @throws \PHPCR\UnsupportedRepositoryOperationException if the implementation does not support versioning.
-<a name="line423"></a>     * @throws \PHPCR\RepositoryException if an error occurs.
-<a name="line424"></a>     * @api
-<a name="line425"></a>     */</span>
-<a name="line426"></a>    <span style="color: #000000; font-weight: bold;">function</span> getVersionManager<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line427"></a>&nbsp;
-<a name="line428"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line429"></a>     * Gets a set of workspace accessible to the current user.
-<a name="line430"></a>     *
-<a name="line431"></a>     * Returns a string array containing the names of all workspaces in this
-<a name="line432"></a>     * repository that are accessible to this user, given the Credentials that
-<a name="line433"></a>     * were used to get the Session to which this Workspace is tied.
-<a name="line434"></a>     * In order to access one of the listed workspaces, the user performs
-<a name="line435"></a>     * another RepositoryInterface::login(), specifying the name of the desired workspace,
-<a name="line436"></a>     * and receives a new Session object.
-<a name="line437"></a>     *
-<a name="line438"></a>     * @return array string array of names of accessible workspaces.
-<a name="line439"></a>     * @throws \PHPCR\RepositoryException if an error occurs
-<a name="line440"></a>     * @api
-<a name="line441"></a>     */</span>
-<a name="line442"></a>    <span style="color: #000000; font-weight: bold;">function</span> getAccessibleWorkspaceNames<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line443"></a>&nbsp;
-<a name="line444"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line445"></a>     * Returns an \PHPCR\ContentHandlerInterface which can be used to push SAX events into the repository.
-<a name="line446"></a>     *
-<a name="line447"></a>     * If the incoming XML stream (in the form of SAX events)
-<a name="line448"></a>     * does not appear to be a JCR system view XML document then it is interpreted
-<a name="line449"></a>     * as a document view XML document.
-<a name="line450"></a>     * The incoming XML is deserialized into a subgraph of items immediately below
-<a name="line451"></a>     * the node at parentAbsPath.
-<a name="line452"></a>     *
-<a name="line453"></a>     * This method simply returns the ContentHandler without altering the state of
-<a name="line454"></a>     * the repository; the actual deserialization is done through the methods of
-<a name="line455"></a>     * the ContentHandler. Invalid XML data will cause the ContentHandler to throw
-<a name="line456"></a>     * a SAXException.
-<a name="line457"></a>     *
-<a name="line458"></a>     * As SAX events are fed into the ContentHandler, changes are made directly at
-<a name="line459"></a>     * the workspace level, without going through the Session. As a result, there
-<a name="line460"></a>     * is not need to call save. The advantage of this direct-to-workspace method
-<a name="line461"></a>     * is that a large import will not result in a large cache of pending nodes in
-<a name="line462"></a>     * the Session. The disadvantage is that structures that violate node type
-<a name="line463"></a>     * constraints cannot be imported, fixed and then saved. Instead, a constraint
-<a name="line464"></a>     * violation will cause the ContentHandler to throw a SAXException.
-<a name="line465"></a>     * See SessionInterface::getImportContentHandler for a version of this method
-<a name="line466"></a>     * that does go through the Session.
-<a name="line467"></a>     *
-<a name="line468"></a>     * The flag uuidBehavior governs how the identifiers of incoming (deserialized)
-<a name="line469"></a>     * nodes are handled. There are four options:
-<a name="line470"></a>     *
-<a name="line471"></a>     * - ImportUUIDBehavior::IMPORT_UUID_CREATE_NEW: Incoming nodes are assigned newly
-<a name="line472"></a>     *   created identifiers upon addition to the workspace. As a result identifier
-<a name="line473"></a>     *  collisions never occur.
-<a name="line474"></a>     * - ImportUUIDBehavior::IMPORT_UUID_COLLISION_REMOVE_EXISTING: If an incoming node
-<a name="line475"></a>     *   has the same identifier as a node already existing in the workspace, then the
-<a name="line476"></a>     *   already existing node (and its subgraph) is removed from wherever it may be in
-<a name="line477"></a>     *   the workspace before the incoming node is added. Note that this can result in
-<a name="line478"></a>     *   nodes &quot;disappearing&quot; from locations in the workspace that are remote from the
-<a name="line479"></a>     *   location to which the incoming subgraph is being written.
-<a name="line480"></a>     * - ImportUUIDBehavior::IMPORT_UUID_COLLISION_REPLACE_EXISTING: If an incoming node
-<a name="line481"></a>     *   has the same identifier as a node already existing in the workspace then the
-<a name="line482"></a>     *   already existing node is replaced by the incoming node in the same position as
-<a name="line483"></a>     *   the existing node. Note that this may result in the incoming subgraph being
-<a name="line484"></a>     *   disaggregated and &quot;spread around&quot; to different locations in the workspace. In
-<a name="line485"></a>     *   the most extreme case this behavior may result in no node at all being added as
-<a name="line486"></a>     *   child of parentAbsPath. This will occur if the topmost element of the incoming
-<a name="line487"></a>     *   XML has the same identifier as an existing node elsewhere in the workspace.
-<a name="line488"></a>     * - ImportUUIDBehavior::IMPORT_UUID_COLLISION_THROW: If an incoming node has the same
-<a name="line489"></a>     *   identifier as a node already existing in the workspace then a SAXException is
-<a name="line490"></a>     *   thrown by the returned ContentHandler during deserialization.
-<a name="line491"></a>     *
-<a name="line492"></a>     * A SAXException will be thrown by the returned ContentHandler during deserialization
-<a name="line493"></a>     * if the top-most element of the incoming XML would deserialize to a node with the same
-<a name="line494"></a>     * name as an existing child of parentAbsPath and that child does not allow same-name
-<a name="line495"></a>     * siblings.
-<a name="line496"></a>     * A SAXException will also be thrown by the returned ContentHandler during
-<a name="line497"></a>     * deserialization if uuidBehavior is set to IMPORT_UUID_COLLISION_REMOVE_EXISTING
-<a name="line498"></a>     * and an incoming node has the same identifier as the node at parentAbsPath or
-<a name="line499"></a>     * one of its ancestors.
-<a name="line500"></a>     *
-<a name="line501"></a>     * @param string $parentAbsPath the absolute path of a node under which (as child) the imported subgraph will be built.
-<a name="line502"></a>     * @param integer $uuidBehavior a four-value flag that governs how incoming identifiers are handled.
-<a name="line503"></a>     * @return \PHPCR\ContentHandlerInterface whose methods may be called to feed SAX events into the deserializer.
-<a name="line504"></a>     *
-<a name="line505"></a>     * @throws \PHPCR\PathNotFoundException if no node exists at $parentAbsPath.
-<a name="line506"></a>     * @throws \PHPCR\ConstraintViolationException if the new subgraph cannot be added to the node at $parentAbsPath due
-<a name="line507"></a>     *                                             to node-type or other implementation-specific constraints, and this
-<a name="line508"></a>     *                                             can be determined before the first SAX event is sent. Unlike
-<a name="line509"></a>     *                                             Session#getImportContentHandler, this method also enforces node type
-<a name="line510"></a>     *                                             constraints by throwing SAXExceptions during deserialization.
-<a name="line511"></a>     *                                             However, which node type constraints are enforced depends upon
-<a name="line512"></a>     *                                             whether node type information in the imported data is respected,
-<a name="line513"></a>     *                                             and this is an implementation-specific issue.
-<a name="line514"></a>     * @throws \PHPCR\Version\VersionException if the node at $parentAbsPath is read-only due to a checked-in node.
-<a name="line515"></a>     * @throws \PHPCR\Lock\LockException if a lock prevents the addition of the subgraph.
-<a name="line516"></a>     * @throws \PHPCR\AccessDeniedException if the session associated with this Workspace object does not have
-<a name="line517"></a>     *                                      sufficient access to perform the import.
-<a name="line518"></a>     * @throws \PHPCR\RepositoryException if another error occurs.
-<a name="line519"></a>     *
-<a name="line520"></a>     * @api
-<a name="line521"></a>     */</span>
-<a name="line522"></a>    <span style="color: #666666; font-style: italic;">//Dropped for now. If you have an excellent and generic idea for this, suggestions are welcome</span>
-<a name="line523"></a>    <span style="color: #666666; font-style: italic;">//function getImportContentHandler($parentAbsPath, $uuidBehavior);</span>
-<a name="line524"></a>&nbsp;
-<a name="line525"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line526"></a>     * Deserializes an XML document and adds the resulting item subgraph as a child of the node at $parentAbsPath.
+<a name="line386"></a>     * @return \PHPCR\Transaction\UserTransactionInterface a UserTransaction object.
+<a name="line387"></a>     * @api
+<a name="line388"></a>     */</span>
+<a name="line389"></a>    <span style="color: #000000; font-weight: bold;">function</span> getTransactionManager<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line390"></a>&nbsp;
+<a name="line391"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line392"></a>     * Returns the NamespaceRegistry object, which is used to access the mapping between prefixes and namespaces.
+<a name="line393"></a>     *
+<a name="line394"></a>     * In level 2 repositories the NamespaceRegistry can also be used to change the namespace mappings.
+<a name="line395"></a>     *
+<a name="line396"></a>     * @return \PHPCR\NamespaceRegistryInterface the NamespaceRegistry.
+<a name="line397"></a>     * @throws \PHPCR\RepositoryException if an error occurs.
+<a name="line398"></a>     * @api
+<a name="line399"></a>     */</span>
+<a name="line400"></a>    <span style="color: #000000; font-weight: bold;">function</span> getNamespaceRegistry<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line401"></a>&nbsp;
+<a name="line402"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line403"></a>     * Returns the NodeTypeManager through which node type information can be queried.
+<a name="line404"></a>     *
+<a name="line405"></a>     * There is one node type registry per repository, therefore the NodeTypeManager
+<a name="line406"></a>     * is not workspace-specific; it provides introspection methods for the global,
+<a name="line407"></a>     * repository-wide set of available node types. In repositories that support it,
+<a name="line408"></a>     * the NodeTypeManager can also be used to register new node types.
+<a name="line409"></a>     *
+<a name="line410"></a>     * @return \PHPCR\NodeType\NodeTypeManagerInterface a NodeTypeManager object.
+<a name="line411"></a>     * @throws \PHPCR\RepositoryException if an error occurs.
+<a name="line412"></a>     * @api
+<a name="line413"></a>     */</span>
+<a name="line414"></a>    <span style="color: #000000; font-weight: bold;">function</span> getNodeTypeManager<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line415"></a>&nbsp;
+<a name="line416"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line417"></a>     * Returns the ObservationManager object.
+<a name="line418"></a>     *
+<a name="line419"></a>     * @return \PHPCR\Observation\ObservationManagerInterface an ObservationManager object.
+<a name="line420"></a>     * @throws \PHPCR\UnsupportedRepositoryOperationException if the implementation does not support observation.
+<a name="line421"></a>     * @throws \PHPCR\RepositoryException if an error occurs.
+<a name="line422"></a>     * @api
+<a name="line423"></a>     */</span>
+<a name="line424"></a>    <span style="color: #000000; font-weight: bold;">function</span> getObservationManager<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line425"></a>&nbsp;
+<a name="line426"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line427"></a>     * Returns the VersionManager object.
+<a name="line428"></a>     *
+<a name="line429"></a>     * @return \PHPCR\Version\VersionManagerInterface a VersionManager object.
+<a name="line430"></a>     * @throws \PHPCR\UnsupportedRepositoryOperationException if the implementation does not support versioning.
+<a name="line431"></a>     * @throws \PHPCR\RepositoryException if an error occurs.
+<a name="line432"></a>     * @api
+<a name="line433"></a>     */</span>
+<a name="line434"></a>    <span style="color: #000000; font-weight: bold;">function</span> getVersionManager<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line435"></a>&nbsp;
+<a name="line436"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line437"></a>     * Gets a set of workspace accessible to the current user.
+<a name="line438"></a>     *
+<a name="line439"></a>     * Returns a string array containing the names of all workspaces in this
+<a name="line440"></a>     * repository that are accessible to this user, given the Credentials that
+<a name="line441"></a>     * were used to get the Session to which this Workspace is tied.
+<a name="line442"></a>     * In order to access one of the listed workspaces, the user performs
+<a name="line443"></a>     * another RepositoryInterface::login(), specifying the name of the desired workspace,
+<a name="line444"></a>     * and receives a new Session object.
+<a name="line445"></a>     *
+<a name="line446"></a>     * @return array string array of names of accessible workspaces.
+<a name="line447"></a>     * @throws \PHPCR\RepositoryException if an error occurs
+<a name="line448"></a>     * @api
+<a name="line449"></a>     */</span>
+<a name="line450"></a>    <span style="color: #000000; font-weight: bold;">function</span> getAccessibleWorkspaceNames<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line451"></a>&nbsp;
+<a name="line452"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line453"></a>     * Returns an \PHPCR\ContentHandlerInterface which can be used to push SAX events into the repository.
+<a name="line454"></a>     *
+<a name="line455"></a>     * If the incoming XML stream (in the form of SAX events)
+<a name="line456"></a>     * does not appear to be a JCR system view XML document then it is interpreted
+<a name="line457"></a>     * as a document view XML document.
+<a name="line458"></a>     * The incoming XML is deserialized into a subgraph of items immediately below
+<a name="line459"></a>     * the node at parentAbsPath.
+<a name="line460"></a>     *
+<a name="line461"></a>     * This method simply returns the ContentHandler without altering the state of
+<a name="line462"></a>     * the repository; the actual deserialization is done through the methods of
+<a name="line463"></a>     * the ContentHandler. Invalid XML data will cause the ContentHandler to throw
+<a name="line464"></a>     * a SAXException.
+<a name="line465"></a>     *
+<a name="line466"></a>     * As SAX events are fed into the ContentHandler, changes are made directly at
+<a name="line467"></a>     * the workspace level, without going through the Session. As a result, there
+<a name="line468"></a>     * is not need to call save. The advantage of this direct-to-workspace method
+<a name="line469"></a>     * is that a large import will not result in a large cache of pending nodes in
+<a name="line470"></a>     * the Session. The disadvantage is that structures that violate node type
+<a name="line471"></a>     * constraints cannot be imported, fixed and then saved. Instead, a constraint
+<a name="line472"></a>     * violation will cause the ContentHandler to throw a SAXException.
+<a name="line473"></a>     * See SessionInterface::getImportContentHandler for a version of this method
+<a name="line474"></a>     * that does go through the Session.
+<a name="line475"></a>     *
+<a name="line476"></a>     * The flag uuidBehavior governs how the identifiers of incoming (deserialized)
+<a name="line477"></a>     * nodes are handled. There are four options:
+<a name="line478"></a>     *
+<a name="line479"></a>     * - ImportUUIDBehavior::IMPORT_UUID_CREATE_NEW: Incoming nodes are assigned newly
+<a name="line480"></a>     *   created identifiers upon addition to the workspace. As a result identifier
+<a name="line481"></a>     *  collisions never occur.
+<a name="line482"></a>     * - ImportUUIDBehavior::IMPORT_UUID_COLLISION_REMOVE_EXISTING: If an incoming node
+<a name="line483"></a>     *   has the same identifier as a node already existing in the workspace, then the
+<a name="line484"></a>     *   already existing node (and its subgraph) is removed from wherever it may be in
+<a name="line485"></a>     *   the workspace before the incoming node is added. Note that this can result in
+<a name="line486"></a>     *   nodes &quot;disappearing&quot; from locations in the workspace that are remote from the
+<a name="line487"></a>     *   location to which the incoming subgraph is being written.
+<a name="line488"></a>     * - ImportUUIDBehavior::IMPORT_UUID_COLLISION_REPLACE_EXISTING: If an incoming node
+<a name="line489"></a>     *   has the same identifier as a node already existing in the workspace then the
+<a name="line490"></a>     *   already existing node is replaced by the incoming node in the same position as
+<a name="line491"></a>     *   the existing node. Note that this may result in the incoming subgraph being
+<a name="line492"></a>     *   disaggregated and &quot;spread around&quot; to different locations in the workspace. In
+<a name="line493"></a>     *   the most extreme case this behavior may result in no node at all being added as
+<a name="line494"></a>     *   child of parentAbsPath. This will occur if the topmost element of the incoming
+<a name="line495"></a>     *   XML has the same identifier as an existing node elsewhere in the workspace.
+<a name="line496"></a>     * - ImportUUIDBehavior::IMPORT_UUID_COLLISION_THROW: If an incoming node has the same
+<a name="line497"></a>     *   identifier as a node already existing in the workspace then a SAXException is
+<a name="line498"></a>     *   thrown by the returned ContentHandler during deserialization.
+<a name="line499"></a>     *
+<a name="line500"></a>     * A SAXException will be thrown by the returned ContentHandler during deserialization
+<a name="line501"></a>     * if the top-most element of the incoming XML would deserialize to a node with the same
+<a name="line502"></a>     * name as an existing child of parentAbsPath and that child does not allow same-name
+<a name="line503"></a>     * siblings.
+<a name="line504"></a>     * A SAXException will also be thrown by the returned ContentHandler during
+<a name="line505"></a>     * deserialization if uuidBehavior is set to IMPORT_UUID_COLLISION_REMOVE_EXISTING
+<a name="line506"></a>     * and an incoming node has the same identifier as the node at parentAbsPath or
+<a name="line507"></a>     * one of its ancestors.
+<a name="line508"></a>     *
+<a name="line509"></a>     * @param string $parentAbsPath the absolute path of a node under which (as child) the imported subgraph will be built.
+<a name="line510"></a>     * @param integer $uuidBehavior a four-value flag that governs how incoming identifiers are handled.
+<a name="line511"></a>     * @return \PHPCR\ContentHandlerInterface whose methods may be called to feed SAX events into the deserializer.
+<a name="line512"></a>     *
+<a name="line513"></a>     * @throws \PHPCR\PathNotFoundException if no node exists at $parentAbsPath.
+<a name="line514"></a>     * @throws \PHPCR\ConstraintViolationException if the new subgraph cannot be added to the node at $parentAbsPath due
+<a name="line515"></a>     *                                             to node-type or other implementation-specific constraints, and this
+<a name="line516"></a>     *                                             can be determined before the first SAX event is sent. Unlike
+<a name="line517"></a>     *                                             Session#getImportContentHandler, this method also enforces node type
+<a name="line518"></a>     *                                             constraints by throwing SAXExceptions during deserialization.
+<a name="line519"></a>     *                                             However, which node type constraints are enforced depends upon
+<a name="line520"></a>     *                                             whether node type information in the imported data is respected,
+<a name="line521"></a>     *                                             and this is an implementation-specific issue.
+<a name="line522"></a>     * @throws \PHPCR\Version\VersionException if the node at $parentAbsPath is read-only due to a checked-in node.
+<a name="line523"></a>     * @throws \PHPCR\Lock\LockException if a lock prevents the addition of the subgraph.
+<a name="line524"></a>     * @throws \PHPCR\AccessDeniedException if the session associated with this Workspace object does not have
+<a name="line525"></a>     *                                      sufficient access to perform the import.
+<a name="line526"></a>     * @throws \PHPCR\RepositoryException if another error occurs.
 <a name="line527"></a>     *
-<a name="line528"></a>     * If the incoming XML does not appear to be a JCR system view XML document
-<a name="line529"></a>     * then it is interpreted as a document view XML document.
-<a name="line530"></a>     *
-<a name="line531"></a>     * Changes are made directly at the workspace level, without going through
-<a name="line532"></a>     * the Session. As a result, there is not need to call save. The advantage
-<a name="line533"></a>     * of this direct-to-workspace method is that a large import will not result
-<a name="line534"></a>     * in a large cache of pending nodes in the Session. The disadvantage is
-<a name="line535"></a>     * that invalid data cannot be imported, fixed and then saved. Instead,
-<a name="line536"></a>     * invalid data will cause this method to throw an InvalidSerializedDataException.
-<a name="line537"></a>     * See SessionInterface::importXML() for a version of this method that does go through
-<a name="line538"></a>     * the Session.
-<a name="line539"></a>     *
-<a name="line540"></a>     * The flag $uuidBehavior governs how the identifiers of incoming (deserialized)
-<a name="line541"></a>     * nodes are handled. There are four options:
-<a name="line542"></a>     *
-<a name="line543"></a>     * - ImportUUIDBehavior::IMPORT_UUID_CREATE_NEW: Incoming nodes are assigned newly
-<a name="line544"></a>     *   created identifiers upon addition to the workspace. As a result identifier
-<a name="line545"></a>     *   collisions never occur.
-<a name="line546"></a>     * - ImportUUIDBehavior::IMPORT_UUID_COLLISION_REMOVE_EXISTING: If an incoming node
-<a name="line547"></a>     *   has the same identifier as a node already existing in the workspace then the
-<a name="line548"></a>     *   already existing node (and its subgraph) is removed from wherever it may be
-<a name="line549"></a>     *   in the workspace before the incoming node is added. Note that this can result
-<a name="line550"></a>     *   in nodes &quot;disappearing&quot; from locations in the workspace that are remote from
-<a name="line551"></a>     *   the location to which the incoming subgraph is being written. If an incoming
-<a name="line552"></a>     *   node has the same identifier as the existing root node of this workspace then
-<a name="line553"></a>     * - ImportUUIDBehavior::IMPORT_UUID_COLLISION_REPLACE_EXISTING: If an incoming node
-<a name="line554"></a>     *   has the same identifier as a node already existing in the workspace then the
-<a name="line555"></a>     *   already existing node is replaced by the incoming node in the same position as
-<a name="line556"></a>     *   the existing node. Note that this may result in the incoming subgraph being
-<a name="line557"></a>     *   disaggregated and &quot;spread around&quot; to different locations in the workspace. In
-<a name="line558"></a>     *   the most extreme edge case this behavior may result in no node at all being
-<a name="line559"></a>     *   added as child of parentAbsPath. This will occur if the topmost element of the
-<a name="line560"></a>     *   incoming XML has the same identifier as an existing node elsewhere in the
-<a name="line561"></a>     *   workspace.
-<a name="line562"></a>     * - ImportUUIDBehavior::IMPORT_UUID_COLLISION_THROW: If an incoming node has the
-<a name="line563"></a>     *   same identifier as a node already existing in the workspace then an
-<a name="line564"></a>     *   ItemExistsException is thrown.
-<a name="line565"></a>     *
-<a name="line566"></a>     * @param string $parentAbsPath the absolute path of the node below which the deserialized subgraph is added.
-<a name="line567"></a>     * @param string $in An URI from which the XML to be deserialized is read.
-<a name="line568"></a>     * @param integer $uuidBehavior a four-value flag that governs how incoming identifiers are handled.
-<a name="line569"></a>     * @return void
-<a name="line570"></a>     *
-<a name="line571"></a>     * @throws \RuntimeException if an error during an I/O operation occurs.
-<a name="line572"></a>     * @throws \PHPCR\PathNotFoundException if no node exists at parentAbsPath.
-<a name="line573"></a>     * @throws \PHPCR\ConstraintViolationException if node-type or other implementation-specific constraints prevent the addition of the subgraph or if uuidBehavior is set to IMPORT_UUID_COLLISION_REMOVE_EXISTING and an incoming node has the same identifier as the node at parentAbsPath or one of its ancestors.
-<a name="line574"></a>     * @throws \PHPCR\Version\VersionException if the node at parentAbsPath is read-only due to a checked-in node.
-<a name="line575"></a>     * @throws \PHPCR\InvalidSerializedDataException if incoming stream is not a valid XML document.
-<a name="line576"></a>     * @throws \PHPCR\ItemExistsException if the top-most element of the incoming XML would deserialize to a node with the same name as an existing child of parentAbsPath and that child does not allow same-name siblings, or if a uuidBehavior is set to IMPORT_UUID_COLLISION_THROW and an identifier collision occurs.
-<a name="line577"></a>     * @throws \PHPCR\Lock\LockException if a lock prevents the addition of the subgraph.
-<a name="line578"></a>     * @throws \PHPCR\AccessDeniedException if the session associated with this Workspace object does not have sufficient access to perform the import.
-<a name="line579"></a>     * @throws \PHPCR\RepositoryException if another error occurs.
-<a name="line580"></a>     * @api
-<a name="line581"></a>     */</span>
-<a name="line582"></a>    <span style="color: #000000; font-weight: bold;">function</span> importXML<span style="color: #009900;">&#40;</span><span style="color: #000088;">$parentAbsPath</span><span style="color: #339933;">,</span> <span style="color: #000088;">$in</span><span style="color: #339933;">,</span> <span style="color: #000088;">$uuidBehavior</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line583"></a>&nbsp;
-<a name="line584"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line585"></a>     * Creates a new Workspace with the specified name. The new workspace is empty, meaning it contains only root node.
-<a name="line586"></a>     *
-<a name="line587"></a>     * If srcWorkspace is given:
-<a name="line588"></a>     * Creates a new Workspace with the specified name initialized with a
-<a name="line589"></a>     * clone of the content of the workspace srcWorkspace. Semantically,
-<a name="line590"></a>     * this method is equivalent to creating a new workspace and manually
-<a name="line591"></a>     * cloning srcWorkspace to it; however, this method may assist some
-<a name="line592"></a>     * implementations in optimizing subsequent NodeInterface::update() and
-<a name="line593"></a>     * NodeInterface::merge() calls between the new workspace and its source.
+<a name="line528"></a>     * @api
+<a name="line529"></a>     */</span>
+<a name="line530"></a>    <span style="color: #666666; font-style: italic;">//Dropped for now. If you have an excellent and generic idea for this, suggestions are welcome</span>
+<a name="line531"></a>    <span style="color: #666666; font-style: italic;">//function getImportContentHandler($parentAbsPath, $uuidBehavior);</span>
+<a name="line532"></a>&nbsp;
+<a name="line533"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line534"></a>     * Deserializes an XML document and adds the resulting item subgraph as a child of the node at $parentAbsPath.
+<a name="line535"></a>     *
+<a name="line536"></a>     * If the incoming XML does not appear to be a JCR system view XML document
+<a name="line537"></a>     * then it is interpreted as a document view XML document.
+<a name="line538"></a>     *
+<a name="line539"></a>     * Changes are made directly at the workspace level, without going through
+<a name="line540"></a>     * the Session. As a result, there is not need to call save. The advantage
+<a name="line541"></a>     * of this direct-to-workspace method is that a large import will not result
+<a name="line542"></a>     * in a large cache of pending nodes in the Session. The disadvantage is
+<a name="line543"></a>     * that invalid data cannot be imported, fixed and then saved. Instead,
+<a name="line544"></a>     * invalid data will cause this method to throw an InvalidSerializedDataException.
+<a name="line545"></a>     * See SessionInterface::importXML() for a version of this method that does go through
+<a name="line546"></a>     * the Session.
+<a name="line547"></a>     *
+<a name="line548"></a>     * The flag $uuidBehavior governs how the identifiers of incoming (deserialized)
+<a name="line549"></a>     * nodes are handled. There are four options:
+<a name="line550"></a>     *
+<a name="line551"></a>     * - ImportUUIDBehavior::IMPORT_UUID_CREATE_NEW: Incoming nodes are assigned newly
+<a name="line552"></a>     *   created identifiers upon addition to the workspace. As a result identifier
+<a name="line553"></a>     *   collisions never occur.
+<a name="line554"></a>     * - ImportUUIDBehavior::IMPORT_UUID_COLLISION_REMOVE_EXISTING: If an incoming node
+<a name="line555"></a>     *   has the same identifier as a node already existing in the workspace then the
+<a name="line556"></a>     *   already existing node (and its subgraph) is removed from wherever it may be
+<a name="line557"></a>     *   in the workspace before the incoming node is added. Note that this can result
+<a name="line558"></a>     *   in nodes &quot;disappearing&quot; from locations in the workspace that are remote from
+<a name="line559"></a>     *   the location to which the incoming subgraph is being written. If an incoming
+<a name="line560"></a>     *   node has the same identifier as the existing root node of this workspace then
+<a name="line561"></a>     * - ImportUUIDBehavior::IMPORT_UUID_COLLISION_REPLACE_EXISTING: If an incoming node
+<a name="line562"></a>     *   has the same identifier as a node already existing in the workspace then the
+<a name="line563"></a>     *   already existing node is replaced by the incoming node in the same position as
+<a name="line564"></a>     *   the existing node. Note that this may result in the incoming subgraph being
+<a name="line565"></a>     *   disaggregated and &quot;spread around&quot; to different locations in the workspace. In
+<a name="line566"></a>     *   the most extreme edge case this behavior may result in no node at all being
+<a name="line567"></a>     *   added as child of parentAbsPath. This will occur if the topmost element of the
+<a name="line568"></a>     *   incoming XML has the same identifier as an existing node elsewhere in the
+<a name="line569"></a>     *   workspace.
+<a name="line570"></a>     * - ImportUUIDBehavior::IMPORT_UUID_COLLISION_THROW: If an incoming node has the
+<a name="line571"></a>     *   same identifier as a node already existing in the workspace then an
+<a name="line572"></a>     *   ItemExistsException is thrown.
+<a name="line573"></a>     *
+<a name="line574"></a>     * @param string $parentAbsPath the absolute path of the node below which the deserialized subgraph is added.
+<a name="line575"></a>     * @param string $in An URI from which the XML to be deserialized is read.
+<a name="line576"></a>     * @param integer $uuidBehavior a four-value flag that governs how incoming identifiers are handled.
+<a name="line577"></a>     * @return void
+<a name="line578"></a>     *
+<a name="line579"></a>     * @throws \RuntimeException if an error during an I/O operation occurs.
+<a name="line580"></a>     * @throws \PHPCR\PathNotFoundException if no node exists at parentAbsPath.
+<a name="line581"></a>     * @throws \PHPCR\ConstraintViolationException if node-type or other implementation-specific constraints prevent the addition of the subgraph or if uuidBehavior is set to IMPORT_UUID_COLLISION_REMOVE_EXISTING and an incoming node has the same identifier as the node at parentAbsPath or one of its ancestors.
+<a name="line582"></a>     * @throws \PHPCR\Version\VersionException if the node at parentAbsPath is read-only due to a checked-in node.
+<a name="line583"></a>     * @throws \PHPCR\InvalidSerializedDataException if incoming stream is not a valid XML document.
+<a name="line584"></a>     * @throws \PHPCR\ItemExistsException if the top-most element of the incoming XML would deserialize to a node with the same name as an existing child of parentAbsPath and that child does not allow same-name siblings, or if a uuidBehavior is set to IMPORT_UUID_COLLISION_THROW and an identifier collision occurs.
+<a name="line585"></a>     * @throws \PHPCR\Lock\LockException if a lock prevents the addition of the subgraph.
+<a name="line586"></a>     * @throws \PHPCR\AccessDeniedException if the session associated with this Workspace object does not have sufficient access to perform the import.
+<a name="line587"></a>     * @throws \PHPCR\RepositoryException if another error occurs.
+<a name="line588"></a>     * @api
+<a name="line589"></a>     */</span>
+<a name="line590"></a>    <span style="color: #000000; font-weight: bold;">function</span> importXML<span style="color: #009900;">&#40;</span><span style="color: #000088;">$parentAbsPath</span><span style="color: #339933;">,</span> <span style="color: #000088;">$in</span><span style="color: #339933;">,</span> <span style="color: #000088;">$uuidBehavior</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line591"></a>&nbsp;
+<a name="line592"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line593"></a>     * Creates a new Workspace with the specified name. The new workspace is empty, meaning it contains only root node.
 <a name="line594"></a>     *
-<a name="line595"></a>     * The new workspace can be accessed through a login specifying its name.
-<a name="line596"></a>     *
-<a name="line597"></a>     * @param string $name A String, the name of the new workspace.
-<a name="line598"></a>     * @param string $srcWorkspace The name of the workspace from which the new workspace is to be cloned.
-<a name="line599"></a>     * @return void
-<a name="line600"></a>     *
-<a name="line601"></a>     * @throws \PHPCR\AccessDeniedException if the session through which this Workspace object was acquired does not have sufficient access to create the new workspace.
-<a name="line602"></a>     * @throws \PHPCR\UnsupportedRepositoryOperationException if the repository does not support the creation of workspaces.
-<a name="line603"></a>     * @throws \PHPCR\NoSuchWorkspaceException if $srcWorkspace does not exist.
-<a name="line604"></a>     * @throws \PHPCR\RepositoryException if another error occurs.
-<a name="line605"></a>     * @api
-<a name="line606"></a>     */</span>
-<a name="line607"></a>    <span style="color: #000000; font-weight: bold;">function</span> createWorkspace<span style="color: #009900;">&#40;</span><span style="color: #000088;">$name</span><span style="color: #339933;">,</span> <span style="color: #000088;">$srcWorkspace</span> <span style="color: #339933;">=</span> <span style="color: #009900; font-weight: bold;">null</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line608"></a>&nbsp;
-<a name="line609"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line610"></a>     * Deletes the workspace with the specified name from the repository, deleting all content within it.
-<a name="line611"></a>     *
-<a name="line612"></a>     * @param string $name A String, the name of the workspace to be deleted.
-<a name="line613"></a>     * @return void
-<a name="line614"></a>     *
-<a name="line615"></a>     * @throws \PHPCR\AccessDeniedException if the session through which this Workspace object was acquired does not have sufficient access to remove the workspace.
-<a name="line616"></a>     * @throws \PHPCR\UnsupportedRepositoryOperationException if the repository does not support the removal of workspaces.
-<a name="line617"></a>     * @throws \PHPCR\NoSuchWorkspaceException if $name does not exist.
-<a name="line618"></a>     * @throws \PHPCR\RepositoryException if another error occurs.
-<a name="line619"></a>     * @api
-<a name="line620"></a>     */</span>
-<a name="line621"></a>    <span style="color: #000000; font-weight: bold;">function</span> deleteWorkspace<span style="color: #009900;">&#40;</span><span style="color: #000088;">$name</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line622"></a><span style="color: #009900;">&#125;</span>
-<a name="line623"></a>&nbsp;</pre>
+<a name="line595"></a>     * If srcWorkspace is given:
+<a name="line596"></a>     * Creates a new Workspace with the specified name initialized with a
+<a name="line597"></a>     * clone of the content of the workspace srcWorkspace. Semantically,
+<a name="line598"></a>     * this method is equivalent to creating a new workspace and manually
+<a name="line599"></a>     * cloning srcWorkspace to it; however, this method may assist some
+<a name="line600"></a>     * implementations in optimizing subsequent NodeInterface::update() and
+<a name="line601"></a>     * NodeInterface::merge() calls between the new workspace and its source.
+<a name="line602"></a>     *
+<a name="line603"></a>     * The new workspace can be accessed through a login specifying its name.
+<a name="line604"></a>     *
+<a name="line605"></a>     * @param string $name A String, the name of the new workspace.
+<a name="line606"></a>     * @param string $srcWorkspace The name of the workspace from which the new workspace is to be cloned.
+<a name="line607"></a>     * @return void
+<a name="line608"></a>     *
+<a name="line609"></a>     * @throws \PHPCR\AccessDeniedException if the session through which this Workspace object was acquired does not have sufficient access to create the new workspace.
+<a name="line610"></a>     * @throws \PHPCR\UnsupportedRepositoryOperationException if the repository does not support the creation of workspaces.
+<a name="line611"></a>     * @throws \PHPCR\NoSuchWorkspaceException if $srcWorkspace does not exist.
+<a name="line612"></a>     * @throws \PHPCR\RepositoryException if another error occurs.
+<a name="line613"></a>     * @api
+<a name="line614"></a>     */</span>
+<a name="line615"></a>    <span style="color: #000000; font-weight: bold;">function</span> createWorkspace<span style="color: #009900;">&#40;</span><span style="color: #000088;">$name</span><span style="color: #339933;">,</span> <span style="color: #000088;">$srcWorkspace</span> <span style="color: #339933;">=</span> <span style="color: #009900; font-weight: bold;">null</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line616"></a>&nbsp;
+<a name="line617"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line618"></a>     * Deletes the workspace with the specified name from the repository, deleting all content within it.
+<a name="line619"></a>     *
+<a name="line620"></a>     * @param string $name A String, the name of the workspace to be deleted.
+<a name="line621"></a>     * @return void
+<a name="line622"></a>     *
+<a name="line623"></a>     * @throws \PHPCR\AccessDeniedException if the session through which this Workspace object was acquired does not have sufficient access to remove the workspace.
+<a name="line624"></a>     * @throws \PHPCR\UnsupportedRepositoryOperationException if the repository does not support the removal of workspaces.
+<a name="line625"></a>     * @throws \PHPCR\NoSuchWorkspaceException if $name does not exist.
+<a name="line626"></a>     * @throws \PHPCR\RepositoryException if another error occurs.
+<a name="line627"></a>     * @api
+<a name="line628"></a>     */</span>
+<a name="line629"></a>    <span style="color: #000000; font-weight: bold;">function</span> deleteWorkspace<span style="color: #009900;">&#40;</span><span style="color: #000088;">$name</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line630"></a><span style="color: #009900;">&#125;</span>
+<a name="line631"></a>&nbsp;</pre>
 <div class="header">
 <h1>PHPCR</h1>
 <ul>
