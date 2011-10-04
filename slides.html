@@ -1992,15 +1992,18 @@ SyntaxHighlighter.brushes.Xml.aliases	= ['xml', 'xhtml', 'xslt', 'html'];
         <div class="slide">
             <h2>Connecting via PHPCR</h2>
             <pre class="brush: php">
-$factoryclass = '\Jackalope\RepositoryFactoryJackrabbit';
-$parameters = array('jackalope.jackrabbit_uri' =&gt; 'http://localhost:8080/server');
+$factory = '\Jackalope\RepositoryFactoryJackrabbit';
+$parameters = array(
+    'jackalope.jackrabbit_uri'
+        =&gt; 'http://localhost:8080/server'
+);
 
 // end of implementation specific configuration //
 
-$factory = new $factoryclass();
+$factory = new $factory();
 $repository = $factory-&gt;getRepository($parameters);
-$credentials = new \PHPCR\SimpleCredentials('admin','admin');
-$session = $repository-&gt;login($credentials, 'default');
+$creds = new \PHPCR\SimpleCredentials('user','pw');
+$session = $repository-&gt;login($creds, 'default');
             </pre>
         </div>
 
@@ -2039,7 +2042,7 @@ foreach ($node as $child) {
 }
 
 // filter on node names
-foreach ($node-&gt;getChildren('di*' as $child) {
+foreach ($node-&gt;getChildren('di*') as $child) {
     var_dump($child-&gt;getName());
 }
             </pre>
