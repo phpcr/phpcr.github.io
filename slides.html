@@ -2209,12 +2209,12 @@ class NavigationRepository
     /**
      * Generate a document id
      *
-     * @param Navigation $document
+     * @param Navigation $doc
      * @return string
      */
-    public function generateId(Navigation $document)
+    public function generateId(Navigation $doc)
     {
-        return '/site/content/'.$document-&gt;getLabel();
+        return '/site/content/'.$doc-&gt;getLabel();
     }
 }
             </pre>
@@ -2224,23 +2224,23 @@ class NavigationRepository
             <h2>ODM CRUD API</h2>
             <pre class="brush: php">
 // Create
-$document = new Navigation();
-$document-&gt;setLabel($label)
-$documentManager-&gt;persist($document);
-$documentManager-&gt;flush();
-$id = $document-&gt;id;
+$doc = new Navigation();
+$doc-&gt;setLabel($label)
+$docManager-&gt;persist($doc);
+$docManager-&gt;flush();
+$id = $doc-&gt;id;
 
 // Read
-$repo = $documentManager-&gt;getRepository('Navigation');
-$document = $repo-&gt;find($id);
+$repo = $docManager-&gt;getRepository('Navigation');
+$doc = $repo-&gt;find($id);
 
 // Update
-$document-&gt;setLabel('home');
-$documentManager-&gt;flush();
+$doc-&gt;setLabel('home');
+$docManager-&gt;flush();
 
 // Remove
-$documentManager-&gt;remove($document);
-$documentManager-&gt;flush();
+$docManager-&gt;remove($doc);
+$docManager-&gt;flush();
             </pre>
         </div>
 
