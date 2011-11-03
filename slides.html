@@ -1947,7 +1947,7 @@ SyntaxHighlighter.brushes.Xml.aliases	= ['xml', 'xhtml', 'xslt', 'html'];
             <h2>Properties</h2>
             <ul><li>A <strong>Node</strong> has named <strong>Properties</strong> with values</li>
                 <li>May use namespaces to avoid name collisions
-                    <ul><li>jcr:created, jcr:mimeType, phpcr:alias</li></ul></li>
+                    <ul><li>jcr:created, jcr:mimeType, phpcr:class</li></ul></li>
                 <li>Use one of the following types
                     <ul><li>STRING, URI, BOOLEAN, LONG, DOUBLE, DECIMAL, BINARY, DATE, NAME, PATH, WEAKREFERENCE, REFERENCE</li></ul></li>
             </ul></div>
@@ -2107,7 +2107,7 @@ var_dump($node-&gt;getProperty('label')) // About
 $queryManager = $workspace-&gt;getQueryManager();
 
 $sql = "SELECT * FROM [nt:unstructured]
-    WHERE [nt:unstructured].[phpcr:alias] = 'nav'
+    WHERE [nt:unstructured].type = 'nav'
     ORDER BY [nt:unstructured].title";
 $query =
     $queryManager-&gt;createQuery($sql, 'JCR-SQL2');
@@ -2335,7 +2335,7 @@ $docManager-&gt;flush();
             <h2>Github projects</h2>
             <ul><li><a href="https://github.com/phpcr/phpcr">PHPCR</a></li>
                 <li><a href="https://github.com/jackalope/jackalope">Jackalope</a></li>
-                <li><a href="https://github.com/bergie/phpcr-midgard2">Midgard2 CR</a></li>
+                <li><a href="https://github.com/midgardproject/phpcr-midgard2">Midgard2 CR</a></li>
                 <li><a href="https://github.com/doctrine/phpcr-odm">PHPCR ODM</a></li>
             </ul></div>
 
