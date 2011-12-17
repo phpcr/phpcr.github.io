@@ -1990,15 +1990,14 @@ SyntaxHighlighter.brushes.Xml.aliases	= ['xml', 'xhtml', 'xslt', 'html'];
         <div class="slide">
             <h2>Connecting via PHPCR</h2>
             <pre class="brush: php">
-$factory = '\Jackalope\RepositoryFactoryJackrabbit';
+// start of implementation specific configuration //
+$factory = new \Jackalope\RepositoryFactoryJackrabbit();
 $parameters = array(
     'jackalope.jackrabbit_uri'
         =&gt; 'http://localhost:8080/server'
 );
-
 // end of implementation specific configuration //
 
-$factory = new $factory();
 $repository = $factory-&gt;getRepository($parameters);
 $creds = new \PHPCR\SimpleCredentials('user','pw');
 $session = $repository-&gt;login($creds, 'default');
@@ -2047,24 +2046,6 @@ foreach ($node-&gt;getChildren('di*') as $child) {
         </div>
 
         <div class="slide">
-            <h2>Tree API</h2>
-            <pre class="brush: php">
-$node = $session-&gt;getNode('/site/content/about');
-
-$i = 0;
-$breadcrumb = array();
-
-// note this code doesn't handle graphs
-do {
-    $i++;
-    $parent = $node-&gt;getAncestor($i);
-    $breadcrumb[$parent-&gt;getPath()] =
-        $parent-&gt;getPropertyValue('label');
-} while ($parent != $node);
-            </pre>
-        </div>
-
-        <div class="slide">
             <h2>Versioning API</h2>
             <pre class="brush: php">
 // make versionable
@@ -2077,6 +2058,8 @@ $vm = $session-&gt;getWorkspace()-&gt;getVersionManager()
 // create initial version
 $node-&gt;setProperty('label', 'About');
 $session-&gt;save();
+// check-in (create version) and check-out (prepare for further updates)
+// this is persisted immediately without a save() call
 $vm-&gt;checkpoint($node-&gt;getPath());
             </pre>
         </div>
@@ -2084,16 +2067,20 @@ $vm-&gt;checkpoint($node-&gt;getPath());
         <div class="slide">
             <h2>Versioning API</h2>
             <pre class="brush: php">
-// update version
+// update node with some changes
 $node-&gt;setProperty('label', 'Ups');
 $session-&gt;save();
-$vm-&gt;checkpoint($node-&gt;getPath());
+
+// create another version, leave in read only state
+$vm-&gt;checkin($node-&gt;getPath());
 
 $base = $vm-&gt;getBaseVersion($node-&gt;getPath());
-$previous = array_pop($base-&gt;getPredecessors());
-$vm-&gt;restore(true,
-             $previous-&gt;getName(),
-             $node-&gt;getPath()
+$current = array_shift($base-&gt;getPredecessors());
+$previous = array_shift($base-&gt;getPredecessors());
+$vm-&gt;restore(
+    true,
+    $previous-&gt;getName(),
+    $node-&gt;getPath()
 );
 
 $node = $session-&gt;getNode('/site/content/about');
@@ -2104,13 +2091,15 @@ var_dump($node-&gt;getProperty('label')) // About
         <div class="slide">
             <h2>Search via SQL2 API</h2>
             <pre class="brush: php">
-$queryManager = $workspace-&gt;getQueryManager();
+$qm = $workspace-&gt;getQueryManager();
 
+// unlike SQL, in SQL2 "*" does not return all columns
+// but at least the path and match score
 $sql = "SELECT * FROM [nt:unstructured]
     WHERE [nt:unstructured].type = 'nav'
-    ORDER BY [nt:unstructured].title";
-$query =
-    $queryManager-&gt;createQuery($sql, 'JCR-SQL2');
+    AND ISDESCENDANTNODE('/some/path')
+    ORDER BY score, [nt:unstructured].title";
+$query = $qm-&gt;createQuery($sql, 'JCR-SQL2');
 $query-&gt;setLimit($limit);
 $query-&gt;setOffset($offset);
 $queryResult = $query-&gt;execute();
@@ -2128,26 +2117,27 @@ foreach ($queryResult-&gt;getNodes() as $node) {
                 <li>Discover interpretation issues, better compatibility</li>
                 <li>Implementors need to write less tests of their own</li>
             </ul><pre style="font-size:0.8em; margin-top:20px">
-david@wintermute:~/liip/jackalope&gt; phpunit -c tests/
-PHPUnit 3.5.14 by Sebastian Bergmann.
+Soitgoes:jackalope lsmith$ phpunit -c tests/phpunit_jackrabbit.xml.dist
+PHPUnit 3.6.3 by Sebastian Bergmann.
 
-S..II............S...................SSSSSSSSSSSSSSSS..........  63 / 702 (  8%)
-.............................S......S..................S.SSSSSS 126 / 702 ( 17%)
-...............SSS.............I.I.I.I.....I.III..SS.SSS..S.... 189 / 702 ( 26%)
-.......................................SSSSSS.S................ 252 / 702 ( 35%)
-.I...............I..I........SI..................S.......I..... 315 / 702 ( 44%)
-...............S............................................... 378 / 702 ( 53%)
-..........................................I..S................. 441 / 702 ( 62%)
-I.......II..................S.................................. 504 / 702 ( 71%)
-............................................................... 567 / 702 ( 80%)
-............................................................... 630 / 702 ( 89%)
-..................................I....I......S................ 693 / 702 ( 98%)
-..SSS...
+...SSSSSSSS.........S.....II...............S.S.................  63 / 807 (  7%)
+.......................SSSS.S.......S....SSSSSSSSSSSSSSSS...... 126 / 807 ( 15%)
+.....................................SSS..............I.I.I.I.. 189 / 807 ( 23%)
+.....................I...............I..I........SI............ 252 / 807 ( 31%)
+............................................................... 315 / 807 ( 39%)
+................S.......I....................S..S.............. 378 / 807 ( 46%)
+.....................SS............SSSS..S..................... 441 / 807 ( 54%)
+................................................SSSSS.......... 504 / 807 ( 62%)
+......................I......S..........I...................... 567 / 807 ( 70%)
+.............SSS...........S..................I................ 630 / 807 ( 78%)
+............................................................... 693 / 807 ( 85%)
+............................................................... 756 / 807 ( 93%)
+................................S......S........I
 
-Time: 01:06, Memory: 70.50Mb
+Time: 01:08, Memory: 168.00Mb
 
 OK, but incomplete or skipped tests!
-Tests: 701, Assertions: 4299, Incomplete: 21, Skipped: 52.
+Tests: 801, Assertions: 5356, Incomplete: 15, Skipped: 59.
             </pre>
         </div>
 
@@ -2160,6 +2150,8 @@ Tests: 701, Assertions: 4299, Incomplete: 21, Skipped: 52.
             <ul><li>Object persistance manager for PHPCR</li>
                 <li>Works like MongoDB or CouchDB ODM</li>
                 <li>Includes a tree/graph and versioning API</li>
+                <li>Makes it easy for developers to switch to PHPCR</li>
+                <li>But is also convenient for PHPCR experts</li>
             </ul></div>
 
         <div class="slide" style="text-align:center">
@@ -2177,26 +2169,25 @@ use Doctrine\ODM\PHPCR\Mapping as PHPCR
 /** @PHPCR\Document(alias="nav", repositoryClass="NavigationRepository") */
 class Navigation
 {
-    /** @PHPCR\Id(strategy="repository") */
+    /**
+     * PHPCR path (not the UUID)
+     * @PHPCR\Id(strategy="repository")
+     */
     public $id;
-
     /** @PHPCR\Children */
     public $children;
-
     /** @PHPCR\String(name="label") */
-    private $label;
-
+    private $name;
+    /**
+     * @PHPCR\Binary()
+     * @var resource
+     */
+    public $image;
     private $internal;
 
-    public function getLabel()
-    {
-        return $this-&gt;label;
-    }
+    public function getName() { return $this-&gt;name; }
 
-    public function setLabel($label)
-    {
-        $this-&gt;label = $label;
-    }
+    public function setName($n) { $this-&gt;name = $n; }
 }
             </pre>
         </div>
@@ -2219,7 +2210,7 @@ class NavigationRepository
      */
     public function generateId(Navigation $doc)
     {
-        return '/site/content/'.$doc-&gt;getLabel();
+        return '/site/content/'.$doc-&gt;getName();
     }
 }
             </pre>
@@ -2279,9 +2270,8 @@ $docManager-&gt;flush();
             <h2>Next steps</h2>
             <ul><li>Push the DoctrineDBAL transport</li>
                 <li>Security and ACL support</li>
-                <li>Observation support</li>
-                <li>Implement query object model search support</li>
-                <li>Performance optimizations</li>
+                <li>Integrate more features into the ODM layer</li>
+                <li>More performance optimizations</li>
             </ul></div>
 
         <div class="slide">
@@ -2305,10 +2295,11 @@ $docManager-&gt;flush();
                             <li>justinrainbow (Justin Rainbow)</li>
                             <li>k-fish (Karsten Dambekalns)</li>
                             <li>lapistano (Bastian Feder)</li>
+                            <li>lsmith77 (Lukas K. Smith)</li>
                         </ul></td>
                     <td>
-                        <ul><li>lsmith77 (Lukas K. Smith)</li>
-                            <li>micheleorselli (Michele Orselli)</li>
+                        <ul><li>micheleorselli (Michele Orselli)</li>
+                            <li>nacmartin (Nacho Martín)</li>
                             <li>nicam (Pascal Helfenstein)</li>
                             <li>ornicar (Thibault Duplessis)</li>
                             <li>piotras</li>
@@ -2334,6 +2325,7 @@ $docManager-&gt;flush();
         <div class="slide">
             <h2>Github projects</h2>
             <ul><li><a href="https://github.com/phpcr/phpcr">PHPCR</a></li>
+                <li><a href="https://github.com/phpcr/phpcr-api-tests">PHPCR test suite</a></li>
                 <li><a href="https://github.com/jackalope/jackalope">Jackalope</a></li>
                 <li><a href="https://github.com/midgardproject/phpcr-midgard2">Midgard2 CR</a></li>
                 <li><a href="https://github.com/doctrine/phpcr-odm">PHPCR ODM</a></li>
@@ -2347,6 +2339,7 @@ $docManager-&gt;flush();
                 <li><a href="http://jcp.org/en/jsr/detail?id=283">JSR 283 (aka JCR 2, especially Chapter 3)</a></li>
                 <li><a href="http://jcp.org/en/jsr/detail?id=333">JSR 333 (aka JCR 2.1)</a></li>
                 <li><a href="http://wiki.apache.org/jackrabbit/DavidsModel">David's Model</a></li>
+                <li><a href="http://www.h2database.com/jcr/grammar.html">SQL2 Grammar</a></li>
             </ul></div>
 
         <div class="layout" data-name="default">
