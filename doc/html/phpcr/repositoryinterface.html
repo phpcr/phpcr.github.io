@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="generator" content="PHPDoctor 2RC4 (http://peej.github.com/phpdoctor/)">
-<meta name="when" content="Tue, 26 Jul 2011 15:56:34 +0000">
+<meta name="when" content="Tue, 27 Mar 2012 06:17:40 +0000">
 
 <link rel="stylesheet" type="text/css" href="../stylesheet.css">
 <link rel="start" href="../overview-summary.html">
@@ -41,7 +41,7 @@ Detail: <a href="#detail_field">Field</a> | <a href="#detail_method">Method</a> 
 <hr>
 
 <div class="qualifiedName">PHPCR\RepositoryInterface</div>
-<a href="../source/phpcr/repositoryinterface.php.html#line44" class="location">PHPCR/RepositoryInterface.php at line 44</a>
+<a href="../source/phpcr/repositoryinterface.php.html#line46" class="location">PHPCR/RepositoryInterface.php at line 46</a>
 
 <h1>Interface RepositoryInterface</h1>
 
@@ -51,14 +51,15 @@ Detail: <a href="#detail_field">Field</a> | <a href="#detail_method">Method</a> 
 
 <p class="signature">public  interface <strong>RepositoryInterface</strong></p>
 
-<div class="comment" id="overview_description"><p>The entry point into the content repository.</p><p>The Repository object is usually acquired through the RepositoryFactory.</p><p><strong>PHPCR Note:</strong> This interface has been simplified:</p>
+<div class="comment" id="overview_description"><p>The entry point into the content repository.</p><p>The Repository object is usually acquired through an implementation of the
+\PHPCR\RepositoryFactoryInterface.</p><p><strong>PHPCR Note:</strong> This interface has been simplified compared to
+JCR:</p>
 <ul>
 <li>getDescriptor returns array on multivalue, single variable otherwise</li>
 <li>removed isSingleValueDescriptor</li>
-<li>removed getDescriptorValue and getDescriptorValues as ValueInterface has been dropped.
-Use getDescriptor to get the variable value.</li>
+<li>removed getDescriptorValue and getDescriptorValues as ValueInterface has</li>
 </ul>
-<p>&nbsp;</p></div>
+<p>been dropped. Use getDescriptor to get the variable value.</p></div>
 
 <dl>
 <dt>Subpackage:</dt>
@@ -103,17 +104,20 @@ Use getDescriptor to get the variable value.</li>
 </tr>
 <tr>
 <td class="type">final static  str</td>
-<td class="description"><p class="name"><a href="#NODE_TYPE_MANAGEMENT_INHERITANCE_MINIMAL">NODE_TYPE_MANAGEMENT_INHERITANCE_MINIMAL</a></p><p class="description">One of three possible values for the descriptor NODE_TYPE_MANAGEMENT_INHERITANCE.
+<td class="description"><p class="name"><a href="#NODE_TYPE_MANAGEMENT_INHERITANCE_MINIMAL">NODE_TYPE_MANAGEMENT_INHERITANCE_MINIMAL</a></p><p class="description">One of three possible values for the descriptor
+NODE_TYPE_MANAGEMENT_INHERITANCE.
 </p></td>
 </tr>
 <tr>
 <td class="type">final static  str</td>
-<td class="description"><p class="name"><a href="#NODE_TYPE_MANAGEMENT_INHERITANCE_MULTIPLE">NODE_TYPE_MANAGEMENT_INHERITANCE_MULTIPLE</a></p><p class="description">One of three possible values for the descriptor NODE_TYPE_MANAGEMENT_INHERITANCE.
+<td class="description"><p class="name"><a href="#NODE_TYPE_MANAGEMENT_INHERITANCE_MULTIPLE">NODE_TYPE_MANAGEMENT_INHERITANCE_MULTIPLE</a></p><p class="description">One of three possible values for the descriptor
+NODE_TYPE_MANAGEMENT_INHERITANCE.
 </p></td>
 </tr>
 <tr>
 <td class="type">final static  str</td>
-<td class="description"><p class="name"><a href="#NODE_TYPE_MANAGEMENT_INHERITANCE_SINGLE">NODE_TYPE_MANAGEMENT_INHERITANCE_SINGLE</a></p><p class="description">One of three possible values for the descriptor NODE_TYPE_MANAGEMENT_INHERITANCE.
+<td class="description"><p class="name"><a href="#NODE_TYPE_MANAGEMENT_INHERITANCE_SINGLE">NODE_TYPE_MANAGEMENT_INHERITANCE_SINGLE</a></p><p class="description">One of three possible values for the descriptor
+NODE_TYPE_MANAGEMENT_INHERITANCE.
 </p></td>
 </tr>
 <tr>
@@ -242,18 +246,15 @@ Use getDescriptor to get the variable value.</li>
 </tr>
 <tr>
 <td class="type">final static  str</td>
-<td class="description"><p class="name"><a href="#QUERY_JOINS_INNER">QUERY_JOINS_INNER</a></p><p class="description">One of three possible values for the descriptor QUERY_JOINS .
-</p></td>
+<td class="description"><p class="name"><a href="#QUERY_JOINS_INNER">QUERY_JOINS_INNER</a></p><p class="description">One of three possible values for the descriptor QUERY_JOINS . </p></td>
 </tr>
 <tr>
 <td class="type">final static  str</td>
-<td class="description"><p class="name"><a href="#QUERY_JOINS_INNER_OUTER">QUERY_JOINS_INNER_OUTER</a></p><p class="description">One of three possible values for the descriptor QUERY_JOINS .
-</p></td>
+<td class="description"><p class="name"><a href="#QUERY_JOINS_INNER_OUTER">QUERY_JOINS_INNER_OUTER</a></p><p class="description">One of three possible values for the descriptor QUERY_JOINS . </p></td>
 </tr>
 <tr>
 <td class="type">final static  str</td>
-<td class="description"><p class="name"><a href="#QUERY_JOINS_NONE">QUERY_JOINS_NONE</a></p><p class="description">One of three possible values for the descriptor QUERY_JOINS .
-</p></td>
+<td class="description"><p class="name"><a href="#QUERY_JOINS_NONE">QUERY_JOINS_NONE</a></p><p class="description">One of three possible values for the descriptor QUERY_JOINS . </p></td>
 </tr>
 <tr>
 <td class="type">final static  str</td>
@@ -285,13 +286,15 @@ Use getDescriptor to get the variable value.</li>
 </tr>
 <tr>
 <td class="type">final static  str</td>
-<td class="description"><p class="name"><a href="#SPEC_NAME_DESC">SPEC_NAME_DESC</a></p><p class="description">The descriptor key for the name of the specification
-that this repository implements. </p></td>
+<td class="description"><p class="name"><a href="#SPEC_NAME_DESC">SPEC_NAME_DESC</a></p><p class="description">The descriptor key for the name of the specification this repository
+implements.
+</p></td>
 </tr>
 <tr>
 <td class="type">final static  string</td>
-<td class="description"><p class="name"><a href="#SPEC_VERSION_DESC">SPEC_VERSION_DESC</a></p><p class="description">The descriptor key for the version of the specification
-that this repository implements. </p></td>
+<td class="description"><p class="name"><a href="#SPEC_VERSION_DESC">SPEC_VERSION_DESC</a></p><p class="description">The descriptor key for the version of the specification this repository
+implements.
+</p></td>
 </tr>
 <tr>
 <td class="type">final static  str</td>
@@ -303,11 +306,13 @@ that this repository implements. </p></td>
 <tr><th colspan="2">Method Summary</th></tr>
 <tr>
 <td class="type"> mixed</td>
-<td class="description"><p class="name"><a href="#getDescriptor()">getDescriptor</a>(string key)</p><p class="description">Get the string value(s) for this key.</p></td>
+<td class="description"><p class="name"><a href="#getDescriptor()">getDescriptor</a>(string key)</p><p class="description">Get the value(s) for this key.
+</p></td>
 </tr>
 <tr>
 <td class="type"> array</td>
-<td class="description"><p class="name"><a href="#getDescriptorKeys()">getDescriptorKeys</a>()</p><p class="description">Returns a string array holding all descriptor keys available for this implementation.
+<td class="description"><p class="name"><a href="#getDescriptorKeys()">getDescriptorKeys</a>()</p><p class="description">Returns a string array holding all descriptor keys available for this
+implementation.
 </p></td>
 </tr>
 <tr>
@@ -323,7 +328,7 @@ that this repository implements. </p></td>
 </table>
 
 <h2 id="detail_field">Constant Detail</h2>
-<a href="../source/phpcr/repositoryinterface.php.html#line116" class="location">PHPCR/RepositoryInterface.php at line 116</a>
+<a href="../source/phpcr/repositoryinterface.php.html#line133" class="location">PHPCR/RepositoryInterface.php at line 133</a>
 
 <h3 id="IDENTIFIER_STABILITY">IDENTIFIER_STABILITY</h3>
 <code class="signature">public final static  str <strong>IDENTIFIER_STABILITY</strong> = &quot;identifier.stability&quot;</code>
@@ -331,19 +336,22 @@ that this repository implements. </p></td>
 <p>Key to a String descriptor. Returns one of the following
 RepositoryInterface constants indicating the stability of identifiers:</p>
 <ul>
-<li>IDENTIFIER_STABILITY_METHOD_DURATION - Identifiers may change between method calls.</li>
-<li>IDENTIFIER_STABILITY_SAVE_DURATION - Identifers are guaranteed stable within a single save/refresh cycle.</li>
-<li>IDENTIFIER_STABILITY_SESSION_DURATION - Identifiers are guaranteed stable within a single session.</li>
-<li>IDENTIFIER_STABILITY_INDEFINITE_DURATION - Identifers are guaranteed to be stable forever.</li>
+<li>IDENTIFIER_STABILITY_METHOD_DURATION - Identifiers may change between
+method calls.</li>
+<li>IDENTIFIER_STABILITY_SAVE_DURATION - Identifers are guaranteed stable
+within a single save/refresh cycle.</li>
+<li>IDENTIFIER_STABILITY_SESSION_DURATION - Identifiers are guaranteed
+stable within a single session.</li>
+<li>IDENTIFIER_STABILITY_INDEFINITE_DURATION - Identifers are guaranteed</li>
 </ul>
-<p>&nbsp;</p><dl>
+<p>to be stable forever.</p><dl>
 <dt>Api.</dt>
 </dl>
 </div>
 
 <hr>
 
-<a href="../source/phpcr/repositoryinterface.php.html#line144" class="location">PHPCR/RepositoryInterface.php at line 144</a>
+<a href="../source/phpcr/repositoryinterface.php.html#line167" class="location">PHPCR/RepositoryInterface.php at line 167</a>
 
 <h3 id="IDENTIFIER_STABILITY_INDEFINITE_DURATION">IDENTIFIER_STABILITY_INDEFINITE_DURATION</h3>
 <code class="signature">public final static  str <strong>IDENTIFIER_STABILITY_INDEFINITE_DURATION</strong> = &quot;identifier.stability.indefinite.duration&quot;</code>
@@ -356,7 +364,7 @@ Indicates that identifiers are guaranteed to be stable forever.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/repositoryinterface.php.html#line123" class="location">PHPCR/RepositoryInterface.php at line 123</a>
+<a href="../source/phpcr/repositoryinterface.php.html#line141" class="location">PHPCR/RepositoryInterface.php at line 141</a>
 
 <h3 id="IDENTIFIER_STABILITY_METHOD_DURATION">IDENTIFIER_STABILITY_METHOD_DURATION</h3>
 <code class="signature">public final static  str <strong>IDENTIFIER_STABILITY_METHOD_DURATION</strong> = &quot;identifier.stability.method.duration&quot;</code>
@@ -369,244 +377,252 @@ Indicates that identifiers may change between method calls.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/repositoryinterface.php.html#line130" class="location">PHPCR/RepositoryInterface.php at line 130</a>
+<a href="../source/phpcr/repositoryinterface.php.html#line150" class="location">PHPCR/RepositoryInterface.php at line 150</a>
 
 <h3 id="IDENTIFIER_STABILITY_SAVE_DURATION">IDENTIFIER_STABILITY_SAVE_DURATION</h3>
 <code class="signature">public final static  str <strong>IDENTIFIER_STABILITY_SAVE_DURATION</strong> = &quot;identifier.stability.save.duration&quot;</code>
 <div class="details">
 <p>One of four possible values for the descriptor IDENTIFIER_STABILITY.
-Indicates that identifiers are guaranteed stable within a single save/refresh cycle.</p><dl>
+Indicates that identifiers are guaranteed stable within a single
+save/refresh cycle.</p><dl>
 <dt>Api.</dt>
 </dl>
 </div>
 
 <hr>
 
-<a href="../source/phpcr/repositoryinterface.php.html#line137" class="location">PHPCR/RepositoryInterface.php at line 137</a>
+<a href="../source/phpcr/repositoryinterface.php.html#line159" class="location">PHPCR/RepositoryInterface.php at line 159</a>
 
 <h3 id="IDENTIFIER_STABILITY_SESSION_DURATION">IDENTIFIER_STABILITY_SESSION_DURATION</h3>
 <code class="signature">public final static  str <strong>IDENTIFIER_STABILITY_SESSION_DURATION</strong> = &quot;identifier.stability.session.duration&quot;</code>
 <div class="details">
 <p>One of four possible values for the descriptor IDENTIFIER_STABILITY.
-Indicates that identifiers are guaranteed stable within a single session.</p><dl>
+Indicates that identifiers are guaranteed stable within a single
+session.</p><dl>
 <dt>Api.</dt>
 </dl>
 </div>
 
 <hr>
 
-<a href="../source/phpcr/repositoryinterface.php.html#line365" class="location">PHPCR/RepositoryInterface.php at line 365</a>
+<a href="../source/phpcr/repositoryinterface.php.html#line425" class="location">PHPCR/RepositoryInterface.php at line 425</a>
 
 <h3 id="NODE_TYPE_MANAGEMENT_AUTOCREATED_DEFINITIONS_SUPPORTED">NODE_TYPE_MANAGEMENT_AUTOCREATED_DEFINITIONS_SUPPORTED</h3>
 <code class="signature">public final static  str <strong>NODE_TYPE_MANAGEMENT_AUTOCREATED_DEFINITIONS_SUPPORTED</strong> = &quot;node.type.management.autocreated.definitions.supported&quot;</code>
 <div class="details">
-<p>Key to a boolean descriptor. Returns true
-if and only if autocreated properties and child nodes are supported.</p><dl>
+<p>Key to a boolean descriptor. Returns true if and only if autocreated
+properties and child nodes are supported.</p><dl>
 <dt>Api.</dt>
 </dl>
 </div>
 
 <hr>
 
-<a href="../source/phpcr/repositoryinterface.php.html#line306" class="location">PHPCR/RepositoryInterface.php at line 306</a>
+<a href="../source/phpcr/repositoryinterface.php.html#line349" class="location">PHPCR/RepositoryInterface.php at line 349</a>
 
 <h3 id="NODE_TYPE_MANAGEMENT_INHERITANCE">NODE_TYPE_MANAGEMENT_INHERITANCE</h3>
 <code class="signature">public final static  str <strong>NODE_TYPE_MANAGEMENT_INHERITANCE</strong> = &quot;node.type.management.inheritance&quot;</code>
 <div class="details">
 <p>Key to string descriptor. Returns one of the following
 RepositoryInterface constants indicating the level of support for node
-type inheritance:</p><p>NODE_TYPE_MANAGEMENT_INHERITANCE_MINIMAL<br />
-Registration of primary node types is limited to those which have only
-nt:base as supertype. Registration of mixin node types is limited to
-those without any supertypes.</p><p>NODE_TYPE_MANAGEMENT_INHERITANCE_SINGLE<br />
-Registration of primary node types is limited to those with exactly one
-supertype. Registration of mixin node types is limited to those with at
-most one supertype.</p><p>NODE_TYPE_MANAGEMENT_INHERITANCE_MULTIPLE<br />
-Primary node types can be registered with one or more supertypes. Mixin node
-types can be registered with zero or more supertypes.</p><dl>
+type inheritance:</p>
+<ul>
+<li>NODE_TYPE_MANAGEMENT_INHERITANCE_MINIMAL Registration of primary node
+types is limited to those which have onlynt:base as supertype.
+Registration of mixin node types is limited to those without any
+supertypes.</li>
+<li>NODE_TYPE_MANAGEMENT_INHERITANCE_SINGLE Registration of primary node
+types is limited to those with exactly one supertype. Registration
+of mixin node types is limited to those with at most one supertype.</li>
+<li>NODE_TYPE_MANAGEMENT_INHERITANCE_MULTIPLE Primary node types can be
+registered with one or more supertypes. Mixin node types can be</li>
+</ul>
+<p>registered with zero or more supertypes.</p><dl>
 <dt>Api.</dt>
 </dl>
 </div>
 
 <hr>
 
-<a href="../source/phpcr/repositoryinterface.php.html#line314" class="location">PHPCR/RepositoryInterface.php at line 314</a>
+<a href="../source/phpcr/repositoryinterface.php.html#line361" class="location">PHPCR/RepositoryInterface.php at line 361</a>
 
 <h3 id="NODE_TYPE_MANAGEMENT_INHERITANCE_MINIMAL">NODE_TYPE_MANAGEMENT_INHERITANCE_MINIMAL</h3>
 <code class="signature">public final static  str <strong>NODE_TYPE_MANAGEMENT_INHERITANCE_MINIMAL</strong> = &quot;node.type.management.inheritance.minimal&quot;</code>
 <div class="details">
-<p>One of three possible values for the descriptor NODE_TYPE_MANAGEMENT_INHERITANCE.
-Indicates that registration of primary node types is limited to those which have only nt:base
-as supertype. Registration of mixin node types is limited to those without any supertypes.</p><dl>
+<p>One of three possible values for the descriptor
+NODE_TYPE_MANAGEMENT_INHERITANCE.</p><p>Indicates that registration of primary node types is limited to those
+which have only nt:base as supertype. Registration of mixin node types
+is limited to those without any supertypes.</p><dl>
 <dt>Api.</dt>
 </dl>
 </div>
 
 <hr>
 
-<a href="../source/phpcr/repositoryinterface.php.html#line330" class="location">PHPCR/RepositoryInterface.php at line 330</a>
+<a href="../source/phpcr/repositoryinterface.php.html#line385" class="location">PHPCR/RepositoryInterface.php at line 385</a>
 
 <h3 id="NODE_TYPE_MANAGEMENT_INHERITANCE_MULTIPLE">NODE_TYPE_MANAGEMENT_INHERITANCE_MULTIPLE</h3>
 <code class="signature">public final static  str <strong>NODE_TYPE_MANAGEMENT_INHERITANCE_MULTIPLE</strong> = &quot;node.type.management.inheritance.multiple&quot;</code>
 <div class="details">
-<p>One of three possible values for the descriptor NODE_TYPE_MANAGEMENT_INHERITANCE.
-Indicates that primary node types can be registered with one or more supertypes.
-Mixin node types can be registered with zero or more supertypes.</p><dl>
+<p>One of three possible values for the descriptor
+NODE_TYPE_MANAGEMENT_INHERITANCE.</p><p>Indicates that primary node types can be registered with one or more
+supertypes. Mixin node types can be registered with zero or more
+supertypes.</p><dl>
 <dt>Api.</dt>
 </dl>
 </div>
 
 <hr>
 
-<a href="../source/phpcr/repositoryinterface.php.html#line322" class="location">PHPCR/RepositoryInterface.php at line 322</a>
+<a href="../source/phpcr/repositoryinterface.php.html#line373" class="location">PHPCR/RepositoryInterface.php at line 373</a>
 
 <h3 id="NODE_TYPE_MANAGEMENT_INHERITANCE_SINGLE">NODE_TYPE_MANAGEMENT_INHERITANCE_SINGLE</h3>
 <code class="signature">public final static  str <strong>NODE_TYPE_MANAGEMENT_INHERITANCE_SINGLE</strong> = &quot;node.type.management.inheritance.single&quot;</code>
 <div class="details">
-<p>One of three possible values for the descriptor NODE_TYPE_MANAGEMENT_INHERITANCE.
-Indicates that registration of primary node types is limited to those with exactly one supertype.
-Registration of mixin node types is limited to those with at most one supertype.</p><dl>
+<p>One of three possible values for the descriptor
+NODE_TYPE_MANAGEMENT_INHERITANCE.</p><p>Indicates that registration of primary node types is limited to those
+with exactly one supertype. Registration of mixin node types is limited
+to those with at most one supertype.</p><dl>
 <dt>Api.</dt>
 </dl>
 </div>
 
 <hr>
 
-<a href="../source/phpcr/repositoryinterface.php.html#line397" class="location">PHPCR/RepositoryInterface.php at line 397</a>
+<a href="../source/phpcr/repositoryinterface.php.html#line460" class="location">PHPCR/RepositoryInterface.php at line 460</a>
 
 <h3 id="NODE_TYPE_MANAGEMENT_MULTIPLE_BINARY_PROPERTIES_SUPPORTED">NODE_TYPE_MANAGEMENT_MULTIPLE_BINARY_PROPERTIES_SUPPORTED</h3>
 <code class="signature">public final static  str <strong>NODE_TYPE_MANAGEMENT_MULTIPLE_BINARY_PROPERTIES_SUPPORTED</strong> = &quot;node.type.management.multiple.binary.properties.supported&quot;</code>
 <div class="details">
-<p>Key to a boolean descriptor. Returns true
-if and only if registration of a node types with more than one BINARY
-property is permitted.</p><dl>
+<p>Key to a boolean descriptor. Returns true if and only if registration of
+a node types with more than one BINARY property is permitted.</p><dl>
 <dt>Api.</dt>
 </dl>
 </div>
 
 <hr>
 
-<a href="../source/phpcr/repositoryinterface.php.html#line389" class="location">PHPCR/RepositoryInterface.php at line 389</a>
+<a href="../source/phpcr/repositoryinterface.php.html#line452" class="location">PHPCR/RepositoryInterface.php at line 452</a>
 
 <h3 id="NODE_TYPE_MANAGEMENT_MULTIVALUED_PROPERTIES_SUPPORTED">NODE_TYPE_MANAGEMENT_MULTIVALUED_PROPERTIES_SUPPORTED</h3>
 <code class="signature">public final static  str <strong>NODE_TYPE_MANAGEMENT_MULTIVALUED_PROPERTIES_SUPPORTED</strong> = &quot;node.type.management.multivalued.properties.supported&quot;</code>
 <div class="details">
-<p>Key to a boolean descriptor. Returns true
-if and only if multivalue properties are supported.</p><dl>
+<p>Key to a boolean descriptor. Returns true if and only if multivalue
+properties are supported.</p><dl>
 <dt>Api.</dt>
 </dl>
 </div>
 
 <hr>
 
-<a href="../source/phpcr/repositoryinterface.php.html#line351" class="location">PHPCR/RepositoryInterface.php at line 351</a>
+<a href="../source/phpcr/repositoryinterface.php.html#line409" class="location">PHPCR/RepositoryInterface.php at line 409</a>
 
 <h3 id="NODE_TYPE_MANAGEMENT_ORDERABLE_CHILD_NODES_SUPPORTED">NODE_TYPE_MANAGEMENT_ORDERABLE_CHILD_NODES_SUPPORTED</h3>
 <code class="signature">public final static  str <strong>NODE_TYPE_MANAGEMENT_ORDERABLE_CHILD_NODES_SUPPORTED</strong> = &quot;node.type.management.orderable.child.nodes.supported&quot;</code>
 <div class="details">
-<p>Key to a boolean descriptor. Returns true
-if and only if preservation of child node ordering is supported.</p><dl>
+<p>Key to a boolean descriptor. Returns true if and only if preservation of
+child node ordering is supported.</p><dl>
 <dt>Api.</dt>
 </dl>
 </div>
 
 <hr>
 
-<a href="../source/phpcr/repositoryinterface.php.html#line337" class="location">PHPCR/RepositoryInterface.php at line 337</a>
+<a href="../source/phpcr/repositoryinterface.php.html#line393" class="location">PHPCR/RepositoryInterface.php at line 393</a>
 
 <h3 id="NODE_TYPE_MANAGEMENT_OVERRIDES_SUPPORTED">NODE_TYPE_MANAGEMENT_OVERRIDES_SUPPORTED</h3>
 <code class="signature">public final static  str <strong>NODE_TYPE_MANAGEMENT_OVERRIDES_SUPPORTED</strong> = &quot;node.type.management.overrides.supported&quot;</code>
 <div class="details">
-<p>Key to a boolean descriptor. Returns true
-if and only if override of inherited property or child node definitions is supported.</p><dl>
+<p>Key to a boolean descriptor. Returns true if and only if override of
+inherited property or child node definitions is supported.</p><dl>
 <dt>Api.</dt>
 </dl>
 </div>
 
 <hr>
 
-<a href="../source/phpcr/repositoryinterface.php.html#line344" class="location">PHPCR/RepositoryInterface.php at line 344</a>
+<a href="../source/phpcr/repositoryinterface.php.html#line401" class="location">PHPCR/RepositoryInterface.php at line 401</a>
 
 <h3 id="NODE_TYPE_MANAGEMENT_PRIMARY_ITEM_NAME_SUPPORTED">NODE_TYPE_MANAGEMENT_PRIMARY_ITEM_NAME_SUPPORTED</h3>
 <code class="signature">public final static  str <strong>NODE_TYPE_MANAGEMENT_PRIMARY_ITEM_NAME_SUPPORTED</strong> = &quot;node.type.management.primary.item.name.supported&quot;</code>
 <div class="details">
-<p>Key to a boolean descriptor. Returns true
-if and only if primary items are supported.</p><dl>
+<p>Key to a boolean descriptor. Returns true if and only if primary items
+are supported.</p><dl>
 <dt>Api.</dt>
 </dl>
 </div>
 
 <hr>
 
-<a href="../source/phpcr/repositoryinterface.php.html#line382" class="location">PHPCR/RepositoryInterface.php at line 382</a>
+<a href="../source/phpcr/repositoryinterface.php.html#line444" class="location">PHPCR/RepositoryInterface.php at line 444</a>
 
 <h3 id="NODE_TYPE_MANAGEMENT_PROPERTY_TYPES">NODE_TYPE_MANAGEMENT_PROPERTY_TYPES</h3>
 <code class="signature">public final static  str <strong>NODE_TYPE_MANAGEMENT_PROPERTY_TYPES</strong> = &quot;node.type.management.property.types&quot;</code>
 <div class="details">
 <p>Key to an integer[] descriptor. Returns an array holding the
-\PHPCR\PropertyType constants for the property types
-(including UNDEFINED, if supported) that a registered node
-type can specify, or a zero-length array if registered node types cannot
-specify property definitions.</p><dl>
+\PHPCR\PropertyType constants for the property types (including
+UNDEFINED, if supported) that a registered node type can specify, or a
+zero-length array if registered node types cannot specify property
+definitions.</p><dl>
 <dt>Api.</dt>
 </dl>
 </div>
 
 <hr>
 
-<a href="../source/phpcr/repositoryinterface.php.html#line358" class="location">PHPCR/RepositoryInterface.php at line 358</a>
+<a href="../source/phpcr/repositoryinterface.php.html#line417" class="location">PHPCR/RepositoryInterface.php at line 417</a>
 
 <h3 id="NODE_TYPE_MANAGEMENT_RESIDUAL_DEFINITIONS_SUPPORTED">NODE_TYPE_MANAGEMENT_RESIDUAL_DEFINITIONS_SUPPORTED</h3>
 <code class="signature">public final static  str <strong>NODE_TYPE_MANAGEMENT_RESIDUAL_DEFINITIONS_SUPPORTED</strong> = &quot;node.type.management.residual.definitions.supported&quot;</code>
 <div class="details">
-<p>Key to a boolean descriptor. Returns true
-if and only if residual property and child node definitions are supported.</p><dl>
+<p>Key to a boolean descriptor. Returns true if and only if residual
+property and child node definitions are supported.</p><dl>
 <dt>Api.</dt>
 </dl>
 </div>
 
 <hr>
 
-<a href="../source/phpcr/repositoryinterface.php.html#line372" class="location">PHPCR/RepositoryInterface.php at line 372</a>
+<a href="../source/phpcr/repositoryinterface.php.html#line433" class="location">PHPCR/RepositoryInterface.php at line 433</a>
 
 <h3 id="NODE_TYPE_MANAGEMENT_SAME_NAME_SIBLINGS_SUPPORTED">NODE_TYPE_MANAGEMENT_SAME_NAME_SIBLINGS_SUPPORTED</h3>
 <code class="signature">public final static  str <strong>NODE_TYPE_MANAGEMENT_SAME_NAME_SIBLINGS_SUPPORTED</strong> = &quot;node.type.management.same.name.siblings.supported&quot;</code>
 <div class="details">
-<p>Key to a boolean descriptor. Returns true
-if and only if same-name sibling child nodes are supported.</p><dl>
+<p>Key to a boolean descriptor. Returns true if and only if same-name
+sibling child nodes are supported.</p><dl>
 <dt>Api.</dt>
 </dl>
 </div>
 
 <hr>
 
-<a href="../source/phpcr/repositoryinterface.php.html#line404" class="location">PHPCR/RepositoryInterface.php at line 404</a>
+<a href="../source/phpcr/repositoryinterface.php.html#line468" class="location">PHPCR/RepositoryInterface.php at line 468</a>
 
 <h3 id="NODE_TYPE_MANAGEMENT_VALUE_CONSTRAINTS_SUPPORTED">NODE_TYPE_MANAGEMENT_VALUE_CONSTRAINTS_SUPPORTED</h3>
 <code class="signature">public final static  str <strong>NODE_TYPE_MANAGEMENT_VALUE_CONSTRAINTS_SUPPORTED</strong> = &quot;node.type.management.value.constraints.supported&quot;</code>
 <div class="details">
-<p>Key to a boolean descriptor. Returns true
-if and only value-constraints are supported.</p><dl>
+<p>Key to a boolean descriptor. Returns true if and only value-constraints
+are supported.</p><dl>
 <dt>Api.</dt>
 </dl>
 </div>
 
 <hr>
 
-<a href="../source/phpcr/repositoryinterface.php.html#line200" class="location">PHPCR/RepositoryInterface.php at line 200</a>
+<a href="../source/phpcr/repositoryinterface.php.html#line231" class="location">PHPCR/RepositoryInterface.php at line 231</a>
 
 <h3 id="OPTION_ACCESS_CONTROL_SUPPORTED">OPTION_ACCESS_CONTROL_SUPPORTED</h3>
 <code class="signature">public final static  str <strong>OPTION_ACCESS_CONTROL_SUPPORTED</strong> = &quot;option.access.control.supported&quot;</code>
 <div class="details">
-<p>Key to a boolean descriptor. Returns true
-if and only if access control is supported.</p><dl>
+<p>Key to a boolean descriptor. Returns true if and only if access control
+is supported.</p><dl>
 <dt>Api.</dt>
 </dl>
 </div>
 
 <hr>
 
-<a href="../source/phpcr/repositoryinterface.php.html#line186" class="location">PHPCR/RepositoryInterface.php at line 186</a>
+<a href="../source/phpcr/repositoryinterface.php.html#line215" class="location">PHPCR/RepositoryInterface.php at line 215</a>
 
 <h3 id="OPTION_ACTIVITIES_SUPPORTED">OPTION_ACTIVITIES_SUPPORTED</h3>
 <code class="signature">public final static  str <strong>OPTION_ACTIVITIES_SUPPORTED</strong> = &quot;option.activities.supported&quot;</code>
@@ -619,7 +635,7 @@ supported.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/repositoryinterface.php.html#line193" class="location">PHPCR/RepositoryInterface.php at line 193</a>
+<a href="../source/phpcr/repositoryinterface.php.html#line223" class="location">PHPCR/RepositoryInterface.php at line 223</a>
 
 <h3 id="OPTION_BASELINES_SUPPORTED">OPTION_BASELINES_SUPPORTED</h3>
 <code class="signature">public final static  str <strong>OPTION_BASELINES_SUPPORTED</strong> = &quot;option.baselines.supported&quot;</code>
@@ -632,46 +648,46 @@ and baselines are supported.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/repositoryinterface.php.html#line221" class="location">PHPCR/RepositoryInterface.php at line 221</a>
+<a href="../source/phpcr/repositoryinterface.php.html#line255" class="location">PHPCR/RepositoryInterface.php at line 255</a>
 
 <h3 id="OPTION_JOURNALED_OBSERVATION_SUPPORTED">OPTION_JOURNALED_OBSERVATION_SUPPORTED</h3>
 <code class="signature">public final static  str <strong>OPTION_JOURNALED_OBSERVATION_SUPPORTED</strong> = &quot;option.journaled.observation.supported&quot;</code>
 <div class="details">
-<p>Key to a boolean descriptor. Returns true
-if and only if journaled observation is supported.</p><dl>
+<p>Key to a boolean descriptor. Returns true if and only if journaled
+observation is supported.</p><dl>
 <dt>Api.</dt>
 </dl>
 </div>
 
 <hr>
 
-<a href="../source/phpcr/repositoryinterface.php.html#line235" class="location">PHPCR/RepositoryInterface.php at line 235</a>
+<a href="../source/phpcr/repositoryinterface.php.html#line271" class="location">PHPCR/RepositoryInterface.php at line 271</a>
 
 <h3 id="OPTION_LIFECYCLE_SUPPORTED">OPTION_LIFECYCLE_SUPPORTED</h3>
 <code class="signature">public final static  str <strong>OPTION_LIFECYCLE_SUPPORTED</strong> = &quot;option.lifecycle.supported&quot;</code>
 <div class="details">
-<p>Key to a boolean descriptor. Returns true
-if and only if lifecycles are supported.</p><dl>
+<p>Key to a boolean descriptor. Returns true if and only if lifecycles are
+supported.</p><dl>
 <dt>Api.</dt>
 </dl>
 </div>
 
 <hr>
 
-<a href="../source/phpcr/repositoryinterface.php.html#line207" class="location">PHPCR/RepositoryInterface.php at line 207</a>
+<a href="../source/phpcr/repositoryinterface.php.html#line239" class="location">PHPCR/RepositoryInterface.php at line 239</a>
 
 <h3 id="OPTION_LOCKING_SUPPORTED">OPTION_LOCKING_SUPPORTED</h3>
 <code class="signature">public final static  str <strong>OPTION_LOCKING_SUPPORTED</strong> = &quot;option.locking.supported&quot;</code>
 <div class="details">
-<p>Key to a boolean descriptor. Returns true
-if and only if locking is supported.</p><dl>
+<p>Key to a boolean descriptor. Returns true if and only if locking is
+supported.</p><dl>
 <dt>Api.</dt>
 </dl>
 </div>
 
 <hr>
 
-<a href="../source/phpcr/repositoryinterface.php.html#line284" class="location">PHPCR/RepositoryInterface.php at line 284</a>
+<a href="../source/phpcr/repositoryinterface.php.html#line327" class="location">PHPCR/RepositoryInterface.php at line 327</a>
 
 <h3 id="OPTION_NODE_AND_PROPERTY_WITH_SAME_NAME_SUPPORTED">OPTION_NODE_AND_PROPERTY_WITH_SAME_NAME_SUPPORTED</h3>
 <code class="signature">public final static  str <strong>OPTION_NODE_AND_PROPERTY_WITH_SAME_NAME_SUPPORTED</strong> = &quot;option.node.and.property.with.same.name.supported&quot;</code>
@@ -684,91 +700,26 @@ property with same name is supported.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/repositoryinterface.php.html#line277" class="location">PHPCR/RepositoryInterface.php at line 277</a>
+<a href="../source/phpcr/repositoryinterface.php.html#line319" class="location">PHPCR/RepositoryInterface.php at line 319</a>
 
 <h3 id="OPTION_NODE_TYPE_MANAGEMENT_SUPPORTED">OPTION_NODE_TYPE_MANAGEMENT_SUPPORTED</h3>
 <code class="signature">public final static  str <strong>OPTION_NODE_TYPE_MANAGEMENT_SUPPORTED</strong> = &quot;option.node.type.management.supported&quot;</code>
 <div class="details">
-<p>Key to a boolean descriptor. Returns true
-if and only if node type management is supported.</p><dl>
+<p>Key to a boolean descriptor. Returns true if and only if node type
+management is supported.</p><dl>
 <dt>Api.</dt>
 </dl>
 </div>
 
 <hr>
 
-<a href="../source/phpcr/repositoryinterface.php.html#line214" class="location">PHPCR/RepositoryInterface.php at line 214</a>
+<a href="../source/phpcr/repositoryinterface.php.html#line247" class="location">PHPCR/RepositoryInterface.php at line 247</a>
 
 <h3 id="OPTION_OBSERVATION_SUPPORTED">OPTION_OBSERVATION_SUPPORTED</h3>
 <code class="signature">public final static  str <strong>OPTION_OBSERVATION_SUPPORTED</strong> = &quot;option.observation.supported&quot;</code>
 <div class="details">
-<p>Key to a boolean descriptor. Returns true
-if and only if asynchronous observation is supported.</p><dl>
-<dt>Api.</dt>
-</dl>
-</div>
-
-<hr>
-
-<a href="../source/phpcr/repositoryinterface.php.html#line228" class="location">PHPCR/RepositoryInterface.php at line 228</a>
-
-<h3 id="OPTION_RETENTION_SUPPORTED">OPTION_RETENTION_SUPPORTED</h3>
-<code class="signature">public final static  str <strong>OPTION_RETENTION_SUPPORTED</strong> = &quot;option.retention.supported&quot;</code>
-<div class="details">
-<p>Key to a boolean descriptor. Returns true
-if and only if retention and hold are supported.</p><dl>
-<dt>Api.</dt>
-</dl>
-</div>
-
-<hr>
-
-<a href="../source/phpcr/repositoryinterface.php.html#line270" class="location">PHPCR/RepositoryInterface.php at line 270</a>
-
-<h3 id="OPTION_SHAREABLE_NODES_SUPPORTED">OPTION_SHAREABLE_NODES_SUPPORTED</h3>
-<code class="signature">public final static  str <strong>OPTION_SHAREABLE_NODES_SUPPORTED</strong> = &quot;option.shareable.nodes.supported&quot;</code>
-<div class="details">
-<p>Key to a boolean descriptor. Returns true
-if and only if the creation of shareable nodes is supported.</p><dl>
-<dt>Api.</dt>
-</dl>
-</div>
-
-<hr>
-
-<a href="../source/phpcr/repositoryinterface.php.html#line179" class="location">PHPCR/RepositoryInterface.php at line 179</a>
-
-<h3 id="OPTION_SIMPLE_VERSIONING_SUPPORTED">OPTION_SIMPLE_VERSIONING_SUPPORTED</h3>
-<code class="signature">public final static  str <strong>OPTION_SIMPLE_VERSIONING_SUPPORTED</strong> = &quot;option.simple.versioning.supported&quot;</code>
-<div class="details">
-<p>Key to a boolean descriptor. Returns true
-if and only if simple versioning is supported.</p><dl>
-<dt>Api.</dt>
-</dl>
-</div>
-
-<hr>
-
-<a href="../source/phpcr/repositoryinterface.php.html#line242" class="location">PHPCR/RepositoryInterface.php at line 242</a>
-
-<h3 id="OPTION_TRANSACTIONS_SUPPORTED">OPTION_TRANSACTIONS_SUPPORTED</h3>
-<code class="signature">public final static  str <strong>OPTION_TRANSACTIONS_SUPPORTED</strong> = &quot;option.transactions.supported&quot;</code>
-<div class="details">
-<p>Key to a boolean descriptor. Returns true
-if and only if transactions are supported.</p><dl>
-<dt>Api.</dt>
-</dl>
-</div>
-
-<hr>
-
-<a href="../source/phpcr/repositoryinterface.php.html#line165" class="location">PHPCR/RepositoryInterface.php at line 165</a>
-
-<h3 id="OPTION_UNFILED_CONTENT_SUPPORTED">OPTION_UNFILED_CONTENT_SUPPORTED</h3>
-<code class="signature">public final static  str <strong>OPTION_UNFILED_CONTENT_SUPPORTED</strong> = &quot;option.unfiled.content.supported&quot;</code>
-<div class="details">
-<p>Key to a boolean descriptor. Returns true
-if and only if unfiled content is supported.</p><dl>
+<p>Key to a boolean descriptor. Returns true if and only if asynchronous
+observation is supported.</p><dl>
 <dt>Api.</dt>
 </dl>
 </div>
@@ -777,96 +728,161 @@ if and only if unfiled content is supported.</p><dl>
 
 <a href="../source/phpcr/repositoryinterface.php.html#line263" class="location">PHPCR/RepositoryInterface.php at line 263</a>
 
-<h3 id="OPTION_UPDATE_MIXIN_NODETYPES_SUPPORTED">OPTION_UPDATE_MIXIN_NODETYPES_SUPPORTED</h3>
-<code class="signature">public final static  str <strong>OPTION_UPDATE_MIXIN_NODETYPES_SUPPORTED</strong> = &quot;option.update.mixin.nodetypes.supported&quot;</code>
+<h3 id="OPTION_RETENTION_SUPPORTED">OPTION_RETENTION_SUPPORTED</h3>
+<code class="signature">public final static  str <strong>OPTION_RETENTION_SUPPORTED</strong> = &quot;option.retention.supported&quot;</code>
 <div class="details">
-<p>Key to a boolean descriptor. Returns true
-if and only if the mixin node types of an existing node can be added and removed.</p><dl>
+<p>Key to a boolean descriptor. Returns true if and only if retention and
+hold are supported.</p><dl>
 <dt>Api.</dt>
 </dl>
 </div>
 
 <hr>
 
-<a href="../source/phpcr/repositoryinterface.php.html#line256" class="location">PHPCR/RepositoryInterface.php at line 256</a>
+<a href="../source/phpcr/repositoryinterface.php.html#line311" class="location">PHPCR/RepositoryInterface.php at line 311</a>
+
+<h3 id="OPTION_SHAREABLE_NODES_SUPPORTED">OPTION_SHAREABLE_NODES_SUPPORTED</h3>
+<code class="signature">public final static  str <strong>OPTION_SHAREABLE_NODES_SUPPORTED</strong> = &quot;option.shareable.nodes.supported&quot;</code>
+<div class="details">
+<p>Key to a boolean descriptor. Returns true if and only if the creation of
+shareable nodes is supported.</p><dl>
+<dt>Api.</dt>
+</dl>
+</div>
+
+<hr>
+
+<a href="../source/phpcr/repositoryinterface.php.html#line207" class="location">PHPCR/RepositoryInterface.php at line 207</a>
+
+<h3 id="OPTION_SIMPLE_VERSIONING_SUPPORTED">OPTION_SIMPLE_VERSIONING_SUPPORTED</h3>
+<code class="signature">public final static  str <strong>OPTION_SIMPLE_VERSIONING_SUPPORTED</strong> = &quot;option.simple.versioning.supported&quot;</code>
+<div class="details">
+<p>Key to a boolean descriptor. Returns true if and only if simple
+versioning is supported.</p><dl>
+<dt>Api.</dt>
+</dl>
+</div>
+
+<hr>
+
+<a href="../source/phpcr/repositoryinterface.php.html#line279" class="location">PHPCR/RepositoryInterface.php at line 279</a>
+
+<h3 id="OPTION_TRANSACTIONS_SUPPORTED">OPTION_TRANSACTIONS_SUPPORTED</h3>
+<code class="signature">public final static  str <strong>OPTION_TRANSACTIONS_SUPPORTED</strong> = &quot;option.transactions.supported&quot;</code>
+<div class="details">
+<p>Key to a boolean descriptor. Returns true if and only if transactions
+are supported.</p><dl>
+<dt>Api.</dt>
+</dl>
+</div>
+
+<hr>
+
+<a href="../source/phpcr/repositoryinterface.php.html#line191" class="location">PHPCR/RepositoryInterface.php at line 191</a>
+
+<h3 id="OPTION_UNFILED_CONTENT_SUPPORTED">OPTION_UNFILED_CONTENT_SUPPORTED</h3>
+<code class="signature">public final static  str <strong>OPTION_UNFILED_CONTENT_SUPPORTED</strong> = &quot;option.unfiled.content.supported&quot;</code>
+<div class="details">
+<p>Key to a boolean descriptor. Returns true if and only if unfiled content
+is supported.</p><dl>
+<dt>Api.</dt>
+</dl>
+</div>
+
+<hr>
+
+<a href="../source/phpcr/repositoryinterface.php.html#line303" class="location">PHPCR/RepositoryInterface.php at line 303</a>
+
+<h3 id="OPTION_UPDATE_MIXIN_NODETYPES_SUPPORTED">OPTION_UPDATE_MIXIN_NODETYPES_SUPPORTED</h3>
+<code class="signature">public final static  str <strong>OPTION_UPDATE_MIXIN_NODETYPES_SUPPORTED</strong> = &quot;option.update.mixin.nodetypes.supported&quot;</code>
+<div class="details">
+<p>Key to a boolean descriptor. Returns true if and only if the mixin node
+types of an existing node can be added and removed.</p><dl>
+<dt>Api.</dt>
+</dl>
+</div>
+
+<hr>
+
+<a href="../source/phpcr/repositoryinterface.php.html#line295" class="location">PHPCR/RepositoryInterface.php at line 295</a>
 
 <h3 id="OPTION_UPDATE_PRIMARY_NODETYPE_SUPPORTED">OPTION_UPDATE_PRIMARY_NODETYPE_SUPPORTED</h3>
 <code class="signature">public final static  str <strong>OPTION_UPDATE_PRIMARY_NODETYPE_SUPPORTED</strong> = &quot;option.update.primary.nodetype.supported&quot;</code>
 <div class="details">
-<p>Key to a boolean descriptor. Returns true
-if and only if the primary node type of an existing node can be updated.</p><dl>
+<p>Key to a boolean descriptor. Returns true if and only if the primary
+node type of an existing node can be updated.</p><dl>
 <dt>Api.</dt>
 </dl>
 </div>
 
 <hr>
 
-<a href="../source/phpcr/repositoryinterface.php.html#line172" class="location">PHPCR/RepositoryInterface.php at line 172</a>
+<a href="../source/phpcr/repositoryinterface.php.html#line199" class="location">PHPCR/RepositoryInterface.php at line 199</a>
 
 <h3 id="OPTION_VERSIONING_SUPPORTED">OPTION_VERSIONING_SUPPORTED</h3>
 <code class="signature">public final static  str <strong>OPTION_VERSIONING_SUPPORTED</strong> = &quot;option.versioning.supported&quot;</code>
 <div class="details">
-<p>Key to a boolean descriptor. Returns true
-if and only if full versioning is supported.</p><dl>
+<p>Key to a boolean descriptor. Returns true if and only if full versioning
+is supported.</p><dl>
 <dt>Api.</dt>
 </dl>
 </div>
 
 <hr>
 
-<a href="../source/phpcr/repositoryinterface.php.html#line249" class="location">PHPCR/RepositoryInterface.php at line 249</a>
+<a href="../source/phpcr/repositoryinterface.php.html#line287" class="location">PHPCR/RepositoryInterface.php at line 287</a>
 
 <h3 id="OPTION_WORKSPACE_MANAGEMENT_SUPPORTED">OPTION_WORKSPACE_MANAGEMENT_SUPPORTED</h3>
 <code class="signature">public final static  str <strong>OPTION_WORKSPACE_MANAGEMENT_SUPPORTED</strong> = &quot;option.workspace.management.supported&quot;</code>
 <div class="details">
-<p>Key to a boolean descriptor. Returns true
-if and only if workspace management is supported.</p><dl>
+<p>Key to a boolean descriptor. Returns true if and only if workspace
+management is supported.</p><dl>
 <dt>Api.</dt>
 </dl>
 </div>
 
 <hr>
 
-<a href="../source/phpcr/repositoryinterface.php.html#line151" class="location">PHPCR/RepositoryInterface.php at line 151</a>
+<a href="../source/phpcr/repositoryinterface.php.html#line175" class="location">PHPCR/RepositoryInterface.php at line 175</a>
 
 <h3 id="OPTION_XML_EXPORT_SUPPORTED">OPTION_XML_EXPORT_SUPPORTED</h3>
 <code class="signature">public final static  str <strong>OPTION_XML_EXPORT_SUPPORTED</strong> = &quot;option.xml.export.supported&quot;</code>
 <div class="details">
-<p>Key to a boolean descriptor. Returns true
-if and only if XML export is supported.</p><dl>
+<p>Key to a boolean descriptor. Returns true if and only if XML export is
+supported.</p><dl>
 <dt>Api.</dt>
 </dl>
 </div>
 
 <hr>
 
-<a href="../source/phpcr/repositoryinterface.php.html#line158" class="location">PHPCR/RepositoryInterface.php at line 158</a>
+<a href="../source/phpcr/repositoryinterface.php.html#line183" class="location">PHPCR/RepositoryInterface.php at line 183</a>
 
 <h3 id="OPTION_XML_IMPORT_SUPPORTED">OPTION_XML_IMPORT_SUPPORTED</h3>
 <code class="signature">public final static  str <strong>OPTION_XML_IMPORT_SUPPORTED</strong> = &quot;option.xml.import.supported&quot;</code>
 <div class="details">
-<p>Key to a boolean descriptor. Returns true
-if and only if XML import is supported.</p><dl>
+<p>Key to a boolean descriptor. Returns true if and only if XML import is
+supported.</p><dl>
 <dt>Api.</dt>
 </dl>
 </div>
 
 <hr>
 
-<a href="../source/phpcr/repositoryinterface.php.html#line426" class="location">PHPCR/RepositoryInterface.php at line 426</a>
+<a href="../source/phpcr/repositoryinterface.php.html#line493" class="location">PHPCR/RepositoryInterface.php at line 493</a>
 
 <h3 id="QUERY_FULL_TEXT_SEARCH_SUPPORTED">QUERY_FULL_TEXT_SEARCH_SUPPORTED</h3>
 <code class="signature">public final static  str <strong>QUERY_FULL_TEXT_SEARCH_SUPPORTED</strong> = &quot;query.full.text.search.supported&quot;</code>
 <div class="details">
-<p>Key to a boolean descriptor. Returns true
-if and only if full-text search is supported.</p><dl>
+<p>Key to a boolean descriptor. Returns true if and only if full-text
+search is supported.</p><dl>
 <dt>Api.</dt>
 </dl>
 </div>
 
 <hr>
 
-<a href="../source/phpcr/repositoryinterface.php.html#line441" class="location">PHPCR/RepositoryInterface.php at line 441</a>
+<a href="../source/phpcr/repositoryinterface.php.html#line507" class="location">PHPCR/RepositoryInterface.php at line 507</a>
 
 <h3 id="QUERY_JOINS">QUERY_JOINS</h3>
 <code class="signature">public final static  str <strong>QUERY_JOINS</strong> = &quot;query.joins&quot;</code>
@@ -875,172 +891,166 @@ if and only if full-text search is supported.</p><dl>
 RepositoryInterface constants indicating the level of support for joins
 in queries:</p>
 <ul>
-<li>QUERY_JOINS_NONE - Joins are not supported. Queries are limited to a single selector.</li>
+<li>QUERY_JOINS_NONE - Joins are not supported. Queries are limited to a
+single selector.</li>
 <li>QUERY_JOINS_INNER - Inner joins are supported.</li>
-<li>QUERY_JOINS_INNER_OUTER - Inner and outer joins are supported.</li>
 </ul>
-<p>&nbsp;</p><dl>
+<p>- QUERY_JOINS_INNER_OUTER - Inner and outer joins are supported.</p><dl>
 <dt>Api.</dt>
 </dl>
 </div>
 
 <hr>
 
-<a href="../source/phpcr/repositoryinterface.php.html#line455" class="location">PHPCR/RepositoryInterface.php at line 455</a>
+<a href="../source/phpcr/repositoryinterface.php.html#line523" class="location">PHPCR/RepositoryInterface.php at line 523</a>
 
 <h3 id="QUERY_JOINS_INNER">QUERY_JOINS_INNER</h3>
 <code class="signature">public final static  str <strong>QUERY_JOINS_INNER</strong> = &quot;query.joins.inner&quot;</code>
 <div class="details">
-<p>One of three possible values for the descriptor QUERY_JOINS .
-Indicates that inner joins are supported.</p><dl>
+<p>One of three possible values for the descriptor QUERY_JOINS . Indicates
+that inner joins are supported.</p><dl>
 <dt>Api.</dt>
 </dl>
 </div>
 
 <hr>
 
-<a href="../source/phpcr/repositoryinterface.php.html#line462" class="location">PHPCR/RepositoryInterface.php at line 462</a>
+<a href="../source/phpcr/repositoryinterface.php.html#line531" class="location">PHPCR/RepositoryInterface.php at line 531</a>
 
 <h3 id="QUERY_JOINS_INNER_OUTER">QUERY_JOINS_INNER_OUTER</h3>
 <code class="signature">public final static  str <strong>QUERY_JOINS_INNER_OUTER</strong> = &quot;query.joins.inner.outer&quot;</code>
 <div class="details">
-<p>One of three possible values for the descriptor QUERY_JOINS .
-Indicates that inner and outer joins are supported.</p><dl>
+<p>One of three possible values for the descriptor QUERY_JOINS . Indicates
+that inner and outer joins are supported.</p><dl>
 <dt>Api.</dt>
 </dl>
 </div>
 
 <hr>
 
-<a href="../source/phpcr/repositoryinterface.php.html#line448" class="location">PHPCR/RepositoryInterface.php at line 448</a>
+<a href="../source/phpcr/repositoryinterface.php.html#line515" class="location">PHPCR/RepositoryInterface.php at line 515</a>
 
 <h3 id="QUERY_JOINS_NONE">QUERY_JOINS_NONE</h3>
 <code class="signature">public final static  str <strong>QUERY_JOINS_NONE</strong> = &quot;query.joins.none&quot;</code>
 <div class="details">
-<p>One of three possible values for the descriptor QUERY_JOINS .
-Indicates that joins are not supported. Queries are limited to a single selector.</p><dl>
+<p>One of three possible values for the descriptor QUERY_JOINS . Indicates
+that joins are not supported. Queries are limited to a single selector.</p><dl>
 <dt>Api.</dt>
 </dl>
 </div>
 
 <hr>
 
-<a href="../source/phpcr/repositoryinterface.php.html#line412" class="location">PHPCR/RepositoryInterface.php at line 412</a>
+<a href="../source/phpcr/repositoryinterface.php.html#line477" class="location">PHPCR/RepositoryInterface.php at line 477</a>
 
 <h3 id="QUERY_LANGUAGES">QUERY_LANGUAGES</h3>
 <code class="signature">public final static  str <strong>QUERY_LANGUAGES</strong> = &quot;query.languages&quot;</code>
 <div class="details">
-<p>Key to a string[] descriptor. Returns an array holding the
-constants representing the supported query languages, or a zero-length
-if query is not supported.</p><dl>
+<p>Key to a string[] descriptor. Returns an array holding the constants
+representing the supported query languages, or a zero-length if query is
+not supported.</p><dl>
 <dt>Api.</dt>
 </dl>
 </div>
 
 <hr>
 
-<a href="../source/phpcr/repositoryinterface.php.html#line419" class="location">PHPCR/RepositoryInterface.php at line 419</a>
+<a href="../source/phpcr/repositoryinterface.php.html#line485" class="location">PHPCR/RepositoryInterface.php at line 485</a>
 
 <h3 id="QUERY_STORED_QUERIES_SUPPORTED">QUERY_STORED_QUERIES_SUPPORTED</h3>
 <code class="signature">public final static  str <strong>QUERY_STORED_QUERIES_SUPPORTED</strong> = &quot;query.stored.queries.supported&quot;</code>
 <div class="details">
-<p>Key to a boolean descriptor. Returns true
-if and only if stored queries are supported.</p><dl>
+<p>Key to a boolean descriptor. Returns true if and only if stored queries
+are supported.</p><dl>
 <dt>Api.</dt>
 </dl>
 </div>
 
 <hr>
 
-<a href="../source/phpcr/repositoryinterface.php.html#line86" class="location">PHPCR/RepositoryInterface.php at line 86</a>
+<a href="../source/phpcr/repositoryinterface.php.html#line98" class="location">PHPCR/RepositoryInterface.php at line 98</a>
 
 <h3 id="REP_NAME_DESC">REP_NAME_DESC</h3>
 <code class="signature">public final static  str <strong>REP_NAME_DESC</strong> = &quot;jcr.repository.name&quot;</code>
 <div class="details">
-<p>The descriptor key for the name of this repository implementation.
-The descriptor returned for this key is a String.</p><dl>
+<p>The descriptor key for the name of this repository implementation.</p><p>The descriptor returned for this key is a String.</p><dl>
 <dt>Api.</dt>
 </dl>
 </div>
 
 <hr>
 
-<a href="../source/phpcr/repositoryinterface.php.html#line72" class="location">PHPCR/RepositoryInterface.php at line 72</a>
+<a href="../source/phpcr/repositoryinterface.php.html#line80" class="location">PHPCR/RepositoryInterface.php at line 80</a>
 
 <h3 id="REP_VENDOR_DESC">REP_VENDOR_DESC</h3>
 <code class="signature">public final static  str <strong>REP_VENDOR_DESC</strong> = &quot;jcr.repository.vendor&quot;</code>
 <div class="details">
-<p>The descriptor key for the name of the repository vendor.
-The descriptor returned for this key is a String.</p><dl>
+<p>The descriptor key for the name of the repository vendor.</p><p>The descriptor returned for this key is a String.</p><dl>
 <dt>Api.</dt>
 </dl>
 </div>
 
 <hr>
 
-<a href="../source/phpcr/repositoryinterface.php.html#line79" class="location">PHPCR/RepositoryInterface.php at line 79</a>
+<a href="../source/phpcr/repositoryinterface.php.html#line89" class="location">PHPCR/RepositoryInterface.php at line 89</a>
 
 <h3 id="REP_VENDOR_URL_DESC">REP_VENDOR_URL_DESC</h3>
 <code class="signature">public final static  str <strong>REP_VENDOR_URL_DESC</strong> = &quot;jcr.repository.vendor.url&quot;</code>
 <div class="details">
-<p>The descriptor key for the URL of the repository vendor.
-The descriptor returned for this key is a String.</p><dl>
+<p>The descriptor key for the URL of the repository vendor.</p><p>The descriptor returned for this key is a String.</p><dl>
 <dt>Api.</dt>
 </dl>
 </div>
 
 <hr>
 
-<a href="../source/phpcr/repositoryinterface.php.html#line93" class="location">PHPCR/RepositoryInterface.php at line 93</a>
+<a href="../source/phpcr/repositoryinterface.php.html#line107" class="location">PHPCR/RepositoryInterface.php at line 107</a>
 
 <h3 id="REP_VERSION_DESC">REP_VERSION_DESC</h3>
 <code class="signature">public final static  str <strong>REP_VERSION_DESC</strong> = &quot;jcr.repository.version&quot;</code>
 <div class="details">
-<p>The descriptor key for the version of this repository implementation.
-The descriptor returned for this key is a String.</p><dl>
+<p>The descriptor key for the version of this repository implementation.</p><p>The descriptor returned for this key is a String.</p><dl>
 <dt>Api.</dt>
 </dl>
 </div>
 
 <hr>
 
-<a href="../source/phpcr/repositoryinterface.php.html#line65" class="location">PHPCR/RepositoryInterface.php at line 65</a>
+<a href="../source/phpcr/repositoryinterface.php.html#line71" class="location">PHPCR/RepositoryInterface.php at line 71</a>
 
 <h3 id="SPEC_NAME_DESC">SPEC_NAME_DESC</h3>
 <code class="signature">public final static  str <strong>SPEC_NAME_DESC</strong> = &quot;jcr.specification.name&quot;</code>
 <div class="details">
-<p>The descriptor key for the name of the specification
-that this repository implements. For JCR 2.0
-the value of this descriptor is the string "Content Repository for
-Java Technology API".</p><dl>
+<p>The descriptor key for the name of the specification this repository
+implements.</p><p>For JCR 2.0 the value of this descriptor is the string "Content
+Repository for Java Technology API".</p><dl>
 <dt>Api.</dt>
 </dl>
 </div>
 
 <hr>
 
-<a href="../source/phpcr/repositoryinterface.php.html#line56" class="location">PHPCR/RepositoryInterface.php at line 56</a>
+<a href="../source/phpcr/repositoryinterface.php.html#line60" class="location">PHPCR/RepositoryInterface.php at line 60</a>
 
 <h3 id="SPEC_VERSION_DESC">SPEC_VERSION_DESC</h3>
 <code class="signature">public final static  string <strong>SPEC_VERSION_DESC</strong> = &quot;jcr.specification.version&quot;</code>
 <div class="details">
-<p>The descriptor key for the version of the specification
-that this repository implements. For JCR 2.0
-the value of this descriptor is the string "2.0".</p><dl>
+<p>The descriptor key for the version of the specification this repository
+implements.</p><p>For JCR 2.0 the value of this descriptor is the string "2.0".</p><dl>
 <dt>Api.</dt>
 </dl>
 </div>
 
 <hr>
 
-<a href="../source/phpcr/repositoryinterface.php.html#line101" class="location">PHPCR/RepositoryInterface.php at line 101</a>
+<a href="../source/phpcr/repositoryinterface.php.html#line116" class="location">PHPCR/RepositoryInterface.php at line 116</a>
 
 <h3 id="WRITE_SUPPORTED">WRITE_SUPPORTED</h3>
 <code class="signature">public final static  str <strong>WRITE_SUPPORTED</strong> = &quot;write.supported&quot;</code>
 <div class="details">
-<p>Key to a boolean descriptor. Returns true
-if and only if repository content can be updated through the JCR API
-(as opposed to having read-only access).</p><dl>
+<p>Key to a boolean descriptor. Returns true if and only if repository
+content can be updated through the JCR API (as opposed to having
+read-only access).</p><dl>
 <dt>Api.</dt>
 </dl>
 </div>
@@ -1048,30 +1058,33 @@ if and only if repository content can be updated through the JCR API
 <hr>
 
 <h2 id="detail_method">Method Detail</h2>
-<a href="../source/phpcr/repositoryinterface.php.html#line527" class="location">PHPCR/RepositoryInterface.php at line 527</a>
+<a href="../source/phpcr/repositoryinterface.php.html#line617" class="location">PHPCR/RepositoryInterface.php at line 617</a>
 
 <h3 id="getDescriptor()">getDescriptor</h3>
 <code class="signature">public  mixed <strong>getDescriptor</strong>(string key)</code>
 <div class="details">
-<p>Get the string value(s) for this key.</p><dl>
+<p>Get the value(s) for this key.</p><p>If this is documented as a boolean property, this method returns a
+boolean, otherwise a string.</p><dl>
 <dt>Parameters:</dt>
 <dd>key - a descriptor key.</dd>
 <dt>Returns:</dt>
-<dd>a descriptor value in string form or an array of strings for multivalue descriptors</dd>
+<dd>a descriptor value in string or boolean form or an array of strings or booleans for multivalue descriptors</dd>
 <dt>Api.</dt>
 </dl>
 </div>
 
 <hr>
 
-<a href="../source/phpcr/repositoryinterface.php.html#line506" class="location">PHPCR/RepositoryInterface.php at line 506</a>
+<a href="../source/phpcr/repositoryinterface.php.html#line587" class="location">PHPCR/RepositoryInterface.php at line 587</a>
 
 <h3 id="getDescriptorKeys()">getDescriptorKeys</h3>
 <code class="signature">public  array <strong>getDescriptorKeys</strong>()</code>
 <div class="details">
-<p>Returns a string array holding all descriptor keys available for this implementation.</p><p>Both, the standard descriptors defined by the string constants in this interface and any
-implementation-specific descriptors. Used in conjunction with getDescriptor($key) to query information about
-this repository implementation.</p><dl>
+<p>Returns a string array holding all descriptor keys available for this
+implementation.</p><p>Both, the standard descriptors defined by the string constants in this
+interface and any implementation-specific descriptors. Used in
+conjunction with getDescriptor($key) to query information about this
+repository implementation.</p><dl>
 <dt>Returns:</dt>
 <dd>a string array holding all descriptor keys</dd>
 <dt>Api.</dt>
@@ -1080,13 +1093,14 @@ this repository implementation.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/repositoryinterface.php.html#line518" class="location">PHPCR/RepositoryInterface.php at line 518</a>
+<a href="../source/phpcr/repositoryinterface.php.html#line602" class="location">PHPCR/RepositoryInterface.php at line 602</a>
 
 <h3 id="isStandardDescriptor()">isStandardDescriptor</h3>
 <code class="signature">public  boolean <strong>isStandardDescriptor</strong>(string key)</code>
 <div class="details">
-<p>Determines if the given identifier is a standard descriptor.</p><p>Returns true if $key is a standard descriptor defined by the string constants in this interface and
-false if it is either a valid implementation-specific key or not a valid key.</p><dl>
+<p>Determines if the given identifier is a standard descriptor.</p><p>Returns true if $key is a standard descriptor defined by the string
+constants in this interface and false if it is either a valid
+implementation-specific key or not a valid key.</p><dl>
 <dt>Parameters:</dt>
 <dd>key - a descriptor key.</dd>
 <dt>Returns:</dt>
@@ -1097,22 +1111,27 @@ false if it is either a valid implementation-specific key or not a valid key.</p
 
 <hr>
 
-<a href="../source/phpcr/repositoryinterface.php.html#line494" class="location">PHPCR/RepositoryInterface.php at line 494</a>
+<a href="../source/phpcr/repositoryinterface.php.html#line572" class="location">PHPCR/RepositoryInterface.php at line 572</a>
 
 <h3 id="login()">login</h3>
 <code class="signature">public  <a href="../phpcr/sessioninterface.html">SessionInterface</a> <strong>login</strong>(<a href="../phpcr/credentialsinterface.html">CredentialsInterface</a> credentials, string workspaceName)</code>
 <div class="details">
-<p>Authenticates the user using the supplied credentials.</p><p>If workspaceName is recognized as the name of an existing workspace in the repository and authorization
-to access that workspace is granted, then a new Session object is returned. The format of the string
-workspaceName depends upon the implementation. If credentials is null, it is assumed that authentication
-is handled by a mechanism external to the repository itself and that the repository implementation exists
-within a context (for example, an application server) that allows it to handle authorization of the request
-for access to the specified workspace.</p><p>If workspaceName is null, a default workspace is automatically selected by the repository
-implementation. This may, for example, be the "home workspace" of the user whose credentials
-were passed, though this is entirely up to the configuration and implementation of the
-repository. Alternatively, it may be a "null workspace" that serves only to provide the
-method WorkspaceInterface::getAccessibleWorkspaceNames(), allowing the client to select from among
-available "real" workspaces.</p><p><b>Note:</b> The Java API defines this method with multiple differing signatures.</p><dl>
+<p>Authenticates the user using the supplied credentials.</p><p>If workspaceName is recognized as the name of an existing workspace in
+the repository and authorization to access that workspace is granted,
+then a new Session object is returned. The format of the string
+workspaceName depends upon the implementation. If credentials is null,
+it is assumed that authentication is handled by a mechanism external to
+the repository itself and that the repository implementation exists
+within a context (for example, an application server) that allows it to
+handle authorization of the request for access to the specified
+workspace.</p><p>If workspaceName is null, a default workspace is automatically selected
+by the repository implementation. This may, for example, be the "home
+workspace" of the user whose credentials were passed, though this is
+entirely up to the configuration and implementation of the repository.
+Alternatively, it may be a "null workspace" that serves only to provide
+the method WorkspaceInterface::getAccessibleWorkspaceNames(), allowing
+the client to select from among available "real" workspaces.</p><p><b>Note:</b> The Java API defines this method with multiple differing
+signatures.</p><dl>
 <dt>Parameters:</dt>
 <dd>credentials - The credentials of the user</dd>
 <dd>workspaceName - the name of a workspace</dd>

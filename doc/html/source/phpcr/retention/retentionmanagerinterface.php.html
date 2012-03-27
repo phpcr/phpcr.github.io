@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="generator" content="PHPDoctor 2RC4 (http://peej.github.com/phpdoctor/)">
-<meta name="when" content="Tue, 26 Jul 2011 15:56:50 +0000">
+<meta name="when" content="Tue, 27 Mar 2012 06:17:56 +0000">
 
 <link rel="stylesheet" type="text/css" href="../../../stylesheet.css">
 <link rel="start" href="../../../overview-summary.html">
@@ -87,132 +87,158 @@ limitations under the License.</p></div>
 <a name="line40"></a>     * If no hold has been set before, this method returns an empty array.
 <a name="line41"></a>     *
 <a name="line42"></a>     * @param string $absPath The absolute path to a node.
-<a name="line43"></a>     * @return array All hold objects that have been added to the existing node at absPath through this API or an
-<a name="line44"></a>     *               empty array if no hold has been set.
-<a name="line45"></a>     *
-<a name="line46"></a>     * @throws \PHPCR\PathNotFoundException if no node at absPath exists or the session does not have
-<a name="line47"></a>     *                                      sufficient access to retrieve the node.
-<a name="line48"></a>     * @throws \PHPCR\AccessDeniedException if the current session does not have sufficient access to
-<a name="line49"></a>     *                                      retrieve the holds.
-<a name="line50"></a>     * @throws \PHPCR\RepositoryException if another error occurs.
-<a name="line51"></a>     * @api
-<a name="line52"></a>     */</span>
-<a name="line53"></a>    <span style="color: #000000; font-weight: bold;">function</span> getHolds<span style="color: #009900;">&#40;</span><span style="color: #000088;">$absPath</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line54"></a>&nbsp;
-<a name="line55"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line56"></a>     * Places a hold on the existing node at $absPath.
-<a name="line57"></a>     *
-<a name="line58"></a>     * If $isDeep is true the hold applies to this node and its subgraph.
-<a name="line59"></a>     * The hold does not take effect until a save is performed. A node may have
-<a name="line60"></a>     * more than one hold. The format and interpretation of the name are not
-<a name="line61"></a>     * specified. They are application-dependent.
-<a name="line62"></a>     *
-<a name="line63"></a>     * @param string $absPath The absolute path to a node.
-<a name="line64"></a>     * @param string $name An application-dependent string.
-<a name="line65"></a>     * @param boolean $isDeep A boolean indicating if the hold applies to the subgraph.
-<a name="line66"></a>     * @return \PHPCR\Retention\HoldInterface The Hold applied.
-<a name="line67"></a>     *
-<a name="line68"></a>     * @throws \PHPCR\PathNotFoundException if no node at $absPath exists or the session does not have
-<a name="line69"></a>     *                                      sufficient access to retrieve the node.
-<a name="line70"></a>     * @throws \PHPCR\AccessDeniedException if the current session does not have sufficient access to
-<a name="line71"></a>     *                                      perform the operation.
-<a name="line72"></a>     * @throws \PHPCR\Lock\LockException if a lock applies at the node at $absPath and this implementation
-<a name="line73"></a>     *                                   performs this validation immediately.
-<a name="line74"></a>     * @throws \PHPCR\Version\VersionException if the node at $absPath is read-only due to a checked-in node
-<a name="line75"></a>     *                                         and this implementation performs this validation immediately.
-<a name="line76"></a>     * @throws \PHPCR\RepositoryException if another error occurs.
-<a name="line77"></a>     * @api
-<a name="line78"></a>     */</span>
-<a name="line79"></a>    <span style="color: #000000; font-weight: bold;">function</span> addHold<span style="color: #009900;">&#40;</span><span style="color: #000088;">$absPath</span><span style="color: #339933;">,</span> <span style="color: #000088;">$name</span><span style="color: #339933;">,</span> <span style="color: #000088;">$isDeep</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line80"></a>&nbsp;
-<a name="line81"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line82"></a>     * Removes the specified hold from the node at $absPath.
-<a name="line83"></a>     *
-<a name="line84"></a>     * The removal does not take effect until a save is performed.
-<a name="line85"></a>     *
-<a name="line86"></a>     * @param string $absPath an absolute path.
-<a name="line87"></a>     * @param \PHPCR\Retention\HoldInterface $hold the hold to be removed.
-<a name="line88"></a>     * @return void
-<a name="line89"></a>     *
-<a name="line90"></a>     * @throws \PHPCR\PathNotFoundException if no node at $absPath exists or the session does not have
-<a name="line91"></a>     *                                      sufficient access to retrieve the node.
-<a name="line92"></a>     * @throws \PHPCR\AccessDeniedException if the current session does not have sufficient access to
-<a name="line93"></a>     *                                      perform the operation.
-<a name="line94"></a>     * @throws \PHPCR\Lock\LockException if a lock applies at the node at $absPath and this implementation
-<a name="line95"></a>     *                                   performs this validation immediately.
-<a name="line96"></a>     * @throws \PHPCR\Version\VersionException if the node at $absPath is read-only due to a checked-in
-<a name="line97"></a>     *                                         node and this implementation performs this validation immediately.
-<a name="line98"></a>     * @throws \PHPCR\RepositoryException if another error occurs.
-<a name="line99"></a>     * @api
-<a name="line100"></a>     */</span>
-<a name="line101"></a>    <span style="color: #000000; font-weight: bold;">function</span> removeHold<span style="color: #009900;">&#40;</span><span style="color: #000088;">$absPath</span><span style="color: #339933;">,</span> \PHPCR\Retention\HoldInterface <span style="color: #000088;">$hold</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line102"></a>&nbsp;
-<a name="line103"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line104"></a>     * Gets the retention poilcy of a node identified by its path.
-<a name="line105"></a>     *
-<a name="line106"></a>     * Returns the retention policy that has been set using setRetentionPolicy()
-<a name="line107"></a>     * on the node at $absPath or null if no policy has been set.
-<a name="line108"></a>     *
-<a name="line109"></a>     * @param string $absPath an absolute path to an existing node.
-<a name="line110"></a>     * @return \PHPCR\Retention\RetentionPolicyInterface The retention policy that applies to the existing
-<a name="line111"></a>     *                                                   node at $absPath or null if no policy applies.
-<a name="line112"></a>     * @throws \PHPCR\PathNotFoundException if no node at $absPath exists or the session does not have
-<a name="line113"></a>     *                                      sufficient access to retrieve the node.
-<a name="line114"></a>     * @throws \PHPCR\AccessDeniedException if the current session does not have sufficient access to
-<a name="line115"></a>     *                                      retrieve the policy.
-<a name="line116"></a>     * @throws \PHPCR\RepositoryException if another error occurs.
-<a name="line117"></a>     * @api
-<a name="line118"></a>     */</span>
-<a name="line119"></a>    <span style="color: #000000; font-weight: bold;">function</span> getRetentionPolicy<span style="color: #009900;">&#40;</span><span style="color: #000088;">$absPath</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line120"></a>&nbsp;
-<a name="line121"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line122"></a>     * Sets a retention policy of a node idetified by the given path.
+<a name="line43"></a>     *
+<a name="line44"></a>     * @return array All hold objects that have been added to the existing node
+<a name="line45"></a>     *      at absPath through this API or an empty array if no hold has been
+<a name="line46"></a>     *      set.
+<a name="line47"></a>     *
+<a name="line48"></a>     * @throws \PHPCR\PathNotFoundException if no node at absPath exists or the
+<a name="line49"></a>     *      session does not have sufficient access to retrieve the node.
+<a name="line50"></a>     * @throws \PHPCR\AccessDeniedException if the current session does not
+<a name="line51"></a>     *      have sufficient access to retrieve the holds.
+<a name="line52"></a>     * @throws \PHPCR\RepositoryException if another error occurs.
+<a name="line53"></a>     *
+<a name="line54"></a>     * @api
+<a name="line55"></a>     */</span>
+<a name="line56"></a>    <span style="color: #000000; font-weight: bold;">function</span> getHolds<span style="color: #009900;">&#40;</span><span style="color: #000088;">$absPath</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line57"></a>&nbsp;
+<a name="line58"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line59"></a>     * Places a hold on the existing node at $absPath.
+<a name="line60"></a>     *
+<a name="line61"></a>     * If $isDeep is true the hold applies to this node and its subgraph. The
+<a name="line62"></a>     * hold does not take effect until a save is performed. A node may have
+<a name="line63"></a>     * more than one hold. The format and interpretation of the name are not
+<a name="line64"></a>     * specified. They are application-dependent.
+<a name="line65"></a>     *
+<a name="line66"></a>     * @param string $absPath The absolute path to a node.
+<a name="line67"></a>     * @param string $name An application-dependent string.
+<a name="line68"></a>     * @param boolean $isDeep A boolean indicating if the hold applies to the
+<a name="line69"></a>     *      subgraph.
+<a name="line70"></a>     *
+<a name="line71"></a>     * @return \PHPCR\Retention\HoldInterface The Hold applied.
+<a name="line72"></a>     *
+<a name="line73"></a>     * @throws \PHPCR\PathNotFoundException if no node at $absPath exists or
+<a name="line74"></a>     *      the session does not have sufficient access to retrieve the node.
+<a name="line75"></a>     * @throws \PHPCR\AccessDeniedException if the current session does not
+<a name="line76"></a>     *      have sufficient access to perform the operation.
+<a name="line77"></a>     * @throws \PHPCR\Lock\LockException if a lock applies at the node at
+<a name="line78"></a>     *      $absPath and this implementation performs this validation
+<a name="line79"></a>     *      immediately.
+<a name="line80"></a>     * @throws \PHPCR\Version\VersionException if the node at $absPath is
+<a name="line81"></a>     *      read-only due to a checked-in node and this implementation performs
+<a name="line82"></a>     *      this validation immediately.
+<a name="line83"></a>     * @throws \PHPCR\RepositoryException if another error occurs.
+<a name="line84"></a>     *
+<a name="line85"></a>     * @api
+<a name="line86"></a>     */</span>
+<a name="line87"></a>    <span style="color: #000000; font-weight: bold;">function</span> addHold<span style="color: #009900;">&#40;</span><span style="color: #000088;">$absPath</span><span style="color: #339933;">,</span> <span style="color: #000088;">$name</span><span style="color: #339933;">,</span> <span style="color: #000088;">$isDeep</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line88"></a>&nbsp;
+<a name="line89"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line90"></a>     * Removes the specified hold from the node at $absPath.
+<a name="line91"></a>     *
+<a name="line92"></a>     * The removal does not take effect until a save is performed.
+<a name="line93"></a>     *
+<a name="line94"></a>     * @param string $absPath an absolute path.
+<a name="line95"></a>     * @param \PHPCR\Retention\HoldInterface $hold the hold to be removed.
+<a name="line96"></a>     *
+<a name="line97"></a>     * @return void
+<a name="line98"></a>     *
+<a name="line99"></a>     * @throws \PHPCR\PathNotFoundException if no node at $absPath exists or
+<a name="line100"></a>     *      the session does not have sufficient access to retrieve the node.
+<a name="line101"></a>     * @throws \PHPCR\AccessDeniedException if the current session does not
+<a name="line102"></a>     *      have sufficient access to perform the operation.
+<a name="line103"></a>     * @throws \PHPCR\Lock\LockException if a lock applies at the node at
+<a name="line104"></a>     *      $absPath and this implementation performs this validation
+<a name="line105"></a>     *      immediately.
+<a name="line106"></a>     * @throws \PHPCR\Version\VersionException if the node at $absPath is
+<a name="line107"></a>     *      read-only due to a checked-in node and this implementation performs
+<a name="line108"></a>     *      this validation immediately.
+<a name="line109"></a>     * @throws \PHPCR\RepositoryException if another error occurs.
+<a name="line110"></a>     *
+<a name="line111"></a>     * @api
+<a name="line112"></a>     */</span>
+<a name="line113"></a>    <span style="color: #000000; font-weight: bold;">function</span> removeHold<span style="color: #009900;">&#40;</span><span style="color: #000088;">$absPath</span><span style="color: #339933;">,</span> \PHPCR\Retention\HoldInterface <span style="color: #000088;">$hold</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line114"></a>&nbsp;
+<a name="line115"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line116"></a>     * Gets the retention poilcy of a node identified by its path.
+<a name="line117"></a>     *
+<a name="line118"></a>     * Returns the retention policy that has been set using
+<a name="line119"></a>     * setRetentionPolicy() on the node at $absPath or null if no policy has
+<a name="line120"></a>     * been set.
+<a name="line121"></a>     *
+<a name="line122"></a>     * @param string $absPath an absolute path to an existing node.
 <a name="line123"></a>     *
-<a name="line124"></a>     * Sets the retention policy of the node at $absPath to that defined in the
-<a name="line125"></a>     * specified policy node. Interpretation and enforcement of this policy is an
-<a name="line126"></a>     * implementation issue. In any case the policy does does not take effect
-<a name="line127"></a>     * until a save is performed.
-<a name="line128"></a>     *
-<a name="line129"></a>     * @param string $absPath an absolute path to an existing node.
-<a name="line130"></a>     * @param \PHPCR\Retention\RetentionPolicyInterface $retentionPolicy a retention policy.
-<a name="line131"></a>     * @return void
-<a name="line132"></a>     *
-<a name="line133"></a>     * @throws \PHPCR\PathNotFoundException if no node at $absPath exists or the session does not have
-<a name="line134"></a>     *                                      sufficient access to retrieve the node.
-<a name="line135"></a>     * @throws \PHPCR\AccessDeniedException if the current session does not have sufficient access to
-<a name="line136"></a>     *                                      perform the operation.
-<a name="line137"></a>     * @throws \PHPCR\Lock\LockException if a lock applies at the node at $absPath and this implementation
-<a name="line138"></a>     *                                   performs this validation immediately.
-<a name="line139"></a>     * @throws \PHPCR\Version\VersionException if the node at $absPath is read-only due to a checked-in node
-<a name="line140"></a>     *                                         and this implementation performs this validation immediately.
-<a name="line141"></a>     * @throws \PHPCR\RepositoryException if another error occurs.
-<a name="line142"></a>     * @api
-<a name="line143"></a>     */</span>
-<a name="line144"></a>    <span style="color: #000000; font-weight: bold;">function</span> setRetentionPolicy<span style="color: #009900;">&#40;</span><span style="color: #000088;">$absPath</span><span style="color: #339933;">,</span> \PHPCR\Retention\RetentionPolicyInterface <span style="color: #000088;">$retentionPolicy</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line145"></a>&nbsp;
-<a name="line146"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line147"></a>     * Removes a previous set retention policy.
-<a name="line148"></a>     *
-<a name="line149"></a>     * Causes the current retention policy on the node at $absPath to no longer
-<a name="line150"></a>     * apply. The removal does not take effect until a save is performed.
+<a name="line124"></a>     * @return \PHPCR\Retention\RetentionPolicyInterface The retention policy
+<a name="line125"></a>     *      that applies to the existing node at $absPath or null if no policy
+<a name="line126"></a>     *      applies.
+<a name="line127"></a>     *
+<a name="line128"></a>     * @throws \PHPCR\PathNotFoundException if no node at $absPath exists or
+<a name="line129"></a>     *      the session does not have sufficient access to retrieve the node.
+<a name="line130"></a>     * @throws \PHPCR\AccessDeniedException if the current session does not
+<a name="line131"></a>     *      have sufficient access to retrieve the policy.
+<a name="line132"></a>     * @throws \PHPCR\RepositoryException if another error occurs.
+<a name="line133"></a>     *
+<a name="line134"></a>     * @api
+<a name="line135"></a>     */</span>
+<a name="line136"></a>    <span style="color: #000000; font-weight: bold;">function</span> getRetentionPolicy<span style="color: #009900;">&#40;</span><span style="color: #000088;">$absPath</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line137"></a>&nbsp;
+<a name="line138"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line139"></a>     * Sets a retention policy of a node identified by the given path.
+<a name="line140"></a>     *
+<a name="line141"></a>     * Sets the retention policy of the node at $absPath to that defined in the
+<a name="line142"></a>     * specified policy node. Interpretation and enforcement of this policy is
+<a name="line143"></a>     * an implementation issue. In any case the policy does does not take
+<a name="line144"></a>     * effect until a save is performed.
+<a name="line145"></a>     *
+<a name="line146"></a>     * @param string $absPath an absolute path to an existing node.
+<a name="line147"></a>     * @param \PHPCR\Retention\RetentionPolicyInterface $retentionPolicy a
+<a name="line148"></a>     *      retention policy.
+<a name="line149"></a>     *
+<a name="line150"></a>     * @return void
 <a name="line151"></a>     *
-<a name="line152"></a>     * @param string $absPath an absolute path to an existing node.
-<a name="line153"></a>     * @return void
-<a name="line154"></a>     *
-<a name="line155"></a>     * @throws \PHPCR\PathNotFoundException if no node at $absPath exists or the session does not have
-<a name="line156"></a>     *                                      sufficient access to retrieve the node.
-<a name="line157"></a>     * @throws \PHPCR\AccessDeniedException if the current session does not have sufficient access to
-<a name="line158"></a>     *                                      perform the operation.
-<a name="line159"></a>     * @throws \PHPCR\Lock\LockException if a lock applies at the node at $absPath and this implementation
-<a name="line160"></a>     *                                   performs this validation immediately.
-<a name="line161"></a>     * @throws \PHPCR\Version\VersionException if the node at $absPath is read-only due to a checked-in node
-<a name="line162"></a>     *                                         and this implementation performs this validation immediately.
-<a name="line163"></a>     * @throws \PHPCR\RepositoryException if another error occurs.
+<a name="line152"></a>     * @throws \PHPCR\PathNotFoundException if no node at $absPath exists or
+<a name="line153"></a>     *      the session does not have sufficient access to retrieve the node.
+<a name="line154"></a>     * @throws \PHPCR\AccessDeniedException if the current session does not
+<a name="line155"></a>     *      have sufficient access to perform the operation.
+<a name="line156"></a>     * @throws \PHPCR\Lock\LockException if a lock applies at the node at
+<a name="line157"></a>     *      $absPath and this implementation performs this validation
+<a name="line158"></a>     *      immediately.
+<a name="line159"></a>     * @throws \PHPCR\Version\VersionException if the node at $absPath is
+<a name="line160"></a>     *      read-only due to a checked-in node and this implementation performs
+<a name="line161"></a>     *      this validation immediately.
+<a name="line162"></a>     * @throws \PHPCR\RepositoryException if another error occurs.
+<a name="line163"></a>     *
 <a name="line164"></a>     * @api
 <a name="line165"></a>     */</span>
-<a name="line166"></a>    <span style="color: #000000; font-weight: bold;">function</span> removeRetentionPolicy<span style="color: #009900;">&#40;</span><span style="color: #000088;">$absPath</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line167"></a><span style="color: #009900;">&#125;</span>
-<a name="line168"></a>&nbsp;</pre>
+<a name="line166"></a>    <span style="color: #000000; font-weight: bold;">function</span> setRetentionPolicy<span style="color: #009900;">&#40;</span><span style="color: #000088;">$absPath</span><span style="color: #339933;">,</span> RetentionPolicyInterface <span style="color: #000088;">$retentionPolicy</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line167"></a>&nbsp;
+<a name="line168"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line169"></a>     * Removes a previously set retention policy.
+<a name="line170"></a>     *
+<a name="line171"></a>     * Causes the current retention policy on the node at $absPath to no longer
+<a name="line172"></a>     * apply. The removal does not take effect until a save is performed.
+<a name="line173"></a>     *
+<a name="line174"></a>     * @param string $absPath an absolute path to an existing node.
+<a name="line175"></a>     *
+<a name="line176"></a>     * @return void
+<a name="line177"></a>     *
+<a name="line178"></a>     * @throws \PHPCR\PathNotFoundException if no node at $absPath exists or
+<a name="line179"></a>     *      the session does not have sufficient access to retrieve the node.
+<a name="line180"></a>     * @throws \PHPCR\AccessDeniedException if the current session does not
+<a name="line181"></a>     *      have sufficient access to perform the operation.
+<a name="line182"></a>     * @throws \PHPCR\Lock\LockException if a lock applies at the node at
+<a name="line183"></a>     *      $absPath and this implementation performs this validation
+<a name="line184"></a>     *      immediately.
+<a name="line185"></a>     * @throws \PHPCR\Version\VersionException if the node at $absPath is
+<a name="line186"></a>     *      read-only due to a checked-in node and this implementation performs
+<a name="line187"></a>     *      this validation immediately.
+<a name="line188"></a>     * @throws \PHPCR\RepositoryException if another error occurs.
+<a name="line189"></a>     *
+<a name="line190"></a>     * @api
+<a name="line191"></a>     */</span>
+<a name="line192"></a>    <span style="color: #000000; font-weight: bold;">function</span> removeRetentionPolicy<span style="color: #009900;">&#40;</span><span style="color: #000088;">$absPath</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line193"></a><span style="color: #009900;">&#125;</span>
+<a name="line194"></a>&nbsp;</pre>
 <div class="header">
 <h1>PHPCR</h1>
 <ul>

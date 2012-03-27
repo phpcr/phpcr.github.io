@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="generator" content="PHPDoctor 2RC4 (http://peej.github.com/phpdoctor/)">
-<meta name="when" content="Tue, 26 Jul 2011 15:56:49 +0000">
+<meta name="when" content="Tue, 27 Mar 2012 06:17:54 +0000">
 
 <link rel="stylesheet" type="text/css" href="../../../../stylesheet.css">
 <link rel="start" href="../../../../overview-summary.html">
@@ -72,73 +72,78 @@ limitations under the License.</p></div>
 <a name="line25"></a><span style="color: #000000; font-weight: bold;">namespace</span> PHPCR\Query\QOM<span style="color: #339933;">;</span>
 <a name="line26"></a>&nbsp;
 <a name="line27"></a><span style="color: #009933; font-style: italic;">/**
-<a name="line28"></a> * A query in the JCR query object model.
+<a name="line28"></a> * A query in the JCR/PHPCR query object model.
 <a name="line29"></a> *
-<a name="line30"></a> * The JCR query object model describes the queries that can be evaluated by a JCR
-<a name="line31"></a> * repository independent of any particular query language, such as SQL.
+<a name="line30"></a> * The JCR query object model describes the queries that can be evaluated by a
+<a name="line31"></a> * JCR repository independent of any particular query language, such as SQL.
 <a name="line32"></a> *
 <a name="line33"></a> * A query consists of:
 <a name="line34"></a> *
-<a name="line35"></a> * - a source. When the query is evaluated, the source evaluates its selectors and
-<a name="line36"></a> *   the joins between them to produce a (possibly empty) set of node-tuples. This
-<a name="line37"></a> *   is a set of 1-tuples if the query has one selector (and therefore no joins), a
-<a name="line38"></a> *   set of 2-tuples if the query has two selectors (and therefore one join), a set
-<a name="line39"></a> *   of 3-tuples if the query has three selectors (two joins), and so forth.
-<a name="line40"></a> * - an optional constraint. When the query is evaluated, the constraint filters the
-<a name="line41"></a> *   set of node-tuples.
-<a name="line42"></a> * - a list of zero or more orderings. The orderings specify the order in which the
-<a name="line43"></a> *   node-tuples appear in the query results. The relative order of two node-tuples
-<a name="line44"></a> *   is determined by evaluating the specified orderings, in list order, until
-<a name="line45"></a> *   encountering an ordering for which one node-tuple precedes the other. If no
-<a name="line46"></a> *   orderings are specified, or if for none of the specified orderings does one
-<a name="line47"></a> *   node-tuple precede the other, then the relative order of the node-tuples is
-<a name="line48"></a> *   implementation determined (and may be arbitrary).
-<a name="line49"></a> * - a list of zero or more columns to include in the tabular view of the query
-<a name="line50"></a> *   results. If no columns are specified, the columns available in the tabular view
-<a name="line51"></a> *   are implementation determined, but minimally include, for each selector, a column
-<a name="line52"></a> *   for each single-valued non-residual property of the selector's node type.
-<a name="line53"></a> *
-<a name="line54"></a> * The query object model representation of a query is created by factory methods in the QueryObjectModelFactory.
+<a name="line35"></a> * - a source. When the query is evaluated, the source evaluates its selectors
+<a name="line36"></a> *   and the joins between them to produce a (possibly empty) set of
+<a name="line37"></a> *   node-tuples. This is a set of 1-tuples if the query has one selector (and
+<a name="line38"></a> *   therefore no joins), a set of 2-tuples if the query has two selectors (and
+<a name="line39"></a> *   therefore one join), a set of 3-tuples if the query has three selectors
+<a name="line40"></a> *   (two joins), and so forth.
+<a name="line41"></a> * - an optional constraint. When the query is evaluated, the constraint
+<a name="line42"></a> *   filters the set of node-tuples.
+<a name="line43"></a> * - a list of zero or more orderings. The orderings specify the order in which
+<a name="line44"></a> *   the node-tuples appear in the query results. The relative order of two
+<a name="line45"></a> *   node-tuples is determined by evaluating the specified orderings, in list
+<a name="line46"></a> *   order, untilencountering an ordering for which one node-tuple precedes the
+<a name="line47"></a> *   other. If no orderings are specified, or if for none of the specified
+<a name="line48"></a> *   orderings does one node-tuple precede the other, then the relative order
+<a name="line49"></a> *   of the node-tuples is implementation determined (and may be arbitrary).
+<a name="line50"></a> * - a list of zero or more columns to include in the tabular view of the query
+<a name="line51"></a> *   results. If no columns are specified, the columns available in the tabular
+<a name="line52"></a> *   view are implementation determined, but minimally include, for each
+<a name="line53"></a> *   selector, a column for each single-valued non-residual property of the
+<a name="line54"></a> *   selector's node type.
 <a name="line55"></a> *
-<a name="line56"></a> * @package phpcr
-<a name="line57"></a> * @subpackage interfaces
-<a name="line58"></a> * @api
-<a name="line59"></a> */</span>
-<a name="line60"></a><span style="color: #000000; font-weight: bold;">interface</span> QueryObjectModelInterface <span style="color: #000000; font-weight: bold;">extends</span> \PHPCR\Query\QueryInterface
-<a name="line61"></a><span style="color: #009900;">&#123;</span>
-<a name="line62"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line63"></a>     * Gets the node-tuple source for this query.
-<a name="line64"></a>     *
-<a name="line65"></a>     * @return \PHPCR\Query\QOM\SourceInterface the node-tuple source; non-null
-<a name="line66"></a>     * @api
-<a name="line67"></a>    */</span>
-<a name="line68"></a>    <span style="color: #000000; font-weight: bold;">function</span> getSource<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line69"></a>&nbsp;
-<a name="line70"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line71"></a>     * Gets the constraint for this query.
-<a name="line72"></a>     *
-<a name="line73"></a>     * @return \PHPCR\Query\QOM\ConstraintInterface the constraint, or null if none
-<a name="line74"></a>     * @api
-<a name="line75"></a>    */</span>
-<a name="line76"></a>    <span style="color: #000000; font-weight: bold;">function</span> getConstraint<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line77"></a>&nbsp;
-<a name="line78"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line79"></a>     * Gets the orderings for this query.
-<a name="line80"></a>     *
-<a name="line81"></a>     * @return array an array of zero or more \PHPCR\Query\QOM\OrderingInterface; non-null
-<a name="line82"></a>     * @api
-<a name="line83"></a>    */</span>
-<a name="line84"></a>    <span style="color: #000000; font-weight: bold;">function</span> getOrderings<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line85"></a>&nbsp;
-<a name="line86"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line87"></a>     * Gets the columns for this query.
-<a name="line88"></a>     *
-<a name="line89"></a>     * @return array an array of zero or more \PHPCR\Query\QOM\ColumnInterface; non-null
-<a name="line90"></a>     * @api
-<a name="line91"></a>    */</span>
-<a name="line92"></a>    <span style="color: #000000; font-weight: bold;">function</span> getColumns<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line93"></a><span style="color: #009900;">&#125;</span>
-<a name="line94"></a>&nbsp;</pre>
+<a name="line56"></a> * The query object model representation of a query is created by factory
+<a name="line57"></a> * methods in the QueryObjectModelFactory.
+<a name="line58"></a> *
+<a name="line59"></a> * @package phpcr
+<a name="line60"></a> * @subpackage interfaces
+<a name="line61"></a> * @api
+<a name="line62"></a> */</span>
+<a name="line63"></a><span style="color: #000000; font-weight: bold;">interface</span> QueryObjectModelInterface <span style="color: #000000; font-weight: bold;">extends</span> \PHPCR\Query\QueryInterface
+<a name="line64"></a><span style="color: #009900;">&#123;</span>
+<a name="line65"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line66"></a>     * Gets the node-tuple source for this query.
+<a name="line67"></a>     *
+<a name="line68"></a>     * @return \PHPCR\Query\QOM\SourceInterface the node-tuple source; non-null
+<a name="line69"></a>     * @api
+<a name="line70"></a>    */</span>
+<a name="line71"></a>    <span style="color: #000000; font-weight: bold;">function</span> getSource<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line72"></a>&nbsp;
+<a name="line73"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line74"></a>     * Gets the constraint for this query.
+<a name="line75"></a>     *
+<a name="line76"></a>     * @return \PHPCR\Query\QOM\ConstraintInterface the constraint, or null if
+<a name="line77"></a>     *      none
+<a name="line78"></a>     *
+<a name="line79"></a>     * @api
+<a name="line80"></a>    */</span>
+<a name="line81"></a>    <span style="color: #000000; font-weight: bold;">function</span> getConstraint<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line82"></a>&nbsp;
+<a name="line83"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line84"></a>     * Gets the orderings for this query.
+<a name="line85"></a>     *
+<a name="line86"></a>     * @return array a list of zero or more OrderingInterface; non-null
+<a name="line87"></a>     * @api
+<a name="line88"></a>    */</span>
+<a name="line89"></a>    <span style="color: #000000; font-weight: bold;">function</span> getOrderings<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line90"></a>&nbsp;
+<a name="line91"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line92"></a>     * Gets the columns for this query.
+<a name="line93"></a>     *
+<a name="line94"></a>     * @return array a list of zero or more ColumnInterface; non-null
+<a name="line95"></a>     * @api
+<a name="line96"></a>    */</span>
+<a name="line97"></a>    <span style="color: #000000; font-weight: bold;">function</span> getColumns<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line98"></a><span style="color: #009900;">&#125;</span>
+<a name="line99"></a>&nbsp;</pre>
 <div class="header">
 <h1>PHPCR</h1>
 <ul>

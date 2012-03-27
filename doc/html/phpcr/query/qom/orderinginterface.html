@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="generator" content="PHPDoctor 2RC4 (http://peej.github.com/phpdoctor/)">
-<meta name="when" content="Tue, 26 Jul 2011 15:56:34 +0000">
+<meta name="when" content="Tue, 27 Mar 2012 06:17:41 +0000">
 
 <link rel="stylesheet" type="text/css" href="../../../stylesheet.css">
 <link rel="start" href="../../../overview-summary.html">
@@ -41,7 +41,7 @@ Detail: <a href="#detail_field">Field</a> | <a href="#detail_method">Method</a> 
 <hr>
 
 <div class="qualifiedName">PHPCR\Query\QOM\OrderingInterface</div>
-<a href="../../../source/phpcr/query/qom/orderinginterface.php.html#line56" class="location">PHPCR/Query/QOM/OrderingInterface.php at line 56</a>
+<a href="../../../source/phpcr/query/qom/orderinginterface.php.html#line60" class="location">PHPCR/Query/QOM/OrderingInterface.php at line 60</a>
 
 <h1>Interface OrderingInterface</h1>
 
@@ -55,24 +55,26 @@ Detail: <a href="#detail_field">Field</a> | <a href="#detail_method">Method</a> 
 each.</p><p>For a first node-tuple, nt1, for which operand evaluates to v1, and a second
 node-tuple, nt2, for which operand evaluates to v2:</p><p>If order is Ascending, then:</p>
 <ul>
-<li>if either v1 is null, v2 is null, or both v1 and v2 are null, the relative order of nt1 and nt2 is
-implementation determined, otherwise</li>
-<li>if v1 is a different property type than v2, the relative order of nt1 and nt2 is implementation
-determined, otherwise</li>
+<li>if either v1 is null, v2 is null, or both v1 and v2 are null, the relative
+order of nt1 and nt2 isimplementation determined, otherwise</li>
+<li>if v1 is a different property type than v2, the relative order of nt1 and
+nt2 is implementation determined, otherwise</li>
 <li>if v1 is ordered before v2, then nt1 precedes nt2, otherwise</li>
 <li>if v1 is ordered after v2, then nt2 precedes nt1, otherwise
-the relative order of nt1 and nt2 is implementation determined and may be arbitrary.</li>
+the relative order of nt1 and nt2 is implementation determined and may be
+arbitrary.</li>
 </ul>
 <p>Otherwise, if order is Descending, then:</p>
 <ul>
-<li>if either v1 is null, v2 is null, or both v1 and v2 are null, the relative order of nt1 and nt2 is
-implementation determined, otherwise</li>
-<li>if v1 is a different property type than v2, the relative order of nt1 and nt2 is implementation
-determined, otherwise</li>
+<li>if either v1 is null, v2 is null, or both v1 and v2 are null, the relative
+order of nt1 and nt2 is implementation determined, otherwise</li>
+<li>if v1 is a different property type than v2, the relative order of nt1 and
+nt2 is implementation determined, otherwise</li>
 <li>if v1 is ordered before v2, then nt2 precedes nt1, otherwise</li>
-<li>if v1 is ordered after v2, then nt1 precedes nt2, otherwise</li>
+<li>if v1 is ordered after v2, then nt1 precedes nt2, otherwise
+the relative order of nt1 and nt2 is implementation determined and may be</li>
 </ul>
-<p>the relative order of nt1 and nt2 is implementation determined and may be arbitrary.</p></div>
+<p>arbitrary.</p></div>
 
 <dl>
 <dt>Subpackage:</dt>
@@ -94,7 +96,7 @@ determined, otherwise</li>
 </table>
 
 <h2 id="detail_method">Method Detail</h2>
-<a href="../../../source/phpcr/query/qom/orderinginterface.php.html#line64" class="location">PHPCR/Query/QOM/OrderingInterface.php at line 64</a>
+<a href="../../../source/phpcr/query/qom/orderinginterface.php.html#line68" class="location">PHPCR/Query/QOM/OrderingInterface.php at line 68</a>
 
 <h3 id="getOperand()">getOperand</h3>
 <code class="signature">public  <a href="../../../phpcr/query/qom/dynamicoperandinterface.html">DynamicOperandInterface</a> <strong>getOperand</strong>()</code>
@@ -108,7 +110,7 @@ determined, otherwise</li>
 
 <hr>
 
-<a href="../../../source/phpcr/query/qom/orderinginterface.php.html#line72" class="location">PHPCR/Query/QOM/OrderingInterface.php at line 72</a>
+<a href="../../../source/phpcr/query/qom/orderinginterface.php.html#line77" class="location">PHPCR/Query/QOM/OrderingInterface.php at line 77</a>
 
 <h3 id="getOrder()">getOrder</h3>
 <code class="signature">public  string <strong>getOrder</strong>()</code>

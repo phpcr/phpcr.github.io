@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="generator" content="PHPDoctor 2RC4 (http://peej.github.com/phpdoctor/)">
-<meta name="when" content="Tue, 26 Jul 2011 15:56:52 +0000">
+<meta name="when" content="Tue, 27 Mar 2012 06:17:57 +0000">
 
 <link rel="stylesheet" type="text/css" href="../../../stylesheet.css">
 <link rel="start" href="../../../overview-summary.html">
@@ -34,174 +34,147 @@
 <hr>
 
 <h1>PHPCR/Transaction/UserTransactionInterface.php</h1>
-<div class="comment" id="overview_description"><p>This file is part of the PHPCR API.</p><p>This file in particular is derived from the Java UserTransaction Interface
-of the package javax.transaction. For more information about the Java
-interface have a look at
-http://download.oracle.com/javaee/6/api/javax/transaction/package-summary.html</p><p>Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at</p><p>http://www.apache.org/licenses/LICENSE-2.0</p><p>Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.</p></div>
-
 <hr>
 
 <a name="line1"></a><pre class="php" style="font-family:monospace;"><span style="color: #000000; font-weight: bold;">&lt;?php</span>
-<a name="line2"></a>&nbsp;
-<a name="line3"></a><span style="color: #009933; font-style: italic;">/**
-<a name="line4"></a> * This file is part of the PHPCR API.
-<a name="line5"></a> *
-<a name="line6"></a> * This file in particular is derived from the Java UserTransaction Interface
-<a name="line7"></a> * of the package javax.transaction. For more information about the Java
-<a name="line8"></a> * interface have a look at
-<a name="line9"></a> * http://download.oracle.com/javaee/6/api/javax/transaction/package-summary.html
-<a name="line10"></a> *
-<a name="line11"></a> * Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
-<a name="line12"></a> * you may not use this file except in compliance with the License.
-<a name="line13"></a> * You may obtain a copy of the License at
-<a name="line14"></a> *
-<a name="line15"></a> *     http://www.apache.org/licenses/LICENSE-2.0
-<a name="line16"></a> *
-<a name="line17"></a> * Unless required by applicable law or agreed to in writing, software
-<a name="line18"></a> * distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
-<a name="line19"></a> * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-<a name="line20"></a> * See the License for the specific language governing permissions and
-<a name="line21"></a> * limitations under the License.
-<a name="line22"></a> *
-<a name="line23"></a> * @license http://www.apache.org/licenses/LICENSE-2.0 Apache Software License 2.0
-<a name="line24"></a> * @link http://phpcr.github.com/
-<a name="line25"></a> */</span>
-<a name="line26"></a>&nbsp;
-<a name="line27"></a><span style="color: #000000; font-weight: bold;">namespace</span> PHPCR\Transaction<span style="color: #339933;">;</span>
-<a name="line28"></a>&nbsp;
-<a name="line29"></a><span style="color: #009933; font-style: italic;">/**
-<a name="line30"></a> * As there is no transaction standard in PHP this interface provides a
-<a name="line31"></a> * transaction interface similar to the &lt;a href=&quot;http://en.wikipedia.org/wiki/Java_Transaction_API&quot;&gt;Java Transaction API (JTA)&lt;/a&gt;
-<a name="line32"></a> *
-<a name="line33"></a> * You can acquire the transaction manager from a session supporting
-<a name="line34"></a> * transactions with \PHPCR\SessionInterface::getTransactionManager()
-<a name="line35"></a> *
-<a name="line36"></a> * A transaction is started with begin() and only permanently persisted if
-<a name="line37"></a> * commit() is called. If commit() is not called until timeout, the lifetime
-<a name="line38"></a> * of your php script or if rollback() is called explicitly, no changes are
-<a name="line39"></a> * persisted.
-<a name="line40"></a> *
-<a name="line41"></a> * Remember that session changes are never persisted before you call
-<a name="line42"></a> * $session-&gt;save(). Transactions are only necessary if you want to be able
-<a name="line43"></a> * to rollback over more than one save operation.
-<a name="line44"></a> *
-<a name="line45"></a> * The usage looks like
-<a name="line46"></a> * &lt;pre&gt;
-<a name="line47"></a> *
-<a name="line48"></a> *    $tm = $session-&gt;getTransactionManager();
-<a name="line49"></a> *    $tm-&gt;begin();
-<a name="line50"></a> *    //do stuff with the session
-<a name="line51"></a> *    $session-&gt;save();
-<a name="line52"></a> *    //do more stuff
-<a name="line53"></a> *    if (problem) {
-<a name="line54"></a> *        $tm-&gt;rollback();
-<a name="line55"></a> *    } else {
-<a name="line56"></a> *        $session-&gt;save();
-<a name="line57"></a> *        $tm-&gt;commit();
-<a name="line58"></a> *    }
-<a name="line59"></a> * &lt;/pre&gt;
-<a name="line60"></a> *
-<a name="line61"></a> * A transaction manager might support nested transactions, meaning you can
-<a name="line62"></a> * call begin() repeatedly without commit() in between (but have to commit
-<a name="line63"></a> * every transaction you started).
-<a name="line64"></a> *
-<a name="line65"></a> * Remember that in the context of phpcr, the rollback operation will only
-<a name="line66"></a> * reset the transaction but keep the current session changes. If you want to
-<a name="line67"></a> * get rid of them too, use \PHPCR\SessionInterface::refresh()
-<a name="line68"></a> *
-<a name="line69"></a> * @see \PHPCR\SessionInterface::getTransactionManager()
-<a name="line70"></a> *
-<a name="line71"></a> * @author Johannes Stark &lt;starkj@gmx.de&gt;
-<a name="line72"></a> * @package phpcr
-<a name="line73"></a> * @subpackage interfaces
-<a name="line74"></a> * @api
-<a name="line75"></a> */</span>
-<a name="line76"></a><span style="color: #000000; font-weight: bold;">interface</span> UserTransactionInterface
-<a name="line77"></a><span style="color: #009900;">&#123;</span>
-<a name="line78"></a>&nbsp;
-<a name="line79"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line80"></a>     * Begin new transaction associated with current session.
+<a name="line2"></a><span style="color: #000000; font-weight: bold;">namespace</span> PHPCR\Transaction<span style="color: #339933;">;</span>
+<a name="line3"></a>&nbsp;
+<a name="line4"></a><span style="color: #666666; font-style: italic;">/*
+<a name="line5"></a> * This file is part of the PHPCR API.
+<a name="line6"></a> *
+<a name="line7"></a> * This file in particular is derived from the Java UserTransaction Interface
+<a name="line8"></a> * of the package javax.transaction. For more information about the Java
+<a name="line9"></a> * interface have a look at
+<a name="line10"></a> * http://download.oracle.com/javaee/6/api/javax/transaction/package-summary.html
+<a name="line11"></a> */</span>
+<a name="line12"></a>&nbsp;
+<a name="line13"></a><span style="color: #009933; font-style: italic;">/**
+<a name="line14"></a> * As there is no transaction standard in PHP this interface provides a
+<a name="line15"></a> * transaction interface similar to the
+<a name="line16"></a> * &lt;a href=&quot;http://en.wikipedia.org/wiki/Java_Transaction_API&quot;&gt;Java Transaction
+<a name="line17"></a> * API (JTA)&lt;/a&gt;
+<a name="line18"></a> *
+<a name="line19"></a> * You can acquire the transaction manager from a session supporting
+<a name="line20"></a> * transactions with \PHPCR\SessionInterface::getTransactionManager()
+<a name="line21"></a> *
+<a name="line22"></a> * A transaction is started with begin() and only permanently persisted if
+<a name="line23"></a> * commit() is called. If commit() is not called until timeout, the lifetime
+<a name="line24"></a> * of your php script or if rollback() is called explicitly, no changes are
+<a name="line25"></a> * persisted.
+<a name="line26"></a> *
+<a name="line27"></a> * Remember that session changes are never persisted before you call
+<a name="line28"></a> * $session-&gt;save(). Transactions are only necessary if you want to be able
+<a name="line29"></a> * to rollback over more than one save operation.
+<a name="line30"></a> *
+<a name="line31"></a> * The usage looks like
+<a name="line32"></a> * &lt;pre&gt;
+<a name="line33"></a> *
+<a name="line34"></a> *    $tm = $session-&gt;getTransactionManager();
+<a name="line35"></a> *    $tm-&gt;begin();
+<a name="line36"></a> *    //do stuff with the session
+<a name="line37"></a> *    $session-&gt;save();
+<a name="line38"></a> *    //do more stuff
+<a name="line39"></a> *    if (problem) {
+<a name="line40"></a> *        $tm-&gt;rollback();
+<a name="line41"></a> *    } else {
+<a name="line42"></a> *        $session-&gt;save();
+<a name="line43"></a> *        $tm-&gt;commit();
+<a name="line44"></a> *    }
+<a name="line45"></a> * &lt;/pre&gt;
+<a name="line46"></a> *
+<a name="line47"></a> * A transaction manager might support nested transactions, meaning you can
+<a name="line48"></a> * call begin() repeatedly without commit() in between (but have to commit
+<a name="line49"></a> * every transaction you started).
+<a name="line50"></a> *
+<a name="line51"></a> * Remember that in the context of phpcr, the rollback operation will only
+<a name="line52"></a> * reset the transaction but keep the current session changes. If you want to
+<a name="line53"></a> * get rid of them too, use \PHPCR\SessionInterface::refresh()
+<a name="line54"></a> *
+<a name="line55"></a> * @see \PHPCR\SessionInterface::getTransactionManager()
+<a name="line56"></a> *
+<a name="line57"></a> * @author Johannes Stark &lt;starkj@gmx.de&gt;
+<a name="line58"></a> * @license http://www.apache.org/licenses/LICENSE-2.0 Apache Software License 2.0
+<a name="line59"></a> *
+<a name="line60"></a> * @api
+<a name="line61"></a> */</span>
+<a name="line62"></a><span style="color: #000000; font-weight: bold;">interface</span> UserTransactionInterface
+<a name="line63"></a><span style="color: #009900;">&#123;</span>
+<a name="line64"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line65"></a>     * Begin new transaction associated with current session.
+<a name="line66"></a>     *
+<a name="line67"></a>     * @return void
+<a name="line68"></a>     *
+<a name="line69"></a>     * @throws \PHPCR\UnsupportedRepositoryOperationException Thrown if a
+<a name="line70"></a>     *      transaction is already started and the transaction implementation
+<a name="line71"></a>     *      or backend does not support nested transactions.
+<a name="line72"></a>     *
+<a name="line73"></a>     * @throws \PHPCR\RepositoryException Thrown if the transaction
+<a name="line74"></a>     *      implementation encounters an unexpected error condition.
+<a name="line75"></a>     */</span>
+<a name="line76"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> begin<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line77"></a>&nbsp;
+<a name="line78"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line79"></a>     * Commit the transaction associated with the current session to store it
+<a name="line80"></a>     * persistently.
 <a name="line81"></a>     *
 <a name="line82"></a>     * @return void
 <a name="line83"></a>     *
-<a name="line84"></a>     * @throws \PHPCR\UnsupportedRepositoryOperationException Thrown if a transaction
-<a name="line85"></a>     *      is already started and the transaction implementation or backend does not
-<a name="line86"></a>     *      support nested transactions.
-<a name="line87"></a>     *
-<a name="line88"></a>     * @throws \PHPCR\RepositoryException Thrown if the transaction implementation
-<a name="line89"></a>     *      encounters an unexpected error condition.
-<a name="line90"></a>     */</span>
-<a name="line91"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> begin<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line92"></a>&nbsp;
-<a name="line93"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line94"></a>     *
-<a name="line95"></a>     * Complete the transaction associated with the current session.
-<a name="line96"></a>     *
-<a name="line97"></a>     * @return void
+<a name="line84"></a>     * @throws \PHPCR\Transaction\RollbackException Thrown to indicate that the
+<a name="line85"></a>     *      transaction has been rolled back rather than committed.
+<a name="line86"></a>     * @throws \PHPCR\AccessDeniedException Thrown to indicate that the
+<a name="line87"></a>     *      session is not allowed to commit the transaction.
+<a name="line88"></a>     * @throws \LogicException Thrown if the current
+<a name="line89"></a>     *      session is not associated with a transaction.
+<a name="line90"></a>     * @throws \PHPCR\RepositoryException Thrown if the transaction
+<a name="line91"></a>     *      implementation encounters an unexpected error condition.
+<a name="line92"></a>     */</span>
+<a name="line93"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> commit<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line94"></a>&nbsp;
+<a name="line95"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line96"></a>     * Obtain the status if the current session is inside of a transaction or
+<a name="line97"></a>     * not.
 <a name="line98"></a>     *
-<a name="line99"></a>     * @throws \PHPCR\Transaction\RollbackException Thrown to indicate that the
-<a name="line100"></a>     *      transaction has been rolled back rather than committed.
-<a name="line101"></a>     * @throws \PHPCR\AccessDeniedException Thrown to indicate that the
-<a name="line102"></a>     *      application is not allowed to commit the transaction.
-<a name="line103"></a>     * @throws LogicException Thrown if the current session is not associated
-<a name="line104"></a>     *      with a transaction.
-<a name="line105"></a>     * @throws \PHPCR\RepositoryException Thrown if the transaction implementation
-<a name="line106"></a>     *      encounters an unexpected error condition.
-<a name="line107"></a>     */</span>
-<a name="line108"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> commit<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line109"></a>&nbsp;
-<a name="line110"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line111"></a>     *
-<a name="line112"></a>     * Obtain the status if the current session is inside of a transaction or not.
-<a name="line113"></a>     *
-<a name="line114"></a>     * @return boolean
-<a name="line115"></a>     *
-<a name="line116"></a>     * @throws \PHPCR\RepositoryException Thrown if the transaction implementation
-<a name="line117"></a>     *      encounters an unexpected error condition.
-<a name="line118"></a>     */</span>
-<a name="line119"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> inTransaction<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line120"></a>&nbsp;
-<a name="line121"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line99"></a>     * @return boolean
+<a name="line100"></a>     *
+<a name="line101"></a>     * @throws \PHPCR\RepositoryException Thrown if the transaction
+<a name="line102"></a>     *      implementation encounters an unexpected error condition.
+<a name="line103"></a>     */</span>
+<a name="line104"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> inTransaction<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line105"></a>&nbsp;
+<a name="line106"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line107"></a>     * Rollback the transaction associated with the current session.
+<a name="line108"></a>     *
+<a name="line109"></a>     * @return void
+<a name="line110"></a>     *
+<a name="line111"></a>     * @throws \PHPCR\AccessDeniedException Thrown to indicate that the
+<a name="line112"></a>     *      application is not allowed to roll back the transaction.
+<a name="line113"></a>     * @throws \LogicException Thrown if the current session is not associated
+<a name="line114"></a>     *      with a transaction.
+<a name="line115"></a>     * @throws \PHPCR\RepositoryException Thrown if the transaction
+<a name="line116"></a>     *      implementation encounters an unexpected error condition.
+<a name="line117"></a>     */</span>
+<a name="line118"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> rollback<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line119"></a>&nbsp;
+<a name="line120"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line121"></a>     * Set a timeout for the transaction.
 <a name="line122"></a>     *
-<a name="line123"></a>     * Roll back the transaction associated with the current session.
-<a name="line124"></a>     *
-<a name="line125"></a>     * @return void
-<a name="line126"></a>     *
-<a name="line127"></a>     * @throws \PHPCR\AccessDeniedException Thrown to indicate that the
-<a name="line128"></a>     *      application is not allowed to roll back the transaction.
-<a name="line129"></a>     * @throws LogicException Thrown if the current session is not associated with
-<a name="line130"></a>     *      a transaction.
-<a name="line131"></a>     * @throws \PHPCR\RepositoryException Thrown if the transaction implementation
-<a name="line132"></a>     *      encounters an unexpected error condition.
-<a name="line133"></a>     */</span>
-<a name="line134"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> rollback<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line135"></a>&nbsp;
-<a name="line136"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line137"></a>     *
-<a name="line138"></a>     * Modify the timeout value that is associated with the transaction started by
-<a name="line139"></a>     * the current application with the begin method. If an application has not
-<a name="line140"></a>     * called this method, the transaction service uses some default value for the
-<a name="line141"></a>     * transaction timeout.
-<a name="line142"></a>     *
-<a name="line143"></a>     * @param int $seconds The value of the timeout in seconds. If the value is zero,
-<a name="line144"></a>     *      the transaction service restores the default value. If the value is
-<a name="line145"></a>     *      negative a RepositoryException is thrown.
-<a name="line146"></a>     *
-<a name="line147"></a>     * @return void
-<a name="line148"></a>     *
-<a name="line149"></a>     * @throws \PHPCR\RepositoryException Thrown if the transaction implementation
-<a name="line150"></a>     *      encounters an unexpected error condition.
-<a name="line151"></a>     */</span>
-<a name="line152"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> setTransactionTimeout<span style="color: #009900;">&#40;</span><span style="color: #000088;">$seconds</span> <span style="color: #339933;">=</span> <span style="color: #cc66cc;">0</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line153"></a>&nbsp;
-<a name="line154"></a><span style="color: #009900;">&#125;</span>
-<a name="line155"></a>&nbsp;</pre>
+<a name="line123"></a>     * Modify the timeout value that is associated with transactions started by
+<a name="line124"></a>     * the current application with the begin() method. If not explicitly set,
+<a name="line125"></a>     * the transaction service uses some default value for the transaction
+<a name="line126"></a>     * timeout.
+<a name="line127"></a>     *
+<a name="line128"></a>     * @param int $seconds The value of the timeout in seconds. If the value is
+<a name="line129"></a>     *      zero, the transaction service restores the default value. If the
+<a name="line130"></a>     *      value is negative a RepositoryException is thrown.
+<a name="line131"></a>     *
+<a name="line132"></a>     * @return void
+<a name="line133"></a>     *
+<a name="line134"></a>     * @throws \PHPCR\RepositoryException Thrown if the transaction
+<a name="line135"></a>     *      implementation encounters an unexpected error condition.
+<a name="line136"></a>     */</span>
+<a name="line137"></a>    <span style="color: #000000; font-weight: bold;">public</span> <span style="color: #000000; font-weight: bold;">function</span> setTransactionTimeout<span style="color: #009900;">&#40;</span><span style="color: #000088;">$seconds</span> <span style="color: #339933;">=</span> <span style="color: #cc66cc;">0</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line138"></a><span style="color: #009900;">&#125;</span>
+<a name="line139"></a>&nbsp;</pre>
 <div class="header">
 <h1>PHPCR</h1>
 <ul>

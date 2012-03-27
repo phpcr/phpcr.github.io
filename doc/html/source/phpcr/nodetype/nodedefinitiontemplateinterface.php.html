@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="generator" content="PHPDoctor 2RC4 (http://peej.github.com/phpdoctor/)">
-<meta name="when" content="Tue, 26 Jul 2011 15:56:41 +0000">
+<meta name="when" content="Tue, 27 Mar 2012 06:17:47 +0000">
 
 <link rel="stylesheet" type="text/css" href="../../../stylesheet.css">
 <link rel="start" href="../../../overview-summary.html">
@@ -90,75 +90,95 @@ limitations under the License.</p></div>
 <a name="line43"></a>     * Sets the name of the node.
 <a name="line44"></a>     *
 <a name="line45"></a>     * @param string $name The name of the node.
-<a name="line46"></a>     * @return void
-<a name="line47"></a>     * @api
-<a name="line48"></a>     */</span>
-<a name="line49"></a>    <span style="color: #000000; font-weight: bold;">function</span> setName<span style="color: #009900;">&#40;</span><span style="color: #000088;">$name</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line50"></a>&nbsp;
-<a name="line51"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line52"></a>     * Sets the auto-create status of the node.
-<a name="line53"></a>     *
-<a name="line54"></a>     * @param boolean $autoCreated The status the autocreate attribute of the node shall have.
-<a name="line55"></a>     * @return void
-<a name="line56"></a>     * @api
-<a name="line57"></a>     */</span>
-<a name="line58"></a>    <span style="color: #000000; font-weight: bold;">function</span> setAutoCreated<span style="color: #009900;">&#40;</span><span style="color: #000088;">$autoCreated</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line59"></a>&nbsp;
-<a name="line60"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line61"></a>     * Sets the mandatory status of the node.
-<a name="line62"></a>     *
-<a name="line63"></a>     * @param boolean $mandatory The status of the mandatory attribute.
-<a name="line64"></a>     * @return void
-<a name="line65"></a>     * @api
-<a name="line66"></a>     */</span>
-<a name="line67"></a>    <span style="color: #000000; font-weight: bold;">function</span> setMandatory<span style="color: #009900;">&#40;</span><span style="color: #000088;">$mandatory</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line68"></a>&nbsp;
-<a name="line69"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line70"></a>     * Sets the on-parent-version status of the node.
+<a name="line46"></a>     *
+<a name="line47"></a>     * @return void
+<a name="line48"></a>     *
+<a name="line49"></a>     * @api
+<a name="line50"></a>     */</span>
+<a name="line51"></a>    <span style="color: #000000; font-weight: bold;">function</span> setName<span style="color: #009900;">&#40;</span><span style="color: #000088;">$name</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line52"></a>&nbsp;
+<a name="line53"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line54"></a>     * Sets the auto-create status of the node.
+<a name="line55"></a>     *
+<a name="line56"></a>     * @param boolean $autoCreated The status the autocreate attribute of the
+<a name="line57"></a>     *      node shall have.
+<a name="line58"></a>     *
+<a name="line59"></a>     * @return void
+<a name="line60"></a>     *
+<a name="line61"></a>     * @api
+<a name="line62"></a>     */</span>
+<a name="line63"></a>    <span style="color: #000000; font-weight: bold;">function</span> setAutoCreated<span style="color: #009900;">&#40;</span><span style="color: #000088;">$autoCreated</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line64"></a>&nbsp;
+<a name="line65"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line66"></a>     * Sets the mandatory status of the node.
+<a name="line67"></a>     *
+<a name="line68"></a>     * @param boolean $mandatory The status of the mandatory attribute.
+<a name="line69"></a>     *
+<a name="line70"></a>     * @return void
 <a name="line71"></a>     *
-<a name="line72"></a>     * @param integer $opv An integer constant member of OnParentVersionAction.
-<a name="line73"></a>     * @return void
-<a name="line74"></a>     * @api
-<a name="line75"></a>     */</span>
-<a name="line76"></a>    <span style="color: #000000; font-weight: bold;">function</span> setOnParentVersion<span style="color: #009900;">&#40;</span><span style="color: #000088;">$opv</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line77"></a>&nbsp;
-<a name="line78"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line79"></a>     * Sets the protected status of the node.
+<a name="line72"></a>     * @api
+<a name="line73"></a>     */</span>
+<a name="line74"></a>    <span style="color: #000000; font-weight: bold;">function</span> setMandatory<span style="color: #009900;">&#40;</span><span style="color: #000088;">$mandatory</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line75"></a>&nbsp;
+<a name="line76"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line77"></a>     * Sets the on-parent-version status of the node.
+<a name="line78"></a>     *
+<a name="line79"></a>     * @param integer $opv An integer constant member of OnParentVersionAction.
 <a name="line80"></a>     *
-<a name="line81"></a>     * @param boolean $protectedStatus The status of the protected attribute.
-<a name="line82"></a>     * @return void
+<a name="line81"></a>     * @return void
+<a name="line82"></a>     *
 <a name="line83"></a>     * @api
 <a name="line84"></a>     */</span>
-<a name="line85"></a>    <span style="color: #000000; font-weight: bold;">function</span> setProtected<span style="color: #009900;">&#40;</span><span style="color: #000088;">$protectedStatus</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line85"></a>    <span style="color: #000000; font-weight: bold;">function</span> setOnParentVersion<span style="color: #009900;">&#40;</span><span style="color: #000088;">$opv</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
 <a name="line86"></a>&nbsp;
 <a name="line87"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line88"></a>     * Sets the names of the required primary types of this node.
+<a name="line88"></a>     * Sets the protected status of the node.
 <a name="line89"></a>     *
-<a name="line90"></a>     * @param array $requiredPrimaryTypeNames List of primary type names to be registered.
-<a name="line91"></a>     * @return void
-<a name="line92"></a>     * @api
-<a name="line93"></a>     */</span>
-<a name="line94"></a>    <span style="color: #000000; font-weight: bold;">function</span> setRequiredPrimaryTypeNames<span style="color: #009900;">&#40;</span><a href="http://www.php.net/array"><span style="color: #990000;">Array</span></a> <span style="color: #000088;">$requiredPrimaryTypeNames</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line95"></a>&nbsp;
-<a name="line96"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line97"></a>     * Sets the name of the default primary type of this node.
-<a name="line98"></a>     *
-<a name="line99"></a>     * @param string $defaultPrimaryTypeName The name of a primary type name to be registered.
-<a name="line100"></a>     * @return void
-<a name="line101"></a>     * @api
-<a name="line102"></a>     */</span>
-<a name="line103"></a>    <span style="color: #000000; font-weight: bold;">function</span> setDefaultPrimaryTypeName<span style="color: #009900;">&#40;</span><span style="color: #000088;">$defaultPrimaryTypeName</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line104"></a>&nbsp;
-<a name="line105"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line106"></a>     * Sets the same-name sibling status of this node.
-<a name="line107"></a>     *
-<a name="line108"></a>     * @param boolean $allowSameNameSiblings The status the same-name sibling attribute shel be set to.
-<a name="line109"></a>     * @return void
-<a name="line110"></a>     * @api
-<a name="line111"></a>     */</span>
-<a name="line112"></a>    <span style="color: #000000; font-weight: bold;">function</span> setSameNameSiblings<span style="color: #009900;">&#40;</span><span style="color: #000088;">$allowSameNameSiblings</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line113"></a><span style="color: #009900;">&#125;</span>
-<a name="line114"></a>&nbsp;</pre>
+<a name="line90"></a>     * @param boolean $protectedStatus The status of the protected attribute.
+<a name="line91"></a>     *
+<a name="line92"></a>     * @return void
+<a name="line93"></a>     *
+<a name="line94"></a>     * @api
+<a name="line95"></a>     */</span>
+<a name="line96"></a>    <span style="color: #000000; font-weight: bold;">function</span> setProtected<span style="color: #009900;">&#40;</span><span style="color: #000088;">$protectedStatus</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line97"></a>&nbsp;
+<a name="line98"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line99"></a>     * Sets the names of the required primary types of this node.
+<a name="line100"></a>     *
+<a name="line101"></a>     * @param array $requiredPrimaryTypeNames List of primary type names to be
+<a name="line102"></a>     *      registered.
+<a name="line103"></a>     *
+<a name="line104"></a>     * @return void
+<a name="line105"></a>     *
+<a name="line106"></a>     * @api
+<a name="line107"></a>     */</span>
+<a name="line108"></a>    <span style="color: #000000; font-weight: bold;">function</span> setRequiredPrimaryTypeNames<span style="color: #009900;">&#40;</span><a href="http://www.php.net/array"><span style="color: #990000;">Array</span></a> <span style="color: #000088;">$requiredPrimaryTypeNames</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line109"></a>&nbsp;
+<a name="line110"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line111"></a>     * Sets the name of the default primary type of this node.
+<a name="line112"></a>     *
+<a name="line113"></a>     * @param string $defaultPrimaryTypeName The name of a primary type name to
+<a name="line114"></a>     *      be registered.
+<a name="line115"></a>     *
+<a name="line116"></a>     * @return void
+<a name="line117"></a>     *
+<a name="line118"></a>     * @api
+<a name="line119"></a>     */</span>
+<a name="line120"></a>    <span style="color: #000000; font-weight: bold;">function</span> setDefaultPrimaryTypeName<span style="color: #009900;">&#40;</span><span style="color: #000088;">$defaultPrimaryTypeName</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line121"></a>&nbsp;
+<a name="line122"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line123"></a>     * Sets the same-name sibling status of this node.
+<a name="line124"></a>     *
+<a name="line125"></a>     * @param boolean $allowSameNameSiblings Whether same-name siblings of this
+<a name="line126"></a>     *      node should be allowed
+<a name="line127"></a>     *
+<a name="line128"></a>     * @return void
+<a name="line129"></a>     *
+<a name="line130"></a>     * @api
+<a name="line131"></a>     */</span>
+<a name="line132"></a>    <span style="color: #000000; font-weight: bold;">function</span> setSameNameSiblings<span style="color: #009900;">&#40;</span><span style="color: #000088;">$allowSameNameSiblings</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line133"></a><span style="color: #009900;">&#125;</span>
+<a name="line134"></a>&nbsp;</pre>
 <div class="header">
 <h1>PHPCR</h1>
 <ul>

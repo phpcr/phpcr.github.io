@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="generator" content="PHPDoctor 2RC4 (http://peej.github.com/phpdoctor/)">
-<meta name="when" content="Tue, 26 Jul 2011 15:56:35 +0000">
+<meta name="when" content="Tue, 27 Mar 2012 06:17:41 +0000">
 
 <link rel="stylesheet" type="text/css" href="../../stylesheet.css">
 <link rel="start" href="../../overview-summary.html">
@@ -51,18 +51,18 @@ Detail: <a href="#detail_field">Field</a> | <a href="#detail_method">Method</a> 
 
 <p class="signature">public  interface <strong>VersionManagerInterface</strong></p>
 
-<div class="comment" id="overview_description"><p>The VersionManager object is accessed via WorkspaceInterface::getVersionManager(). It
-provides methods for:</p>
+<div class="comment" id="overview_description"><p>The VersionManager object is accessed via
+WorkspaceInterface::getVersionManager(). It provides methods for:</p>
 <ul>
-<li>Version graph functionality (version history, base version, successors predecessors)</li>
+<li>Version graph functionality (version history, base version, successors
+predecessors)</li>
 <li>Basic version operations (checkin, checkout, checkpoint)</li>
 <li>Restore feature</li>
 <li>Label feature</li>
 <li>Merge feature</li>
 <li>Configuration feature</li>
-<li>Activity feature</li>
 </ul>
-<p>&nbsp;</p></div>
+<p>- Activity feature</p></div>
 
 <dl>
 <dt>Subpackage:</dt>
@@ -128,16 +128,13 @@ current activity.</p></td>
 </tr>
 <tr>
 <td class="type"> boolean</td>
-<td class="description"><p class="name"><a href="#isCheckedOut()">isCheckedOut</a>(string absPath)</p><p class="description">Returns true if the node at $absPath is either
-versionable (full or simple) and currently checked-out,
-non-versionable and its nearest versionable ancestor is checked-out or
-non-versionable and it has no versionable ancestor.
+<td class="description"><p class="name"><a href="#isCheckedOut()">isCheckedOut</a>(string absPath)</p><p class="description">Check whether the node at path is checked out.
 </p></td>
 </tr>
 <tr>
 <td class="type"> Iterator</td>
-<td class="description"><p class="name"><a href="#merge()">merge</a>(<a href="../../phpcr/nodeinterface.html">NodeInterface</a> source, string srcWorkspace, boolean bestEffort, boolean isShallow)</p><p class="description">If an nt:activity Node is given:This method merges the changes that were made under the specified activity
-into the current workspace.
+<td class="description"><p class="name"><a href="#merge()">merge</a>(<a href="../../phpcr/nodeinterface.html">NodeInterface</a> source, string srcWorkspace, boolean bestEffort, boolean isShallow)</p><p class="description">If an nt:activity Node is given:This method merges the changes that were made under the specified
+activity into the current workspace.
 </p></td>
 </tr>
 <tr>
@@ -147,9 +144,7 @@ into the current workspace.
 </tr>
 <tr>
 <td class="type"> void</td>
-<td class="description"><p class="name"><a href="#restore()">restore</a>(boolean removeExisting, <a href="../../phpcr/version/versioninterface.html">VersionInterface</a> version, string absPath)</p><p class="description">If $absPath is given and $version is a version name:
-Restores the node at $absPath to the state defined by the version with
-the specified version name ($version).
+<td class="description"><p class="name"><a href="#restore()">restore</a>(boolean removeExisting, <a href="../../phpcr/version/versioninterface.html">VersionInterface</a> version, string absPath)</p><p class="description">Attempt to restore an old version of a node.
 </p></td>
 </tr>
 <tr>
@@ -165,17 +160,17 @@ session from which this version manager has been obtained. </p></td>
 </table>
 
 <h2 id="detail_method">Method Detail</h2>
-<a href="../../source/phpcr/version/versionmanagerinterface.php.html#line471" class="location">PHPCR/Version/VersionManagerInterface.php at line 471</a>
+<a href="../../source/phpcr/version/versionmanagerinterface.php.html#line557" class="location">PHPCR/Version/VersionManagerInterface.php at line 557</a>
 
 <h3 id="cancelMerge()">cancelMerge</h3>
 <code class="signature">public  void <strong>cancelMerge</strong>(string absPath, <a href="../../phpcr/version/versioninterface.html">VersionInterface</a> version)</code>
 <div class="details">
 <p>Cancels the merge process with respect to the node at absPath and the
 specified version.</p><p>See doneMerge(string, Version) for a full explanation. Also see
-merge(string, string, boolean) for more details.</p><p>If successful, these changes are dispatched immediately, there is no need
-to call save.</p><dl>
+merge(string, string, boolean) for more details.</p><p>If successful, these changes are dispatched immediately, there is no
+need to call save.</p><dl>
 <dt>Parameters:</dt>
-<dd>absPath - The absolute path to a node the prvileges shall be fetched of.</dd>
+<dd>absPath - The absolute path to a node the privileges shall be fetched of.</dd>
 <dd>version - a version referred to by the jcr:mergeFailed property of the node at absPath.</dd>
 <dt>Throws:</dt>
 <dd><a href="../../phpcr/version/versionexception.html">\PHPCR\Version\VersionException</a> - if the version specified is not among those referenced in the jcr:mergeFailed property of the node at absPath or if the node is currently checked-in.</dd>
@@ -188,7 +183,7 @@ to call save.</p><dl>
 
 <hr>
 
-<a href="../../source/phpcr/version/versionmanagerinterface.php.html#line86" class="location">PHPCR/Version/VersionManagerInterface.php at line 86</a>
+<a href="../../source/phpcr/version/versionmanagerinterface.php.html#line92" class="location">PHPCR/Version/VersionManagerInterface.php at line 92</a>
 
 <h3 id="checkin()">checkin</h3>
 <code class="signature">public  <a href="../../phpcr/version/versioninterface.html">VersionInterface</a> <strong>checkin</strong>(string absPath)</code>
@@ -229,7 +224,7 @@ dispatched immediately.</p><dl>
 
 <hr>
 
-<a href="../../source/phpcr/version/versionmanagerinterface.php.html#line113" class="location">PHPCR/Version/VersionManagerInterface.php at line 113</a>
+<a href="../../source/phpcr/version/versionmanagerinterface.php.html#line123" class="location">PHPCR/Version/VersionManagerInterface.php at line 123</a>
 
 <h3 id="checkout()">checkout</h3>
 <code class="signature">public  void <strong>checkout</strong>(string absPath)</code>
@@ -255,7 +250,7 @@ to call save.</p><p>If this node is already checked-out, this method has no effe
 
 <hr>
 
-<a href="../../source/phpcr/version/versionmanagerinterface.php.html#line132" class="location">PHPCR/Version/VersionManagerInterface.php at line 132</a>
+<a href="../../source/phpcr/version/versionmanagerinterface.php.html#line148" class="location">PHPCR/Version/VersionManagerInterface.php at line 148</a>
 
 <h3 id="checkpoint()">checkpoint</h3>
 <code class="signature">public  <a href="../../phpcr/version/versioninterface.html">VersionInterface</a> <strong>checkpoint</strong>(string absPath)</code>
@@ -278,7 +273,7 @@ $absPath.</p><p>If this node is already checked-in, this method is equivalent to
 
 <hr>
 
-<a href="../../source/phpcr/version/versionmanagerinterface.php.html#line538" class="location">PHPCR/Version/VersionManagerInterface.php at line 538</a>
+<a href="../../source/phpcr/version/versionmanagerinterface.php.html#line640" class="location">PHPCR/Version/VersionManagerInterface.php at line 640</a>
 
 <h3 id="createActivity()">createActivity</h3>
 <code class="signature">public  <a href="../../phpcr/nodeinterface.html">NodeInterface</a> <strong>createActivity</strong>(string title)</code>
@@ -299,7 +294,7 @@ what to name the new activity node. The new activity Node is returned.</p><p>The
 
 <hr>
 
-<a href="../../source/phpcr/version/versionmanagerinterface.php.html#line495" class="location">PHPCR/Version/VersionManagerInterface.php at line 495</a>
+<a href="../../source/phpcr/version/versionmanagerinterface.php.html#line586" class="location">PHPCR/Version/VersionManagerInterface.php at line 586</a>
 
 <h3 id="createConfiguration()">createConfiguration</h3>
 <code class="signature">public  <a href="../../phpcr/nodeinterface.html">NodeInterface</a> <strong>createConfiguration</strong>(string absPath, <a href="../../phpcr/version/versioninterface.html">VersionInterface</a> baseline)</code>
@@ -314,7 +309,7 @@ new configuration references the root of the new version history. If the
 specified baseline is not null, the jcr:baseVersion of the new
 configuration references the specified baseline.</p><p>The changes are persisted immediately, a save is not required.</p><dl>
 <dt>Parameters:</dt>
-<dd>absPath - The absolute path to a node the prvileges shall be fetched of.</dd>
+<dd>absPath - The absolute path to a node the privileges shall be fetched of.</dd>
 <dd>baseline - a Version</dd>
 <dt>Returns:</dt>
 <dd>a new nt:configuration node</dd>
@@ -327,7 +322,7 @@ configuration references the specified baseline.</p><p>The changes are persisted
 
 <hr>
 
-<a href="../../source/phpcr/version/versionmanagerinterface.php.html#line447" class="location">PHPCR/Version/VersionManagerInterface.php at line 447</a>
+<a href="../../source/phpcr/version/versionmanagerinterface.php.html#line527" class="location">PHPCR/Version/VersionManagerInterface.php at line 527</a>
 
 <h3 id="doneMerge()">doneMerge</h3>
 <code class="signature">public  void <strong>doneMerge</strong>(string absPath, <a href="../../phpcr/version/versioninterface.html">VersionInterface</a> version)</code>
@@ -337,14 +332,20 @@ specified version.</p><p>When the merge(string, string, boolean) method is calle
 versionable node in that subgraph is compared with its corresponding node
 in the indicated other workspace and a "merge test result" is determined
 indicating one of the following:</p><p><ol>
-<li>This node will be updated to the state of its correspondee (if the base
-version of the correspondee is more recent in terms of version history)</li>
-<li>This node will be left alone (if this node's base version is more recent
-in terms of version history).</li>
-<li>This node will be marked as having failed the merge test (if this node's
-base version is on a different branch of the version history from the
-base version of its corresponding node in the other workspace, thus
-preventing an automatic determination of which is more recent).</li>
+<li>
+This node will be updated to the state of its correspondee (if the
+base version of the correspondee is more recent in terms of version
+history)
+</li><li>
+This node will be left alone (if this node's base version is more
+recent in terms of version history).
+</li><li>
+This node will be marked as having failed the merge test (if this
+node's base version is on a different branch of the version history
+from the base version of its corresponding node in the other
+workspace, thus preventing an automatic determination of which is more
+recent).
+</li>
 </ol></p><p>(See merge() for more details)</p><p>In the last case the merge of the non-versionable subgraph (the "content")
 of this node must be done by the application (for example, by providing a
 merge tool for the user).</p><p>Additionally, once the content of the nodes has been merged, their version
@@ -358,7 +359,8 @@ passing the version object referred to be the jcr:mergeFailed property
 that the client wishes to connect to this node in the version graph. This
 has the effect of moving the reference to the indicated version from the
 jcr:mergeFailed property of this node to the jcr:predecessors.</p><p>If the client chooses not to connect this node to a particular version
-referenced in the jcr:mergeFailed property, he calls cancelMerge(String, Version).
+referenced in the jcr:mergeFailed property, he calls cancelMerge(String,
+Version).
 This has the effect of removing the reference to the specified version
 from jcr:mergeFailed without adding it to jcr:predecessors.</p><p>Once the last reference in jcr:mergeFailed has been either moved to
 jcr:predecessors (with doneMerge) or just removed from jcr:mergeFailed
@@ -370,7 +372,7 @@ connection to each version for which doneMerge was called, thus joining
 those branches of the version graph.</p><p>If successful, these changes are dispatched immediately, there is no need
 to call save.</p><dl>
 <dt>Parameters:</dt>
-<dd>absPath - The absolute path to a node the prvileges shall be fetched of.</dd>
+<dd>absPath - The absolute path to a node the privileges shall be fetched of.</dd>
 <dd>version - a version referred to by the jcr:mergeFailed property of the node at absPath.</dd>
 <dt>Throws:</dt>
 <dd><a href="../../phpcr/version/versionexception.html">\PHPCR\Version\VersionException</a> - if the version specified is not among those referenced in this node's jcr:mergeFailed or if the node is currently checked-in.</dd>
@@ -383,7 +385,7 @@ to call save.</p><dl>
 
 <hr>
 
-<a href="../../source/phpcr/version/versionmanagerinterface.php.html#line521" class="location">PHPCR/Version/VersionManagerInterface.php at line 521</a>
+<a href="../../source/phpcr/version/versionmanagerinterface.php.html#line619" class="location">PHPCR/Version/VersionManagerInterface.php at line 619</a>
 
 <h3 id="getActivity()">getActivity</h3>
 <code class="signature">public  <a href="../../phpcr/nodeinterface.html">NodeInterface</a> <strong>getActivity</strong>()</code>
@@ -401,14 +403,14 @@ current activity.</p><dl>
 
 <hr>
 
-<a href="../../source/phpcr/version/versionmanagerinterface.php.html#line172" class="location">PHPCR/Version/VersionManagerInterface.php at line 172</a>
+<a href="../../source/phpcr/version/versionmanagerinterface.php.html#line208" class="location">PHPCR/Version/VersionManagerInterface.php at line 208</a>
 
 <h3 id="getBaseVersion()">getBaseVersion</h3>
 <code class="signature">public  <a href="../../phpcr/version/versioninterface.html">VersionInterface</a> <strong>getBaseVersion</strong>(string absPath)</code>
 <div class="details">
 <p>Returns the current base version of the versionable node at absPath.</p><dl>
 <dt>Parameters:</dt>
-<dd>absPath - The absolute path to a node the prvileges shall be fetched of.</dd>
+<dd>absPath - The absolute path to a node the privileges shall be fetched of.</dd>
 <dt>Returns:</dt>
 <dd>a Version object.</dd>
 <dt>Throws:</dt>
@@ -420,15 +422,16 @@ current activity.</p><dl>
 
 <hr>
 
-<a href="../../source/phpcr/version/versionmanagerinterface.php.html#line161" class="location">PHPCR/Version/VersionManagerInterface.php at line 161</a>
+<a href="../../source/phpcr/version/versionmanagerinterface.php.html#line192" class="location">PHPCR/Version/VersionManagerInterface.php at line 192</a>
 
 <h3 id="getVersionHistory()">getVersionHistory</h3>
 <code class="signature">public  <a href="../../phpcr/version/versionhistoryinterface.html">VersionHistoryInterface</a> <strong>getVersionHistory</strong>(string absPath)</code>
 <div class="details">
 <p>Returns the VersionHistory object of the node at $absPath. This object
-provides access to the nt:versionHistory node holding this node's versions.</p><dl>
+provides access to the nt:versionHistory node holding this node's
+versions.</p><dl>
 <dt>Parameters:</dt>
-<dd>absPath - The absolute path to a node the prvileges shall be fetched of.</dd>
+<dd>absPath - The absolute path to a node the privileges shall be fetched of.</dd>
 <dt>Returns:</dt>
 <dd>a VersionHistory object</dd>
 <dt>Throws:</dt>
@@ -440,19 +443,21 @@ provides access to the nt:versionHistory node holding this node's versions.</p><
 
 <hr>
 
-<a href="../../source/phpcr/version/versionmanagerinterface.php.html#line149" class="location">PHPCR/Version/VersionManagerInterface.php at line 149</a>
+<a href="../../source/phpcr/version/versionmanagerinterface.php.html#line174" class="location">PHPCR/Version/VersionManagerInterface.php at line 174</a>
 
 <h3 id="isCheckedOut()">isCheckedOut</h3>
 <code class="signature">public  boolean <strong>isCheckedOut</strong>(string absPath)</code>
 <div class="details">
-<p>Returns true if the node at $absPath is either
-versionable (full or simple) and currently checked-out,
-non-versionable and its nearest versionable ancestor is checked-out or
-non-versionable and it has no versionable ancestor.</p><p>Returns false if the node at $absPath is either
-versionable (full or simple) and currently checked-in or
-non-versionable and its nearest versionable ancestor is checked-in.</p><dl>
+<p>Check whether the node at path is checked out.</p><p>Returns true if the node at $absPath is either</p>
+<ul>
+<li>versionable (full or simple) and currently checked-out,</li>
+<li>non-versionable and its nearest versionable ancestor is checked-out or</li>
+<li>non-versionable and it has no versionable ancestor.</li>
+</ul>
+<p>Returns false if the node at $absPath is either</p><p>- versionable (full or simple) and currently checked-in or
+- non-versionable and its nearest versionable ancestor is checked-in.</p><dl>
 <dt>Parameters:</dt>
-<dd>absPath - The absolute path to a node the prvileges shall be fetched of.</dd>
+<dd>absPath - The absolute path to a node the privileges shall be fetched of.</dd>
 <dt>Returns:</dt>
 <dd>True, if the node identified by the given path is checked out, else false.</dd>
 <dt>Throws:</dt>
@@ -463,15 +468,15 @@ non-versionable and its nearest versionable ancestor is checked-in.</p><dl>
 
 <hr>
 
-<a href="../../source/phpcr/version/versionmanagerinterface.php.html#line377" class="location">PHPCR/Version/VersionManagerInterface.php at line 377</a>
+<a href="../../source/phpcr/version/versionmanagerinterface.php.html#line443" class="location">PHPCR/Version/VersionManagerInterface.php at line 443</a>
 
 <h3 id="merge()">merge</h3>
 <code class="signature">public  Iterator <strong>merge</strong>(<a href="../../phpcr/nodeinterface.html">NodeInterface</a> source, string srcWorkspace, boolean bestEffort, boolean isShallow)</code>
 <div class="details">
-<p>If an nt:activity Node is given:</p><p>This method merges the changes that were made under the specified activity
-into the current workspace.</p><p>An activity A will be associated with a set of versions through the
-jcr:activity reference of each version node in the set. We call each such
-associated version a member of A.</p><p>For each version history H that contains one or more members of A, one
+<p>If an nt:activity Node is given:</p><p>This method merges the changes that were made under the specified
+activity into the current workspace.</p><p>An activity A will be associated with a set of versions through the
+jcr:activity reference of each version node in the set. We call each
+such associated version a member of A.</p><p>For each version history H that contains one or more members of A, one
 such member will be the latest member of A in H. The latest member of A
 in H is the version in H that is a member of A and that has no successor
 versions (to any degree) that are also members of A.</p><p>The set of versions that are the latest members of A in their respective
@@ -482,16 +487,17 @@ there is no corresponding node in this workspace for a given member of
 the change set, that member is ignored.</p><p>
 If an absolute path is given:</p><p>This method can be thought of as a version-sensitive update.</p><p>If isShallow is true, it tests the node at absPath against its
 corresponding node in srcWorkspace with respect to the relation between
-their respective base versions and either updates the node in question or
-not, depending on the outcome of the test.</p><p>If isShallow is false, this method recursively tests each versionable
+their respective base versions and either updates the node in question
+or not, depending on the outcome of the test.</p><p>If isShallow is false, this method recursively tests each versionable
 node in the subgraph as mentioned above.</p><p>If isShallow is true and this node is not versionable, then this method
 returns and no changes are made.</p><p>A MergeException is thrown if bestEffort is false and a versionable node
 is encountered whose corresponding node's base version is on a divergent
 branch from the base version of the node at absPath.</p><p>This is a worksapce-write method and therefore any changes are dispatched
 immediately.</p><p>This method returns an iterator over all versionable nodes in the
 subgraph that received a merge result of fail. If bestEffort is false,
-this iterator will be empty (since if merge returns successfully, instead
-of throwing an exception, it will be because no failures were encountered).
+this iterator will be empty (since if merge returns successfully,
+instead of throwing an exception, it will be because no failures were
+encountered).
 If bestEffort is true, this iterator will contain all nodes that received
 a fail during the course of this merge operation.</p><p>
 See the JCR specifications for more details on the behavior of this
@@ -518,7 +524,7 @@ method.</p><p>Note: The Java API defines this with multiple differing signatures
 
 <hr>
 
-<a href="../../source/phpcr/version/versionmanagerinterface.php.html#line551" class="location">PHPCR/Version/VersionManagerInterface.php at line 551</a>
+<a href="../../source/phpcr/version/versionmanagerinterface.php.html#line657" class="location">PHPCR/Version/VersionManagerInterface.php at line 657</a>
 
 <h3 id="removeActivity()">removeActivity</h3>
 <code class="signature">public  void <strong>removeActivity</strong>(<a href="../../phpcr/nodeinterface.html">NodeInterface</a> activityNode)</code>
@@ -535,17 +541,18 @@ method.</p><p>Note: The Java API defines this with multiple differing signatures
 
 <hr>
 
-<a href="../../source/phpcr/version/versionmanagerinterface.php.html#line257" class="location">PHPCR/Version/VersionManagerInterface.php at line 257</a>
+<a href="../../source/phpcr/version/versionmanagerinterface.php.html#line305" class="location">PHPCR/Version/VersionManagerInterface.php at line 305</a>
 
 <h3 id="restore()">restore</h3>
 <code class="signature">public  void <strong>restore</strong>(boolean removeExisting, <a href="../../phpcr/version/versioninterface.html">VersionInterface</a> version, string absPath)</code>
 <div class="details">
-<p>If $absPath is given and $version is a version name:
+<p>Attempt to restore an old version of a node.</p><p><em>If $absPath is given and $version is a version name:</em>
 Restores the node at $absPath to the state defined by the version with
 the specified version name ($version).
 This method will work regardless of whether the node at absPath is
 checked-in or not.</p><p>
-If $absPath is given and $version is a VersionInterface instance:
+<em>If $absPath is given and $version is a VersionInterface instance:
+</em>
 Restores the specified version to $absPath. There must be no existing
 node at $absPath. If one exists, a VersionException is thrown.
 There must be a parent node to the location at $absPath, otherwise a
@@ -553,11 +560,11 @@ PathNotFoundException is thrown.
 If the would-be parent of the location $absPath is actually a property,
 or if a node type restriction would be violated, then a
 ConstraintViolationException is thrown.</p><p>
-If $version is VersionInterface instance:
+<em>If $version is VersionInterface instance:</em>
 Restores the node in the current workspace that is the versionable node
 of the specified version to the state reflected in that version.
 This method ignores checked-in status.</p><p>
-If $version is an array of VersionInterface instances:
+<em>If $version is an array of VersionInterface instances:</em>
 Restores a set of versions at once. Used in cases where a "chicken and
 egg" problem of mutually referring REFERENCE properties would prevent
 the restore in any serial order.
@@ -576,7 +583,8 @@ VersionException is thrown.
 The versionable nodes in the current workspace that correspond to the
 versions being restored define a set of (one or more) subgraphs.</li>
 </ul>
-<p>If the restore succeeds the changes made are dispatched immediately;
+<p><em>If the restore succeeds the changes made are dispatched immediately;
+</em>
 there is no need to call save.</p><p>If an array of VersionInterface instances is restored, an identifier
 collision occurs when the current workspace contains a node outside these
 subgraphs that has the same identifier as one of the nodes that would be
@@ -594,12 +602,12 @@ an existing node but also to cases where a conflict occurs with any node
 that would be introduced into the workspace by the restore operation. In
 particular, conflicts involving subnodes of the restored node that have
 OnParentVersion settings of COPY or VERSION are also governed by the
-$removeExisting flag.</p><p><b>Note:</b> The Java API defines this with multiple differing signatures, you
-need to act accordingly in your implementation.</p><dl>
+$removeExisting flag.</p><p><b>Note:</b> The Java API defines this with multiple differing
+signatures, you need to act accordingly in your implementation.</p><dl>
 <dt>Parameters:</dt>
 <dd>removeExisting - a boolean flag that governs what happens in case of an identifier collision</dd>
 <dd>version - a version name, an an array of Version objects or a Version object</dd>
-<dd>absPath - The absolute path to a node the prvileges shall be fetched of.</dd>
+<dd>absPath - The absolute path to a node the privileges shall be fetched of.</dd>
 <dt>Throws:</dt>
 <dd><a href="../../phpcr/version/versionexception.html">\PHPCR\Version\VersionException</a> - if the specified version does not have a corresponding node in the workspace this VersionManager has been created for or if an attempt is made to restore the root version (jcr:rootVersion).</dd>
 <dd><a href="../../phpcr/itemexistsexception.html">\PHPCR\ItemExistsException</a> - if $removeExisting is false and an identifier collision occurs or a node exists at $absPath.</dd>
@@ -613,15 +621,15 @@ need to act accordingly in your implementation.</p><dl>
 
 <hr>
 
-<a href="../../source/phpcr/version/versionmanagerinterface.php.html#line296" class="location">PHPCR/Version/VersionManagerInterface.php at line 296</a>
+<a href="../../source/phpcr/version/versionmanagerinterface.php.html#line352" class="location">PHPCR/Version/VersionManagerInterface.php at line 352</a>
 
 <h3 id="restoreByLabel()">restoreByLabel</h3>
 <code class="signature">public  void <strong>restoreByLabel</strong>(string absPath, string versionLabel, boolean removeExisting)</code>
 <div class="details">
 <p>Restores the version of the node at absPath with the specified version
-label. If this node is not versionable, an UnsupportedRepositoryOperationException
-is thrown. If successful, the change is persisted immediately and there
-is no need to call save.</p><p>This method will work regardless of whether the node at absPath is
+label. If this node is not versionable, an
+UnsupportedRepositoryOperationException is thrown. If successful, the
+change is persisted immediately and there is no need to call save.</p><p>This method will work regardless of whether the node at absPath is
 checked-in or not.</p><p>An identifier collision occurs when a node exists outside the subgraph
 rooted at this node with the same identifier as a node that would be
 introduced by the restoreByLabel operation into the subgraph at this node.
@@ -637,7 +645,7 @@ particular, conflicts involving subnodes of the restored node that have
 OnParentVersion settings of COPY or VERSION are also governed by the
 removeExisting flag.</p><dl>
 <dt>Parameters:</dt>
-<dd>absPath - The absolute path to a node the prvileges shall be fetched of.</dd>
+<dd>absPath - The absolute path to a node the privileges shall be fetched of.</dd>
 <dd>versionLabel - a String</dd>
 <dd>removeExisting - a boolean flag that governs what happens in case of an identifier collision.</dd>
 <dt>Throws:</dt>
@@ -653,7 +661,7 @@ removeExisting flag.</p><dl>
 
 <hr>
 
-<a href="../../source/phpcr/version/versionmanagerinterface.php.html#line510" class="location">PHPCR/Version/VersionManagerInterface.php at line 510</a>
+<a href="../../source/phpcr/version/versionmanagerinterface.php.html#line605" class="location">PHPCR/Version/VersionManagerInterface.php at line 605</a>
 
 <h3 id="setActivity()">setActivity</h3>
 <code class="signature">public  <a href="../../phpcr/nodeinterface.html">NodeInterface</a> <strong>setActivity</strong>(<a href="../../phpcr/nodeinterface.html">NodeInterface</a> activity)</code>

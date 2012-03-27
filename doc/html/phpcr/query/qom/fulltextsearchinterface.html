@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="generator" content="PHPDoctor 2RC4 (http://peej.github.com/phpdoctor/)">
-<meta name="when" content="Tue, 26 Jul 2011 15:56:34 +0000">
+<meta name="when" content="Tue, 27 Mar 2012 06:17:41 +0000">
 
 <link rel="stylesheet" type="text/css" href="../../../stylesheet.css">
 <link rel="start" href="../../../overview-summary.html">
@@ -77,15 +77,16 @@ fullTextSearchExpression grammar:</p>
 full-text indexed properties within the full-text search scope satisfy the
 specified fullTextSearchExpression, evaluated as follows:</p>
 <ul>
-<li>A term not preceded with "-" (minus sign) is satisfied only if the value contains that term.</li>
-<li>A term preceded with "-" (minus sign) is satisfied only if the value does not contain that term.</li>
+<li>A term not preceded with "-" (minus sign) is satisfied only if the value
+contains that term.</li>
+<li>A term preceded with "-" (minus sign) is satisfied only if the value does
+not contain that term.</li>
 <li>Terms separated by whitespace are implicitly "ANDed".</li>
 <li>Terms separated by "OR" are "ORed".</li>
 <li>"AND" has higher precedence than "OR".</li>
-<li>Within a term, each double quote ("), "-" (minus sign), and "\" (backslash) must be escaped by a
-preceding "\" (backslash).</li>
+<li>Within a term, each double quote ("), "-" (minus sign), and "\"</li>
 </ul>
-<p>&nbsp;</p></div>
+<p>(backslash) must be escaped by a preceding "\" (backslash).</p></div>
 
 <dl>
 <dt>Subpackage:</dt>
@@ -111,7 +112,7 @@ preceding "\" (backslash).</li>
 </table>
 
 <h2 id="detail_method">Method Detail</h2>
-<a href="../../../source/phpcr/query/qom/fulltextsearchinterface.php.html#line102" class="location">PHPCR/Query/QOM/FullTextSearchInterface.php at line 102</a>
+<a href="../../../source/phpcr/query/qom/fulltextsearchinterface.php.html#line106" class="location">PHPCR/Query/QOM/FullTextSearchInterface.php at line 106</a>
 
 <h3 id="getFullTextSearchExpression()">getFullTextSearchExpression</h3>
 <code class="signature">public  <a href="../../../phpcr/query/qom/staticoperandinterface.html">StaticOperandInterface</a> <strong>getFullTextSearchExpression</strong>()</code>
@@ -125,7 +126,7 @@ preceding "\" (backslash).</li>
 
 <hr>
 
-<a href="../../../source/phpcr/query/qom/fulltextsearchinterface.php.html#line94" class="location">PHPCR/Query/QOM/FullTextSearchInterface.php at line 94</a>
+<a href="../../../source/phpcr/query/qom/fulltextsearchinterface.php.html#line96" class="location">PHPCR/Query/QOM/FullTextSearchInterface.php at line 96</a>
 
 <h3 id="getPropertyName()">getPropertyName</h3>
 <code class="signature">public  string <strong>getPropertyName</strong>()</code>
@@ -139,7 +140,7 @@ preceding "\" (backslash).</li>
 
 <hr>
 
-<a href="../../../source/phpcr/query/qom/fulltextsearchinterface.php.html#line84" class="location">PHPCR/Query/QOM/FullTextSearchInterface.php at line 84</a>
+<a href="../../../source/phpcr/query/qom/fulltextsearchinterface.php.html#line85" class="location">PHPCR/Query/QOM/FullTextSearchInterface.php at line 85</a>
 
 <h3 id="getSelectorName()">getSelectorName</h3>
 <code class="signature">public  string <strong>getSelectorName</strong>()</code>

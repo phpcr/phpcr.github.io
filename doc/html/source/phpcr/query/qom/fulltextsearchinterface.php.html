@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="generator" content="PHPDoctor 2RC4 (http://peej.github.com/phpdoctor/)">
-<meta name="when" content="Tue, 26 Jul 2011 15:56:46 +0000">
+<meta name="when" content="Tue, 27 Mar 2012 06:17:51 +0000">
 
 <link rel="stylesheet" type="text/css" href="../../../../stylesheet.css">
 <link rel="start" href="../../../../overview-summary.html">
@@ -106,15 +106,15 @@ limitations under the License.</p></div>
 <a name="line59"></a> * full-text indexed properties within the full-text search scope satisfy the
 <a name="line60"></a> * specified fullTextSearchExpression, evaluated as follows:
 <a name="line61"></a> *
-<a name="line62"></a> * - A term not preceded with &quot;-&quot; (minus sign) is satisfied only if the value contains that term.
-<a name="line63"></a> * - A term preceded with &quot;-&quot; (minus sign) is satisfied only if the value does not contain that term.
-<a name="line64"></a> * - Terms separated by whitespace are implicitly &quot;ANDed&quot;.
-<a name="line65"></a> * - Terms separated by &quot;OR&quot; are &quot;ORed&quot;.
-<a name="line66"></a> * - &quot;AND&quot; has higher precedence than &quot;OR&quot;.
-<a name="line67"></a> * - Within a term, each double quote (&quot;), &quot;-&quot; (minus sign), and &quot;\&quot; (backslash) must be escaped by a
-<a name="line68"></a> *   preceding &quot;\&quot; (backslash).
-<a name="line69"></a> *
-<a name="line70"></a> * &amp;nbsp;
+<a name="line62"></a> * - A term not preceded with &quot;-&quot; (minus sign) is satisfied only if the value
+<a name="line63"></a> *      contains that term.
+<a name="line64"></a> * - A term preceded with &quot;-&quot; (minus sign) is satisfied only if the value does
+<a name="line65"></a> *      not contain that term.
+<a name="line66"></a> * - Terms separated by whitespace are implicitly &quot;ANDed&quot;.
+<a name="line67"></a> * - Terms separated by &quot;OR&quot; are &quot;ORed&quot;.
+<a name="line68"></a> * - &quot;AND&quot; has higher precedence than &quot;OR&quot;.
+<a name="line69"></a> * - Within a term, each double quote (&quot;), &quot;-&quot; (minus sign), and &quot;\&quot;
+<a name="line70"></a> *      (backslash) must be escaped by a preceding &quot;\&quot; (backslash).
 <a name="line71"></a> *
 <a name="line72"></a> * @package phpcr
 <a name="line73"></a> * @subpackage interfaces
@@ -126,29 +126,33 @@ limitations under the License.</p></div>
 <a name="line79"></a>     * Gets the name of the selector against which to apply this constraint.
 <a name="line80"></a>     *
 <a name="line81"></a>     * @return string the selector name; non-null
-<a name="line82"></a>     * @api
-<a name="line83"></a>     */</span>
-<a name="line84"></a>    <span style="color: #000000; font-weight: bold;">function</span> getSelectorName<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line85"></a>&nbsp;
-<a name="line86"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line87"></a>     * Gets the name of the property.
-<a name="line88"></a>     *
-<a name="line89"></a>     * @return string the property name if the full-text search scope is a property,
-<a name="line90"></a>     *                otherwise null if the full-text search scope is the node
-<a name="line91"></a>     *                (or node subgraph, in some implementations).
-<a name="line92"></a>     * @api
-<a name="line93"></a>     */</span>
-<a name="line94"></a>    <span style="color: #000000; font-weight: bold;">function</span> getPropertyName<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line95"></a>&nbsp;
-<a name="line96"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line97"></a>     * Gets the full-text search expression.
-<a name="line98"></a>     *
-<a name="line99"></a>     * @return \PHPCR\Query\QOM\StaticOperandInterface the full-text search expression; non-null
-<a name="line100"></a>     * @api
-<a name="line101"></a>     */</span>
-<a name="line102"></a>    <span style="color: #000000; font-weight: bold;">function</span> getFullTextSearchExpression<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line103"></a><span style="color: #009900;">&#125;</span>
-<a name="line104"></a>&nbsp;</pre>
+<a name="line82"></a>     *
+<a name="line83"></a>     * @api
+<a name="line84"></a>     */</span>
+<a name="line85"></a>    <span style="color: #000000; font-weight: bold;">function</span> getSelectorName<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line86"></a>&nbsp;
+<a name="line87"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line88"></a>     * Gets the name of the property.
+<a name="line89"></a>     *
+<a name="line90"></a>     * @return string the property name if the full-text search scope is a
+<a name="line91"></a>     *      property, otherwise null if the full-text search scope is the node
+<a name="line92"></a>     *      (or node subgraph, in some implementations).
+<a name="line93"></a>     *
+<a name="line94"></a>     * @api
+<a name="line95"></a>     */</span>
+<a name="line96"></a>    <span style="color: #000000; font-weight: bold;">function</span> getPropertyName<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line97"></a>&nbsp;
+<a name="line98"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line99"></a>     * Gets the full-text search expression.
+<a name="line100"></a>     *
+<a name="line101"></a>     * @return \PHPCR\Query\QOM\StaticOperandInterface the full-text search
+<a name="line102"></a>     *      expression; non-null
+<a name="line103"></a>     *
+<a name="line104"></a>     * @api
+<a name="line105"></a>     */</span>
+<a name="line106"></a>    <span style="color: #000000; font-weight: bold;">function</span> getFullTextSearchExpression<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line107"></a><span style="color: #009900;">&#125;</span>
+<a name="line108"></a>&nbsp;</pre>
 <div class="header">
 <h1>PHPCR</h1>
 <ul>

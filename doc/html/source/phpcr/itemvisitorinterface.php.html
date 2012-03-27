@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="generator" content="PHPDoctor 2RC4 (http://peej.github.com/phpdoctor/)">
-<meta name="when" content="Tue, 26 Jul 2011 15:56:37 +0000">
+<meta name="when" content="Tue, 27 Mar 2012 06:17:43 +0000">
 
 <link rel="stylesheet" type="text/css" href="../../stylesheet.css">
 <link rel="start" href="../../overview-summary.html">
@@ -90,20 +90,23 @@ limitations under the License.</p></div>
 <a name="line43"></a><span style="color: #000000; font-weight: bold;">interface</span> ItemVisitorInterface
 <a name="line44"></a><span style="color: #009900;">&#123;</span>
 <a name="line45"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line46"></a>     * This method is called when the ItemVisitor is passed to the accept method of a Node or Property.
-<a name="line47"></a>     *
-<a name="line48"></a>     * If this method throws an exception the visiting process is aborted.
-<a name="line49"></a>     *
-<a name="line50"></a>     * PHPCR Note: you need to distinguish between Node and Property objects being
-<a name="line51"></a>     *             visited in your implementation.
-<a name="line52"></a>     *
-<a name="line53"></a>     * @param \PHPCR\ItemInterface $item a node or property accepting this visitor
-<a name="line54"></a>     * @throws \PHPCR\RepositoryException if an error occurs
-<a name="line55"></a>     * @api
-<a name="line56"></a>     */</span>
-<a name="line57"></a>    <span style="color: #000000; font-weight: bold;">function</span> visit<span style="color: #009900;">&#40;</span>\PHPCR\ItemInterface <span style="color: #000088;">$item</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line58"></a><span style="color: #009900;">&#125;</span>
-<a name="line59"></a>&nbsp;</pre>
+<a name="line46"></a>     * This method is called when the ItemVisitor is passed to the accept
+<a name="line47"></a>     * method of a Node or Property.
+<a name="line48"></a>     *
+<a name="line49"></a>     * If this method throws an exception the visiting process is aborted.
+<a name="line50"></a>     *
+<a name="line51"></a>     * PHPCR Note: you need to distinguish between Node and Property objects
+<a name="line52"></a>     * being visited in your implementation.
+<a name="line53"></a>     *
+<a name="line54"></a>     * @param \PHPCR\ItemInterface $item a node or property accepting this
+<a name="line55"></a>     *      visitor
+<a name="line56"></a>     * @throws \PHPCR\RepositoryException if an error occurs
+<a name="line57"></a>     *
+<a name="line58"></a>     * @api
+<a name="line59"></a>     */</span>
+<a name="line60"></a>    <span style="color: #000000; font-weight: bold;">function</span> visit<span style="color: #009900;">&#40;</span>\PHPCR\ItemInterface <span style="color: #000088;">$item</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line61"></a><span style="color: #009900;">&#125;</span>
+<a name="line62"></a>&nbsp;</pre>
 <div class="header">
 <h1>PHPCR</h1>
 <ul>

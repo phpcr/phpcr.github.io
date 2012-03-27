@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="generator" content="PHPDoctor 2RC4 (http://peej.github.com/phpdoctor/)">
-<meta name="when" content="Tue, 26 Jul 2011 15:56:48 +0000">
+<meta name="when" content="Tue, 27 Mar 2012 06:17:54 +0000">
 
 <link rel="stylesheet" type="text/css" href="../../../../stylesheet.css">
 <link rel="start" href="../../../../overview-summary.html">
@@ -88,73 +88,73 @@ limitations under the License.</p></div>
 <a name="line41"></a>     * An inner join.
 <a name="line42"></a>     * @api
 <a name="line43"></a>    */</span>
-<a name="line44"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_JOIN_TYPE_INNER <span style="color: #339933;">=</span> <span style="color: #0000ff;">'{http://www.jcp.org/jcr/1.0}joinTypeInner'</span><span style="color: #339933;">;</span>
+<a name="line44"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_JOIN_TYPE_INNER <span style="color: #339933;">=</span> <span style="color: #0000ff;">'jcr.join.type.inner'</span><span style="color: #339933;">;</span>
 <a name="line45"></a>&nbsp;
 <a name="line46"></a>    <span style="color: #009933; font-style: italic;">/**
 <a name="line47"></a>     * A left-outer join.
 <a name="line48"></a>     * @api
 <a name="line49"></a>    */</span>
-<a name="line50"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_JOIN_TYPE_LEFT_OUTER <span style="color: #339933;">=</span> <span style="color: #0000ff;">'{http://www.jcp.org/jcr/1.0}joinTypeLeftOuter'</span><span style="color: #339933;">;</span>
+<a name="line50"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_JOIN_TYPE_LEFT_OUTER <span style="color: #339933;">=</span> <span style="color: #0000ff;">'jcr.join.type.left.outer'</span><span style="color: #339933;">;</span>
 <a name="line51"></a>&nbsp;
 <a name="line52"></a>    <span style="color: #009933; font-style: italic;">/**
 <a name="line53"></a>     * A right-outer join.
 <a name="line54"></a>     * @api
 <a name="line55"></a>    */</span>
-<a name="line56"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_JOIN_TYPE_RIGHT_OUTER <span style="color: #339933;">=</span> <span style="color: #0000ff;">'{http://www.jcp.org/jcr/1.0}joinTypeRightOuter'</span><span style="color: #339933;">;</span>
+<a name="line56"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_JOIN_TYPE_RIGHT_OUTER <span style="color: #339933;">=</span> <span style="color: #0000ff;">'jcr.join.type.right.outer'</span><span style="color: #339933;">;</span>
 <a name="line57"></a>&nbsp;
 <a name="line58"></a>    <span style="color: #009933; font-style: italic;">/**
 <a name="line59"></a>     * The '=' comparison operator.
 <a name="line60"></a>     * @api
 <a name="line61"></a>    */</span>
-<a name="line62"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_OPERATOR_EQUAL_TO <span style="color: #339933;">=</span> <span style="color: #0000ff;">'{http://www.jcp.org/jcr/1.0}operatorEqualTo'</span><span style="color: #339933;">;</span>
+<a name="line62"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_OPERATOR_EQUAL_TO <span style="color: #339933;">=</span> <span style="color: #0000ff;">'jcr.operator.equal.to'</span><span style="color: #339933;">;</span>
 <a name="line63"></a>&nbsp;
 <a name="line64"></a>    <span style="color: #009933; font-style: italic;">/**
 <a name="line65"></a>     * The '!=' comparison operator.
 <a name="line66"></a>     * @api
 <a name="line67"></a>    */</span>
-<a name="line68"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_OPERATOR_NOT_EQUAL_TO <span style="color: #339933;">=</span> <span style="color: #0000ff;">'{http://www.jcp.org/jcr/1.0}operatorNotEqualTo'</span><span style="color: #339933;">;</span>
+<a name="line68"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_OPERATOR_NOT_EQUAL_TO <span style="color: #339933;">=</span> <span style="color: #0000ff;">'jcr.operator.not.equal.to'</span><span style="color: #339933;">;</span>
 <a name="line69"></a>&nbsp;
 <a name="line70"></a>    <span style="color: #009933; font-style: italic;">/**
 <a name="line71"></a>     * The '&lt;' comparison operator.
 <a name="line72"></a>     * @api
 <a name="line73"></a>    */</span>
-<a name="line74"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_OPERATOR_LESS_THAN <span style="color: #339933;">=</span> <span style="color: #0000ff;">'{http://www.jcp.org/jcr/1.0}operatorLessThan'</span><span style="color: #339933;">;</span>
+<a name="line74"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_OPERATOR_LESS_THAN <span style="color: #339933;">=</span> <span style="color: #0000ff;">'jcr.operator.less.than'</span><span style="color: #339933;">;</span>
 <a name="line75"></a>&nbsp;
 <a name="line76"></a>    <span style="color: #009933; font-style: italic;">/**
 <a name="line77"></a>     * The '&lt;=' comparison operator.
 <a name="line78"></a>     * @api
 <a name="line79"></a>    */</span>
-<a name="line80"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_OPERATOR_LESS_THAN_OR_EQUAL_TO <span style="color: #339933;">=</span> <span style="color: #0000ff;">'{http://www.jcp.org/jcr/1.0}operatorLessThanOrEqualTo'</span><span style="color: #339933;">;</span>
+<a name="line80"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_OPERATOR_LESS_THAN_OR_EQUAL_TO <span style="color: #339933;">=</span> <span style="color: #0000ff;">'jcr.operator.less.than.or.equal.to'</span><span style="color: #339933;">;</span>
 <a name="line81"></a>&nbsp;
 <a name="line82"></a>    <span style="color: #009933; font-style: italic;">/**
 <a name="line83"></a>     * The '&gt;' comparison operator.
 <a name="line84"></a>     * @api
 <a name="line85"></a>    */</span>
-<a name="line86"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_OPERATOR_GREATER_THAN <span style="color: #339933;">=</span> <span style="color: #0000ff;">'{http://www.jcp.org/jcr/1.0}operatorGreaterThan'</span><span style="color: #339933;">;</span>
+<a name="line86"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_OPERATOR_GREATER_THAN <span style="color: #339933;">=</span> <span style="color: #0000ff;">'jcr.operator.greater.than'</span><span style="color: #339933;">;</span>
 <a name="line87"></a>&nbsp;
 <a name="line88"></a>    <span style="color: #009933; font-style: italic;">/**
 <a name="line89"></a>     * The '&gt;=' comparison operator.
 <a name="line90"></a>     * @api
 <a name="line91"></a>    */</span>
-<a name="line92"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_OPERATOR_GREATER_THAN_OR_EQUAL_TO <span style="color: #339933;">=</span> <span style="color: #0000ff;">'{http://www.jcp.org/jcr/1.0}operatorGreaterThanOrEqualTo'</span><span style="color: #339933;">;</span>
+<a name="line92"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_OPERATOR_GREATER_THAN_OR_EQUAL_TO <span style="color: #339933;">=</span> <span style="color: #0000ff;">'jcr.operator.greater.than.or.equal.to'</span><span style="color: #339933;">;</span>
 <a name="line93"></a>&nbsp;
 <a name="line94"></a>    <span style="color: #009933; font-style: italic;">/**
 <a name="line95"></a>     * The 'like' comparison operator.
 <a name="line96"></a>     * @api
 <a name="line97"></a>    */</span>
-<a name="line98"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_OPERATOR_LIKE <span style="color: #339933;">=</span> <span style="color: #0000ff;">'{http://www.jcp.org/jcr/1.0}operatorLike'</span><span style="color: #339933;">;</span>
+<a name="line98"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_OPERATOR_LIKE <span style="color: #339933;">=</span> <span style="color: #0000ff;">'jcr.operator.like'</span><span style="color: #339933;">;</span>
 <a name="line99"></a>&nbsp;
 <a name="line100"></a>    <span style="color: #009933; font-style: italic;">/**
 <a name="line101"></a>     * Ascending order.
 <a name="line102"></a>     * @api
 <a name="line103"></a>    */</span>
-<a name="line104"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_ORDER_ASCENDING <span style="color: #339933;">=</span> <span style="color: #0000ff;">'{http://www.jcp.org/jcr/1.0}orderAscending'</span><span style="color: #339933;">;</span>
+<a name="line104"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_ORDER_ASCENDING <span style="color: #339933;">=</span> <span style="color: #0000ff;">'jcr.order.ascending'</span><span style="color: #339933;">;</span>
 <a name="line105"></a>&nbsp;
 <a name="line106"></a>    <span style="color: #009933; font-style: italic;">/**
 <a name="line107"></a>     * Descending order.
 <a name="line108"></a>     * @api
 <a name="line109"></a>    */</span>
-<a name="line110"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_ORDER_DESCENDING <span style="color: #339933;">=</span> <span style="color: #0000ff;">'{http://www.jcp.org/jcr/1.0}orderDescending'</span><span style="color: #339933;">;</span>
+<a name="line110"></a>    <span style="color: #000000; font-weight: bold;">const</span> JCR_ORDER_DESCENDING <span style="color: #339933;">=</span> <span style="color: #0000ff;">'jcr.order.descending'</span><span style="color: #339933;">;</span>
 <a name="line111"></a>&nbsp;
 <a name="line112"></a>    <span style="color: #009933; font-style: italic;">/**#@-*/</span>
 <a name="line113"></a><span style="color: #009900;">&#125;</span>

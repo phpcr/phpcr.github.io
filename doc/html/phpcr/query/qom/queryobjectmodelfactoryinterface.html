@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="generator" content="PHPDoctor 2RC4 (http://peej.github.com/phpdoctor/)">
-<meta name="when" content="Tue, 26 Jul 2011 15:56:34 +0000">
+<meta name="when" content="Tue, 27 Mar 2012 06:17:41 +0000">
 
 <link rel="stylesheet" type="text/css" href="../../../stylesheet.css">
 <link rel="start" href="../../../overview-summary.html">
@@ -41,7 +41,7 @@ Detail: <a href="#detail_field">Field</a> | <a href="#detail_method">Method</a> 
 <hr>
 
 <div class="qualifiedName">PHPCR\Query\QOM\QueryObjectModelFactoryInterface</div>
-<a href="../../../source/phpcr/query/qom/queryobjectmodelfactoryinterface.php.html#line36" class="location">PHPCR/Query/QOM/QueryObjectModelFactoryInterface.php at line 36</a>
+<a href="../../../source/phpcr/query/qom/queryobjectmodelfactoryinterface.php.html#line37" class="location">PHPCR/Query/QOM/QueryObjectModelFactoryInterface.php at line 37</a>
 
 <h1>Interface QueryObjectModelFactoryInterface</h1>
 
@@ -53,7 +53,8 @@ Detail: <a href="#detail_field">Field</a> | <a href="#detail_method">Method</a> 
 
 </p>
 
-<div class="comment" id="overview_description"><p>A QueryObjectModelFactory creates instances of the JCR query object model.</p><p>Refer to QueryObjectModelInterface for a description of the query object model.</p></div>
+<div class="comment" id="overview_description"><p>A QueryObjectModelFactory creates instances of the JCR query object model.</p><p>Refer to QueryObjectModelInterface for a description of the query object
+model.</p></div>
 
 <dl>
 <dt>Subpackage:</dt>
@@ -64,6 +65,10 @@ Detail: <a href="#detail_field">Field</a> | <a href="#detail_method">Method</a> 
 
 <table id="summary_method">
 <tr><th colspan="2">Method Summary</th></tr>
+<tr>
+<td class="type"> <a href="../../../phpcr/query/qom/andinterface.html">AndInterface</a></td>
+<td class="description"><p class="name"><a href="#andConstraint()">andConstraint</a>(<a href="../../../phpcr/query/qom/constraintinterface.html">ConstraintInterface</a> constraint1, <a href="../../../phpcr/query/qom/constraintinterface.html">ConstraintInterface</a> constraint2)</p><p class="description">Performs a logical conjunction of two other constraints.</p></td>
+</tr>
 <tr>
 <td class="type"> <a href="../../../phpcr/query/qom/orderinginterface.html">OrderingInterface</a></td>
 <td class="description"><p class="name"><a href="#ascending()">ascending</a>(<a href="../../../phpcr/query/qom/dynamicoperandinterface.html">DynamicOperandInterface</a> operand)</p><p class="description">Orders by the value of the specified operand, in ascending order.
@@ -76,13 +81,14 @@ Detail: <a href="#detail_field">Field</a> | <a href="#detail_method">Method</a> 
 </tr>
 <tr>
 <td class="type"> <a href="../../../phpcr/query/qom/childnodeinterface.html">ChildNodeInterface</a></td>
-<td class="description"><p class="name"><a href="#childNode()">childNode</a>(string path, string selectorName)</p><p class="description">Tests whether a node in the specified or default selector is a child of a
-node reachable by a specified absolute path.
+<td class="description"><p class="name"><a href="#childNode()">childNode</a>(string path, string selectorName)</p><p class="description">Tests whether a node in the specified or default selector is a child of
+a node reachable by a specified absolute path.
 </p></td>
 </tr>
 <tr>
 <td class="type"> <a href="../../../phpcr/query/qom/childnodejoinconditioninterface.html">ChildNodeJoinConditionInterface</a></td>
-<td class="description"><p class="name"><a href="#childNodeJoinCondition()">childNodeJoinCondition</a>(string childSelectorName, string parentSelectorName)</p><p class="description">Tests whether a first selector's node is a child of a second selector's node.
+<td class="description"><p class="name"><a href="#childNodeJoinCondition()">childNodeJoinCondition</a>(string childSelectorName, string parentSelectorName)</p><p class="description">Tests whether a first selector's node is a child of a second selector's
+node.
 </p></td>
 </tr>
 <tr>
@@ -102,13 +108,14 @@ the tabular view of query results.
 </tr>
 <tr>
 <td class="type"> <a href="../../../phpcr/query/qom/descendantnodeinterface.html">DescendantNodeInterface</a></td>
-<td class="description"><p class="name"><a href="#descendantNode()">descendantNode</a>(string path, string selectorName)</p><p class="description">Tests whether a node in the specified or default selector is a descendant
-of a node reachable by a specified absolute path.
+<td class="description"><p class="name"><a href="#descendantNode()">descendantNode</a>(string path, string selectorName)</p><p class="description">Tests whether a node in the specified or default selector is a
+descendant of a node reachable by a specified absolute path.
 </p></td>
 </tr>
 <tr>
 <td class="type"> <a href="../../../phpcr/query/qom/descendantnodejoinconditioninterface.html">DescendantNodeJoinConditionInterface</a></td>
-<td class="description"><p class="name"><a href="#descendantNodeJoinCondition()">descendantNodeJoinCondition</a>(string descendantSelectorName, string ancestorSelectorName)</p><p class="description">Tests whether a first selector's node is a descendant of a second selector's node.
+<td class="description"><p class="name"><a href="#descendantNodeJoinCondition()">descendantNodeJoinCondition</a>(string descendantSelectorName, string ancestorSelectorName)</p><p class="description">Tests whether a first selector's node is a descendant of a second
+selector's node.
 </p></td>
 </tr>
 <tr>
@@ -118,8 +125,8 @@ of a node reachable by a specified absolute path.
 </tr>
 <tr>
 <td class="type"> <a href="../../../phpcr/query/qom/equijoinconditioninterface.html">EquiJoinConditionInterface</a></td>
-<td class="description"><p class="name"><a href="#equiJoinCondition()">equiJoinCondition</a>(string selector1Name, string property1Name, string selector2Name, string property2Name)</p><p class="description">Tests whether the value of a property in a first selector is equal to the
-value of a property in a second selector.
+<td class="description"><p class="name"><a href="#equiJoinCondition()">equiJoinCondition</a>(string selector1Name, string property1Name, string selector2Name, string property2Name)</p><p class="description">Tests whether the value of a property in a first selector is equal to
+the value of a property in a second selector.
 </p></td>
 </tr>
 <tr>
@@ -129,7 +136,8 @@ value of a property in a second selector.
 </tr>
 <tr>
 <td class="type"> <a href="../../../phpcr/query/qom/fulltextsearchscoreinterface.html">FullTextSearchScoreInterface</a></td>
-<td class="description"><p class="name"><a href="#fullTextSearchScore()">fullTextSearchScore</a>(string selectorName)</p><p class="description">Evaluates to a DOUBLE value equal to the full-text search score of a node in the specified or default selector.
+<td class="description"><p class="name"><a href="#fullTextSearchScore()">fullTextSearchScore</a>(string selectorName)</p><p class="description">Evaluates to a DOUBLE value equal to the full-text search score of a
+node in the specified or default selector.
 </p></td>
 </tr>
 <tr>
@@ -152,18 +160,23 @@ value of a property in a second selector.
 </tr>
 <tr>
 <td class="type"> <a href="../../../phpcr/query/qom/nodelocalnameinterface.html">NodeLocalNameInterface</a></td>
-<td class="description"><p class="name"><a href="#nodeLocalName()">nodeLocalName</a>(string selectorName)</p><p class="description">Evaluates to a NAME value equal to the local (unprefixed) name of a node in the specified or default selector.
+<td class="description"><p class="name"><a href="#nodeLocalName()">nodeLocalName</a>(string selectorName)</p><p class="description">Evaluates to a NAME value equal to the local (unprefixed) name of a node
+in the specified or default selector.
 </p></td>
 </tr>
 <tr>
 <td class="type"> <a href="../../../phpcr/query/qom/nodenameinterface.html">NodeNameInterface</a></td>
-<td class="description"><p class="name"><a href="#nodeName()">nodeName</a>(string selectorName)</p><p class="description">Evaluates to a NAME value equal to the prefix-qualified name of a node in
-the specified or default selector.
+<td class="description"><p class="name"><a href="#nodeName()">nodeName</a>(string selectorName)</p><p class="description">Evaluates to a NAME value equal to the prefix-qualified name of a node
+in the specified or default selector.
 </p></td>
 </tr>
 <tr>
 <td class="type"> <a href="../../../phpcr/query/qom/notinterface.html">NotInterface</a></td>
-<td class="description"><p class="name"><a href="#not()">not</a>(<a href="../../../phpcr/query/qom/constraintinterface.html">ConstraintInterface</a> constraint)</p><p class="description">Performs a logical negation of another constraint.</p></td>
+<td class="description"><p class="name"><a href="#notConstraint()">notConstraint</a>(<a href="../../../phpcr/query/qom/constraintinterface.html">ConstraintInterface</a> constraint)</p><p class="description">Performs a logical negation of another constraint.</p></td>
+</tr>
+<tr>
+<td class="type"> <a href="../../../phpcr/query/qom/orinterface.html">OrInterface</a></td>
+<td class="description"><p class="name"><a href="#orConstraint()">orConstraint</a>(<a href="../../../phpcr/query/qom/constraintinterface.html">ConstraintInterface</a> constraint1, <a href="../../../phpcr/query/qom/constraintinterface.html">ConstraintInterface</a> constraint2)</p><p class="description">Performs a logical disjunction of two other constraints.</p></td>
 </tr>
 <tr>
 <td class="type"> <a href="../../../phpcr/query/qom/propertyexistenceinterface.html">PropertyExistenceInterface</a></td>
@@ -178,14 +191,14 @@ specified or default selector.
 </tr>
 <tr>
 <td class="type"> <a href="../../../phpcr/query/qom/samenodeinterface.html">SameNodeInterface</a></td>
-<td class="description"><p class="name"><a href="#sameNode()">sameNode</a>(string path, string selectorName)</p><p class="description">Tests whether a node in the specified or default selector is reachable by
-a specified absolute path.
+<td class="description"><p class="name"><a href="#sameNode()">sameNode</a>(string path, string selectorName)</p><p class="description">Tests whether a node in the specified or default selector is reachable
+by a specified absolute path.
 </p></td>
 </tr>
 <tr>
 <td class="type"> <a href="../../../phpcr/query/qom/samenodejoinconditioninterface.html">SameNodeJoinConditionInterface</a></td>
-<td class="description"><p class="name"><a href="#sameNodeJoinCondition()">sameNodeJoinCondition</a>(string selector1Name, string selector2Name, string selector2Path)</p><p class="description">Tests whether a first selector's node is the same as a node identified by
-relative path from a second selector's node.
+<td class="description"><p class="name"><a href="#sameNodeJoinCondition()">sameNodeJoinCondition</a>(string selector1Name, string selector2Name, string selector2Path)</p><p class="description">Tests whether a first selector's node is the same as a node identified
+by relative path from a second selector's node.
 </p></td>
 </tr>
 <tr>
@@ -195,12 +208,33 @@ relative path from a second selector's node.
 </tr>
 <tr>
 <td class="type"> <a href="../../../phpcr/query/qom/uppercaseinterface.html">UpperCaseInterface</a></td>
-<td class="description"><p class="name"><a href="#upperCase()">upperCase</a>(<a href="../../../phpcr/query/qom/dynamicoperandinterface.html">DynamicOperandInterface</a> operand)</p><p class="description">Evaluates to the upper-case string value (or values, if multi-valued) of an operand.</p></td>
+<td class="description"><p class="name"><a href="#upperCase()">upperCase</a>(<a href="../../../phpcr/query/qom/dynamicoperandinterface.html">DynamicOperandInterface</a> operand)</p><p class="description">Evaluates to the upper-case string value (or values, if multi-valued) of
+an operand.</p></td>
 </tr>
 </table>
 
 <h2 id="detail_method">Method Detail</h2>
-<a href="../../../source/phpcr/query/qom/queryobjectmodelfactoryinterface.php.html#line514" class="location">PHPCR/Query/QOM/QueryObjectModelFactoryInterface.php at line 514</a>
+<a href="../../../source/phpcr/query/qom/queryobjectmodelfactoryinterface.php.html#line270" class="location">PHPCR/Query/QOM/QueryObjectModelFactoryInterface.php at line 270</a>
+
+<h3 id="andConstraint()">andConstraint</h3>
+<code class="signature">public  <a href="../../../phpcr/query/qom/andinterface.html">AndInterface</a> <strong>andConstraint</strong>(<a href="../../../phpcr/query/qom/constraintinterface.html">ConstraintInterface</a> constraint1, <a href="../../../phpcr/query/qom/constraintinterface.html">ConstraintInterface</a> constraint2)</code>
+<div class="details">
+<p>Performs a logical conjunction of two other constraints.</p><dl>
+<dt>Parameters:</dt>
+<dd>constraint1 - the first constraint; non-null</dd>
+<dd>constraint2 - the second constraint; non-null</dd>
+<dt>Returns:</dt>
+<dd>the And constraint; non-null</dd>
+<dt>Throws:</dt>
+<dd><a href="../../../phpcr/query/invalidqueryexception.html">\PHPCR\Query\InvalidQueryException</a> - if a particular validity test is possible on this method, the implemention chooses to perform that test (and not leave it until later) on createQuery, and the parameters given fail that test</dd>
+<dd><a href="../../../phpcr/repositoryexception.html">\PHPCR\RepositoryException</a> - if the operation otherwise fails</dd>
+<dt>Api.</dt>
+</dl>
+</div>
+
+<hr>
+
+<a href="../../../source/phpcr/query/qom/queryobjectmodelfactoryinterface.php.html#line666" class="location">PHPCR/Query/QOM/QueryObjectModelFactoryInterface.php at line 666</a>
 
 <h3 id="ascending()">ascending</h3>
 <code class="signature">public  <a href="../../../phpcr/query/qom/orderinginterface.html">OrderingInterface</a> <strong>ascending</strong>(<a href="../../../phpcr/query/qom/dynamicoperandinterface.html">DynamicOperandInterface</a> operand)</code>
@@ -219,7 +253,7 @@ relative path from a second selector's node.
 
 <hr>
 
-<a href="../../../source/phpcr/query/qom/queryobjectmodelfactoryinterface.php.html#line486" class="location">PHPCR/Query/QOM/QueryObjectModelFactoryInterface.php at line 486</a>
+<a href="../../../source/phpcr/query/qom/queryobjectmodelfactoryinterface.php.html#line630" class="location">PHPCR/Query/QOM/QueryObjectModelFactoryInterface.php at line 630</a>
 
 <h3 id="bindVariable()">bindVariable</h3>
 <code class="signature">public  <a href="../../../phpcr/query/qom/bindvariablevalueinterface.html">BindVariableValueInterface</a> <strong>bindVariable</strong>(string bindVariableName)</code>
@@ -238,13 +272,13 @@ relative path from a second selector's node.
 
 <hr>
 
-<a href="../../../source/phpcr/query/qom/queryobjectmodelfactoryinterface.php.html#line341" class="location">PHPCR/Query/QOM/QueryObjectModelFactoryInterface.php at line 341</a>
+<a href="../../../source/phpcr/query/qom/queryobjectmodelfactoryinterface.php.html#line444" class="location">PHPCR/Query/QOM/QueryObjectModelFactoryInterface.php at line 444</a>
 
 <h3 id="childNode()">childNode</h3>
 <code class="signature">public  <a href="../../../phpcr/query/qom/childnodeinterface.html">ChildNodeInterface</a> <strong>childNode</strong>(string path, string selectorName)</code>
 <div class="details">
-<p>Tests whether a node in the specified or default selector is a child of a
-node reachable by a specified absolute path.</p><p>The query is invalid if:</p>
+<p>Tests whether a node in the specified or default selector is a child of
+a node reachable by a specified absolute path.</p><p>The query is invalid if:</p>
 <ul>
 <li>$selectorName is not the name of a selector in the query</li>
 <li>$path is not a syntactically valid absolute path
@@ -268,12 +302,13 @@ because of access control constraints), the query is valid but the</li>
 
 <hr>
 
-<a href="../../../source/phpcr/query/qom/queryobjectmodelfactoryinterface.php.html#line176" class="location">PHPCR/Query/QOM/QueryObjectModelFactoryInterface.php at line 176</a>
+<a href="../../../source/phpcr/query/qom/queryobjectmodelfactoryinterface.php.html#line222" class="location">PHPCR/Query/QOM/QueryObjectModelFactoryInterface.php at line 222</a>
 
 <h3 id="childNodeJoinCondition()">childNodeJoinCondition</h3>
 <code class="signature">public  <a href="../../../phpcr/query/qom/childnodejoinconditioninterface.html">ChildNodeJoinConditionInterface</a> <strong>childNodeJoinCondition</strong>(string childSelectorName, string parentSelectorName)</code>
 <div class="details">
-<p>Tests whether a first selector's node is a child of a second selector's node.</p><p>The query is invalid if:</p>
+<p>Tests whether a first selector's node is a child of a second selector's
+node.</p><p>The query is invalid if:</p>
 <ul>
 <li>$childSelector is not the name of a selector in the query</li>
 <li>$parentSelector is not the name of a selector in the query</li>
@@ -293,7 +328,7 @@ because of access control constraints), the query is valid but the</li>
 
 <hr>
 
-<a href="../../../source/phpcr/query/qom/queryobjectmodelfactoryinterface.php.html#line557" class="location">PHPCR/Query/QOM/QueryObjectModelFactoryInterface.php at line 557</a>
+<a href="../../../source/phpcr/query/qom/queryobjectmodelfactoryinterface.php.html#line721" class="location">PHPCR/Query/QOM/QueryObjectModelFactoryInterface.php at line 721</a>
 
 <h3 id="column()">column</h3>
 <code class="signature">public  <a href="../../../phpcr/query/qom/columninterface.html">ColumnInterface</a> <strong>column</strong>(string propertyName, string columnName, string selectorName)</code>
@@ -308,8 +343,9 @@ The column name is the property name if not given.</p><p>The query is invalid if
 <li>$propertyName is specified but $columnName is omitted</li>
 <li>$propertyName is omitted but $columnName is specified</li>
 <li>the columns in the tabular view are not uniquely named, whether those
-column names are specified by $columnName (if $propertyName is specified)
-or generated as described above (if $propertyName is omitted).</li>
+column names are specified by $columnName (if $propertyName is
+specified) or generated as described above (if $propertyName is
+omitted).</li>
 </ul>
 <p>If $propertyName is specified but, for a node-tuple, the selector node
 does not have a property named $propertyName, the query is valid and the
@@ -329,7 +365,7 @@ column has null value.</p><dl>
 
 <hr>
 
-<a href="../../../source/phpcr/query/qom/queryobjectmodelfactoryinterface.php.html#line251" class="location">PHPCR/Query/QOM/QueryObjectModelFactoryInterface.php at line 251</a>
+<a href="../../../source/phpcr/query/qom/queryobjectmodelfactoryinterface.php.html#line331" class="location">PHPCR/Query/QOM/QueryObjectModelFactoryInterface.php at line 331</a>
 
 <h3 id="comparison()">comparison</h3>
 <code class="signature">public  <a href="../../../phpcr/query/qom/comparisoninterface.html">ComparisonInterface</a> <strong>comparison</strong>(<a href="../../../phpcr/query/qom/dynamicoperandinterface.html">DynamicOperandInterface</a> operand1, string operator, <a href="../../../phpcr/query/qom/staticoperandinterface.html">StaticOperandInterface</a> operand2)</code>
@@ -350,21 +386,20 @@ column has null value.</p><dl>
 
 <hr>
 
-<a href="../../../source/phpcr/query/qom/queryobjectmodelfactoryinterface.php.html#line59" class="location">PHPCR/Query/QOM/QueryObjectModelFactoryInterface.php at line 59</a>
+<a href="../../../source/phpcr/query/qom/queryobjectmodelfactoryinterface.php.html#line69" class="location">PHPCR/Query/QOM/QueryObjectModelFactoryInterface.php at line 69</a>
 
 <h3 id="createQuery()">createQuery</h3>
 <code class="signature">public  <a href="../../../phpcr/query/qom/queryobjectmodelinterface.html">QueryObjectModelInterface</a> <strong>createQuery</strong>(<a href="../../../phpcr/query/qom/sourceinterface.html">SourceInterface</a> source, <a href="../../../phpcr/query/qom/constraintinterface.html">ConstraintInterface</a> constraint, array orderings, array columns)</code>
 <div class="details">
-<p>Creates a query with one or more selectors.
-If source is a selector, that selector is the default selector of the
+<p>Creates a query with one or more selectors.</p><p>If source is a selector, that selector is the default selector of the
 query. Otherwise the query does not have a default selector.</p><p>If the query is invalid, this method throws an InvalidQueryException.
 See the individual QOM factory methods for the validity criteria of each
 query element.</p><dl>
 <dt>Parameters:</dt>
 <dd>source - the Selector or the node-tuple Source; non-null</dd>
 <dd>constraint - the constraint, or null if none</dd>
-<dd>orderings - zero or more orderings; null is equivalent to a zero-length array</dd>
-<dd>columns - the columns; null is equivalent to a zero-length array</dd>
+<dd>orderings - zero (empty array) or more instances of Ordering</dd>
+<dd>columns - the array of Column definitions to return in the result. empty array is equivalent to the * in SQL2, meaning some fields.</dd>
 <dt>Returns:</dt>
 <dd>the query; non-null</dd>
 <dt>Throws:</dt>
@@ -376,13 +411,13 @@ query element.</p><dl>
 
 <hr>
 
-<a href="../../../source/phpcr/query/qom/queryobjectmodelfactoryinterface.php.html#line365" class="location">PHPCR/Query/QOM/QueryObjectModelFactoryInterface.php at line 365</a>
+<a href="../../../source/phpcr/query/qom/queryobjectmodelfactoryinterface.php.html#line474" class="location">PHPCR/Query/QOM/QueryObjectModelFactoryInterface.php at line 474</a>
 
 <h3 id="descendantNode()">descendantNode</h3>
 <code class="signature">public  <a href="../../../phpcr/query/qom/descendantnodeinterface.html">DescendantNodeInterface</a> <strong>descendantNode</strong>(string path, string selectorName)</code>
 <div class="details">
-<p>Tests whether a node in the specified or default selector is a descendant
-of a node reachable by a specified absolute path.</p><p>The query is invalid if:</p>
+<p>Tests whether a node in the specified or default selector is a
+descendant of a node reachable by a specified absolute path.</p><p>The query is invalid if:</p>
 <ul>
 <li>$selectorName is not the name of a selector in the query</li>
 <li>$path is not a syntactically valid absolute path
@@ -406,12 +441,13 @@ because of access control constraints), the query is valid but the</li>
 
 <hr>
 
-<a href="../../../source/phpcr/query/qom/queryobjectmodelfactoryinterface.php.html#line195" class="location">PHPCR/Query/QOM/QueryObjectModelFactoryInterface.php at line 195</a>
+<a href="../../../source/phpcr/query/qom/queryobjectmodelfactoryinterface.php.html#line250" class="location">PHPCR/Query/QOM/QueryObjectModelFactoryInterface.php at line 250</a>
 
 <h3 id="descendantNodeJoinCondition()">descendantNodeJoinCondition</h3>
 <code class="signature">public  <a href="../../../phpcr/query/qom/descendantnodejoinconditioninterface.html">DescendantNodeJoinConditionInterface</a> <strong>descendantNodeJoinCondition</strong>(string descendantSelectorName, string ancestorSelectorName)</code>
 <div class="details">
-<p>Tests whether a first selector's node is a descendant of a second selector's node.</p><p>The query is invalid if:</p>
+<p>Tests whether a first selector's node is a descendant of a second
+selector's node.</p><p>The query is invalid if:</p>
 <ul>
 <li>$descendantSelector is not the name of a selector in the query</li>
 <li>$ancestorSelector is not the name of a selector in the query</li>
@@ -431,7 +467,7 @@ because of access control constraints), the query is valid but the</li>
 
 <hr>
 
-<a href="../../../source/phpcr/query/qom/queryobjectmodelfactoryinterface.php.html#line527" class="location">PHPCR/Query/QOM/QueryObjectModelFactoryInterface.php at line 527</a>
+<a href="../../../source/phpcr/query/qom/queryobjectmodelfactoryinterface.php.html#line683" class="location">PHPCR/Query/QOM/QueryObjectModelFactoryInterface.php at line 683</a>
 
 <h3 id="descending()">descending</h3>
 <code class="signature">public  <a href="../../../phpcr/query/qom/orderinginterface.html">OrderingInterface</a> <strong>descending</strong>(<a href="../../../phpcr/query/qom/dynamicoperandinterface.html">DynamicOperandInterface</a> operand)</code>
@@ -450,13 +486,13 @@ because of access control constraints), the query is valid but the</li>
 
 <hr>
 
-<a href="../../../source/phpcr/query/qom/queryobjectmodelfactoryinterface.php.html#line131" class="location">PHPCR/Query/QOM/QueryObjectModelFactoryInterface.php at line 131</a>
+<a href="../../../source/phpcr/query/qom/queryobjectmodelfactoryinterface.php.html#line160" class="location">PHPCR/Query/QOM/QueryObjectModelFactoryInterface.php at line 160</a>
 
 <h3 id="equiJoinCondition()">equiJoinCondition</h3>
 <code class="signature">public  <a href="../../../phpcr/query/qom/equijoinconditioninterface.html">EquiJoinConditionInterface</a> <strong>equiJoinCondition</strong>(string selector1Name, string property1Name, string selector2Name, string property2Name)</code>
 <div class="details">
-<p>Tests whether the value of a property in a first selector is equal to the
-value of a property in a second selector.</p><p>The query is invalid if:</p>
+<p>Tests whether the value of a property in a first selector is equal to
+the value of a property in a second selector.</p><p>The query is invalid if:</p>
 <ul>
 <li>$selector1 is not the name of a selector in the query, or</li>
 <li>$selector2 is not the name of a selector in the query, or</li>
@@ -486,7 +522,7 @@ $property2, or</li>
 
 <hr>
 
-<a href="../../../source/phpcr/query/qom/queryobjectmodelfactoryinterface.php.html#line295" class="location">PHPCR/Query/QOM/QueryObjectModelFactoryInterface.php at line 295</a>
+<a href="../../../source/phpcr/query/qom/queryobjectmodelfactoryinterface.php.html#line389" class="location">PHPCR/Query/QOM/QueryObjectModelFactoryInterface.php at line 389</a>
 
 <h3 id="fullTextSearch()">fullTextSearch</h3>
 <code class="signature">public  <a href="../../../phpcr/query/qom/fulltextsearchinterface.html">FullTextSearchInterface</a> <strong>fullTextSearch</strong>(string propertyName, string fullTextSearchExpression, string selectorName)</code>
@@ -495,7 +531,8 @@ $property2, or</li>
 <ul>
 <li>$selectorName is not the name of a selector in the query</li>
 <li>$propertyName is specified but is not a syntactically valid JCR name</li>
-<li>$fullTextSearchExpression does not conform to the full text search grammar</li>
+<li>$fullTextSearchExpression does not conform to the full text search
+grammar</li>
 </ul>
 <p>If $propertyName is specified but, for a node-tuple, the selector node
 does not have a property named $propertyName, the query is valid but the
@@ -515,12 +552,13 @@ constraint is not satisfied.</p><dl>
 
 <hr>
 
-<a href="../../../source/phpcr/query/qom/queryobjectmodelfactoryinterface.php.html#line443" class="location">PHPCR/Query/QOM/QueryObjectModelFactoryInterface.php at line 443</a>
+<a href="../../../source/phpcr/query/qom/queryobjectmodelfactoryinterface.php.html#line573" class="location">PHPCR/Query/QOM/QueryObjectModelFactoryInterface.php at line 573</a>
 
 <h3 id="fullTextSearchScore()">fullTextSearchScore</h3>
 <code class="signature">public  <a href="../../../phpcr/query/qom/fulltextsearchscoreinterface.html">FullTextSearchScoreInterface</a> <strong>fullTextSearchScore</strong>(string selectorName)</code>
 <div class="details">
-<p>Evaluates to a DOUBLE value equal to the full-text search score of a node in the specified or default selector.</p><p>The query is invalid if $selectorName is not the name of a selector in
+<p>Evaluates to a DOUBLE value equal to the full-text search score of a
+node in the specified or default selector.</p><p>The query is invalid if $selectorName is not the name of a selector in
 the query.</p><dl>
 <dt>Parameters:</dt>
 <dd>selectorName - the selector name; non-null</dd>
@@ -535,7 +573,7 @@ the query.</p><dl>
 
 <hr>
 
-<a href="../../../source/phpcr/query/qom/queryobjectmodelfactoryinterface.php.html#line101" class="location">PHPCR/Query/QOM/QueryObjectModelFactoryInterface.php at line 101</a>
+<a href="../../../source/phpcr/query/qom/queryobjectmodelfactoryinterface.php.html#line122" class="location">PHPCR/Query/QOM/QueryObjectModelFactoryInterface.php at line 122</a>
 
 <h3 id="join()">join</h3>
 <code class="signature">public  <a href="../../../phpcr/query/qom/joininterface.html">JoinInterface</a> <strong>join</strong>(<a href="../../../phpcr/query/qom/sourceinterface.html">SourceInterface</a> left, <a href="../../../phpcr/query/qom/sourceinterface.html">SourceInterface</a> right, string joinType, <a href="../../../phpcr/query/qom/joinconditioninterface.html">JoinConditionInterface</a> joinCondition)</code>
@@ -557,7 +595,7 @@ the query.</p><dl>
 
 <hr>
 
-<a href="../../../source/phpcr/query/qom/queryobjectmodelfactoryinterface.php.html#line396" class="location">PHPCR/Query/QOM/QueryObjectModelFactoryInterface.php at line 396</a>
+<a href="../../../source/phpcr/query/qom/queryobjectmodelfactoryinterface.php.html#line512" class="location">PHPCR/Query/QOM/QueryObjectModelFactoryInterface.php at line 512</a>
 
 <h3 id="length()">length</h3>
 <code class="signature">public  <a href="../../../phpcr/query/qom/lengthinterface.html">LengthInterface</a> <strong>length</strong>(<a href="../../../phpcr/query/qom/propertyvalueinterface.html">PropertyValueInterface</a> propertyValue)</code>
@@ -576,7 +614,7 @@ the query.</p><dl>
 
 <hr>
 
-<a href="../../../source/phpcr/query/qom/queryobjectmodelfactoryinterface.php.html#line501" class="location">PHPCR/Query/QOM/QueryObjectModelFactoryInterface.php at line 501</a>
+<a href="../../../source/phpcr/query/qom/queryobjectmodelfactoryinterface.php.html#line649" class="location">PHPCR/Query/QOM/QueryObjectModelFactoryInterface.php at line 649</a>
 
 <h3 id="literal()">literal</h3>
 <code class="signature">public  mixed <strong>literal</strong>(mixed literalValue)</code>
@@ -595,7 +633,7 @@ the query.</p><dl>
 
 <hr>
 
-<a href="../../../source/phpcr/query/qom/queryobjectmodelfactoryinterface.php.html#line457" class="location">PHPCR/Query/QOM/QueryObjectModelFactoryInterface.php at line 457</a>
+<a href="../../../source/phpcr/query/qom/queryobjectmodelfactoryinterface.php.html#line591" class="location">PHPCR/Query/QOM/QueryObjectModelFactoryInterface.php at line 591</a>
 
 <h3 id="lowerCase()">lowerCase</h3>
 <code class="signature">public  <a href="../../../phpcr/query/qom/lowercaseinterface.html">LowerCaseInterface</a> <strong>lowerCase</strong>(<a href="../../../phpcr/query/qom/dynamicoperandinterface.html">DynamicOperandInterface</a> operand)</code>
@@ -614,12 +652,13 @@ the query.</p><dl>
 
 <hr>
 
-<a href="../../../source/phpcr/query/qom/queryobjectmodelfactoryinterface.php.html#line427" class="location">PHPCR/Query/QOM/QueryObjectModelFactoryInterface.php at line 427</a>
+<a href="../../../source/phpcr/query/qom/queryobjectmodelfactoryinterface.php.html#line551" class="location">PHPCR/Query/QOM/QueryObjectModelFactoryInterface.php at line 551</a>
 
 <h3 id="nodeLocalName()">nodeLocalName</h3>
 <code class="signature">public  <a href="../../../phpcr/query/qom/nodelocalnameinterface.html">NodeLocalNameInterface</a> <strong>nodeLocalName</strong>(string selectorName)</code>
 <div class="details">
-<p>Evaluates to a NAME value equal to the local (unprefixed) name of a node in the specified or default selector.</p><p>The query is invalid if $selectorName is not the name of a selector in
+<p>Evaluates to a NAME value equal to the local (unprefixed) name of a node
+in the specified or default selector.</p><p>The query is invalid if $selectorName is not the name of a selector in
 the query.</p><dl>
 <dt>Parameters:</dt>
 <dd>selectorName - the selector name; non-null</dd>
@@ -634,13 +673,13 @@ the query.</p><dl>
 
 <hr>
 
-<a href="../../../source/phpcr/query/qom/queryobjectmodelfactoryinterface.php.html#line413" class="location">PHPCR/Query/QOM/QueryObjectModelFactoryInterface.php at line 413</a>
+<a href="../../../source/phpcr/query/qom/queryobjectmodelfactoryinterface.php.html#line533" class="location">PHPCR/Query/QOM/QueryObjectModelFactoryInterface.php at line 533</a>
 
 <h3 id="nodeName()">nodeName</h3>
 <code class="signature">public  <a href="../../../phpcr/query/qom/nodenameinterface.html">NodeNameInterface</a> <strong>nodeName</strong>(string selectorName)</code>
 <div class="details">
-<p>Evaluates to a NAME value equal to the prefix-qualified name of a node in
-the specified or default selector.</p><p>The query is invalid if $selectorName is not the name of a selector in
+<p>Evaluates to a NAME value equal to the prefix-qualified name of a node
+in the specified or default selector.</p><p>The query is invalid if $selectorName is not the name of a selector in
 the query.</p><dl>
 <dt>Parameters:</dt>
 <dd>selectorName - the selector name; non-null</dd>
@@ -655,10 +694,10 @@ the query.</p><dl>
 
 <hr>
 
-<a href="../../../source/phpcr/query/qom/queryobjectmodelfactoryinterface.php.html#line236" class="location">PHPCR/Query/QOM/QueryObjectModelFactoryInterface.php at line 236</a>
+<a href="../../../source/phpcr/query/qom/queryobjectmodelfactoryinterface.php.html#line309" class="location">PHPCR/Query/QOM/QueryObjectModelFactoryInterface.php at line 309</a>
 
-<h3 id="not()">not</h3>
-<code class="signature">public  <a href="../../../phpcr/query/qom/notinterface.html">NotInterface</a> <strong>not</strong>(<a href="../../../phpcr/query/qom/constraintinterface.html">ConstraintInterface</a> constraint)</code>
+<h3 id="notConstraint()">notConstraint</h3>
+<code class="signature">public  <a href="../../../phpcr/query/qom/notinterface.html">NotInterface</a> <strong>notConstraint</strong>(<a href="../../../phpcr/query/qom/constraintinterface.html">ConstraintInterface</a> constraint)</code>
 <div class="details">
 <p>Performs a logical negation of another constraint.</p><dl>
 <dt>Parameters:</dt>
@@ -674,7 +713,27 @@ the query.</p><dl>
 
 <hr>
 
-<a href="../../../source/phpcr/query/qom/queryobjectmodelfactoryinterface.php.html#line270" class="location">PHPCR/Query/QOM/QueryObjectModelFactoryInterface.php at line 270</a>
+<a href="../../../source/phpcr/query/qom/queryobjectmodelfactoryinterface.php.html#line291" class="location">PHPCR/Query/QOM/QueryObjectModelFactoryInterface.php at line 291</a>
+
+<h3 id="orConstraint()">orConstraint</h3>
+<code class="signature">public  <a href="../../../phpcr/query/qom/orinterface.html">OrInterface</a> <strong>orConstraint</strong>(<a href="../../../phpcr/query/qom/constraintinterface.html">ConstraintInterface</a> constraint1, <a href="../../../phpcr/query/qom/constraintinterface.html">ConstraintInterface</a> constraint2)</code>
+<div class="details">
+<p>Performs a logical disjunction of two other constraints.</p><dl>
+<dt>Parameters:</dt>
+<dd>constraint1 - the first constraint; non-null</dd>
+<dd>constraint2 - the second constraint; non-null</dd>
+<dt>Returns:</dt>
+<dd>the Or constraint; non-null</dd>
+<dt>Throws:</dt>
+<dd><a href="../../../phpcr/query/invalidqueryexception.html">\PHPCR\Query\InvalidQueryException</a> - if a particular validity test is possible on this method, the implemention chooses to perform that test (and not leave it until later) on createQuery, and the parameters given fail that test</dd>
+<dd><a href="../../../phpcr/repositoryexception.html">\PHPCR\RepositoryException</a> - if the operation otherwise fails</dd>
+<dt>Api.</dt>
+</dl>
+</div>
+
+<hr>
+
+<a href="../../../source/phpcr/query/qom/queryobjectmodelfactoryinterface.php.html#line355" class="location">PHPCR/Query/QOM/QueryObjectModelFactoryInterface.php at line 355</a>
 
 <h3 id="propertyExistence()">propertyExistence</h3>
 <code class="signature">public  <a href="../../../phpcr/query/qom/propertyexistenceinterface.html">PropertyExistenceInterface</a> <strong>propertyExistence</strong>(string propertyName, string selectorName)</code>
@@ -695,7 +754,7 @@ the query.</p><dl>
 
 <hr>
 
-<a href="../../../source/phpcr/query/qom/queryobjectmodelfactoryinterface.php.html#line382" class="location">PHPCR/Query/QOM/QueryObjectModelFactoryInterface.php at line 382</a>
+<a href="../../../source/phpcr/query/qom/queryobjectmodelfactoryinterface.php.html#line494" class="location">PHPCR/Query/QOM/QueryObjectModelFactoryInterface.php at line 494</a>
 
 <h3 id="propertyValue()">propertyValue</h3>
 <code class="signature">public  <a href="../../../phpcr/query/qom/propertyvalueinterface.html">PropertyValueInterface</a> <strong>propertyValue</strong>(string propertyName, string selectorName)</code>
@@ -718,13 +777,13 @@ specified or default selector.</p><p>The query is invalid if:
 
 <hr>
 
-<a href="../../../source/phpcr/query/qom/queryobjectmodelfactoryinterface.php.html#line317" class="location">PHPCR/Query/QOM/QueryObjectModelFactoryInterface.php at line 317</a>
+<a href="../../../source/phpcr/query/qom/queryobjectmodelfactoryinterface.php.html#line415" class="location">PHPCR/Query/QOM/QueryObjectModelFactoryInterface.php at line 415</a>
 
 <h3 id="sameNode()">sameNode</h3>
 <code class="signature">public  <a href="../../../phpcr/query/qom/samenodeinterface.html">SameNodeInterface</a> <strong>sameNode</strong>(string path, string selectorName)</code>
 <div class="details">
-<p>Tests whether a node in the specified or default selector is reachable by
-a specified absolute path.</p><p>The query is invalid if:</p>
+<p>Tests whether a node in the specified or default selector is reachable
+by a specified absolute path.</p><p>The query is invalid if:</p>
 <ul>
 <li>$selectorName is not the name of a selector in the query</li>
 <li>$path is not a syntactically valid absolute path.
@@ -748,23 +807,23 @@ because of access control constraints), the query is valid but the</li>
 
 <hr>
 
-<a href="../../../source/phpcr/query/qom/queryobjectmodelfactoryinterface.php.html#line157" class="location">PHPCR/Query/QOM/QueryObjectModelFactoryInterface.php at line 157</a>
+<a href="../../../source/phpcr/query/qom/queryobjectmodelfactoryinterface.php.html#line193" class="location">PHPCR/Query/QOM/QueryObjectModelFactoryInterface.php at line 193</a>
 
 <h3 id="sameNodeJoinCondition()">sameNodeJoinCondition</h3>
 <code class="signature">public  <a href="../../../phpcr/query/qom/samenodejoinconditioninterface.html">SameNodeJoinConditionInterface</a> <strong>sameNodeJoinCondition</strong>(string selector1Name, string selector2Name, string selector2Path)</code>
 <div class="details">
-<p>Tests whether a first selector's node is the same as a node identified by
-relative path from a second selector's node.</p><p>The query is invalid if:</p>
+<p>Tests whether a first selector's node is the same as a node identified
+by relative path from a second selector's node.</p><p>The query is invalid if:</p>
 <ul>
 <li>$selector1 is not the name of a selector in the query, or</li>
 <li>$selector2 is not the name of a selector in the query, or</li>
 <li>$selector1 is the same as $selector2, or</li>
 <li>$selector2Path is not a syntactically valid relative path.
 <b>Note:</b>
-however, that if the path is syntactically valid but does not identify a node
-visible to the current session, the query is valid but the constraint</li>
+however, that if the path is syntactically valid but does not identify
+a node visible to the current session, the query is valid but the</li>
 </ul>
-<p>is not satisfied.</p><dl>
+<p>constraint is not satisfied.</p><dl>
 <dt>Parameters:</dt>
 <dd>selector1Name - the name of the first selector; non-null</dd>
 <dd>selector2Name - the name of the second selector; non-null</dd>
@@ -780,14 +839,14 @@ visible to the current session, the query is valid but the constraint</li>
 
 <hr>
 
-<a href="../../../source/phpcr/query/qom/queryobjectmodelfactoryinterface.php.html#line83" class="location">PHPCR/Query/QOM/QueryObjectModelFactoryInterface.php at line 83</a>
+<a href="../../../source/phpcr/query/qom/queryobjectmodelfactoryinterface.php.html#line97" class="location">PHPCR/Query/QOM/QueryObjectModelFactoryInterface.php at line 97</a>
 
 <h3 id="selector()">selector</h3>
 <code class="signature">public  <a href="../../../phpcr/query/qom/selectorinterface.html">SelectorInterface</a> <strong>selector</strong>(string nodeTypeName, string selectorName)</code>
 <div class="details">
 <p>Selects a subset of the nodes in the repository based on node type.</p><p>The query is invalid if $nodeTypeName or $selectorName is not a
-syntactically valid JCR name.</p><p>The query is invalid if $selectorName is identical to the name of another
-selector in the query.</p><p>If $nodeTypeName is a valid JCR name but not the name of a node type
+syntactically valid JCR name.</p><p>The query is invalid if $selectorName is identical to the name of
+another selector in the query.</p><p>If $nodeTypeName is a valid JCR name but not the name of a node type
 available in the repository, the query is valid but the selector selects
 no nodes.</p><dl>
 <dt>Parameters:</dt>
@@ -804,12 +863,13 @@ no nodes.</p><dl>
 
 <hr>
 
-<a href="../../../source/phpcr/query/qom/queryobjectmodelfactoryinterface.php.html#line471" class="location">PHPCR/Query/QOM/QueryObjectModelFactoryInterface.php at line 471</a>
+<a href="../../../source/phpcr/query/qom/queryobjectmodelfactoryinterface.php.html#line610" class="location">PHPCR/Query/QOM/QueryObjectModelFactoryInterface.php at line 610</a>
 
 <h3 id="upperCase()">upperCase</h3>
 <code class="signature">public  <a href="../../../phpcr/query/qom/uppercaseinterface.html">UpperCaseInterface</a> <strong>upperCase</strong>(<a href="../../../phpcr/query/qom/dynamicoperandinterface.html">DynamicOperandInterface</a> operand)</code>
 <div class="details">
-<p>Evaluates to the upper-case string value (or values, if multi-valued) of an operand.</p><dl>
+<p>Evaluates to the upper-case string value (or values, if multi-valued) of
+an operand.</p><dl>
 <dt>Parameters:</dt>
 <dd>operand - the operand whose value is converted to a upper-case string; non-null</dd>
 <dt>Returns:</dt>

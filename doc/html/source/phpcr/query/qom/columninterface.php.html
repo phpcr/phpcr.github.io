@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="generator" content="PHPDoctor 2RC4 (http://peej.github.com/phpdoctor/)">
-<meta name="when" content="Tue, 26 Jul 2011 15:56:45 +0000">
+<meta name="when" content="Tue, 27 Mar 2012 06:17:50 +0000">
 
 <link rel="stylesheet" type="text/css" href="../../../../stylesheet.css">
 <link rel="start" href="../../../../overview-summary.html">
@@ -75,8 +75,8 @@ limitations under the License.</p></div>
 <a name="line28"></a> * Defines a column to include in the tabular view of query results.
 <a name="line29"></a> *
 <a name="line30"></a> * If property is not specified, a column is included for each single-valued
-<a name="line31"></a> * non-residual property of the node type specified by the nodeType attribute of
-<a name="line32"></a> * selector.
+<a name="line31"></a> * non-residual property of the node type specified by the nodeType attribute
+<a name="line32"></a> * of selector.
 <a name="line33"></a> *
 <a name="line34"></a> * If property is specified, columnName is required and used to name the column
 <a name="line35"></a> * in the tabular results. If property is not specified, columnName must not be
@@ -92,27 +92,32 @@ limitations under the License.</p></div>
 <a name="line45"></a>     * Gets the name of the selector.
 <a name="line46"></a>     *
 <a name="line47"></a>     * @return string the selector name; non-null
-<a name="line48"></a>     * @api
-<a name="line49"></a>     */</span>
-<a name="line50"></a>    <span style="color: #000000; font-weight: bold;">function</span> getSelectorName<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line51"></a>&nbsp;
-<a name="line52"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line53"></a>     * Gets the name of the property.
-<a name="line54"></a>     *
-<a name="line55"></a>     * @return string the property name, or null to include a column for each single-value non-residual property of the selector's node type
-<a name="line56"></a>     * @api
-<a name="line57"></a>     */</span>
-<a name="line58"></a>    <span style="color: #000000; font-weight: bold;">function</span> getPropertyName<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line59"></a>&nbsp;
-<a name="line60"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line61"></a>     * Gets the column name.
-<a name="line62"></a>     *
-<a name="line63"></a>     * @return string the column name; must be null if getPropertyName is null and non-null otherwise
-<a name="line64"></a>     * @api
-<a name="line65"></a>     */</span>
-<a name="line66"></a>    <span style="color: #000000; font-weight: bold;">function</span> getColumnName<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line67"></a><span style="color: #009900;">&#125;</span>
-<a name="line68"></a>&nbsp;</pre>
+<a name="line48"></a>     *
+<a name="line49"></a>     * @api
+<a name="line50"></a>     */</span>
+<a name="line51"></a>    <span style="color: #000000; font-weight: bold;">function</span> getSelectorName<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line52"></a>&nbsp;
+<a name="line53"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line54"></a>     * Gets the name of the property.
+<a name="line55"></a>     *
+<a name="line56"></a>     * @return string the property name, or null to include a column for each
+<a name="line57"></a>     *      single-value non-residual property of the selector's node type
+<a name="line58"></a>     *
+<a name="line59"></a>     * @api
+<a name="line60"></a>     */</span>
+<a name="line61"></a>    <span style="color: #000000; font-weight: bold;">function</span> getPropertyName<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line62"></a>&nbsp;
+<a name="line63"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line64"></a>     * Gets the column name.
+<a name="line65"></a>     *
+<a name="line66"></a>     * @return string the column name; must be null if getPropertyName is null
+<a name="line67"></a>     *      and non-null otherwise
+<a name="line68"></a>     *
+<a name="line69"></a>     * @api
+<a name="line70"></a>     */</span>
+<a name="line71"></a>    <span style="color: #000000; font-weight: bold;">function</span> getColumnName<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line72"></a><span style="color: #009900;">&#125;</span>
+<a name="line73"></a>&nbsp;</pre>
 <div class="header">
 <h1>PHPCR</h1>
 <ul>

@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="generator" content="PHPDoctor 2RC4 (http://peej.github.com/phpdoctor/)">
-<meta name="when" content="Tue, 26 Jul 2011 15:56:35 +0000">
+<meta name="when" content="Tue, 27 Mar 2012 06:17:41 +0000">
 
 <link rel="stylesheet" type="text/css" href="../../stylesheet.css">
 <link rel="start" href="../../overview-summary.html">
@@ -41,7 +41,7 @@ Detail: <a href="#detail_field">Field</a> | <a href="#detail_method">Method</a> 
 <hr>
 
 <div class="qualifiedName">PHPCR\Version\ActivityViolationException</div>
-<a href="../../source/phpcr/version/activityviolationexception.php.html#line42" class="location">PHPCR/Version/ActivityViolationException.php at line 42</a>
+<a href="../../source/phpcr/version/activityviolationexception.php.html#line41" class="location">PHPCR/Version/ActivityViolationException.php at line 41</a>
 
 <h1>Class ActivityViolationException</h1>
 
@@ -53,15 +53,15 @@ Detail: <a href="#detail_field">Field</a> | <a href="#detail_method">Method</a> 
 
 </p>
 
-<div class="comment" id="overview_description"><p>Exception will be thrown by NodeInterface::checkout() and NodeInterface::checkpoint() if an activity
-A is present on the current session and any of the following conditions is met:</p>
+<div class="comment" id="overview_description"><p>Exception will be thrown by NodeInterface::checkout() and
+NodeInterface::checkpoint() if an activity A is present on the current
+session and any of the following conditions is met:</p>
 <ul>
 <li>There already is a node in another workspace that has a checked-out node
 for the version history of N whose jcr:activity references A.</li>
-<li>There is a version in the version history of N that is not a predecessor
-of N but whose jcr:activity references A.</li>
+<li>There is a version in the version history of N that is not a predecessor</li>
 </ul>
-<p>&nbsp;</p></div>
+<p>of N but whose jcr:activity references A.</p></div>
 
 <dl>
 <dt>Subpackage:</dt>

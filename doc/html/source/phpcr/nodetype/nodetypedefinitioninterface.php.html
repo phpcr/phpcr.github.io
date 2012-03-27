@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="generator" content="PHPDoctor 2RC4 (http://peej.github.com/phpdoctor/)">
-<meta name="when" content="Tue, 26 Jul 2011 15:56:42 +0000">
+<meta name="when" content="Tue, 27 Mar 2012 06:17:47 +0000">
 
 <link rel="stylesheet" type="text/css" href="../../../stylesheet.css">
 <link rel="start" href="../../../overview-summary.html">
@@ -73,157 +73,173 @@ limitations under the License.</p></div>
 <a name="line26"></a>&nbsp;
 <a name="line27"></a><span style="color: #009933; font-style: italic;">/**
 <a name="line28"></a> * The NodeTypeDefinition interface provides methods for discovering the
-<a name="line29"></a> * static definition of a node type. These are accessible both before and
-<a name="line30"></a> * after the node type is registered. Its subclass NodeType adds methods
-<a name="line31"></a> * that are relevant only when the node type is &quot;live&quot;; that is, after it
-<a name="line32"></a> * has been registered. Note that the separate NodeDefinition interface only
-<a name="line33"></a> * plays a significant role in implementations that support node type
-<a name="line34"></a> * registration. In those cases it serves as the superclass of both NodeType
-<a name="line35"></a> * and NodeTypeTemplate. In implementations that do not support node type
-<a name="line36"></a> * registration, only objects implementing the subinterface NodeType will
-<a name="line37"></a> * be encountered.
-<a name="line38"></a> *
-<a name="line39"></a> * @package phpcr
-<a name="line40"></a> * @subpackage interfaces
-<a name="line41"></a> * @api
-<a name="line42"></a> */</span>
-<a name="line43"></a><span style="color: #000000; font-weight: bold;">interface</span> NodeTypeDefinitionInterface
-<a name="line44"></a><span style="color: #009900;">&#123;</span>
-<a name="line45"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line46"></a>     * Returns the name of the node type.
-<a name="line47"></a>     *
-<a name="line48"></a>     * In implementations that support node type registration, if this
-<a name="line49"></a>     * NodeTypeDefinition object is actually a newly-created empty
-<a name="line50"></a>     * NodeTypeTemplate, then this method will return null.
-<a name="line51"></a>     *
-<a name="line52"></a>     * @return string The name of the node type.
-<a name="line53"></a>     * @api
-<a name="line54"></a>     */</span>
-<a name="line55"></a>    <span style="color: #000000; font-weight: bold;">function</span> getName<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line56"></a>&nbsp;
-<a name="line57"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line58"></a>     * Returns the names of the supertypes actually declared in this node type.
-<a name="line59"></a>     *
-<a name="line60"></a>     * In implementations that support node type registration, if this
-<a name="line61"></a>     * NodeTypeDefinition object is actually a newly-created empty
-<a name="line62"></a>     * NodeTypeTemplate, then this method will return an array containing a
-<a name="line63"></a>     * single string indicating the node type nt:base.
-<a name="line64"></a>     *
-<a name="line65"></a>     * @return array List of names of declared supertypes.
-<a name="line66"></a>     * @api
-<a name="line67"></a>     */</span>
-<a name="line68"></a>    <span style="color: #000000; font-weight: bold;">function</span> getDeclaredSupertypeNames<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line69"></a>&nbsp;
-<a name="line70"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line71"></a>     * Reports if this is an abstract node type.
-<a name="line72"></a>     *
-<a name="line73"></a>     * Returns true if this is an abstract node type; returns false otherwise.
-<a name="line74"></a>     * An abstract node type is one that cannot be assigned as the primary or
-<a name="line75"></a>     * mixin type of a node but can be used in the definitions of other node
-<a name="line76"></a>     * types as a superclass.
+<a name="line29"></a> * static definition of a node type.
+<a name="line30"></a> *
+<a name="line31"></a> * The information methods may be used both before and after the node type is
+<a name="line32"></a> * registered. Its subclass NodeType adds methods that are relevant only when
+<a name="line33"></a> * the node type is &quot;live&quot;; that is, after it has been registered. Note that
+<a name="line34"></a> * the separate NodeDefinition interface only plays a significant role in
+<a name="line35"></a> * implementations that support node type registration.
+<a name="line36"></a> *
+<a name="line37"></a> * In those cases it serves as the superclass of both NodeType and
+<a name="line38"></a> * NodeTypeTemplate. In implementations that do not support node type
+<a name="line39"></a> * registration, only objects implementing the subinterface NodeType will
+<a name="line40"></a> * be encountered.
+<a name="line41"></a> *
+<a name="line42"></a> * @package phpcr
+<a name="line43"></a> * @subpackage interfaces
+<a name="line44"></a> * @api
+<a name="line45"></a> */</span>
+<a name="line46"></a><span style="color: #000000; font-weight: bold;">interface</span> NodeTypeDefinitionInterface
+<a name="line47"></a><span style="color: #009900;">&#123;</span>
+<a name="line48"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line49"></a>     * Returns the name of the node type.
+<a name="line50"></a>     *
+<a name="line51"></a>     * In implementations that support node type registration, if this
+<a name="line52"></a>     * NodeTypeDefinition object is actually a newly-created empty
+<a name="line53"></a>     * NodeTypeTemplate, then this method will return null.
+<a name="line54"></a>     *
+<a name="line55"></a>     * @return string The name of the node type.
+<a name="line56"></a>     *
+<a name="line57"></a>     * @api
+<a name="line58"></a>     */</span>
+<a name="line59"></a>    <span style="color: #000000; font-weight: bold;">function</span> getName<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line60"></a>&nbsp;
+<a name="line61"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line62"></a>     * Returns the names of the supertypes actually declared in this node type.
+<a name="line63"></a>     *
+<a name="line64"></a>     * In implementations that support node type registration, if this
+<a name="line65"></a>     * NodeTypeDefinition object is actually a newly-created empty
+<a name="line66"></a>     * NodeTypeTemplate, then this method will return an array containing a
+<a name="line67"></a>     * single string indicating the node type nt:base.
+<a name="line68"></a>     *
+<a name="line69"></a>     * @return array List of names of declared supertypes.
+<a name="line70"></a>     *
+<a name="line71"></a>     * @api
+<a name="line72"></a>     */</span>
+<a name="line73"></a>    <span style="color: #000000; font-weight: bold;">function</span> getDeclaredSupertypeNames<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line74"></a>&nbsp;
+<a name="line75"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line76"></a>     * Reports if this is an abstract node type.
 <a name="line77"></a>     *
-<a name="line78"></a>     * In implementations that support node type registration, if this
-<a name="line79"></a>     * NodeTypeDefinition object is actually a newly-created empty
-<a name="line80"></a>     * NodeTypeTemplate, then this method will return false.
-<a name="line81"></a>     *
-<a name="line82"></a>     * @return boolean True, if the current type is abstract, else false.
-<a name="line83"></a>     * @api
-<a name="line84"></a>     */</span>
-<a name="line85"></a>    <span style="color: #000000; font-weight: bold;">function</span> isAbstract<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line86"></a>&nbsp;
-<a name="line87"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line88"></a>     * Reports if this is a mixin node type.
-<a name="line89"></a>     *
-<a name="line90"></a>     * Returns true if this is a mixin type; returns false if it is primary.
-<a name="line91"></a>     * In implementations that support node type registration, if this
-<a name="line92"></a>     * NodeTypeDefinition object is actually a newly-created empty
-<a name="line93"></a>     * NodeTypeTemplate, then this method will return false.
-<a name="line94"></a>     *
-<a name="line95"></a>     * @return boolean True if this is a mixin type, else false;
-<a name="line96"></a>     * @api
-<a name="line97"></a>     */</span>
-<a name="line98"></a>    <span style="color: #000000; font-weight: bold;">function</span> isMixin<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line99"></a>&nbsp;
-<a name="line100"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line101"></a>     * Determines if nodes of this type must support orderable child nodes.
+<a name="line78"></a>     * Returns true if this is an abstract node type; returns false otherwise.
+<a name="line79"></a>     * An abstract node type is one that cannot be assigned as the primary or
+<a name="line80"></a>     * mixin type of a node but can be used in the definitions of other node
+<a name="line81"></a>     * types as a superclass.
+<a name="line82"></a>     *
+<a name="line83"></a>     * In implementations that support node type registration, if this
+<a name="line84"></a>     * NodeTypeDefinition object is actually a newly-created empty
+<a name="line85"></a>     * NodeTypeTemplate, then this method will return false.
+<a name="line86"></a>     *
+<a name="line87"></a>     * @return boolean True, if the current type is abstract, else false.
+<a name="line88"></a>     *
+<a name="line89"></a>     * @api
+<a name="line90"></a>     */</span>
+<a name="line91"></a>    <span style="color: #000000; font-weight: bold;">function</span> isAbstract<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line92"></a>&nbsp;
+<a name="line93"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line94"></a>     * Reports if this is a mixin node type.
+<a name="line95"></a>     *
+<a name="line96"></a>     * Returns true if this is a mixin type; returns false if it is primary.
+<a name="line97"></a>     * In implementations that support node type registration, if this
+<a name="line98"></a>     * NodeTypeDefinition object is actually a newly-created empty
+<a name="line99"></a>     * NodeTypeTemplate, then this method will return false.
+<a name="line100"></a>     *
+<a name="line101"></a>     * @return boolean True if this is a mixin type, else false;
 <a name="line102"></a>     *
-<a name="line103"></a>     * Returns true if nodes of this type must support orderable child nodes;
-<a name="line104"></a>     * returns false otherwise. If a node type returns true on a call to this
-<a name="line105"></a>     * method, then all nodes of that node type must support the method
-<a name="line106"></a>     * NodeInterface::orderBefore(). If a node type returns false on a call to this method,
-<a name="line107"></a>     * then nodes of that node type may support NodeInterface::orderBefore(). Only the primary
-<a name="line108"></a>     * node type of a node controls that node's status in this regard. This setting
-<a name="line109"></a>     * on a mixin node type will not have any effect on the node.
-<a name="line110"></a>     * In implementations that support node type registration, if this
-<a name="line111"></a>     * NodeTypeDefinitionInterface object is actually a newly-created empty
-<a name="line112"></a>     * NodeTypeTemplateInterface, then this method will return false.
-<a name="line113"></a>     *
-<a name="line114"></a>     * @return boolean True, if nodes of this type must support orderable child nodes, else false.
-<a name="line115"></a>     * @api
-<a name="line116"></a>     */</span>
-<a name="line117"></a>    <span style="color: #000000; font-weight: bold;">function</span> hasOrderableChildNodes<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line118"></a>&nbsp;
-<a name="line119"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line120"></a>     * Determins if the node type is queryable.
-<a name="line121"></a>     *
-<a name="line122"></a>     * Returns true if the node type is queryable, meaning that the
-<a name="line123"></a>     * available-query-operators, full-text-searchable and query-orderable
-<a name="line124"></a>     * attributes of its property definitions take effect.
+<a name="line103"></a>     * @api
+<a name="line104"></a>     */</span>
+<a name="line105"></a>    <span style="color: #000000; font-weight: bold;">function</span> isMixin<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line106"></a>&nbsp;
+<a name="line107"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line108"></a>     * Determines if nodes of this type must support orderable child nodes.
+<a name="line109"></a>     *
+<a name="line110"></a>     * Returns true if nodes of this type must support orderable child nodes;
+<a name="line111"></a>     * returns false otherwise. If a node type returns true on a call to this
+<a name="line112"></a>     * method, then all nodes of that node type must support the method
+<a name="line113"></a>     * NodeInterface::orderBefore(). If a node type returns false on a call to
+<a name="line114"></a>     * this method, then nodes of that node type may support
+<a name="line115"></a>     * NodeInterface::orderBefore(). Only the primary node type of a node
+<a name="line116"></a>     * controls that node's status in this regard. This setting on a mixin node
+<a name="line117"></a>     * type will not have any effect on the node.
+<a name="line118"></a>     *
+<a name="line119"></a>     * In implementations that support node type registration, if this
+<a name="line120"></a>     * NodeTypeDefinitionInterface object is actually a newly-created empty
+<a name="line121"></a>     * NodeTypeTemplateInterface, then this method will return false.
+<a name="line122"></a>     *
+<a name="line123"></a>     * @return boolean True, if nodes of this type must support orderable child
+<a name="line124"></a>     *      nodes, else false.
 <a name="line125"></a>     *
-<a name="line126"></a>     * If a node type is declared non-queryable then these attributes of its
-<a name="line127"></a>     * property definitions have no effect.
-<a name="line128"></a>     *
-<a name="line129"></a>     * @return boolean True, if the node type is queryable, else false.
-<a name="line130"></a>     *
-<a name="line131"></a>     * @see PropertyDefinition::getAvailableQueryOperators()
-<a name="line132"></a>     * @see PropertyDefinition::isFullTextSearchable()
-<a name="line133"></a>     * @see PropertyDefinition::isQueryOrderable()
-<a name="line134"></a>     * @api
-<a name="line135"></a>     */</span>
-<a name="line136"></a>    <span style="color: #000000; font-weight: bold;">function</span> isQueryable<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line137"></a>&nbsp;
-<a name="line138"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line139"></a>     * Returns the name of the primary item (one of the child items of the nodes
-<a name="line140"></a>     * of this node type).
+<a name="line126"></a>     * @api
+<a name="line127"></a>     */</span>
+<a name="line128"></a>    <span style="color: #000000; font-weight: bold;">function</span> hasOrderableChildNodes<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line129"></a>&nbsp;
+<a name="line130"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line131"></a>     * Determins if the node type is queryable.
+<a name="line132"></a>     *
+<a name="line133"></a>     * Returns true if the node type is queryable, meaning that the
+<a name="line134"></a>     * available-query-operators, full-text-searchable and query-orderable
+<a name="line135"></a>     * attributes of its property definitions take effect.
+<a name="line136"></a>     *
+<a name="line137"></a>     * If a node type is declared non-queryable then these attributes of its
+<a name="line138"></a>     * property definitions have no effect.
+<a name="line139"></a>     *
+<a name="line140"></a>     * @return boolean True, if the node type is queryable, else false.
 <a name="line141"></a>     *
-<a name="line142"></a>     * If this node has no primary item, then this method
-<a name="line143"></a>     * returns null. This indicator is used by the method NodeInterface::getPrimaryItem().
-<a name="line144"></a>     * In implementations that support node type registration, if this
-<a name="line145"></a>     * NodeTypeDefinitionInterface object is actually a newly-created empty
-<a name="line146"></a>     * NodeTypeTemplateInterface, then this method will return null.
-<a name="line147"></a>     *
-<a name="line148"></a>     * @return string The name of the primary item.
-<a name="line149"></a>     * @api
-<a name="line150"></a>     */</span>
-<a name="line151"></a>    <span style="color: #000000; font-weight: bold;">function</span> getPrimaryItemName<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line152"></a>&nbsp;
-<a name="line153"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line154"></a>     * Returns an array containing the property definitions actually declared
-<a name="line155"></a>     * in this node type.
+<a name="line142"></a>     * @see PropertyDefinition::getAvailableQueryOperators()
+<a name="line143"></a>     * @see PropertyDefinition::isFullTextSearchable()
+<a name="line144"></a>     * @see PropertyDefinition::isQueryOrderable()
+<a name="line145"></a>     *
+<a name="line146"></a>     * @api
+<a name="line147"></a>     */</span>
+<a name="line148"></a>    <span style="color: #000000; font-weight: bold;">function</span> isQueryable<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line149"></a>&nbsp;
+<a name="line150"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line151"></a>     * Returns the name of the primary item (one of the child items of the nodes
+<a name="line152"></a>     * of this node type).
+<a name="line153"></a>     *
+<a name="line154"></a>     * If this node has no primary item, then this method returns null. This
+<a name="line155"></a>     * indicator is used by the method NodeInterface::getPrimaryItem().
 <a name="line156"></a>     *
 <a name="line157"></a>     * In implementations that support node type registration, if this
-<a name="line158"></a>     * NodeTypeDefinition object is actually a newly-created empty
-<a name="line159"></a>     * NodeTypeTemplate, then this method will return null.
+<a name="line158"></a>     * NodeTypeDefinitionInterface object is actually a newly-created empty
+<a name="line159"></a>     * NodeTypeTemplateInterface, then this method will return null.
 <a name="line160"></a>     *
-<a name="line161"></a>     * @return array An array of PropertyDefinitions.
-<a name="line162"></a>     * @api
-<a name="line163"></a>     */</span>
-<a name="line164"></a>    <span style="color: #000000; font-weight: bold;">function</span> getDeclaredPropertyDefinitions<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line165"></a>&nbsp;
-<a name="line166"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line167"></a>     * Returns an array containing the child node definitions actually
-<a name="line168"></a>     * declared in this node type.
-<a name="line169"></a>     *
-<a name="line170"></a>     * In implementations that support node type registration, if this
-<a name="line171"></a>     * NodeTypeDefinition object is actually a newly-created empty
-<a name="line172"></a>     * NodeTypeTemplate, then this method will return null.
-<a name="line173"></a>     *
-<a name="line174"></a>     * @return array An array of NodeDefinitions.
-<a name="line175"></a>     * @api
-<a name="line176"></a>     */</span>
-<a name="line177"></a>    <span style="color: #000000; font-weight: bold;">function</span> getDeclaredChildNodeDefinitions<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line178"></a><span style="color: #009900;">&#125;</span>
-<a name="line179"></a>&nbsp;</pre>
+<a name="line161"></a>     * @return string The name of the primary item.
+<a name="line162"></a>     *
+<a name="line163"></a>     * @api
+<a name="line164"></a>     */</span>
+<a name="line165"></a>    <span style="color: #000000; font-weight: bold;">function</span> getPrimaryItemName<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line166"></a>&nbsp;
+<a name="line167"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line168"></a>     * Returns an array containing the property definitions actually declared
+<a name="line169"></a>     * in this node type.
+<a name="line170"></a>     *
+<a name="line171"></a>     * In implementations that support node type registration, if this
+<a name="line172"></a>     * NodeTypeDefinition object is actually a newly-created empty
+<a name="line173"></a>     * NodeTypeTemplate, then this method will return null.
+<a name="line174"></a>     *
+<a name="line175"></a>     * @return array An array of PropertyDefinitions.
+<a name="line176"></a>     *
+<a name="line177"></a>     * @api
+<a name="line178"></a>     */</span>
+<a name="line179"></a>    <span style="color: #000000; font-weight: bold;">function</span> getDeclaredPropertyDefinitions<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line180"></a>&nbsp;
+<a name="line181"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line182"></a>     * Returns an array containing the child node definitions actually
+<a name="line183"></a>     * declared in this node type.
+<a name="line184"></a>     *
+<a name="line185"></a>     * In implementations that support node type registration, if this
+<a name="line186"></a>     * NodeTypeDefinition object is actually a newly-created empty
+<a name="line187"></a>     * NodeTypeTemplate, then this method will return null.
+<a name="line188"></a>     *
+<a name="line189"></a>     * @return array An array of NodeDefinitions.
+<a name="line190"></a>     *
+<a name="line191"></a>     * @api
+<a name="line192"></a>     */</span>
+<a name="line193"></a>    <span style="color: #000000; font-weight: bold;">function</span> getDeclaredChildNodeDefinitions<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line194"></a><span style="color: #009900;">&#125;</span>
+<a name="line195"></a>&nbsp;</pre>
 <div class="header">
 <h1>PHPCR</h1>
 <ul>

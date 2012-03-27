@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="generator" content="PHPDoctor 2RC4 (http://peej.github.com/phpdoctor/)">
-<meta name="when" content="Tue, 26 Jul 2011 15:56:34 +0000">
+<meta name="when" content="Tue, 27 Mar 2012 06:17:41 +0000">
 
 <link rel="stylesheet" type="text/css" href="../../../stylesheet.css">
 <link rel="start" href="../../../overview-summary.html">
@@ -41,7 +41,7 @@ Detail: <a href="#detail_field">Field</a> | <a href="#detail_method">Method</a> 
 <hr>
 
 <div class="qualifiedName">PHPCR\Query\QOM\QueryObjectModelInterface</div>
-<a href="../../../source/phpcr/query/qom/queryobjectmodelinterface.php.html#line60" class="location">PHPCR/Query/QOM/QueryObjectModelInterface.php at line 60</a>
+<a href="../../../source/phpcr/query/qom/queryobjectmodelinterface.php.html#line63" class="location">PHPCR/Query/QOM/QueryObjectModelInterface.php at line 63</a>
 
 <h1>Interface QueryObjectModelInterface</h1>
 
@@ -53,29 +53,32 @@ Detail: <a href="#detail_field">Field</a> | <a href="#detail_method">Method</a> 
 
 </p>
 
-<div class="comment" id="overview_description"><p>A query in the JCR query object model.</p><p>The JCR query object model describes the queries that can be evaluated by a JCR
-repository independent of any particular query language, such as SQL.</p><p>A query consists of:</p>
+<div class="comment" id="overview_description"><p>A query in the JCR/PHPCR query object model.</p><p>The JCR query object model describes the queries that can be evaluated by a
+JCR repository independent of any particular query language, such as SQL.</p><p>A query consists of:</p>
 <ul>
-<li>a source. When the query is evaluated, the source evaluates its selectors and
-the joins between them to produce a (possibly empty) set of node-tuples. This
-is a set of 1-tuples if the query has one selector (and therefore no joins), a
-set of 2-tuples if the query has two selectors (and therefore one join), a set
-of 3-tuples if the query has three selectors (two joins), and so forth.</li>
-<li>an optional constraint. When the query is evaluated, the constraint filters the
-set of node-tuples.</li>
-<li>a list of zero or more orderings. The orderings specify the order in which the
-node-tuples appear in the query results. The relative order of two node-tuples
-is determined by evaluating the specified orderings, in list order, until
-encountering an ordering for which one node-tuple precedes the other. If no
-orderings are specified, or if for none of the specified orderings does one
-node-tuple precede the other, then the relative order of the node-tuples is
-implementation determined (and may be arbitrary).</li>
+<li>a source. When the query is evaluated, the source evaluates its selectors
+and the joins between them to produce a (possibly empty) set of
+node-tuples. This is a set of 1-tuples if the query has one selector (and
+therefore no joins), a set of 2-tuples if the query has two selectors (and
+therefore one join), a set of 3-tuples if the query has three selectors
+(two joins), and so forth.</li>
+<li>an optional constraint. When the query is evaluated, the constraint
+filters the set of node-tuples.</li>
+<li>a list of zero or more orderings. The orderings specify the order in which
+the node-tuples appear in the query results. The relative order of two
+node-tuples is determined by evaluating the specified orderings, in list
+order, untilencountering an ordering for which one node-tuple precedes the
+other. If no orderings are specified, or if for none of the specified
+orderings does one node-tuple precede the other, then the relative order
+of the node-tuples is implementation determined (and may be arbitrary).</li>
 <li>a list of zero or more columns to include in the tabular view of the query
-results. If no columns are specified, the columns available in the tabular view
-are implementation determined, but minimally include, for each selector, a column
-for each single-valued non-residual property of the selector's node type.</li>
+results. If no columns are specified, the columns available in the tabular
+view are implementation determined, but minimally include, for each
+selector, a column for each single-valued non-residual property of the
+selector's node type.</li>
 </ul>
-<p>The query object model representation of a query is created by factory methods in the QueryObjectModelFactory.</p></div>
+<p>The query object model representation of a query is created by factory
+methods in the QueryObjectModelFactory.</p></div>
 
 <dl>
 <dt>Subpackage:</dt>
@@ -109,21 +112,21 @@ for each single-valued non-residual property of the selector's node type.</li>
 <tr><td><a href="../../../phpcr/query/queryinterface.html#bindValue()">bindValue</a>, <a href="../../../phpcr/query/queryinterface.html#execute()">execute</a>, <a href="../../../phpcr/query/queryinterface.html#getBindVariableNames()">getBindVariableNames</a>, <a href="../../../phpcr/query/queryinterface.html#getLanguage()">getLanguage</a>, <a href="../../../phpcr/query/queryinterface.html#getStatement()">getStatement</a>, <a href="../../../phpcr/query/queryinterface.html#getStoredQueryPath()">getStoredQueryPath</a>, <a href="../../../phpcr/query/queryinterface.html#setLimit()">setLimit</a>, <a href="../../../phpcr/query/queryinterface.html#setOffset()">setOffset</a>, <a href="../../../phpcr/query/queryinterface.html#storeAsNode()">storeAsNode</a></td></tr></table>
 
 <h2 id="detail_method">Method Detail</h2>
-<a href="../../../source/phpcr/query/qom/queryobjectmodelinterface.php.html#line92" class="location">PHPCR/Query/QOM/QueryObjectModelInterface.php at line 92</a>
+<a href="../../../source/phpcr/query/qom/queryobjectmodelinterface.php.html#line97" class="location">PHPCR/Query/QOM/QueryObjectModelInterface.php at line 97</a>
 
 <h3 id="getColumns()">getColumns</h3>
 <code class="signature">public  array <strong>getColumns</strong>()</code>
 <div class="details">
 <p>Gets the columns for this query.</p><dl>
 <dt>Returns:</dt>
-<dd>an array of zero or more \PHPCR\Query\QOM\ColumnInterface; non-null</dd>
+<dd>a list of zero or more ColumnInterface; non-null</dd>
 <dt>Api.</dt>
 </dl>
 </div>
 
 <hr>
 
-<a href="../../../source/phpcr/query/qom/queryobjectmodelinterface.php.html#line76" class="location">PHPCR/Query/QOM/QueryObjectModelInterface.php at line 76</a>
+<a href="../../../source/phpcr/query/qom/queryobjectmodelinterface.php.html#line81" class="location">PHPCR/Query/QOM/QueryObjectModelInterface.php at line 81</a>
 
 <h3 id="getConstraint()">getConstraint</h3>
 <code class="signature">public  <a href="../../../phpcr/query/qom/constraintinterface.html">ConstraintInterface</a> <strong>getConstraint</strong>()</code>
@@ -137,21 +140,21 @@ for each single-valued non-residual property of the selector's node type.</li>
 
 <hr>
 
-<a href="../../../source/phpcr/query/qom/queryobjectmodelinterface.php.html#line84" class="location">PHPCR/Query/QOM/QueryObjectModelInterface.php at line 84</a>
+<a href="../../../source/phpcr/query/qom/queryobjectmodelinterface.php.html#line89" class="location">PHPCR/Query/QOM/QueryObjectModelInterface.php at line 89</a>
 
 <h3 id="getOrderings()">getOrderings</h3>
 <code class="signature">public  array <strong>getOrderings</strong>()</code>
 <div class="details">
 <p>Gets the orderings for this query.</p><dl>
 <dt>Returns:</dt>
-<dd>an array of zero or more \PHPCR\Query\QOM\OrderingInterface; non-null</dd>
+<dd>a list of zero or more OrderingInterface; non-null</dd>
 <dt>Api.</dt>
 </dl>
 </div>
 
 <hr>
 
-<a href="../../../source/phpcr/query/qom/queryobjectmodelinterface.php.html#line68" class="location">PHPCR/Query/QOM/QueryObjectModelInterface.php at line 68</a>
+<a href="../../../source/phpcr/query/qom/queryobjectmodelinterface.php.html#line71" class="location">PHPCR/Query/QOM/QueryObjectModelInterface.php at line 71</a>
 
 <h3 id="getSource()">getSource</h3>
 <code class="signature">public  <a href="../../../phpcr/query/qom/sourceinterface.html">SourceInterface</a> <strong>getSource</strong>()</code>

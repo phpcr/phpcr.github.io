@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="generator" content="PHPDoctor 2RC4 (http://peej.github.com/phpdoctor/)">
-<meta name="when" content="Tue, 26 Jul 2011 15:56:43 +0000">
+<meta name="when" content="Tue, 27 Mar 2012 06:17:48 +0000">
 
 <link rel="stylesheet" type="text/css" href="../../../stylesheet.css">
 <link rel="start" href="../../../overview-summary.html">
@@ -78,8 +78,8 @@ limitations under the License.</p></div>
 <a name="line31"></a> * a NodeTypeTemplate.
 <a name="line32"></a> *
 <a name="line33"></a> * See the corresponding get methods for each attribute in PropertyDefinition for
-<a name="line34"></a> * the default values assumed when a new empty PropertyDefinitionTemplate is created
-<a name="line35"></a> * (as opposed to one extracted from an existing NodeType).
+<a name="line34"></a> * the default values assumed when a new empty PropertyDefinitionTemplate is
+<a name="line35"></a> * created (as opposed to one extracted from an existing NodeType).
 <a name="line36"></a> *
 <a name="line37"></a> * @package phpcr
 <a name="line38"></a> * @subpackage interfaces
@@ -91,112 +91,142 @@ limitations under the License.</p></div>
 <a name="line44"></a>     * Sets the name of the property.
 <a name="line45"></a>     *
 <a name="line46"></a>     * @param string $name The name of the property definition template.
-<a name="line47"></a>     * @return void
-<a name="line48"></a>     * @api
-<a name="line49"></a>     */</span>
-<a name="line50"></a>    <span style="color: #000000; font-weight: bold;">function</span> setName<span style="color: #009900;">&#40;</span><span style="color: #000088;">$name</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line51"></a>&nbsp;
-<a name="line52"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line53"></a>     * Sets the auto-create status of the property.
-<a name="line54"></a>     *
-<a name="line55"></a>     * @param boolean $autoCreated Flag to set the ability to be automatically created.
-<a name="line56"></a>     * @return void
-<a name="line57"></a>     * @api
-<a name="line58"></a>     */</span>
-<a name="line59"></a>    <span style="color: #000000; font-weight: bold;">function</span> setAutoCreated<span style="color: #009900;">&#40;</span><span style="color: #000088;">$autoCreated</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line60"></a>&nbsp;
-<a name="line61"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line62"></a>     * Sets the mandatory status of the property.
-<a name="line63"></a>     *
-<a name="line64"></a>     * @param boolean $mandatory The mandatory status of the property.
-<a name="line65"></a>     * @return void
-<a name="line66"></a>     * @api
-<a name="line67"></a>     */</span>
-<a name="line68"></a>    <span style="color: #000000; font-weight: bold;">function</span> setMandatory<span style="color: #009900;">&#40;</span><span style="color: #000088;">$mandatory</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line69"></a>&nbsp;
-<a name="line70"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line71"></a>     * Sets the on-parent-version status of the property.
+<a name="line47"></a>     *
+<a name="line48"></a>     * @return void
+<a name="line49"></a>     *
+<a name="line50"></a>     * @api
+<a name="line51"></a>     */</span>
+<a name="line52"></a>    <span style="color: #000000; font-weight: bold;">function</span> setName<span style="color: #009900;">&#40;</span><span style="color: #000088;">$name</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line53"></a>&nbsp;
+<a name="line54"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line55"></a>     * Sets the auto-create status of the property.
+<a name="line56"></a>     *
+<a name="line57"></a>     * @param boolean $autoCreated Flag to set the ability to be automatically
+<a name="line58"></a>     *      created.
+<a name="line59"></a>     *
+<a name="line60"></a>     * @return void
+<a name="line61"></a>     *
+<a name="line62"></a>     * @api
+<a name="line63"></a>     */</span>
+<a name="line64"></a>    <span style="color: #000000; font-weight: bold;">function</span> setAutoCreated<span style="color: #009900;">&#40;</span><span style="color: #000088;">$autoCreated</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line65"></a>&nbsp;
+<a name="line66"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line67"></a>     * Sets the mandatory status of the property.
+<a name="line68"></a>     *
+<a name="line69"></a>     * @param boolean $mandatory The mandatory status of the property.
+<a name="line70"></a>     *
+<a name="line71"></a>     * @return void
 <a name="line72"></a>     *
-<a name="line73"></a>     * @param integer $opv an int constant member of OnParentVersionAction.
-<a name="line74"></a>     * @return void
-<a name="line75"></a>     * @api
-<a name="line76"></a>     */</span>
-<a name="line77"></a>    <span style="color: #000000; font-weight: bold;">function</span> setOnParentVersion<span style="color: #009900;">&#40;</span><span style="color: #000088;">$opv</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line78"></a>&nbsp;
-<a name="line79"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line80"></a>     * Sets the protected status of the property.
+<a name="line73"></a>     * @api
+<a name="line74"></a>     */</span>
+<a name="line75"></a>    <span style="color: #000000; font-weight: bold;">function</span> setMandatory<span style="color: #009900;">&#40;</span><span style="color: #000088;">$mandatory</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line76"></a>&nbsp;
+<a name="line77"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line78"></a>     * Sets the on-parent-version status of the property.
+<a name="line79"></a>     *
+<a name="line80"></a>     * @param integer $opv an int constant member of OnParentVersionAction.
 <a name="line81"></a>     *
-<a name="line82"></a>     * @param boolean $protectedStatus The protection status of the property.
-<a name="line83"></a>     * @return void
+<a name="line82"></a>     * @return void
+<a name="line83"></a>     *
 <a name="line84"></a>     * @api
 <a name="line85"></a>     */</span>
-<a name="line86"></a>    <span style="color: #000000; font-weight: bold;">function</span> setProtected<span style="color: #009900;">&#40;</span><span style="color: #000088;">$protectedStatus</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line86"></a>    <span style="color: #000000; font-weight: bold;">function</span> setOnParentVersion<span style="color: #009900;">&#40;</span><span style="color: #000088;">$opv</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
 <a name="line87"></a>&nbsp;
 <a name="line88"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line89"></a>     * Sets the required type of the property.
+<a name="line89"></a>     * Sets the protected status of the property.
 <a name="line90"></a>     *
-<a name="line91"></a>     * @param integer $type An integer constant member of PropertyType.
-<a name="line92"></a>     * @return void
-<a name="line93"></a>     * @api
-<a name="line94"></a>     */</span>
-<a name="line95"></a>    <span style="color: #000000; font-weight: bold;">function</span> setRequiredType<span style="color: #009900;">&#40;</span><span style="color: #000088;">$type</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line96"></a>&nbsp;
-<a name="line97"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line98"></a>     * Sets the value constraints of the property.
-<a name="line99"></a>     *
-<a name="line100"></a>     * @param array $constraints List of constrains registered on the property.
-<a name="line101"></a>     * @return void
-<a name="line102"></a>     * @api
-<a name="line103"></a>     */</span>
-<a name="line104"></a>    <span style="color: #000000; font-weight: bold;">function</span> setValueConstraints<span style="color: #009900;">&#40;</span><a href="http://www.php.net/array"><span style="color: #990000;">array</span></a> <span style="color: #000088;">$constraints</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line105"></a>&nbsp;
-<a name="line106"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line107"></a>     * Sets the default value (or values, in the case of a multi-value property)
-<a name="line108"></a>     * of the property.
-<a name="line109"></a>     *
-<a name="line110"></a>     * @param array $defaultValues A List of values in the correct type for this property.
-<a name="line111"></a>     * @return void
-<a name="line112"></a>     * @api
-<a name="line113"></a>     */</span>
-<a name="line114"></a>    <span style="color: #000000; font-weight: bold;">function</span> setDefaultValues<span style="color: #009900;">&#40;</span><a href="http://www.php.net/array"><span style="color: #990000;">array</span></a> <span style="color: #000088;">$defaultValues</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line115"></a>&nbsp;
-<a name="line116"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line117"></a>     * Sets the multi-value status of the property.
-<a name="line118"></a>     *
-<a name="line119"></a>     * @param boolean $multiple The status of the ability to store multiple values.
-<a name="line120"></a>     * @return void
-<a name="line121"></a>     * @api
-<a name="line122"></a>     */</span>
-<a name="line123"></a>    <span style="color: #000000; font-weight: bold;">function</span> setMultiple<span style="color: #009900;">&#40;</span><span style="color: #000088;">$multiple</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line124"></a>&nbsp;
-<a name="line125"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line126"></a>     * Sets the queryable status of the property.
+<a name="line91"></a>     * @param boolean $protectedStatus The protection status of the property.
+<a name="line92"></a>     *
+<a name="line93"></a>     * @return void
+<a name="line94"></a>     *
+<a name="line95"></a>     * @api
+<a name="line96"></a>     */</span>
+<a name="line97"></a>    <span style="color: #000000; font-weight: bold;">function</span> setProtected<span style="color: #009900;">&#40;</span><span style="color: #000088;">$protectedStatus</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line98"></a>&nbsp;
+<a name="line99"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line100"></a>     * Sets the required type of the property.
+<a name="line101"></a>     *
+<a name="line102"></a>     * @param integer $type An integer constant member of PropertyType.
+<a name="line103"></a>     *
+<a name="line104"></a>     * @return void
+<a name="line105"></a>     *
+<a name="line106"></a>     * @api
+<a name="line107"></a>     */</span>
+<a name="line108"></a>    <span style="color: #000000; font-weight: bold;">function</span> setRequiredType<span style="color: #009900;">&#40;</span><span style="color: #000088;">$type</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line109"></a>&nbsp;
+<a name="line110"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line111"></a>     * Sets the value constraints of the property.
+<a name="line112"></a>     *
+<a name="line113"></a>     * @param array $constraints List of constrains registered on the property.
+<a name="line114"></a>     *
+<a name="line115"></a>     * @return void
+<a name="line116"></a>     *
+<a name="line117"></a>     * @api
+<a name="line118"></a>     */</span>
+<a name="line119"></a>    <span style="color: #000000; font-weight: bold;">function</span> setValueConstraints<span style="color: #009900;">&#40;</span><a href="http://www.php.net/array"><span style="color: #990000;">array</span></a> <span style="color: #000088;">$constraints</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line120"></a>&nbsp;
+<a name="line121"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line122"></a>     * Sets the default value (or values, in the case of a multi-value property)
+<a name="line123"></a>     * of the property.
+<a name="line124"></a>     *
+<a name="line125"></a>     * @param array $defaultValues A List of values in the correct type for
+<a name="line126"></a>     *      this property.
 <a name="line127"></a>     *
-<a name="line128"></a>     * @param array operators An array of String constants {@link PropertyDefinition::getAvailableQueryOperators()}.
-<a name="line129"></a>     * @return void
+<a name="line128"></a>     * @return void
+<a name="line129"></a>     *
 <a name="line130"></a>     * @api
 <a name="line131"></a>     */</span>
-<a name="line132"></a>    <span style="color: #000000; font-weight: bold;">function</span> setAvailableQueryOperators<span style="color: #009900;">&#40;</span><a href="http://www.php.net/array"><span style="color: #990000;">array</span></a> <span style="color: #000088;">$operators</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line132"></a>    <span style="color: #000000; font-weight: bold;">function</span> setDefaultValues<span style="color: #009900;">&#40;</span><a href="http://www.php.net/array"><span style="color: #990000;">array</span></a> <span style="color: #000088;">$defaultValues</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
 <a name="line133"></a>&nbsp;
 <a name="line134"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line135"></a>     * Sets the full-text-searchable status of the property.
+<a name="line135"></a>     * Sets the multi-value status of the property.
 <a name="line136"></a>     *
-<a name="line137"></a>     * @param boolean $fullTextSearchable The status of the ability to be fulltext-searchable..
-<a name="line138"></a>     * @return void
-<a name="line139"></a>     * @api
-<a name="line140"></a>     */</span>
-<a name="line141"></a>    <span style="color: #000000; font-weight: bold;">function</span> setFullTextSearchable<span style="color: #009900;">&#40;</span><span style="color: #000088;">$fullTextSearchable</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line142"></a>&nbsp;
-<a name="line143"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line144"></a>     * Sets the query-orderable status of the property.
-<a name="line145"></a>     *
-<a name="line146"></a>     * @param boolean $queryOrderable The status of the ability being query-orderable.
-<a name="line147"></a>     * @return void
-<a name="line148"></a>     * @api
-<a name="line149"></a>     */</span>
-<a name="line150"></a>    <span style="color: #000000; font-weight: bold;">function</span> setQueryOrderable<span style="color: #009900;">&#40;</span><span style="color: #000088;">$queryOrderable</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line151"></a><span style="color: #009900;">&#125;</span>
-<a name="line152"></a>&nbsp;</pre>
+<a name="line137"></a>     * @param boolean $multiple The status of the ability to store multiple
+<a name="line138"></a>     *      values.
+<a name="line139"></a>     *
+<a name="line140"></a>     * @return void
+<a name="line141"></a>     *
+<a name="line142"></a>     * @api
+<a name="line143"></a>     */</span>
+<a name="line144"></a>    <span style="color: #000000; font-weight: bold;">function</span> setMultiple<span style="color: #009900;">&#40;</span><span style="color: #000088;">$multiple</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line145"></a>&nbsp;
+<a name="line146"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line147"></a>     * Sets the queryable status of the property.
+<a name="line148"></a>     *
+<a name="line149"></a>     * @param array operators An array of String constants
+<a name="line150"></a>     *      {@link PropertyDefinition::getAvailableQueryOperators()}.
+<a name="line151"></a>     *
+<a name="line152"></a>     * @return void
+<a name="line153"></a>     *
+<a name="line154"></a>     * @api
+<a name="line155"></a>     */</span>
+<a name="line156"></a>    <span style="color: #000000; font-weight: bold;">function</span> setAvailableQueryOperators<span style="color: #009900;">&#40;</span><a href="http://www.php.net/array"><span style="color: #990000;">array</span></a> <span style="color: #000088;">$operators</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line157"></a>&nbsp;
+<a name="line158"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line159"></a>     * Sets the full-text-searchable status of the property.
+<a name="line160"></a>     *
+<a name="line161"></a>     * @param boolean $fullTextSearchable The status of the ability to be
+<a name="line162"></a>     *      fulltext-searchable..
+<a name="line163"></a>     *
+<a name="line164"></a>     * @return void
+<a name="line165"></a>     *
+<a name="line166"></a>     * @api
+<a name="line167"></a>     */</span>
+<a name="line168"></a>    <span style="color: #000000; font-weight: bold;">function</span> setFullTextSearchable<span style="color: #009900;">&#40;</span><span style="color: #000088;">$fullTextSearchable</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line169"></a>&nbsp;
+<a name="line170"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line171"></a>     * Sets the query-orderable status of the property.
+<a name="line172"></a>     *
+<a name="line173"></a>     * @param boolean $queryOrderable The status of the ability being
+<a name="line174"></a>     *      query-orderable.
+<a name="line175"></a>     *
+<a name="line176"></a>     * @return void
+<a name="line177"></a>     *
+<a name="line178"></a>     * @api
+<a name="line179"></a>     */</span>
+<a name="line180"></a>    <span style="color: #000000; font-weight: bold;">function</span> setQueryOrderable<span style="color: #009900;">&#40;</span><span style="color: #000088;">$queryOrderable</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line181"></a><span style="color: #009900;">&#125;</span>
+<a name="line182"></a>&nbsp;</pre>
 <div class="header">
 <h1>PHPCR</h1>
 <ul>

@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="generator" content="PHPDoctor 2RC4 (http://peej.github.com/phpdoctor/)">
-<meta name="when" content="Tue, 26 Jul 2011 15:56:34 +0000">
+<meta name="when" content="Tue, 27 Mar 2012 06:17:40 +0000">
 
 <link rel="stylesheet" type="text/css" href="../stylesheet.css">
 <link rel="start" href="../overview-summary.html">
@@ -148,7 +148,8 @@ the jcr:xmlcharacters property produced on importXML().
 <tr><th colspan="2">Method Summary</th></tr>
 <tr>
 <td class="type"> void</td>
-<td class="description"><p class="name"><a href="#cloneFrom()">cloneFrom</a>(string srcWorkspace, string srcAbsPath, string destAbsPath, boolean removeExisting)</p><p class="description">Clones the subgraph at the node srcAbsPath in srcWorkspace to the new location at destAbsPath in the current workspace.
+<td class="description"><p class="name"><a href="#cloneFrom()">cloneFrom</a>(string srcWorkspace, string srcAbsPath, string destAbsPath, boolean removeExisting)</p><p class="description">Clones the subgraph at the node srcAbsPath in srcWorkspace to the new
+location at destAbsPath in the current workspace.
 </p></td>
 </tr>
 <tr>
@@ -162,7 +163,8 @@ the jcr:xmlcharacters property produced on importXML().
 </tr>
 <tr>
 <td class="type"> void</td>
-<td class="description"><p class="name"><a href="#deleteWorkspace()">deleteWorkspace</a>(string name)</p><p class="description">Deletes the workspace with the specified name from the repository, deleting all content within it.</p></td>
+<td class="description"><p class="name"><a href="#deleteWorkspace()">deleteWorkspace</a>(string name)</p><p class="description">Deletes the workspace with the specified name from the repository,
+deleting all content within it.</p></td>
 </tr>
 <tr>
 <td class="type"> array</td>
@@ -180,12 +182,14 @@ the jcr:xmlcharacters property produced on importXML().
 </tr>
 <tr>
 <td class="type"> <a href="../phpcr/namespaceregistryinterface.html">NamespaceRegistryInterface</a></td>
-<td class="description"><p class="name"><a href="#getNamespaceRegistry()">getNamespaceRegistry</a>()</p><p class="description">Returns the NamespaceRegistry object, which is used to access the mapping between prefixes and namespaces.
+<td class="description"><p class="name"><a href="#getNamespaceRegistry()">getNamespaceRegistry</a>()</p><p class="description">Returns the NamespaceRegistry object, which is used to access the
+mapping between prefixes and namespaces.
 </p></td>
 </tr>
 <tr>
 <td class="type"> <a href="../phpcr/nodetype/nodetypemanagerinterface.html">NodeTypeManagerInterface</a></td>
-<td class="description"><p class="name"><a href="#getNodeTypeManager()">getNodeTypeManager</a>()</p><p class="description">Returns the NodeTypeManager through which node type information can be queried.
+<td class="description"><p class="name"><a href="#getNodeTypeManager()">getNodeTypeManager</a>()</p><p class="description">Returns the NodeTypeManager through which node type information can be
+queried.
 </p></td>
 </tr>
 <tr>
@@ -210,12 +214,14 @@ the jcr:xmlcharacters property produced on importXML().
 </tr>
 <tr>
 <td class="type"> void</td>
-<td class="description"><p class="name"><a href="#importXML()">importXML</a>(string parentAbsPath, string in, integer uuidBehavior)</p><p class="description">Deserializes an XML document and adds the resulting item subgraph as a child of the node at $parentAbsPath.
+<td class="description"><p class="name"><a href="#importXML()">importXML</a>(string parentAbsPath, string uri, integer uuidBehavior)</p><p class="description">Deserializes an XML document and adds the resulting item subgraph as a
+child of the node at $parentAbsPath.
 </p></td>
 </tr>
 <tr>
 <td class="type"> void</td>
-<td class="description"><p class="name"><a href="#move()">move</a>(string srcAbsPath, string destAbsPath)</p><p class="description">Moves the node at srcAbsPath (and its entire subgraph) to the new location at destAbsPath.
+<td class="description"><p class="name"><a href="#move()">move</a>(string srcAbsPath, string destAbsPath)</p><p class="description">Moves the node at srcAbsPath (and its entire subgraph) to the new
+location at destAbsPath.
 </p></td>
 </tr>
 </table>
@@ -434,12 +440,13 @@ This is NAME_JCR_XMLTEXT . '/' . NAME_JCR_XMLCHARACTERS</p><dl>
 <hr>
 
 <h2 id="detail_method">Method Detail</h2>
-<a href="../source/phpcr/workspaceinterface.php.html#line318" class="location">PHPCR/WorkspaceInterface.php at line 318</a>
+<a href="../source/phpcr/workspaceinterface.php.html#line346" class="location">PHPCR/WorkspaceInterface.php at line 346</a>
 
 <h3 id="cloneFrom()">cloneFrom</h3>
 <code class="signature">public  void <strong>cloneFrom</strong>(string srcWorkspace, string srcAbsPath, string destAbsPath, boolean removeExisting)</code>
 <div class="details">
-<p>Clones the subgraph at the node srcAbsPath in srcWorkspace to the new location at destAbsPath in the current workspace.</p><p>Unlike the signature of copy that copies between workspaces, this method
+<p>Clones the subgraph at the node srcAbsPath in srcWorkspace to the new
+location at destAbsPath in the current workspace.</p><p>Unlike the signature of copy that copies between workspaces, this method
 does not assign new identifiers to the newly cloned nodes but preserves
 the identifiers of their respective source nodes. This applies to both
 referenceable and non-referenceable nodes.</p><p>In some implementations there may be cases where preservation of a
@@ -449,7 +456,7 @@ method will throw a RepositoryException.</p><p>If removeExisting is true and an 
 destination workspace) has the same identifier as a node being cloned
 from srcWorkspace, then the incoming node takes precedence, and the
 existing node (and its subgraph) is removed. If removeExisting is false
-then an identifier collision causes this method to throw a
+then an identifier collision causes this method to throw an
 ItemExistsException and no changes are made.</p><p>If successful, the change is persisted immediately, there is no need
 to call save.</p><p>The destAbsPath provided must not have an index on its final element.
 If it does then a RepositoryException is thrown.
@@ -465,7 +472,7 @@ keyword in PHP, thus we named the method cloneFrom.</p><dl>
 <dd>removeExisting - if false then this method throws an ItemExistsException on identifier conflict with an incoming node. If true then a identifier conflict is resolved by removing the existing node from its location in this workspace and cloning (copying in) the one from srcWorkspace.</dd>
 <dt>Throws:</dt>
 <dd><a href="../phpcr/nosuchworkspaceexception.html">\PHPCR\NoSuchWorkspaceException</a> - if destWorkspace does not exist.</dd>
-<dd>\PHPCR\ConstraintViolationException - if the operation would violate a node-type or other implementation-specific constraint.</dd>
+<dd><a href="../phpcr/nodetype/constraintviolationexception.html">\PHPCR\NodeType\ConstraintViolationException</a> - if the operation would violate a node-type or other implementation-specific constraint.</dd>
 <dd><a href="../phpcr/version/versionexception.html">\PHPCR\Version\VersionException</a> - if the parent node of destAbsPath is read-only due to a checked-in node. This exception will also be thrown if removeExisting is true, and an identifier conflict occurs that would require the moving and/or altering of a node that is checked-in.</dd>
 <dd><a href="../phpcr/accessdeniedexception.html">\PHPCR\AccessDeniedException</a> - if the current session does not have sufficient access to complete the operation.</dd>
 <dd><a href="../phpcr/pathnotfoundexception.html">\PHPCR\PathNotFoundException</a> - if the node at srcAbsPath in srcWorkspace or the parent of destAbsPath in this workspace does not exist.</dd>
@@ -478,7 +485,7 @@ keyword in PHP, thus we named the method cloneFrom.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/workspaceinterface.php.html#line256" class="location">PHPCR/WorkspaceInterface.php at line 256</a>
+<a href="../source/phpcr/workspaceinterface.php.html#line271" class="location">PHPCR/WorkspaceInterface.php at line 271</a>
 
 <h3 id="copy()">copy</h3>
 <code class="signature">public  void <strong>copy</strong>(string srcAbsPath, string destAbsPath, string srcWorkspace)</code>
@@ -541,7 +548,7 @@ properties contained therein).</p><dl>
 <dd>srcWorkspace - the name of the workspace from which the copy is to be made.</dd>
 <dt>Throws:</dt>
 <dd><a href="../phpcr/nosuchworkspaceexception.html">\PHPCR\NoSuchWorkspaceException</a> - if srcWorkspace does not exist or if the current Session does not have permission to access it.</dd>
-<dd>\PHPCR\ConstraintViolationException - if the operation would violate a node-type or other implementation-specific constraint</dd>
+<dd><a href="../phpcr/nodetype/constraintviolationexception.html">\PHPCR\NodeType\ConstraintViolationException</a> - if the operation would violate a node-type or other implementation-specific constraint.</dd>
 <dd><a href="../phpcr/version/versionexception.html">\PHPCR\Version\VersionException</a> - if the parent node of destAbsPath is read-only due to a checked-in node.</dd>
 <dd><a href="../phpcr/accessdeniedexception.html">\PHPCR\AccessDeniedException</a> - if the current session does have access srcWorkspace but otherwise does not have sufficient access to complete the operation.</dd>
 <dd><a href="../phpcr/pathnotfoundexception.html">\PHPCR\PathNotFoundException</a> - if the node at srcAbsPath in srcWorkspace or the parent of destAbsPath in this workspace does not exist.</dd>
@@ -554,12 +561,13 @@ properties contained therein).</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/workspaceinterface.php.html#line615" class="location">PHPCR/WorkspaceInterface.php at line 615</a>
+<a href="../source/phpcr/workspaceinterface.php.html#line706" class="location">PHPCR/WorkspaceInterface.php at line 706</a>
 
 <h3 id="createWorkspace()">createWorkspace</h3>
 <code class="signature">public  void <strong>createWorkspace</strong>(string name, string srcWorkspace)</code>
 <div class="details">
-<p>Creates a new Workspace with the specified name. The new workspace is empty, meaning it contains only root node.</p><p>If srcWorkspace is given:
+<p>Creates a new Workspace with the specified name. The new workspace is
+empty, meaning it contains only root node.</p><p>If srcWorkspace is given:<br/>
 Creates a new Workspace with the specified name initialized with a
 clone of the content of the workspace srcWorkspace. Semantically,
 this method is equivalent to creating a new workspace and manually
@@ -580,12 +588,13 @@ NodeInterface::merge() calls between the new workspace and its source.</p><p>The
 
 <hr>
 
-<a href="../source/phpcr/workspaceinterface.php.html#line629" class="location">PHPCR/WorkspaceInterface.php at line 629</a>
+<a href="../source/phpcr/workspaceinterface.php.html#line726" class="location">PHPCR/WorkspaceInterface.php at line 726</a>
 
 <h3 id="deleteWorkspace()">deleteWorkspace</h3>
 <code class="signature">public  void <strong>deleteWorkspace</strong>(string name)</code>
 <div class="details">
-<p>Deletes the workspace with the specified name from the repository, deleting all content within it.</p><dl>
+<p>Deletes the workspace with the specified name from the repository,
+deleting all content within it.</p><dl>
 <dt>Parameters:</dt>
 <dd>name - A String, the name of the workspace to be deleted.</dd>
 <dt>Throws:</dt>
@@ -599,7 +608,7 @@ NodeInterface::merge() calls between the new workspace and its source.</p><p>The
 
 <hr>
 
-<a href="../source/phpcr/workspaceinterface.php.html#line450" class="location">PHPCR/WorkspaceInterface.php at line 450</a>
+<a href="../source/phpcr/workspaceinterface.php.html#line513" class="location">PHPCR/WorkspaceInterface.php at line 513</a>
 
 <h3 id="getAccessibleWorkspaceNames()">getAccessibleWorkspaceNames</h3>
 <code class="signature">public  array <strong>getAccessibleWorkspaceNames</strong>()</code>
@@ -608,8 +617,8 @@ NodeInterface::merge() calls between the new workspace and its source.</p><p>The
 repository that are accessible to this user, given the Credentials that
 were used to get the Session to which this Workspace is tied.
 In order to access one of the listed workspaces, the user performs
-another RepositoryInterface::login(), specifying the name of the desired workspace,
-and receives a new Session object.</p><dl>
+another RepositoryInterface::login(), specifying the name of the desired
+workspace, and receives a new Session object.</p><dl>
 <dt>Returns:</dt>
 <dd>string array of names of accessible workspaces.</dd>
 <dt>Throws:</dt>
@@ -620,7 +629,7 @@ and receives a new Session object.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/workspaceinterface.php.html#line372" class="location">PHPCR/WorkspaceInterface.php at line 372</a>
+<a href="../source/phpcr/workspaceinterface.php.html#line412" class="location">PHPCR/WorkspaceInterface.php at line 412</a>
 
 <h3 id="getLockManager()">getLockManager</h3>
 <code class="signature">public  <a href="../phpcr/lock/lockmanagerinterface.html">LockManagerInterface</a> <strong>getLockManager</strong>()</code>
@@ -649,12 +658,14 @@ and receives a new Session object.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/workspaceinterface.php.html#line400" class="location">PHPCR/WorkspaceInterface.php at line 400</a>
+<a href="../source/phpcr/workspaceinterface.php.html#line451" class="location">PHPCR/WorkspaceInterface.php at line 451</a>
 
 <h3 id="getNamespaceRegistry()">getNamespaceRegistry</h3>
 <code class="signature">public  <a href="../phpcr/namespaceregistryinterface.html">NamespaceRegistryInterface</a> <strong>getNamespaceRegistry</strong>()</code>
 <div class="details">
-<p>Returns the NamespaceRegistry object, which is used to access the mapping between prefixes and namespaces.</p><p>In level 2 repositories the NamespaceRegistry can also be used to change the namespace mappings.</p><dl>
+<p>Returns the NamespaceRegistry object, which is used to access the
+mapping between prefixes and namespaces.</p><p>In level 2 repositories the NamespaceRegistry can also be used to change
+the namespace mappings.</p><dl>
 <dt>Returns:</dt>
 <dd>the NamespaceRegistry.</dd>
 <dt>Throws:</dt>
@@ -665,12 +676,13 @@ and receives a new Session object.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/workspaceinterface.php.html#line414" class="location">PHPCR/WorkspaceInterface.php at line 414</a>
+<a href="../source/phpcr/workspaceinterface.php.html#line468" class="location">PHPCR/WorkspaceInterface.php at line 468</a>
 
 <h3 id="getNodeTypeManager()">getNodeTypeManager</h3>
 <code class="signature">public  <a href="../phpcr/nodetype/nodetypemanagerinterface.html">NodeTypeManagerInterface</a> <strong>getNodeTypeManager</strong>()</code>
 <div class="details">
-<p>Returns the NodeTypeManager through which node type information can be queried.</p><p>There is one node type registry per repository, therefore the NodeTypeManager
+<p>Returns the NodeTypeManager through which node type information can be
+queried.</p><p>There is one node type registry per repository, therefore the NodeTypeManager
 is not workspace-specific; it provides introspection methods for the global,
 repository-wide set of available node types. In repositories that support it,
 the NodeTypeManager can also be used to register new node types.</p><dl>
@@ -684,7 +696,7 @@ the NodeTypeManager can also be used to register new node types.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/workspaceinterface.php.html#line424" class="location">PHPCR/WorkspaceInterface.php at line 424</a>
+<a href="../source/phpcr/workspaceinterface.php.html#line482" class="location">PHPCR/WorkspaceInterface.php at line 482</a>
 
 <h3 id="getObservationManager()">getObservationManager</h3>
 <code class="signature">public  <a href="../phpcr/observation/observationmanagerinterface.html">ObservationManagerInterface</a> <strong>getObservationManager</strong>()</code>
@@ -701,7 +713,7 @@ the NodeTypeManager can also be used to register new node types.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/workspaceinterface.php.html#line381" class="location">PHPCR/WorkspaceInterface.php at line 381</a>
+<a href="../source/phpcr/workspaceinterface.php.html#line423" class="location">PHPCR/WorkspaceInterface.php at line 423</a>
 
 <h3 id="getQueryManager()">getQueryManager</h3>
 <code class="signature">public  <a href="../phpcr/query/querymanagerinterface.html">QueryManagerInterface</a> <strong>getQueryManager</strong>()</code>
@@ -731,7 +743,7 @@ the NodeTypeManager can also be used to register new node types.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/workspaceinterface.php.html#line389" class="location">PHPCR/WorkspaceInterface.php at line 389</a>
+<a href="../source/phpcr/workspaceinterface.php.html#line436" class="location">PHPCR/WorkspaceInterface.php at line 436</a>
 
 <h3 id="getTransactionManager()">getTransactionManager</h3>
 <code class="signature">public  <a href="../phpcr/transaction/usertransactioninterface.html">UserTransactionInterface</a> <strong>getTransactionManager</strong>()</code>
@@ -739,13 +751,15 @@ the NodeTypeManager can also be used to register new node types.</p><dl>
 <p>Returns the UserTransaction object associated with this session</p><dl>
 <dt>Returns:</dt>
 <dd>a UserTransaction object.</dd>
+<dt>Throws:</dt>
+<dd><a href="../phpcr/unsupportedrepositoryoperationexception.html">\PHPCR\UnsupportedRepositoryOperationException</a> - if the implementation does not support observation.</dd>
 <dt>Api.</dt>
 </dl>
 </div>
 
 <hr>
 
-<a href="../source/phpcr/workspaceinterface.php.html#line434" class="location">PHPCR/WorkspaceInterface.php at line 434</a>
+<a href="../source/phpcr/workspaceinterface.php.html#line495" class="location">PHPCR/WorkspaceInterface.php at line 495</a>
 
 <h3 id="getVersionManager()">getVersionManager</h3>
 <code class="signature">public  <a href="../phpcr/version/versionmanagerinterface.html">VersionManagerInterface</a> <strong>getVersionManager</strong>()</code>
@@ -762,20 +776,22 @@ the NodeTypeManager can also be used to register new node types.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/workspaceinterface.php.html#line590" class="location">PHPCR/WorkspaceInterface.php at line 590</a>
+<a href="../source/phpcr/workspaceinterface.php.html#line674" class="location">PHPCR/WorkspaceInterface.php at line 674</a>
 
 <h3 id="importXML()">importXML</h3>
-<code class="signature">public  void <strong>importXML</strong>(string parentAbsPath, string in, integer uuidBehavior)</code>
+<code class="signature">public  void <strong>importXML</strong>(string parentAbsPath, string uri, integer uuidBehavior)</code>
 <div class="details">
-<p>Deserializes an XML document and adds the resulting item subgraph as a child of the node at $parentAbsPath.</p><p>If the incoming XML does not appear to be a JCR system view XML document
+<p>Deserializes an XML document and adds the resulting item subgraph as a
+child of the node at $parentAbsPath.</p><p>If the incoming XML does not appear to be a JCR system view XML document
 then it is interpreted as a document view XML document.</p><p>Changes are made directly at the workspace level, without going through
 the Session. As a result, there is not need to call save. The advantage
 of this direct-to-workspace method is that a large import will not result
 in a large cache of pending nodes in the Session. The disadvantage is
 that invalid data cannot be imported, fixed and then saved. Instead,
-invalid data will cause this method to throw an InvalidSerializedDataException.
-See SessionInterface::importXML() for a version of this method that does go through
-the Session.</p><p>The flag $uuidBehavior governs how the identifiers of incoming (deserialized)
+invalid data will cause this method to throw an
+InvalidSerializedDataException.
+See SessionInterface::importXML() for a version of this method that does
+go through the Session.</p><p>The flag $uuidBehavior governs how the identifiers of incoming (deserialized)
 nodes are handled. There are four options:</p>
 <ul>
 <li>ImportUUIDBehavior::IMPORT_UUID_CREATE_NEW: Incoming nodes are assigned newly
@@ -803,12 +819,12 @@ same identifier as a node already existing in the workspace then an</li>
 <p>ItemExistsException is thrown.</p><dl>
 <dt>Parameters:</dt>
 <dd>parentAbsPath - the absolute path of the node below which the deserialized subgraph is added.</dd>
-<dd>in - An URI from which the XML to be deserialized is read.</dd>
+<dd>uri - Source location for the XML to be read, Can be anything that works with fopen.</dd>
 <dd>uuidBehavior - a four-value flag that governs how incoming identifiers are handled.</dd>
 <dt>Throws:</dt>
 <dd>\RuntimeException - if an error during an I/O operation occurs.</dd>
 <dd><a href="../phpcr/pathnotfoundexception.html">\PHPCR\PathNotFoundException</a> - if no node exists at parentAbsPath.</dd>
-<dd>\PHPCR\ConstraintViolationException - if node-type or other implementation-specific constraints prevent the addition of the subgraph or if uuidBehavior is set to IMPORT_UUID_COLLISION_REMOVE_EXISTING and an incoming node has the same identifier as the node at parentAbsPath or one of its ancestors.</dd>
+<dd><a href="../phpcr/nodetype/constraintviolationexception.html">\PHPCR\NodeType\ConstraintViolationException</a> - if node-type or other implementation-specific constraints prevent the addition of the subgraph or if uuidBehavior is set to IMPORT_UUID_COLLISION_REMOVE_EXISTING and an incoming node has the same identifier as the node at parentAbsPath or one of its ancestors.</dd>
 <dd><a href="../phpcr/version/versionexception.html">\PHPCR\Version\VersionException</a> - if the node at parentAbsPath is read-only due to a checked-in node.</dd>
 <dd><a href="../phpcr/invalidserializeddataexception.html">\PHPCR\InvalidSerializedDataException</a> - if incoming stream is not a valid XML document.</dd>
 <dd><a href="../phpcr/itemexistsexception.html">\PHPCR\ItemExistsException</a> - if the top-most element of the incoming XML would deserialize to a node with the same name as an existing child of parentAbsPath and that child does not allow same-name siblings, or if a uuidBehavior is set to IMPORT_UUID_COLLISION_THROW and an identifier collision occurs.</dd>
@@ -821,15 +837,16 @@ same identifier as a node already existing in the workspace then an</li>
 
 <hr>
 
-<a href="../source/phpcr/workspaceinterface.php.html#line362" class="location">PHPCR/WorkspaceInterface.php at line 362</a>
+<a href="../source/phpcr/workspaceinterface.php.html#line399" class="location">PHPCR/WorkspaceInterface.php at line 399</a>
 
 <h3 id="move()">move</h3>
 <code class="signature">public  void <strong>move</strong>(string srcAbsPath, string destAbsPath)</code>
 <div class="details">
-<p>Moves the node at srcAbsPath (and its entire subgraph) to the new location at destAbsPath.</p><p>If successful, the change is persisted immediately, there is no need to
+<p>Moves the node at srcAbsPath (and its entire subgraph) to the new
+location at destAbsPath.</p><p>If successful, the change is persisted immediately, there is no need to
 call save. Note that this is in contrast to
-Session->move($srcAbsPath, $destAbsPath) which operates within the transient
-space and hence requires a save.</p><p>The identifiers of referenceable nodes must not be changed by a move. The
+Session->move($srcAbsPath, $destAbsPath) which operates within the
+transient space and hence requires a save.</p><p>The identifiers of referenceable nodes must not be changed by a move. The
 identifiers of non-referenceable nodes may change.</p><p>The destAbsPath provided must not have an index on its final element. If
 it does then a RepositoryException is thrown. Strictly speaking, the
 destAbsPath parameter is actually an absolute path to the parent node of
@@ -844,7 +861,7 @@ identifiers of non-referenceable nodes may change.</p><dl>
 <dd>srcAbsPath - the path of the node to be moved.</dd>
 <dd>destAbsPath - the location to which the node at srcAbsPath is to be moved.</dd>
 <dt>Throws:</dt>
-<dd>\PHPCR\ConstraintViolationException - if the operation would violate a node-type or other implementation-specific constraint</dd>
+<dd><a href="../phpcr/nodetype/constraintviolationexception.html">\PHPCR\NodeType\ConstraintViolationException</a> - if the operation would violate a node-type or other implementation-specific constraint.</dd>
 <dd><a href="../phpcr/version/versionexception.html">\PHPCR\Version\VersionException</a> - if the parent node of destAbsPath is read-only due to a checked-in node.</dd>
 <dd><a href="../phpcr/accessdeniedexception.html">\PHPCR\AccessDeniedException</a> - if the current session (i.e. the session that was used to acquire this Workspace object) does not have sufficient access rights to complete the operation.</dd>
 <dd><a href="../phpcr/pathnotfoundexception.html">\PHPCR\PathNotFoundException</a> - if the node at srcAbsPath or the parent of destAbsPath does not exist.</dd>

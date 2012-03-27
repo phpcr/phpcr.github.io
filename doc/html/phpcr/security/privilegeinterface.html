@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="generator" content="PHPDoctor 2RC4 (http://peej.github.com/phpdoctor/)">
-<meta name="when" content="Tue, 26 Jul 2011 15:56:35 +0000">
+<meta name="when" content="Tue, 27 Mar 2012 06:17:41 +0000">
 
 <link rel="stylesheet" type="text/css" href="../../stylesheet.css">
 <link rel="start" href="../../overview-summary.html">
@@ -41,7 +41,7 @@ Detail: <a href="#detail_field">Field</a> | <a href="#detail_method">Method</a> 
 <hr>
 
 <div class="qualifiedName">PHPCR\Security\PrivilegeInterface</div>
-<a href="../../source/phpcr/security/privilegeinterface.php.html#line49" class="location">PHPCR/Security/PrivilegeInterface.php at line 49</a>
+<a href="../../source/phpcr/security/privilegeinterface.php.html#line51" class="location">PHPCR/Security/PrivilegeInterface.php at line 51</a>
 
 <h1>Interface PrivilegeInterface</h1>
 
@@ -52,15 +52,15 @@ Detail: <a href="#detail_field">Field</a> | <a href="#detail_method">Method</a> 
 <p class="signature">public  interface <strong>PrivilegeInterface</strong></p>
 
 <div class="comment" id="overview_description"><p>A privilege represents the capability of performing a particular set of
-operations on items in the JCR repository. Each privilege is identified by a
-JCR name. JCR defines a set of standard privileges in the jcr namespace.
-Implementations may add additional privileges in namespaces other than jcr.</p><p>A privilege may be an aggregate privilege. Aggregate privileges are sets of
+operations on items in the JCR repository.</p><p>Each privilege is identified by a JCR name. JCR defines a set of standard
+privileges in the jcr namespace. Implementations may add additional
+privileges in namespaces other than jcr.</p><p>A privilege may be an aggregate privilege. Aggregate privileges are sets of
 other privileges. Granting, denying, or testing an aggregate privilege is
 equivalent to individually granting, denying, or testing each privilege it
 contains. The privileges contained by an aggregate privilege may themselves
-be aggregate privileges if the resulting privilege graph is acyclic.</p><p>A privilege may be an abstract privilege. Abstract privileges cannot themselves
-be granted or denied, but can be composed into aggregate privileges which are
-granted or denied.</p><p>A privilege can be both aggregate and abstract.</p></div>
+be aggregate privileges if the resulting privilege graph is acyclic.</p><p>A privilege may be an abstract privilege. Abstract privileges cannot
+themselves be granted or denied, but can be composed into aggregate
+privileges which are granted or denied.</p><p>A privilege can be both aggregate and abstract.</p></div>
 
 <dl>
 <dt>Subpackage:</dt>
@@ -73,13 +73,13 @@ granted or denied.</p><p>A privilege can be both aggregate and abstract.</p></di
 <tr><th colspan="2">Constant Summary</th></tr>
 <tr>
 <td class="type">final static  str</td>
-<td class="description"><p class="name"><a href="#JCR_ADD_CHILD_NODES">JCR_ADD_CHILD_NODES</a></p><p class="description">A constant representing jcr:addChildNodes (in extended form), the privilege
-to create child nodes of a node.</p></td>
+<td class="description"><p class="name"><a href="#JCR_ADD_CHILD_NODES">JCR_ADD_CHILD_NODES</a></p><p class="description">A constant representing jcr:addChildNodes (in extended form), the
+privilege to create child nodes of a node.</p></td>
 </tr>
 <tr>
 <td class="type">final static  str</td>
-<td class="description"><p class="name"><a href="#JCR_ALL">JCR_ALL</a></p><p class="description">A constant representing jcr:all (in extended form), an aggregate privilege that contains
-all predefined privileges.
+<td class="description"><p class="name"><a href="#JCR_ALL">JCR_ALL</a></p><p class="description">A constant representing jcr:all (in extended form), an aggregate
+privilege that contains all predefined privileges.
 </p></td>
 </tr>
 <tr>
@@ -94,13 +94,13 @@ privilege to lock and unlock a node.</p></td>
 </tr>
 <tr>
 <td class="type">final static  str</td>
-<td class="description"><p class="name"><a href="#JCR_MODIFY_ACCESS_CONTROL">JCR_MODIFY_ACCESS_CONTROL</a></p><p class="description">A constant representing jcr:modifyAccessControl (in extended form), the privilege
-to modify the access control policies of a node.</p></td>
+<td class="description"><p class="name"><a href="#JCR_MODIFY_ACCESS_CONTROL">JCR_MODIFY_ACCESS_CONTROL</a></p><p class="description">A constant representing jcr:modifyAccessControl (in extended form), the
+privilege to modify the access control policies of a node.</p></td>
 </tr>
 <tr>
 <td class="type">final static  str</td>
-<td class="description"><p class="name"><a href="#JCR_MODIFY_PROPERTIES">JCR_MODIFY_PROPERTIES</a></p><p class="description">A constant representing jcr:modifyProperties (in extended form), the privilege
-to create, modify and remove the properties of a node.</p></td>
+<td class="description"><p class="name"><a href="#JCR_MODIFY_PROPERTIES">JCR_MODIFY_PROPERTIES</a></p><p class="description">A constant representing jcr:modifyProperties (in extended form), the
+privilege to create, modify and remove the properties of a node.</p></td>
 </tr>
 <tr>
 <td class="type">final static  str</td>
@@ -110,18 +110,19 @@ type of a node.</p></td>
 </tr>
 <tr>
 <td class="type">final static  string</td>
-<td class="description"><p class="name"><a href="#JCR_READ">JCR_READ</a></p><p class="description">A constant representing jcr:read (in extended form), the privilege to retrieve
-a node and get its properties and their values.</p></td>
+<td class="description"><p class="name"><a href="#JCR_READ">JCR_READ</a></p><p class="description">A constant representing jcr:read (in extended form), the privilege to
+retrieve a node and get its properties and their values.</p></td>
 </tr>
 <tr>
 <td class="type">final static  str</td>
-<td class="description"><p class="name"><a href="#JCR_READ_ACCESS_CONTROL">JCR_READ_ACCESS_CONTROL</a></p><p class="description">A constant representing jcr:readAccessControl (in extended form), the privilege
-to get the access control policy of a node.</p></td>
+<td class="description"><p class="name"><a href="#JCR_READ_ACCESS_CONTROL">JCR_READ_ACCESS_CONTROL</a></p><p class="description">A constant representing jcr:readAccessControl (in extended form), the
+privilege to get the access control policy of a node.</p></td>
 </tr>
 <tr>
 <td class="type">final static  str</td>
-<td class="description"><p class="name"><a href="#JCR_REMOVE_CHILD_NODES">JCR_REMOVE_CHILD_NODES</a></p><p class="description">A constant representing jcr:removeChildNodes (in extended form), the privilege
-to remove child nodes of a node. </p></td>
+<td class="description"><p class="name"><a href="#JCR_REMOVE_CHILD_NODES">JCR_REMOVE_CHILD_NODES</a></p><p class="description">A constant representing jcr:removeChildNodes (in extended form), the
+privilege to remove child nodes of a node.
+</p></td>
 </tr>
 <tr>
 <td class="type">final static  str</td>
@@ -141,14 +142,14 @@ privilege to perform versioning operations on a node.</p></td>
 </tr>
 <tr>
 <td class="type">final static  str</td>
-<td class="description"><p class="name"><a href="#JCR_WRITE">JCR_WRITE</a></p><p class="description">A constant representing jcr:write (in extended form), an aggregate privilege that contains:
+<td class="description"><p class="name"><a href="#JCR_WRITE">JCR_WRITE</a></p><p class="description">A constant representing jcr:write (in extended form), an aggregate
+privilege that contains:
 
 jcr:modifyProperties
 jcr:addChildNodes
 jcr:removeNode
-jcr:removeChildNodes
 
-&nbsp;</p></td>
+- jcr:removeChildNodes</p></td>
 </tr>
 </table>
 
@@ -157,8 +158,8 @@ jcr:removeChildNodes
 <tr>
 <td class="type"> array</td>
 <td class="description"><p class="name"><a href="#getAggregatePrivileges()">getAggregatePrivileges</a>()</p><p class="description">If this privilege is an aggregate privilege, returns the privileges it
-contains, the privileges contained by any aggregate privileges among those,
-and so on (the transitive closure of privileges contained by this
+contains, the privileges contained by any aggregate privileges among
+those, and so on (the transitive closure of privileges contained by this
 privilege). </p></td>
 </tr>
 <tr>
@@ -181,26 +182,26 @@ directly contained by the aggregate privilege. </p></td>
 </table>
 
 <h2 id="detail_field">Constant Detail</h2>
-<a href="../../source/phpcr/security/privilegeinterface.php.html#line74" class="location">PHPCR/Security/PrivilegeInterface.php at line 74</a>
+<a href="../../source/phpcr/security/privilegeinterface.php.html#line79" class="location">PHPCR/Security/PrivilegeInterface.php at line 79</a>
 
 <h3 id="JCR_ADD_CHILD_NODES">JCR_ADD_CHILD_NODES</h3>
 <code class="signature">public final static  str <strong>JCR_ADD_CHILD_NODES</strong> = &quot;{http://www.jcp.org/jcr/1.0}addChildNodes&quot;</code>
 <div class="details">
-<p>A constant representing jcr:addChildNodes (in extended form), the privilege
-to create child nodes of a node.</p><dl>
+<p>A constant representing jcr:addChildNodes (in extended form), the
+privilege to create child nodes of a node.</p><dl>
 <dt>Api.</dt>
 </dl>
 </div>
 
 <hr>
 
-<a href="../../source/phpcr/security/privilegeinterface.php.html#line183" class="location">PHPCR/Security/PrivilegeInterface.php at line 183</a>
+<a href="../../source/phpcr/security/privilegeinterface.php.html#line203" class="location">PHPCR/Security/PrivilegeInterface.php at line 203</a>
 
 <h3 id="JCR_ALL">JCR_ALL</h3>
 <code class="signature">public final static  str <strong>JCR_ALL</strong> = &quot;{http://www.jcp.org/jcr/1.0}all&quot;</code>
 <div class="details">
-<p>A constant representing jcr:all (in extended form), an aggregate privilege that contains
-all predefined privileges.</p>
+<p>A constant representing jcr:all (in extended form), an aggregate
+privilege that contains all predefined privileges.</p>
 <ul>
 <li>jcr:read</li>
 <li>jcr:write</li>
@@ -219,7 +220,7 @@ all predefined privileges.</p>
 
 <hr>
 
-<a href="../../source/phpcr/security/privilegeinterface.php.html#line165" class="location">PHPCR/Security/PrivilegeInterface.php at line 165</a>
+<a href="../../source/phpcr/security/privilegeinterface.php.html#line183" class="location">PHPCR/Security/PrivilegeInterface.php at line 183</a>
 
 <h3 id="JCR_LIFECYCLE_MANAGEMENT">JCR_LIFECYCLE_MANAGEMENT</h3>
 <code class="signature">public final static  str <strong>JCR_LIFECYCLE_MANAGEMENT</strong> = &quot;{http://www.jcp.org/jcr/1.0}lifecycleManagement&quot;</code>
@@ -232,7 +233,7 @@ privilege to perform lifecycle operations on a node.</p><dl>
 
 <hr>
 
-<a href="../../source/phpcr/security/privilegeinterface.php.html#line136" class="location">PHPCR/Security/PrivilegeInterface.php at line 136</a>
+<a href="../../source/phpcr/security/privilegeinterface.php.html#line150" class="location">PHPCR/Security/PrivilegeInterface.php at line 150</a>
 
 <h3 id="JCR_LOCK_MANAGEMENT">JCR_LOCK_MANAGEMENT</h3>
 <code class="signature">public final static  str <strong>JCR_LOCK_MANAGEMENT</strong> = &quot;{http://www.jcp.org/jcr/1.0}lockManagement&quot;</code>
@@ -245,33 +246,33 @@ privilege to lock and unlock a node.</p><dl>
 
 <hr>
 
-<a href="../../source/phpcr/security/privilegeinterface.php.html#line129" class="location">PHPCR/Security/PrivilegeInterface.php at line 129</a>
+<a href="../../source/phpcr/security/privilegeinterface.php.html#line142" class="location">PHPCR/Security/PrivilegeInterface.php at line 142</a>
 
 <h3 id="JCR_MODIFY_ACCESS_CONTROL">JCR_MODIFY_ACCESS_CONTROL</h3>
 <code class="signature">public final static  str <strong>JCR_MODIFY_ACCESS_CONTROL</strong> = &quot;{http://www.jcp.org/jcr/1.0}modifyAccessControl&quot;</code>
 <div class="details">
-<p>A constant representing jcr:modifyAccessControl (in extended form), the privilege
-to modify the access control policies of a node.</p><dl>
+<p>A constant representing jcr:modifyAccessControl (in extended form), the
+privilege to modify the access control policies of a node.</p><dl>
 <dt>Api.</dt>
 </dl>
 </div>
 
 <hr>
 
-<a href="../../source/phpcr/security/privilegeinterface.php.html#line67" class="location">PHPCR/Security/PrivilegeInterface.php at line 67</a>
+<a href="../../source/phpcr/security/privilegeinterface.php.html#line71" class="location">PHPCR/Security/PrivilegeInterface.php at line 71</a>
 
 <h3 id="JCR_MODIFY_PROPERTIES">JCR_MODIFY_PROPERTIES</h3>
 <code class="signature">public final static  str <strong>JCR_MODIFY_PROPERTIES</strong> = &quot;{http://www.jcp.org/jcr/1.0}modifyProperties&quot;</code>
 <div class="details">
-<p>A constant representing jcr:modifyProperties (in extended form), the privilege
-to create, modify and remove the properties of a node.</p><dl>
+<p>A constant representing jcr:modifyProperties (in extended form), the
+privilege to create, modify and remove the properties of a node.</p><dl>
 <dt>Api.</dt>
 </dl>
 </div>
 
 <hr>
 
-<a href="../../source/phpcr/security/privilegeinterface.php.html#line151" class="location">PHPCR/Security/PrivilegeInterface.php at line 151</a>
+<a href="../../source/phpcr/security/privilegeinterface.php.html#line167" class="location">PHPCR/Security/PrivilegeInterface.php at line 167</a>
 
 <h3 id="JCR_NODE_TYPE_MANAGEMENT">JCR_NODE_TYPE_MANAGEMENT</h3>
 <code class="signature">public final static  str <strong>JCR_NODE_TYPE_MANAGEMENT</strong> = &quot;{http://www.jcp.org/jcr/1.0}nodeTypeManagement&quot;</code>
@@ -285,67 +286,69 @@ type of a node.</p><dl>
 
 <hr>
 
-<a href="../../source/phpcr/security/privilegeinterface.php.html#line60" class="location">PHPCR/Security/PrivilegeInterface.php at line 60</a>
+<a href="../../source/phpcr/security/privilegeinterface.php.html#line63" class="location">PHPCR/Security/PrivilegeInterface.php at line 63</a>
 
 <h3 id="JCR_READ">JCR_READ</h3>
 <code class="signature">public final static  string <strong>JCR_READ</strong> = &quot;{http://www.jcp.org/jcr/1.0}read&quot;</code>
 <div class="details">
-<p>A constant representing jcr:read (in extended form), the privilege to retrieve
-a node and get its properties and their values.</p><dl>
+<p>A constant representing jcr:read (in extended form), the privilege to
+retrieve a node and get its properties and their values.</p><dl>
 <dt>Api.</dt>
 </dl>
 </div>
 
 <hr>
 
-<a href="../../source/phpcr/security/privilegeinterface.php.html#line122" class="location">PHPCR/Security/PrivilegeInterface.php at line 122</a>
+<a href="../../source/phpcr/security/privilegeinterface.php.html#line134" class="location">PHPCR/Security/PrivilegeInterface.php at line 134</a>
 
 <h3 id="JCR_READ_ACCESS_CONTROL">JCR_READ_ACCESS_CONTROL</h3>
 <code class="signature">public final static  str <strong>JCR_READ_ACCESS_CONTROL</strong> = &quot;{http://www.jcp.org/jcr/1.0}readAccessControl&quot;</code>
 <div class="details">
-<p>A constant representing jcr:readAccessControl (in extended form), the privilege
-to get the access control policy of a node.</p><dl>
+<p>A constant representing jcr:readAccessControl (in extended form), the
+privilege to get the access control policy of a node.</p><dl>
 <dt>Api.</dt>
 </dl>
 </div>
 
 <hr>
 
-<a href="../../source/phpcr/security/privilegeinterface.php.html#line102" class="location">PHPCR/Security/PrivilegeInterface.php at line 102</a>
+<a href="../../source/phpcr/security/privilegeinterface.php.html#line113" class="location">PHPCR/Security/PrivilegeInterface.php at line 113</a>
 
 <h3 id="JCR_REMOVE_CHILD_NODES">JCR_REMOVE_CHILD_NODES</h3>
 <code class="signature">public final static  str <strong>JCR_REMOVE_CHILD_NODES</strong> = &quot;{http://www.jcp.org/jcr/1.0}removeChildNodes&quot;</code>
 <div class="details">
-<p>A constant representing jcr:removeChildNodes (in extended form), the privilege
-to remove child nodes of a node. In order to actually remove a node requires jcr:removeNode on that node
-and jcr:removeChildNodes on the parent node.</p><p>The distinction is provided in order to reflect implementations that internally model "remove"
-as a "unlink" instead of a "delete". A repository that uses the "unlink" model
-can have jcr:removeNode in every access control policy, so that removal
-is effectively controlled by jcr:removeChildNodes.</p><dl>
+<p>A constant representing jcr:removeChildNodes (in extended form), the
+privilege to remove child nodes of a node.</p><p>In order to actually remove a node requires jcr:removeNode on that node
+and jcr:removeChildNodes on the parent node.</p><p>The distinction is provided in order to reflect implementations that
+internally model "remove" as a "unlink" instead of a "delete". A
+repository that uses the "unlink" model can have jcr:removeNode in every
+access control policy, so that removal is effectively controlled by
+jcr:removeChildNodes.</p><dl>
 <dt>Api.</dt>
 </dl>
 </div>
 
 <hr>
 
-<a href="../../source/phpcr/security/privilegeinterface.php.html#line89" class="location">PHPCR/Security/PrivilegeInterface.php at line 89</a>
+<a href="../../source/phpcr/security/privilegeinterface.php.html#line96" class="location">PHPCR/Security/PrivilegeInterface.php at line 96</a>
 
 <h3 id="JCR_REMOVE_NODE">JCR_REMOVE_NODE</h3>
 <code class="signature">public final static  str <strong>JCR_REMOVE_NODE</strong> = &quot;{http://www.jcp.org/jcr/1.0}removeNode&quot;</code>
 <div class="details">
 <p>A constant representing jcr:removeNode (in extended form), the privilege
 to remove a node.</p><p>In order to actually remove a node requires jcr:removeNode on that node
-and jcr:removeChildNodes on the parent node.</p><p>The distinction is provided in order to reflect implementations that internally model "remove"
-as a "delete" instead of a "unlink". A repository that uses the "delete" model
-can have jcr:removeChildNodes in every access control policy, so that removal
-is effectively controlled by jcr:removeNode.</p><dl>
+and jcr:removeChildNodes on the parent node.</p><p>The distinction is provided in order to reflect implementations that
+internally model "remove" as a "delete" instead of a "unlink". A
+repository that uses the "delete" model can have jcr:removeChildNodes in
+every access control policy, so that removal is effectively controlled
+by jcr:removeNode.</p><dl>
 <dt>Api.</dt>
 </dl>
 </div>
 
 <hr>
 
-<a href="../../source/phpcr/security/privilegeinterface.php.html#line158" class="location">PHPCR/Security/PrivilegeInterface.php at line 158</a>
+<a href="../../source/phpcr/security/privilegeinterface.php.html#line175" class="location">PHPCR/Security/PrivilegeInterface.php at line 175</a>
 
 <h3 id="JCR_RETENTION_MANAGEMENT">JCR_RETENTION_MANAGEMENT</h3>
 <code class="signature">public final static  str <strong>JCR_RETENTION_MANAGEMENT</strong> = &quot;{http://www.jcp.org/jcr/1.0}retentionManagement&quot;</code>
@@ -358,7 +361,7 @@ privilege to perform retention management operations on a node.</p><dl>
 
 <hr>
 
-<a href="../../source/phpcr/security/privilegeinterface.php.html#line143" class="location">PHPCR/Security/PrivilegeInterface.php at line 143</a>
+<a href="../../source/phpcr/security/privilegeinterface.php.html#line158" class="location">PHPCR/Security/PrivilegeInterface.php at line 158</a>
 
 <h3 id="JCR_VERSION_MANAGEMENT">JCR_VERSION_MANAGEMENT</h3>
 <code class="signature">public final static  str <strong>JCR_VERSION_MANAGEMENT</strong> = &quot;{http://www.jcp.org/jcr/1.0}versionManagement&quot;</code>
@@ -371,19 +374,19 @@ privilege to perform versioning operations on a node.</p><dl>
 
 <hr>
 
-<a href="../../source/phpcr/security/privilegeinterface.php.html#line115" class="location">PHPCR/Security/PrivilegeInterface.php at line 115</a>
+<a href="../../source/phpcr/security/privilegeinterface.php.html#line126" class="location">PHPCR/Security/PrivilegeInterface.php at line 126</a>
 
 <h3 id="JCR_WRITE">JCR_WRITE</h3>
 <code class="signature">public final static  str <strong>JCR_WRITE</strong> = &quot;{http://www.jcp.org/jcr/1.0}write&quot;</code>
 <div class="details">
-<p>A constant representing jcr:write (in extended form), an aggregate privilege that contains:</p>
+<p>A constant representing jcr:write (in extended form), an aggregate
+privilege that contains:</p>
 <ul>
 <li>jcr:modifyProperties</li>
 <li>jcr:addChildNodes</li>
 <li>jcr:removeNode</li>
-<li>jcr:removeChildNodes</li>
 </ul>
-<p>&nbsp;</p><dl>
+<p>- jcr:removeChildNodes</p><dl>
 <dt>Api.</dt>
 </dl>
 </div>
@@ -391,14 +394,14 @@ privilege to perform versioning operations on a node.</p><dl>
 <hr>
 
 <h2 id="detail_method">Method Detail</h2>
-<a href="../../source/phpcr/security/privilegeinterface.php.html#line230" class="location">PHPCR/Security/PrivilegeInterface.php at line 230</a>
+<a href="../../source/phpcr/security/privilegeinterface.php.html#line257" class="location">PHPCR/Security/PrivilegeInterface.php at line 257</a>
 
 <h3 id="getAggregatePrivileges()">getAggregatePrivileges</h3>
 <code class="signature">public  array <strong>getAggregatePrivileges</strong>()</code>
 <div class="details">
 <p>If this privilege is an aggregate privilege, returns the privileges it
-contains, the privileges contained by any aggregate privileges among those,
-and so on (the transitive closure of privileges contained by this
+contains, the privileges contained by any aggregate privileges among
+those, and so on (the transitive closure of privileges contained by this
 privilege). Otherwise returns an empty array.</p><dl>
 <dt>Returns:</dt>
 <dd>an array of Privileges</dd>
@@ -408,7 +411,7 @@ privilege). Otherwise returns an empty array.</p><dl>
 
 <hr>
 
-<a href="../../source/phpcr/security/privilegeinterface.php.html#line219" class="location">PHPCR/Security/PrivilegeInterface.php at line 219</a>
+<a href="../../source/phpcr/security/privilegeinterface.php.html#line245" class="location">PHPCR/Security/PrivilegeInterface.php at line 245</a>
 
 <h3 id="getDeclaredAggregatePrivileges()">getDeclaredAggregatePrivileges</h3>
 <code class="signature">public  array <strong>getDeclaredAggregatePrivileges</strong>()</code>
@@ -424,7 +427,7 @@ array.</p><dl>
 
 <hr>
 
-<a href="../../source/phpcr/security/privilegeinterface.php.html#line193" class="location">PHPCR/Security/PrivilegeInterface.php at line 193</a>
+<a href="../../source/phpcr/security/privilegeinterface.php.html#line214" class="location">PHPCR/Security/PrivilegeInterface.php at line 214</a>
 
 <h3 id="getName()">getName</h3>
 <code class="signature">public  string <strong>getName</strong>()</code>
@@ -438,7 +441,7 @@ array.</p><dl>
 
 <hr>
 
-<a href="../../source/phpcr/security/privilegeinterface.php.html#line201" class="location">PHPCR/Security/PrivilegeInterface.php at line 201</a>
+<a href="../../source/phpcr/security/privilegeinterface.php.html#line224" class="location">PHPCR/Security/PrivilegeInterface.php at line 224</a>
 
 <h3 id="isAbstract()">isAbstract</h3>
 <code class="signature">public  boolean <strong>isAbstract</strong>()</code>
@@ -452,7 +455,7 @@ array.</p><dl>
 
 <hr>
 
-<a href="../../source/phpcr/security/privilegeinterface.php.html#line209" class="location">PHPCR/Security/PrivilegeInterface.php at line 209</a>
+<a href="../../source/phpcr/security/privilegeinterface.php.html#line234" class="location">PHPCR/Security/PrivilegeInterface.php at line 234</a>
 
 <h3 id="isAggregate()">isAggregate</h3>
 <code class="signature">public  boolean <strong>isAggregate</strong>()</code>

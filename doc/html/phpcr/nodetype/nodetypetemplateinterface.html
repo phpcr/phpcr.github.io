@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="generator" content="PHPDoctor 2RC4 (http://peej.github.com/phpdoctor/)">
-<meta name="when" content="Tue, 26 Jul 2011 15:56:34 +0000">
+<meta name="when" content="Tue, 27 Mar 2012 06:17:41 +0000">
 
 <link rel="stylesheet" type="text/css" href="../../stylesheet.css">
 <link rel="start" href="../../overview-summary.html">
@@ -41,7 +41,7 @@ Detail: <a href="#detail_field">Field</a> | <a href="#detail_method">Method</a> 
 <hr>
 
 <div class="qualifiedName">PHPCR\NodeType\NodeTypeTemplateInterface</div>
-<a href="../../source/phpcr/nodetype/nodetypetemplateinterface.php.html#line47" class="location">PHPCR/NodeType/NodeTypeTemplateInterface.php at line 47</a>
+<a href="../../source/phpcr/nodetype/nodetypetemplateinterface.php.html#line48" class="location">PHPCR/NodeType/NodeTypeTemplateInterface.php at line 48</a>
 
 <h1>Interface NodeTypeTemplateInterface</h1>
 
@@ -60,9 +60,10 @@ NodeTypeDefinitionInterface so it shares with NodeTypeInterface those
 methods that are relevant to a static definition.
 In addition, NodeTypeTemplate provides methods for setting the attributes of
 the definition. Implementations of this interface need not contain any
-validation logic.</p><p>See the corresponding get methods for each attribute in NodeTypeDefinitionInterface
-for the default values assumed when a new empty NodeTypeTemplateInterface is created
-(as opposed to one extracted from an existing NodeTypeInterface).</p></div>
+validation logic.</p><p>See the corresponding get methods for each attribute in
+NodeTypeDefinitionInterface for the default values assumed when a new empty
+NodeTypeTemplateInterface is created (as opposed to one extracted from an
+existing NodeTypeInterface).</p></div>
 
 <dl>
 <dt>Subpackage:</dt>
@@ -118,13 +119,14 @@ for the default values assumed when a new empty NodeTypeTemplateInterface is cre
 <tr><td><a href="../../phpcr/nodetype/nodetypedefinitioninterface.html#getDeclaredChildNodeDefinitions()">getDeclaredChildNodeDefinitions</a>, <a href="../../phpcr/nodetype/nodetypedefinitioninterface.html#getDeclaredPropertyDefinitions()">getDeclaredPropertyDefinitions</a>, <a href="../../phpcr/nodetype/nodetypedefinitioninterface.html#getDeclaredSupertypeNames()">getDeclaredSupertypeNames</a>, <a href="../../phpcr/nodetype/nodetypedefinitioninterface.html#getName()">getName</a>, <a href="../../phpcr/nodetype/nodetypedefinitioninterface.html#getPrimaryItemName()">getPrimaryItemName</a>, <a href="../../phpcr/nodetype/nodetypedefinitioninterface.html#hasOrderableChildNodes()">hasOrderableChildNodes</a>, <a href="../../phpcr/nodetype/nodetypedefinitioninterface.html#isAbstract()">isAbstract</a>, <a href="../../phpcr/nodetype/nodetypedefinitioninterface.html#isMixin()">isMixin</a>, <a href="../../phpcr/nodetype/nodetypedefinitioninterface.html#isQueryable()">isQueryable</a></td></tr></table>
 
 <h2 id="detail_method">Method Detail</h2>
-<a href="../../source/phpcr/nodetype/nodetypetemplateinterface.php.html#line132" class="location">PHPCR/NodeType/NodeTypeTemplateInterface.php at line 132</a>
+<a href="../../source/phpcr/nodetype/nodetypetemplateinterface.php.html#line155" class="location">PHPCR/NodeType/NodeTypeTemplateInterface.php at line 155</a>
 
 <h3 id="getNodeDefinitionTemplates()">getNodeDefinitionTemplates</h3>
 <code class="signature">public  Object <strong>getNodeDefinitionTemplates</strong>()</code>
 <div class="details">
 <p>Returns a mutable List of NodeDefinitionTemplate objects.</p><p>To define a new NodeTypeTemplate or change an existing one,
-NodeDefinitionTemplate objects can be added to or removed from this List.</p><dl>
+NodeDefinitionTemplate objects can be added to or removed from this
+list.</p><dl>
 <dt>Returns:</dt>
 <dd>A mutable List (implementing \Traversable, \ArrayAccess, and \Countable) of NodeDefinitionTemplate objects</dd>
 <dt>Api.</dt>
@@ -133,13 +135,14 @@ NodeDefinitionTemplate objects can be added to or removed from this List.</p><dl
 
 <hr>
 
-<a href="../../source/phpcr/nodetype/nodetypetemplateinterface.php.html#line121" class="location">PHPCR/NodeType/NodeTypeTemplateInterface.php at line 121</a>
+<a href="../../source/phpcr/nodetype/nodetypetemplateinterface.php.html#line141" class="location">PHPCR/NodeType/NodeTypeTemplateInterface.php at line 141</a>
 
 <h3 id="getPropertyDefinitionTemplates()">getPropertyDefinitionTemplates</h3>
 <code class="signature">public  Object <strong>getPropertyDefinitionTemplates</strong>()</code>
 <div class="details">
 <p>Returns a mutable List of PropertyDefinitionTemplate objects.</p><p>To define a new NodeTypeTemplate or change an existing one,
-PropertyDefinitionTemplate objects can be added to or removed from this List.</p><dl>
+PropertyDefinitionTemplate objects can be added to or removed from this
+list.</p><dl>
 <dt>Returns:</dt>
 <dd>A mutable List (implementing \Traversable, \ArrayAccess, and \Countable) of PropertyDefinitionTemplate objects</dd>
 <dt>Api.</dt>
@@ -148,21 +151,21 @@ PropertyDefinitionTemplate objects can be added to or removed from this List.</p
 
 <hr>
 
-<a href="../../source/phpcr/nodetype/nodetypetemplateinterface.php.html#line74" class="location">PHPCR/NodeType/NodeTypeTemplateInterface.php at line 74</a>
+<a href="../../source/phpcr/nodetype/nodetypetemplateinterface.php.html#line81" class="location">PHPCR/NodeType/NodeTypeTemplateInterface.php at line 81</a>
 
 <h3 id="setAbstract()">setAbstract</h3>
 <code class="signature">public  void <strong>setAbstract</strong>(boolean abstractStatus)</code>
 <div class="details">
 <p>Sets the abstract flag of the node type.</p><dl>
 <dt>Parameters:</dt>
-<dd>abstractStatus - The status of the node type being <b>abstract</b>.</dd>
+<dd>abstractStatus - Whether this type is abstract.</dd>
 <dt>Api.</dt>
 </dl>
 </div>
 
 <hr>
 
-<a href="../../source/phpcr/nodetype/nodetypetemplateinterface.php.html#line65" class="location">PHPCR/NodeType/NodeTypeTemplateInterface.php at line 65</a>
+<a href="../../source/phpcr/nodetype/nodetypetemplateinterface.php.html#line70" class="location">PHPCR/NodeType/NodeTypeTemplateInterface.php at line 70</a>
 
 <h3 id="setDeclaredSuperTypeNames()">setDeclaredSuperTypeNames</h3>
 <code class="signature">public  void <strong>setDeclaredSuperTypeNames</strong>(array names)</code>
@@ -176,21 +179,21 @@ PropertyDefinitionTemplate objects can be added to or removed from this List.</p
 
 <hr>
 
-<a href="../../source/phpcr/nodetype/nodetypetemplateinterface.php.html#line83" class="location">PHPCR/NodeType/NodeTypeTemplateInterface.php at line 83</a>
+<a href="../../source/phpcr/nodetype/nodetypetemplateinterface.php.html#line93" class="location">PHPCR/NodeType/NodeTypeTemplateInterface.php at line 93</a>
 
 <h3 id="setMixin()">setMixin</h3>
 <code class="signature">public  void <strong>setMixin</strong>(boolean mixin)</code>
 <div class="details">
 <p>Sets the mixin flag of the node type.</p><dl>
 <dt>Parameters:</dt>
-<dd>mixin - The status of the node type being <b>mixin</b>.</dd>
+<dd>mixin - Whether this type is a mixin type (or a primary type).</dd>
 <dt>Api.</dt>
 </dl>
 </div>
 
 <hr>
 
-<a href="../../source/phpcr/nodetype/nodetypetemplateinterface.php.html#line56" class="location">PHPCR/NodeType/NodeTypeTemplateInterface.php at line 56</a>
+<a href="../../source/phpcr/nodetype/nodetypetemplateinterface.php.html#line59" class="location">PHPCR/NodeType/NodeTypeTemplateInterface.php at line 59</a>
 
 <h3 id="setName()">setName</h3>
 <code class="signature">public  void <strong>setName</strong>(string name)</code>
@@ -204,21 +207,21 @@ PropertyDefinitionTemplate objects can be added to or removed from this List.</p
 
 <hr>
 
-<a href="../../source/phpcr/nodetype/nodetypetemplateinterface.php.html#line92" class="location">PHPCR/NodeType/NodeTypeTemplateInterface.php at line 92</a>
+<a href="../../source/phpcr/nodetype/nodetypetemplateinterface.php.html#line105" class="location">PHPCR/NodeType/NodeTypeTemplateInterface.php at line 105</a>
 
 <h3 id="setOrderableChildNodes()">setOrderableChildNodes</h3>
 <code class="signature">public  void <strong>setOrderableChildNodes</strong>(boolean orderable)</code>
 <div class="details">
 <p>Sets the orderable child nodes flag of the node type.</p><dl>
 <dt>Parameters:</dt>
-<dd>orderable - The status of the node type having orderable children.</dd>
+<dd>orderable - Whether nodes of this type can have orderable children</dd>
 <dt>Api.</dt>
 </dl>
 </div>
 
 <hr>
 
-<a href="../../source/phpcr/nodetype/nodetypetemplateinterface.php.html#line101" class="location">PHPCR/NodeType/NodeTypeTemplateInterface.php at line 101</a>
+<a href="../../source/phpcr/nodetype/nodetypetemplateinterface.php.html#line116" class="location">PHPCR/NodeType/NodeTypeTemplateInterface.php at line 116</a>
 
 <h3 id="setPrimaryItemName()">setPrimaryItemName</h3>
 <code class="signature">public  void <strong>setPrimaryItemName</strong>(string name)</code>
@@ -232,14 +235,14 @@ PropertyDefinitionTemplate objects can be added to or removed from this List.</p
 
 <hr>
 
-<a href="../../source/phpcr/nodetype/nodetypetemplateinterface.php.html#line110" class="location">PHPCR/NodeType/NodeTypeTemplateInterface.php at line 110</a>
+<a href="../../source/phpcr/nodetype/nodetypetemplateinterface.php.html#line127" class="location">PHPCR/NodeType/NodeTypeTemplateInterface.php at line 127</a>
 
 <h3 id="setQueryable()">setQueryable</h3>
 <code class="signature">public  void <strong>setQueryable</strong>(booolean queryable)</code>
 <div class="details">
 <p>Sets the queryable status of the node type.</p><dl>
 <dt>Parameters:</dt>
-<dd>queryable - The status of the node type being queryable.</dd>
+<dd>queryable - Whether this node is queryable.</dd>
 <dt>Api.</dt>
 </dl>
 </div>

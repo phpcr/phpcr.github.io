@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="generator" content="PHPDoctor 2RC4 (http://peej.github.com/phpdoctor/)">
-<meta name="when" content="Tue, 26 Jul 2011 15:56:35 +0000">
+<meta name="when" content="Tue, 27 Mar 2012 06:17:41 +0000">
 
 <link rel="stylesheet" type="text/css" href="../../stylesheet.css">
 <link rel="start" href="../../overview-summary.html">
@@ -75,32 +75,28 @@ version information.</p></div>
 </tr>
 <tr>
 <td class="type"> <a href="../../phpcr/nodeinterface.html">NodeInterface</a></td>
-<td class="description"><p class="name"><a href="#getFrozenNode()">getFrozenNode</a>()</p><p class="description">Returns the frozen node of this version.</p></td>
-</tr>
-<tr>
-<td class="type"> <a href="../../phpcr/version/versioninterface.html">VersionInterface</a></td>
-<td class="description"><p class="name"><a href="#getLinearPredecessor()">getLinearPredecessor</a>()</p><p class="description">Assuming that this Version object was acquired through a Workspace $w and
-is within the VersionHistory $h, this method returns the predecessor of
-this version along the same line of descent as is returned by
-$h->getAllLinearVersions() where $h was also acquired through $w.
+<td class="description"><p class="name"><a href="#getFrozenNode()">getFrozenNode</a>()</p><p class="description">Returns a snapshot of the node as it was at this version.
 </p></td>
 </tr>
 <tr>
 <td class="type"> <a href="../../phpcr/version/versioninterface.html">VersionInterface</a></td>
-<td class="description"><p class="name"><a href="#getLinearSuccessor()">getLinearSuccessor</a>()</p><p class="description">Assuming that this Version object was acquired through a Workspace $w and
-is within the VersionHistory $h, this method returns the successor of this
-version along the same line of descent as is returned by
-$h->getAllLinearVersions() where $h was also acquired through $w.
+<td class="description"><p class="name"><a href="#getLinearPredecessor()">getLinearPredecessor</a>()</p><p class="description">Get the next linear predecessor version of this version.
+</p></td>
+</tr>
+<tr>
+<td class="type"> <a href="../../phpcr/version/versioninterface.html">VersionInterface</a></td>
+<td class="description"><p class="name"><a href="#getLinearSuccessor()">getLinearSuccessor</a>()</p><p class="description">Get the next linear successor version of this version.
 </p></td>
 </tr>
 <tr>
 <td class="type"> array</td>
-<td class="description"><p class="name"><a href="#getPredecessors()">getPredecessors</a>()</p><p class="description">In both simple and full versioning repositories, this method returns the
-predecessor versions of this version. </p></td>
+<td class="description"><p class="name"><a href="#getPredecessors()">getPredecessors</a>()</p><p class="description">Returns the predecessor versions of this version.
+</p></td>
 </tr>
 <tr>
 <td class="type"> array</td>
-<td class="description"><p class="name"><a href="#getSuccessors()">getSuccessors</a>()</p><p class="description">Returns the successor versions of this version. </p></td>
+<td class="description"><p class="name"><a href="#getSuccessors()">getSuccessors</a>()</p><p class="description">Returns the successor versions of this version.
+</p></td>
 </tr>
 </table>
 
@@ -113,7 +109,7 @@ predecessor versions of this version. </p></td>
 <tr><td><a href="../../phpcr/iteminterface.html#accept()">accept</a>, <a href="../../phpcr/iteminterface.html#getAncestor()">getAncestor</a>, <a href="../../phpcr/iteminterface.html#getDepth()">getDepth</a>, <a href="../../phpcr/iteminterface.html#getName()">getName</a>, <a href="../../phpcr/iteminterface.html#getParent()">getParent</a>, <a href="../../phpcr/iteminterface.html#getPath()">getPath</a>, <a href="../../phpcr/iteminterface.html#getSession()">getSession</a>, <a href="../../phpcr/iteminterface.html#isModified()">isModified</a>, <a href="../../phpcr/iteminterface.html#isNew()">isNew</a>, <a href="../../phpcr/iteminterface.html#isNode()">isNode</a>, <a href="../../phpcr/iteminterface.html#isSame()">isSame</a>, <a href="../../phpcr/iteminterface.html#refresh()">refresh</a>, <a href="../../phpcr/iteminterface.html#remove()">remove</a></td></tr></table>
 
 <h2 id="detail_method">Method Detail</h2>
-<a href="../../source/phpcr/version/versioninterface.php.html#line44" class="location">PHPCR/Version/VersionInterface.php at line 44</a>
+<a href="../../source/phpcr/version/versioninterface.php.html#line47" class="location">PHPCR/Version/VersionInterface.php at line 47</a>
 
 <h3 id="getContainingHistory()">getContainingHistory</h3>
 <code class="signature">public  <a href="../../phpcr/version/versionhistoryinterface.html">VersionHistoryInterface</a> <strong>getContainingHistory</strong>()</code>
@@ -129,7 +125,7 @@ predecessor versions of this version. </p></td>
 
 <hr>
 
-<a href="../../source/phpcr/version/versioninterface.php.html#line55" class="location">PHPCR/Version/VersionInterface.php at line 55</a>
+<a href="../../source/phpcr/version/versioninterface.php.html#line60" class="location">PHPCR/Version/VersionInterface.php at line 60</a>
 
 <h3 id="getCreated()">getCreated</h3>
 <code class="signature">public  \DateTime <strong>getCreated</strong>()</code>
@@ -138,21 +134,24 @@ predecessor versions of this version. </p></td>
 value of the jcr:created property in the nt:version node that represents
 this version.</p><dl>
 <dt>Returns:</dt>
-<dd>a \DateTime object</dd>
+<dd>the creation date</dd>
 <dt>Throws:</dt>
-<dd><a href="../../phpcr/repositoryexception.html">\PHPCR\RepositoryException</a> - - if an error occurs</dd>
+<dd><a href="../../phpcr/repositoryexception.html">\PHPCR\RepositoryException</a> - if an error occurs</dd>
 <dt>Api.</dt>
 </dl>
 </div>
 
 <hr>
 
-<a href="../../source/phpcr/version/versioninterface.php.html#line119" class="location">PHPCR/Version/VersionInterface.php at line 119</a>
+<a href="../../source/phpcr/version/versioninterface.php.html#line151" class="location">PHPCR/Version/VersionInterface.php at line 151</a>
 
 <h3 id="getFrozenNode()">getFrozenNode</h3>
 <code class="signature">public  <a href="../../phpcr/nodeinterface.html">NodeInterface</a> <strong>getFrozenNode</strong>()</code>
 <div class="details">
-<p>Returns the frozen node of this version.</p><dl>
+<p>Returns a snapshot of the node as it was at this version.</p><p>All properties are at under their original names except for uuid,
+primaryType and mixinTypes. The frozen node has his own uuid, and is of
+type nt:frozenNode. The original values at the time of the snapshots are
+provided as jcr:frozenUuid, jcr:frozenPrimaryType, jcr:frozenMixinTypes</p><dl>
 <dt>Returns:</dt>
 <dd>a Node object</dd>
 <dt>Throws:</dt>
@@ -163,16 +162,16 @@ this version.</p><dl>
 
 <hr>
 
-<a href="../../source/phpcr/version/versioninterface.php.html#line98" class="location">PHPCR/Version/VersionInterface.php at line 98</a>
+<a href="../../source/phpcr/version/versioninterface.php.html#line119" class="location">PHPCR/Version/VersionInterface.php at line 119</a>
 
 <h3 id="getLinearPredecessor()">getLinearPredecessor</h3>
 <code class="signature">public  <a href="../../phpcr/version/versioninterface.html">VersionInterface</a> <strong>getLinearPredecessor</strong>()</code>
 <div class="details">
-<p>Assuming that this Version object was acquired through a Workspace $w and
-is within the VersionHistory $h, this method returns the predecessor of
-this version along the same line of descent as is returned by
-$h->getAllLinearVersions() where $h was also acquired through $w.</p><p>Note that under simple versioning the behavior of this method is equivalent
-to getting the unique predecessor (if any) of this version.</p><dl>
+<p>Get the next linear predecessor version of this version.</p><p>Assuming that this Version object was acquired through a Workspace $w
+and is within the VersionHistory $h, this method returns the predecessor
+ofthis version along the same line of descent as is returned by
+$h->getAllLinearVersions() where $h was also acquired through $w.</p><p>Note that under simple versioning the behavior of this method is
+equivalent to getting the unique predecessor (if any) of this version.</p><dl>
 <dt>Returns:</dt>
 <dd>a Version or null if no linear predecessor exists.</dd>
 <dt>Throws:</dt>
@@ -185,16 +184,16 @@ to getting the unique predecessor (if any) of this version.</p><dl>
 
 <hr>
 
-<a href="../../source/phpcr/version/versioninterface.php.html#line71" class="location">PHPCR/Version/VersionInterface.php at line 71</a>
+<a href="../../source/phpcr/version/versioninterface.php.html#line82" class="location">PHPCR/Version/VersionInterface.php at line 82</a>
 
 <h3 id="getLinearSuccessor()">getLinearSuccessor</h3>
 <code class="signature">public  <a href="../../phpcr/version/versioninterface.html">VersionInterface</a> <strong>getLinearSuccessor</strong>()</code>
 <div class="details">
-<p>Assuming that this Version object was acquired through a Workspace $w and
-is within the VersionHistory $h, this method returns the successor of this
-version along the same line of descent as is returned by
-$h->getAllLinearVersions() where $h was also acquired through $w.</p><p>Note that under simple versioning the behavior of this method is equivalent
-to getting the unique successor (if any) of this version.</p><dl>
+<p>Get the next linear successor version of this version.</p><p>Assuming that this Version object was acquired through a Workspace $w
+and is within the VersionHistory $h, this method returns the successor
+of this version along the same line of descent as is returned by
+$h->getAllLinearVersions() where $h was also acquired through $w.</p><p>Note that under simple versioning the behavior of this method is
+equivalent to getting the unique successor (if any) of this version.</p><dl>
 <dt>Returns:</dt>
 <dd>a Version or null if no linear successor exists.</dd>
 <dt>Throws:</dt>
@@ -207,12 +206,12 @@ to getting the unique successor (if any) of this version.</p><dl>
 
 <hr>
 
-<a href="../../source/phpcr/version/versioninterface.php.html#line110" class="location">PHPCR/Version/VersionInterface.php at line 110</a>
+<a href="../../source/phpcr/version/versioninterface.php.html#line135" class="location">PHPCR/Version/VersionInterface.php at line 135</a>
 
 <h3 id="getPredecessors()">getPredecessors</h3>
 <code class="signature">public  array <strong>getPredecessors</strong>()</code>
 <div class="details">
-<p>In both simple and full versioning repositories, this method returns the
+<p>Returns the predecessor versions of this version.</p><p>In both simple and full versioning repositories, this method returns the
 predecessor versions of this version. This corresponds to returning all
 the nt:version nodes whose jcr:successors property includes a reference
 to the nt:version node that represents this version.</p><dl>
@@ -226,14 +225,14 @@ to the nt:version node that represents this version.</p><dl>
 
 <hr>
 
-<a href="../../source/phpcr/version/versioninterface.php.html#line82" class="location">PHPCR/Version/VersionInterface.php at line 82</a>
+<a href="../../source/phpcr/version/versioninterface.php.html#line97" class="location">PHPCR/Version/VersionInterface.php at line 97</a>
 
 <h3 id="getSuccessors()">getSuccessors</h3>
 <code class="signature">public  array <strong>getSuccessors</strong>()</code>
 <div class="details">
-<p>Returns the successor versions of this version. This corresponds to
-returning all the nt:version nodes referenced by the jcr:successors
-multi-value property in the nt:version node that represents this version.</p><dl>
+<p>Returns the successor versions of this version.</p><p>This corresponds to returning all the nt:version nodes referenced by the
+jcr:successors multi-value property in the nt:version node that
+represents this version.</p><dl>
 <dt>Returns:</dt>
 <dd>of \PHPCR\Version\VersionInterface</dd>
 <dt>Throws:</dt>

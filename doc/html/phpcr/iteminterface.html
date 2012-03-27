@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="generator" content="PHPDoctor 2RC4 (http://peej.github.com/phpdoctor/)">
-<meta name="when" content="Tue, 26 Jul 2011 15:56:34 +0000">
+<meta name="when" content="Tue, 27 Mar 2012 06:17:40 +0000">
 
 <link rel="stylesheet" type="text/css" href="../stylesheet.css">
 <link rel="start" href="../overview-summary.html">
@@ -111,7 +111,8 @@ Detail: <a href="#detail_field">Field</a> | <a href="#detail_method">Method</a> 
 </tr>
 <tr>
 <td class="type"> boolean</td>
-<td class="description"><p class="name"><a href="#isSame()">isSame</a>(<a href="../phpcr/iteminterface.html">ItemInterface</a> otherItem)</p><p class="description">Determines if this Item object represents the same actual workspace item as the object otherItem.
+<td class="description"><p class="name"><a href="#isSame()">isSame</a>(<a href="../phpcr/iteminterface.html">ItemInterface</a> otherItem)</p><p class="description">Determines if this Item object represents the same actual workspace item
+as the object otherItem.
 </p></td>
 </tr>
 <tr>
@@ -127,14 +128,14 @@ Detail: <a href="#detail_field">Field</a> | <a href="#detail_method">Method</a> 
 </table>
 
 <h2 id="detail_method">Method Detail</h2>
-<a href="../source/phpcr/iteminterface.php.html#line207" class="location">PHPCR/ItemInterface.php at line 207</a>
+<a href="../source/phpcr/iteminterface.php.html#line239" class="location">PHPCR/ItemInterface.php at line 239</a>
 
 <h3 id="accept()">accept</h3>
 <code class="signature">public  void <strong>accept</strong>(<a href="../phpcr/itemvisitorinterface.html">ItemVisitorInterface</a> visitor)</code>
 <div class="details">
-<p>Call the ItemVisitor::visit() method.</p><p>This is less relevant in PHP (Java had it to avoid typecasting in the visitor)
-We leave it here, to allow sanity checks or other operations an implementation
-might wants to do.</p><dl>
+<p>Call the ItemVisitor::visit() method.</p><p>This is less relevant in PHP (Java had it to avoid typecasting in the
+visitor). We leave it here, to allow sanity checks or other operations
+an implementation might wants to do.</p><dl>
 <dt>Parameters:</dt>
 <dd>visitor - The ItemVisitor to be accepted.</dd>
 <dt>Throws:</dt>
@@ -145,18 +146,21 @@ might wants to do.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/iteminterface.php.html#line78" class="location">PHPCR/ItemInterface.php at line 78</a>
+<a href="../source/phpcr/iteminterface.php.html#line91" class="location">PHPCR/ItemInterface.php at line 91</a>
 
 <h3 id="getAncestor()">getAncestor</h3>
 <code class="signature">public  <a href="../phpcr/iteminterface.html">ItemInterface</a> <strong>getAncestor</strong>(integer depth)</code>
 <div class="details">
-<p>Returns the ancestor of this Item at the specified depth.</p><p>An ancestor of depth x is the Item that is x levels down along the path from the root
-node to this Item.</p>
+<p>Returns the ancestor of this Item at the specified depth.</p><p>An ancestor of depth x is the Item that is x levels down along the path
+from the root node to this Item.</p>
 <ul>
 <li>depth = 0 returns the root node of a workspace.</li>
-<li>depth = 1 returns the child of the root node along the path to this Item.</li>
-<li>depth = 2 returns the grandchild of the root node along the path to this Item.</li>
-<li>And so on to depth = n, where n is the depth of this Item, which returns this Item itself.</li>
+<li>depth = 1 returns the child of the root node along the path to this
+Item.</li>
+<li>depth = 2 returns the grandchild of the root node along the path to
+this Item.</li>
+<li>And so on to depth = n, where n is the depth of this Item, which
+returns this Item itself.</li>
 </ul>
 <p>If this node has more than one path (i.e., if it is a descendant of a
 shared node) then the path used to define the ancestor is implementaion-
@@ -166,7 +170,7 @@ dependent.</p><dl>
 <dt>Returns:</dt>
 <dd>The ancestor of this Item at the specified depth.</dd>
 <dt>Throws:</dt>
-<dd><a href="../phpcr/itemnotfoundexception.html">\PHPCR\ItemNotFoundException</a> - if depth &lt; 0 or depth &gt; n where n is the depth of this item.</dd>
+<dd><a href="../phpcr/itemnotfoundexception.html">\PHPCR\ItemNotFoundException</a> - if depth < 0 or depth > n where n is the depth of this item.</dd>
 <dd><a href="../phpcr/accessdeniedexception.html">\PHPCR\AccessDeniedException</a> - if the current session does not have sufficient access to retrieve the specified node.</dd>
 <dd><a href="../phpcr/repositoryexception.html">\PHPCR\RepositoryException</a> - if another error occurs.</dd>
 <dt>Api.</dt>
@@ -175,7 +179,7 @@ dependent.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/iteminterface.php.html#line105" class="location">PHPCR/ItemInterface.php at line 105</a>
+<a href="../source/phpcr/iteminterface.php.html#line122" class="location">PHPCR/ItemInterface.php at line 122</a>
 
 <h3 id="getDepth()">getDepth</h3>
 <code class="signature">public  integer <strong>getDepth</strong>()</code>
@@ -185,9 +189,8 @@ dependent.</p><dl>
 <li>The root node returns 0.</li>
 <li>A property or child node of the root node returns 1.</li>
 <li>A property or child node of a child node of the root returns 2.</li>
-<li>And so on to this Item.</li>
 </ul>
-<p>&nbsp;</p><dl>
+<p>- And so on to this Item.</p><dl>
 <dt>Returns:</dt>
 <dd>The depth of this Item in the workspace item graph.</dd>
 <dt>Throws:</dt>
@@ -198,7 +201,7 @@ dependent.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/iteminterface.php.html#line54" class="location">PHPCR/ItemInterface.php at line 54</a>
+<a href="../source/phpcr/iteminterface.php.html#line57" class="location">PHPCR/ItemInterface.php at line 57</a>
 
 <h3 id="getName()">getName</h3>
 <code class="signature">public  string <strong>getName</strong>()</code>
@@ -214,7 +217,7 @@ dependent.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/iteminterface.php.html#line89" class="location">PHPCR/ItemInterface.php at line 89</a>
+<a href="../source/phpcr/iteminterface.php.html#line106" class="location">PHPCR/ItemInterface.php at line 106</a>
 
 <h3 id="getParent()">getParent</h3>
 <code class="signature">public  <a href="../phpcr/nodeinterface.html">NodeInterface</a> <strong>getParent</strong>()</code>
@@ -248,7 +251,7 @@ dependent.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/iteminterface.php.html#line114" class="location">PHPCR/ItemInterface.php at line 114</a>
+<a href="../source/phpcr/iteminterface.php.html#line133" class="location">PHPCR/ItemInterface.php at line 133</a>
 
 <h3 id="getSession()">getSession</h3>
 <code class="signature">public  <a href="../phpcr/sessioninterface.html">SessionInterface</a> <strong>getSession</strong>()</code>
@@ -264,7 +267,7 @@ dependent.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/iteminterface.php.html#line163" class="location">PHPCR/ItemInterface.php at line 163</a>
+<a href="../source/phpcr/iteminterface.php.html#line186" class="location">PHPCR/ItemInterface.php at line 186</a>
 
 <h3 id="isModified()">isModified</h3>
 <code class="signature">public  boolean <strong>isModified</strong>()</code>
@@ -285,7 +288,7 @@ false.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/iteminterface.php.html#line144" class="location">PHPCR/ItemInterface.php at line 144</a>
+<a href="../source/phpcr/iteminterface.php.html#line166" class="location">PHPCR/ItemInterface.php at line 166</a>
 
 <h3 id="isNew()">isNew</h3>
 <code class="signature">public  boolean <strong>isNew</strong>()</code>
@@ -305,12 +308,13 @@ false.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/iteminterface.php.html#line124" class="location">PHPCR/ItemInterface.php at line 124</a>
+<a href="../source/phpcr/iteminterface.php.html#line145" class="location">PHPCR/ItemInterface.php at line 145</a>
 
 <h3 id="isNode()">isNode</h3>
 <code class="signature">public  boolean <strong>isNode</strong>()</code>
 <div class="details">
-<p>Indicates whether this Item is a Node or a Property.</p><p>Returns true if this Item is a Node; Returns false if this Item is a Property.</p><dl>
+<p>Indicates whether this Item is a Node or a Property.</p><p>Returns true if this Item is a Node; Returns false if this Item is a
+Property.</p><dl>
 <dt>Returns:</dt>
 <dd>true if this Item is a Node, false if it is a Property.</dd>
 <dt>Api.</dt>
@@ -319,12 +323,13 @@ false.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/iteminterface.php.html#line194" class="location">PHPCR/ItemInterface.php at line 194</a>
+<a href="../source/phpcr/iteminterface.php.html#line223" class="location">PHPCR/ItemInterface.php at line 223</a>
 
 <h3 id="isSame()">isSame</h3>
 <code class="signature">public  boolean <strong>isSame</strong>(<a href="../phpcr/iteminterface.html">ItemInterface</a> otherItem)</code>
 <div class="details">
-<p>Determines if this Item object represents the same actual workspace item as the object otherItem.</p><p>Two Item objects represent the same workspace item if all the following
+<p>Determines if this Item object represents the same actual workspace item
+as the object otherItem.</p><p>Two Item objects represent the same workspace item if all the following
 are true:</p>
 <ul>
 <li>Both objects were acquired through Session objects that were created
@@ -356,7 +361,7 @@ state.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/iteminterface.php.html#line233" class="location">PHPCR/ItemInterface.php at line 233</a>
+<a href="../source/phpcr/iteminterface.php.html#line269" class="location">PHPCR/ItemInterface.php at line 269</a>
 
 <h3 id="refresh()">refresh</h3>
 <code class="signature">public  void <strong>refresh</strong>(boolean keepChanges)</code>
@@ -383,7 +388,7 @@ other sessions.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/iteminterface.php.html#line266" class="location">PHPCR/ItemInterface.php at line 266</a>
+<a href="../source/phpcr/iteminterface.php.html#line308" class="location">PHPCR/ItemInterface.php at line 308</a>
 
 <h3 id="remove()">remove</h3>
 <code class="signature">public  void <strong>remove</strong>()</code>
@@ -397,7 +402,7 @@ order but leave no gaps in the numbering.</p><dl>
 <dt>Throws:</dt>
 <dd><a href="../phpcr/version/versionexception.html">\PHPCR\Version\VersionException</a> - if the parent node of this item is versionable and checked-in or is non-versionable but its nearest versionable ancestor is checked-in and this implementation performs this validation immediately instead of waiting until save.</dd>
 <dd><a href="../phpcr/lock/lockexception.html">\PHPCR\Lock\LockException</a> - if a lock prevents the removal of this item and this implementation performs this validation immediately instead of waiting until save.</dd>
-<dd>\PHPCR\ConstraintViolationException - if removing the specified item would violate a node type or implementation-specific constraint and this implementation performs this validation immediately instead of waiting until save.</dd>
+<dd><a href="../phpcr/nodetype/constraintviolationexception.html">\PHPCR\NodeType\ConstraintViolationException</a> - if removing the specified item would violate a node type or implementation-specific constraint and this implementation performs this validation immediately instead of waiting until save.</dd>
 <dd><a href="../phpcr/accessdeniedexception.html">\PHPCR\AccessDeniedException</a> - if this item or an item in its subgraph is currently the target of a REFERENCE property located in this workspace but outside this item's subgraph and the current Session does not have read access to that REFERENCE property or if the current Session does not have sufficent privileges to remove the item.</dd>
 <dd><a href="../phpcr/repositoryexception.html">\PHPCR\RepositoryException</a> - if another error occurs.</dd>
 <dt>See Also:</dt>

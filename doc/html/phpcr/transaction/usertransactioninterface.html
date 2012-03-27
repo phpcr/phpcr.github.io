@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="generator" content="PHPDoctor 2RC4 (http://peej.github.com/phpdoctor/)">
-<meta name="when" content="Tue, 26 Jul 2011 15:56:35 +0000">
+<meta name="when" content="Tue, 27 Mar 2012 06:17:41 +0000">
 
 <link rel="stylesheet" type="text/css" href="../../stylesheet.css">
 <link rel="start" href="../../overview-summary.html">
@@ -41,7 +41,7 @@ Detail: <a href="#detail_field">Field</a> | <a href="#detail_method">Method</a> 
 <hr>
 
 <div class="qualifiedName">PHPCR\Transaction\UserTransactionInterface</div>
-<a href="../../source/phpcr/transaction/usertransactioninterface.php.html#line76" class="location">PHPCR/Transaction/UserTransactionInterface.php at line 76</a>
+<a href="../../source/phpcr/transaction/usertransactioninterface.php.html#line62" class="location">PHPCR/Transaction/UserTransactionInterface.php at line 62</a>
 
 <h1>Interface UserTransactionInterface</h1>
 
@@ -52,7 +52,9 @@ Detail: <a href="#detail_field">Field</a> | <a href="#detail_method">Method</a> 
 <p class="signature">public  interface <strong>UserTransactionInterface</strong></p>
 
 <div class="comment" id="overview_description"><p>As there is no transaction standard in PHP this interface provides a
-transaction interface similar to the <a href="http://en.wikipedia.org/wiki/Java_Transaction_API">Java Transaction API (JTA)</a></p><p>You can acquire the transaction manager from a session supporting
+transaction interface similar to the
+<a href="http://en.wikipedia.org/wiki/Java_Transaction_API">Java Transaction
+API (JTA)</a></p><p>You can acquire the transaction manager from a session supporting
 transactions with \PHPCR\SessionInterface::getTransactionManager()</p><p>A transaction is started with begin() and only permanently persisted if
 commit() is called. If commit() is not called until timeout, the lifetime
 of your php script or if rollback() is called explicitly, no changes are
@@ -81,8 +83,8 @@ get rid of them too, use \PHPCR\SessionInterface::refresh()</p></div>
 <dd>\PHPCR\SessionInterface::getTransactionManager()</dd>
 <dt>Author:</dt>
 <dd>Johannes Stark <starkj@gmx.de></dd>
-<dt>Subpackage:</dt>
-<dd>interfaces</dd>
+<dt>License:</dt>
+<dd>http://www.apache.org/licenses/LICENSE-2.0 Apache Software License 2.0</dd>
 <dt>Api.</dt>
 </dl>
 <hr>
@@ -95,25 +97,27 @@ get rid of them too, use \PHPCR\SessionInterface::refresh()</p></div>
 </tr>
 <tr>
 <td class="type"> void</td>
-<td class="description"><p class="name"><a href="#commit()">commit</a>()</p><p class="description">Complete the transaction associated with the current session.</p></td>
+<td class="description"><p class="name"><a href="#commit()">commit</a>()</p><p class="description">Commit the transaction associated with the current session to store it
+persistently.</p></td>
 </tr>
 <tr>
 <td class="type"> boolean</td>
-<td class="description"><p class="name"><a href="#inTransaction()">inTransaction</a>()</p><p class="description">Obtain the status if the current session is inside of a transaction or not.</p></td>
+<td class="description"><p class="name"><a href="#inTransaction()">inTransaction</a>()</p><p class="description">Obtain the status if the current session is inside of a transaction or
+not.</p></td>
 </tr>
 <tr>
 <td class="type"> void</td>
-<td class="description"><p class="name"><a href="#rollback()">rollback</a>()</p><p class="description">Roll back the transaction associated with the current session.</p></td>
+<td class="description"><p class="name"><a href="#rollback()">rollback</a>()</p><p class="description">Rollback the transaction associated with the current session.</p></td>
 </tr>
 <tr>
 <td class="type"> void</td>
-<td class="description"><p class="name"><a href="#setTransactionTimeout()">setTransactionTimeout</a>(int seconds)</p><p class="description">Modify the timeout value that is associated with the transaction started by
-the current application with the begin method. </p></td>
+<td class="description"><p class="name"><a href="#setTransactionTimeout()">setTransactionTimeout</a>(int seconds)</p><p class="description">Set a timeout for the transaction.
+</p></td>
 </tr>
 </table>
 
 <h2 id="detail_method">Method Detail</h2>
-<a href="../../source/phpcr/transaction/usertransactioninterface.php.html#line91" class="location">PHPCR/Transaction/UserTransactionInterface.php at line 91</a>
+<a href="../../source/phpcr/transaction/usertransactioninterface.php.html#line76" class="location">PHPCR/Transaction/UserTransactionInterface.php at line 76</a>
 
 <h3 id="begin()">begin</h3>
 <code class="signature">public  void <strong>begin</strong>()</code>
@@ -127,28 +131,30 @@ the current application with the begin method. </p></td>
 
 <hr>
 
-<a href="../../source/phpcr/transaction/usertransactioninterface.php.html#line108" class="location">PHPCR/Transaction/UserTransactionInterface.php at line 108</a>
+<a href="../../source/phpcr/transaction/usertransactioninterface.php.html#line93" class="location">PHPCR/Transaction/UserTransactionInterface.php at line 93</a>
 
 <h3 id="commit()">commit</h3>
 <code class="signature">public  void <strong>commit</strong>()</code>
 <div class="details">
-<p>Complete the transaction associated with the current session.</p><dl>
+<p>Commit the transaction associated with the current session to store it
+persistently.</p><dl>
 <dt>Throws:</dt>
 <dd><a href="../../phpcr/transaction/rollbackexception.html">\PHPCR\Transaction\RollbackException</a> - Thrown to indicate that the transaction has been rolled back rather than committed.</dd>
-<dd><a href="../../phpcr/accessdeniedexception.html">\PHPCR\AccessDeniedException</a> - Thrown to indicate that the application is not allowed to commit the transaction.</dd>
-<dd>LogicException - Thrown if the current session is not associated with a transaction.</dd>
+<dd><a href="../../phpcr/accessdeniedexception.html">\PHPCR\AccessDeniedException</a> - Thrown to indicate that the session is not allowed to commit the transaction.</dd>
+<dd>\LogicException - Thrown if the current session is not associated with a transaction.</dd>
 <dd><a href="../../phpcr/repositoryexception.html">\PHPCR\RepositoryException</a> - Thrown if the transaction implementation encounters an unexpected error condition.</dd>
 </dl>
 </div>
 
 <hr>
 
-<a href="../../source/phpcr/transaction/usertransactioninterface.php.html#line119" class="location">PHPCR/Transaction/UserTransactionInterface.php at line 119</a>
+<a href="../../source/phpcr/transaction/usertransactioninterface.php.html#line104" class="location">PHPCR/Transaction/UserTransactionInterface.php at line 104</a>
 
 <h3 id="inTransaction()">inTransaction</h3>
 <code class="signature">public  boolean <strong>inTransaction</strong>()</code>
 <div class="details">
-<p>Obtain the status if the current session is inside of a transaction or not.</p><dl>
+<p>Obtain the status if the current session is inside of a transaction or
+not.</p><dl>
 <dt>Throws:</dt>
 <dd><a href="../../phpcr/repositoryexception.html">\PHPCR\RepositoryException</a> - Thrown if the transaction implementation encounters an unexpected error condition.</dd>
 </dl>
@@ -156,30 +162,30 @@ the current application with the begin method. </p></td>
 
 <hr>
 
-<a href="../../source/phpcr/transaction/usertransactioninterface.php.html#line134" class="location">PHPCR/Transaction/UserTransactionInterface.php at line 134</a>
+<a href="../../source/phpcr/transaction/usertransactioninterface.php.html#line118" class="location">PHPCR/Transaction/UserTransactionInterface.php at line 118</a>
 
 <h3 id="rollback()">rollback</h3>
 <code class="signature">public  void <strong>rollback</strong>()</code>
 <div class="details">
-<p>Roll back the transaction associated with the current session.</p><dl>
+<p>Rollback the transaction associated with the current session.</p><dl>
 <dt>Throws:</dt>
 <dd><a href="../../phpcr/accessdeniedexception.html">\PHPCR\AccessDeniedException</a> - Thrown to indicate that the application is not allowed to roll back the transaction.</dd>
-<dd>LogicException - Thrown if the current session is not associated with a transaction.</dd>
+<dd>\LogicException - Thrown if the current session is not associated with a transaction.</dd>
 <dd><a href="../../phpcr/repositoryexception.html">\PHPCR\RepositoryException</a> - Thrown if the transaction implementation encounters an unexpected error condition.</dd>
 </dl>
 </div>
 
 <hr>
 
-<a href="../../source/phpcr/transaction/usertransactioninterface.php.html#line152" class="location">PHPCR/Transaction/UserTransactionInterface.php at line 152</a>
+<a href="../../source/phpcr/transaction/usertransactioninterface.php.html#line137" class="location">PHPCR/Transaction/UserTransactionInterface.php at line 137</a>
 
 <h3 id="setTransactionTimeout()">setTransactionTimeout</h3>
 <code class="signature">public  void <strong>setTransactionTimeout</strong>(int seconds)</code>
 <div class="details">
-<p>Modify the timeout value that is associated with the transaction started by
-the current application with the begin method. If an application has not
-called this method, the transaction service uses some default value for the
-transaction timeout.</p><dl>
+<p>Set a timeout for the transaction.</p><p>Modify the timeout value that is associated with transactions started by
+the current application with the begin() method. If not explicitly set,
+the transaction service uses some default value for the transaction
+timeout.</p><dl>
 <dt>Parameters:</dt>
 <dd>seconds - The value of the timeout in seconds. If the value is zero, the transaction service restores the default value. If the value is negative a RepositoryException is thrown.</dd>
 <dt>Throws:</dt>

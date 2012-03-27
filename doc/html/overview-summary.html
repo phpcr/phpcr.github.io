@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="generator" content="PHPDoctor 2RC4 (http://peej.github.com/phpdoctor/)">
-<meta name="when" content="Tue, 26 Jul 2011 15:56:34 +0000">
+<meta name="when" content="Tue, 27 Mar 2012 06:17:40 +0000">
 
 <link rel="stylesheet" type="text/css" href="stylesheet.css">
 <link rel="start" href="overview-summary.html">
@@ -51,8 +51,6 @@
 <tr><td class="name"><a href="phpcr/retention/package-summary.html">PHPCR\Retention</a></td><td class="description"></td></tr>
 <tr><td class="name"><a href="phpcr/security/package-summary.html">PHPCR\Security</a></td><td class="description"></td></tr>
 <tr><td class="name"><a href="phpcr/transaction/package-summary.html">PHPCR\Transaction</a></td><td class="description"></td></tr>
-<tr><td class="name"><a href="phpcr/util/package-summary.html">PHPCR\Util</a></td><td class="description"></td></tr>
-<tr><td class="name"><a href="phpcr/util/qom/package-summary.html">PHPCR\Util\QOM</a></td><td class="description"></td></tr>
 <tr><td class="name"><a href="phpcr/version/package-summary.html">PHPCR\Version</a></td><td class="description"></td></tr>
 </table>
 
@@ -67,8 +65,9 @@ end of implementation specific configuration
 $factory = new $factoryclass();
 $repository = $factory-&gt;getRepository($parameters);
 $credentials = new \PHPCR\SimpleCredentials('admin','admin');
-$session = $repository-&gt;login($credentials, 'default);
-$node = $session-&gt;addNode('test', 'nt:unstructured');
+$session = $repository-&gt;login($credentials, 'default');
+$root = $session-&gt;getRootNode();
+$node = $root-&gt;addNode('test', 'nt:unstructured');
 $node-&gt;setProperty('prop', 'value');
 $session-&gt;save();
 ...

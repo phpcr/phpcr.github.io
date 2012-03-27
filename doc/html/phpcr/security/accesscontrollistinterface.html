@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="generator" content="PHPDoctor 2RC4 (http://peej.github.com/phpdoctor/)">
-<meta name="when" content="Tue, 26 Jul 2011 15:56:35 +0000">
+<meta name="when" content="Tue, 27 Mar 2012 06:17:41 +0000">
 
 <link rel="stylesheet" type="text/css" href="../../stylesheet.css">
 <link rel="start" href="../../overview-summary.html">
@@ -41,7 +41,7 @@ Detail: <a href="#detail_field">Field</a> | <a href="#detail_method">Method</a> 
 <hr>
 
 <div class="qualifiedName">PHPCR\Security\AccessControlListInterface</div>
-<a href="../../source/phpcr/security/accesscontrollistinterface.php.html#line43" class="location">PHPCR/Security/AccessControlListInterface.php at line 43</a>
+<a href="../../source/phpcr/security/accesscontrollistinterface.php.html#line45" class="location">PHPCR/Security/AccessControlListInterface.php at line 45</a>
 
 <h1>Interface AccessControlListInterface</h1>
 
@@ -53,14 +53,14 @@ Detail: <a href="#detail_field">Field</a> | <a href="#detail_method">Method</a> 
 
 </p>
 
-<div class="comment" id="overview_description"><p>The AccessControlList is an AccessControlPolicy representing a list of access
-control entries. It is mutable before being set to the AccessControlManager
-and consequently defines methods to read and mutate the list i.e. to get, add
-or remove individual entries.</p><p>The \Traversable interface enables the implementation to be addressed with
+<div class="comment" id="overview_description"><p>The AccessControlList is an AccessControlPolicy representing a list of
+access control entries.</p><p>It is mutable before being set to the AccessControlManager and consequently
+defines methods to read and mutate the list i.e. to get, add or remove
+individual entries.</p><p>The \Traversable interface enables the implementation to be addressed with
 <b>foreach</b>. AccessControlList has to implement either \RecursiveIterator
 or \Iterator.
-The iterator is equivalent to <b>getAccessControlEntries()</b> returning a list of
-AccessControlEntry. The iterator keys have no significant meaning.</p></div>
+The iterator is equivalent to <b>getAccessControlEntries()</b> returning a
+list of AccessControlEntry. The iterator keys have no significant meaning.</p></div>
 
 <dl>
 <dt>Subpackage:</dt>
@@ -89,27 +89,27 @@ AccessControlEntry. The iterator keys have no significant meaning.</p></div>
 </table>
 
 <h2 id="detail_method">Method Detail</h2>
-<a href="../../source/phpcr/security/accesscontrollistinterface.php.html#line87" class="location">PHPCR/Security/AccessControlListInterface.php at line 87</a>
+<a href="../../source/phpcr/security/accesscontrollistinterface.php.html#line94" class="location">PHPCR/Security/AccessControlListInterface.php at line 94</a>
 
 <h3 id="addAccessControlEntry()">addAccessControlEntry</h3>
 <code class="signature">public  boolean <strong>addAccessControlEntry</strong>(? principal, array privileges)</code>
 <div class="details">
 <p>Registers an access control entry object to the registry.</p><p>Adds an access control entry to this policy consisting of the specified
 principal and the specified privileges.
-This method returns true if this policy was modified, false otherwise.</p><p>How the entries are grouped within the list is an implementation detail. An
-implementation may e.g. combine the specified privileges with those added by
-a previous call to addAccessControlEntry for the same Principal. However, a
-call to addAccessControlEntry for a given Principal can never remove a
-Privilege added by a previous call.</p><p>The modification does not take effect until this policy has been set to a node
-by calling AccessControlManagerInterface::setPolicy() and
-save is performed.</p><dl>
+This method returns true if this policy was modified, false otherwise.</p><p>How the entries are grouped within the list is an implementation detail.
+An implementation may e.g. combine the specified privileges with those
+added by a previous call to addAccessControlEntry for the same
+Principal. However, a call to addAccessControlEntry for a given
+Principal can never remove a Privilege added by a previous call.</p><p>The modification does not take effect until this policy has been set to
+a node by calling AccessControlManagerInterface::setPolicy() and save is
+performed.</p><dl>
 <dt>Parameters:</dt>
 <dd>principal - - a Principal. TODO: define a type for this. JCR has javax.security.Principal</dd>
 <dd>privileges - - an array of Privileges.</dd>
 <dt>Returns:</dt>
 <dd>true if this policy was modify; false otherwise.</dd>
 <dt>Throws:</dt>
-<dd><a href="../../phpcr/security/accesscontrolexception.html">\PHPCR\Security\AccessControlException</a> - if the specified principal or any of the privileges does not existor if some other access control related exception occurs.</dd>
+<dd><a href="../../phpcr/security/accesscontrolexception.html">\PHPCR\Security\AccessControlException</a> - if the specified principal or any of the privileges does not exist or if some other access control related exception occurs.</dd>
 <dd><a href="../../phpcr/repositoryexception.html">\PHPCR\RepositoryException</a> - - if another error occurs.</dd>
 <dt>Todo:</dt>
 <dd>find replacement for java.security.Principal</dd>
@@ -119,7 +119,7 @@ save is performed.</p><dl>
 
 <hr>
 
-<a href="../../source/phpcr/security/accesscontrollistinterface.php.html#line57" class="location">PHPCR/Security/AccessControlListInterface.php at line 57</a>
+<a href="../../source/phpcr/security/accesscontrollistinterface.php.html#line61" class="location">PHPCR/Security/AccessControlListInterface.php at line 61</a>
 
 <h3 id="getAccessControlEntries()">getAccessControlEntries</h3>
 <code class="signature">public  array <strong>getAccessControlEntries</strong>()</code>
@@ -137,14 +137,14 @@ AccessControlEntry has been assigned through this API.</p><dl>
 
 <hr>
 
-<a href="../../source/phpcr/security/accesscontrollistinterface.php.html#line104" class="location">PHPCR/Security/AccessControlListInterface.php at line 104</a>
+<a href="../../source/phpcr/security/accesscontrollistinterface.php.html#line115" class="location">PHPCR/Security/AccessControlListInterface.php at line 115</a>
 
 <h3 id="removeAccessControlEntry()">removeAccessControlEntry</h3>
 <code class="signature">public  void <strong>removeAccessControlEntry</strong>(<a href="../../phpcr/security/accesscontrolentryinterface.html">AccessControlEntryInterface</a> ace)</code>
 <div class="details">
-<p>Removes the specified access control entry object from this policy.</p><p>Only exactly those entries obtained through getAccessControlEntries can be
-removed. This method does not take effect until this policy has been re-set
-to a node by calling AccessControlManagerInterface::setPolicy()
+<p>Removes the specified access control entry object from this policy.</p><p>Only exactly those entries obtained through getAccessControlEntries can
+be removed. This method does not take effect until this policy has been
+re-set to a node by calling AccessControlManagerInterface::setPolicy()
 and save is performed.</p><dl>
 <dt>Parameters:</dt>
 <dd>ace - the access control entry to be removed.</dd>

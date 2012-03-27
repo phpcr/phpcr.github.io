@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="generator" content="PHPDoctor 2RC4 (http://peej.github.com/phpdoctor/)">
-<meta name="when" content="Tue, 26 Jul 2011 15:56:34 +0000">
+<meta name="when" content="Tue, 27 Mar 2012 06:17:40 +0000">
 
 <link rel="stylesheet" type="text/css" href="../stylesheet.css">
 <link rel="start" href="../overview-summary.html">
@@ -39,7 +39,7 @@
 
 <table class="title">
 <tr><th colspan="2" class="title">Class Summary</th></tr>
-<tr><td class="name"><a href="../phpcr/accessdeniedexception.html">AccessDeniedException</a></td><td class="description">Exception shall be thrown by access-related methods.</td></tr>
+<tr><td class="name"><a href="../phpcr/accessdeniedexception.html">AccessDeniedException</a></td><td class="description">Exception to be thrown by access-related methods.</td></tr>
 <tr><td class="name"><a href="../phpcr/guestcredentials.html">GuestCredentials</a></td><td class="description">GuestCredentials is used to obtain a "guest", "public" or "anonymous" session.
 </td></tr>
 <tr><td class="name"><a href="../phpcr/invaliditemstateexception.html">InvalidItemStateException</a></td><td class="description">This exception shall be thrown in case of an issue of a state of an element.
@@ -47,14 +47,17 @@
 <tr><td class="name"><a href="../phpcr/invalidlifecycletransitionexception.html">InvalidLifecycleTransitionException</a></td><td class="description">Exception thrown by Lifecycle management-related methods.</td></tr>
 <tr><td class="name"><a href="../phpcr/invalidserializeddataexception.html">InvalidSerializedDataException</a></td><td class="description">Exception to be thrown by the deserialization methods of Session.
 </td></tr>
-<tr><td class="name"><a href="../phpcr/itemexistsexception.html">ItemExistsException</a></td><td class="description">An exception thrown when an attempt is made to place an item in a position where another item already exists.</td></tr>
+<tr><td class="name"><a href="../phpcr/itemexistsexception.html">ItemExistsException</a></td><td class="description">An exception thrown when an attempt is made to place an item in a position
+where another item already exists.</td></tr>
 <tr><td class="name"><a href="../phpcr/itemnotfoundexception.html">ItemNotFoundException</a></td><td class="description">Exception thrown by methods of Item, Node and Workspace when an item is not found.</td></tr>
 <tr><td class="name"><a href="../phpcr/loginexception.html">LoginException</a></td><td class="description">Shall be thrown in case of invalid login credentials.
 </td></tr>
 <tr><td class="name"><a href="../phpcr/mergeexception.html">MergeException</a></td><td class="description">Exception thrown by NodeInterface::merge()</td></tr>
-<tr><td class="name"><a href="../phpcr/namespaceexception.html">NamespaceException</a></td><td class="description">Definition of an Exception to be thrown in case of a namespace issue within a session.
+<tr><td class="name"><a href="../phpcr/namespaceexception.html">NamespaceException</a></td><td class="description">Definition of an Exception to be thrown in case of a namespace issue within
+a session.
 </td></tr>
-<tr><td class="name"><a href="../phpcr/nosuchworkspaceexception.html">NoSuchWorkspaceException</a></td><td class="description">Exception thrown by RepositoryInterface::login() when a specific workspace is not found.</td></tr>
+<tr><td class="name"><a href="../phpcr/nosuchworkspaceexception.html">NoSuchWorkspaceException</a></td><td class="description">Exception thrown by RepositoryInterface::login() when a specific workspace
+is not found.</td></tr>
 <tr><td class="name"><a href="../phpcr/pathnotfoundexception.html">PathNotFoundException</a></td><td class="description">Exception thrown when no Item exists at the specified path or when the
 specified path implies intermediary Nodes that do not exist.</td></tr>
 <tr><td class="name"><a href="../phpcr/propertytype.html">PropertyType</a></td><td class="description">The property types supported by the JCR standard.
@@ -71,19 +74,16 @@ that has an invalid format, given the type of the property. </td></tr>
 
 <table class="title">
 <tr><th colspan="2" class="title">Interface Summary</th></tr>
-<tr><td class="name"><a href="../phpcr/credentialsinterface.html">CredentialsInterface</a></td><td class="description">Interface for all credentials that may be passed to the Repository::login() method.
+<tr><td class="name"><a href="../phpcr/credentialsinterface.html">CredentialsInterface</a></td><td class="description">Interface for all credentials that may be passed to the Repository::login()
+method.
 </td></tr>
-<tr><td class="name"><a href="../phpcr/importuuidbehaviourinterface.html">ImportUUIDBehaviourInterface</a></td><td class="description">The possible actions specified by the uuidBehavior parameter in
+<tr><td class="name"><a href="../phpcr/importuuidbehaviorinterface.html">ImportUUIDBehaviorInterface</a></td><td class="description">The possible actions specified by the uuidBehavior parameter in
 
 WorkspaceInterface::importXML()
 SessionInterface::importXML()
 
-If we implement a content handler, the UUID would also be relevant for
-
-WorkspaceInterface::getImportContentHandler()
-SessionInterface::getImportContentHandler()
-
-&nbsp;</td></tr>
+If we implement a content handler, the UUID would also be relevant for- WorkspaceInterface::getImportContentHandler()
+- SessionInterface::getImportContentHandler()</td></tr>
 <tr><td class="name"><a href="../phpcr/iteminterface.html">ItemInterface</a></td><td class="description">The Item is the base interface of Node and Property.</td></tr>
 <tr><td class="name"><a href="../phpcr/itemvisitorinterface.html">ItemVisitorInterface</a></td><td class="description">Interface to define a visitor on an item.
 </td></tr>

@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="generator" content="PHPDoctor 2RC4 (http://peej.github.com/phpdoctor/)">
-<meta name="when" content="Tue, 26 Jul 2011 15:56:53 +0000">
+<meta name="when" content="Tue, 27 Mar 2012 06:17:57 +0000">
 
 <link rel="stylesheet" type="text/css" href="../../../stylesheet.css">
 <link rel="start" href="../../../overview-summary.html">
@@ -72,24 +72,23 @@ limitations under the License.</p></div>
 <a name="line25"></a><span style="color: #000000; font-weight: bold;">namespace</span> PHPCR\Version<span style="color: #339933;">;</span>
 <a name="line26"></a>&nbsp;
 <a name="line27"></a><span style="color: #009933; font-style: italic;">/**
-<a name="line28"></a> * Exception will be thrown by NodeInterface::checkout() and NodeInterface::checkpoint() if an activity
-<a name="line29"></a> * A is present on the current session and any of the following conditions is met:
-<a name="line30"></a> *
-<a name="line31"></a> * - There already is a node in another workspace that has a checked-out node
-<a name="line32"></a> *   for the version history of N whose jcr:activity references A.
-<a name="line33"></a> * - There is a version in the version history of N that is not a predecessor
-<a name="line34"></a> *   of N but whose jcr:activity references A.
-<a name="line35"></a> *
-<a name="line36"></a> * &amp;nbsp;
-<a name="line37"></a> *
-<a name="line38"></a> * @package phpcr
-<a name="line39"></a> * @subpackage exceptions
-<a name="line40"></a> * @api
-<a name="line41"></a> */</span>
-<a name="line42"></a><span style="color: #000000; font-weight: bold;">class</span> ActivityViolationException <span style="color: #000000; font-weight: bold;">extends</span> \PHPCR\Version\VersionException
-<a name="line43"></a><span style="color: #009900;">&#123;</span>
-<a name="line44"></a><span style="color: #009900;">&#125;</span>
-<a name="line45"></a>&nbsp;</pre>
+<a name="line28"></a> * Exception will be thrown by NodeInterface::checkout() and
+<a name="line29"></a> * NodeInterface::checkpoint() if an activity A is present on the current
+<a name="line30"></a> * session and any of the following conditions is met:
+<a name="line31"></a> *
+<a name="line32"></a> * - There already is a node in another workspace that has a checked-out node
+<a name="line33"></a> *   for the version history of N whose jcr:activity references A.
+<a name="line34"></a> * - There is a version in the version history of N that is not a predecessor
+<a name="line35"></a> *   of N but whose jcr:activity references A.
+<a name="line36"></a> *
+<a name="line37"></a> * @package phpcr
+<a name="line38"></a> * @subpackage exceptions
+<a name="line39"></a> * @api
+<a name="line40"></a> */</span>
+<a name="line41"></a><span style="color: #000000; font-weight: bold;">class</span> ActivityViolationException <span style="color: #000000; font-weight: bold;">extends</span> \PHPCR\Version\VersionException
+<a name="line42"></a><span style="color: #009900;">&#123;</span>
+<a name="line43"></a><span style="color: #009900;">&#125;</span>
+<a name="line44"></a>&nbsp;</pre>
 <div class="header">
 <h1>PHPCR</h1>
 <ul>

@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="generator" content="PHPDoctor 2RC4 (http://peej.github.com/phpdoctor/)">
-<meta name="when" content="Tue, 26 Jul 2011 15:56:34 +0000">
+<meta name="when" content="Tue, 27 Mar 2012 06:17:41 +0000">
 
 <link rel="stylesheet" type="text/css" href="../../stylesheet.css">
 <link rel="start" href="../../overview-summary.html">
@@ -64,14 +64,14 @@ Detail: <a href="#detail_field">Field</a> | <a href="#detail_method">Method</a> 
 <tr><th colspan="2">Method Summary</th></tr>
 <tr>
 <td class="type"> <a href="../../phpcr/query/queryinterface.html">QueryInterface</a></td>
-<td class="description"><p class="name"><a href="#createQuery()">createQuery</a>(string statement, string language)</p><p class="description">Creates a new query by specifying the query statement itself and the language
-in which the query is stated.
+<td class="description"><p class="name"><a href="#createQuery()">createQuery</a>(string statement, string language)</p><p class="description">Creates a new query by specifying the query statement itself and the
+language in which the query is stated.
 </p></td>
 </tr>
 <tr>
 <td class="type"> <a href="../../phpcr/query/qom/queryobjectmodelfactoryinterface.html">QueryObjectModelFactoryInterface</a></td>
-<td class="description"><p class="name"><a href="#getQOMFactory()">getQOMFactory</a>()</p><p class="description">Returns a QueryObjectModelFactory with which a JCR-JQOM query can be built
-programmatically.</p></td>
+<td class="description"><p class="name"><a href="#getQOMFactory()">getQOMFactory</a>()</p><p class="description">Returns a QueryObjectModelFactory with which a JCR-JQOM query can be
+built programmatically.</p></td>
 </tr>
 <tr>
 <td class="type"> <a href="../../phpcr/query/queryinterface.html">QueryInterface</a></td>
@@ -80,20 +80,20 @@ programmatically.</p></td>
 </tr>
 <tr>
 <td class="type"> array</td>
-<td class="description"><p class="name"><a href="#getSupportedQueryLanguages()">getSupportedQueryLanguages</a>()</p><p class="description">Returns an array of strings representing all query languages supported by
-this repository.
+<td class="description"><p class="name"><a href="#getSupportedQueryLanguages()">getSupportedQueryLanguages</a>()</p><p class="description">Returns an array of strings representing all query languages supported
+by this repository.
 </p></td>
 </tr>
 </table>
 
 <h2 id="detail_method">Method Detail</h2>
-<a href="../../source/phpcr/query/querymanagerinterface.php.html#line53" class="location">PHPCR/Query/QueryManagerInterface.php at line 53</a>
+<a href="../../source/phpcr/query/querymanagerinterface.php.html#line56" class="location">PHPCR/Query/QueryManagerInterface.php at line 56</a>
 
 <h3 id="createQuery()">createQuery</h3>
 <code class="signature">public  <a href="../../phpcr/query/queryinterface.html">QueryInterface</a> <strong>createQuery</strong>(string statement, string language)</code>
 <div class="details">
-<p>Creates a new query by specifying the query statement itself and the language
-in which the query is stated.</p><p>The $language must be a string from among those returned by
+<p>Creates a new query by specifying the query statement itself and the
+language in which the query is stated.</p><p>The $language must be a string from among those returned by
 QueryManagerInterface::getSupportedQueryLanguages().</p><dl>
 <dt>Parameters:</dt>
 <dd>statement - The query statement to be executed.</dd>
@@ -109,13 +109,13 @@ QueryManagerInterface::getSupportedQueryLanguages().</p><dl>
 
 <hr>
 
-<a href="../../source/phpcr/query/querymanagerinterface.php.html#line62" class="location">PHPCR/Query/QueryManagerInterface.php at line 62</a>
+<a href="../../source/phpcr/query/querymanagerinterface.php.html#line67" class="location">PHPCR/Query/QueryManagerInterface.php at line 67</a>
 
 <h3 id="getQOMFactory()">getQOMFactory</h3>
 <code class="signature">public  <a href="../../phpcr/query/qom/queryobjectmodelfactoryinterface.html">QueryObjectModelFactoryInterface</a> <strong>getQOMFactory</strong>()</code>
 <div class="details">
-<p>Returns a QueryObjectModelFactory with which a JCR-JQOM query can be built
-programmatically.</p><dl>
+<p>Returns a QueryObjectModelFactory with which a JCR-JQOM query can be
+built programmatically.</p><dl>
 <dt>Returns:</dt>
 <dd>a QueryObjectModelFactory object</dd>
 <dt>Api.</dt>
@@ -124,14 +124,15 @@ programmatically.</p><dl>
 
 <hr>
 
-<a href="../../source/phpcr/query/querymanagerinterface.php.html#line78" class="location">PHPCR/Query/QueryManagerInterface.php at line 78</a>
+<a href="../../source/phpcr/query/querymanagerinterface.php.html#line88" class="location">PHPCR/Query/QueryManagerInterface.php at line 88</a>
 
 <h3 id="getQuery()">getQuery</h3>
 <code class="signature">public  <a href="../../phpcr/query/queryinterface.html">QueryInterface</a> <strong>getQuery</strong>(<a href="../../phpcr/nodeinterface.html">NodeInterface</a> node)</code>
 <div class="details">
-<p>Retrieves an existing persistent query.</p><p>Persistent queries are created by first using QueryManagerInterface::createQuery to
-create a Query object and then calling QueryInterface::save() to persist the query to
-a location in the workspace.</p><dl>
+<p>Retrieves an existing persistent query.</p><p>Persistent queries are created by first using
+QueryManagerInterface::createQuery() to create a Query object and then
+calling QueryInterface::save() to persist the query to a location in the
+workspace.</p><dl>
 <dt>Parameters:</dt>
 <dd>node - a persisted query (that is, a node of type nt:query).</dd>
 <dt>Returns:</dt>
@@ -145,13 +146,13 @@ a location in the workspace.</p><dl>
 
 <hr>
 
-<a href="../../source/phpcr/query/querymanagerinterface.php.html#line93" class="location">PHPCR/Query/QueryManagerInterface.php at line 93</a>
+<a href="../../source/phpcr/query/querymanagerinterface.php.html#line104" class="location">PHPCR/Query/QueryManagerInterface.php at line 104</a>
 
 <h3 id="getSupportedQueryLanguages()">getSupportedQueryLanguages</h3>
 <code class="signature">public  array <strong>getSupportedQueryLanguages</strong>()</code>
 <div class="details">
-<p>Returns an array of strings representing all query languages supported by
-this repository.</p><p>This set must include at least the strings represented by the constants
+<p>Returns an array of strings representing all query languages supported
+by this repository.</p><p>This set must include at least the strings represented by the constants
 QueryInterface::JCR_SQL2 and QueryInterface::JCR_JQOM. An implementation
 may also support other languages.</p><dl>
 <dt>Returns:</dt>

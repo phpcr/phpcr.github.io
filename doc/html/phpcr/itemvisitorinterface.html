@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="generator" content="PHPDoctor 2RC4 (http://peej.github.com/phpdoctor/)">
-<meta name="when" content="Tue, 26 Jul 2011 15:56:34 +0000">
+<meta name="when" content="Tue, 27 Mar 2012 06:17:40 +0000">
 
 <link rel="stylesheet" type="text/css" href="../stylesheet.css">
 <link rel="start" href="../overview-summary.html">
@@ -71,19 +71,21 @@ through the tree performing some operation on each Item.</p></div>
 <tr><th colspan="2">Method Summary</th></tr>
 <tr>
 <td class="type"> void</td>
-<td class="description"><p class="name"><a href="#visit()">visit</a>(<a href="../phpcr/iteminterface.html">ItemInterface</a> item)</p><p class="description">This method is called when the ItemVisitor is passed to the accept method of a Node or Property.
+<td class="description"><p class="name"><a href="#visit()">visit</a>(<a href="../phpcr/iteminterface.html">ItemInterface</a> item)</p><p class="description">This method is called when the ItemVisitor is passed to the accept
+method of a Node or Property.
 </p></td>
 </tr>
 </table>
 
 <h2 id="detail_method">Method Detail</h2>
-<a href="../source/phpcr/itemvisitorinterface.php.html#line57" class="location">PHPCR/ItemVisitorInterface.php at line 57</a>
+<a href="../source/phpcr/itemvisitorinterface.php.html#line60" class="location">PHPCR/ItemVisitorInterface.php at line 60</a>
 
 <h3 id="visit()">visit</h3>
 <code class="signature">public  void <strong>visit</strong>(<a href="../phpcr/iteminterface.html">ItemInterface</a> item)</code>
 <div class="details">
-<p>This method is called when the ItemVisitor is passed to the accept method of a Node or Property.</p><p>If this method throws an exception the visiting process is aborted.</p><p>PHPCR Note: you need to distinguish between Node and Property objects being
-visited in your implementation.</p><dl>
+<p>This method is called when the ItemVisitor is passed to the accept
+method of a Node or Property.</p><p>If this method throws an exception the visiting process is aborted.</p><p>PHPCR Note: you need to distinguish between Node and Property objects
+being visited in your implementation.</p><dl>
 <dt>Parameters:</dt>
 <dd>item - a node or property accepting this visitor</dd>
 <dt>Throws:</dt>

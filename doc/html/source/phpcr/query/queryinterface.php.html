@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="generator" content="PHPDoctor 2RC4 (http://peej.github.com/phpdoctor/)">
-<meta name="when" content="Tue, 26 Jul 2011 15:56:44 +0000">
+<meta name="when" content="Tue, 27 Mar 2012 06:17:49 +0000">
 
 <link rel="stylesheet" type="text/css" href="../../../stylesheet.css">
 <link rel="start" href="../../../overview-summary.html">
@@ -116,7 +116,7 @@ limitations under the License.</p></div>
 <a name="line69"></a>    <span style="color: #009933; font-style: italic;">/**
 <a name="line70"></a>     * Executes this query and returns a QueryResult object.
 <a name="line71"></a>     *
-<a name="line72"></a>     * @return \PHPCR\Query\QueryInterface a QueryResult object
+<a name="line72"></a>     * @return \PHPCR\Query\QueryResultInterface a QueryResult object
 <a name="line73"></a>     *
 <a name="line74"></a>     * @throws \PHPCR\Query\InvalidQueryException if the query contains an unbound variable.
 <a name="line75"></a>     * @throws \PHPCR\RepositoryException if an error occurs
@@ -185,7 +185,7 @@ limitations under the License.</p></div>
 <a name="line138"></a>    <span style="color: #009933; font-style: italic;">/**
 <a name="line139"></a>     * Fetches the path of the node representing this query.
 <a name="line140"></a>     *
-<a name="line141"></a>     * If this is a Query object that has been stored using self::storeAsNode()
+<a name="line141"></a>     * If this is a Query object that has been stored using QueryInterface::storeAsNode()
 <a name="line142"></a>     * (regardless of whether it has been saved yet) or retrieved using
 <a name="line143"></a>     * QueryManagerInterface::getQuery()), then this method returns the path
 <a name="line144"></a>     * of the nt:query node that stores the query.

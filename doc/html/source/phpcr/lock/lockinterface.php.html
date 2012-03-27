@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="generator" content="PHPDoctor 2RC4 (http://peej.github.com/phpdoctor/)">
-<meta name="when" content="Tue, 26 Jul 2011 15:56:40 +0000">
+<meta name="when" content="Tue, 27 Mar 2012 06:17:46 +0000">
 
 <link rel="stylesheet" type="text/css" href="../../../stylesheet.css">
 <link rel="start" href="../../../overview-summary.html">
@@ -81,124 +81,146 @@ limitations under the License.</p></div>
 <a name="line34"></a><span style="color: #000000; font-weight: bold;">interface</span> LockInterface
 <a name="line35"></a><span style="color: #009900;">&#123;</span>
 <a name="line36"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line37"></a>     * Returns the value of the jcr:lockOwner property. This is either the
-<a name="line38"></a>     * client supplied owner information (see LockManager::lock()),
-<a name="line39"></a>     * an implementation-dependent string identifying the user who either
-<a name="line40"></a>     * created the lock or who is bound to the session holding the lock, or
-<a name="line41"></a>     * null if none of these are available.
-<a name="line42"></a>     *
-<a name="line43"></a>     * The lock owner's identity is only provided for informational purposes.
-<a name="line44"></a>     * It does not govern who can perform an unlock or make changes to the
-<a name="line45"></a>     * locked nodes; that depends entirely upon who the token holder is.
-<a name="line46"></a>     *
-<a name="line47"></a>     * @return string a user ID
-<a name="line48"></a>     * @api
-<a name="line49"></a>     */</span>
-<a name="line50"></a>    <span style="color: #000000; font-weight: bold;">function</span> getLockOwner<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line51"></a>&nbsp;
-<a name="line52"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line53"></a>     * Returns true if this is a deep lock; false otherwise.
-<a name="line54"></a>     *
-<a name="line55"></a>     * @return boolean
-<a name="line56"></a>     * @api
-<a name="line57"></a>     */</span>
-<a name="line58"></a>    <span style="color: #000000; font-weight: bold;">function</span> isDeep<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line59"></a>&nbsp;
-<a name="line60"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line61"></a>     * Returns the lock holding node.
-<a name="line62"></a>     *
-<a name="line63"></a>     * Note that $n-&gt;getLock()-&gt;getNode() (where $n is a locked node) will only
-<a name="line64"></a>     * return $n if $n is the lock holder. If $n is in the subgraph of the lock
-<a name="line65"></a>     * holder, $h, then this call will return $h.
+<a name="line37"></a>     * Get the user ID string of the lock owner.
+<a name="line38"></a>     *
+<a name="line39"></a>     * Returns the value of the jcr:lockOwner property. This is either the
+<a name="line40"></a>     * client supplied owner information (see LockManager::lock()),
+<a name="line41"></a>     * an implementation-dependent string identifying the user who either
+<a name="line42"></a>     * created the lock or who is bound to the session holding the lock, or
+<a name="line43"></a>     * null if none of these are available.
+<a name="line44"></a>     *
+<a name="line45"></a>     * The lock owner's identity is only provided for informational purposes.
+<a name="line46"></a>     * It does not govern who can perform an unlock or make changes to the
+<a name="line47"></a>     * locked nodes; that depends entirely upon who the token holder is.
+<a name="line48"></a>     *
+<a name="line49"></a>     * @return string a user ID
+<a name="line50"></a>     *
+<a name="line51"></a>     * @api
+<a name="line52"></a>     */</span>
+<a name="line53"></a>    <span style="color: #000000; font-weight: bold;">function</span> getLockOwner<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line54"></a>&nbsp;
+<a name="line55"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line56"></a>     * Returns true if this is a deep lock; false otherwise.
+<a name="line57"></a>     *
+<a name="line58"></a>     * @return boolean
+<a name="line59"></a>     *
+<a name="line60"></a>     * @api
+<a name="line61"></a>     */</span>
+<a name="line62"></a>    <span style="color: #000000; font-weight: bold;">function</span> isDeep<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line63"></a>&nbsp;
+<a name="line64"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line65"></a>     * Returns the lock holding node.
 <a name="line66"></a>     *
-<a name="line67"></a>     * @return \PHPCR\NodeInterface a Node
-<a name="line68"></a>     * @api
-<a name="line69"></a>     */</span>
-<a name="line70"></a>    <span style="color: #000000; font-weight: bold;">function</span> getNode<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line71"></a>&nbsp;
-<a name="line72"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line73"></a>     * May return the lock token for this lock.
+<a name="line67"></a>     * This is not necessarily the node at the path you used to get this lock
+<a name="line68"></a>     * instance, if a parent node was deep locked. This method returns the node
+<a name="line69"></a>     * that was originally locked.
+<a name="line70"></a>     *
+<a name="line71"></a>     * I.e. $lockManager-&gt;getLock($n-&gt;getPath())-&gt;getNode() (where $n is a
+<a name="line72"></a>     * locked node) will only * return $n if $n is the lock holder. If $n is in
+<a name="line73"></a>     * the subgraph of the lock holder, $h, then this call will return $h.
 <a name="line74"></a>     *
-<a name="line75"></a>     * If this lock is open-scoped and the current session either holds the lock token for this lock, or the
-<a name="line76"></a>     * repository chooses to expose the lock token to the current session,
-<a name="line77"></a>     * then this method will return that lock token. Otherwise this method will
-<a name="line78"></a>     * return null.
-<a name="line79"></a>     *
-<a name="line80"></a>     * @return string
-<a name="line81"></a>     * @api
-<a name="line82"></a>     */</span>
-<a name="line83"></a>    <span style="color: #000000; font-weight: bold;">function</span> getLockToken<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line84"></a>&nbsp;
-<a name="line85"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line86"></a>     * Returns the number of seconds remaining until this locks times out.
-<a name="line87"></a>     *
-<a name="line88"></a>     * If the lock has already timed out, a negative value is returned. If the
-<a name="line89"></a>     * number of seconds remaining is infinite or unknown, PHP_INT_MAX is
-<a name="line90"></a>     * returned.
-<a name="line91"></a>     *
-<a name="line92"></a>     * @return integer the number of seconds remaining until this lock times out.
-<a name="line93"></a>     *
-<a name="line94"></a>     * @throws \PHPCR\RepositoryException if the timeout is infinite or unknown
-<a name="line95"></a>     * @api
-<a name="line96"></a>     */</span>
-<a name="line97"></a>    <span style="color: #000000; font-weight: bold;">function</span> getSecondsRemaining<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line98"></a>&nbsp;
-<a name="line99"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line100"></a>     * Determines if the lock is still in effect.
+<a name="line75"></a>     * @return \PHPCR\NodeInterface a Node
+<a name="line76"></a>     *
+<a name="line77"></a>     * @api
+<a name="line78"></a>     */</span>
+<a name="line79"></a>    <span style="color: #000000; font-weight: bold;">function</span> getNode<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line80"></a>&nbsp;
+<a name="line81"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line82"></a>     * May return the lock token for this lock.
+<a name="line83"></a>     *
+<a name="line84"></a>     * If this lock is open-scoped and the current session either holds the
+<a name="line85"></a>     * lock token for this lock, or the repository chooses to expose the lock
+<a name="line86"></a>     * token to the current session, then this method will return that lock
+<a name="line87"></a>     * token. Otherwise this method will return null.
+<a name="line88"></a>     *
+<a name="line89"></a>     * @return string
+<a name="line90"></a>     *
+<a name="line91"></a>     * @api
+<a name="line92"></a>     */</span>
+<a name="line93"></a>    <span style="color: #000000; font-weight: bold;">function</span> getLockToken<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line94"></a>&nbsp;
+<a name="line95"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line96"></a>     * Returns the number of seconds remaining until this locks times out.
+<a name="line97"></a>     *
+<a name="line98"></a>     * If the lock has already timed out, a negative value is returned. If the
+<a name="line99"></a>     * number of seconds remaining is infinite or unknown, PHP_INT_MAX is
+<a name="line100"></a>     * returned.
 <a name="line101"></a>     *
-<a name="line102"></a>     * Returns true if this Lock object represents a lock that is currently in
-<a name="line103"></a>     * effect. If this lock has been unlocked either explicitly or due to an
-<a name="line104"></a>     * implementation-specific limitation (like a timeout) then it returns false.
-<a name="line105"></a>     * Note that this method is intended for those cases where one is holding a
-<a name="line106"></a>     * Lock Java object and wants to find out whether the lock (the JCR-level
-<a name="line107"></a>     * entity that is attached to the lockable node) that this object originally
-<a name="line108"></a>     * represented still exists. For example, a timeout or explicit unlock will
-<a name="line109"></a>     * remove a lock from a node but the Lock Java object corresponding to that
-<a name="line110"></a>     * lock may still exist, and in that case its isLive method will return false.
-<a name="line111"></a>     *
-<a name="line112"></a>     * @return boolean True, if the lock still counts, else false.
-<a name="line113"></a>     *
-<a name="line114"></a>     * @throws RepositoryException if an error occurs
-<a name="line115"></a>     * @api
-<a name="line116"></a>     */</span>
-<a name="line117"></a>    <span style="color: #000000; font-weight: bold;">function</span> isLive<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line118"></a>&nbsp;
-<a name="line119"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line120"></a>     * Determines if this lock is session-scoped.
-<a name="line121"></a>     *
-<a name="line122"></a>     * Returns true if this is a session-scoped lock and the scope is bound to the
-<a name="line123"></a>     * current session. Returns false otherwise.
-<a name="line124"></a>     *
-<a name="line125"></a>     * @return boolean True, if the lock current session is locked, else false.
-<a name="line126"></a>     * @api
-<a name="line127"></a>     */</span>
-<a name="line128"></a>    <span style="color: #000000; font-weight: bold;">function</span> isSessionScoped<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line129"></a>&nbsp;
-<a name="line130"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line131"></a>     * Determines if the current session owns this lock.
-<a name="line132"></a>     *
-<a name="line133"></a>     * Returns true if the current session is the owner of this lock, either because
-<a name="line134"></a>     * it is session-scoped and bound to this session or open-scoped and this session
-<a name="line135"></a>     * currently holds the token for this lock. Returns false otherwise.
+<a name="line102"></a>     * @return integer the number of seconds remaining until this lock times out.
+<a name="line103"></a>     *
+<a name="line104"></a>     * @throws \PHPCR\RepositoryException if the timeout is infinite or unknown
+<a name="line105"></a>     *
+<a name="line106"></a>     * @api
+<a name="line107"></a>     */</span>
+<a name="line108"></a>    <span style="color: #000000; font-weight: bold;">function</span> getSecondsRemaining<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line109"></a>&nbsp;
+<a name="line110"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line111"></a>     * Determines if the lock is still in effect.
+<a name="line112"></a>     *
+<a name="line113"></a>     * Returns true if this Lock object represents a lock that is currently in
+<a name="line114"></a>     * effect. If this lock has been unlocked either explicitly or due to an
+<a name="line115"></a>     * implementation-specific limitation (like a timeout) then it returns
+<a name="line116"></a>     * false.
+<a name="line117"></a>     *
+<a name="line118"></a>     * Note that this method is intended for those cases where one is holding a
+<a name="line119"></a>     * Lock object and wants to find out whether the lock (the JCR-level
+<a name="line120"></a>     * entity that is attached to the lockable node) that this object
+<a name="line121"></a>     * originally represented still exists. For example, a timeout or explicit
+<a name="line122"></a>     * unlock will remove a lock from a node but the Lock object
+<a name="line123"></a>     * corresponding to that lock may still exist, and in that case its isLive
+<a name="line124"></a>     * method will return false.
+<a name="line125"></a>     *
+<a name="line126"></a>     * @return boolean True, if the lock still counts, else false.
+<a name="line127"></a>     *
+<a name="line128"></a>     * @throws RepositoryException if an error occurs
+<a name="line129"></a>     *
+<a name="line130"></a>     * @api
+<a name="line131"></a>     */</span>
+<a name="line132"></a>    <span style="color: #000000; font-weight: bold;">function</span> isLive<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line133"></a>&nbsp;
+<a name="line134"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line135"></a>     * Determines if this lock is session-scoped.
 <a name="line136"></a>     *
-<a name="line137"></a>     * @return boolean True, if the the current session is the owner of the lock, else false.
-<a name="line138"></a>     * @api
-<a name="line139"></a>     */</span>
-<a name="line140"></a>    <span style="color: #000000; font-weight: bold;">function</span> isLockOwningSession<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line141"></a>&nbsp;
-<a name="line142"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line143"></a>     * If this lock's time-to-live is governed by a timer, this method resets that
-<a name="line144"></a>     * timer so that the lock does not timeout and expire.
-<a name="line145"></a>     *
-<a name="line146"></a>     * If this lock's time-to-live is not governed by a timer, then this method has no effect.
-<a name="line147"></a>     *
-<a name="line148"></a>     * @throws \PHPCR\Lock\LockException if this Session does not hold the correct lock token for this lock.
-<a name="line149"></a>     * @throws \PHPCR\RepositoryException if another error occurs.
-<a name="line150"></a>     * @api
-<a name="line151"></a>     */</span>
-<a name="line152"></a>    <span style="color: #000000; font-weight: bold;">function</span> refresh<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line153"></a><span style="color: #009900;">&#125;</span>
-<a name="line154"></a>&nbsp;</pre>
+<a name="line137"></a>     * Returns true if this is a session-scoped lock and the scope is bound to
+<a name="line138"></a>     * the current session. Returns false otherwise.
+<a name="line139"></a>     *
+<a name="line140"></a>     * @return boolean True, if the lock current session is locked, else false.
+<a name="line141"></a>     *
+<a name="line142"></a>     * @api
+<a name="line143"></a>     */</span>
+<a name="line144"></a>    <span style="color: #000000; font-weight: bold;">function</span> isSessionScoped<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line145"></a>&nbsp;
+<a name="line146"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line147"></a>     * Determines if the current session owns this lock.
+<a name="line148"></a>     *
+<a name="line149"></a>     * Returns true if the current session is the owner of this lock, either
+<a name="line150"></a>     * because it is session-scoped and bound to this session or open-scoped
+<a name="line151"></a>     * and this session currently holds the token for this lock. Returns false
+<a name="line152"></a>     * otherwise.
+<a name="line153"></a>     *
+<a name="line154"></a>     * @return boolean True, if the the current session is the owner of the
+<a name="line155"></a>     *      lock, else false.
+<a name="line156"></a>     *
+<a name="line157"></a>     * @api
+<a name="line158"></a>     */</span>
+<a name="line159"></a>    <span style="color: #000000; font-weight: bold;">function</span> isLockOwningSession<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line160"></a>&nbsp;
+<a name="line161"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line162"></a>     * If this lock's time-to-live is governed by a timer, this method resets
+<a name="line163"></a>     * that timer so that the lock does not timeout and expire.
+<a name="line164"></a>     *
+<a name="line165"></a>     * If this lock's time-to-live is not governed by a timer, then this method
+<a name="line166"></a>     * has no effect.
+<a name="line167"></a>     *
+<a name="line168"></a>     * @throws \PHPCR\Lock\LockException if this Session does not hold the
+<a name="line169"></a>     *      correct lock token for this lock.
+<a name="line170"></a>     * @throws \PHPCR\RepositoryException if another error occurs.
+<a name="line171"></a>     *
+<a name="line172"></a>     * @api
+<a name="line173"></a>     */</span>
+<a name="line174"></a>    <span style="color: #000000; font-weight: bold;">function</span> refresh<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line175"></a><span style="color: #009900;">&#125;</span>
+<a name="line176"></a>&nbsp;</pre>
 <div class="header">
 <h1>PHPCR</h1>
 <ul>

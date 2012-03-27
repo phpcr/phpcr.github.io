@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="generator" content="PHPDoctor 2RC4 (http://peej.github.com/phpdoctor/)">
-<meta name="when" content="Tue, 26 Jul 2011 15:56:35 +0000">
+<meta name="when" content="Tue, 27 Mar 2012 06:17:41 +0000">
 
 <link rel="stylesheet" type="text/css" href="../../stylesheet.css">
 <link rel="start" href="../../overview-summary.html">
@@ -41,7 +41,7 @@ Detail: <a href="#detail_field">Field</a> | <a href="#detail_method">Method</a> 
 <hr>
 
 <div class="qualifiedName">PHPCR\Security\AccessControlManagerInterface</div>
-<a href="../../source/phpcr/security/accesscontrolmanagerinterface.php.html#line38" class="location">PHPCR/Security/AccessControlManagerInterface.php at line 38</a>
+<a href="../../source/phpcr/security/accesscontrolmanagerinterface.php.html#line40" class="location">PHPCR/Security/AccessControlManagerInterface.php at line 40</a>
 
 <h1>Interface AccessControlManagerInterface</h1>
 
@@ -51,8 +51,8 @@ Detail: <a href="#detail_field">Field</a> | <a href="#detail_method">Method</a> 
 
 <p class="signature">public  interface <strong>AccessControlManagerInterface</strong></p>
 
-<div class="comment" id="overview_description"><p>The AccessControlManager object is accessed via SessionInterface::getAccessControlManager().</p><p>It provides methods for:
-- Access control discovery
+<div class="comment" id="overview_description"><p>The AccessControlManager object is accessed via
+SessionInterface::getAccessControlManager().</p><p>It provides methods for:</p><p>- Access control discovery
 - Assigning access control policies</p></div>
 
 <dl>
@@ -71,27 +71,30 @@ the node at absPath.</p></td>
 </tr>
 <tr>
 <td class="type"> array</td>
-<td class="description"><p class="name"><a href="#getEffectivePolicies()">getEffectivePolicies</a>(string absPath)</p><p class="description">Gets the access control policies currently in effect on the node identified by the given path.
+<td class="description"><p class="name"><a href="#getEffectivePolicies()">getEffectivePolicies</a>(string absPath)</p><p class="description">Gets the access control policies currently in effect on the node
+identified by the given path.
 </p></td>
 </tr>
 <tr>
 <td class="type"> array</td>
-<td class="description"><p class="name"><a href="#getPolicies()">getPolicies</a>(string absPath)</p><p class="description">Gets the access control policies previouly set to the node identified by the given path.
+<td class="description"><p class="name"><a href="#getPolicies()">getPolicies</a>(string absPath)</p><p class="description">Gets the access control policies previously set to the node identified
+by the given path.
 </p></td>
 </tr>
 <tr>
 <td class="type"> array</td>
-<td class="description"><p class="name"><a href="#getPrivileges()">getPrivileges</a>(string absPath)</p><p class="description">Reads the previleges of an existing node identfied by its path.
+<td class="description"><p class="name"><a href="#getPrivileges()">getPrivileges</a>(string absPath)</p><p class="description">Reads the privileges of an existing node identfied by its path.
 </p></td>
 </tr>
 <tr>
 <td class="type"> array</td>
-<td class="description"><p class="name"><a href="#getSupportedPrivileges()">getSupportedPrivileges</a>(string absPath)</p><p class="description">Gets previleges of an existing node identified by its path.
+<td class="description"><p class="name"><a href="#getSupportedPrivileges()">getSupportedPrivileges</a>(string absPath)</p><p class="description">Gets privileges of an existing node identified by its path.
 </p></td>
 </tr>
 <tr>
 <td class="type"> boolean</td>
-<td class="description"><p class="name"><a href="#hasPrivileges()">hasPrivileges</a>(string absPath, array privileges)</p><p class="description">Determines if the node identified its path has the given set of previleges.
+<td class="description"><p class="name"><a href="#hasPrivileges()">hasPrivileges</a>(string absPath, array privileges)</p><p class="description">Determines if the node identified its path has the given set of
+privileges.
 </p></td>
 </tr>
 <tr>
@@ -111,7 +114,7 @@ the node at absPath.</p></td>
 </table>
 
 <h2 id="detail_method">Method Detail</h2>
-<a href="../../source/phpcr/security/accesscontrolmanagerinterface.php.html#line173" class="location">PHPCR/Security/AccessControlManagerInterface.php at line 173</a>
+<a href="../../source/phpcr/security/accesscontrolmanagerinterface.php.html#line212" class="location">PHPCR/Security/AccessControlManagerInterface.php at line 212</a>
 
 <h3 id="getApplicablePolicies()">getApplicablePolicies</h3>
 <code class="signature">public  Iterator <strong>getApplicablePolicies</strong>(string absPath)</code>
@@ -119,7 +122,7 @@ the node at absPath.</p></td>
 <p>Returns the access control policies that are capable of being applied to
 the node at absPath.</p><dl>
 <dt>Parameters:</dt>
-<dd>absPath - The absolute path to a node the prvileges shall be fetched of.</dd>
+<dd>absPath - The absolute path to the node of which privileges are requested.</dd>
 <dt>Returns:</dt>
 <dd>over the applicable access control policies implementing <b>SeekableIterator</b> and <b>Countable</b>. Values are the AccessControlPolicyInterface instances. Keys have no meaning. Returns an empty iterator if no policies are applicable.</dd>
 <dt>Throws:</dt>
@@ -132,21 +135,22 @@ the node at absPath.</p><dl>
 
 <hr>
 
-<a href="../../source/phpcr/security/accesscontrolmanagerinterface.php.html#line156" class="location">PHPCR/Security/AccessControlManagerInterface.php at line 156</a>
+<a href="../../source/phpcr/security/accesscontrolmanagerinterface.php.html#line189" class="location">PHPCR/Security/AccessControlManagerInterface.php at line 189</a>
 
 <h3 id="getEffectivePolicies()">getEffectivePolicies</h3>
 <code class="signature">public  array <strong>getEffectivePolicies</strong>(string absPath)</code>
 <div class="details">
-<p>Gets the access control policies currently in effect on the node identified by the given path.</p><p>Returns the AccessControlPolicy objects that currently are in effect at
+<p>Gets the access control policies currently in effect on the node
+identified by the given path.</p><p>Returns the AccessControlPolicy objects that currently are in effect at
 the node at $absPath. This may be policies set through this API or some
 implementation specific (default) policies.</p><dl>
 <dt>Parameters:</dt>
-<dd>absPath - The absolute path to a node the prvileges shall be fetched of.</dd>
+<dd>absPath - The absolute path to the node of which privileges are requested.</dd>
 <dt>Returns:</dt>
 <dd>an array of AccessControlPolicy objects.</dd>
 <dt>Throws:</dt>
 <dd><a href="../../phpcr/pathnotfoundexception.html">\PHPCR\PathNotFoundException</a> - if no node at absPath exists or the session does not have sufficent access to retrieve a node at that location.</dd>
-<dd><a href="../../phpcr/accessdeniedexception.html">\PHPCR\AccessDeniedException</a> - - if the session lacks READ_ACCESS_CONTROL privilege for the absPath node.</dd>
+<dd><a href="../../phpcr/accessdeniedexception.html">\PHPCR\AccessDeniedException</a> - if the session lacks READ_ACCESS_CONTROL privilege for the absPath node.</dd>
 <dd><a href="../../phpcr/repositoryexception.html">\PHPCR\RepositoryException</a> - if another error occurs.</dd>
 <dt>Api.</dt>
 </dl>
@@ -154,18 +158,19 @@ implementation specific (default) policies.</p><dl>
 
 <hr>
 
-<a href="../../source/phpcr/security/accesscontrolmanagerinterface.php.html#line138" class="location">PHPCR/Security/AccessControlManagerInterface.php at line 138</a>
+<a href="../../source/phpcr/security/accesscontrolmanagerinterface.php.html#line165" class="location">PHPCR/Security/AccessControlManagerInterface.php at line 165</a>
 
 <h3 id="getPolicies()">getPolicies</h3>
 <code class="signature">public  array <strong>getPolicies</strong>(string absPath)</code>
 <div class="details">
-<p>Gets the access control policies previouly set to the node identified by the given path.</p><p>Returns the AccessControlPolicy objects that have been set to the node at
-$absPath or an empty array if no policy has been set. This method reflects
-the binding state, including transient policy modifications.
+<p>Gets the access control policies previously set to the node identified
+by the given path.</p><p>Returns the AccessControlPolicy objects that have been set to the node
+at $absPath or an empty array if no policy has been set. This method
+reflects the binding state, including transient policy modifications.
 Use getEffectivePolicies(String) in order to determine the policy that
 effectively applies at absPath.</p><dl>
 <dt>Parameters:</dt>
-<dd>absPath - The absolute path to a node the prvileges shall be fetched of.</dd>
+<dd>absPath - The absolute path to a node the privileges shall be fetched of.</dd>
 <dt>Returns:</dt>
 <dd>an array of AccessControlPolicy objects or an empty array if no policy has been set.</dd>
 <dt>Throws:</dt>
@@ -178,22 +183,21 @@ effectively applies at absPath.</p><dl>
 
 <hr>
 
-<a href="../../source/phpcr/security/accesscontrolmanagerinterface.php.html#line118" class="location">PHPCR/Security/AccessControlManagerInterface.php at line 118</a>
+<a href="../../source/phpcr/security/accesscontrolmanagerinterface.php.html#line138" class="location">PHPCR/Security/AccessControlManagerInterface.php at line 138</a>
 
 <h3 id="getPrivileges()">getPrivileges</h3>
 <code class="signature">public  array <strong>getPrivileges</strong>(string absPath)</code>
 <div class="details">
-<p>Reads the previleges of an existing node identfied by its path.</p><p>Returns the privileges the session has for absolute path absPath, which
-must be an existing node.
-The returned privileges are those for which self::hasPrivileges() would
-return true.</p><p>The results reported by the this method reflect the net effect of the
+<p>Reads the privileges of an existing node identfied by its path.</p><p>Returns the privileges the session has for absolute path absPath, which
+must be an existing node. The returned privileges are those for which
+AccessControlManagerInterface::hasPrivileges() would return true.</p><p>The results reported by the this method reflect the net effect of the
 currently applied control mechanisms. It does not reflect unsaved access
 control policies or unsaved access control entries. Changes to access
 control status caused by these mechanisms only take effect on
 SessionInterface::save() and are only then reflected in the results of
 the privilege test methods.</p><dl>
 <dt>Parameters:</dt>
-<dd>absPath - The absolute path to a node the prvileges shall be fetched of.</dd>
+<dd>absPath - The absolute path to a node the privileges shall be fetched of.</dd>
 <dt>Returns:</dt>
 <dd>an array of Privileges.</dd>
 <dt>Throws:</dt>
@@ -205,17 +209,17 @@ the privilege test methods.</p><dl>
 
 <hr>
 
-<a href="../../source/phpcr/security/accesscontrolmanagerinterface.php.html#line56" class="location">PHPCR/Security/AccessControlManagerInterface.php at line 56</a>
+<a href="../../source/phpcr/security/accesscontrolmanagerinterface.php.html#line61" class="location">PHPCR/Security/AccessControlManagerInterface.php at line 61</a>
 
 <h3 id="getSupportedPrivileges()">getSupportedPrivileges</h3>
 <code class="signature">public  array <strong>getSupportedPrivileges</strong>(string absPath)</code>
 <div class="details">
-<p>Gets previleges of an existing node identified by its path.</p><p>Returns the privileges supported for absolute path $absPath, which must
-be an existing node.
-This method does not return the privileges held by the session. Instead,
-it returns the privileges that the repository supports.</p><dl>
+<p>Gets privileges of an existing node identified by its path.</p><p>Returns the privileges supported for absolute path $absPath, which must
+be an existing node. This method does not return the privileges held by
+the session. Instead, it returns the privileges that the repository
+supports.</p><dl>
 <dt>Parameters:</dt>
-<dd>absPath - The absolute path to a node the prvileges shall be fetched of.</dd>
+<dd>absPath - The absolute path to a node the privileges shall be fetched of.</dd>
 <dt>Returns:</dt>
 <dd>An array of Privileges.</dd>
 <dt>Throws:</dt>
@@ -227,22 +231,24 @@ it returns the privileges that the repository supports.</p><dl>
 
 <hr>
 
-<a href="../../source/phpcr/security/accesscontrolmanagerinterface.php.html#line94" class="location">PHPCR/Security/AccessControlManagerInterface.php at line 94</a>
+<a href="../../source/phpcr/security/accesscontrolmanagerinterface.php.html#line110" class="location">PHPCR/Security/AccessControlManagerInterface.php at line 110</a>
 
 <h3 id="hasPrivileges()">hasPrivileges</h3>
 <code class="signature">public  boolean <strong>hasPrivileges</strong>(string absPath, array privileges)</code>
 <div class="details">
-<p>Determines if the node identified its path has the given set of previleges.</p><p>Returns whether the session has the specified privileges for absolute
-path $absPath, which must be an existing node.
-Testing an aggregate privilege is equivalent to testing each non aggregate
-privilege among the set returned by calling PrivilegeInterface::getAggregatePrivileges()
+<p>Determines if the node identified its path has the given set of
+privileges.</p><p>Returns whether the session has the specified privileges for absolute
+path $absPath, which must be an existing node. Testing an aggregate
+privilege is equivalent to testing each non aggregate privilege among
+the set returned by calling PrivilegeInterface::getAggregatePrivileges()
 for that privilege.</p><p>The results reported by the this method reflect the net effect of the
 currently applied control mechanisms. It does not reflect unsaved access
 control policies or unsaved access control entries. Changes to access
-control status caused by these mechanisms only take effect on SessionInterface::save()
-and are only then reflected in the results of the privilege test methods.</p><dl>
+control status caused by these mechanisms only take effect on
+SessionInterface::save() and are only then reflected in the results of
+the privilege test methods.</p><dl>
 <dt>Parameters:</dt>
-<dd>absPath - The absolute path to a node the prvileges shall be fetched of.</dd>
+<dd>absPath - The absolute path to a node the privileges shall be fetched of.</dd>
 <dd>privileges - an array of Privileges.</dd>
 <dt>Returns:</dt>
 <dd>true if the session has the specified privileges; false otherwise.</dd>
@@ -255,7 +261,7 @@ and are only then reflected in the results of the privilege test methods.</p><dl
 
 <hr>
 
-<a href="../../source/phpcr/security/accesscontrolmanagerinterface.php.html#line68" class="location">PHPCR/Security/AccessControlManagerInterface.php at line 68</a>
+<a href="../../source/phpcr/security/accesscontrolmanagerinterface.php.html#line77" class="location">PHPCR/Security/AccessControlManagerInterface.php at line 77</a>
 
 <h3 id="privilegeFromName()">privilegeFromName</h3>
 <code class="signature">public  <a href="../../phpcr/security/privilegeinterface.html">PrivilegeInterface</a> <strong>privilegeFromName</strong>(string privilegeName)</code>
@@ -274,21 +280,21 @@ and are only then reflected in the results of the privilege test methods.</p><dl
 
 <hr>
 
-<a href="../../source/phpcr/security/accesscontrolmanagerinterface.php.html#line235" class="location">PHPCR/Security/AccessControlManagerInterface.php at line 235</a>
+<a href="../../source/phpcr/security/accesscontrolmanagerinterface.php.html#line290" class="location">PHPCR/Security/AccessControlManagerInterface.php at line 290</a>
 
 <h3 id="removePolicy()">removePolicy</h3>
 <code class="signature">public  void <strong>removePolicy</strong>(string absPath, <a href="../../phpcr/security/accesscontrolpolicyinterface.html">AccessControlPolicyInterface</a> policy)</code>
 <div class="details">
-<p>Removes the specified AccessControlPolicy from the node at $absPath.</p><p>An AccessControlPolicy can only be removed if it was bound to the specified
-node through this API before. The effect of the removal only takes place
-upon SessionInterface::save(). Note, that an implementation default or any other
-effective AccessControlPolicy that has not been applied to the node before
-may never be removed using this method.</p><dl>
+<p>Removes the specified AccessControlPolicy from the node at $absPath.</p><p>An AccessControlPolicy can only be removed if it was bound to the
+specified node through this API before. The effect of the removal only
+takes place upon SessionInterface::save(). Note, that an implementation
+default or any other effective AccessControlPolicy that has not been
+applied to the node before may never be removed using this method.</p><dl>
 <dt>Parameters:</dt>
-<dd>absPath - The absolute path to a node the prvileges shall be fetched of.</dd>
-<dd>policy - - the policy to be removed.</dd>
+<dd>absPath - The absolute path to the node of which privileges are requested.</dd>
+<dd>policy - the policy to be removed.</dd>
 <dt>Throws:</dt>
-<dd>\HPPCR\PathNotFoundException - if no node at absPath exists or the session does not have sufficent access to retrieve a node at that location.</dd>
+<dd><a href="../../phpcr/pathnotfoundexception.html">\PHPCR\PathNotFoundException</a> - if no node at absPath exists or the session does not have sufficent access to retrieve a node at that location.</dd>
 <dd><a href="../../phpcr/security/accesscontrolexception.html">\PHPCR\Security\AccessControlException</a> - if no policy exists.</dd>
 <dd><a href="../../phpcr/accessdeniedexception.html">\PHPCR\AccessDeniedException</a> - if the session lacks MODIFY_ACCESS_CONTROL privilege for the absPath node.</dd>
 <dd><a href="../../phpcr/lock/lockexception.html">\PHPCR\Lock\LockException</a> - if a lock applies at the node at absPath and this implementation performs this validation immediately instead of waiting until save.</dd>
@@ -300,26 +306,26 @@ may never be removed using this method.</p><dl>
 
 <hr>
 
-<a href="../../source/phpcr/security/accesscontrolmanagerinterface.php.html#line207" class="location">PHPCR/Security/AccessControlManagerInterface.php at line 207</a>
+<a href="../../source/phpcr/security/accesscontrolmanagerinterface.php.html#line255" class="location">PHPCR/Security/AccessControlManagerInterface.php at line 255</a>
 
 <h3 id="setPolicy()">setPolicy</h3>
 <code class="signature">public  void <strong>setPolicy</strong>(string absPath, <a href="../../phpcr/security/accesscontrolpolicyinterface.html">AccessControlPolicyInterface</a> policy)</code>
 <div class="details">
-<p>Binds the policy to the node at absPath.</p><p>The behavior of the call $acm->setPolicy($absPath, $policy) differs depending
-on how the policy object was originally acquired.</p><p>If policy was acquired through $acm->getApplicablePolicies($absPath) then
-that policy object is added to the node at absPath.</p><p>On the other hand, if <code>$policy</code> was acquired through
+<p>Binds the policy to the node at absPath.</p><p>The behavior of the call $acm->setPolicy($absPath, $policy) differs
+depending on how the policy object was originally acquired.</p><p>If policy was acquired through $acm->getApplicablePolicies($absPath)
+then that policy object is added to the node at absPath.</p><p>On the other hand, if <code>$policy</code> was acquired through
 $acm->getPolicies(absPath) then that policy object (usually after being
 altered) replaces its former version on the node at $absPath.</p><p>This is session-write method and therefore the access control policy
 is only dispatched on <code>save()</code> and will only take effect upon
 persist.</p><dl>
 <dt>Parameters:</dt>
-<dd>absPath - The absolute path to a node the prvileges shall be fetched of.</dd>
+<dd>absPath - The absolute path to the node of which privileges are requested.</dd>
 <dd>policy - The AccessControlPolicy to be applied.</dd>
 <dt>Throws:</dt>
 <dd><a href="../../phpcr/pathnotfoundexception.html">\PHPCR\PathNotFoundException</a> - if no node at absPath exists or the session does not have sufficent access to retrieve a node at that location.</dd>
 <dd><a href="../../phpcr/security/accesscontrolexception.html">\PHPCR\Security\AccessControlException</a> - if the policy is not applicable.</dd>
 <dd><a href="../../phpcr/accessdeniedexception.html">\PHPCR\AccessDeniedException</a> - if the session lacks MODIFY_ACCESS_CONTROL privilege for the absPath node.</dd>
-<dd><a href="../../phpcr/lock/lockexception.html">\PHPCR\Lock\LockException</a> - if a lock applies at the node at absPath and this implementation performs this validation immediately instead of waiting until save.</dd>
+<dd><a href="../../phpcr/lock/lockexception.html">\PHPCR\Lock\LockException</a> - if a lock applies at the node at absPath and this implementation performsthis validation immediately instead of waiting until save.</dd>
 <dd><a href="../../phpcr/version/versionexception.html">\PHPCR\Version\VersionException</a> - if the node at absPath is read-only due to a checked-in node and this implementation performs this validation immediately.</dd>
 <dd><a href="../../phpcr/repositoryexception.html">\PHPCR\RepositoryException</a> - if another error occurs.</dd>
 <dt>Api.</dt>

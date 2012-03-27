@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="generator" content="PHPDoctor 2RC4 (http://peej.github.com/phpdoctor/)">
-<meta name="when" content="Tue, 26 Jul 2011 15:56:49 +0000">
+<meta name="when" content="Tue, 27 Mar 2012 06:17:55 +0000">
 
 <link rel="stylesheet" type="text/css" href="../../../../stylesheet.css">
 <link rel="start" href="../../../../overview-summary.html">
@@ -72,54 +72,55 @@ limitations under the License.</p></div>
 <a name="line25"></a><span style="color: #000000; font-weight: bold;">namespace</span> PHPCR\Query\QOM<span style="color: #339933;">;</span>
 <a name="line26"></a>&nbsp;
 <a name="line27"></a><span style="color: #009933; font-style: italic;">/**
-<a name="line28"></a> * Tests whether two nodes are &quot;the same&quot; according to \PHPCR\ItemInterface::isSame()
-<a name="line29"></a> *
-<a name="line30"></a> * If selector2Path is omitted:
-<a name="line31"></a> *  Tests whether the selector1 node is the same as the selector2 node.
-<a name="line32"></a> *  A node-tuple satisfies the constraint only if:
-<a name="line33"></a> *   &lt;code&gt;$selector1Node-&gt;isSame($selector2Node)&lt;/code&gt;
-<a name="line34"></a> *  would return true, where $selector1Node is the node for selector1 and
-<a name="line35"></a> *  $selector2Node is the node for selector2.
-<a name="line36"></a> *
-<a name="line37"></a> * Otherwise, if selector2Path is specified:
-<a name="line38"></a> *  Tests whether the selector1 node is the same as a node identified by
-<a name="line39"></a> *  relative path from the selector2 node. A node-tuple satisfies the constraint
-<a name="line40"></a> *  only if:
-<a name="line41"></a> *   &lt;code&gt;$selector1Node-&gt;isSame($selector2Node-&gt;getNode($selector2Path))&lt;/code&gt;
-<a name="line42"></a> *  would return true, where $selector1Node is the node for selector1 and
-<a name="line43"></a> *  $selector2Node is the node for selector2.
-<a name="line44"></a> *
-<a name="line45"></a> * @package phpcr
-<a name="line46"></a> * @subpackage interfaces
-<a name="line47"></a> * @api
-<a name="line48"></a> */</span>
-<a name="line49"></a><span style="color: #000000; font-weight: bold;">interface</span> SameNodeJoinConditionInterface <span style="color: #000000; font-weight: bold;">extends</span> JoinConditionInterface
-<a name="line50"></a><span style="color: #009900;">&#123;</span>
-<a name="line51"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line52"></a>     * Gets the name of the first selector.
-<a name="line53"></a>     *
-<a name="line54"></a>     * @return string the selector name; non-null
-<a name="line55"></a>     * @api
-<a name="line56"></a>     */</span>
-<a name="line57"></a>    <span style="color: #000000; font-weight: bold;">function</span> getSelector1Name<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line58"></a>&nbsp;
-<a name="line59"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line60"></a>     * Gets the name of the second selector.
-<a name="line61"></a>     *
-<a name="line62"></a>     * @return string the selector name; non-null
-<a name="line63"></a>     * @api
-<a name="line64"></a>     */</span>
-<a name="line65"></a>    <span style="color: #000000; font-weight: bold;">function</span> getSelector2Name<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line66"></a>&nbsp;
-<a name="line67"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line68"></a>     * Gets the path relative to the second selector.
-<a name="line69"></a>     *
-<a name="line70"></a>     * @return string the relative path, or null for none
-<a name="line71"></a>     * @api
-<a name="line72"></a>     */</span>
-<a name="line73"></a>    <span style="color: #000000; font-weight: bold;">function</span> getSelector2Path<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line74"></a><span style="color: #009900;">&#125;</span>
-<a name="line75"></a>&nbsp;</pre>
+<a name="line28"></a> * Tests whether two nodes are &quot;the same&quot; according to
+<a name="line29"></a> * \PHPCR\ItemInterface::isSame()
+<a name="line30"></a> *
+<a name="line31"></a> * If selector2Path is omitted:
+<a name="line32"></a> *  Tests whether the selector1 node is the same as the selector2 node.
+<a name="line33"></a> *  A node-tuple satisfies the constraint only if:
+<a name="line34"></a> *   &lt;code&gt;$selector1Node-&gt;isSame($selector2Node)&lt;/code&gt;
+<a name="line35"></a> *  would return true, where $selector1Node is the node for selector1 and
+<a name="line36"></a> *  $selector2Node is the node for selector2.
+<a name="line37"></a> *
+<a name="line38"></a> * Otherwise, if selector2Path is specified:
+<a name="line39"></a> *  Tests whether the selector1 node is the same as a node identified by
+<a name="line40"></a> *  relative path from the selector2 node. A node-tuple satisfies the
+<a name="line41"></a> *  constraint only if:
+<a name="line42"></a> *   &lt;code&gt;$selector1Node-&gt;isSame($selector2Node-&gt;getNode($selector2Path))&lt;/code&gt;
+<a name="line43"></a> *  would return true, where $selector1Node is the node for selector1 and
+<a name="line44"></a> *  $selector2Node is the node for selector2.
+<a name="line45"></a> *
+<a name="line46"></a> * @package phpcr
+<a name="line47"></a> * @subpackage interfaces
+<a name="line48"></a> * @api
+<a name="line49"></a> */</span>
+<a name="line50"></a><span style="color: #000000; font-weight: bold;">interface</span> SameNodeJoinConditionInterface <span style="color: #000000; font-weight: bold;">extends</span> JoinConditionInterface
+<a name="line51"></a><span style="color: #009900;">&#123;</span>
+<a name="line52"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line53"></a>     * Gets the name of the first selector.
+<a name="line54"></a>     *
+<a name="line55"></a>     * @return string the selector name; non-null
+<a name="line56"></a>     * @api
+<a name="line57"></a>     */</span>
+<a name="line58"></a>    <span style="color: #000000; font-weight: bold;">function</span> getSelector1Name<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line59"></a>&nbsp;
+<a name="line60"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line61"></a>     * Gets the name of the second selector.
+<a name="line62"></a>     *
+<a name="line63"></a>     * @return string the selector name; non-null
+<a name="line64"></a>     * @api
+<a name="line65"></a>     */</span>
+<a name="line66"></a>    <span style="color: #000000; font-weight: bold;">function</span> getSelector2Name<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line67"></a>&nbsp;
+<a name="line68"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line69"></a>     * Gets the path relative to the second selector.
+<a name="line70"></a>     *
+<a name="line71"></a>     * @return string the relative path, or null for none
+<a name="line72"></a>     * @api
+<a name="line73"></a>     */</span>
+<a name="line74"></a>    <span style="color: #000000; font-weight: bold;">function</span> getSelector2Path<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line75"></a><span style="color: #009900;">&#125;</span>
+<a name="line76"></a>&nbsp;</pre>
 <div class="header">
 <h1>PHPCR</h1>
 <ul>

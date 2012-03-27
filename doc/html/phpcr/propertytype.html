@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="generator" content="PHPDoctor 2RC4 (http://peej.github.com/phpdoctor/)">
-<meta name="when" content="Tue, 26 Jul 2011 15:56:34 +0000">
+<meta name="when" content="Tue, 27 Mar 2012 06:17:40 +0000">
 
 <link rel="stylesheet" type="text/css" href="../stylesheet.css">
 <link rel="start" href="../overview-summary.html">
@@ -212,12 +212,12 @@ in RFC 3986.</p></td>
 <td class="description"><p class="name"><a href="#__construct()">__construct</a>()</p><p class="description">Make instantiation impossible...</p></td>
 </tr>
 <tr>
-<td class="type">static  the</td>
-<td class="description"><p class="name"><a href="#convertType()">convertType</a>(mixed values, int type)</p><p class="description">Attempt to convert $values into the proper format for $type.
+<td class="type">static  mixed</td>
+<td class="description"><p class="name"><a href="#convertType()">convertType</a>(mixed value, int type, int srctype, mixed values)</p><p class="description">Attempt to convert $values into the proper format for $type.
 </p></td>
 </tr>
 <tr>
-<td class="type">static  One</td>
+<td class="type">static  int</td>
 <td class="description"><p class="name"><a href="#determineType()">determineType</a>(mixed value, boolean weak)</p><p class="description">Determine PropertyType from on variable type.
 </p></td>
 </tr>
@@ -481,7 +481,7 @@ enforce referential integrity.</p></div>
 <hr>
 
 <h2 id="detail_method">Method Detail</h2>
-<a href="../source/phpcr/propertytype.php.html#line228" class="location">PHPCR/PropertyType.php at line 228</a>
+<a href="../source/phpcr/propertytype.php.html#line229" class="location">PHPCR/PropertyType.php at line 229</a>
 
 <h3 id="__construct()">__construct</h3>
 <code class="signature">private  void <strong>__construct</strong>()</code>
@@ -490,32 +490,55 @@ enforce referential integrity.</p></div>
 
 <hr>
 
-<a href="../source/phpcr/propertytype.php.html#line382" class="location">PHPCR/PropertyType.php at line 382</a>
+<a href="../source/phpcr/propertytype.php.html#line429" class="location">PHPCR/PropertyType.php at line 429</a>
 
 <h3 id="convertType()">convertType</h3>
-<code class="signature">public static  the <strong>convertType</strong>(mixed values, int type)</code>
+<code class="signature">public static  mixed <strong>convertType</strong>(mixed value, int type, int srctype, mixed values)</code>
 <div class="details">
 <p>Attempt to convert $values into the proper format for $type.</p><p>This is the other remaining part of ValueFactory functionality that is
-still needed.</p><p>Note that for converting to boolean, we follow the PHP convention of
-treating any non-empty string as true, not just the word "true".</p><dl>
+still needed.</p><p>If a $srctype is specified, the conversion also checks whether the
+conversion is allowed according to the property type conversion of the
+jcr specification (link below). This might be needed because NAME and
+other properties have quite restricted conversion matrix but in php will
+be modelled as string.</p><p>Note that for converting to boolean, we follow the PHP convention of
+treating any non-empty string as true, not just the word "true".</p><p>Table based on <a href="http://www.day.com/specs/jcr/2.0/3_Repository_Model.html#3.6.4%20Property%20Type%20Conversion">JCR spec</a></p><p><TABLE>
+<TR><TD><BR></TD><TD>STRING (1)</TD><TD>BINARY (2)</TD><TD>LONG (3)</TD><TD>DOUBLE (4)</TD><TD>DATE (5)</TD><TD>BOOLEAN (6)</TD><TD>NAME(7)</TD><TD>PATH (8)</TD><TD>REFERENCE (9/10)</TD><TD>URI (11)</TD><TD>DECIMAL (12)</TD></TR>
+<TR><TD>STRING</TD><TD>x</TD><TD>Utf-8 encoded</TD><TD>cast to int</TD><TD>cast to float</TD><TD>SYYYY-MM-DDThh:Mm:ss.sssTZD</TD><TD><I>'' is false, else true</I></TD><TD>if valid name, name</TD><TD>if valid path, as name</TD><TD>check valid uuid</TD><TD>RFC 3986</TD><TD>string</TD></TR>
+<TR><TD>BINARY</TD><TD>Utf-8</TD><TD>x</TD><TD COLSPAN="9" BGCOLOR="#E6E6E6">Converted to string and then interpreted as above</TD></TR>
+<TR><TD>LONG</TD><TD>cast to string</TD><TD>String, then Utf-8</TD><TD>x</TD><TD>cast to float</TD><TD>Unix Time</TD><TD><I>0 false else true</I></TD><TD>ValueFormatException</TD><TD>ValueFormatException</TD><TD>ValueFormatException</TD><TD>ValueFormatException</TD><TD>cast to string</TD></TR>
+<TR><TD>DOUBLE</TD><TD>cast to string</TD><TD>String, then Utf-8</TD><TD>cast to int</TD><TD>x</TD><TD>Unix Time</TD><TD><I>0.0 is false, else true</I></TD><TD>ValueFormatException</TD><TD>ValueFormatException</TD><TD>ValueFormatException</TD><TD>ValueFormatException</TD><TD>cast to string</TD></TR>
+<TR><TD>DATE</TD><TD>SYYYY-MM-DDThh:<BR>Mm:ss.sssTZD</TD><TD>String, then Utf-8</TD><TD>Unix timestamp</TD><TD>Unix timestamp</TD><TD>x</TD>
+<TD><I>true</I></TD><TD>ValueFormatException</TD><TD>ValueFormatException</TD><TD>ValueFormatException</TD><TD>ValueFormatException</TD><TD>Unix timestamp</TD></TR>
+<TR><TD>BOOLEAN</TD><TD>cast to string</TD><TD>String, then Utf-8</TD><TD>0/1</TD><TD>0.0/1.0</TD><TD>ValueFormatException</TD><TD>x</TD><TD>'0'/'1'</TD>
+<TD>ValueFormatException</TD><TD>ValueFormatException</TD><TD>ValueFormatException</TD><TD>ValueFormatException</TD></TR>
+<TR><TD>NAME</TD><TD>Qualified form</TD><TD>String, then Utf-8</TD><TD>ValueFormatException</TD><TD>ValueFormatException</TD><TD>ValueFormatException</TD><TD>ValueFormatException</TD><TD>x</TD><TD>noop (relative path)</TD><TD>ValueFormatException</TD><TD>„./“ and qualified name. % encode illegal characters</TD><TD>ValueFormatException</TD></TR>
+<TR><TD>PATH</TD><TD>Standard form</TD><TD>String, then Utf-8</TD><TD>ValueFormatException</TD><TD>ValueFormatException</TD><TD>ValueFormatException</TD><TD>ValueFormatException</TD><TD>if relative path lenght 1 noop / otherwise ValueFormatException</TD><TD>x</TD><TD>ValueFormatException</TD><TD>„./“ if not starting with /. % encode illegal characters</TD><TD>ValueFormatException</TD></TR>
+<TR><TD>REFERENCE</TD><TD>noop</TD><TD>String, then Utf-8</TD><TD>ValueFormatException</TD><TD>ValueFormatException</TD><TD>ValueFormatException</TD><TD>ValueFormatException</TD><TD>ValueFormatException</TD><TD>ValueFormatException</TD><TD>x</TD><TD>ValueFormatException</TD><TD>ValueFormatException</TD></TR>
+<TR><TD>URI</TD><TD>noop</TD><TD>String, then Utf-8</TD><TD>ValueFormatException</TD><TD>ValueFormatException</TD><TD>ValueFormatException</TD>
+<TD>ValueFormatException</TD><TD>single name: decode %, remove ./  else ValueFormatException</TD><TD>Decode %, remove leading ./ . if not star w. name, / or ./ then ValueFormatException</TD><TD>ValueFormatException</TD><TD>x</TD><TD>ValueFormatException</TD></TR>
+<TR><TD>DECIMAL</TD><TD>noop</TD><TD>Utf-8 encoded</TD><TD>cast to int</TD><TD>cast to float</TD><TD>Unix Time</TD><TD><I>0 false else true</I></TD><TD>ValueFormatException</TD><TD>ValueFormatException</TD><TD>ValueFormatException</TD><TD>ValueFormatException</TD><TD>x</TD></TR>
+</TABLE></p><dl>
 <dt>Parameters:</dt>
 <dd>values - The value or value array to check and convert</dd>
 <dd>type - Target type to convert into. One of the type constants in \PHPCR\PropertyType</dd>
+<dd>srctype - Source type to convert from, if not specified this is automatically determined, which will miss the string based types that are not strings (DECIMAL, NAME, PATH, URI)</dd>
 <dt>Returns:</dt>
-<dd>value typecasted into the proper format (throws an exception if conversion is not possible)</dd>
+<dd>the value typecasted into the proper format (throws an exception if conversion is not possible)</dd>
 <dt>Throws:</dt>
-<dd><a href="../phpcr/valueformatexception.html">\PHPCR\ValueFormatException</a> - is thrown if the specified value cannot be converted to the specified type.</dd>
+<dd><a href="../phpcr/valueformatexception.html">\PHPCR\ValueFormatException</a> - is thrown if the specified value cannot be converted to the specified type</dd>
 <dd><a href="../phpcr/repositoryexception.html">\PHPCR\RepositoryException</a> - if the specified Node is not referenceable, the current Session is no longer active, or another error occurs.</dd>
 <dd>\InvalidArgumentException - if the specified DateTime value cannot be expressed in the ISO 8601-based format defined in the JCR 2.0 specification and the implementation does not support dates incompatible with that format.</dd>
+<dt>See Also:</dt>
+<dd><a href="http://www.day.com/specs/jcr/2.0/3_Repository_Model.html#3.6.4%20Property%20Type%20Conversion">http://www.day.com/specs/jcr/2.0/3_Repository_Model.html#3.6.4%20Property%20Type%20Conversion</a></dd>
 </dl>
 </div>
 
 <hr>
 
-<a href="../source/phpcr/propertytype.php.html#line334" class="location">PHPCR/PropertyType.php at line 334</a>
+<a href="../source/phpcr/propertytype.php.html#line342" class="location">PHPCR/PropertyType.php at line 342</a>
 
 <h3 id="determineType()">determineType</h3>
-<code class="signature">public static  One <strong>determineType</strong>(mixed value, boolean weak)</code>
+<code class="signature">public static  int <strong>determineType</strong>(mixed value, boolean weak)</code>
 <div class="details">
 <p>Determine PropertyType from on variable type.</p><p>This is most of the remainder of ValueFactory that is still needed.</p>
 <ul>
@@ -523,19 +546,23 @@ treating any non-empty string as true, not just the word "true".</p><dl>
 $weak is set to true which results in WEAKREFERENCE</li>
 <li>if the given $value is a DateTime object, the type will be DATE.</li>
 </ul>
-<p>&nbsp;</p><dl>
+<p>Note that string is converted to date exactly if it matches the jcr
+formatting spec for dates (sYYYY-MM-DDThh:mm:ss.sssTZD) according to
+http://www.day.com/specs/jcr/2.0/3_Repository_Model.html#3.6.4.3%20From%20DATE%20To</p><dl>
 <dt>Parameters:</dt>
 <dd>value - The variable we need to know the type of</dd>
 <dd>weak - When a Node is given as $value this can be given as true to create a WEAKREFERENCE.</dd>
 <dt>Returns:</dt>
-<dd>of the self constants</dd>
+<dd>One of the type constants</dd>
+<dt>Throws:</dt>
+<dd><a href="../phpcr/valueformatexception.html">ValueFormatException</a> - if the type can not be determined</dd>
 <dt>Api.</dt>
 </dl>
 </div>
 
 <hr>
 
-<a href="../source/phpcr/propertytype.php.html#line241" class="location">PHPCR/PropertyType.php at line 241</a>
+<a href="../source/phpcr/propertytype.php.html#line243" class="location">PHPCR/PropertyType.php at line 243</a>
 
 <h3 id="nameFromValue()">nameFromValue</h3>
 <code class="signature">public static  string <strong>nameFromValue</strong>(integer type)</code>
@@ -553,7 +580,7 @@ $weak is set to true which results in WEAKREFERENCE</li>
 
 <hr>
 
-<a href="../source/phpcr/propertytype.php.html#line284" class="location">PHPCR/PropertyType.php at line 284</a>
+<a href="../source/phpcr/propertytype.php.html#line286" class="location">PHPCR/PropertyType.php at line 286</a>
 
 <h3 id="valueFromName()">valueFromName</h3>
 <code class="signature">public static  int <strong>valueFromName</strong>(string name)</code>

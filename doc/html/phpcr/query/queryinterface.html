@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="generator" content="PHPDoctor 2RC4 (http://peej.github.com/phpdoctor/)">
-<meta name="when" content="Tue, 26 Jul 2011 15:56:34 +0000">
+<meta name="when" content="Tue, 27 Mar 2012 06:17:41 +0000">
 
 <link rel="stylesheet" type="text/css" href="../../stylesheet.css">
 <link rel="start" href="../../overview-summary.html">
@@ -79,7 +79,7 @@ Detail: <a href="#detail_field">Field</a> | <a href="#detail_method">Method</a> 
 <td class="description"><p class="name"><a href="#bindValue()">bindValue</a>(string varName, mixed value)</p><p class="description">Binds the given value to the variable named $varName.</p></td>
 </tr>
 <tr>
-<td class="type"> <a href="../../phpcr/query/queryinterface.html">QueryInterface</a></td>
+<td class="type"> <a href="../../phpcr/query/queryresultinterface.html">QueryResultInterface</a></td>
 <td class="description"><p class="name"><a href="#execute()">execute</a>()</p><p class="description">Executes this query and returns a QueryResult object.</p></td>
 </tr>
 <tr>
@@ -165,7 +165,7 @@ returns that node.
 <a href="../../source/phpcr/query/queryinterface.php.html#line78" class="location">PHPCR/Query/QueryInterface.php at line 78</a>
 
 <h3 id="execute()">execute</h3>
-<code class="signature">public  <a href="../../phpcr/query/queryinterface.html">QueryInterface</a> <strong>execute</strong>()</code>
+<code class="signature">public  <a href="../../phpcr/query/queryresultinterface.html">QueryResultInterface</a> <strong>execute</strong>()</code>
 <div class="details">
 <p>Executes this query and returns a QueryResult object.</p><dl>
 <dt>Returns:</dt>
@@ -232,7 +232,7 @@ in the jcr:statement property if the query is persisted. See storeAsNode($absPat
 <h3 id="getStoredQueryPath()">getStoredQueryPath</h3>
 <code class="signature">public  string <strong>getStoredQueryPath</strong>()</code>
 <div class="details">
-<p>Fetches the path of the node representing this query.</p><p>If this is a Query object that has been stored using self::storeAsNode()
+<p>Fetches the path of the node representing this query.</p><p>If this is a Query object that has been stored using QueryInterface::storeAsNode()
 (regardless of whether it has been saved yet) or retrieved using
 QueryManagerInterface::getQuery()), then this method returns the path
 of the nt:query node that stores the query.</p><dl>

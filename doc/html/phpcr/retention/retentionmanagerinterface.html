@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="generator" content="PHPDoctor 2RC4 (http://peej.github.com/phpdoctor/)">
-<meta name="when" content="Tue, 26 Jul 2011 15:56:35 +0000">
+<meta name="when" content="Tue, 27 Mar 2012 06:17:41 +0000">
 
 <link rel="stylesheet" type="text/css" href="../../stylesheet.css">
 <link rel="start" href="../../overview-summary.html">
@@ -85,24 +85,24 @@ existing node at $absPath.
 </tr>
 <tr>
 <td class="type"> void</td>
-<td class="description"><p class="name"><a href="#removeRetentionPolicy()">removeRetentionPolicy</a>(string absPath)</p><p class="description">Removes a previous set retention policy.
+<td class="description"><p class="name"><a href="#removeRetentionPolicy()">removeRetentionPolicy</a>(string absPath)</p><p class="description">Removes a previously set retention policy.
 </p></td>
 </tr>
 <tr>
 <td class="type"> void</td>
-<td class="description"><p class="name"><a href="#setRetentionPolicy()">setRetentionPolicy</a>(string absPath, <a href="../../phpcr/retention/retentionpolicyinterface.html">RetentionPolicyInterface</a> retentionPolicy)</p><p class="description">Sets a retention policy of a node idetified by the given path.
+<td class="description"><p class="name"><a href="#setRetentionPolicy()">setRetentionPolicy</a>(string absPath, <a href="../../phpcr/retention/retentionpolicyinterface.html">RetentionPolicyInterface</a> retentionPolicy)</p><p class="description">Sets a retention policy of a node identified by the given path.
 </p></td>
 </tr>
 </table>
 
 <h2 id="detail_method">Method Detail</h2>
-<a href="../../source/phpcr/retention/retentionmanagerinterface.php.html#line79" class="location">PHPCR/Retention/RetentionManagerInterface.php at line 79</a>
+<a href="../../source/phpcr/retention/retentionmanagerinterface.php.html#line87" class="location">PHPCR/Retention/RetentionManagerInterface.php at line 87</a>
 
 <h3 id="addHold()">addHold</h3>
 <code class="signature">public  <a href="../../phpcr/retention/holdinterface.html">HoldInterface</a> <strong>addHold</strong>(string absPath, string name, boolean isDeep)</code>
 <div class="details">
-<p>Places a hold on the existing node at $absPath.</p><p>If $isDeep is true the hold applies to this node and its subgraph.
-The hold does not take effect until a save is performed. A node may have
+<p>Places a hold on the existing node at $absPath.</p><p>If $isDeep is true the hold applies to this node and its subgraph. The
+hold does not take effect until a save is performed. A node may have
 more than one hold. The format and interpretation of the name are not
 specified. They are application-dependent.</p><dl>
 <dt>Parameters:</dt>
@@ -123,7 +123,7 @@ specified. They are application-dependent.</p><dl>
 
 <hr>
 
-<a href="../../source/phpcr/retention/retentionmanagerinterface.php.html#line53" class="location">PHPCR/Retention/RetentionManagerInterface.php at line 53</a>
+<a href="../../source/phpcr/retention/retentionmanagerinterface.php.html#line56" class="location">PHPCR/Retention/RetentionManagerInterface.php at line 56</a>
 
 <h3 id="getHolds()">getHolds</h3>
 <code class="signature">public  array <strong>getHolds</strong>(string absPath)</code>
@@ -144,13 +144,14 @@ existing node at $absPath.</p><p>If no hold has been set before, this method ret
 
 <hr>
 
-<a href="../../source/phpcr/retention/retentionmanagerinterface.php.html#line119" class="location">PHPCR/Retention/RetentionManagerInterface.php at line 119</a>
+<a href="../../source/phpcr/retention/retentionmanagerinterface.php.html#line136" class="location">PHPCR/Retention/RetentionManagerInterface.php at line 136</a>
 
 <h3 id="getRetentionPolicy()">getRetentionPolicy</h3>
 <code class="signature">public  <a href="../../phpcr/retention/retentionpolicyinterface.html">RetentionPolicyInterface</a> <strong>getRetentionPolicy</strong>(string absPath)</code>
 <div class="details">
-<p>Gets the retention poilcy of a node identified by its path.</p><p>Returns the retention policy that has been set using setRetentionPolicy()
-on the node at $absPath or null if no policy has been set.</p><dl>
+<p>Gets the retention poilcy of a node identified by its path.</p><p>Returns the retention policy that has been set using
+setRetentionPolicy() on the node at $absPath or null if no policy has
+been set.</p><dl>
 <dt>Parameters:</dt>
 <dd>absPath - an absolute path to an existing node.</dd>
 <dt>Returns:</dt>
@@ -165,7 +166,7 @@ on the node at $absPath or null if no policy has been set.</p><dl>
 
 <hr>
 
-<a href="../../source/phpcr/retention/retentionmanagerinterface.php.html#line101" class="location">PHPCR/Retention/RetentionManagerInterface.php at line 101</a>
+<a href="../../source/phpcr/retention/retentionmanagerinterface.php.html#line113" class="location">PHPCR/Retention/RetentionManagerInterface.php at line 113</a>
 
 <h3 id="removeHold()">removeHold</h3>
 <code class="signature">public  void <strong>removeHold</strong>(string absPath, <a href="../../phpcr/retention/holdinterface.html">HoldInterface</a> hold)</code>
@@ -186,12 +187,12 @@ on the node at $absPath or null if no policy has been set.</p><dl>
 
 <hr>
 
-<a href="../../source/phpcr/retention/retentionmanagerinterface.php.html#line166" class="location">PHPCR/Retention/RetentionManagerInterface.php at line 166</a>
+<a href="../../source/phpcr/retention/retentionmanagerinterface.php.html#line192" class="location">PHPCR/Retention/RetentionManagerInterface.php at line 192</a>
 
 <h3 id="removeRetentionPolicy()">removeRetentionPolicy</h3>
 <code class="signature">public  void <strong>removeRetentionPolicy</strong>(string absPath)</code>
 <div class="details">
-<p>Removes a previous set retention policy.</p><p>Causes the current retention policy on the node at $absPath to no longer
+<p>Removes a previously set retention policy.</p><p>Causes the current retention policy on the node at $absPath to no longer
 apply. The removal does not take effect until a save is performed.</p><dl>
 <dt>Parameters:</dt>
 <dd>absPath - an absolute path to an existing node.</dd>
@@ -207,15 +208,15 @@ apply. The removal does not take effect until a save is performed.</p><dl>
 
 <hr>
 
-<a href="../../source/phpcr/retention/retentionmanagerinterface.php.html#line144" class="location">PHPCR/Retention/RetentionManagerInterface.php at line 144</a>
+<a href="../../source/phpcr/retention/retentionmanagerinterface.php.html#line166" class="location">PHPCR/Retention/RetentionManagerInterface.php at line 166</a>
 
 <h3 id="setRetentionPolicy()">setRetentionPolicy</h3>
 <code class="signature">public  void <strong>setRetentionPolicy</strong>(string absPath, <a href="../../phpcr/retention/retentionpolicyinterface.html">RetentionPolicyInterface</a> retentionPolicy)</code>
 <div class="details">
-<p>Sets a retention policy of a node idetified by the given path.</p><p>Sets the retention policy of the node at $absPath to that defined in the
-specified policy node. Interpretation and enforcement of this policy is an
-implementation issue. In any case the policy does does not take effect
-until a save is performed.</p><dl>
+<p>Sets a retention policy of a node identified by the given path.</p><p>Sets the retention policy of the node at $absPath to that defined in the
+specified policy node. Interpretation and enforcement of this policy is
+an implementation issue. In any case the policy does does not take
+effect until a save is performed.</p><dl>
 <dt>Parameters:</dt>
 <dd>absPath - an absolute path to an existing node.</dd>
 <dd>retentionPolicy - a retention policy.</dd>

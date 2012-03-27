@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="generator" content="PHPDoctor 2RC4 (http://peej.github.com/phpdoctor/)">
-<meta name="when" content="Tue, 26 Jul 2011 15:56:44 +0000">
+<meta name="when" content="Tue, 27 Mar 2012 06:17:49 +0000">
 
 <link rel="stylesheet" type="text/css" href="../../../stylesheet.css">
 <link rel="start" href="../../../overview-summary.html">
@@ -83,63 +83,74 @@ limitations under the License.</p></div>
 <a name="line36"></a><span style="color: #000000; font-weight: bold;">interface</span> QueryManagerInterface
 <a name="line37"></a><span style="color: #009900;">&#123;</span>
 <a name="line38"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line39"></a>     * Creates a new query by specifying the query statement itself and the language
-<a name="line40"></a>     * in which the query is stated.
+<a name="line39"></a>     * Creates a new query by specifying the query statement itself and the
+<a name="line40"></a>     * language in which the query is stated.
 <a name="line41"></a>     *
 <a name="line42"></a>     * The $language must be a string from among those returned by
 <a name="line43"></a>     * QueryManagerInterface::getSupportedQueryLanguages().
 <a name="line44"></a>     *
 <a name="line45"></a>     * @param string $statement The query statement to be executed.
 <a name="line46"></a>     * @param string $language The language of the query to be created.
-<a name="line47"></a>     * @return \PHPCR\Query\QueryInterface a Query object
-<a name="line48"></a>     *
-<a name="line49"></a>     * @throws \PHPCR\Query\InvalidQueryException if the query statement is syntactically invalid or the specified language is not supported
-<a name="line50"></a>     * @throws \PHPCR\RepositoryException if another error occurs
-<a name="line51"></a>     * @api
-<a name="line52"></a>     */</span>
-<a name="line53"></a>    <span style="color: #000000; font-weight: bold;">function</span> createQuery<span style="color: #009900;">&#40;</span><span style="color: #000088;">$statement</span><span style="color: #339933;">,</span> <span style="color: #000088;">$language</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line54"></a>&nbsp;
-<a name="line55"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line56"></a>     * Returns a QueryObjectModelFactory with which a JCR-JQOM query can be built
-<a name="line57"></a>     * programmatically.
-<a name="line58"></a>     *
-<a name="line59"></a>     * @return \PHPCR\Query\QOM\QueryObjectModelFactoryInterface a QueryObjectModelFactory object
-<a name="line60"></a>     * @api
-<a name="line61"></a>     */</span>
-<a name="line62"></a>    <span style="color: #000000; font-weight: bold;">function</span> getQOMFactory<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line63"></a>&nbsp;
-<a name="line64"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line65"></a>     * Retrieves an existing persistent query.
-<a name="line66"></a>     *
-<a name="line67"></a>     * Persistent queries are created by first using QueryManagerInterface::createQuery to
-<a name="line68"></a>     * create a Query object and then calling QueryInterface::save() to persist the query to
-<a name="line69"></a>     * a location in the workspace.
-<a name="line70"></a>     *
-<a name="line71"></a>     * @param \PHPCR\NodeInterface $node a persisted query (that is, a node of type nt:query).
-<a name="line72"></a>     * @return \PHPCR\Query\QueryInterface a Query object.
-<a name="line73"></a>     *
-<a name="line74"></a>     * @throws \PHPCR\Query\InvalidQueryException If node is not a valid persisted query (that is, a node of type nt:query).
-<a name="line75"></a>     * @throws \PHPCR\RepositoryException if another error occurs
-<a name="line76"></a>     * @api
-<a name="line77"></a>     */</span>
-<a name="line78"></a>    <span style="color: #000000; font-weight: bold;">function</span> getQuery<span style="color: #009900;">&#40;</span><span style="color: #000088;">$node</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line79"></a>&nbsp;
-<a name="line80"></a>    <span style="color: #009933; font-style: italic;">/**
-<a name="line81"></a>     * Returns an array of strings representing all query languages supported by
-<a name="line82"></a>     * this repository.
-<a name="line83"></a>     *
-<a name="line84"></a>     * This set must include at least the strings represented by the constants
-<a name="line85"></a>     * QueryInterface::JCR_SQL2 and QueryInterface::JCR_JQOM. An implementation
-<a name="line86"></a>     * may also support other languages.
-<a name="line87"></a>     *
-<a name="line88"></a>     * @return array A list of supported languages by the query.
-<a name="line89"></a>     *
-<a name="line90"></a>     * @throws \PHPCR\RepositoryException if an error occurs.
-<a name="line91"></a>     * @api
-<a name="line92"></a>     */</span>
-<a name="line93"></a>    <span style="color: #000000; font-weight: bold;">function</span> getSupportedQueryLanguages<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
-<a name="line94"></a><span style="color: #009900;">&#125;</span>
-<a name="line95"></a>&nbsp;</pre>
+<a name="line47"></a>     *
+<a name="line48"></a>     * @return \PHPCR\Query\QueryInterface a Query object
+<a name="line49"></a>     *
+<a name="line50"></a>     * @throws \PHPCR\Query\InvalidQueryException if the query statement is
+<a name="line51"></a>     *      syntactically invalid or the specified language is not supported
+<a name="line52"></a>     * @throws \PHPCR\RepositoryException if another error occurs
+<a name="line53"></a>     *
+<a name="line54"></a>     * @api
+<a name="line55"></a>     */</span>
+<a name="line56"></a>    <span style="color: #000000; font-weight: bold;">function</span> createQuery<span style="color: #009900;">&#40;</span><span style="color: #000088;">$statement</span><span style="color: #339933;">,</span> <span style="color: #000088;">$language</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line57"></a>&nbsp;
+<a name="line58"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line59"></a>     * Returns a QueryObjectModelFactory with which a JCR-JQOM query can be
+<a name="line60"></a>     * built programmatically.
+<a name="line61"></a>     *
+<a name="line62"></a>     * @return \PHPCR\Query\QOM\QueryObjectModelFactoryInterface a
+<a name="line63"></a>     *      QueryObjectModelFactory object
+<a name="line64"></a>     *
+<a name="line65"></a>     * @api
+<a name="line66"></a>     */</span>
+<a name="line67"></a>    <span style="color: #000000; font-weight: bold;">function</span> getQOMFactory<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line68"></a>&nbsp;
+<a name="line69"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line70"></a>     * Retrieves an existing persistent query.
+<a name="line71"></a>     *
+<a name="line72"></a>     * Persistent queries are created by first using
+<a name="line73"></a>     * QueryManagerInterface::createQuery() to create a Query object and then
+<a name="line74"></a>     * calling QueryInterface::save() to persist the query to a location in the
+<a name="line75"></a>     * workspace.
+<a name="line76"></a>     *
+<a name="line77"></a>     * @param \PHPCR\NodeInterface $node a persisted query (that is, a node of
+<a name="line78"></a>     *      type nt:query).
+<a name="line79"></a>     *
+<a name="line80"></a>     * @return \PHPCR\Query\QueryInterface a Query object.
+<a name="line81"></a>     *
+<a name="line82"></a>     * @throws \PHPCR\Query\InvalidQueryException If node is not a valid
+<a name="line83"></a>     *      persisted query (that is, a node of type nt:query).
+<a name="line84"></a>     * @throws \PHPCR\RepositoryException if another error occurs
+<a name="line85"></a>     *
+<a name="line86"></a>     * @api
+<a name="line87"></a>     */</span>
+<a name="line88"></a>    <span style="color: #000000; font-weight: bold;">function</span> getQuery<span style="color: #009900;">&#40;</span><span style="color: #000088;">$node</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line89"></a>&nbsp;
+<a name="line90"></a>    <span style="color: #009933; font-style: italic;">/**
+<a name="line91"></a>     * Returns an array of strings representing all query languages supported
+<a name="line92"></a>     * by this repository.
+<a name="line93"></a>     *
+<a name="line94"></a>     * This set must include at least the strings represented by the constants
+<a name="line95"></a>     * QueryInterface::JCR_SQL2 and QueryInterface::JCR_JQOM. An implementation
+<a name="line96"></a>     * may also support other languages.
+<a name="line97"></a>     *
+<a name="line98"></a>     * @return array A list of supported languages by the query.
+<a name="line99"></a>     *
+<a name="line100"></a>     * @throws \PHPCR\RepositoryException if an error occurs.
+<a name="line101"></a>     *
+<a name="line102"></a>     * @api
+<a name="line103"></a>     */</span>
+<a name="line104"></a>    <span style="color: #000000; font-weight: bold;">function</span> getSupportedQueryLanguages<span style="color: #009900;">&#40;</span><span style="color: #009900;">&#41;</span><span style="color: #339933;">;</span>
+<a name="line105"></a><span style="color: #009900;">&#125;</span>
+<a name="line106"></a>&nbsp;</pre>
 <div class="header">
 <h1>PHPCR</h1>
 <ul>

@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="generator" content="PHPDoctor 2RC4 (http://peej.github.com/phpdoctor/)">
-<meta name="when" content="Tue, 26 Jul 2011 15:56:34 +0000">
+<meta name="when" content="Tue, 27 Mar 2012 06:17:41 +0000">
 
 <link rel="stylesheet" type="text/css" href="../../stylesheet.css">
 <link rel="start" href="../../overview-summary.html">
@@ -70,7 +70,8 @@ names and the values the corresponding entry in that column for this row.</p></d
 <tr><th colspan="2">Method Summary</th></tr>
 <tr>
 <td class="type"> <a href="../../phpcr/nodeinterface.html">NodeInterface</a></td>
-<td class="description"><p class="name"><a href="#getNode()">getNode</a>(string selectorName)</p><p class="description">Returns the Node corresponding to this Row and the specified selector, if given.</p></td>
+<td class="description"><p class="name"><a href="#getNode()">getNode</a>(string selectorName)</p><p class="description">Returns the Node corresponding to this Row and the specified selector,
+if given.</p></td>
 </tr>
 <tr>
 <td class="type"> string</td>
@@ -79,8 +80,8 @@ names and the values the corresponding entry in that column for this row.</p></d
 </tr>
 <tr>
 <td class="type"> float</td>
-<td class="description"><p class="name"><a href="#getScore()">getScore</a>(string selectorName)</p><p class="description">Returns the full text search score for this row associated with the specified
-selector.
+<td class="description"><p class="name"><a href="#getScore()">getScore</a>(string selectorName)</p><p class="description">Returns the full text search score for this row associated with the
+specified selector.
 </p></td>
 </tr>
 <tr>
@@ -95,12 +96,13 @@ returned by QueryResultInterface::getColumnNames().</p></td>
 </table>
 
 <h2 id="detail_method">Method Detail</h2>
-<a href="../../source/phpcr/query/rowinterface.php.html#line75" class="location">PHPCR/Query/RowInterface.php at line 75</a>
+<a href="../../source/phpcr/query/rowinterface.php.html#line84" class="location">PHPCR/Query/RowInterface.php at line 84</a>
 
 <h3 id="getNode()">getNode</h3>
 <code class="signature">public  <a href="../../phpcr/nodeinterface.html">NodeInterface</a> <strong>getNode</strong>(string selectorName)</code>
 <div class="details">
-<p>Returns the Node corresponding to this Row and the specified selector, if given.</p><dl>
+<p>Returns the Node corresponding to this Row and the specified selector,
+if given.</p><dl>
 <dt>Parameters:</dt>
 <dd>selectorName - The selector identifying a node within the current result row.</dd>
 <dt>Returns:</dt>
@@ -113,13 +115,14 @@ returned by QueryResultInterface::getColumnNames().</p></td>
 
 <hr>
 
-<a href="../../source/phpcr/query/rowinterface.php.html#line90" class="location">PHPCR/Query/RowInterface.php at line 90</a>
+<a href="../../source/phpcr/query/rowinterface.php.html#line104" class="location">PHPCR/Query/RowInterface.php at line 104</a>
 
 <h3 id="getPath()">getPath</h3>
 <code class="signature">public  string <strong>getPath</strong>(string selectorName)</code>
 <div class="details">
 <p>Get the path of a node identified by a selector.</p><p>Equivalent to $row->getNode($selectorName)->getPath(). However, some
-implementations may be able gain efficiency by not resolving the actual Node.</p><dl>
+implementations may be able gain efficiency by not resolving the actual
+Node.</p><dl>
 <dt>Parameters:</dt>
 <dd>selectorName - The selector identifying a node within the current result row.</dd>
 <dt>Returns:</dt>
@@ -132,19 +135,22 @@ implementations may be able gain efficiency by not resolving the actual Node.</p
 
 <hr>
 
-<a href="../../source/phpcr/query/rowinterface.php.html#line117" class="location">PHPCR/Query/RowInterface.php at line 117</a>
+<a href="../../source/phpcr/query/rowinterface.php.html#line135" class="location">PHPCR/Query/RowInterface.php at line 135</a>
 
 <h3 id="getScore()">getScore</h3>
 <code class="signature">public  float <strong>getScore</strong>(string selectorName)</code>
 <div class="details">
-<p>Returns the full text search score for this row associated with the specified
-selector.</p><p>This corresponds to the score of a particular node.
-If no selectorName is given, the default selector is used.
-If no FullTextSearchScore AQM object is associated with the selector
-selectorName this method will still return a value. However, in that case
-the returned value may not be meaningful or may simply reflect the minimum
-possible relevance level (for example, in some systems this might be a s
-core of 0).</p><p>Note, in JCR-SQL2 a FullTextSearchScore AQM object is represented by a
+<p>Returns the full text search score for this row associated with the
+specified selector.</p><p>This corresponds to the score of a particular node.</p>
+<ul>
+<li>If no selectorName is given, the default selector is used.</li>
+<li>If no FullTextSearchScore AQM object is associated with the selector
+selectorName, this method will still return a value. However, in that
+case the returned value may not be meaningful or may simply reflect
+the minimum possible relevance level (for example, in some systems
+this might be a score of 0).</li>
+</ul>
+<p>Note, in JCR-SQL2 a FullTextSearchScore AQM object is represented by a
 SCORE() function. In JCR-JQOM it is represented by a PHP object of type
 \PHPCR\Query\QOM\FullTextSearchScoreInterface.</p><dl>
 <dt>Parameters:</dt>
@@ -159,7 +165,7 @@ SCORE() function. In JCR-JQOM it is represented by a PHP object of type
 
 <hr>
 
-<a href="../../source/phpcr/query/rowinterface.php.html#line63" class="location">PHPCR/Query/RowInterface.php at line 63</a>
+<a href="../../source/phpcr/query/rowinterface.php.html#line68" class="location">PHPCR/Query/RowInterface.php at line 68</a>
 
 <h3 id="getValue()">getValue</h3>
 <code class="signature">public  mixed <strong>getValue</strong>(string columnName)</code>
@@ -178,7 +184,7 @@ SCORE() function. In JCR-JQOM it is represented by a PHP object of type
 
 <hr>
 
-<a href="../../source/phpcr/query/rowinterface.php.html#line51" class="location">PHPCR/Query/RowInterface.php at line 51</a>
+<a href="../../source/phpcr/query/rowinterface.php.html#line53" class="location">PHPCR/Query/RowInterface.php at line 53</a>
 
 <h3 id="getValues()">getValues</h3>
 <code class="signature">public  array <strong>getValues</strong>()</code>

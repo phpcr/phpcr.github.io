@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="generator" content="PHPDoctor 2RC4 (http://peej.github.com/phpdoctor/)">
-<meta name="when" content="Tue, 26 Jul 2011 15:56:35 +0000">
+<meta name="when" content="Tue, 27 Mar 2012 06:17:41 +0000">
 
 <link rel="stylesheet" type="text/css" href="../../stylesheet.css">
 <link rel="start" href="../../overview-summary.html">
@@ -101,11 +101,13 @@ accessed.
 </tr>
 <tr>
 <td class="type"> <a href="../../phpcr/version/versioninterface.html">VersionInterface</a></td>
-<td class="description"><p class="name"><a href="#getVersion()">getVersion</a>(string versionName)</p><p class="description">Retrieves a particular version from this version history by version name.</p></td>
+<td class="description"><p class="name"><a href="#getVersion()">getVersion</a>(string versionName)</p><p class="description">Retrieves a particular version from this version history by version
+name.</p></td>
 </tr>
 <tr>
 <td class="type"> <a href="../../phpcr/version/versioninterface.html">VersionInterface</a></td>
-<td class="description"><p class="name"><a href="#getVersionByLabel()">getVersionByLabel</a>(string label)</p><p class="description">Retrieves a particular version from this version history by version label.</p></td>
+<td class="description"><p class="name"><a href="#getVersionByLabel()">getVersionByLabel</a>(string label)</p><p class="description">Retrieves a particular version from this version history by version
+label.</p></td>
 </tr>
 <tr>
 <td class="type"> array</td>
@@ -124,11 +126,13 @@ version history.</p></td>
 <tr>
 <td class="type"> void</td>
 <td class="description"><p class="name"><a href="#removeVersion()">removeVersion</a>(string versionName)</p><p class="description">Removes the named version from this version history and automatically
-repairs the version graph. </p></td>
+repairs the version graph.
+</p></td>
 </tr>
 <tr>
 <td class="type"> void</td>
-<td class="description"><p class="name"><a href="#removeVersionLabel()">removeVersionLabel</a>(string label)</p><p class="description">Removes the specified label from among the labels of this version history.
+<td class="description"><p class="name"><a href="#removeVersionLabel()">removeVersionLabel</a>(string label)</p><p class="description">Removes the specified label from among the labels of this version
+history.
 </p></td>
 </tr>
 </table>
@@ -142,7 +146,7 @@ repairs the version graph. </p></td>
 <tr><td><a href="../../phpcr/iteminterface.html#accept()">accept</a>, <a href="../../phpcr/iteminterface.html#getAncestor()">getAncestor</a>, <a href="../../phpcr/iteminterface.html#getDepth()">getDepth</a>, <a href="../../phpcr/iteminterface.html#getName()">getName</a>, <a href="../../phpcr/iteminterface.html#getParent()">getParent</a>, <a href="../../phpcr/iteminterface.html#getPath()">getPath</a>, <a href="../../phpcr/iteminterface.html#getSession()">getSession</a>, <a href="../../phpcr/iteminterface.html#isModified()">isModified</a>, <a href="../../phpcr/iteminterface.html#isNew()">isNew</a>, <a href="../../phpcr/iteminterface.html#isNode()">isNode</a>, <a href="../../phpcr/iteminterface.html#isSame()">isSame</a>, <a href="../../phpcr/iteminterface.html#refresh()">refresh</a>, <a href="../../phpcr/iteminterface.html#remove()">remove</a></td></tr></table>
 
 <h2 id="detail_method">Method Detail</h2>
-<a href="../../source/phpcr/version/versionhistoryinterface.php.html#line200" class="location">PHPCR/Version/VersionHistoryInterface.php at line 200</a>
+<a href="../../source/phpcr/version/versionhistoryinterface.php.html#line222" class="location">PHPCR/Version/VersionHistoryInterface.php at line 222</a>
 
 <h3 id="addVersionLabel()">addVersionLabel</h3>
 <code class="signature">public  void <strong>addVersionLabel</strong>(string versionName, string label, boolean moveLabel)</code>
@@ -155,8 +159,8 @@ adding a reference property with a name specified by the label parameter
 to the jcr:versionLabels sub node of the nt:versionHistory node. The
 reference property points to the nt:version node that represents the
 specified version.</p><p>This is a workspace-write method and therefore the change is made
-immediately.</p><p>Within a particular version history, a given label may appear a maximum of
-once. If the specified label is already assigned to a version in this
+immediately.</p><p>Within a particular version history, a given label may appear a maximum
+of once. If the specified label is already assigned to a version in this
 history and moveLabel is true then the label is removed from its current
 location and added to the version with the specified versionName. If m
 oveLabel is false, then an attempt to add a label that already exists
@@ -177,7 +181,7 @@ label specified is not a valid JCR NAME.</p><dl>
 
 <hr>
 
-<a href="../../source/phpcr/version/versionhistoryinterface.php.html#line132" class="location">PHPCR/Version/VersionHistoryInterface.php at line 132</a>
+<a href="../../source/phpcr/version/versionhistoryinterface.php.html#line139" class="location">PHPCR/Version/VersionHistoryInterface.php at line 139</a>
 
 <h3 id="getAllFrozenNodes()">getAllFrozenNodes</h3>
 <code class="signature">public  Iterator <strong>getAllFrozenNodes</strong>()</code>
@@ -187,9 +191,7 @@ this version history. Under simple versioning the order of the returned
 nodes will be the order of their creation. Under full versioning the
 order is implementation-dependent.</p><dl>
 <dt>Returns:</dt>
-<dd>implementing <b>SeekableIterator</b> and <b>Countable</b>. Values are the NodeInterface instances.</dd>
-<dt>Todo:</dt>
-<dd>is there a version id to be used as key?</dd>
+<dd>implementing <b>SeekableIterator</b> and <b>Countable</b>. Values are the NodeInterface instances. Keys are the version names</dd>
 <dt>Throws:</dt>
 <dd><a href="../../phpcr/repositoryexception.html">\PHPCR\RepositoryException</a> - if an error occurs.</dd>
 <dt>Api.</dt>
@@ -198,7 +200,7 @@ order is implementation-dependent.</p><dl>
 
 <hr>
 
-<a href="../../source/phpcr/version/versionhistoryinterface.php.html#line116" class="location">PHPCR/Version/VersionHistoryInterface.php at line 116</a>
+<a href="../../source/phpcr/version/versionhistoryinterface.php.html#line123" class="location">PHPCR/Version/VersionHistoryInterface.php at line 123</a>
 
 <h3 id="getAllLinearFrozenNodes()">getAllLinearFrozenNodes</h3>
 <code class="signature">public  Iterator <strong>getAllLinearFrozenNodes</strong>()</code>
@@ -206,9 +208,7 @@ order is implementation-dependent.</p><dl>
 <p>This method returns all the frozen nodes of all the versions in this
 verison history in the same order as getAllLinearVersions().</p><dl>
 <dt>Returns:</dt>
-<dd>implementing <b>SeekableIterator</b> and <b>Countable</b>. Values are the NodeInterface instances.</dd>
-<dt>Todo:</dt>
-<dd>is there a version id to be used as key?</dd>
+<dd>implementing <b>SeekableIterator</b> and <b>Countable</b>. Values are the NodeInterface instances. Keys are the version names</dd>
 <dt>Throws:</dt>
 <dd><a href="../../phpcr/repositoryexception.html">\PHPCR\RepositoryException</a> - if an error occurs.</dd>
 <dt>Api.</dt>
@@ -217,7 +217,7 @@ verison history in the same order as getAllLinearVersions().</p><dl>
 
 <hr>
 
-<a href="../../source/phpcr/version/versionhistoryinterface.php.html#line88" class="location">PHPCR/Version/VersionHistoryInterface.php at line 88</a>
+<a href="../../source/phpcr/version/versionhistoryinterface.php.html#line93" class="location">PHPCR/Version/VersionHistoryInterface.php at line 93</a>
 
 <h3 id="getAllLinearVersions()">getAllLinearVersions</h3>
 <code class="signature">public  Iterator <strong>getAllLinearVersions</strong>()</code>
@@ -233,7 +233,7 @@ each direct successor to V2.</p><p>The versions are returned in order of creatio
 equivalent to returning all versions in the version history in order from
 oldest to newest.</p><dl>
 <dt>Returns:</dt>
-<dd>implementing <b>SeekableIterator</b> and <b>Countable</b>. Values are the VersionInterface instances. Keys have no meaning.</dd>
+<dd>implementing <b>SeekableIterator</b> and <b>Countable</b>. Values are the VersionInterface instances. Keys are the version names.</dd>
 <dt>Throws:</dt>
 <dd><a href="../../phpcr/repositoryexception.html">\PHPCR\RepositoryException</a> - if an error occurs.</dd>
 <dt>Api.</dt>
@@ -242,7 +242,7 @@ oldest to newest.</p><dl>
 
 <hr>
 
-<a href="../../source/phpcr/version/versionhistoryinterface.php.html#line102" class="location">PHPCR/Version/VersionHistoryInterface.php at line 102</a>
+<a href="../../source/phpcr/version/versionhistoryinterface.php.html#line109" class="location">PHPCR/Version/VersionHistoryInterface.php at line 109</a>
 
 <h3 id="getAllVersions()">getAllVersions</h3>
 <code class="signature">public  Iterator <strong>getAllVersions</strong>()</code>
@@ -252,7 +252,7 @@ If the version graph of this history is linear then the versions are
 returned in order of creation date, from oldest to newest. Otherwise the
 order of the returned versions is implementation-dependent.</p><dl>
 <dt>Returns:</dt>
-<dd>implementing <b>SeekableIterator</b> and <b>Countable</b>. Values are the VersionInterface instances. Keys have no meaning.</dd>
+<dd>implementing <b>SeekableIterator</b> and <b>Countable</b>. Values are the VersionInterface instances. Keys are the version names.</dd>
 <dt>Throws:</dt>
 <dd><a href="../../phpcr/repositoryexception.html">\PHPCR\RepositoryException</a> - if an error occurs.</dd>
 <dt>Api.</dt>
@@ -261,7 +261,7 @@ order of the returned versions is implementation-dependent.</p><dl>
 
 <hr>
 
-<a href="../../source/phpcr/version/versionhistoryinterface.php.html#line60" class="location">PHPCR/Version/VersionHistoryInterface.php at line 60</a>
+<a href="../../source/phpcr/version/versionhistoryinterface.php.html#line63" class="location">PHPCR/Version/VersionHistoryInterface.php at line 63</a>
 
 <h3 id="getRootVersion()">getRootVersion</h3>
 <code class="signature">public  <a href="../../phpcr/version/versioninterface.html">VersionInterface</a> <strong>getRootVersion</strong>()</code>
@@ -277,12 +277,13 @@ order of the returned versions is implementation-dependent.</p><dl>
 
 <hr>
 
-<a href="../../source/phpcr/version/versionhistoryinterface.php.html#line144" class="location">PHPCR/Version/VersionHistoryInterface.php at line 144</a>
+<a href="../../source/phpcr/version/versionhistoryinterface.php.html#line155" class="location">PHPCR/Version/VersionHistoryInterface.php at line 155</a>
 
 <h3 id="getVersion()">getVersion</h3>
 <code class="signature">public  <a href="../../phpcr/version/versioninterface.html">VersionInterface</a> <strong>getVersion</strong>(string versionName)</code>
 <div class="details">
-<p>Retrieves a particular version from this version history by version name.</p><dl>
+<p>Retrieves a particular version from this version history by version
+name.</p><dl>
 <dt>Parameters:</dt>
 <dd>versionName - a version name</dd>
 <dt>Returns:</dt>
@@ -296,12 +297,13 @@ order of the returned versions is implementation-dependent.</p><dl>
 
 <hr>
 
-<a href="../../source/phpcr/version/versionhistoryinterface.php.html#line156" class="location">PHPCR/Version/VersionHistoryInterface.php at line 156</a>
+<a href="../../source/phpcr/version/versionhistoryinterface.php.html#line171" class="location">PHPCR/Version/VersionHistoryInterface.php at line 171</a>
 
 <h3 id="getVersionByLabel()">getVersionByLabel</h3>
 <code class="signature">public  <a href="../../phpcr/version/versioninterface.html">VersionInterface</a> <strong>getVersionByLabel</strong>(string label)</code>
 <div class="details">
-<p>Retrieves a particular version from this version history by version label.</p><dl>
+<p>Retrieves a particular version from this version history by version
+label.</p><dl>
 <dt>Parameters:</dt>
 <dd>label - a version label</dd>
 <dt>Returns:</dt>
@@ -315,13 +317,14 @@ order of the returned versions is implementation-dependent.</p><dl>
 
 <hr>
 
-<a href="../../source/phpcr/version/versionhistoryinterface.php.html#line252" class="location">PHPCR/Version/VersionHistoryInterface.php at line 252</a>
+<a href="../../source/phpcr/version/versionhistoryinterface.php.html#line291" class="location">PHPCR/Version/VersionHistoryInterface.php at line 291</a>
 
 <h3 id="getVersionLabels()">getVersionLabels</h3>
 <code class="signature">public  array <strong>getVersionLabels</strong>(<a href="../../phpcr/version/versioninterface.html">VersionInterface</a> version)</code>
 <div class="details">
-<p>Returns all version labels of the given version - empty array if none.</p><p>If a $version is given returns all version labels of the history or an empty
-array if there are none.</p><p><b>Note:</b> The Java API defines this with multiple differing signatures.</p><dl>
+<p>Returns all version labels of the given version - empty array if none.</p><p>If a $version is given returns all version labels of the history or an
+empty array if there are none.</p><p><b>Note:</b> The Java API defines this with multiple differing
+signatures.</p><dl>
 <dt>Parameters:</dt>
 <dd>version - a Version object</dd>
 <dt>Returns:</dt>
@@ -335,7 +338,7 @@ array if there are none.</p><p><b>Note:</b> The Java API defines this with multi
 
 <hr>
 
-<a href="../../source/phpcr/version/versionhistoryinterface.php.html#line50" class="location">PHPCR/Version/VersionHistoryInterface.php at line 50</a>
+<a href="../../source/phpcr/version/versionhistoryinterface.php.html#line52" class="location">PHPCR/Version/VersionHistoryInterface.php at line 52</a>
 
 <h3 id="getVersionableIdentifier()">getVersionableIdentifier</h3>
 <code class="signature">public  string <strong>getVersionableIdentifier</strong>()</code>
@@ -352,14 +355,14 @@ version history.</p><dl>
 
 <hr>
 
-<a href="../../source/phpcr/version/versionhistoryinterface.php.html#line235" class="location">PHPCR/Version/VersionHistoryInterface.php at line 235</a>
+<a href="../../source/phpcr/version/versionhistoryinterface.php.html#line269" class="location">PHPCR/Version/VersionHistoryInterface.php at line 269</a>
 
 <h3 id="hasVersionLabel()">hasVersionLabel</h3>
 <code class="signature">public  boolean <strong>hasVersionLabel</strong>(string label, <a href="../../phpcr/version/versioninterface.html">VersionInterface</a> version)</code>
 <div class="details">
-<p>Returns true if the given version has the given label. If no $version is given
-returns true if any version in the history has the given label.
-The label must be a JCR name in either qualified or extended form.</p><p><b>Note:</b> The Java API defines this with multiple differing signatures.</p><dl>
+<p>Returns true if the given version has the given label. If no $version is
+given returns true if any version in the history has the given label.</p><p>The label must be a JCR name in either qualified or extended form.</p><p><b>PHPCR Note:</b> The Java API defines this with multiple differing
+signatures.</p><dl>
 <dt>Parameters:</dt>
 <dd>label - a version label. A JCR name in either extended or qualified form.</dd>
 <dd>version - a Version object</dd>
@@ -374,24 +377,24 @@ The label must be a JCR name in either qualified or extended form.</p><p><b>Note
 
 <hr>
 
-<a href="../../source/phpcr/version/versionhistoryinterface.php.html#line285" class="location">PHPCR/Version/VersionHistoryInterface.php at line 285</a>
+<a href="../../source/phpcr/version/versionhistoryinterface.php.html#line331" class="location">PHPCR/Version/VersionHistoryInterface.php at line 331</a>
 
 <h3 id="removeVersion()">removeVersion</h3>
 <code class="signature">public  void <strong>removeVersion</strong>(string versionName)</code>
 <div class="details">
 <p>Removes the named version from this version history and automatically
-repairs the version graph. If the version to be removed is V, V's
-predecessor set is P and V's successor set is S, then the version graph
-is repaired s follows:</p>
+repairs the version graph.</p><p>If the version to be removed is V, V's predecessor set is P and V's
+successor set is S, then the version graph is repaired s follows:</p>
 <ul>
-<li>For each member of P, remove the reference to V from its successor list
-and add references to each member of S.</li>
+<li>For each member of P, remove the reference to V from its successor
+list and add references to each member of S.</li>
 <li>For each member of S, remove the reference to V from its predecessor
 list and add references to each member of P.</li>
 </ul>
-<p><b>Note</b> that this change is made immediately; there is no need to call save.
-In fact, since the the version storage is read-only with respect to normal
-repository methods, save does not even function in this context.</p><dl>
+<p><b>Note</b> that this change is made immediately; there is no need to
+call save. In fact, since the the version storage is read-only with
+respect to normal repository methods, save does not even function in
+this context.</p><dl>
 <dt>Parameters:</dt>
 <dd>versionName - the name of a version in this version history.</dd>
 <dt>Throws:</dt>
@@ -406,15 +409,15 @@ repository methods, save does not even function in this context.</p><dl>
 
 <hr>
 
-<a href="../../source/phpcr/version/versionhistoryinterface.php.html#line218" class="location">PHPCR/Version/VersionHistoryInterface.php at line 218</a>
+<a href="../../source/phpcr/version/versionhistoryinterface.php.html#line246" class="location">PHPCR/Version/VersionHistoryInterface.php at line 246</a>
 
 <h3 id="removeVersionLabel()">removeVersionLabel</h3>
 <code class="signature">public  void <strong>removeVersionLabel</strong>(string label)</code>
 <div class="details">
-<p>Removes the specified label from among the labels of this version history.
-The label must be a JCR name in either qualified or extended form.
-This corresponds to removing a property from the jcr:versionLabels child node
-of the nt:versionHistory node that represents this version history.</p><p>This is a workspace-write method and therefore the change is made
+<p>Removes the specified label from among the labels of this version
+history.</p><p>The label must be a JCR name in either qualified or extended form.
+This corresponds to removing a property from the jcr:versionLabels child
+node of the nt:versionHistory node that represents this version history.</p><p>This is a workspace-write method and therefore the change is made
 immediately.</p><dl>
 <dt>Parameters:</dt>
 <dd>label - a version label. A JCR name in either extended or qualified form.</dd>

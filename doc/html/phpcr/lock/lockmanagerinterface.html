@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="generator" content="PHPDoctor 2RC4 (http://peej.github.com/phpdoctor/)">
-<meta name="when" content="Tue, 26 Jul 2011 15:56:34 +0000">
+<meta name="when" content="Tue, 27 Mar 2012 06:17:40 +0000">
 
 <link rel="stylesheet" type="text/css" href="../../stylesheet.css">
 <link rel="start" href="../../overview-summary.html">
@@ -75,7 +75,8 @@ locks. The iterator keys have no significant meaning.</p></div>
 </tr>
 <tr>
 <td class="type"> <a href="../../phpcr/lock/lockinterface.html">LockInterface</a></td>
-<td class="description"><p class="name"><a href="#getLock()">getLock</a>(string absPath)</p><p class="description">Returns the Lock object that applies to the node at the specified absPath.
+<td class="description"><p class="name"><a href="#getLock()">getLock</a>(string absPath)</p><p class="description">Returns the Lock object that applies to the node at the specified
+absPath.
 </p></td>
 </tr>
 <tr>
@@ -110,7 +111,7 @@ locks. The iterator keys have no significant meaning.</p></div>
 </table>
 
 <h2 id="detail_method">Method Detail</h2>
-<a href="../../source/phpcr/lock/lockmanagerinterface.php.html#line56" class="location">PHPCR/Lock/LockManagerInterface.php at line 56</a>
+<a href="../../source/phpcr/lock/lockmanagerinterface.php.html#line59" class="location">PHPCR/Lock/LockManagerInterface.php at line 59</a>
 
 <h3 id="addLockToken()">addLockToken</h3>
 <code class="signature">public  void <strong>addLockToken</strong>(string lockToken)</code>
@@ -128,15 +129,16 @@ specified by that particular lock token.</p><dl>
 
 <hr>
 
-<a href="../../source/phpcr/lock/lockmanagerinterface.php.html#line73" class="location">PHPCR/Lock/LockManagerInterface.php at line 73</a>
+<a href="../../source/phpcr/lock/lockmanagerinterface.php.html#line81" class="location">PHPCR/Lock/LockManagerInterface.php at line 81</a>
 
 <h3 id="getLock()">getLock</h3>
 <code class="signature">public  <a href="../../phpcr/lock/lockinterface.html">LockInterface</a> <strong>getLock</strong>(string absPath)</code>
 <div class="details">
-<p>Returns the Lock object that applies to the node at the specified absPath.</p><p>This may be either a lock on that node itself or a deep lock on a node
+<p>Returns the Lock object that applies to the node at the specified
+absPath.</p><p>This may be either a lock on that node itself or a deep lock on a node
 above that node.</p><dl>
 <dt>Parameters:</dt>
-<dd>absPath - - absolute path of node for which to obtain the lock</dd>
+<dd>absPath - absolute path of node for which to obtain the lock.</dd>
 <dt>Returns:</dt>
 <dd>The applicable Lock object.</dd>
 <dt>Throws:</dt>
@@ -150,14 +152,14 @@ above that node.</p><dl>
 
 <hr>
 
-<a href="../../source/phpcr/lock/lockmanagerinterface.php.html#line87" class="location">PHPCR/Lock/LockManagerInterface.php at line 87</a>
+<a href="../../source/phpcr/lock/lockmanagerinterface.php.html#line96" class="location">PHPCR/Lock/LockManagerInterface.php at line 96</a>
 
 <h3 id="getLockTokens()">getLockTokens</h3>
 <code class="signature">public  array <strong>getLockTokens</strong>()</code>
 <div class="details">
-<p>Gets the list of previously registered tokens.</p><p>Returns an array containing all lock tokens currently held by the current
-Session. Note that any such tokens will represent open-scoped locks, since
-session-scoped locks do not have tokens.</p><dl>
+<p>Gets the list of previously registered tokens.</p><p>Returns an array containing all lock tokens currently held by the
+current Session. Note that any such tokens will represent open-scoped
+locks, since session-scoped locks do not have tokens.</p><dl>
 <dt>Returns:</dt>
 <dd>an array of lock tokens (strings)</dd>
 <dt>Throws:</dt>
@@ -168,15 +170,15 @@ session-scoped locks do not have tokens.</p><dl>
 
 <hr>
 
-<a href="../../source/phpcr/lock/lockmanagerinterface.php.html#line104" class="location">PHPCR/Lock/LockManagerInterface.php at line 104</a>
+<a href="../../source/phpcr/lock/lockmanagerinterface.php.html#line116" class="location">PHPCR/Lock/LockManagerInterface.php at line 116</a>
 
 <h3 id="holdsLock()">holdsLock</h3>
 <code class="signature">public  boolean <strong>holdsLock</strong>(string absPath)</code>
 <div class="details">
-<p>Determines if the node identified by the passed path holds a lock.</p><p>Returns true if the node at absPath holds a lock; otherwise returns false.
-To hold a lock means that this node has actually had a lock placed on it
-specifically, as opposed to just having a lock apply to it due to a deep
-lock held by a node above.</p><dl>
+<p>Determines if the node identified by the passed path holds a lock.</p><p>Returns true if the node at absPath holds a lock; otherwise returns
+false. To hold a lock means that this node has actually had a lock
+placed on it specifically, as opposed to just having a lock apply to it
+due to a deep lock held by a node above.</p><dl>
 <dt>Parameters:</dt>
 <dd>absPath - The absolute path of node to be checked.</dd>
 <dt>Returns:</dt>
@@ -190,14 +192,14 @@ lock held by a node above.</p><dl>
 
 <hr>
 
-<a href="../../source/phpcr/lock/lockmanagerinterface.php.html#line183" class="location">PHPCR/Lock/LockManagerInterface.php at line 183</a>
+<a href="../../source/phpcr/lock/lockmanagerinterface.php.html#line206" class="location">PHPCR/Lock/LockManagerInterface.php at line 206</a>
 
 <h3 id="isLocked()">isLocked</h3>
 <code class="signature">public  boolean <strong>isLocked</strong>(string absPath)</code>
 <div class="details">
-<p>Determines if the node at absPath is locked.</p><p>Returns true if the node at absPath is locked either as a result of a lock
-held by that node or by a deep lock on a node above that node; otherwise
-returns false.</p><dl>
+<p>Determines if the node at absPath is locked.</p><p>Returns true if the node at absPath is locked either as a result of a
+lock held by that node or by a deep lock on a node above that node;
+otherwise returns false.</p><dl>
 <dt>Parameters:</dt>
 <dd>absPath - The absolute path of a node to be checked.</dd>
 <dt>Returns:</dt>
@@ -211,40 +213,41 @@ returns false.</p><dl>
 
 <hr>
 
-<a href="../../source/phpcr/lock/lockmanagerinterface.php.html#line167" class="location">PHPCR/Lock/LockManagerInterface.php at line 167</a>
+<a href="../../source/phpcr/lock/lockmanagerinterface.php.html#line188" class="location">PHPCR/Lock/LockManagerInterface.php at line 188</a>
 
 <h3 id="lock()">lock</h3>
 <code class="signature">public  <a href="../../phpcr/lock/lockinterface.html">LockInterface</a> <strong>lock</strong>(string absPath, boolean isDeep, boolean isSessionScoped, integer timeoutHint, string ownerInfo)</code>
 <div class="details">
-<p>Places a lock on the node at absPath.</p><p>If successful, the node is said to hold the lock.</p><p>If <b>isDeep</b> is true then the lock applies to the specified node and all its
-descendant nodes; if false, the lock applies only to the specified node.
-On a successful lock, the jcr:lockIsDeep property of the locked node is
-set to this value.</p><p>If <b>isSessionScoped</b> is true then this lock will expire upon the expiration
-of the current session (either through an automatic or explicit SessionInterface::logout());
-if false, this lock does not expire until it is explicitly unlocked, it
-times out, or it is automatically unlocked due to a implementation-specific
-limitation.</p><p>The <b>timeout</b> parameter specifies the number of seconds until the lock times
-out (if it is not refreshed with LockInterface::refresh() in the meantime). An
-implementation may use this information as a hint or ignore it altogether.
-Clients can discover the actual timeout by inspecting the returned Lock
-object.</p><p>The <b>ownerInfo</b> parameter can be used to pass a string holding owner
-information relevant to the client. An implementation may either use or
-ignore this parameter. If it uses the parameter it must set the jcr:lockOwner
-property of the locked node to this value and return this value on
-LockInterface::getLockOwner(). If it ignores this parameter the
-jcr:lockOwner property (and the value returned by LockInterface::getLockOwner())
-is set to either the value returned by SessionInterface::getUserID() of
-the owning session or an implementation-specific string identifying the
-owner.</p><p>The method returns a Lock object representing the new lock. If the lock is
-open-scoped the returned lock will include a lock token. The lock token is
-also automatically added to the set of lock tokens held by the current session.</p><p>The addition or change of the properties jcr:lockIsDeep and jcr:lockOwner
-are persisted immediately; there is no need to call save.</p><p>It is possible to lock a node even if it is checked-in.</p><dl>
+<p>Places a lock on the node at absPath.</p><p>If successful, the node is said to hold the lock.</p><p>If <b>isDeep</b> is true then the lock applies to the specified node and
+all its descendant nodes; if false, the lock applies only to the
+specified node. On a successful lock, the jcr:lockIsDeep property of the
+locked node is set to this value.</p><p>If <b>isSessionScoped</b> is true then this lock will expire upon the
+expiration of the current session (either through an automatic or
+explicit SessionInterface::logout()); if false, this lock does not
+expire until it is explicitly unlocked, it times out, or it is
+automatically unlocked due to a implementation-specific limitation.</p><p>The <b>timeout</b> parameter specifies the number of seconds until the
+lock times out (if it is not refreshed with LockInterface::refresh() in
+the meantime). An implementation may use this information as a hint or
+ignore it altogether. Clients can discover the actual timeout by
+inspecting the returned Lock object.</p><p>The <b>ownerInfo</b> parameter can be used to pass a string holding
+owner information relevant to the client. An implementation may either
+use or ignore this parameter. If it uses the parameter it must set the
+jcr:lockOwner property of the locked node to this value and return this
+value on LockInterface::getLockOwner(). If it ignores this parameter the
+jcr:lockOwner property (and the value returned by
+LockInterface::getLockOwner()) is set to either the value returned by
+SessionInterface::getUserID() of the owning session or an
+implementation-specific string identifying the owner.</p><p>The method returns a Lock object representing the new lock. If the lock
+is open-scoped the returned lock will include a lock token. The lock
+token is also automatically added to the set of lock tokens held by the
+current session.</p><p>The addition or change of the properties jcr:lockIsDeep and
+jcr:lockOwnerare persisted immediately; there is no need to call save.</p><p>It is possible to lock a node even if it is checked-in.</p><dl>
 <dt>Parameters:</dt>
 <dd>absPath - The absolute path of node to be locked</dd>
 <dd>isDeep - If true this lock will apply to this node and all its descendants; if false, it applies only to this node.</dd>
 <dd>isSessionScoped - If true, this lock expires with the current session; if false it expires when explicitly or automatically unlocked for some other reason.</dd>
-<dd>timeoutHint - Desired lock timeout in seconds (servers are free to ignore this value); specify PHP_INT_MAX for no timeout.</dd>
-<dd>ownerInfo - A string containing owner information supplied by the client; servers are free to ignore this value.</dd>
+<dd>timeoutHint - Desired lock timeout in seconds (servers are free to ignore this value); specify PHP_INT_MAX for no timeout. If not specified, defaults to no timeout.</dd>
+<dd>ownerInfo - A string containing owner information supplied by the client; servers are free to ignore this value. If none is specified, the implementation chooses one (i.e. user name of current backend authentication credentials)</dd>
 <dt>Returns:</dt>
 <dd>A Lock object containing a lock token.</dd>
 <dt>Throws:</dt>
@@ -259,7 +262,7 @@ are persisted immediately; there is no need to call save.</p><p>It is possible t
 
 <hr>
 
-<a href="../../source/phpcr/lock/lockmanagerinterface.php.html#line195" class="location">PHPCR/Lock/LockManagerInterface.php at line 195</a>
+<a href="../../source/phpcr/lock/lockmanagerinterface.php.html#line221" class="location">PHPCR/Lock/LockManagerInterface.php at line 221</a>
 
 <h3 id="removeLockToken()">removeLockToken</h3>
 <code class="signature">public  void <strong>removeLockToken</strong>(string lockToken)</code>
@@ -276,15 +279,15 @@ are persisted immediately; there is no need to call save.</p><p>It is possible t
 
 <hr>
 
-<a href="../../source/phpcr/lock/lockmanagerinterface.php.html#line227" class="location">PHPCR/Lock/LockManagerInterface.php at line 227</a>
+<a href="../../source/phpcr/lock/lockmanagerinterface.php.html#line258" class="location">PHPCR/Lock/LockManagerInterface.php at line 258</a>
 
 <h3 id="unlock()">unlock</h3>
 <code class="signature">public  void <strong>unlock</strong>(string absPath)</code>
 <div class="details">
-<p>Removes the lock on the node at absPath.</p><p>Also removes the properties jcr:lockOwner and jcr:lockIsDeep from that node.
-As well, the corresponding lock token is removed from the set of lock tokens
-held by the current Session.</p><p>If the node does not currently hold a lock or holds a lock for which this
-Session is not the owner and is not a "lock-superuser", then a
+<p>Removes the lock on the node at absPath.</p><p>Also removes the properties jcr:lockOwner and jcr:lockIsDeep from that
+node. As well, the corresponding lock token is removed from the set of
+lock tokens held by the current Session.</p><p>If the node does not currently hold a lock or holds a lock for which
+this Session is not the owner and is not a "lock-superuser", then a
 \PHPCR\Lock\LockException is thrown.</p><p><b>Note:</b>
 However that the system may give permission to a non-owning session
 to unlock a lock. Typically such "lock-superuser" capability is intended

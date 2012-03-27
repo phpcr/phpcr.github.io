@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="generator" content="PHPDoctor 2RC4 (http://peej.github.com/phpdoctor/)">
-<meta name="when" content="Tue, 26 Jul 2011 15:56:34 +0000">
+<meta name="when" content="Tue, 27 Mar 2012 06:17:40 +0000">
 
 <link rel="stylesheet" type="text/css" href="../stylesheet.css">
 <link rel="start" href="../overview-summary.html">
@@ -381,8 +381,7 @@ declared in node type nt:address.</p></td>
 <tr><th colspan="2">Method Summary</th></tr>
 <tr>
 <td class="type"> void</td>
-<td class="description"><p class="name"><a href="#addValue()">addValue</a>(mixed value)</p><p class="description">Appends a value to a multi-value property<strong>PHPCR Note:</strong> This is a new method not found in Java.
-</p></td>
+<td class="description"><p class="name"><a href="#addValue()">addValue</a>(mixed value)</p><p class="description">Appends a value to a multi-value property. </p></td>
 </tr>
 <tr>
 <td class="type"> resource</td>
@@ -401,19 +400,21 @@ declared in node type nt:address.</p></td>
 </tr>
 <tr>
 <td class="type"> string</td>
-<td class="description"><p class="name"><a href="#getDecimal()">getDecimal</a>()</p><p class="description">Returns an arbitrary precision number (encoded as string) representation of this value (a BigDecimal in Java).
+<td class="description"><p class="name"><a href="#getDecimal()">getDecimal</a>()</p><p class="description">Returns an arbitrary precision number (encoded as string) representation
+of this value (a BigDecimal in Java).
 </p></td>
 </tr>
 <tr>
 <td class="type"> <a href="../phpcr/nodetype/propertydefinitioninterface.html">PropertyDefinitionInterface</a></td>
-<td class="description"><p class="name"><a href="#getDefinition()">getDefinition</a>()</p><p class="description">Returns the property definition that applies to this property. </p></td>
+<td class="description"><p class="name"><a href="#getDefinition()">getDefinition</a>()</p><p class="description">Returns the property definition that applies to this property.
+</p></td>
 </tr>
 <tr>
 <td class="type"> float</td>
 <td class="description"><p class="name"><a href="#getDouble()">getDouble</a>()</p><p class="description">Returns a float representation of the value of this property.</p></td>
 </tr>
 <tr>
-<td class="type"> integer</td>
+<td class="type"> mixed</td>
 <td class="description"><p class="name"><a href="#getLength()">getLength</a>()</p><p class="description">Returns the length(s) of the value(s) of this property.
 </p></td>
 </tr>
@@ -1230,22 +1231,23 @@ declared in node type nt:address.</p><dl>
 <hr>
 
 <h2 id="detail_method">Method Detail</h2>
-<a href="../source/phpcr/propertyinterface.php.html#line556" class="location">PHPCR/PropertyInterface.php at line 556</a>
+<a href="../source/phpcr/propertyinterface.php.html#line570" class="location">PHPCR/PropertyInterface.php at line 570</a>
 
 <h3 id="addValue()">addValue</h3>
 <code class="signature">public  void <strong>addValue</strong>(mixed value)</code>
 <div class="details">
-<p>Appends a value to a multi-value property</p><p><strong>PHPCR Note:</strong> This is a new method not found in Java.
+<p>Appends a value to a multi-value property. It is added at the end of the
+list.</p><p><strong>PHPCR Note:</strong> This is a new method not found in Java JCR.
 In PHP appending to strings is easy and this is more convenient than
 getting the property and appending to the array and setting again.</p><dl>
 <dt>Throws:</dt>
-<dd><a href="../phpcr/valueformatexception.html">\PHPCR\ValueFormatException</a> - if the property is not multi-value</dd>
+<dd><a href="../phpcr/valueformatexception.html">\PHPCR\ValueFormatException</a> - if the property is not multi-value.</dd>
 </dl>
 </div>
 
 <hr>
 
-<a href="../source/phpcr/propertyinterface.php.html#line593" class="location">PHPCR/PropertyInterface.php at line 593</a>
+<a href="../source/phpcr/propertyinterface.php.html#line610" class="location">PHPCR/PropertyInterface.php at line 610</a>
 
 <h3 id="getBinary()">getBinary</h3>
 <code class="signature">public  resource <strong>getBinary</strong>()</code>
@@ -1262,16 +1264,16 @@ itself. Uses the standard conversion to binary (see JCR specification).</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/propertyinterface.php.html#line662" class="location">PHPCR/PropertyInterface.php at line 662</a>
+<a href="../source/phpcr/propertyinterface.php.html#line692" class="location">PHPCR/PropertyInterface.php at line 692</a>
 
 <h3 id="getBoolean()">getBoolean</h3>
 <code class="signature">public  boolean <strong>getBoolean</strong>()</code>
 <div class="details">
-<p>Returns a boolean representation of the value of this property.</p><p>As usual in PHP, everything that is not null, 0, or boolean false is
-considered true. Note that this might be different in Java:
-Jackrabbit uses java.lang.Boolean.valueOf(String) which evaluates to
-true only for the string "true" (case insensitive). In PHP, even the
-string 'false' will evaluate to true.</p><dl>
+<p>Returns a boolean representation of the value of this property.</p><p><b>PHP Note:</b>Keep in mind that according to the specification, not
+all property types can be converted to boolean. Most actually can not
+be converted - see \PHPCR\PropertyType::convertType().
+If you want to know if a value is empty in the PHP sense, use
+getString() and do your checks on the string.</p><dl>
 <dt>Returns:</dt>
 <dd>A boolean representation of the value of this property, or an array of boolean for multi-valued properties.</dd>
 <dt>Throws:</dt>
@@ -1283,7 +1285,7 @@ string 'false' will evaluate to true.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/propertyinterface.php.html#line644" class="location">PHPCR/PropertyInterface.php at line 644</a>
+<a href="../source/phpcr/propertyinterface.php.html#line672" class="location">PHPCR/PropertyInterface.php at line 672</a>
 
 <h3 id="getDate()">getDate</h3>
 <code class="signature">public  \DateTime <strong>getDate</strong>()</code>
@@ -1301,12 +1303,14 @@ not reflected in internal storage.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/propertyinterface.php.html#line629" class="location">PHPCR/PropertyInterface.php at line 629</a>
+<a href="../source/phpcr/propertyinterface.php.html#line655" class="location">PHPCR/PropertyInterface.php at line 655</a>
 
 <h3 id="getDecimal()">getDecimal</h3>
 <code class="signature">public  string <strong>getDecimal</strong>()</code>
 <div class="details">
-<p>Returns an arbitrary precision number (encoded as string) representation of this value (a BigDecimal in Java).</p><p>The string must be encoded with the C locale because of http://bugs.php.net/bug.php?id=16532</p><dl>
+<p>Returns an arbitrary precision number (encoded as string) representation
+of this value (a BigDecimal in Java).</p><p>The string must be encoded with the C locale because of
+http://bugs.php.net/bug.php?id=16532</p><dl>
 <dt>Returns:</dt>
 <dd>A string representation of the value of this property, or an array of strings for multi-valued properties.</dd>
 <dt>Throws:</dt>
@@ -1318,15 +1322,14 @@ not reflected in internal storage.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/propertyinterface.php.html#line761" class="location">PHPCR/PropertyInterface.php at line 761</a>
+<a href="../source/phpcr/propertyinterface.php.html#line801" class="location">PHPCR/PropertyInterface.php at line 801</a>
 
 <h3 id="getDefinition()">getDefinition</h3>
 <code class="signature">public  <a href="../phpcr/nodetype/propertydefinitioninterface.html">PropertyDefinitionInterface</a> <strong>getDefinition</strong>()</code>
 <div class="details">
-<p>Returns the property definition that applies to this property. In some
-cases there may appear to be more than one definition that could apply
-to this node. However, it is assumed that upon creation or change of
-this property, a single particular definition is chosen by the
+<p>Returns the property definition that applies to this property.</p><p>In some cases there may appear to be more than one definition that could
+apply to this node. However, it is assumed that upon creation or change
+of this property, a single particular definition is chosen by the
 implementation. It is that definition that this method returns. How this
 governing definition is selected upon property creation or change from
 among others which may have been applicable is an implementation issue
@@ -1341,7 +1344,7 @@ and is not covered by this specification.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/propertyinterface.php.html#line616" class="location">PHPCR/PropertyInterface.php at line 616</a>
+<a href="../source/phpcr/propertyinterface.php.html#line637" class="location">PHPCR/PropertyInterface.php at line 637</a>
 
 <h3 id="getDouble()">getDouble</h3>
 <code class="signature">public  float <strong>getDouble</strong>()</code>
@@ -1358,28 +1361,27 @@ and is not covered by this specification.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/propertyinterface.php.html#line744" class="location">PHPCR/PropertyInterface.php at line 744</a>
+<a href="../source/phpcr/propertyinterface.php.html#line781" class="location">PHPCR/PropertyInterface.php at line 781</a>
 
 <h3 id="getLength()">getLength</h3>
-<code class="signature">public  integer <strong>getLength</strong>()</code>
+<code class="signature">public  mixed <strong>getLength</strong>()</code>
 <div class="details">
 <p>Returns the length(s) of the value(s) of this property.</p><p>For a BINARY property, getLength returns the number of bytes.
 For other property types, getLength returns the same value that would be
-returned by calling strlen() on the value when it has been converted to a
-STRING according to standard JCR propety type conversion.</p><p>Returns -1 if the implementation cannot determine the length.</p><p>For multivalue properties, the same rules apply, but returns an array of lengths
-with the same order as the values have in getValue</p><dl>
+returned by calling strlen() on the value when it has been converted to
+a STRING according to standard JCR propety type conversion.</p><p>Returns -1 if the implementation cannot determine the length.</p><p>For multivalue properties, the same rules apply, but returns an array of
+lengths with the same order as the values have in getValue.</p><dl>
 <dt>Returns:</dt>
 <dd>integer with the length, for multivalue property array of lengths</dd>
-<dd>an integer.</dd>
 <dt>Throws:</dt>
-<dd><a href="../phpcr/repositoryexception.html">\PHPCR\RepositoryException</a> - if another error occurs.</dd>
+<dd><a href="../phpcr/repositoryexception.html">\PHPCR\RepositoryException</a> - if an error occurs.</dd>
 <dt>Api.</dt>
 </dl>
 </div>
 
 <hr>
 
-<a href="../source/phpcr/propertyinterface.php.html#line605" class="location">PHPCR/PropertyInterface.php at line 605</a>
+<a href="../source/phpcr/propertyinterface.php.html#line624" class="location">PHPCR/PropertyInterface.php at line 624</a>
 
 <h3 id="getLong()">getLong</h3>
 <code class="signature">public  integer <strong>getLong</strong>()</code>
@@ -1396,7 +1398,7 @@ with the same order as the values have in getValue</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/propertyinterface.php.html#line695" class="location">PHPCR/PropertyInterface.php at line 695</a>
+<a href="../source/phpcr/propertyinterface.php.html#line728" class="location">PHPCR/PropertyInterface.php at line 728</a>
 
 <h3 id="getNode()">getNode</h3>
 <code class="signature">public  <a href="../phpcr/nodeinterface.html">NodeInterface</a> <strong>getNode</strong>()</code>
@@ -1424,7 +1426,7 @@ getNodes to get the nodes with relative or absolute path.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/propertyinterface.php.html#line723" class="location">PHPCR/PropertyInterface.php at line 723</a>
+<a href="../source/phpcr/propertyinterface.php.html#line759" class="location">PHPCR/PropertyInterface.php at line 759</a>
 
 <h3 id="getProperty()">getProperty</h3>
 <code class="signature">public  <a href="../phpcr/propertyinterface.html">PropertyInterface</a> <strong>getProperty</strong>()</code>
@@ -1449,7 +1451,7 @@ property or this property itself.</p><p>For example, if this property is located
 
 <hr>
 
-<a href="../source/phpcr/propertyinterface.php.html#line580" class="location">PHPCR/PropertyInterface.php at line 580</a>
+<a href="../source/phpcr/propertyinterface.php.html#line597" class="location">PHPCR/PropertyInterface.php at line 597</a>
 
 <h3 id="getString()">getString</h3>
 <code class="signature">public  string <strong>getString</strong>()</code>
@@ -1466,7 +1468,7 @@ property or this property itself.</p><p>For example, if this property is located
 
 <hr>
 
-<a href="../source/phpcr/propertyinterface.php.html#line790" class="location">PHPCR/PropertyInterface.php at line 790</a>
+<a href="../source/phpcr/propertyinterface.php.html#line834" class="location">PHPCR/PropertyInterface.php at line 834</a>
 
 <h3 id="getType()">getType</h3>
 <code class="signature">public  integer <strong>getType</strong>()</code>
@@ -1487,34 +1489,39 @@ property or this property itself.</p><p>For example, if this property is located
 </ul>
 <p>The type returned is that which was set at property creation. Note that
 for some property p, the type returned by $p->getType() will differ from
-the type returned by $p->getDefinition()->getRequiredType() only in the case
-where the latter returns UNDEFINED. The type of a property instance is
-never UNDEFINED (it must always have some actual type).</p><dl>
+the type returned by $p->getDefinition()->getRequiredType() only in the
+case where the latter returns UNDEFINED. The type of a property instance
+is never UNDEFINED (it must always have some actual type).</p><dl>
 <dt>Returns:</dt>
 <dd>The numerical representation of a property type.</dd>
 <dt>Throws:</dt>
 <dd><a href="../phpcr/repositoryexception.html">\PHPCR\RepositoryException</a> - if an error occurs</dd>
+<dt>See Also:</dt>
+<dd><a href="../phpcr/propertytype.html">\PHPCR\PropertyType</a></dd>
 <dt>Api.</dt>
 </dl>
 </div>
 
 <hr>
 
-<a href="../source/phpcr/propertyinterface.php.html#line568" class="location">PHPCR/PropertyInterface.php at line 568</a>
+<a href="../source/phpcr/propertyinterface.php.html#line585" class="location">PHPCR/PropertyInterface.php at line 585</a>
 
 <h3 id="getValue()">getValue</h3>
 <code class="signature">public  mixed <strong>getValue</strong>()</code>
 <div class="details">
-<p>Get the value in format default for the PropertyType of this property.</p><p>In case of a binary property, this is the stream of binary data.</p><p><b>PHPCR Note:</b> We dropped the Value interface as its unnecessary
-with weak typing</p><dl>
+<p>Get the value in format default for the PropertyType of this property.</p><p>In case of a (WEAK)REFERENCE, the node is dereferenced and returned. For
+all other cases including PATH, the value is returned as is. If you want
+to dereference a PATH to a property or node, you need to explicitly call
+getNode() resp. getProperty().</p><p><b>PHPCR Note:</b> We dropped the Value interface as its unnecessary
+with weak typing.</p><dl>
 <dt>Returns:</dt>
-<dd>value of this property, or array in case of multi-value</dd>
+<dd>value of this property, or array in case of multi-value.</dd>
 </dl>
 </div>
 
 <hr>
 
-<a href="../source/phpcr/propertyinterface.php.html#line803" class="location">PHPCR/PropertyInterface.php at line 803</a>
+<a href="../source/phpcr/propertyinterface.php.html#line848" class="location">PHPCR/PropertyInterface.php at line 848</a>
 
 <h3 id="isMultiple()">isMultiple</h3>
 <code class="signature">public  boolean <strong>isMultiple</strong>()</code>
@@ -1531,21 +1538,28 @@ is single-valued.</p><dl>
 
 <hr>
 
-<a href="../source/phpcr/propertyinterface.php.html#line544" class="location">PHPCR/PropertyInterface.php at line 544</a>
+<a href="../source/phpcr/propertyinterface.php.html#line557" class="location">PHPCR/PropertyInterface.php at line 557</a>
 
 <h3 id="setValue()">setValue</h3>
 <code class="signature">public  void <strong>setValue</strong>(mixed value, integer type)</code>
 <div class="details">
-<p>Sets the value of this property to the value.</p><p>If the type parameter is set, the property is set to that type and the
-value converted into that type. If the node type does not allow the type
-an exception is thrown.</p><p>If no explicit type is given, then it is derived from the value. (First
-value in case of multivalue property.)
-If the node type allows the type of the parameter, the property changes
-its type to the type of the value. Otherwise, a best-effort conversion
-is attempted.</p><p>If value is of type PropertyInterface, the value of the property is
+<p>Sets the value of this property to the value.</p><p>If the type parameter is present and this implementation supports
+dynamic re-binding of properties, this property changes its type.
+First, a conversion of value into that type is attempted with
+PropertyType::convertType() and if there is no ValueFormatException,
+the property type changes to the new type.
+If the node type does not allow the requested type, a
+ConstraintViolationException is thrown.
+If the implementation does not support dynamic re-binding, an
+UnsupportedRepositoryException is thrown if the type parameter is
+present and different from the current type.</p><p>If no explicit type is given, then the type is derived from the value.
+(First value in case of multivalue property.)
+If the node type allows the type of the parameter, this property changes
+its type to the type of the value. Otherwise, a conversion of the value
+into the required type is attempted with PropertyType::convertType()</p><p>If value is of type PropertyInterface, the value of the property is
 copied into this property. (If type is set, the property value is
 converted into this type, otherwise the type of the property is used
-as explained above.
+as in the case of no explicit type).
 This can be used to copy a binary from one property into another without
 getting the stream. The implemenation should take care to detect the
 case and copy the binary data directly in the backend for optimal
@@ -1553,16 +1567,17 @@ performance.</p><p>The type detection follows PropertyType::determineType. Thus,
 Node object without an explicit type (REFERENCE or WEAKREFERENCE) will
 create a REFERENCE property. If the specified node is not referenceable,
 a ValueFormatException is thrown.</p><p>To create a PATH property with a reference to an other property, you can
-call setValue with the path of the other property and the PATH type
-constant. Passing the property itself and the PATH type will convert the
-value of the property to a path.</p><p>When assigning a stream resource to create a binary property, the client
+call setValue with the return value of getPath called on the other
+property and the PATH type constant. Passing the property itself and the
+PATH type will convert the *value* of the property to a path.</p><p>When assigning a stream resource to write a binary property, the client
 application must leave the stream alone afterwards. The PHPCR
 implementation is responsible for closing it after saving.</p><p>This method is a session-write and therefore requires a <code>save</code>
 to dispatch the change.</p><p>If value is an array:
 If this property is not multi-valued then a ValueFormatException is
-thrown immediately.</p><p><strong>PHPCR Note:</strong> The Java API defines this method with multiple differing signatures.
-<strong>PHPCR Note:</strong> Because we removed the Value interface, this method replaces
-ValueFactory::createValue.</p><dl>
+thrown immediately.</p><p><strong>PHPCR Note:</strong> The Java API defines this method with
+multiple differing signatures.
+<strong>PHPCR Note:</strong> Because we removed the Value interface,
+this method replaces ValueFactory::createValue.</p><dl>
 <dt>Parameters:</dt>
 <dd>value - The value to set</dd>
 <dd>type - Type request for the property, optional. Must be a constant from PropertyType</dd>
@@ -1570,9 +1585,10 @@ ValueFactory::createValue.</p><dl>
 <dd><a href="../phpcr/valueformatexception.html">\PHPCR\ValueFormatException</a> - if the type or format of the specified value is incompatible with the type of this property.</dd>
 <dd><a href="../phpcr/version/versionexception.html">\PHPCR\Version\VersionException</a> - if this property belongs to a node that is read-only due to a checked-in node and this implementation performs this validation immediately.</dd>
 <dd><a href="../phpcr/lock/lockexception.html">\PHPCR\Lock\LockException</a> - if a lock prevents the setting of the value and this implementation performs this validation immediately.</dd>
-<dd>\PHPCR\ConstraintViolationException - if the change would violate a node-type or other constraint and this implementation performs this validation immediately.</dd>
-<dd><a href="../phpcr/repositoryexception.html">\PHPCR\RepositoryException</a> - if another error occurs.</dd>
+<dd><a href="../phpcr/nodetype/constraintviolationexception.html">\PHPCR\NodeType\ConstraintViolationException</a> - if the change would violate a node-type or other constraint and this implementation performs this validation immediately.</dd>
+<dd><a href="../phpcr/unsupportedrepositoryoperationexception.html">\PHPCR\UnsupportedRepositoryOperationException</a> - if the type parameter is set and different from the current type and this implementation does not support dynamic re-binding</dd>
 <dd>\InvalidArgumentException - if the specified DateTime value cannot be expressed in the ISO 8601-based format defined in the JCR 2.0 specification and the implementation does not support dates incompatible with that format.</dd>
+<dd><a href="../phpcr/repositoryexception.html">\PHPCR\RepositoryException</a> - if another error occurs.</dd>
 <dt>Api.</dt>
 </dl>
 </div>
