@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html><head><!-- To render these slides you need Slippy https://github.com/Seldaek/slippy --><title>PHPCR Introduction</title><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta name="author" content="PHPCR"><meta name="email" content="phpcr-users@googlegroups.com"><meta name="date" content="2011-09-29"><meta name="venue" content="The Internets"><!-- Slippy core file and dependencies --><script type="text/javascript">/*!
+<html><head><!-- To render these slides you need Slippy https://github.com/Seldaek/slippy --><title>PHPCR Introduction</title><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta name="author" content="PHPCR"><meta name="email" content="phpcr-users@googlegroups.com"><meta name="date" content="2012-03-22"><meta name="venue" content="The Internets"><!-- Slippy core file and dependencies --><script type="text/javascript">/*!
  * jQuery JavaScript Library v1.5.1
  * http://jquery.com/
  *
@@ -1905,11 +1905,11 @@ SyntaxHighlighter.brushes.Xml.aliases	= ['xml', 'xhtml', 'xslt', 'html'];
                 <li>Search nodes</li>
                 <li>Versioning</li>
                 <li>Capability discovery</li>
-                <li>XML import (*) and export</li>
+                <li>XML import and export</li>
                 <li>Locking &amp; Transactions</li>
                 <li>Permissions &amp; Access Control (*)</li>
-                <li>Observation (*)</li>
-            </ul><br><p>(*) Currently under work</p>
+                <li>Observation</li>
+            </ul><br><p>(*) Not yet implemented in Jackalope</p>
         </div>
 
         <div class="slide">
@@ -1948,10 +1948,10 @@ SyntaxHighlighter.brushes.Xml.aliases	= ['xml', 'xhtml', 'xslt', 'html'];
         <div class="slide">
             <h2>Primary Node Types</h2>
             <ul><li>Defines allowed names and types for properties and child nodes</li>
-                <li>Every node must have a type</li>
+                <li>Every node must have a primary node type</li>
                 <li>Use <tt>nt:unstructured</tt> to allow anything</li>
                 <li>Some other built-in types: <tt>nt:address, nt:folder, nt:file</tt> ...</li>
-                <li>Define custom types or just use <tt>nt:unstructured</tt></li>
+                <li>Define custom types to control your "schema"</li>
             </ul></div>
 
         <div class="slide">
@@ -1992,11 +1992,14 @@ SyntaxHighlighter.brushes.Xml.aliases	= ['xml', 'xhtml', 'xslt', 'html'];
             <h2>Connecting via PHPCR</h2>
             <pre class="brush: php">
 // start of implementation specific configuration //
+use Jackalope\RepositoryFactoryJackrabbit as Factory;
+
 $parameters = array(
     'jackalope.jackrabbit_uri'
         =&gt; 'http://localhost:8080/server'
 );
-$repository = \Jackalope\RepositoryFactoryJackrabbit::getRepository($parameters);
+
+$repository = Factory::getRepository($parameters);
 // end of implementation specific configuration //
 
 $creds = new \PHPCR\SimpleCredentials('user','pw');
@@ -2027,7 +2030,7 @@ $session-&gt;save();
         </div>
 
         <div class="slide">
-            <h2>Tree API</h2>
+            <h2>Tree Traversal API</h2>
             <pre class="brush: php">
 $node = $session-&gt;getNode('/site/content');
 
