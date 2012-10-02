@@ -1,0 +1,1201 @@
+<!DOCTYPE html><html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+<meta charset="utf-8">
+<title>PHPCR API and PHPCR-Utils</title>
+<meta name="author" content="Mike van Riel">
+<meta name="description" content="">
+<link href="css/template.css" rel="stylesheet" media="all">
+<script src="js/jquery-1.7.1.min.js" type="text/javascript"></script><script src="js/jquery-ui-1.8.2.custom.min.js" type="text/javascript"></script><script src="js/jquery.mousewheel.min.js" type="text/javascript"></script><script src="js/bootstrap.js" type="text/javascript"></script><script src="js/template.js" type="text/javascript"></script><script src="js/prettify/prettify.min.js" type="text/javascript"></script><link rel="shortcut icon" href="img/favicon.ico">
+<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="72x72" href="img/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="114x114" href="img/apple-touch-icon-114x114.png">
+</head>
+<body>
+<div class="navbar navbar-fixed-top">
+<div class="navbar-inner"><div class="container">
+<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a><a class="brand" href="index.html">PHPCR API and PHPCR-Utils</a><div class="nav-collapse"><ul class="nav">
+<li class="dropdown">
+<a href="#api" class="dropdown-toggle" data-toggle="dropdown">
+                                    API Documentation <b class="caret"></b></a><ul class="dropdown-menu">
+<li><a>Namespaces</a></li>
+<li><a href="namespaces/PHPCR.html"><i class="icon-th"></i> PHPCR</a></li>
+<li><a>Packages</a></li>
+<li><a href="packages/Default.html"><i class="icon-folder-open"></i> Default</a></li>
+<li><a href="packages/phpcr.html"><i class="icon-folder-open"></i> phpcr</a></li>
+</ul>
+</li>
+<li class="dropdown" id="charts-menu">
+<a href="#charts" class="dropdown-toggle" data-toggle="dropdown">
+                                    Charts <b class="caret"></b></a><ul class="dropdown-menu"><li><a href="graph_class.html"><i class="icon-list-alt"></i> Class hierarchy diagram</a></li></ul>
+</li>
+<li class="dropdown" id="reports-menu">
+<a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
+                                    Reports <b class="caret"></b></a><ul class="dropdown-menu">
+<li><a href="errors.html"><i class="icon-remove-sign"></i> Errors 
+                <span class="label label-info">123</span></a></li>
+<li><a href="markers.html"><i class="icon-map-marker"></i> Markers 
+                <ul><li>todo 
+                <span class="label label-info">12</span>
+</li></ul></a></li>
+<li><a href="deprecated.html"><i class="icon-stop"></i> Deprecated elements 
+                <span class="label label-info">0</span></a></li>
+</ul>
+</li>
+</ul></div>
+</div></div>
+<div class="go_to_top"><a href="#___" style="color: inherit">Back to top  <i class="icon-upload icon-white"></i></a></div>
+</div>
+<div id="___" class="container">
+<noscript><div class="alert alert-warning">
+                            Javascript is disabled; several features are only available
+                            if Javascript is enabled.
+                        </div></noscript>
+<div class="row">
+<div class="span4"><ul class="side-nav nav nav-list">
+<li class="nav-header">Filter type</li>
+<li><div class="btn-group type-filter" data-toggle="buttons-checkbox">
+<button class="btn critical">Critical</button><button class="btn error">Error</button><button class="btn notice">Notice</button>
+</div></li>
+<li class="nav-header">Navigation</li>
+<li><a href="#phpcr/src/PHPCR/PropertyType.php"><i class="icon-file"></i>phpcr/src/PHPCR/PropertyType.php</a></li>
+<li><a href="#phpcr/src/PHPCR/Transaction/UserTransactionInterface.php"><i class="icon-file"></i>phpcr/src/PHPCR/Transaction/UserTransactionInterface.php</a></li>
+<li><a href="#phpcr-utils/src/PHPCR/Util/TreeWalkerFilterInterface.php"><i class="icon-file"></i>phpcr-utils/src/PHPCR/Util/TreeWalkerFilterInterface.php</a></li>
+<li><a href="#phpcr-utils/src/PHPCR/Util/Console/Helper/ConsoleParametersParser.php"><i class="icon-file"></i>phpcr-utils/src/PHPCR/Util/Console/Helper/ConsoleParametersParser.php</a></li>
+<li><a href="#phpcr-utils/src/PHPCR/Util/Console/Helper/PhpcrHelper.php"><i class="icon-file"></i>phpcr-utils/src/PHPCR/Util/Console/Helper/PhpcrHelper.php</a></li>
+<li><a href="#phpcr-utils/src/PHPCR/Util/Console/Helper/TreeDumper/ConsoleDumperNodeVisitor.php"><i class="icon-file"></i>phpcr-utils/src/PHPCR/Util/Console/Helper/TreeDumper/ConsoleDumperNodeVisitor.php</a></li>
+<li><a href="#phpcr-utils/src/PHPCR/Util/Console/Helper/TreeDumper/SystemNodeFilter.php"><i class="icon-file"></i>phpcr-utils/src/PHPCR/Util/Console/Helper/TreeDumper/SystemNodeFilter.php</a></li>
+<li><a href="#phpcr-utils/src/PHPCR/Util/Console/Helper/TreeDumper/ConsoleDumperPropertyVisitor.php"><i class="icon-file"></i>phpcr-utils/src/PHPCR/Util/Console/Helper/TreeDumper/ConsoleDumperPropertyVisitor.php</a></li>
+<li><a href="#phpcr-utils/src/PHPCR/Util/Console/Command/ImportXmlCommand.php"><i class="icon-file"></i>phpcr-utils/src/PHPCR/Util/Console/Command/ImportXmlCommand.php</a></li>
+<li><a href="#phpcr-utils/src/PHPCR/Util/Console/Command/PurgeCommand.php"><i class="icon-file"></i>phpcr-utils/src/PHPCR/Util/Console/Command/PurgeCommand.php</a></li>
+<li><a href="#phpcr-utils/src/PHPCR/Util/Console/Command/QueryCommand.php"><i class="icon-file"></i>phpcr-utils/src/PHPCR/Util/Console/Command/QueryCommand.php</a></li>
+<li><a href="#phpcr-utils/src/PHPCR/Util/Console/Command/RegisterNodeTypesCommand.php"><i class="icon-file"></i>phpcr-utils/src/PHPCR/Util/Console/Command/RegisterNodeTypesCommand.php</a></li>
+<li><a href="#phpcr-utils/src/PHPCR/Util/Console/Command/DumpCommand.php"><i class="icon-file"></i>phpcr-utils/src/PHPCR/Util/Console/Command/DumpCommand.php</a></li>
+<li><a href="#phpcr-utils/src/PHPCR/Util/Console/Command/CreateWorkspaceCommand.php"><i class="icon-file"></i>phpcr-utils/src/PHPCR/Util/Console/Command/CreateWorkspaceCommand.php</a></li>
+<li><a href="#phpcr-utils/src/PHPCR/Util/TreeWalker.php"><i class="icon-file"></i>phpcr-utils/src/PHPCR/Util/TreeWalker.php</a></li>
+<li><a href="#phpcr-utils/src/PHPCR/Util/QOM/Sql2Generator.php"><i class="icon-file"></i>phpcr-utils/src/PHPCR/Util/QOM/Sql2Generator.php</a></li>
+<li><a href="#phpcr-utils/src/PHPCR/Util/QOM/BaseSqlGenerator.php"><i class="icon-file"></i>phpcr-utils/src/PHPCR/Util/QOM/BaseSqlGenerator.php</a></li>
+<li><a href="#phpcr-utils/src/PHPCR/Util/QOM/QomToSql2QueryConverter.php"><i class="icon-file"></i>phpcr-utils/src/PHPCR/Util/QOM/QomToSql2QueryConverter.php</a></li>
+<li><a href="#phpcr-utils/src/PHPCR/Util/QOM/Sql1Generator.php"><i class="icon-file"></i>phpcr-utils/src/PHPCR/Util/QOM/Sql1Generator.php</a></li>
+<li><a href="#phpcr-utils/src/PHPCR/Util/QOM/Sql2ToQomQueryConverter.php"><i class="icon-file"></i>phpcr-utils/src/PHPCR/Util/QOM/Sql2ToQomQueryConverter.php</a></li>
+<li><a href="#phpcr-utils/src/PHPCR/Util/QOM/Sql2Scanner.php"><i class="icon-file"></i>phpcr-utils/src/PHPCR/Util/QOM/Sql2Scanner.php</a></li>
+<li><a href="#phpcr-utils/src/PHPCR/Util/QOM/NotSupportedOperandException.php"><i class="icon-file"></i>phpcr-utils/src/PHPCR/Util/QOM/NotSupportedOperandException.php</a></li>
+<li><a href="#phpcr-utils/src/PHPCR/Util/QOM/QueryBuilder.php"><i class="icon-file"></i>phpcr-utils/src/PHPCR/Util/QOM/QueryBuilder.php</a></li>
+<li><a href="#phpcr-utils/src/PHPCR/Util/QOM/NotSupportedConstraintException.php"><i class="icon-file"></i>phpcr-utils/src/PHPCR/Util/QOM/NotSupportedConstraintException.php</a></li>
+<li><a href="#phpcr-utils/src/PHPCR/Util/QOM/BaseQomToSqlQueryConverter.php"><i class="icon-file"></i>phpcr-utils/src/PHPCR/Util/QOM/BaseQomToSqlQueryConverter.php</a></li>
+<li><a href="#phpcr-utils/src/PHPCR/Util/QOM/QomToSql1QueryConverter.php"><i class="icon-file"></i>phpcr-utils/src/PHPCR/Util/QOM/QomToSql1QueryConverter.php</a></li>
+<li><a href="#phpcr-utils/src/PHPCR/Util/NodeHelper.php"><i class="icon-file"></i>phpcr-utils/src/PHPCR/Util/NodeHelper.php</a></li>
+</ul></div>
+<div class="span8">
+<ul class="breadcrumb">
+<li>
+<a href=""><i class="icon-remove-sign"></i></a><span class="divider">\</span>
+</li>
+<li>Compilation Errors</li>
+</ul>
+<div class="package-contents"></div>
+<div class="package-contents"></div>
+<div class="package-contents"></div>
+<div class="package-contents"></div>
+<div class="package-contents"></div>
+<div class="package-contents"></div>
+<div class="package-contents"></div>
+<div class="package-contents"></div>
+<div class="package-contents"></div>
+<div class="package-contents"></div>
+<div class="package-contents"></div>
+<div class="package-contents"></div>
+<div class="package-contents"></div>
+<div class="package-contents"></div>
+<div class="package-contents"></div>
+<div class="package-contents"></div>
+<div class="package-contents"></div>
+<div class="package-contents"></div>
+<div class="package-contents"></div>
+<div class="package-contents"></div>
+<div class="package-contents"></div>
+<div class="package-contents"></div>
+<div class="package-contents"></div>
+<div class="package-contents"></div>
+<div class="package-contents"></div>
+<div class="package-contents"></div>
+<div class="package-contents"></div>
+<div class="package-contents"></div>
+<div class="package-contents"></div>
+<div class="package-contents"></div>
+<div class="package-contents"></div>
+<div class="package-contents">
+<a name="phpcr/src/PHPCR/PropertyType.php" id="phpcr/src/PHPCR/PropertyType.php"></a><h3>
+<i class="icon-file"></i>phpcr/src/PHPCR/PropertyType.php<small style="float: right;padding-right: 10px;">2</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr class="error">
+<td>error</td>
+<td>382</td>
+<td>Name of argument $value does not match with the DocBlock's name $values in convertType()</td>
+</tr>
+<tr class="notice">
+<td>notice</td>
+<td>382</td>
+<td>Parameter $values could not be found in convertType()</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="package-contents"></div>
+<div class="package-contents"></div>
+<div class="package-contents"></div>
+<div class="package-contents"></div>
+<div class="package-contents"></div>
+<div class="package-contents"></div>
+<div class="package-contents"></div>
+<div class="package-contents"></div>
+<div class="package-contents"></div>
+<div class="package-contents"></div>
+<div class="package-contents"></div>
+<div class="package-contents"></div>
+<div class="package-contents"></div>
+<div class="package-contents"></div>
+<div class="package-contents"></div>
+<div class="package-contents"></div>
+<div class="package-contents"></div>
+<div class="package-contents"></div>
+<div class="package-contents"></div>
+<div class="package-contents"></div>
+<div class="package-contents"></div>
+<div class="package-contents"></div>
+<div class="package-contents"></div>
+<div class="package-contents"></div>
+<div class="package-contents"></div>
+<div class="package-contents"></div>
+<div class="package-contents"></div>
+<div class="package-contents"></div>
+<div class="package-contents"></div>
+<div class="package-contents"></div>
+<div class="package-contents"></div>
+<div class="package-contents"></div>
+<div class="package-contents"></div>
+<div class="package-contents"></div>
+<div class="package-contents"></div>
+<div class="package-contents"></div>
+<div class="package-contents"></div>
+<div class="package-contents"></div>
+<div class="package-contents"></div>
+<div class="package-contents"></div>
+<div class="package-contents"></div>
+<div class="package-contents"></div>
+<div class="package-contents"></div>
+<div class="package-contents"></div>
+<div class="package-contents"></div>
+<div class="package-contents"></div>
+<div class="package-contents"></div>
+<div class="package-contents"></div>
+<div class="package-contents"></div>
+<div class="package-contents"></div>
+<div class="package-contents"></div>
+<div class="package-contents"></div>
+<div class="package-contents"></div>
+<div class="package-contents"></div>
+<div class="package-contents"></div>
+<div class="package-contents"></div>
+<div class="package-contents"></div>
+<div class="package-contents"></div>
+<div class="package-contents"></div>
+<div class="package-contents"></div>
+<div class="package-contents"></div>
+<div class="package-contents"></div>
+<div class="package-contents"></div>
+<div class="package-contents"></div>
+<div class="package-contents"></div>
+<div class="package-contents"></div>
+<div class="package-contents"></div>
+<div class="package-contents"></div>
+<div class="package-contents"></div>
+<div class="package-contents"></div>
+<div class="package-contents"></div>
+<div class="package-contents"></div>
+<div class="package-contents"></div>
+<div class="package-contents">
+<a name="phpcr/src/PHPCR/Transaction/UserTransactionInterface.php" id="phpcr/src/PHPCR/Transaction/UserTransactionInterface.php"></a><h3>
+<i class="icon-file"></i>phpcr/src/PHPCR/Transaction/UserTransactionInterface.php<small style="float: right;padding-right: 10px;">1</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr class="error">
+<td>error</td>
+<td>0</td>
+<td>No page-level DocBlock was found in file phpcr/src/PHPCR/Transaction/UserTransactionInterface.php</td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="package-contents"></div>
+<div class="package-contents"></div>
+<div class="package-contents"></div>
+<div class="package-contents">
+<a name="phpcr-utils/src/PHPCR/Util/TreeWalkerFilterInterface.php" id="phpcr-utils/src/PHPCR/Util/TreeWalkerFilterInterface.php"></a><h3>
+<i class="icon-file"></i>phpcr-utils/src/PHPCR/Util/TreeWalkerFilterInterface.php<small style="float: right;padding-right: 10px;">2</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr class="error">
+<td>error</td>
+<td>0</td>
+<td>No page-level DocBlock was found in file phpcr-utils/src/PHPCR/Util/TreeWalkerFilterInterface.php</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>12</td>
+<td>No DocBlock was found for method mustVisit()</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="phpcr-utils/src/PHPCR/Util/Console/Helper/ConsoleParametersParser.php" id="phpcr-utils/src/PHPCR/Util/Console/Helper/ConsoleParametersParser.php"></a><h3>
+<i class="icon-file"></i>phpcr-utils/src/PHPCR/Util/Console/Helper/ConsoleParametersParser.php<small style="float: right;padding-right: 10px;">2</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr class="error">
+<td>error</td>
+<td>0</td>
+<td>No page-level DocBlock was found in file phpcr-utils/src/PHPCR/Util/Console/Helper/ConsoleParametersParser.php</td>
+</tr>
+<tr class="critical">
+<td>critical</td>
+<td>5</td>
+<td>No short description for class \PHPCR\Util\Console\Helper\ConsoleParametersParser</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="phpcr-utils/src/PHPCR/Util/Console/Helper/PhpcrHelper.php" id="phpcr-utils/src/PHPCR/Util/Console/Helper/PhpcrHelper.php"></a><h3>
+<i class="icon-file"></i>phpcr-utils/src/PHPCR/Util/Console/Helper/PhpcrHelper.php<small style="float: right;padding-right: 10px;">4</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr class="error">
+<td>error</td>
+<td>0</td>
+<td>No page-level DocBlock was found in file phpcr-utils/src/PHPCR/Util/Console/Helper/PhpcrHelper.php</td>
+</tr>
+<tr class="critical">
+<td>critical</td>
+<td>13</td>
+<td>No short description for property $session</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>28</td>
+<td>No DocBlock was found for method getSession()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>33</td>
+<td>No DocBlock was found for method getName()</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="phpcr-utils/src/PHPCR/Util/Console/Helper/TreeDumper/ConsoleDumperNodeVisitor.php" id="phpcr-utils/src/PHPCR/Util/Console/Helper/TreeDumper/ConsoleDumperNodeVisitor.php"></a><h3>
+<i class="icon-file"></i>phpcr-utils/src/PHPCR/Util/Console/Helper/TreeDumper/ConsoleDumperNodeVisitor.php<small style="float: right;padding-right: 10px;">6</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr class="error">
+<td>error</td>
+<td>0</td>
+<td>No page-level DocBlock was found in file phpcr-utils/src/PHPCR/Util/Console/Helper/TreeDumper/ConsoleDumperNodeVisitor.php</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>16</td>
+<td>No DocBlock was found for property $output</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>18</td>
+<td>No DocBlock was found for property $level</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>20</td>
+<td>No DocBlock was found for method __construct()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>25</td>
+<td>No DocBlock was found for method setLevel()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>30</td>
+<td>No DocBlock was found for method visit()</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="phpcr-utils/src/PHPCR/Util/Console/Helper/TreeDumper/SystemNodeFilter.php" id="phpcr-utils/src/PHPCR/Util/Console/Helper/TreeDumper/SystemNodeFilter.php"></a><h3>
+<i class="icon-file"></i>phpcr-utils/src/PHPCR/Util/Console/Helper/TreeDumper/SystemNodeFilter.php<small style="float: right;padding-right: 10px;">2</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr class="error">
+<td>error</td>
+<td>0</td>
+<td>No page-level DocBlock was found in file phpcr-utils/src/PHPCR/Util/Console/Helper/TreeDumper/SystemNodeFilter.php</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>16</td>
+<td>No DocBlock was found for method mustVisit()</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="phpcr-utils/src/PHPCR/Util/Console/Helper/TreeDumper/ConsoleDumperPropertyVisitor.php" id="phpcr-utils/src/PHPCR/Util/Console/Helper/TreeDumper/ConsoleDumperPropertyVisitor.php"></a><h3>
+<i class="icon-file"></i>phpcr-utils/src/PHPCR/Util/Console/Helper/TreeDumper/ConsoleDumperPropertyVisitor.php<small style="float: right;padding-right: 10px;">7</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr class="error">
+<td>error</td>
+<td>0</td>
+<td>No page-level DocBlock was found in file phpcr-utils/src/PHPCR/Util/Console/Helper/TreeDumper/ConsoleDumperPropertyVisitor.php</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>18</td>
+<td>No DocBlock was found for property $output</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>20</td>
+<td>No DocBlock was found for property $level</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>22</td>
+<td>No DocBlock was found for property $maxLineLength</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>24</td>
+<td>No DocBlock was found for method __construct()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>33</td>
+<td>No DocBlock was found for method setLevel()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>38</td>
+<td>No DocBlock was found for method visit()</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="phpcr-utils/src/PHPCR/Util/Console/Command/ImportXmlCommand.php" id="phpcr-utils/src/PHPCR/Util/Console/Command/ImportXmlCommand.php"></a><h3>
+<i class="icon-file"></i>phpcr-utils/src/PHPCR/Util/Console/Command/ImportXmlCommand.php<small style="float: right;padding-right: 10px;">3</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr class="error">
+<td>error</td>
+<td>0</td>
+<td>No page-level DocBlock was found in file phpcr-utils/src/PHPCR/Util/Console/Command/ImportXmlCommand.php</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>14</td>
+<td>No DocBlock was found for \PHPCR\Util\Console\Command\ImportXmlCommand</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>16</td>
+<td>No short description for method configure()</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="phpcr-utils/src/PHPCR/Util/Console/Command/PurgeCommand.php" id="phpcr-utils/src/PHPCR/Util/Console/Command/PurgeCommand.php"></a><h3>
+<i class="icon-file"></i>phpcr-utils/src/PHPCR/Util/Console/Command/PurgeCommand.php<small style="float: right;padding-right: 10px;">3</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr class="error">
+<td>error</td>
+<td>0</td>
+<td>No page-level DocBlock was found in file phpcr-utils/src/PHPCR/Util/Console/Command/PurgeCommand.php</td>
+</tr>
+<tr class="critical">
+<td>critical</td>
+<td>14</td>
+<td>No short description for class \PHPCR\Util\Console\Command\PurgeCommand</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>19</td>
+<td>No DocBlock was found for method configure()</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="phpcr-utils/src/PHPCR/Util/Console/Command/QueryCommand.php" id="phpcr-utils/src/PHPCR/Util/Console/Command/QueryCommand.php"></a><h3>
+<i class="icon-file"></i>phpcr-utils/src/PHPCR/Util/Console/Command/QueryCommand.php<small style="float: right;padding-right: 10px;">2</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr class="error">
+<td>error</td>
+<td>0</td>
+<td>No page-level DocBlock was found in file phpcr-utils/src/PHPCR/Util/Console/Command/QueryCommand.php</td>
+</tr>
+<tr class="critical">
+<td>critical</td>
+<td>17</td>
+<td>No short description for class \PHPCR\Util\Console\Command\QueryCommand</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="phpcr-utils/src/PHPCR/Util/Console/Command/RegisterNodeTypesCommand.php" id="phpcr-utils/src/PHPCR/Util/Console/Command/RegisterNodeTypesCommand.php"></a><h3>
+<i class="icon-file"></i>phpcr-utils/src/PHPCR/Util/Console/Command/RegisterNodeTypesCommand.php<small style="float: right;padding-right: 10px;">12</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr class="error">
+<td>error</td>
+<td>0</td>
+<td>No page-level DocBlock was found in file phpcr-utils/src/PHPCR/Util/Console/Command/RegisterNodeTypesCommand.php</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>23</td>
+<td>No short description for method configure()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>54</td>
+<td>No short description for method execute()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>54</td>
+<td>Argument $input is missing from the Docblock of execute()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>54</td>
+<td>Argument $output is missing from the Docblock of execute()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>80</td>
+<td>Name of argument $input does not match with the DocBlock's name $session in updateFromCnd()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>80</td>
+<td>The type hint of the argument is incorrect for the type definition of the @param tag with argument $input in updateFromCnd()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>80</td>
+<td>Name of argument $output does not match with the DocBlock's name $cnd in updateFromCnd()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>80</td>
+<td>The type hint of the argument is incorrect for the type definition of the @param tag with argument $output in updateFromCnd()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>80</td>
+<td>Argument $session is missing from the Docblock of updateFromCnd()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>80</td>
+<td>Argument $cnd is missing from the Docblock of updateFromCnd()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>80</td>
+<td>Argument $allowUpdate is missing from the Docblock of updateFromCnd()</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="phpcr-utils/src/PHPCR/Util/Console/Command/DumpCommand.php" id="phpcr-utils/src/PHPCR/Util/Console/Command/DumpCommand.php"></a><h3>
+<i class="icon-file"></i>phpcr-utils/src/PHPCR/Util/Console/Command/DumpCommand.php<small style="float: right;padding-right: 10px;">4</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr class="error">
+<td>error</td>
+<td>0</td>
+<td>No page-level DocBlock was found in file phpcr-utils/src/PHPCR/Util/Console/Command/DumpCommand.php</td>
+</tr>
+<tr class="critical">
+<td>critical</td>
+<td>18</td>
+<td>No short description for class \PHPCR\Util\Console\Command\DumpCommand</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>23</td>
+<td>No DocBlock was found for property $dump_max_line_length</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>51</td>
+<td>Argument $length is missing from the Docblock of setDumpMaxLineLength()</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="phpcr-utils/src/PHPCR/Util/Console/Command/CreateWorkspaceCommand.php" id="phpcr-utils/src/PHPCR/Util/Console/Command/CreateWorkspaceCommand.php"></a><h3>
+<i class="icon-file"></i>phpcr-utils/src/PHPCR/Util/Console/Command/CreateWorkspaceCommand.php<small style="float: right;padding-right: 10px;">5</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr class="error">
+<td>error</td>
+<td>0</td>
+<td>No page-level DocBlock was found in file phpcr-utils/src/PHPCR/Util/Console/Command/CreateWorkspaceCommand.php</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>18</td>
+<td>No short description for method configure()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>36</td>
+<td>No short description for method execute()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>36</td>
+<td>Argument $input is missing from the Docblock of execute()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>36</td>
+<td>Argument $output is missing from the Docblock of execute()</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="package-contents"></div>
+<div class="package-contents">
+<a name="phpcr-utils/src/PHPCR/Util/TreeWalker.php" id="phpcr-utils/src/PHPCR/Util/TreeWalker.php"></a><h3>
+<i class="icon-file"></i>phpcr-utils/src/PHPCR/Util/TreeWalker.php<small style="float: right;padding-right: 10px;">6</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr class="error">
+<td>error</td>
+<td>0</td>
+<td>No page-level DocBlock was found in file phpcr-utils/src/PHPCR/Util/TreeWalker.php</td>
+</tr>
+<tr class="critical">
+<td>critical</td>
+<td>16</td>
+<td>No short description for property $nodeVisitor</td>
+</tr>
+<tr class="critical">
+<td>critical</td>
+<td>21</td>
+<td>No short description for property $propertyVisitor</td>
+</tr>
+<tr class="critical">
+<td>critical</td>
+<td>26</td>
+<td>No short description for property $nodeFilters</td>
+</tr>
+<tr class="critical">
+<td>critical</td>
+<td>31</td>
+<td>No short description for property $propertyFilters</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>36</td>
+<td>No short description for method __construct()</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="phpcr-utils/src/PHPCR/Util/QOM/Sql2Generator.php" id="phpcr-utils/src/PHPCR/Util/QOM/Sql2Generator.php"></a><h3>
+<i class="icon-file"></i>phpcr-utils/src/PHPCR/Util/QOM/Sql2Generator.php<small style="float: right;padding-right: 10px;">10</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr class="error">
+<td>error</td>
+<td>0</td>
+<td>No page-level DocBlock was found in file phpcr-utils/src/PHPCR/Util/QOM/Sql2Generator.php</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>97</td>
+<td>Name of argument $sel2Path does not match with the DocBlock's name $sel2path in evalSameNodeJoinCondition()</td>
+</tr>
+<tr class="notice">
+<td>notice</td>
+<td>97</td>
+<td>Parameter $sel2path could not be found in evalSameNodeJoinCondition()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>195</td>
+<td>No DocBlock was found for method evalPropertyExistence()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>200</td>
+<td>Name of argument $propertyName does not match with the DocBlock's name $ropertyName in evalFullTextSearch()</td>
+</tr>
+<tr class="notice">
+<td>notice</td>
+<td>200</td>
+<td>Parameter $ropertyName could not be found in evalFullTextSearch()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>283</td>
+<td>No DocBlock was found for method evalColumns()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>301</td>
+<td>No DocBlock was found for method evalColumn()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>335</td>
+<td>No short description for method evalCastLiteral()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>344</td>
+<td>No DocBlock was found for method qualifyProperty()</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="phpcr-utils/src/PHPCR/Util/QOM/BaseSqlGenerator.php" id="phpcr-utils/src/PHPCR/Util/QOM/BaseSqlGenerator.php"></a><h3>
+<i class="icon-file"></i>phpcr-utils/src/PHPCR/Util/QOM/BaseSqlGenerator.php<small style="float: right;padding-right: 10px;">9</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr class="error">
+<td>error</td>
+<td>0</td>
+<td>No page-level DocBlock was found in file phpcr-utils/src/PHPCR/Util/QOM/BaseSqlGenerator.php</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>9</td>
+<td>No DocBlock was found for \PHPCR\Util\QOM\BaseSqlGenerator</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>11</td>
+<td>Name of argument $orderings does not match with the DocBlock's name $ordering in evalQuery()</td>
+</tr>
+<tr class="notice">
+<td>notice</td>
+<td>11</td>
+<td>Parameter $ordering could not be found in evalQuery()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>131</td>
+<td>No DocBlock was found for method evalOrderings()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>147</td>
+<td>No DocBlock was found for method evalOrdering()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>152</td>
+<td>No DocBlock was found for method evalOrder()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>163</td>
+<td>No DocBlock was found for method evalBindVariable()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>168</td>
+<td>No DocBlock was found for method evalLiteral()</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="phpcr-utils/src/PHPCR/Util/QOM/QomToSql2QueryConverter.php" id="phpcr-utils/src/PHPCR/Util/QOM/QomToSql2QueryConverter.php"></a><h3>
+<i class="icon-file"></i>phpcr-utils/src/PHPCR/Util/QOM/QomToSql2QueryConverter.php<small style="float: right;padding-right: 10px;">1</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr class="error">
+<td>error</td>
+<td>0</td>
+<td>No page-level DocBlock was found in file phpcr-utils/src/PHPCR/Util/QOM/QomToSql2QueryConverter.php</td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="phpcr-utils/src/PHPCR/Util/QOM/Sql1Generator.php" id="phpcr-utils/src/PHPCR/Util/QOM/Sql1Generator.php"></a><h3>
+<i class="icon-file"></i>phpcr-utils/src/PHPCR/Util/QOM/Sql1Generator.php<small style="float: right;padding-right: 10px;">10</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr class="error">
+<td>error</td>
+<td>0</td>
+<td>No page-level DocBlock was found in file phpcr-utils/src/PHPCR/Util/QOM/Sql1Generator.php</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>28</td>
+<td>No DocBlock was found for method getPathForDescendantQuery()</td>
+</tr>
+<tr class="notice">
+<td>notice</td>
+<td>50</td>
+<td>Parameter $selectorName could not be found in evalDescendantNode()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>63</td>
+<td>No DocBlock was found for method evalPropertyExistence()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>68</td>
+<td>Name of argument $propertyName does not match with the DocBlock's name $ropertyName in evalFullTextSearch()</td>
+</tr>
+<tr class="notice">
+<td>notice</td>
+<td>68</td>
+<td>Parameter $ropertyName could not be found in evalFullTextSearch()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>90</td>
+<td>No DocBlock was found for method evalColumns()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>108</td>
+<td>Argument $selectorName is missing from the Docblock of evalPropertyValue()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>119</td>
+<td>No DocBlock was found for method evalColumn()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>136</td>
+<td>No short description for method evalCastLiteral()</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="phpcr-utils/src/PHPCR/Util/QOM/Sql2ToQomQueryConverter.php" id="phpcr-utils/src/PHPCR/Util/QOM/Sql2ToQomQueryConverter.php"></a><h3>
+<i class="icon-file"></i>phpcr-utils/src/PHPCR/Util/QOM/Sql2ToQomQueryConverter.php<small style="float: right;padding-right: 10px;">5</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr class="error">
+<td>error</td>
+<td>0</td>
+<td>No page-level DocBlock was found in file phpcr-utils/src/PHPCR/Util/QOM/Sql2ToQomQueryConverter.php</td>
+</tr>
+<tr class="critical">
+<td>critical</td>
+<td>15</td>
+<td>No short description for property $factory</td>
+</tr>
+<tr class="critical">
+<td>critical</td>
+<td>20</td>
+<td>No short description for property $scanner</td>
+</tr>
+<tr class="critical">
+<td>critical</td>
+<td>25</td>
+<td>No short description for property $sql2</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>30</td>
+<td>No short description for method __construct()</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="phpcr-utils/src/PHPCR/Util/QOM/Sql2Scanner.php" id="phpcr-utils/src/PHPCR/Util/QOM/Sql2Scanner.php"></a><h3>
+<i class="icon-file"></i>phpcr-utils/src/PHPCR/Util/QOM/Sql2Scanner.php<small style="float: right;padding-right: 10px;">5</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr class="error">
+<td>error</td>
+<td>0</td>
+<td>No page-level DocBlock was found in file phpcr-utils/src/PHPCR/Util/QOM/Sql2Scanner.php</td>
+</tr>
+<tr class="critical">
+<td>critical</td>
+<td>10</td>
+<td>No short description for property $sql2</td>
+</tr>
+<tr class="critical">
+<td>critical</td>
+<td>15</td>
+<td>No short description for property $tokens</td>
+</tr>
+<tr class="critical">
+<td>critical</td>
+<td>20</td>
+<td>No short description for property $curpos</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>36</td>
+<td>Argument $offset is missing from the Docblock of lookupNextToken()</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="phpcr-utils/src/PHPCR/Util/QOM/NotSupportedOperandException.php" id="phpcr-utils/src/PHPCR/Util/QOM/NotSupportedOperandException.php"></a><h3>
+<i class="icon-file"></i>phpcr-utils/src/PHPCR/Util/QOM/NotSupportedOperandException.php<small style="float: right;padding-right: 10px;">3</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr class="error">
+<td>error</td>
+<td>0</td>
+<td>No page-level DocBlock was found in file phpcr-utils/src/PHPCR/Util/QOM/NotSupportedOperandException.php</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>5</td>
+<td>No DocBlock was found for \PHPCR\Util\QOM\NotSupportedOperandException</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>7</td>
+<td>No DocBlock was found for method __construct()</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="phpcr-utils/src/PHPCR/Util/QOM/QueryBuilder.php" id="phpcr-utils/src/PHPCR/Util/QOM/QueryBuilder.php"></a><h3>
+<i class="icon-file"></i>phpcr-utils/src/PHPCR/Util/QOM/QueryBuilder.php<small style="float: right;padding-right: 10px;">2</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr class="error">
+<td>error</td>
+<td>0</td>
+<td>No page-level DocBlock was found in file phpcr-utils/src/PHPCR/Util/QOM/QueryBuilder.php</td>
+</tr>
+<tr class="critical">
+<td>critical</td>
+<td>67</td>
+<td>No short description for property $query</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="phpcr-utils/src/PHPCR/Util/QOM/NotSupportedConstraintException.php" id="phpcr-utils/src/PHPCR/Util/QOM/NotSupportedConstraintException.php"></a><h3>
+<i class="icon-file"></i>phpcr-utils/src/PHPCR/Util/QOM/NotSupportedConstraintException.php<small style="float: right;padding-right: 10px;">3</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr class="error">
+<td>error</td>
+<td>0</td>
+<td>No page-level DocBlock was found in file phpcr-utils/src/PHPCR/Util/QOM/NotSupportedConstraintException.php</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>5</td>
+<td>No DocBlock was found for \PHPCR\Util\QOM\NotSupportedConstraintException</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>7</td>
+<td>No DocBlock was found for method __construct()</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="phpcr-utils/src/PHPCR/Util/QOM/BaseQomToSqlQueryConverter.php" id="phpcr-utils/src/PHPCR/Util/QOM/BaseQomToSqlQueryConverter.php"></a><h3>
+<i class="icon-file"></i>phpcr-utils/src/PHPCR/Util/QOM/BaseQomToSqlQueryConverter.php<small style="float: right;padding-right: 10px;">11</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr class="error">
+<td>error</td>
+<td>0</td>
+<td>No page-level DocBlock was found in file phpcr-utils/src/PHPCR/Util/QOM/BaseQomToSqlQueryConverter.php</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>8</td>
+<td>No DocBlock was found for \PHPCR\Util\QOM\BaseQomToSqlQueryConverter</td>
+</tr>
+<tr class="critical">
+<td>critical</td>
+<td>10</td>
+<td>No short description for property $generator</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>15</td>
+<td>No DocBlock was found for method __construct()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>123</td>
+<td>Name of argument $literal does not match with the DocBlock's name $expr in convertFullTextSearchExpression()</td>
+</tr>
+<tr class="notice">
+<td>notice</td>
+<td>123</td>
+<td>Parameter $expr could not be found in convertFullTextSearchExpression()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>173</td>
+<td>Name of argument $operand does not match with the DocBlock's name $value in convertPropertyValue()</td>
+</tr>
+<tr class="notice">
+<td>notice</td>
+<td>173</td>
+<td>Parameter $value could not be found in convertPropertyValue()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>209</td>
+<td>No DocBlock was found for method convertPath()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>214</td>
+<td>No DocBlock was found for method convertBindVariable()</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>219</td>
+<td>No DocBlock was found for method convertLiteral()</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="package-contents">
+<a name="phpcr-utils/src/PHPCR/Util/QOM/QomToSql1QueryConverter.php" id="phpcr-utils/src/PHPCR/Util/QOM/QomToSql1QueryConverter.php"></a><h3>
+<i class="icon-file"></i>phpcr-utils/src/PHPCR/Util/QOM/QomToSql1QueryConverter.php<small style="float: right;padding-right: 10px;">1</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr class="error">
+<td>error</td>
+<td>0</td>
+<td>No page-level DocBlock was found in file phpcr-utils/src/PHPCR/Util/QOM/QomToSql1QueryConverter.php</td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="package-contents"></div>
+<div class="package-contents">
+<a name="phpcr-utils/src/PHPCR/Util/NodeHelper.php" id="phpcr-utils/src/PHPCR/Util/NodeHelper.php"></a><h3>
+<i class="icon-file"></i>phpcr-utils/src/PHPCR/Util/NodeHelper.php<small style="float: right;padding-right: 10px;">2</small>
+</h3>
+<div><table class="table markers table-bordered">
+<thead><tr>
+<th>Type</th>
+<th>Line</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr class="error">
+<td>error</td>
+<td>0</td>
+<td>No page-level DocBlock was found in file phpcr-utils/src/PHPCR/Util/NodeHelper.php</td>
+</tr>
+<tr class="error">
+<td>error</td>
+<td>75</td>
+<td>Argument $item is missing from the Docblock of isSystemItem()</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+</div>
+<div class="row"><footer class="span12">
+            Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
+            Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a10</a> and<br>
+            generated on 2012-10-02T11:24:45+02:00.<br></footer></div>
+</div>
+</body>
+</html>

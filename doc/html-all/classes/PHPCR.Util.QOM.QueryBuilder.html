@@ -1,0 +1,774 @@
+<!DOCTYPE html><html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+<meta charset="utf-8">
+<title>PHPCR API and PHPCR-Utils » \PHPCR\Util\QOM\QueryBuilder</title>
+<meta name="author" content="Mike van Riel">
+<meta name="description" content="">
+<link href="../css/template.css" rel="stylesheet" media="all">
+<script src="../js/jquery-1.7.1.min.js" type="text/javascript"></script><script src="../js/jquery-ui-1.8.2.custom.min.js" type="text/javascript"></script><script src="../js/jquery.mousewheel.min.js" type="text/javascript"></script><script src="../js/bootstrap.js" type="text/javascript"></script><script src="../js/template.js" type="text/javascript"></script><script src="../js/prettify/prettify.min.js" type="text/javascript"></script><link rel="shortcut icon" href="../img/favicon.ico">
+<link rel="apple-touch-icon" href="../img/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="72x72" href="../img/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="114x114" href="../img/apple-touch-icon-114x114.png">
+</head>
+<body>
+<div class="navbar navbar-fixed-top">
+<div class="navbar-inner"><div class="container">
+<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a><a class="brand" href="../index.html">PHPCR API and PHPCR-Utils</a><div class="nav-collapse"><ul class="nav">
+<li class="dropdown">
+<a href="#api" class="dropdown-toggle" data-toggle="dropdown">
+                                    API Documentation <b class="caret"></b></a><ul class="dropdown-menu">
+<li><a>Namespaces</a></li>
+<li><a href="../namespaces/PHPCR.html"><i class="icon-th"></i> PHPCR</a></li>
+<li><a>Packages</a></li>
+<li><a href="../packages/Default.html"><i class="icon-folder-open"></i> Default</a></li>
+<li><a href="../packages/phpcr.html"><i class="icon-folder-open"></i> phpcr</a></li>
+</ul>
+</li>
+<li class="dropdown" id="charts-menu">
+<a href="#charts" class="dropdown-toggle" data-toggle="dropdown">
+                                    Charts <b class="caret"></b></a><ul class="dropdown-menu"><li><a href="../graph_class.html"><i class="icon-list-alt"></i> Class hierarchy diagram</a></li></ul>
+</li>
+<li class="dropdown" id="reports-menu">
+<a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
+                                    Reports <b class="caret"></b></a><ul class="dropdown-menu">
+<li><a href="../errors.html"><i class="icon-remove-sign"></i> Errors 
+                <span class="label label-info">123</span></a></li>
+<li><a href="../markers.html"><i class="icon-map-marker"></i> Markers 
+                <ul><li>todo 
+                <span class="label label-info">12</span>
+</li></ul></a></li>
+<li><a href="../deprecated.html"><i class="icon-stop"></i> Deprecated elements 
+                <span class="label label-info">0</span></a></li>
+</ul>
+</li>
+</ul></div>
+</div></div>
+<div class="go_to_top"><a href="#___" style="color: inherit">Back to top  <i class="icon-upload icon-white"></i></a></div>
+</div>
+<div id="___" class="container">
+<noscript><div class="alert alert-warning">
+                            Javascript is disabled; several features are only available
+                            if Javascript is enabled.
+                        </div></noscript>
+<div class="row">
+<div class="span4">
+<span class="btn-group visibility" data-toggle="buttons-checkbox"><button class="btn public active" title="Show public elements">Public</button><button class="btn protected" title="Show protected elements">Protected</button><button class="btn private" title="Show private elements">Private</button><button class="btn inherited active" title="Show inherited elements">Inherited</button></span><div class="btn-group view pull-right" data-toggle="buttons-radio">
+<button class="btn details" title="Show descriptions and method names"><i class="icon-list"></i></button><button class="btn simple" title="Show only method names"><i class="icon-align-justify"></i></button>
+</div>
+<ul class="side-nav nav nav-list">
+<li class="nav-header">
+<i class="icon-custom icon-method"></i> Methods
+                    <ul>
+<li class="method public "><a href="#method___construct" title="__construct :: Initializes a new QueryBuilder"><span class="description">Initializes a new QueryBuilder</span><pre>__construct()</pre></a></li>
+<li class="method public "><a href="#method_addOrderBy" title="addOrderBy :: Adds an ordering to the query results."><span class="description">Adds an ordering to the query results.</span><pre>addOrderBy()</pre></a></li>
+<li class="method public "><a href="#method_addSelect" title="addSelect :: Adds a property in the specified or default selector to include in the tabular view of query results."><span class="description">Adds a property in the specified or default selector to include in the tabular view of query results.</span><pre>addSelect()</pre></a></li>
+<li class="method public "><a href="#method_andWhere" title="andWhere :: Creates a new constraint formed by applying a logical AND to the
+existing constraint and the new one"><span class="description">Creates a new constraint formed by applying a logical AND to the
+existing constraint and the new one</span><pre>andWhere()</pre></a></li>
+<li class="method public "><a href="#method_execute" title="execute :: Executes the query setting firstResult and maxResults."><span class="description">Executes the query setting firstResult and maxResults.</span><pre>execute()</pre></a></li>
+<li class="method public "><a href="#method_from" title="from :: Sets the default Selector or the node-tuple Source."><span class="description">Sets the default Selector or the node-tuple Source.</span><pre>from()</pre></a></li>
+<li class="method public "><a href="#method_getColumns" title="getColumns :: Returns the columns to be selected"><span class="description">Returns the columns to be selected</span><pre>getColumns()</pre></a></li>
+<li class="method public "><a href="#method_getConstraint" title="getConstraint :: Returns the constraint to apply"><span class="description">Returns the constraint to apply</span><pre>getConstraint()</pre></a></li>
+<li class="method public "><a href="#method_getFirstResult" title='getFirstResult :: getFirstResult
+Gets the position of the first result the query object was set to retrieve (the "offset").'><span class="description">getFirstResult
+Gets the position of the first result the query object was set to retrieve (the "offset").</span><pre>getFirstResult()</pre></a></li>
+<li class="method public "><a href="#method_getMaxResults" title='getMaxResults :: Gets the maximum number of results the query object was set to retrieve (the "limit").'><span class="description">Gets the maximum number of results the query object was set to retrieve (the "limit").</span><pre>getMaxResults()</pre></a></li>
+<li class="method public "><a href="#method_getOrderings" title="getOrderings :: Gets the array of orderings."><span class="description">Gets the array of orderings.</span><pre>getOrderings()</pre></a></li>
+<li class="method public "><a href="#method_getParameter" title="getParameter :: Gets a (previously set) query parameter of the query being constructed."><span class="description">Gets a (previously set) query parameter of the query being constructed.</span><pre>getParameter()</pre></a></li>
+<li class="method public "><a href="#method_getParameters" title="getParameters :: Gets all defined query parameters for the query being constructed."><span class="description">Gets all defined query parameters for the query being constructed.</span><pre>getParameters()</pre></a></li>
+<li class="method public "><a href="#method_getQOMFactory" title="getQOMFactory :: Get the associated QOMFactory for this query builder"><span class="description">Get the associated QOMFactory for this query builder</span><pre>getQOMFactory()</pre></a></li>
+<li class="method public "><a href="#method_getQuery" title="getQuery :: Gets the query built"><span class="description">Gets the query built</span><pre>getQuery()</pre></a></li>
+<li class="method public "><a href="#method_getSource" title="getSource :: Gets the default Selector."><span class="description">Gets the default Selector.</span><pre>getSource()</pre></a></li>
+<li class="method public "><a href="#method_innerJoin" title="innerJoin :: Performs an inner join between the stored source and the supplied source."><span class="description">Performs an inner join between the stored source and the supplied source.</span><pre>innerJoin()</pre></a></li>
+<li class="method public "><a href="#method_join" title="join :: Performs an inner join between the stored source and the supplied source."><span class="description">Performs an inner join between the stored source and the supplied source.</span><pre>join()</pre></a></li>
+<li class="method public "><a href="#method_joinWithType" title="joinWithType :: Performs an join between the stored source and the supplied source."><span class="description">Performs an join between the stored source and the supplied source.</span><pre>joinWithType()</pre></a></li>
+<li class="method public "><a href="#method_leftJoin" title="leftJoin :: Performs an left outer join between the stored source and the supplied source."><span class="description">Performs an left outer join between the stored source and the supplied source.</span><pre>leftJoin()</pre></a></li>
+<li class="method public "><a href="#method_orWhere" title="orWhere :: Creates a new constraint formed by applying a logical OR to the
+existing constraint and the new one"><span class="description">Creates a new constraint formed by applying a logical OR to the
+existing constraint and the new one</span><pre>orWhere()</pre></a></li>
+<li class="method public "><a href="#method_orderBy" title="orderBy :: Specifies an ordering for the query results."><span class="description">Specifies an ordering for the query results.</span><pre>orderBy()</pre></a></li>
+<li class="method public "><a href="#method_rightJoin" title="rightJoin :: Performs a right outer join between the stored source and the supplied source."><span class="description">Performs a right outer join between the stored source and the supplied source.</span><pre>rightJoin()</pre></a></li>
+<li class="method public "><a href="#method_select" title="select :: Identifies a property in the specified or default selector to include in the tabular view of query results."><span class="description">Identifies a property in the specified or default selector to include in the tabular view of query results.</span><pre>select()</pre></a></li>
+<li class="method public "><a href="#method_setColumns" title="setColumns :: Sets the columns to be selected"><span class="description">Sets the columns to be selected</span><pre>setColumns()</pre></a></li>
+<li class="method public "><a href="#method_setFirstResult" title='setFirstResult :: sets the position of the first result to retrieve (the "offset").'><span class="description">sets the position of the first result to retrieve (the "offset").</span><pre>setFirstResult()</pre></a></li>
+<li class="method public "><a href="#method_setFromQuery" title="setFromQuery :: Get a query builder instance from an existing query"><span class="description">Get a query builder instance from an existing query</span><pre>setFromQuery()</pre></a></li>
+<li class="method public "><a href="#method_setMaxResults" title='setMaxResults :: Sets the maximum number of results to retrieve (the "limit").'><span class="description">Sets the maximum number of results to retrieve (the "limit").</span><pre>setMaxResults()</pre></a></li>
+<li class="method public "><a href="#method_setParameter" title="setParameter :: Sets a query parameter for the query being constructed."><span class="description">Sets a query parameter for the query being constructed.</span><pre>setParameter()</pre></a></li>
+<li class="method public "><a href="#method_setParameters" title="setParameters :: Sets a collection of query parameters for the query being constructed."><span class="description">Sets a collection of query parameters for the query being constructed.</span><pre>setParameters()</pre></a></li>
+<li class="method public "><a href="#method_where" title="where :: Specifies one restriction (may be simple or composed)."><span class="description">Specifies one restriction (may be simple or composed).</span><pre>where()</pre></a></li>
+</ul>
+</li>
+<li class="nav-header">
+<i class="icon-custom icon-property"></i> Properties
+                    <ul></ul>
+</li>
+<li class="nav-header private">» Private
+                    <ul>
+<li class="property private "><a href="#property_columns" title="$columns :: "><span class="description">&lt;p&gt;with the columns to be selected.&lt;/p&gt;</span><pre>$columns</pre></a></li>
+<li class="property private "><a href="#property_constraint" title="$constraint :: "><span class="description">&lt;p&gt;to apply to the query.&lt;/p&gt;</span><pre>$constraint</pre></a></li>
+<li class="property private "><a href="#property_firstResult" title="$firstResult :: "><span class="description">&lt;p&gt;The maximum number of results to retrieve.&lt;/p&gt;</span><pre>$firstResult</pre></a></li>
+<li class="property private "><a href="#property_maxResults" title="$maxResults :: "><span class="description">&lt;p&gt;The maximum number of results to retrieve.&lt;/p&gt;</span><pre>$maxResults</pre></a></li>
+<li class="property private "><a href="#property_orderings" title="$orderings :: "><span class="description">&lt;p&gt;with the orderings that determine the order of the result&lt;/p&gt;</span><pre>$orderings</pre></a></li>
+<li class="property private "><a href="#property_params" title="$params :: "><span class="description">&lt;p&gt;The query parameters.&lt;/p&gt;</span><pre>$params</pre></a></li>
+<li class="property private "><a href="#property_qomFactory" title="$qomFactory :: "><span class="description">&lt;p&gt;QOMFactory&lt;/p&gt;</span><pre>$qomFactory</pre></a></li>
+<li class="property private "><a href="#property_query" title="$query :: "><span class="description">$query</span><pre>$query</pre></a></li>
+<li class="property private "><a href="#property_source" title="$source :: "><span class="description">&lt;p&gt;source of the query.&lt;/p&gt;</span><pre>$source</pre></a></li>
+<li class="property private "><a href="#property_state" title="$state :: "><span class="description">&lt;p&gt;The state of the query object. Can be dirty or clean.&lt;/p&gt;</span><pre>$state</pre></a></li>
+</ul>
+</li>
+<li class="nav-header">
+<i class="icon-custom icon-constant"></i> Constants
+                    <ul>
+<li class="constant  "><a href="#constant_STATE_CLEAN" title="STATE_CLEAN :: "><span class="description">STATE_CLEAN</span><pre>STATE_CLEAN</pre></a></li>
+<li class="constant  "><a href="#constant_STATE_DIRTY" title="STATE_DIRTY :: The builder states."><span class="description">The builder states.</span><pre>STATE_DIRTY</pre></a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="span8">
+<a id="\PHPCR\Util\QOM\QueryBuilder"></a><ul class="breadcrumb">
+<li>
+<a href="../index.html"><i class="icon-custom icon-class"></i></a><span class="divider">\</span>
+</li>
+<li><a href="../namespaces/PHPCR.html">PHPCR</a></li>
+<li>
+<span class="divider">\</span><a href="../namespaces/PHPCR.Util.html">Util</a>
+</li>
+<li>
+<span class="divider">\</span><a href="../namespaces/PHPCR.Util.QOM.html">QOM</a>
+</li>
+<li class="active">
+<span class="divider">\</span><a href="../classes/PHPCR.Util.QOM.QueryBuilder.html">QueryBuilder</a>
+</li>
+</ul>
+<div class="element class">
+<p class="short_description">QueryBuilder class is responsible for dynamically create QOM queries.</p>
+<div class="details">
+<div class="long_description"></div>
+<table class="table table-bordered">
+<tr>
+<th>author</th>
+<td><a href="mailto:nitram.ohcan@gmail.com">Nacho Martín</a></td>
+</tr>
+<tr>
+<th>author</th>
+<td><a href="mailto:guilhermeblanco@hotmail.com">Guilherme Blanco</a></td>
+</tr>
+<tr>
+<th>author</th>
+<td><a href="mailto:kontakt@beberlei.de">Benjamin Eberlei</a></td>
+</tr>
+</table>
+<h3>
+<i class="icon-custom icon-method"></i> Methods</h3>
+<a id="method___construct"></a><div class="element clickable method public method___construct" data-toggle="collapse" data-target=".method___construct .collapse">
+<h2>Initializes a new QueryBuilder</h2>
+<pre>__construct(\PHPCR\Query\QOM\QueryObjectModelFactoryInterface $qomFactory) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$qomFactory</h4>
+<code><a href="../classes/PHPCR.Query.QOM.QueryObjectModelFactoryInterface.html">\PHPCR\Query\QOM\QueryObjectModelFactoryInterface</a></code>
+</div>
+</div></div>
+</div>
+<a id="method_addOrderBy"></a><div class="element clickable method public method_addOrderBy" data-toggle="collapse" data-target=".method_addOrderBy .collapse">
+<h2>Adds an ordering to the query results.</h2>
+<pre>addOrderBy(\PHPCR\Query\QOM\DynamicOperandInterface $sort, string $order) : <a href="../classes/PHPCR.Util.QOM.QueryBuilder.html">\PHPCR\Util\QOM\QueryBuilder</a></pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$sort</h4>
+<code><a href="../classes/PHPCR.Query.QOM.DynamicOperandInterface.html">\PHPCR\Query\QOM\DynamicOperandInterface</a></code><p>The ordering expression.</p></div>
+<div class="subelement argument">
+<h4>$order</h4>
+<code>string</code><p>The ordering direction.</p></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code><a href="../classes/PHPCR.Util.QOM.QueryBuilder.html">\PHPCR\Util\QOM\QueryBuilder</a></code>This QueryBuilder instance.</div>
+</div></div>
+</div>
+<a id="method_addSelect"></a><div class="element clickable method public method_addSelect" data-toggle="collapse" data-target=".method_addSelect .collapse">
+<h2>Adds a property in the specified or default selector to include in the tabular view of query results.</h2>
+<pre>addSelect(string $propertyName, string $columnName, string $selectorName) : <a href="../classes/PHPCR.Util.QOM.QueryBuilder.html">\PHPCR\Util\QOM\QueryBuilder</a></pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$propertyName</h4>
+<code>string</code>
+</div>
+<div class="subelement argument">
+<h4>$columnName</h4>
+<code>string</code>
+</div>
+<div class="subelement argument">
+<h4>$selectorName</h4>
+<code>string</code>
+</div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code><a href="../classes/PHPCR.Util.QOM.QueryBuilder.html">\PHPCR\Util\QOM\QueryBuilder</a></code>This QueryBuilder instance.</div>
+</div></div>
+</div>
+<a id="method_andWhere"></a><div class="element clickable method public method_andWhere" data-toggle="collapse" data-target=".method_andWhere .collapse">
+<h2>Creates a new constraint formed by applying a logical AND to the
+existing constraint and the new one</h2>
+<pre>andWhere(\PHPCR\Query\QOM\ConstraintInterface $constraint) : <a href="../classes/PHPCR.Util.QOM.QueryBuilder.html">\PHPCR\Util\QOM\QueryBuilder</a></pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>Order of ands is important:</p>
+
+<p>Given $this->constraint = $constraint1
+running andWhere($constraint2)
+resulting constraint will be $constraint1 AND $constraint2</p>
+
+<p>If there is no previous constraint then it will simply store the
+provided one</p></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$constraint</h4>
+<code><a href="../classes/PHPCR.Query.QOM.ConstraintInterface.html">\PHPCR\Query\QOM\ConstraintInterface</a></code>
+</div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code><a href="../classes/PHPCR.Util.QOM.QueryBuilder.html">\PHPCR\Util\QOM\QueryBuilder</a></code>This QueryBuilder instance.</div>
+</div></div>
+</div>
+<a id="method_execute"></a><div class="element clickable method public method_execute" data-toggle="collapse" data-target=".method_execute .collapse">
+<h2>Executes the query setting firstResult and maxResults.</h2>
+<pre>execute() : <a href="../classes/PHPCR.Query.QueryResultInterface.html">\PHPCR\Query\QueryResultInterface</a></pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Returns</h3>
+<div class="subelement response"><code><a href="../classes/PHPCR.Query.QueryResultInterface.html">\PHPCR\Query\QueryResultInterface</a></code></div>
+</div></div>
+</div>
+<a id="method_from"></a><div class="element clickable method public method_from" data-toggle="collapse" data-target=".method_from .collapse">
+<h2>Sets the default Selector or the node-tuple Source.</h2>
+<pre>from(\PHPCR\Query\QOM\SourceInterface $source) : <a href="../classes/PHPCR.Util.QOM.QueryBuilder.html">\PHPCR\Util\QOM\QueryBuilder</a></pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>Can be a selector
+or a join.</p></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$source</h4>
+<code><a href="../classes/PHPCR.Query.QOM.SourceInterface.html">\PHPCR\Query\QOM\SourceInterface</a></code>
+</div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code><a href="../classes/PHPCR.Util.QOM.QueryBuilder.html">\PHPCR\Util\QOM\QueryBuilder</a></code>This QueryBuilder instance.</div>
+</div></div>
+</div>
+<a id="method_getColumns"></a><div class="element clickable method public method_getColumns" data-toggle="collapse" data-target=".method_getColumns .collapse">
+<h2>Returns the columns to be selected</h2>
+<pre>getColumns() : array</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>array</code>The columns to be selected</div>
+</div></div>
+</div>
+<a id="method_getConstraint"></a><div class="element clickable method public method_getConstraint" data-toggle="collapse" data-target=".method_getConstraint .collapse">
+<h2>Returns the constraint to apply</h2>
+<pre>getConstraint() : <a href="../classes/PHPCR.Query.QOM.ConstraintInterface.html">\PHPCR\Query\QOM\ConstraintInterface</a></pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code><a href="../classes/PHPCR.Query.QOM.ConstraintInterface.html">\PHPCR\Query\QOM\ConstraintInterface</a></code>the constraint to be applied</div>
+</div></div>
+</div>
+<a id="method_getFirstResult"></a><div class="element clickable method public method_getFirstResult" data-toggle="collapse" data-target=".method_getFirstResult .collapse">
+<h2>getFirstResult
+Gets the position of the first result the query object was set to retrieve (the "offset").</h2>
+<pre>getFirstResult() : integer</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>Returns NULL if <a href="setFirstResult">setFirstResult</a> was not applied to this QueryBuilder.</p></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>integer</code>The position of the first result.</div>
+</div></div>
+</div>
+<a id="method_getMaxResults"></a><div class="element clickable method public method_getMaxResults" data-toggle="collapse" data-target=".method_getMaxResults .collapse">
+<h2>Gets the maximum number of results the query object was set to retrieve (the "limit").</h2>
+<pre>getMaxResults() : integer</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>Returns NULL if <a href="setMaxResults">setMaxResults</a> was not applied to this query builder.</p></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>integer</code>Maximum number of results.</div>
+</div></div>
+</div>
+<a id="method_getOrderings"></a><div class="element clickable method public method_getOrderings" data-toggle="collapse" data-target=".method_getOrderings .collapse">
+<h2>Gets the array of orderings.</h2>
+<pre>getOrderings() : \PHPCR\Util\QOM\arrray</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>\PHPCR\Util\QOM\arrray</code>Orderings to apply.</div>
+</div></div>
+</div>
+<a id="method_getParameter"></a><div class="element clickable method public method_getParameter" data-toggle="collapse" data-target=".method_getParameter .collapse">
+<h2>Gets a (previously set) query parameter of the query being constructed.</h2>
+<pre>getParameter(string $key) : mixed</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$key</h4>
+<code>string</code><p>The key (name) of the bound parameter.</p>
+</div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>mixed</code>The value of the bound parameter.</div>
+</div></div>
+</div>
+<a id="method_getParameters"></a><div class="element clickable method public method_getParameters" data-toggle="collapse" data-target=".method_getParameters .collapse">
+<h2>Gets all defined query parameters for the query being constructed.</h2>
+<pre>getParameters() : array</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>array</code>The currently defined query parameters.</div>
+</div></div>
+</div>
+<a id="method_getQOMFactory"></a><div class="element clickable method public method_getQOMFactory" data-toggle="collapse" data-target=".method_getQOMFactory .collapse">
+<h2>Get the associated QOMFactory for this query builder</h2>
+<pre>getQOMFactory() : <a href="../classes/PHPCR.Query.QOM.QueryObjectModelFactoryInterface.html">\PHPCR\Query\QOM\QueryObjectModelFactoryInterface</a></pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Returns</h3>
+<div class="subelement response"><code><a href="../classes/PHPCR.Query.QOM.QueryObjectModelFactoryInterface.html">\PHPCR\Query\QOM\QueryObjectModelFactoryInterface</a></code></div>
+</div></div>
+</div>
+<a id="method_getQuery"></a><div class="element clickable method public method_getQuery" data-toggle="collapse" data-target=".method_getQuery .collapse">
+<h2>Gets the query built</h2>
+<pre>getQuery() : \PHPCR\Query\QueryObjectModelInterface</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Returns</h3>
+<div class="subelement response"><code>\PHPCR\Query\QueryObjectModelInterface</code></div>
+</div></div>
+</div>
+<a id="method_getSource"></a><div class="element clickable method public method_getSource" data-toggle="collapse" data-target=".method_getSource .collapse">
+<h2>Gets the default Selector.</h2>
+<pre>getSource() : <a href="../classes/PHPCR.Query.QOM.SourceInterface.html">\PHPCR\Query\QOM\SourceInterface</a></pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code><a href="../classes/PHPCR.Query.QOM.SourceInterface.html">\PHPCR\Query\QOM\SourceInterface</a></code>The default selector.</div>
+</div></div>
+</div>
+<a id="method_innerJoin"></a><div class="element clickable method public method_innerJoin" data-toggle="collapse" data-target=".method_innerJoin .collapse">
+<h2>Performs an inner join between the stored source and the supplied source.</h2>
+<pre>innerJoin(\PHPCR\Query\QOM\SourceInterface $rightSource, \PHPCR\Query\QOM\JoinConditionInterface $joinCondition) : <a href="../classes/PHPCR.Util.QOM.QueryBuilder.html">\PHPCR\Util\QOM\QueryBuilder</a></pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>trows</th>
+<td>RuntimeException if there is not an existing source.</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$rightSource</h4>
+<code><a href="../classes/PHPCR.Query.QOM.SourceInterface.html">\PHPCR\Query\QOM\SourceInterface</a></code>
+</div>
+<div class="subelement argument">
+<h4>$joinCondition</h4>
+<code><a href="../classes/PHPCR.Query.QOM.JoinConditionInterface.html">\PHPCR\Query\QOM\JoinConditionInterface</a></code>
+</div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code><a href="../classes/PHPCR.Util.QOM.QueryBuilder.html">\PHPCR\Util\QOM\QueryBuilder</a></code>This QueryBuilder instance.</div>
+</div></div>
+</div>
+<a id="method_join"></a><div class="element clickable method public method_join" data-toggle="collapse" data-target=".method_join .collapse">
+<h2>Performs an inner join between the stored source and the supplied source.</h2>
+<pre>join(\PHPCR\Query\QOM\SourceInterface $rightSource, \PHPCR\Query\QOM\JoinConditionInterface $joinCondition) : <a href="../classes/PHPCR.Util.QOM.QueryBuilder.html">\PHPCR\Util\QOM\QueryBuilder</a></pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>trows</th>
+<td>RuntimeException if there is not an existing source.</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$rightSource</h4>
+<code><a href="../classes/PHPCR.Query.QOM.SourceInterface.html">\PHPCR\Query\QOM\SourceInterface</a></code>
+</div>
+<div class="subelement argument">
+<h4>$joinCondition</h4>
+<code><a href="../classes/PHPCR.Query.QOM.JoinConditionInterface.html">\PHPCR\Query\QOM\JoinConditionInterface</a></code>
+</div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code><a href="../classes/PHPCR.Util.QOM.QueryBuilder.html">\PHPCR\Util\QOM\QueryBuilder</a></code>This QueryBuilder instance.</div>
+</div></div>
+</div>
+<a id="method_joinWithType"></a><div class="element clickable method public method_joinWithType" data-toggle="collapse" data-target=".method_joinWithType .collapse">
+<h2>Performs an join between the stored source and the supplied source.</h2>
+<pre>joinWithType(\PHPCR\Query\QOM\SourceInterface $rightSource, string $joinType, \PHPCR\Query\QOM\JoinConditionInterface $joinCondition) : <a href="../classes/PHPCR.Util.QOM.QueryBuilder.html">\PHPCR\Util\QOM\QueryBuilder</a></pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>trows</th>
+<td>RuntimeException if there is not an existing source.</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$rightSource</h4>
+<code><a href="../classes/PHPCR.Query.QOM.SourceInterface.html">\PHPCR\Query\QOM\SourceInterface</a></code>
+</div>
+<div class="subelement argument">
+<h4>$joinType</h4>
+<code>string</code><p>as specified in PHPCR\Query\QOM\QueryObjectModelConstantsInterface</p>
+</div>
+<div class="subelement argument">
+<h4>$joinCondition</h4>
+<code><a href="../classes/PHPCR.Query.QOM.JoinConditionInterface.html">\PHPCR\Query\QOM\JoinConditionInterface</a></code>
+</div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code><a href="../classes/PHPCR.Util.QOM.QueryBuilder.html">\PHPCR\Util\QOM\QueryBuilder</a></code>This QueryBuilder instance.</div>
+</div></div>
+</div>
+<a id="method_leftJoin"></a><div class="element clickable method public method_leftJoin" data-toggle="collapse" data-target=".method_leftJoin .collapse">
+<h2>Performs an left outer join between the stored source and the supplied source.</h2>
+<pre>leftJoin(\PHPCR\Query\QOM\SourceInterface $rightSource, \PHPCR\Query\QOM\JoinConditionInterface $joinCondition) : <a href="../classes/PHPCR.Util.QOM.QueryBuilder.html">\PHPCR\Util\QOM\QueryBuilder</a></pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>trows</th>
+<td>RuntimeException if there is not an existing source.</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$rightSource</h4>
+<code><a href="../classes/PHPCR.Query.QOM.SourceInterface.html">\PHPCR\Query\QOM\SourceInterface</a></code>
+</div>
+<div class="subelement argument">
+<h4>$joinCondition</h4>
+<code><a href="../classes/PHPCR.Query.QOM.JoinConditionInterface.html">\PHPCR\Query\QOM\JoinConditionInterface</a></code>
+</div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code><a href="../classes/PHPCR.Util.QOM.QueryBuilder.html">\PHPCR\Util\QOM\QueryBuilder</a></code>This QueryBuilder instance.</div>
+</div></div>
+</div>
+<a id="method_orWhere"></a><div class="element clickable method public method_orWhere" data-toggle="collapse" data-target=".method_orWhere .collapse">
+<h2>Creates a new constraint formed by applying a logical OR to the
+existing constraint and the new one</h2>
+<pre>orWhere(\PHPCR\Query\QOM\ConstraintInterface $constraint) : <a href="../classes/PHPCR.Util.QOM.QueryBuilder.html">\PHPCR\Util\QOM\QueryBuilder</a></pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>Order of ands is important:</p>
+
+<p>Given $this->constraint = $constraint1
+running orWhere($constraint2)
+resulting constraint will be $constraint1 OR $constraint2</p>
+
+<p>If there is no previous constraint then it will simply store the
+provided one</p></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$constraint</h4>
+<code><a href="../classes/PHPCR.Query.QOM.ConstraintInterface.html">\PHPCR\Query\QOM\ConstraintInterface</a></code>
+</div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code><a href="../classes/PHPCR.Util.QOM.QueryBuilder.html">\PHPCR\Util\QOM\QueryBuilder</a></code>This QueryBuilder instance.</div>
+</div></div>
+</div>
+<a id="method_orderBy"></a><div class="element clickable method public method_orderBy" data-toggle="collapse" data-target=".method_orderBy .collapse">
+<h2>Specifies an ordering for the query results.</h2>
+<pre>orderBy(\PHPCR\Query\QOM\DynamicOperandInterface $sort, string $order) : <a href="../classes/PHPCR.Util.QOM.QueryBuilder.html">\PHPCR\Util\QOM\QueryBuilder</a></pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>Replaces any previously specified orderings, if any.</p></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$sort</h4>
+<code><a href="../classes/PHPCR.Query.QOM.DynamicOperandInterface.html">\PHPCR\Query\QOM\DynamicOperandInterface</a></code><p>The ordering expression.</p></div>
+<div class="subelement argument">
+<h4>$order</h4>
+<code>string</code><p>The ordering direction.</p></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code><a href="../classes/PHPCR.Util.QOM.QueryBuilder.html">\PHPCR\Util\QOM\QueryBuilder</a></code>This QueryBuilder instance.</div>
+</div></div>
+</div>
+<a id="method_rightJoin"></a><div class="element clickable method public method_rightJoin" data-toggle="collapse" data-target=".method_rightJoin .collapse">
+<h2>Performs a right outer join between the stored source and the supplied source.</h2>
+<pre>rightJoin(\PHPCR\Query\QOM\SourceInterface $rightSource, \PHPCR\Query\QOM\JoinConditionInterface $joinCondition) : <a href="../classes/PHPCR.Util.QOM.QueryBuilder.html">\PHPCR\Util\QOM\QueryBuilder</a></pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>trows</th>
+<td>RuntimeException if there is not an existing source.</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$rightSource</h4>
+<code><a href="../classes/PHPCR.Query.QOM.SourceInterface.html">\PHPCR\Query\QOM\SourceInterface</a></code>
+</div>
+<div class="subelement argument">
+<h4>$joinCondition</h4>
+<code><a href="../classes/PHPCR.Query.QOM.JoinConditionInterface.html">\PHPCR\Query\QOM\JoinConditionInterface</a></code>
+</div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code><a href="../classes/PHPCR.Util.QOM.QueryBuilder.html">\PHPCR\Util\QOM\QueryBuilder</a></code>This QueryBuilder instance.</div>
+</div></div>
+</div>
+<a id="method_select"></a><div class="element clickable method public method_select" data-toggle="collapse" data-target=".method_select .collapse">
+<h2>Identifies a property in the specified or default selector to include in the tabular view of query results.</h2>
+<pre>select(string $propertyName, string $columnName, string $selectorName) : <a href="../classes/PHPCR.Util.QOM.QueryBuilder.html">\PHPCR\Util\QOM\QueryBuilder</a></pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>Replaces any previously specified columns to be selected if any.</p></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$propertyName</h4>
+<code>string</code>
+</div>
+<div class="subelement argument">
+<h4>$columnName</h4>
+<code>string</code>
+</div>
+<div class="subelement argument">
+<h4>$selectorName</h4>
+<code>string</code>
+</div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code><a href="../classes/PHPCR.Util.QOM.QueryBuilder.html">\PHPCR\Util\QOM\QueryBuilder</a></code>This QueryBuilder instance.</div>
+</div></div>
+</div>
+<a id="method_setColumns"></a><div class="element clickable method public method_setColumns" data-toggle="collapse" data-target=".method_setColumns .collapse">
+<h2>Sets the columns to be selected</h2>
+<pre>setColumns(array $columns) : <a href="../classes/PHPCR.Util.QOM.QueryBuilder.html">\PHPCR\Util\QOM\QueryBuilder</a></pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$columns</h4>
+<code>array</code><p>The columns to be selected</p></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code><a href="../classes/PHPCR.Util.QOM.QueryBuilder.html">\PHPCR\Util\QOM\QueryBuilder</a></code>This QueryBuilder instance.</div>
+</div></div>
+</div>
+<a id="method_setFirstResult"></a><div class="element clickable method public method_setFirstResult" data-toggle="collapse" data-target=".method_setFirstResult .collapse">
+<h2>sets the position of the first result to retrieve (the "offset").</h2>
+<pre>setFirstResult(integer $firstResult) : <a href="../classes/PHPCR.Util.QOM.QueryBuilder.html">\PHPCR\Util\QOM\QueryBuilder</a></pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$firstResult</h4>
+<code>integer</code><p>The First result to return.</p></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code><a href="../classes/PHPCR.Util.QOM.QueryBuilder.html">\PHPCR\Util\QOM\QueryBuilder</a></code>This QueryBuilder instance.</div>
+</div></div>
+</div>
+<a id="method_setFromQuery"></a><div class="element clickable method public method_setFromQuery" data-toggle="collapse" data-target=".method_setFromQuery .collapse">
+<h2>Get a query builder instance from an existing query</h2>
+<pre>setFromQuery(string $statement, string $language) : <a href="../classes/PHPCR.Util.QOM.QueryBuilder.html">\PHPCR\Util\QOM\QueryBuilder</a></pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$statement</h4>
+<code>string</code><p>the statement in the specified language</p></div>
+<div class="subelement argument">
+<h4>$language</h4>
+<code>string</code><p>the query language</p></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code><a href="../classes/PHPCR.Util.QOM.QueryBuilder.html">\PHPCR\Util\QOM\QueryBuilder</a></code>This QueryBuilder instance.</div>
+</div></div>
+</div>
+<a id="method_setMaxResults"></a><div class="element clickable method public method_setMaxResults" data-toggle="collapse" data-target=".method_setMaxResults .collapse">
+<h2>Sets the maximum number of results to retrieve (the "limit").</h2>
+<pre>setMaxResults(integer $maxResults) : \PHPCR\Util\QOM\PHPCR\Util\QOM\QueryBuilder</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$maxResults</h4>
+<code>integer</code><p>The maximum number of results to retrieve.</p></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>\PHPCR\Util\QOM\PHPCR\Util\QOM\QueryBuilder</code>This QueryBuilder instance.</div>
+</div></div>
+</div>
+<a id="method_setParameter"></a><div class="element clickable method public method_setParameter" data-toggle="collapse" data-target=".method_setParameter .collapse">
+<h2>Sets a query parameter for the query being constructed.</h2>
+<pre>setParameter(string $key, mixed $value) : <a href="../classes/PHPCR.Util.QOM.QueryBuilder.html">\PHPCR\Util\QOM\QueryBuilder</a></pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$key</h4>
+<code>string</code><p>The parameter name.</p></div>
+<div class="subelement argument">
+<h4>$value</h4>
+<code>mixed</code><p>The parameter value.</p></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code><a href="../classes/PHPCR.Util.QOM.QueryBuilder.html">\PHPCR\Util\QOM\QueryBuilder</a></code>This QueryBuilder instance.</div>
+</div></div>
+</div>
+<a id="method_setParameters"></a><div class="element clickable method public method_setParameters" data-toggle="collapse" data-target=".method_setParameters .collapse">
+<h2>Sets a collection of query parameters for the query being constructed.</h2>
+<pre>setParameters(array $params) : <a href="../classes/PHPCR.Util.QOM.QueryBuilder.html">\PHPCR\Util\QOM\QueryBuilder</a></pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$params</h4>
+<code>array</code><p>The query parameters to set.</p></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code><a href="../classes/PHPCR.Util.QOM.QueryBuilder.html">\PHPCR\Util\QOM\QueryBuilder</a></code>This QueryBuilder instance.</div>
+</div></div>
+</div>
+<a id="method_where"></a><div class="element clickable method public method_where" data-toggle="collapse" data-target=".method_where .collapse">
+<h2>Specifies one restriction (may be simple or composed).</h2>
+<pre>where(\PHPCR\Query\QOM\ConstraintInterface $constraint) : <a href="../classes/PHPCR.Util.QOM.QueryBuilder.html">\PHPCR\Util\QOM\QueryBuilder</a></pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>Replaces any previously specified restrictions, if any.</p></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$constraint</h4>
+<code><a href="../classes/PHPCR.Query.QOM.ConstraintInterface.html">\PHPCR\Query\QOM\ConstraintInterface</a></code>
+</div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code><a href="../classes/PHPCR.Util.QOM.QueryBuilder.html">\PHPCR\Util\QOM\QueryBuilder</a></code>This QueryBuilder instance.</div>
+</div></div>
+</div>
+<h3>
+<i class="icon-custom icon-property"></i> Properties</h3>
+<a id="property_columns"> </a><div class="element clickable property private property_columns" data-toggle="collapse" data-target=".property_columns .collapse">
+<h2>&lt;p&gt;with the columns to be selected.&lt;/p&gt;</h2>
+<pre>$columns : array</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="property_constraint"> </a><div class="element clickable property private property_constraint" data-toggle="collapse" data-target=".property_constraint .collapse">
+<h2>&lt;p&gt;to apply to the query.&lt;/p&gt;</h2>
+<pre>$constraint : <a href="../classes/PHPCR.Query.QOM.ConstraintInterface.html">\PHPCR\Query\QOM\ConstraintInterface</a></pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="property_firstResult"> </a><div class="element clickable property private property_firstResult" data-toggle="collapse" data-target=".property_firstResult .collapse">
+<h2>&lt;p&gt;The maximum number of results to retrieve.&lt;/p&gt;</h2>
+<pre>$firstResult : integer</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="property_maxResults"> </a><div class="element clickable property private property_maxResults" data-toggle="collapse" data-target=".property_maxResults .collapse">
+<h2>&lt;p&gt;The maximum number of results to retrieve.&lt;/p&gt;</h2>
+<pre>$maxResults : integer</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="property_orderings"> </a><div class="element clickable property private property_orderings" data-toggle="collapse" data-target=".property_orderings .collapse">
+<h2>&lt;p&gt;with the orderings that determine the order of the result&lt;/p&gt;</h2>
+<pre>$orderings : array</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="property_params"> </a><div class="element clickable property private property_params" data-toggle="collapse" data-target=".property_params .collapse">
+<h2>&lt;p&gt;The query parameters.&lt;/p&gt;</h2>
+<pre>$params : array</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="property_qomFactory"> </a><div class="element clickable property private property_qomFactory" data-toggle="collapse" data-target=".property_qomFactory .collapse">
+<h2>&lt;p&gt;QOMFactory&lt;/p&gt;</h2>
+<pre>$qomFactory : <a href="../classes/PHPCR.Query.QOM.QueryObjectModelFactoryInterface.html">\PHPCR\Query\QOM\QueryObjectModelFactoryInterface</a></pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="property_query"> </a><div class="element clickable property private property_query" data-toggle="collapse" data-target=".property_query .collapse">
+<h2>$query</h2>
+<pre>$query : \PHPCR\Query\QueryObjectModelInterface</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="property_source"> </a><div class="element clickable property private property_source" data-toggle="collapse" data-target=".property_source .collapse">
+<h2>&lt;p&gt;source of the query.&lt;/p&gt;</h2>
+<pre>$source : <a href="../classes/PHPCR.Query.QOM.SourceInterface.html">\PHPCR\Query\QOM\SourceInterface</a></pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="property_state"> </a><div class="element clickable property private property_state" data-toggle="collapse" data-target=".property_state .collapse">
+<h2>&lt;p&gt;The state of the query object. Can be dirty or clean.&lt;/p&gt;</h2>
+<pre>$state : integer</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<h3>
+<i class="icon-custom icon-constant"></i> Constants</h3>
+<a id="constant_STATE_CLEAN"> </a><div class="element clickable constant  constant_STATE_CLEAN" data-toggle="collapse" data-target=".constant_STATE_CLEAN .collapse">
+<h2>STATE_CLEAN</h2>
+<pre>STATE_CLEAN </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="constant_STATE_DIRTY"> </a><div class="element clickable constant  constant_STATE_DIRTY" data-toggle="collapse" data-target=".constant_STATE_DIRTY .collapse">
+<h2>The builder states.</h2>
+<pre>STATE_DIRTY </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="row"><footer class="span12">
+            Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
+            Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a10</a> and<br>
+            generated on 2012-10-02T11:24:45+02:00.<br></footer></div>
+</div>
+</body>
+</html>

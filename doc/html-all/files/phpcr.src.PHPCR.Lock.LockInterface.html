@@ -1,0 +1,86 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><title>PHPCR API and PHPCR-Utils</title><meta http-equiv="Content-Type" content="text/html; charset=utf-8"></meta><link rel="stylesheet" href="../css/template.css" type="text/css"></link><script type="text/javascript" src="../js/jquery-1.4.2.min.js"></script><script type="text/javascript" src="../js/jquery.tools.min.js"></script><script type="text/javascript" src="../js/jquery-ui-1.8.2.custom.min.js"></script><script type="text/javascript" src="../js/template.js"></script></head><body><div id="content"><h1 class="file">phpcr/src/PHPCR/Lock/LockInterface.php</h1><div id="file-nav-box"><div id="file-nav-options">
+              Show:
+              <img src="../images/icons/visibility_public.png" alt="Public" id="show-public"></img><img src="../images/icons/visibility_protected.png" alt="Protected" id="show-protected"></img><img src="../images/icons/visibility_private.png" alt="Private" id="show-private"></img><span class="attribute" id="show-inherited">inherited</span></div><div id="file-nav-container"><ul id="file-nav"></ul><div style="clear: left;"></div></div><div id="file-nav-tab">
+              Table of Contents
+          </div></div><a name="top" class="anchor"></a><div id="file-description"><div class="short-description">This file is part of the PHPCR API and was originally ported from the Java
+JCR API to PHP by Karsten Dambekalns for the FLOW3 project.</div><div class="long-description"><p>Copyright 2008-2011 Karsten Dambekalns <a href="&#109;&#x61;&#x69;&#108;&#116;&#x6f;&#58;&#107;&#x61;&#114;&#115;&#x74;e&#110;&#x40;&#x74;&#121;&#x70;&#x6f;&#51;&#46;&#x6f;&#114;&#103;">&#107;&#x61;&#114;&#115;&#x74;e&#110;&#x40;&#x74;&#121;&#x70;&#x6f;&#51;&#46;&#x6f;&#114;&#103;</a></p>
+
+<p>Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at</p>
+
+<pre><code>http://www.apache.org/licenses/LICENSE-2.0
+</code></pre>
+
+<p>Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.</p></div></div><dl class="file-info"><dt>License</dt><dd><a href="http://www.apache.org/licenses/LICENSE-2.0">Apache Software License 2.0</a>
+         
+    </dd><dt>Link</dt><dd><a href="http://phpcr.github.com/">http://phpcr.github.com/</a>
+         
+    </dd></dl><a name="interfaces" class="anchor"></a><a id="\PHPCR\Lock\LockInterface" class="anchor"></a><h2 class="interface">\PHPCR\Lock\LockInterface<div class="to-top"><a href="#top">jump to top</a></div></h2><div class="class"><small class="package"><b>Package: </b>phpcr\interfaces</small><div class="short-description">Represents a lock placed on an item.</div><div class="long-description"></div><dl class="class-info"><dt>Api</dt><dd>
+         
+    </dd></dl><h3>Methods</h3><div><a id="\PHPCR\Lock\LockInterface::getLockOwner()" class="anchor"></a><div class="method public"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png"></img><img src="../images/icons/arrow_down.png" style="display: none;"></img></a><code class="title"><img src="../images/icons/method.png" alt="method" title="method"></img><img src="../images/icons/visibility_public.png" style="margin-right: 5px" alt="public"></img><span class="highlight">getLockOwner</span><span class="nb-faded-text">()</span> : string</code><div class="description"><p class="short_description">Get the user ID string of the lock owner.</p></div><div class="code-tabs"><div class="long-description"><p>Returns the value of the jcr:lockOwner property. This is either the
+client supplied owner information (see LockManager::lock()),
+an implementation-dependent string identifying the user who either
+created the lock or who is bound to the session holding the lock, or
+null if none of these are available.</p>
+
+<p>The lock owner's identity is only provided for informational purposes.
+It does not govern who can perform an unlock or make changes to the
+locked nodes; that depends entirely upon who the token holder is.</p></div><strong>Returns</strong><table class="argument-info"><thead><tr><th>Type</th><th>Description</th></tr></thead><tr><td>string</td><td>a user ID</td></tr></table><strong>Details</strong><dl class="function-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\Lock\LockInterface::getLockToken()" class="anchor"></a><div class="method public"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png"></img><img src="../images/icons/arrow_down.png" style="display: none;"></img></a><code class="title"><img src="../images/icons/method.png" alt="method" title="method"></img><img src="../images/icons/visibility_public.png" style="margin-right: 5px" alt="public"></img><span class="highlight">getLockToken</span><span class="nb-faded-text">()</span> : string</code><div class="description"><p class="short_description">May return the lock token for this lock.</p></div><div class="code-tabs"><div class="long-description"><p>If this lock is open-scoped and the current session either holds the
+lock token for this lock, or the repository chooses to expose the lock
+token to the current session, then this method will return that lock
+token. Otherwise this method will return null.</p></div><strong>Returns</strong><table class="argument-info"><thead><tr><th>Type</th><th>Description</th></tr></thead><tr><td>string</td><td></td></tr></table><strong>Details</strong><dl class="function-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\Lock\LockInterface::getNode()" class="anchor"></a><div class="method public"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png"></img><img src="../images/icons/arrow_down.png" style="display: none;"></img></a><code class="title"><img src="../images/icons/method.png" alt="method" title="method"></img><img src="../images/icons/visibility_public.png" style="margin-right: 5px" alt="public"></img><span class="highlight">getNode</span><span class="nb-faded-text">()</span> : <a href="../files/phpcr.src.PHPCR.NodeInterface.html#\PHPCR\NodeInterface">\PHPCR\NodeInterface</a></code><div class="description"><p class="short_description">Returns the lock holding node.</p></div><div class="code-tabs"><div class="long-description"><p>This is not necessarily the node at the path you used to get this lock
+instance, if a parent node was deep locked. This method returns the node
+that was originally locked.</p>
+
+<p>I.e. $lockManager->getLock($n->getPath())->getNode() (where $n is a
+locked node) will only * return $n if $n is the lock holder. If $n is in
+the subgraph of the lock holder, $h, then this call will return $h.</p></div><strong>Returns</strong><table class="argument-info"><thead><tr><th>Type</th><th>Description</th></tr></thead><tr><td><a href="../files/phpcr.src.PHPCR.NodeInterface.html#\PHPCR\NodeInterface">\PHPCR\NodeInterface</a></td><td>a Node</td></tr></table><strong>Details</strong><dl class="function-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\Lock\LockInterface::getSecondsRemaining()" class="anchor"></a><div class="method public"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png"></img><img src="../images/icons/arrow_down.png" style="display: none;"></img></a><code class="title"><img src="../images/icons/method.png" alt="method" title="method"></img><img src="../images/icons/visibility_public.png" style="margin-right: 5px" alt="public"></img><span class="highlight">getSecondsRemaining</span><span class="nb-faded-text">()</span> : integer</code><div class="description"><p class="short_description">Returns the number of seconds remaining until this locks times out.</p></div><div class="code-tabs"><div class="long-description"><p>If the lock has already timed out, a negative value is returned. If the
+number of seconds remaining is infinite or unknown, PHP_INT_MAX is
+returned.</p></div><strong>Returns</strong><table class="argument-info"><thead><tr><th>Type</th><th>Description</th></tr></thead><tr><td>integer</td><td>the number of seconds remaining until this lock times out.</td></tr></table><strong>Throws</strong><table class="argument-info"><thead><tr><th>Exception</th><th>Description</th></tr></thead><tr><td><a href="../files/phpcr.src.PHPCR.RepositoryException.html#\PHPCR\RepositoryException">\PHPCR\RepositoryException</a></td><td><em>if the timeout is infinite or unknown</em></td></tr></table><strong>Details</strong><dl class="function-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\Lock\LockInterface::isDeep()" class="anchor"></a><div class="method public"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png"></img><img src="../images/icons/arrow_down.png" style="display: none;"></img></a><code class="title"><img src="../images/icons/method.png" alt="method" title="method"></img><img src="../images/icons/visibility_public.png" style="margin-right: 5px" alt="public"></img><span class="highlight">isDeep</span><span class="nb-faded-text">()</span> : boolean</code><div class="description"><p class="short_description">Returns true if this is a deep lock; false otherwise.</p></div><div class="code-tabs"><div class="long-description"></div><strong>Returns</strong><table class="argument-info"><thead><tr><th>Type</th><th>Description</th></tr></thead><tr><td>boolean</td><td></td></tr></table><strong>Details</strong><dl class="function-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\Lock\LockInterface::isLive()" class="anchor"></a><div class="method public"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png"></img><img src="../images/icons/arrow_down.png" style="display: none;"></img></a><code class="title"><img src="../images/icons/method.png" alt="method" title="method"></img><img src="../images/icons/visibility_public.png" style="margin-right: 5px" alt="public"></img><span class="highlight">isLive</span><span class="nb-faded-text">()</span> : boolean</code><div class="description"><p class="short_description">Determines if the lock is still in effect.</p></div><div class="code-tabs"><div class="long-description"><p>Returns true if this Lock object represents a lock that is currently in
+effect. If this lock has been unlocked either explicitly or due to an
+implementation-specific limitation (like a timeout) then it returns
+false.</p>
+
+<p>Note that this method is intended for those cases where one is holding a
+Lock object and wants to find out whether the lock (the JCR-level
+entity that is attached to the lockable node) that this object
+originally represented still exists. For example, a timeout or explicit
+unlock will remove a lock from a node but the Lock object
+corresponding to that lock may still exist, and in that case its isLive
+method will return false.</p></div><strong>Returns</strong><table class="argument-info"><thead><tr><th>Type</th><th>Description</th></tr></thead><tr><td>boolean</td><td>True, if the lock still counts, else false.</td></tr></table><strong>Throws</strong><table class="argument-info"><thead><tr><th>Exception</th><th>Description</th></tr></thead><tr><td>\PHPCR\Lock\RepositoryException</td><td><em>if an error occurs</em></td></tr></table><strong>Details</strong><dl class="function-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\Lock\LockInterface::isLockOwningSession()" class="anchor"></a><div class="method public"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png"></img><img src="../images/icons/arrow_down.png" style="display: none;"></img></a><code class="title"><img src="../images/icons/method.png" alt="method" title="method"></img><img src="../images/icons/visibility_public.png" style="margin-right: 5px" alt="public"></img><span class="highlight">isLockOwningSession</span><span class="nb-faded-text">()</span> : boolean</code><div class="description"><p class="short_description">Determines if the current session owns this lock.</p></div><div class="code-tabs"><div class="long-description"><p>Returns true if the current session is the owner of this lock, either
+because it is session-scoped and bound to this session or open-scoped
+and this session currently holds the token for this lock. Returns false
+otherwise.</p></div><strong>Returns</strong><table class="argument-info"><thead><tr><th>Type</th><th>Description</th></tr></thead><tr><td>boolean</td><td>True, if the the current session is the owner of the
+     lock, else false.</td></tr></table><strong>Details</strong><dl class="function-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\Lock\LockInterface::isSessionScoped()" class="anchor"></a><div class="method public"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png"></img><img src="../images/icons/arrow_down.png" style="display: none;"></img></a><code class="title"><img src="../images/icons/method.png" alt="method" title="method"></img><img src="../images/icons/visibility_public.png" style="margin-right: 5px" alt="public"></img><span class="highlight">isSessionScoped</span><span class="nb-faded-text">()</span> : boolean</code><div class="description"><p class="short_description">Determines if this lock is session-scoped.</p></div><div class="code-tabs"><div class="long-description"><p>Returns true if this is a session-scoped lock and the scope is bound to
+the current session. Returns false otherwise.</p></div><strong>Returns</strong><table class="argument-info"><thead><tr><th>Type</th><th>Description</th></tr></thead><tr><td>boolean</td><td>True, if the lock current session is locked, else false.</td></tr></table><strong>Details</strong><dl class="function-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\Lock\LockInterface::refresh()" class="anchor"></a><div class="method public"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png"></img><img src="../images/icons/arrow_down.png" style="display: none;"></img></a><code class="title"><img src="../images/icons/method.png" alt="method" title="method"></img><img src="../images/icons/visibility_public.png" style="margin-right: 5px" alt="public"></img><span class="highlight">refresh</span><span class="nb-faded-text">()</span> : void</code><div class="description"><p class="short_description">If this lock's time-to-live is governed by a timer, this method resets
+that timer so that the lock does not timeout and expire.</p></div><div class="code-tabs"><div class="long-description"><p>If this lock's time-to-live is not governed by a timer, then this method
+has no effect.</p></div><strong>Throws</strong><table class="argument-info"><thead><tr><th>Exception</th><th>Description</th></tr></thead><tr><td><a href="../files/phpcr.src.PHPCR.Lock.LockException.html#\PHPCR\Lock\LockException">\PHPCR\Lock\LockException</a></td><td><em>if this Session does not hold the
+     correct lock token for this lock.</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.RepositoryException.html#\PHPCR\RepositoryException">\PHPCR\RepositoryException</a></td><td><em>if another error occurs.</em></td></tr></table><strong>Details</strong><dl class="function-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div></div></div></div><small class="footer">
+            Documentation was generated by
+            <a href="http://phpdoc.org">phpDocumentor
+                2.0.0a10</a>.
+        </small></body></html>

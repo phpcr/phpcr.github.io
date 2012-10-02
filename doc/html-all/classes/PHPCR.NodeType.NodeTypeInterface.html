@@ -1,0 +1,1169 @@
+<!DOCTYPE html><html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+<meta charset="utf-8">
+<title>PHPCR API and PHPCR-Utils » \PHPCR\NodeType\NodeTypeInterface</title>
+<meta name="author" content="Mike van Riel">
+<meta name="description" content="">
+<link href="../css/template.css" rel="stylesheet" media="all">
+<script src="../js/jquery-1.7.1.min.js" type="text/javascript"></script><script src="../js/jquery-ui-1.8.2.custom.min.js" type="text/javascript"></script><script src="../js/jquery.mousewheel.min.js" type="text/javascript"></script><script src="../js/bootstrap.js" type="text/javascript"></script><script src="../js/template.js" type="text/javascript"></script><script src="../js/prettify/prettify.min.js" type="text/javascript"></script><link rel="shortcut icon" href="../img/favicon.ico">
+<link rel="apple-touch-icon" href="../img/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="72x72" href="../img/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="114x114" href="../img/apple-touch-icon-114x114.png">
+</head>
+<body>
+<div class="navbar navbar-fixed-top">
+<div class="navbar-inner"><div class="container">
+<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a><a class="brand" href="../index.html">PHPCR API and PHPCR-Utils</a><div class="nav-collapse"><ul class="nav">
+<li class="dropdown">
+<a href="#api" class="dropdown-toggle" data-toggle="dropdown">
+                                    API Documentation <b class="caret"></b></a><ul class="dropdown-menu">
+<li><a>Namespaces</a></li>
+<li><a href="../namespaces/PHPCR.html"><i class="icon-th"></i> PHPCR</a></li>
+<li><a>Packages</a></li>
+<li><a href="../packages/Default.html"><i class="icon-folder-open"></i> Default</a></li>
+<li><a href="../packages/phpcr.html"><i class="icon-folder-open"></i> phpcr</a></li>
+</ul>
+</li>
+<li class="dropdown" id="charts-menu">
+<a href="#charts" class="dropdown-toggle" data-toggle="dropdown">
+                                    Charts <b class="caret"></b></a><ul class="dropdown-menu"><li><a href="../graph_class.html"><i class="icon-list-alt"></i> Class hierarchy diagram</a></li></ul>
+</li>
+<li class="dropdown" id="reports-menu">
+<a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
+                                    Reports <b class="caret"></b></a><ul class="dropdown-menu">
+<li><a href="../errors.html"><i class="icon-remove-sign"></i> Errors 
+                <span class="label label-info">123</span></a></li>
+<li><a href="../markers.html"><i class="icon-map-marker"></i> Markers 
+                <ul><li>todo 
+                <span class="label label-info">12</span>
+</li></ul></a></li>
+<li><a href="../deprecated.html"><i class="icon-stop"></i> Deprecated elements 
+                <span class="label label-info">0</span></a></li>
+</ul>
+</li>
+</ul></div>
+</div></div>
+<div class="go_to_top"><a href="#___" style="color: inherit">Back to top  <i class="icon-upload icon-white"></i></a></div>
+</div>
+<div id="___" class="container">
+<noscript><div class="alert alert-warning">
+                            Javascript is disabled; several features are only available
+                            if Javascript is enabled.
+                        </div></noscript>
+<div class="row">
+<div class="span4">
+<span class="btn-group visibility" data-toggle="buttons-checkbox"><button class="btn public active" title="Show public elements">Public</button><button class="btn protected" title="Show protected elements">Protected</button><button class="btn private" title="Show private elements">Private</button><button class="btn inherited active" title="Show inherited elements">Inherited</button></span><div class="btn-group view pull-right" data-toggle="buttons-radio">
+<button class="btn details" title="Show descriptions and method names"><i class="icon-list"></i></button><button class="btn simple" title="Show only method names"><i class="icon-align-justify"></i></button>
+</div>
+<ul class="side-nav nav nav-list">
+<li class="nav-header">
+<i class="icon-custom icon-method"></i> Methods
+                    <ul>
+<li class="method public "><a href="#method_canAddChildNode" title="canAddChildNode :: Determines if this node type allows the addition of a child node."><span class="description">Determines if this node type allows the addition of a child node.</span><pre>canAddChildNode()</pre></a></li>
+<li class="method public "><a href="#method_canRemoveNode" title="canRemoveNode :: Reports if the node type allows the removal of the given node."><span class="description">Reports if the node type allows the removal of the given node.</span><pre>canRemoveNode()</pre></a></li>
+<li class="method public "><a href="#method_canRemoveProperty" title="canRemoveProperty :: Determines if the node type allows to remove the property identified by
+the given name."><span class="description">Determines if the node type allows to remove the property identified by
+the given name.</span><pre>canRemoveProperty()</pre></a></li>
+<li class="method public "><a href="#method_canSetProperty" title="canSetProperty :: Determines if the node type allows to set the value of a property."><span class="description">Determines if the node type allows to set the value of a property.</span><pre>canSetProperty()</pre></a></li>
+<li class="method public "><a href="#method_getChildNodeDefinitions" title="getChildNodeDefinitions :: Returns an array containing the child node definitions of this node type."><span class="description">Returns an array containing the child node definitions of this node type.</span><pre>getChildNodeDefinitions()</pre></a></li>
+<li class="method public inherited"><a href="#method_getDeclaredChildNodeDefinitions" title="getDeclaredChildNodeDefinitions :: Returns an array containing the child node definitions actually
+declared in this node type."><span class="description">Returns an array containing the child node definitions actually
+declared in this node type.</span><pre>getDeclaredChildNodeDefinitions()</pre></a></li>
+<li class="method public inherited"><a href="#method_getDeclaredPropertyDefinitions" title="getDeclaredPropertyDefinitions :: Returns an array containing the property definitions actually declared
+in this node type."><span class="description">Returns an array containing the property definitions actually declared
+in this node type.</span><pre>getDeclaredPropertyDefinitions()</pre></a></li>
+<li class="method public "><a href="#method_getDeclaredSubtypes" title="getDeclaredSubtypes :: Returns the direct subtypes of this node type in the node type inheritance
+hierarchy, that is, those which actually declared this node type in their
+list of supertypes."><span class="description">Returns the direct subtypes of this node type in the node type inheritance
+hierarchy, that is, those which actually declared this node type in their
+list of supertypes.</span><pre>getDeclaredSubtypes()</pre></a></li>
+<li class="method public inherited"><a href="#method_getDeclaredSupertypeNames" title="getDeclaredSupertypeNames :: Returns the names of the supertypes actually declared in this node type."><span class="description">Returns the names of the supertypes actually declared in this node type.</span><pre>getDeclaredSupertypeNames()</pre></a></li>
+<li class="method public "><a href="#method_getDeclaredSupertypes" title="getDeclaredSupertypes :: Returns the direct supertypes of this node type in the node type
+inheritance hierarchy, that is, those actually declared in this node
+type."><span class="description">Returns the direct supertypes of this node type in the node type
+inheritance hierarchy, that is, those actually declared in this node
+type.</span><pre>getDeclaredSupertypes()</pre></a></li>
+<li class="method public inherited"><a href="#method_getName" title="getName :: Returns the name of the node type."><span class="description">Returns the name of the node type.</span><pre>getName()</pre></a></li>
+<li class="method public inherited"><a href="#method_getPrimaryItemName" title="getPrimaryItemName :: Returns the name of the primary item (one of the child items of the nodes
+of this node type)."><span class="description">Returns the name of the primary item (one of the child items of the nodes
+of this node type).</span><pre>getPrimaryItemName()</pre></a></li>
+<li class="method public "><a href="#method_getPropertyDefinitions" title="getPropertyDefinitions :: Returns an array containing the property definitions of this node type."><span class="description">Returns an array containing the property definitions of this node type.</span><pre>getPropertyDefinitions()</pre></a></li>
+<li class="method public "><a href="#method_getSubtypes" title="getSubtypes :: Returns all subtypes of this node type in the node type inheritance
+hierarchy."><span class="description">Returns all subtypes of this node type in the node type inheritance
+hierarchy.</span><pre>getSubtypes()</pre></a></li>
+<li class="method public "><a href="#method_getSupertypes" title="getSupertypes :: Returns all supertypes of this node type in the node type inheritance
+hierarchy."><span class="description">Returns all supertypes of this node type in the node type inheritance
+hierarchy.</span><pre>getSupertypes()</pre></a></li>
+<li class="method public inherited"><a href="#method_hasOrderableChildNodes" title="hasOrderableChildNodes :: Determines if nodes of this type must support orderable child nodes."><span class="description">Determines if nodes of this type must support orderable child nodes.</span><pre>hasOrderableChildNodes()</pre></a></li>
+<li class="method public inherited"><a href="#method_isAbstract" title="isAbstract :: Reports if this is an abstract node type."><span class="description">Reports if this is an abstract node type.</span><pre>isAbstract()</pre></a></li>
+<li class="method public inherited"><a href="#method_isMixin" title="isMixin :: Reports if this is a mixin node type."><span class="description">Reports if this is a mixin node type.</span><pre>isMixin()</pre></a></li>
+<li class="method public "><a href="#method_isNodeType" title="isNodeType :: Reports if the name of this node type or any of its direct or indirect
+supertypes is equal to nodeTypeName."><span class="description">Reports if the name of this node type or any of its direct or indirect
+supertypes is equal to nodeTypeName.</span><pre>isNodeType()</pre></a></li>
+<li class="method public inherited"><a href="#method_isQueryable" title="isQueryable :: Determins if the node type is queryable."><span class="description">Determins if the node type is queryable.</span><pre>isQueryable()</pre></a></li>
+</ul>
+</li>
+<li class="nav-header">
+<i class="icon-custom icon-constant"></i> Constants
+                    <ul>
+<li class="constant  "><a href="#constant_MIX_CREATED" title="MIX_CREATED :: A constant for the node type name mix:created (in extended form)."><span class="description">A constant for the node type name mix:created (in extended form).</span><pre>MIX_CREATED</pre></a></li>
+<li class="constant  "><a href="#constant_MIX_LANGUAGE" title="MIX_LANGUAGE :: A constant for the node type name mix:language (in extended form)."><span class="description">A constant for the node type name mix:language (in extended form).</span><pre>MIX_LANGUAGE</pre></a></li>
+<li class="constant  "><a href="#constant_MIX_LAST_MODIFIED" title="MIX_LAST_MODIFIED :: A constant for the node type name mix:lastModified (in extended form)."><span class="description">A constant for the node type name mix:lastModified (in extended form).</span><pre>MIX_LAST_MODIFIED</pre></a></li>
+<li class="constant  "><a href="#constant_MIX_LIFECYCLE" title="MIX_LIFECYCLE :: A constant for the node type name mix:lifecycle (in extended form)."><span class="description">A constant for the node type name mix:lifecycle (in extended form).</span><pre>MIX_LIFECYCLE</pre></a></li>
+<li class="constant  "><a href="#constant_MIX_LOCKABLE" title="MIX_LOCKABLE :: A constant for the node type name mix:lockable (in extended form)."><span class="description">A constant for the node type name mix:lockable (in extended form).</span><pre>MIX_LOCKABLE</pre></a></li>
+<li class="constant  "><a href="#constant_MIX_MIMETYPE" title="MIX_MIMETYPE :: A constant for the node type name mix:mimeType (in extended form)."><span class="description">A constant for the node type name mix:mimeType (in extended form).</span><pre>MIX_MIMETYPE</pre></a></li>
+<li class="constant  "><a href="#constant_MIX_REFERENCEABLE" title="MIX_REFERENCEABLE :: A constant for the node type name mix:referenceable (in extended form)."><span class="description">A constant for the node type name mix:referenceable (in extended form).</span><pre>MIX_REFERENCEABLE</pre></a></li>
+<li class="constant  "><a href="#constant_MIX_SHAREABLE" title="MIX_SHAREABLE :: A constant for the node type name mix:shareable (in extended form)."><span class="description">A constant for the node type name mix:shareable (in extended form).</span><pre>MIX_SHAREABLE</pre></a></li>
+<li class="constant  "><a href="#constant_MIX_SIMPLE_VERSIONABLE" title="MIX_SIMPLE_VERSIONABLE :: A constant for the node type name mix:simpleVersionable (in extended form)."><span class="description">A constant for the node type name mix:simpleVersionable (in extended form).</span><pre>MIX_SIMPLE_VERSIONABLE</pre></a></li>
+<li class="constant  "><a href="#constant_MIX_TITLE" title="MIX_TITLE :: A constant for the node type name mix:title (in extended form)."><span class="description">A constant for the node type name mix:title (in extended form).</span><pre>MIX_TITLE</pre></a></li>
+<li class="constant  "><a href="#constant_MIX_VERSIONABLE" title="MIX_VERSIONABLE :: A constant for the node type name mix:versionable (in extended form)."><span class="description">A constant for the node type name mix:versionable (in extended form).</span><pre>MIX_VERSIONABLE</pre></a></li>
+<li class="constant  "><a href="#constant_NT_ACTIVITY" title="NT_ACTIVITY :: A constant for the node type name nt:activity (in extended form)."><span class="description">A constant for the node type name nt:activity (in extended form).</span><pre>NT_ACTIVITY</pre></a></li>
+<li class="constant  "><a href="#constant_NT_ADDRESS" title="NT_ADDRESS :: A constant for the node type name nt:address (in extended form)."><span class="description">A constant for the node type name nt:address (in extended form).</span><pre>NT_ADDRESS</pre></a></li>
+<li class="constant  "><a href="#constant_NT_BASE" title="NT_BASE :: A constant for the node type name nt:base (in extended form)."><span class="description">A constant for the node type name nt:base (in extended form).</span><pre>NT_BASE</pre></a></li>
+<li class="constant  "><a href="#constant_NT_CHILD_NODE_DEFINITION" title="NT_CHILD_NODE_DEFINITION :: A constant for the node type name nt:childNodeDefinition (in extended form)."><span class="description">A constant for the node type name nt:childNodeDefinition (in extended form).</span><pre>NT_CHILD_NODE_DEFINITION</pre></a></li>
+<li class="constant  "><a href="#constant_NT_CONFIGURATION" title="NT_CONFIGURATION :: A constant for the node type name nt:configuration (in extended form)."><span class="description">A constant for the node type name nt:configuration (in extended form).</span><pre>NT_CONFIGURATION</pre></a></li>
+<li class="constant  "><a href="#constant_NT_FILE" title="NT_FILE :: A constant for the node type name nt:file (in extended form)."><span class="description">A constant for the node type name nt:file (in extended form).</span><pre>NT_FILE</pre></a></li>
+<li class="constant  "><a href="#constant_NT_FOLDER" title="NT_FOLDER :: A constant for the node type name nt:folder (in extended form)."><span class="description">A constant for the node type name nt:folder (in extended form).</span><pre>NT_FOLDER</pre></a></li>
+<li class="constant  "><a href="#constant_NT_FROZEN_NODE" title="NT_FROZEN_NODE :: A constant for the node type name nt:frozenNode (in extended form)."><span class="description">A constant for the node type name nt:frozenNode (in extended form).</span><pre>NT_FROZEN_NODE</pre></a></li>
+<li class="constant  "><a href="#constant_NT_HIERARCHY_NODE" title="NT_HIERARCHY_NODE :: A constant for the node type name nt:hierarchyNode (in extended form)."><span class="description">A constant for the node type name nt:hierarchyNode (in extended form).</span><pre>NT_HIERARCHY_NODE</pre></a></li>
+<li class="constant  "><a href="#constant_NT_LINKED_FILE" title="NT_LINKED_FILE :: A constant for the node type name nt:linkedFile (in extended form)."><span class="description">A constant for the node type name nt:linkedFile (in extended form).</span><pre>NT_LINKED_FILE</pre></a></li>
+<li class="constant  "><a href="#constant_NT_NODE_TYPE" title="NT_NODE_TYPE :: A constant for the node type name nt:nodeType (in extended form)."><span class="description">A constant for the node type name nt:nodeType (in extended form).</span><pre>NT_NODE_TYPE</pre></a></li>
+<li class="constant  "><a href="#constant_NT_PROPERTY_DEFINITION" title="NT_PROPERTY_DEFINITION :: A constant for the node type name nt:propertyDefinition (in extended form)."><span class="description">A constant for the node type name nt:propertyDefinition (in extended form).</span><pre>NT_PROPERTY_DEFINITION</pre></a></li>
+<li class="constant  "><a href="#constant_NT_QUERY" title="NT_QUERY :: A constant for the node type name nt:query (in extended form)."><span class="description">A constant for the node type name nt:query (in extended form).</span><pre>NT_QUERY</pre></a></li>
+<li class="constant  "><a href="#constant_NT_RESOURCE" title="NT_RESOURCE :: A constant for the node type name nt:resource (in extended form)."><span class="description">A constant for the node type name nt:resource (in extended form).</span><pre>NT_RESOURCE</pre></a></li>
+<li class="constant  "><a href="#constant_NT_UNSTRUCTURED" title="NT_UNSTRUCTURED :: A constant for the node type name nt:unstructured (in extended form)."><span class="description">A constant for the node type name nt:unstructured (in extended form).</span><pre>NT_UNSTRUCTURED</pre></a></li>
+<li class="constant  "><a href="#constant_NT_VERSION" title="NT_VERSION :: A constant for the node type name nt:version (in extended form)."><span class="description">A constant for the node type name nt:version (in extended form).</span><pre>NT_VERSION</pre></a></li>
+<li class="constant  "><a href="#constant_NT_VERSIONED_CHILD" title="NT_VERSIONED_CHILD :: A constant for the node type name nt:versionedChild (in extended form)."><span class="description">A constant for the node type name nt:versionedChild (in extended form).</span><pre>NT_VERSIONED_CHILD</pre></a></li>
+<li class="constant  "><a href="#constant_NT_VERSION_HISTORY" title="NT_VERSION_HISTORY :: A constant for the node type name nt:versionHistory (in extended form)."><span class="description">A constant for the node type name nt:versionHistory (in extended form).</span><pre>NT_VERSION_HISTORY</pre></a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="span8">
+<a id="\PHPCR\NodeType\NodeTypeInterface"></a><ul class="breadcrumb">
+<li>
+<a href="../index.html"><i class="icon-custom icon-class"></i></a><span class="divider">\</span>
+</li>
+<li><a href="../namespaces/PHPCR.html">PHPCR</a></li>
+<li>
+<span class="divider">\</span><a href="../namespaces/PHPCR.NodeType.html">NodeType</a>
+</li>
+<li class="active">
+<span class="divider">\</span><a href="../classes/PHPCR.NodeType.NodeTypeInterface.html">NodeTypeInterface</a>
+</li>
+</ul>
+<div class="element interface">
+<p class="short_description">A NodeType object represents a "live" node type that is registered in the
+repository.</p>
+<div class="details">
+<div class="long_description"><p>The information methods may be used both before and after the node type is
+registered. Its subclass NodeType adds methods that are relevant only when
+the node type is "live"; that is, after it has been registered. Note that
+the separate NodeDefinition interface only plays a significant role in
+implementations that support node type registration.</p>
+
+<p>In those cases it serves as the superclass of both NodeType and
+NodeTypeTemplate. In implementations that do not support node type
+registration, only objects implementing the subinterface NodeType will
+be encountered.</p></div>
+<table class="table table-bordered">
+<tr>
+<th>package</th>
+<td><a href="../packages/phpcr.interfaces.html">phpcr</a></td>
+</tr>
+<tr>
+<th>subpackage</th>
+<td>interfaces</td>
+</tr>
+<tr>
+<th>api</th>
+<td></td>
+</tr>
+</table>
+<h3>
+<i class="icon-custom icon-method"></i> Methods</h3>
+<a id="method_canAddChildNode"></a><div class="element clickable method public method_canAddChildNode" data-toggle="collapse" data-target=".method_canAddChildNode .collapse">
+<h2>Determines if this node type allows the addition of a child node.</h2>
+<pre>canAddChildNode(string $childNodeName, string $nodeTypeName) : boolean</pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>Returns true if this node type allows the addition of a child node called
+childNodeName without specific node type information (that is, given the
+definition of this parent node type, the child node name is sufficient to
+determine the intended child node type). Returns false otherwise.
+If $nodeTypeName is given returns true if this node type allows the
+addition of a child node called childNodeName of node type nodeTypeName.
+Returns false otherwise.</p></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$childNodeName</h4>
+<code>string</code><p>The name of the child node.</p></div>
+<div class="subelement argument">
+<h4>$nodeTypeName</h4>
+<code>string</code><p>The name of the node type of the child node.</p></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>boolean</code>True, if the node type allows the addition of a child
+     node, else false.</div>
+</div></div>
+</div>
+<a id="method_canRemoveNode"></a><div class="element clickable method public method_canRemoveNode" data-toggle="collapse" data-target=".method_canRemoveNode .collapse">
+<h2>Reports if the node type allows the removal of the given node.</h2>
+<pre>canRemoveNode(string $nodeName) : boolean</pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>Returns true if removing the child node called nodeName is allowed by this
+node type. Returns false otherwise.</p></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$nodeName</h4>
+<code>string</code><p>The name of the child node.</p></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>boolean</code>True, if the node type allows to remove the passed node,
+     else false.</div>
+</div></div>
+</div>
+<a id="method_canRemoveProperty"></a><div class="element clickable method public method_canRemoveProperty" data-toggle="collapse" data-target=".method_canRemoveProperty .collapse">
+<h2>Determines if the node type allows to remove the property identified by
+the given name.</h2>
+<pre>canRemoveProperty(string $propertyName) : boolean</pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>Returns true if removing the property called propertyName is allowed by
+this node type. Returns false otherwise.</p></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$propertyName</h4>
+<code>string</code><p>The name of the property</p></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>boolean</code>True, if the removal of the property is allowed, else
+     false.</div>
+</div></div>
+</div>
+<a id="method_canSetProperty"></a><div class="element clickable method public method_canSetProperty" data-toggle="collapse" data-target=".method_canSetProperty .collapse">
+<h2>Determines if the node type allows to set the value of a property.</h2>
+<pre>canSetProperty(string $propertyName, mixed $value) : boolean</pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>Returns true if setting propertyName is allowed and the value is of the
+required type or can be converted into that type.
+Otherwise returns false.</p></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$propertyName</h4>
+<code>string</code><p>The name of the property</p></div>
+<div class="subelement argument">
+<h4>$value</h4>
+<code>mixed</code><p>A variable or an array of variables</p></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>boolean</code>True if setting propertyName to value is allowed by this
+     node type, else false.</div>
+</div></div>
+</div>
+<a id="method_getChildNodeDefinitions"></a><div class="element clickable method public method_getChildNodeDefinitions" data-toggle="collapse" data-target=".method_getChildNodeDefinitions .collapse">
+<h2>Returns an array containing the child node definitions of this node type.</h2>
+<pre>getChildNodeDefinitions() : array</pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>This includes both those child node definitions actually declared in this
+node type and those inherited from the supertypes of this node type.</p></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>array</code>An array of \PHPCR\NodeType\NodeDefinitionInterface containing the
+     child node definitions.</div>
+</div></div>
+</div>
+<a id="method_getDeclaredChildNodeDefinitions"></a><div class="element clickable method public method_getDeclaredChildNodeDefinitions" data-toggle="collapse" data-target=".method_getDeclaredChildNodeDefinitions .collapse">
+<h2>Returns an array containing the child node definitions actually
+declared in this node type.</h2>
+<pre>getDeclaredChildNodeDefinitions() : array</pre>
+<div class="labels">
+<span class="label label-info">API</span><span class="label">Inherited</span>
+</div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>In implementations that support node type registration, if this
+NodeTypeDefinition object is actually a newly-created empty
+NodeTypeTemplate, then this method will return null.</p></div>
+<table class="table table-bordered">
+<tr>
+<th>api</th>
+<td></td>
+</tr>
+<tr>
+<th>inherited_from</th>
+<td>\PHPCR\NodeType\NodeTypeDefinitionInterface::getDeclaredChildNodeDefinitions()</td>
+</tr>
+</table>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>array</code>An array of NodeDefinitions.</div>
+</div></div>
+</div>
+<a id="method_getDeclaredPropertyDefinitions"></a><div class="element clickable method public method_getDeclaredPropertyDefinitions" data-toggle="collapse" data-target=".method_getDeclaredPropertyDefinitions .collapse">
+<h2>Returns an array containing the property definitions actually declared
+in this node type.</h2>
+<pre>getDeclaredPropertyDefinitions() : array</pre>
+<div class="labels">
+<span class="label label-info">API</span><span class="label">Inherited</span>
+</div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>In implementations that support node type registration, if this
+NodeTypeDefinition object is actually a newly-created empty
+NodeTypeTemplate, then this method will return null.</p></div>
+<table class="table table-bordered">
+<tr>
+<th>api</th>
+<td></td>
+</tr>
+<tr>
+<th>inherited_from</th>
+<td>\PHPCR\NodeType\NodeTypeDefinitionInterface::getDeclaredPropertyDefinitions()</td>
+</tr>
+</table>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>array</code>An array of PropertyDefinitions.</div>
+</div></div>
+</div>
+<a id="method_getDeclaredSubtypes"></a><div class="element clickable method public method_getDeclaredSubtypes" data-toggle="collapse" data-target=".method_getDeclaredSubtypes .collapse">
+<h2>Returns the direct subtypes of this node type in the node type inheritance
+hierarchy, that is, those which actually declared this node type in their
+list of supertypes.</h2>
+<pre>getDeclaredSubtypes() : \PHPCR\NodeType\Iterator</pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered">
+<tr>
+<th>see</th>
+<td><a href="">\PHPCR\NodeType\getSubtypes()</a></td>
+</tr>
+<tr>
+<th>api</th>
+<td></td>
+</tr>
+</table>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>\PHPCR\NodeType\Iterator</code>implementing <b>SeekableIterator</b> and <b>Countable</b>.
+     Keys are the node type names, values the corresponding
+     NodeTypeInterface instances.</div>
+</div></div>
+</div>
+<a id="method_getDeclaredSupertypeNames"></a><div class="element clickable method public method_getDeclaredSupertypeNames" data-toggle="collapse" data-target=".method_getDeclaredSupertypeNames .collapse">
+<h2>Returns the names of the supertypes actually declared in this node type.</h2>
+<pre>getDeclaredSupertypeNames() : array</pre>
+<div class="labels">
+<span class="label label-info">API</span><span class="label">Inherited</span>
+</div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>In implementations that support node type registration, if this
+NodeTypeDefinition object is actually a newly-created empty
+NodeTypeTemplate, then this method will return an array containing a
+single string indicating the node type nt:base.</p></div>
+<table class="table table-bordered">
+<tr>
+<th>api</th>
+<td></td>
+</tr>
+<tr>
+<th>inherited_from</th>
+<td>\PHPCR\NodeType\NodeTypeDefinitionInterface::getDeclaredSupertypeNames()</td>
+</tr>
+</table>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>array</code>List of names of declared supertypes.</div>
+</div></div>
+</div>
+<a id="method_getDeclaredSupertypes"></a><div class="element clickable method public method_getDeclaredSupertypes" data-toggle="collapse" data-target=".method_getDeclaredSupertypes .collapse">
+<h2>Returns the direct supertypes of this node type in the node type
+inheritance hierarchy, that is, those actually declared in this node
+type.</h2>
+<pre>getDeclaredSupertypes() : array</pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>In single-inheritance systems, this will always be an array of
+size 0 or 1. In systems that support multiple inheritance of node
+types this array may be of size greater than 1.</p></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>array</code>List of \PHPCR\NodeType\NodeTypeInterface objects.</div>
+</div></div>
+</div>
+<a id="method_getName"></a><div class="element clickable method public method_getName" data-toggle="collapse" data-target=".method_getName .collapse">
+<h2>Returns the name of the node type.</h2>
+<pre>getName() : string</pre>
+<div class="labels">
+<span class="label label-info">API</span><span class="label">Inherited</span>
+</div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>In implementations that support node type registration, if this
+NodeTypeDefinition object is actually a newly-created empty
+NodeTypeTemplate, then this method will return null.</p></div>
+<table class="table table-bordered">
+<tr>
+<th>api</th>
+<td></td>
+</tr>
+<tr>
+<th>inherited_from</th>
+<td>\PHPCR\NodeType\NodeTypeDefinitionInterface::getName()</td>
+</tr>
+</table>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>string</code>The name of the node type.</div>
+</div></div>
+</div>
+<a id="method_getPrimaryItemName"></a><div class="element clickable method public method_getPrimaryItemName" data-toggle="collapse" data-target=".method_getPrimaryItemName .collapse">
+<h2>Returns the name of the primary item (one of the child items of the nodes
+of this node type).</h2>
+<pre>getPrimaryItemName() : string</pre>
+<div class="labels">
+<span class="label label-info">API</span><span class="label">Inherited</span>
+</div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>If this node has no primary item, then this method returns null. This
+indicator is used by the method NodeInterface::getPrimaryItem().</p>
+
+<p>In implementations that support node type registration, if this
+NodeTypeDefinitionInterface object is actually a newly-created empty
+NodeTypeTemplateInterface, then this method will return null.</p></div>
+<table class="table table-bordered">
+<tr>
+<th>api</th>
+<td></td>
+</tr>
+<tr>
+<th>inherited_from</th>
+<td>\PHPCR\NodeType\NodeTypeDefinitionInterface::getPrimaryItemName()</td>
+</tr>
+</table>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>string</code>The name of the primary item.</div>
+</div></div>
+</div>
+<a id="method_getPropertyDefinitions"></a><div class="element clickable method public method_getPropertyDefinitions" data-toggle="collapse" data-target=".method_getPropertyDefinitions .collapse">
+<h2>Returns an array containing the property definitions of this node type.</h2>
+<pre>getPropertyDefinitions() : array</pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>This includes both those property definitions actually declared
+in this node type and those inherited from the supertypes of this type.</p></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>array</code>An array of \PHPCR\NodeType\PropertyDefinition containing
+     the property definitions.</div>
+</div></div>
+</div>
+<a id="method_getSubtypes"></a><div class="element clickable method public method_getSubtypes" data-toggle="collapse" data-target=".method_getSubtypes .collapse">
+<h2>Returns all subtypes of this node type in the node type inheritance
+hierarchy.</h2>
+<pre>getSubtypes() : \PHPCR\NodeType\Iterator</pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered">
+<tr>
+<th>see</th>
+<td><a href="">\PHPCR\NodeType\getDeclaredSubtypes()</a></td>
+</tr>
+<tr>
+<th>api</th>
+<td></td>
+</tr>
+</table>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>\PHPCR\NodeType\Iterator</code>implementing <b>SeekableIterator</b> and <b>Countable</b>.
+     Keys are the node type names, values the corresponding
+     NodeTypeInterface instances.</div>
+</div></div>
+</div>
+<a id="method_getSupertypes"></a><div class="element clickable method public method_getSupertypes" data-toggle="collapse" data-target=".method_getSupertypes .collapse">
+<h2>Returns all supertypes of this node type in the node type inheritance
+hierarchy.</h2>
+<pre>getSupertypes() : array</pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>For primary types apart from nt:base, this list will always
+include at least nt:base. For mixin types, there is no required supertype.</p></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>array</code>List of \PHPCR\NodeType\NodeType objects.</div>
+</div></div>
+</div>
+<a id="method_hasOrderableChildNodes"></a><div class="element clickable method public method_hasOrderableChildNodes" data-toggle="collapse" data-target=".method_hasOrderableChildNodes .collapse">
+<h2>Determines if nodes of this type must support orderable child nodes.</h2>
+<pre>hasOrderableChildNodes() : boolean</pre>
+<div class="labels">
+<span class="label label-info">API</span><span class="label">Inherited</span>
+</div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>Returns true if nodes of this type must support orderable child nodes;
+returns false otherwise. If a node type returns true on a call to this
+method, then all nodes of that node type must support the method
+NodeInterface::orderBefore(). If a node type returns false on a call to
+this method, then nodes of that node type may support
+NodeInterface::orderBefore(). Only the primary node type of a node
+controls that node's status in this regard. This setting on a mixin node
+type will not have any effect on the node.</p>
+
+<p>In implementations that support node type registration, if this
+NodeTypeDefinitionInterface object is actually a newly-created empty
+NodeTypeTemplateInterface, then this method will return false.</p></div>
+<table class="table table-bordered">
+<tr>
+<th>api</th>
+<td></td>
+</tr>
+<tr>
+<th>inherited_from</th>
+<td>\PHPCR\NodeType\NodeTypeDefinitionInterface::hasOrderableChildNodes()</td>
+</tr>
+</table>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>boolean</code>True, if nodes of this type must support orderable child
+     nodes, else false.</div>
+</div></div>
+</div>
+<a id="method_isAbstract"></a><div class="element clickable method public method_isAbstract" data-toggle="collapse" data-target=".method_isAbstract .collapse">
+<h2>Reports if this is an abstract node type.</h2>
+<pre>isAbstract() : boolean</pre>
+<div class="labels">
+<span class="label label-info">API</span><span class="label">Inherited</span>
+</div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>Returns true if this is an abstract node type; returns false otherwise.
+An abstract node type is one that cannot be assigned as the primary or
+mixin type of a node but can be used in the definitions of other node
+types as a superclass.</p>
+
+<p>In implementations that support node type registration, if this
+NodeTypeDefinition object is actually a newly-created empty
+NodeTypeTemplate, then this method will return false.</p></div>
+<table class="table table-bordered">
+<tr>
+<th>api</th>
+<td></td>
+</tr>
+<tr>
+<th>inherited_from</th>
+<td>\PHPCR\NodeType\NodeTypeDefinitionInterface::isAbstract()</td>
+</tr>
+</table>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>boolean</code>True, if the current type is abstract, else false.</div>
+</div></div>
+</div>
+<a id="method_isMixin"></a><div class="element clickable method public method_isMixin" data-toggle="collapse" data-target=".method_isMixin .collapse">
+<h2>Reports if this is a mixin node type.</h2>
+<pre>isMixin() : boolean</pre>
+<div class="labels">
+<span class="label label-info">API</span><span class="label">Inherited</span>
+</div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>Returns true if this is a mixin type; returns false if it is primary.
+In implementations that support node type registration, if this
+NodeTypeDefinition object is actually a newly-created empty
+NodeTypeTemplate, then this method will return false.</p></div>
+<table class="table table-bordered">
+<tr>
+<th>api</th>
+<td></td>
+</tr>
+<tr>
+<th>inherited_from</th>
+<td>\PHPCR\NodeType\NodeTypeDefinitionInterface::isMixin()</td>
+</tr>
+</table>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>boolean</code>True if this is a mixin type, else false;</div>
+</div></div>
+</div>
+<a id="method_isNodeType"></a><div class="element clickable method public method_isNodeType" data-toggle="collapse" data-target=".method_isNodeType .collapse">
+<h2>Reports if the name of this node type or any of its direct or indirect
+supertypes is equal to nodeTypeName.</h2>
+<pre>isNodeType(string $nodeTypeName) : boolean</pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>Returns true if the name of this node type or any of its direct or
+indirect supertypes is equal to nodeTypeName, otherwise returns false.</p></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$nodeTypeName</h4>
+<code>string</code><p>the name of a node type.</p></div>
+<h3>Returns</h3>
+<div class="subelement response"><code>boolean</code></div>
+</div></div>
+</div>
+<a id="method_isQueryable"></a><div class="element clickable method public method_isQueryable" data-toggle="collapse" data-target=".method_isQueryable .collapse">
+<h2>Determins if the node type is queryable.</h2>
+<pre>isQueryable() : boolean</pre>
+<div class="labels">
+<span class="label label-info">API</span><span class="label">Inherited</span>
+</div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>Returns true if the node type is queryable, meaning that the
+available-query-operators, full-text-searchable and query-orderable
+attributes of its property definitions take effect.</p>
+
+<p>If a node type is declared non-queryable then these attributes of its
+property definitions have no effect.</p></div>
+<table class="table table-bordered">
+<tr>
+<th>see</th>
+<td><a href="">\PHPCR\NodeType\PropertyDefinition::getAvailableQueryOperators()</a></td>
+</tr>
+<tr>
+<th>see</th>
+<td><a href="">\PHPCR\NodeType\PropertyDefinition::isFullTextSearchable()</a></td>
+</tr>
+<tr>
+<th>see</th>
+<td><a href="">\PHPCR\NodeType\PropertyDefinition::isQueryOrderable()</a></td>
+</tr>
+<tr>
+<th>api</th>
+<td></td>
+</tr>
+<tr>
+<th>inherited_from</th>
+<td>\PHPCR\NodeType\NodeTypeDefinitionInterface::isQueryable()</td>
+</tr>
+</table>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>boolean</code>True, if the node type is queryable, else false.</div>
+</div></div>
+</div>
+<h3>
+<i class="icon-custom icon-constant"></i> Constants</h3>
+<a id="constant_MIX_CREATED"> </a><div class="element clickable constant  constant_MIX_CREATED" data-toggle="collapse" data-target=".constant_MIX_CREATED .collapse">
+<h2>A constant for the node type name mix:created (in extended form).</h2>
+<pre>MIX_CREATED </pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>Constants for the names of the properties declared by mix:created are:</p>
+
+<ul>
+<li>\PHPCR\PropertyInterface::JCR_CREATED</li>
+<li>\PHPCR\PropertyInterface::JCR_CREATED_BY</li>
+</ul></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+</div></div>
+</div>
+<a id="constant_MIX_LANGUAGE"> </a><div class="element clickable constant  constant_MIX_LANGUAGE" data-toggle="collapse" data-target=".constant_MIX_LANGUAGE .collapse">
+<h2>A constant for the node type name mix:language (in extended form).</h2>
+<pre>MIX_LANGUAGE </pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>A constant for the name of the property declared by mix:language is:
+\PHPCR\PropertyInterface::JCR_LANGUAGE</p></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+</div></div>
+</div>
+<a id="constant_MIX_LAST_MODIFIED"> </a><div class="element clickable constant  constant_MIX_LAST_MODIFIED" data-toggle="collapse" data-target=".constant_MIX_LAST_MODIFIED .collapse">
+<h2>A constant for the node type name mix:lastModified (in extended form).</h2>
+<pre>MIX_LAST_MODIFIED </pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>Constants for the names of the properties declared by mix:lastModified are:</p>
+
+<ul>
+<li>\PHPCR\PropertyInterface::JCR_LAST_MODIFIED</li>
+<li>\PHPCR\PropertyInterface::JCR_LAST_MODIFIED_BY</li>
+</ul></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+</div></div>
+</div>
+<a id="constant_MIX_LIFECYCLE"> </a><div class="element clickable constant  constant_MIX_LIFECYCLE" data-toggle="collapse" data-target=".constant_MIX_LIFECYCLE .collapse">
+<h2>A constant for the node type name mix:lifecycle (in extended form).</h2>
+<pre>MIX_LIFECYCLE </pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>Constants for the names of the properties declared by mix:lifecycle are:</p>
+
+<ul>
+<li>\PHPCR\PropertyInterface::JCR_LIFECYCLE_POLICY</li>
+<li>\PHPCR\PropertyInterface::JCR_CURRENT_LIFECYCLE_STATE</li>
+</ul></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+</div></div>
+</div>
+<a id="constant_MIX_LOCKABLE"> </a><div class="element clickable constant  constant_MIX_LOCKABLE" data-toggle="collapse" data-target=".constant_MIX_LOCKABLE .collapse">
+<h2>A constant for the node type name mix:lockable (in extended form).</h2>
+<pre>MIX_LOCKABLE </pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>Constants for the names of the properties declared by mix:lockable are:</p>
+
+<ul>
+<li>\PHPCR\PropertyInterface::JCR_LOCK_OWNER</li>
+<li>\PHPCR\PropertyInterface::JCR_LOCK_IS_DEEP</li>
+</ul></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+</div></div>
+</div>
+<a id="constant_MIX_MIMETYPE"> </a><div class="element clickable constant  constant_MIX_MIMETYPE" data-toggle="collapse" data-target=".constant_MIX_MIMETYPE .collapse">
+<h2>A constant for the node type name mix:mimeType (in extended form).</h2>
+<pre>MIX_MIMETYPE </pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>Constants for the names of the properties declared by mix:mimeType are:</p>
+
+<ul>
+<li>\PHPCR\PropertyInterface::JCR_MIMETYPE</li>
+<li>\PHPCR\PropertyInterface::JCR_ENCODING</li>
+</ul></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+</div></div>
+</div>
+<a id="constant_MIX_REFERENCEABLE"> </a><div class="element clickable constant  constant_MIX_REFERENCEABLE" data-toggle="collapse" data-target=".constant_MIX_REFERENCEABLE .collapse">
+<h2>A constant for the node type name mix:referenceable (in extended form).</h2>
+<pre>MIX_REFERENCEABLE </pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>A constant for the name of the property declared by mix:referenceable is:
+\PHPCR\PropertyInterface::JCR_UUID</p></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+</div></div>
+</div>
+<a id="constant_MIX_SHAREABLE"> </a><div class="element clickable constant  constant_MIX_SHAREABLE" data-toggle="collapse" data-target=".constant_MIX_SHAREABLE .collapse">
+<h2>A constant for the node type name mix:shareable (in extended form).</h2>
+<pre>MIX_SHAREABLE </pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+</div></div>
+</div>
+<a id="constant_MIX_SIMPLE_VERSIONABLE"> </a><div class="element clickable constant  constant_MIX_SIMPLE_VERSIONABLE" data-toggle="collapse" data-target=".constant_MIX_SIMPLE_VERSIONABLE .collapse">
+<h2>A constant for the node type name mix:simpleVersionable (in extended form).</h2>
+<pre>MIX_SIMPLE_VERSIONABLE </pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>A constant for the name of the property declared by mix:simpleVersionable is:
+\PHPCR\PropertyInterface::JCR_IS_CHECKED_OUT</p></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+</div></div>
+</div>
+<a id="constant_MIX_TITLE"> </a><div class="element clickable constant  constant_MIX_TITLE" data-toggle="collapse" data-target=".constant_MIX_TITLE .collapse">
+<h2>A constant for the node type name mix:title (in extended form).</h2>
+<pre>MIX_TITLE </pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>Constants for the names of the properties declared by mix:title are:</p>
+
+<ul>
+<li>\PHPCR\PropertyInterface::JCR_TITLE</li>
+<li>\PHPCR\PropertyInterface::JCR_DESCRIPTION</li>
+</ul></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+</div></div>
+</div>
+<a id="constant_MIX_VERSIONABLE"> </a><div class="element clickable constant  constant_MIX_VERSIONABLE" data-toggle="collapse" data-target=".constant_MIX_VERSIONABLE .collapse">
+<h2>A constant for the node type name mix:versionable (in extended form).</h2>
+<pre>MIX_VERSIONABLE </pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>Constants for the names of the properties declared by mix:versionable are:</p>
+
+<ul>
+<li>\PHPCR\PropertyInterface::JCR_VERSION_HISTORY</li>
+<li>\PHPCR\PropertyInterface::JCR_BASE_VERSION</li>
+<li>\PHPCR\PropertyInterface::JCR_PREDECESSORS</li>
+<li>\PHPCR\PropertyInterface::JCR_MERGE_FAILED</li>
+<li>\PHPCR\PropertyInterface::JCR_ACTIVITY</li>
+<li>\PHPCR\PropertyInterface::JCR_CONFIGURATION</li>
+</ul></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+</div></div>
+</div>
+<a id="constant_NT_ACTIVITY"> </a><div class="element clickable constant  constant_NT_ACTIVITY" data-toggle="collapse" data-target=".constant_NT_ACTIVITY .collapse">
+<h2>A constant for the node type name nt:activity (in extended form).</h2>
+<pre>NT_ACTIVITY </pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>A constant for the name of the property declared by nt:activity is:
+\PHPCR\PropertyInterface::JCR_TITLE</p></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+</div></div>
+</div>
+<a id="constant_NT_ADDRESS"> </a><div class="element clickable constant  constant_NT_ADDRESS" data-toggle="collapse" data-target=".constant_NT_ADDRESS .collapse">
+<h2>A constant for the node type name nt:address (in extended form).</h2>
+<pre>NT_ADDRESS </pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>Constants for the names of the properties declared by nt:base are:</p>
+
+<ul>
+<li>\PHPCR\PropertyInterface::JCR_PROTOCOL</li>
+<li>\PHPCR\PropertyInterface::JCR_HOST</li>
+<li>\PHPCR\PropertyInterface::JCR_PORT</li>
+<li>\PHPCR\PropertyInterface::JCR_REPOSITORY</li>
+<li>\PHPCR\PropertyInterface::JCR_WORKSPACE</li>
+<li>\PHPCR\PropertyInterface::JCR_PATH</li>
+<li>\PHPCR\PropertyInterface::JCR_ID</li>
+</ul></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+</div></div>
+</div>
+<a id="constant_NT_BASE"> </a><div class="element clickable constant  constant_NT_BASE" data-toggle="collapse" data-target=".constant_NT_BASE .collapse">
+<h2>A constant for the node type name nt:base (in extended form).</h2>
+<pre>NT_BASE </pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>Constants for the names of the properties declared by nt:base are:</p>
+
+<ul>
+<li>\PHPCR\PropertyInterface::JCR_PRIMARY_TYPE</li>
+<li>\PHPCR\PropertyInterface::JCR_MIXIN_TYPES</li>
+</ul></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+</div></div>
+</div>
+<a id="constant_NT_CHILD_NODE_DEFINITION"> </a><div class="element clickable constant  constant_NT_CHILD_NODE_DEFINITION" data-toggle="collapse" data-target=".constant_NT_CHILD_NODE_DEFINITION .collapse">
+<h2>A constant for the node type name nt:childNodeDefinition (in extended form).</h2>
+<pre>NT_CHILD_NODE_DEFINITION </pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>Constants for the names of the properties declared by nt:childNodeDefinition are:</p>
+
+<ul>
+<li>\PHPCR\PropertyInterface::JCR_NAME</li>
+<li>\PHPCR\PropertyInterface::JCR_AUTOCREATED</li>
+<li>\PHPCR\PropertyInterface::JCR_MANDATORY</li>
+<li>\PHPCR\PropertyInterface::JCR_PROTECTED</li>
+<li>\PHPCR\PropertyInterface::JCR_ON_PARENT_VERSION</li>
+<li>\PHPCR\PropertyInterface::JCR_REQUIRED_PRIMARY_TYPES</li>
+<li>\PHPCR\PropertyInterface::JCR_DEFAULT_PRIMARY_TYPE</li>
+<li>\PHPCR\PropertyInterface::JCR_SAME_NAME_SIBLINGS</li>
+</ul></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+</div></div>
+</div>
+<a id="constant_NT_CONFIGURATION"> </a><div class="element clickable constant  constant_NT_CONFIGURATION" data-toggle="collapse" data-target=".constant_NT_CONFIGURATION .collapse">
+<h2>A constant for the node type name nt:configuration (in extended form).</h2>
+<pre>NT_CONFIGURATION </pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>A constant for the name of the property declared by nt:configuration is:
+\PHPCR\PropertyInterface::JCR_ROOT</p></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+</div></div>
+</div>
+<a id="constant_NT_FILE"> </a><div class="element clickable constant  constant_NT_FILE" data-toggle="collapse" data-target=".constant_NT_FILE .collapse">
+<h2>A constant for the node type name nt:file (in extended form).</h2>
+<pre>NT_FILE </pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>A constant for the name of the child node declared by nt:file is:
+\PHPCR\NodeInterface::JCR_CONTENT</p></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+</div></div>
+</div>
+<a id="constant_NT_FOLDER"> </a><div class="element clickable constant  constant_NT_FOLDER" data-toggle="collapse" data-target=".constant_NT_FOLDER .collapse">
+<h2>A constant for the node type name nt:folder (in extended form).</h2>
+<pre>NT_FOLDER </pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+</div></div>
+</div>
+<a id="constant_NT_FROZEN_NODE"> </a><div class="element clickable constant  constant_NT_FROZEN_NODE" data-toggle="collapse" data-target=".constant_NT_FROZEN_NODE .collapse">
+<h2>A constant for the node type name nt:frozenNode (in extended form).</h2>
+<pre>NT_FROZEN_NODE </pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>Constants for the names of the properties declared by nt:frozenNode are:</p>
+
+<ul>
+<li>\PHPCR\PropertyInterface::JCR_FROZEN_PRIMARY_TYPE</li>
+<li>\PHPCR\PropertyInterface::JCR_FROZEN_MIXIN_TYPES</li>
+<li>\PHPCR\PropertyInterface::JCR_FROZEN_UUID</li>
+</ul></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+</div></div>
+</div>
+<a id="constant_NT_HIERARCHY_NODE"> </a><div class="element clickable constant  constant_NT_HIERARCHY_NODE" data-toggle="collapse" data-target=".constant_NT_HIERARCHY_NODE .collapse">
+<h2>A constant for the node type name nt:hierarchyNode (in extended form).</h2>
+<pre>NT_HIERARCHY_NODE </pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+</div></div>
+</div>
+<a id="constant_NT_LINKED_FILE"> </a><div class="element clickable constant  constant_NT_LINKED_FILE" data-toggle="collapse" data-target=".constant_NT_LINKED_FILE .collapse">
+<h2>A constant for the node type name nt:linkedFile (in extended form).</h2>
+<pre>NT_LINKED_FILE </pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>A constant for the name of the property declared by nt:linkedFile is:
+\PHPCR\PropertyInterface::JCR_CONTENT</p></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+</div></div>
+</div>
+<a id="constant_NT_NODE_TYPE"> </a><div class="element clickable constant  constant_NT_NODE_TYPE" data-toggle="collapse" data-target=".constant_NT_NODE_TYPE .collapse">
+<h2>A constant for the node type name nt:nodeType (in extended form).</h2>
+<pre>NT_NODE_TYPE </pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>Constants for the names of the child items declared by nt:nodeType are:</p>
+
+<ul>
+<li>\PHPCR\PropertyInterface::JCR_NODE_TYPE_NAME</li>
+<li>\PHPCR\PropertyInterface::JCR_SUPERTYPES</li>
+<li>\PHPCR\PropertyInterface::JCR_IS_ABSTRACT</li>
+<li>\PHPCR\PropertyInterface::JCR_IS_MIXIN</li>
+<li>\PHPCR\PropertyInterface::JCR_HAS_ORDERABLE_CHILD_NODES</li>
+<li>\PHPCR\PropertyInterface::JCR_PRIMARY_ITEM_NAME</li>
+<li>\PHPCR\NodeInterface::JCR_PROPERTY_DEFINITION</li>
+<li>\PHPCR\NodeInterface::JCR_CHILD_NODE_DEFINITION</li>
+</ul></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+</div></div>
+</div>
+<a id="constant_NT_PROPERTY_DEFINITION"> </a><div class="element clickable constant  constant_NT_PROPERTY_DEFINITION" data-toggle="collapse" data-target=".constant_NT_PROPERTY_DEFINITION .collapse">
+<h2>A constant for the node type name nt:propertyDefinition (in extended form).</h2>
+<pre>NT_PROPERTY_DEFINITION </pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>Constants for the names of the properties declared by nt:propertyDefinition are:</p>
+
+<ul>
+<li>\PHPCR\PropertyInterface::JCR_NAME</li>
+<li>\PHPCR\PropertyInterface::JCR_AUTOCREATED</li>
+<li>\PHPCR\PropertyInterface::JCR_MANDATORY</li>
+<li>\PHPCR\PropertyInterface::JCR_PROTECTED</li>
+<li>\PHPCR\PropertyInterface::JCR_ON_PARENT_VERSION</li>
+<li>\PHPCR\PropertyInterface::JCR_REQUIRED_TYPE</li>
+<li>\PHPCR\PropertyInterface::JCR_VALUE_CONSTRAINTS</li>
+<li>\PHPCR\PropertyInterface::JCR_DEFAULT_VALUES</li>
+<li>\PHPCR\PropertyInterface::JCR_MULTIPLE</li>
+</ul></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+</div></div>
+</div>
+<a id="constant_NT_QUERY"> </a><div class="element clickable constant  constant_NT_QUERY" data-toggle="collapse" data-target=".constant_NT_QUERY .collapse">
+<h2>A constant for the node type name nt:query (in extended form).</h2>
+<pre>NT_QUERY </pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>Constants for the names of the properties declared by nt:query are:</p>
+
+<ul>
+<li>\PHPCR\PropertyInterface::JCR_STATEMENT</li>
+<li>\PHPCR\PropertyInterface::JCR_LANGUAGE</li>
+</ul></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+</div></div>
+</div>
+<a id="constant_NT_RESOURCE"> </a><div class="element clickable constant  constant_NT_RESOURCE" data-toggle="collapse" data-target=".constant_NT_RESOURCE .collapse">
+<h2>A constant for the node type name nt:resource (in extended form).</h2>
+<pre>NT_RESOURCE </pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>A constant for the name of the property declared by nt:resource is:
+\PHPCR\PropertyInterface::JCR_DATA</p></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+</div></div>
+</div>
+<a id="constant_NT_UNSTRUCTURED"> </a><div class="element clickable constant  constant_NT_UNSTRUCTURED" data-toggle="collapse" data-target=".constant_NT_UNSTRUCTURED .collapse">
+<h2>A constant for the node type name nt:unstructured (in extended form).</h2>
+<pre>NT_UNSTRUCTURED </pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+</div></div>
+</div>
+<a id="constant_NT_VERSION"> </a><div class="element clickable constant  constant_NT_VERSION" data-toggle="collapse" data-target=".constant_NT_VERSION .collapse">
+<h2>A constant for the node type name nt:version (in extended form).</h2>
+<pre>NT_VERSION </pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>Constants for the names of the child items declared by nt:version are:</p>
+
+<ul>
+<li>\PHPCR\PropertyInterface::JCR_CREATED</li>
+<li>\PHPCR\PropertyInterface::JCR_PREDECESSORS</li>
+<li>\PHPCR\PropertyInterface::JCR_SUCCESSORS</li>
+<li>\PHPCR\PropertyInterface::JCR_ACTIVITY</li>
+<li>\PHPCR\NodeInterface::JCR_FROZEN_NODE</li>
+</ul></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+</div></div>
+</div>
+<a id="constant_NT_VERSIONED_CHILD"> </a><div class="element clickable constant  constant_NT_VERSIONED_CHILD" data-toggle="collapse" data-target=".constant_NT_VERSIONED_CHILD .collapse">
+<h2>A constant for the node type name nt:versionedChild (in extended form).</h2>
+<pre>NT_VERSIONED_CHILD </pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>A constant for the name of the property declared by nt:versionedChild is:
+\PHPCR\PropertyInterface::JCR_CHILD_VERSION_HISTORY</p></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+</div></div>
+</div>
+<a id="constant_NT_VERSION_HISTORY"> </a><div class="element clickable constant  constant_NT_VERSION_HISTORY" data-toggle="collapse" data-target=".constant_NT_VERSION_HISTORY .collapse">
+<h2>A constant for the node type name nt:versionHistory (in extended form).</h2>
+<pre>NT_VERSION_HISTORY </pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>Constants for the names of the child items declared by nt:versionHistory are:</p>
+
+<ul>
+<li>\PHPCR\PropertyInterface::JCR_VERSIONABLE_UUID</li>
+<li>\PHPCR\PropertyInterface::JCR_COPIED_FROM</li>
+<li>\PHPCR\NodeInterface::JCR_ROOT_VERSION</li>
+<li>\PHPCR\NodeInterface::JCR_VERSION_LABELS</li>
+</ul></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+</div></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="row"><footer class="span12">
+            Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
+            Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a10</a> and<br>
+            generated on 2012-10-02T11:32:34+02:00.<br></footer></div>
+</div>
+</body>
+</html>

@@ -1,0 +1,530 @@
+<!DOCTYPE html><html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+<meta charset="utf-8">
+<title>PHPCR API and PHPCR-Utils » \PHPCR\ItemInterface</title>
+<meta name="author" content="Mike van Riel">
+<meta name="description" content="">
+<link href="../css/template.css" rel="stylesheet" media="all">
+<script src="../js/jquery-1.7.1.min.js" type="text/javascript"></script><script src="../js/jquery-ui-1.8.2.custom.min.js" type="text/javascript"></script><script src="../js/jquery.mousewheel.min.js" type="text/javascript"></script><script src="../js/bootstrap.js" type="text/javascript"></script><script src="../js/template.js" type="text/javascript"></script><script src="../js/prettify/prettify.min.js" type="text/javascript"></script><link rel="shortcut icon" href="../img/favicon.ico">
+<link rel="apple-touch-icon" href="../img/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="72x72" href="../img/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="114x114" href="../img/apple-touch-icon-114x114.png">
+</head>
+<body>
+<div class="navbar navbar-fixed-top">
+<div class="navbar-inner"><div class="container">
+<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a><a class="brand" href="../index.html">PHPCR API and PHPCR-Utils</a><div class="nav-collapse"><ul class="nav">
+<li class="dropdown">
+<a href="#api" class="dropdown-toggle" data-toggle="dropdown">
+                                    API Documentation <b class="caret"></b></a><ul class="dropdown-menu">
+<li><a>Namespaces</a></li>
+<li><a href="../namespaces/PHPCR.html"><i class="icon-th"></i> PHPCR</a></li>
+<li><a>Packages</a></li>
+<li><a href="../packages/Default.html"><i class="icon-folder-open"></i> Default</a></li>
+<li><a href="../packages/phpcr.html"><i class="icon-folder-open"></i> phpcr</a></li>
+</ul>
+</li>
+<li class="dropdown" id="charts-menu">
+<a href="#charts" class="dropdown-toggle" data-toggle="dropdown">
+                                    Charts <b class="caret"></b></a><ul class="dropdown-menu"><li><a href="../graph_class.html"><i class="icon-list-alt"></i> Class hierarchy diagram</a></li></ul>
+</li>
+<li class="dropdown" id="reports-menu">
+<a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
+                                    Reports <b class="caret"></b></a><ul class="dropdown-menu">
+<li><a href="../errors.html"><i class="icon-remove-sign"></i> Errors 
+                <span class="label label-info">123</span></a></li>
+<li><a href="../markers.html"><i class="icon-map-marker"></i> Markers 
+                <ul><li>todo 
+                <span class="label label-info">12</span>
+</li></ul></a></li>
+<li><a href="../deprecated.html"><i class="icon-stop"></i> Deprecated elements 
+                <span class="label label-info">0</span></a></li>
+</ul>
+</li>
+</ul></div>
+</div></div>
+<div class="go_to_top"><a href="#___" style="color: inherit">Back to top  <i class="icon-upload icon-white"></i></a></div>
+</div>
+<div id="___" class="container">
+<noscript><div class="alert alert-warning">
+                            Javascript is disabled; several features are only available
+                            if Javascript is enabled.
+                        </div></noscript>
+<div class="row">
+<div class="span4">
+<span class="btn-group visibility" data-toggle="buttons-checkbox"><button class="btn public active" title="Show public elements">Public</button><button class="btn protected" title="Show protected elements">Protected</button><button class="btn private" title="Show private elements">Private</button><button class="btn inherited active" title="Show inherited elements">Inherited</button></span><div class="btn-group view pull-right" data-toggle="buttons-radio">
+<button class="btn details" title="Show descriptions and method names"><i class="icon-list"></i></button><button class="btn simple" title="Show only method names"><i class="icon-align-justify"></i></button>
+</div>
+<ul class="side-nav nav nav-list"><li class="nav-header">
+<i class="icon-custom icon-method"></i> Methods
+                    <ul>
+<li class="method public "><a href="#method_accept" title="accept :: Call the ItemVisitor::visit() method."><span class="description">Call the ItemVisitor::visit() method.</span><pre>accept()</pre></a></li>
+<li class="method public "><a href="#method_getAncestor" title="getAncestor :: Returns the ancestor of this Item at the specified depth."><span class="description">Returns the ancestor of this Item at the specified depth.</span><pre>getAncestor()</pre></a></li>
+<li class="method public "><a href="#method_getDepth" title="getDepth :: Returns the depth of this Item in the workspace item graph."><span class="description">Returns the depth of this Item in the workspace item graph.</span><pre>getDepth()</pre></a></li>
+<li class="method public "><a href="#method_getName" title="getName :: Returns the name of this Item in qualified form."><span class="description">Returns the name of this Item in qualified form.</span><pre>getName()</pre></a></li>
+<li class="method public "><a href="#method_getParent" title="getParent :: Returns the parent of this Item."><span class="description">Returns the parent of this Item.</span><pre>getParent()</pre></a></li>
+<li class="method public "><a href="#method_getPath" title="getPath :: Returns the normalized absolute path to this item."><span class="description">Returns the normalized absolute path to this item.</span><pre>getPath()</pre></a></li>
+<li class="method public "><a href="#method_getSession" title="getSession :: Returns the Session through which this Item was acquired."><span class="description">Returns the Session through which this Item was acquired.</span><pre>getSession()</pre></a></li>
+<li class="method public "><a href="#method_isModified" title="isModified :: Indicates if the current item has been modified."><span class="description">Indicates if the current item has been modified.</span><pre>isModified()</pre></a></li>
+<li class="method public "><a href="#method_isNew" title="isNew :: Determines if the current item is a new one."><span class="description">Determines if the current item is a new one.</span><pre>isNew()</pre></a></li>
+<li class="method public "><a href="#method_isNode" title="isNode :: Indicates whether this Item is a Node or a Property."><span class="description">Indicates whether this Item is a Node or a Property.</span><pre>isNode()</pre></a></li>
+<li class="method public "><a href="#method_isSame" title="isSame :: Determines if this Item object represents the same actual workspace item
+as the object otherItem."><span class="description">Determines if this Item object represents the same actual workspace item
+as the object otherItem.</span><pre>isSame()</pre></a></li>
+<li class="method public "><a href="#method_refresh" title="refresh :: Updates the state of the current item."><span class="description">Updates the state of the current item.</span><pre>refresh()</pre></a></li>
+<li class="method public "><a href="#method_remove" title="remove :: Removes this item (and its subgraph)."><span class="description">Removes this item (and its subgraph).</span><pre>remove()</pre></a></li>
+</ul>
+</li></ul>
+</div>
+<div class="span8">
+<a id="\PHPCR\ItemInterface"></a><ul class="breadcrumb">
+<li>
+<a href="../index.html"><i class="icon-custom icon-class"></i></a><span class="divider">\</span>
+</li>
+<li><a href="../namespaces/PHPCR.html">PHPCR</a></li>
+<li class="active">
+<span class="divider">\</span><a href="../classes/PHPCR.ItemInterface.html">ItemInterface</a>
+</li>
+</ul>
+<div class="element interface">
+<p class="short_description">The Item is the base interface of Node and Property.</p>
+<div class="details">
+<div class="long_description"></div>
+<table class="table table-bordered">
+<tr>
+<th>package</th>
+<td><a href="../packages/phpcr.interfaces.html">phpcr</a></td>
+</tr>
+<tr>
+<th>subpackage</th>
+<td>interfaces</td>
+</tr>
+<tr>
+<th>api</th>
+<td></td>
+</tr>
+</table>
+<h3>
+<i class="icon-custom icon-method"></i> Methods</h3>
+<a id="method_accept"></a><div class="element clickable method public method_accept" data-toggle="collapse" data-target=".method_accept .collapse">
+<h2>Call the ItemVisitor::visit() method.</h2>
+<pre>accept(\PHPCR\ItemVisitorInterface $visitor) </pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>This is less relevant in PHP (Java had it to avoid typecasting in the
+visitor). We leave it here, to allow sanity checks or other operations
+an implementation might wants to do.</p></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$visitor</h4>
+<code><a href="../classes/PHPCR.ItemVisitorInterface.html">\PHPCR\ItemVisitorInterface</a></code><p>The ItemVisitor to be accepted.</p></div>
+<h3>Exceptions</h3>
+<table class="table table-bordered"><tr>
+<th><code><a href="../classes/PHPCR.RepositoryException.html">\PHPCR\RepositoryException</a></code></th>
+<td>if an error occurs.</td>
+</tr></table>
+</div></div>
+</div>
+<a id="method_getAncestor"></a><div class="element clickable method public method_getAncestor" data-toggle="collapse" data-target=".method_getAncestor .collapse">
+<h2>Returns the ancestor of this Item at the specified depth.</h2>
+<pre>getAncestor(integer $depth) : <a href="../classes/PHPCR.ItemInterface.html">\PHPCR\ItemInterface</a></pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>An ancestor of depth x is the Item that is x levels down along the path
+from the root node to this Item.</p>
+
+<ul>
+<li>depth = 0 returns the root node of a workspace.</li>
+<li>depth = 1 returns the child of the root node along the path to this
+ Item.</li>
+<li>depth = 2 returns the grandchild of the root node along the path to
+ this Item.</li>
+<li>And so on to depth = n, where n is the depth of this Item, which
+ returns this Item itself.</li>
+</ul>
+
+<p>If this node has more than one path (i.e., if it is a descendant of a
+shared node) then the path used to define the ancestor is implementaion-
+dependent.</p></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$depth</h4>
+<code>integer</code><p>An integer, 0 <= depth <= n where n is the depth of this Item.</p>
+</div>
+<h3>Exceptions</h3>
+<table class="table table-bordered">
+<tr>
+<th><code><a href="../classes/PHPCR.ItemNotFoundException.html">\PHPCR\ItemNotFoundException</a></code></th>
+<td>if depth < 0 or depth > n
+     where n is the depth of this item.</td>
+</tr>
+<tr>
+<th><code><a href="../classes/PHPCR.AccessDeniedException.html">\PHPCR\AccessDeniedException</a></code></th>
+<td>if the current session does not
+     have sufficient access to retrieve the specified node.</td>
+</tr>
+<tr>
+<th><code><a href="../classes/PHPCR.RepositoryException.html">\PHPCR\RepositoryException</a></code></th>
+<td>if another error occurs.</td>
+</tr>
+</table>
+<h3>Returns</h3>
+<div class="subelement response">
+<code><a href="../classes/PHPCR.ItemInterface.html">\PHPCR\ItemInterface</a></code>The ancestor of this Item at the specified
+     depth.</div>
+</div></div>
+</div>
+<a id="method_getDepth"></a><div class="element clickable method public method_getDepth" data-toggle="collapse" data-target=".method_getDepth .collapse">
+<h2>Returns the depth of this Item in the workspace item graph.</h2>
+<pre>getDepth() : integer</pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><ul>
+<li>The root node returns 0.</li>
+<li>A property or child node of the root node returns 1.</li>
+<li>A property or child node of a child node of the root returns 2.</li>
+<li>And so on to this Item.</li>
+</ul></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+<h3>Exceptions</h3>
+<table class="table table-bordered"><tr>
+<th><code><a href="../classes/PHPCR.RepositoryException.html">\PHPCR\RepositoryException</a></code></th>
+<td>if an error occurs.</td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>integer</code>The depth of this Item in the workspace item graph.</div>
+</div></div>
+</div>
+<a id="method_getName"></a><div class="element clickable method public method_getName" data-toggle="collapse" data-target=".method_getName .collapse">
+<h2>Returns the name of this Item in qualified form.</h2>
+<pre>getName() : string</pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>If this Item is the root node of the workspace, an empty string is returned.</p></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+<h3>Exceptions</h3>
+<table class="table table-bordered"><tr>
+<th><code><a href="../classes/PHPCR.RepositoryException.html">\PHPCR\RepositoryException</a></code></th>
+<td>if an error occurs.</td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>string</code>the name of this Item in qualified form or an empty
+     string if this Item is the root node of a workspace.</div>
+</div></div>
+</div>
+<a id="method_getParent"></a><div class="element clickable method public method_getParent" data-toggle="collapse" data-target=".method_getParent .collapse">
+<h2>Returns the parent of this Item.</h2>
+<pre>getParent() : <a href="../classes/PHPCR.NodeInterface.html">\PHPCR\NodeInterface</a></pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+<h3>Exceptions</h3>
+<table class="table table-bordered">
+<tr>
+<th><code><a href="../classes/PHPCR.ItemNotFoundException.html">\PHPCR\ItemNotFoundException</a></code></th>
+<td>if this Item is the root node of a
+     workspace.</td>
+</tr>
+<tr>
+<th><code><a href="../classes/PHPCR.AccessDeniedException.html">\PHPCR\AccessDeniedException</a></code></th>
+<td>if the current session does not
+     have sufficent access to retrieve the parent of this item.</td>
+</tr>
+<tr>
+<th><code><a href="../classes/PHPCR.RepositoryException.html">\PHPCR\RepositoryException</a></code></th>
+<td>if another error occurs.</td>
+</tr>
+</table>
+<h3>Returns</h3>
+<div class="subelement response">
+<code><a href="../classes/PHPCR.NodeInterface.html">\PHPCR\NodeInterface</a></code>The parent of this Item.</div>
+</div></div>
+</div>
+<a id="method_getPath"></a><div class="element clickable method public method_getPath" data-toggle="collapse" data-target=".method_getPath .collapse">
+<h2>Returns the normalized absolute path to this item.</h2>
+<pre>getPath() : string</pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+<h3>Exceptions</h3>
+<table class="table table-bordered"><tr>
+<th><code><a href="../classes/PHPCR.RepositoryException.html">\PHPCR\RepositoryException</a></code></th>
+<td>if an error occurs.</td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>string</code>the normalized absolute path of this Item.</div>
+</div></div>
+</div>
+<a id="method_getSession"></a><div class="element clickable method public method_getSession" data-toggle="collapse" data-target=".method_getSession .collapse">
+<h2>Returns the Session through which this Item was acquired.</h2>
+<pre>getSession() : <a href="../classes/PHPCR.SessionInterface.html">\PHPCR\SessionInterface</a></pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+<h3>Exceptions</h3>
+<table class="table table-bordered"><tr>
+<th><code><a href="../classes/PHPCR.RepositoryException.html">\PHPCR\RepositoryException</a></code></th>
+<td>if an error occurs.</td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response">
+<code><a href="../classes/PHPCR.SessionInterface.html">\PHPCR\SessionInterface</a></code>the Session through which this Item was
+     acquired.</div>
+</div></div>
+</div>
+<a id="method_isModified"></a><div class="element clickable method public method_isModified" data-toggle="collapse" data-target=".method_isModified .collapse">
+<h2>Indicates if the current item has been modified.</h2>
+<pre>isModified() : boolean</pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>Returns true if this Item has been saved but has subsequently been
+modified through the current session and therefore the state of this
+item as recorded in the session differs from the state of this item as
+saved. Within a transaction, isModified on an Item may return false
+(because the Item has been saved since the modification) even if the
+modification in question is not in persistent storage (because the
+transaction has not yet been committed).</p>
+
+<p>Note that in read-only implementations, this method will always return
+false.</p></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>boolean</code>true if this item is modified; false otherwise.</div>
+</div></div>
+</div>
+<a id="method_isNew"></a><div class="element clickable method public method_isNew" data-toggle="collapse" data-target=".method_isNew .collapse">
+<h2>Determines if the current item is a new one.</h2>
+<pre>isNew() : boolean</pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>Returns true if this is a new item, meaning that it exists only in
+transient storage on the Session and has not yet been saved. Within a
+transaction, isNew on an Item may return false (because the item has
+been saved) even if that Item is not in persistent storage (because the
+transaction has not yet been committed).</p>
+
+<p>Note that if an item returns true on isNew, then by definition is parent
+will return true on isModified.</p>
+
+<p>Note that in read-only implementations, this method will always return
+false.</p></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>boolean</code>true if this item is new; false otherwise.</div>
+</div></div>
+</div>
+<a id="method_isNode"></a><div class="element clickable method public method_isNode" data-toggle="collapse" data-target=".method_isNode .collapse">
+<h2>Indicates whether this Item is a Node or a Property.</h2>
+<pre>isNode() : boolean</pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>Returns true if this Item is a Node; Returns false if this Item is a
+Property.</p></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>boolean</code>true if this Item is a Node, false if it is a Property.</div>
+</div></div>
+</div>
+<a id="method_isSame"></a><div class="element clickable method public method_isSame" data-toggle="collapse" data-target=".method_isSame .collapse">
+<h2>Determines if this Item object represents the same actual workspace item
+as the object otherItem.</h2>
+<pre>isSame(\PHPCR\ItemInterface $otherItem) : boolean</pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>Two Item objects represent the same workspace item if all the following
+are true:</p>
+
+<ul>
+<li>Both objects were acquired through Session objects that were created
+by the same Repository object.</li>
+<li>Both objects were acquired through Session objects bound to the same
+repository workspace.</li>
+<li>The objects are either both Node objects or both Property
+objects.</li>
+<li>If they are Node objects, they have the same identifier.</li>
+<li>If they are Property objects they have identical names and
+isSame() is true of their parent nodes.</li>
+</ul>
+
+<p>This method does not compare the states of the two items. For example, if
+two Item objects representing the same actual workspace item have been
+retrieved through two different sessions and one has been modified, then
+this method will still return true when comparing these two objects.
+Note that if two Item objects representing the same workspace item are
+retrieved through the same session they will always reflect the same
+state.</p></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$otherItem</h4>
+<code><a href="../classes/PHPCR.ItemInterface.html">\PHPCR\ItemInterface</a></code><p>the Item object to be tested for identity with this Item.</p></div>
+<h3>Exceptions</h3>
+<table class="table table-bordered"><tr>
+<th><code><a href="../classes/PHPCR.RepositoryException.html">\PHPCR\RepositoryException</a></code></th>
+<td>if an error occurs.</td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>boolean</code>true if this Item object and otherItem represent the
+     same actual repository item; false otherwise.</div>
+</div></div>
+</div>
+<a id="method_refresh"></a><div class="element clickable method public method_refresh" data-toggle="collapse" data-target=".method_refresh .collapse">
+<h2>Updates the state of the current item.</h2>
+<pre>refresh(boolean $keepChanges) : void</pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>If keepChanges is false, this method discards all pending changes
+currently recorded in this Session that apply to this Item or any
+of its descendants (that is, the subgraph rooted at this Item) and
+returns all items to reflect the current saved state. Outside a
+transaction this state is simple the current state of persistent
+storage. Within a transaction, this state will reflect persistent
+storage as modified by changes that have been saved but not yet
+committed.</p>
+
+<p>If keepChanges is true then pending change are not discarded but
+items that do not have changes pending have their state refreshed
+to reflect the current saved state, thus revealing changes made by
+other sessions.</p></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$keepChanges</h4>
+<code>boolean</code><p>a boolean</p></div>
+<h3>Exceptions</h3>
+<table class="table table-bordered">
+<tr>
+<th><code><a href="../classes/PHPCR.InvalidItemStateException.html">\PHPCR\InvalidItemStateException</a></code></th>
+<td>if this Item object represents
+     a workspace item that has been removed (either by this session or
+     another).</td>
+</tr>
+<tr>
+<th><code><a href="../classes/PHPCR.RepositoryException.html">\PHPCR\RepositoryException</a></code></th>
+<td>if another error occurs.</td>
+</tr>
+</table>
+</div></div>
+</div>
+<a id="method_remove"></a><div class="element clickable method public method_remove" data-toggle="collapse" data-target=".method_remove .collapse">
+<h2>Removes this item (and its subgraph).</h2>
+<pre>remove() : void</pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>To persist a removal, a save must be performed that includes the (former)
+parent of the removed item within its scope.</p>
+
+<p>If a node with same-name siblings is removed, this decrements by one the
+indices of all the siblings with indices greater than that of the removed
+node. In other words, a removal compacts the array of same-name siblings
+and causes the minimal re-numbering required to maintain the original
+order but leave no gaps in the numbering.</p></div>
+<table class="table table-bordered">
+<tr>
+<th>see</th>
+<td><a href="phpcr.src.PHPCR.SessionInterface.html#%5CPHPCR%5CSessionInterface::removeItem(String)">\PHPCR\SessionInterface::removeItem(String)</a></td>
+</tr>
+<tr>
+<th>api</th>
+<td></td>
+</tr>
+</table>
+<h3>Exceptions</h3>
+<table class="table table-bordered">
+<tr>
+<th><code><a href="../classes/PHPCR.Version.VersionException.html">\PHPCR\Version\VersionException</a></code></th>
+<td>if the parent node of this item
+     is versionable and checked-in or is non-versionable but its nearest
+     versionable ancestor is checked-in and this implementation performs
+     this validation immediately instead of waiting until save.</td>
+</tr>
+<tr>
+<th><code><a href="../classes/PHPCR.Lock.LockException.html">\PHPCR\Lock\LockException</a></code></th>
+<td>if a lock prevents the removal of this
+     item and this implementation performs this validation immediately
+     instead of waiting until save.</td>
+</tr>
+<tr>
+<th><code><a href="../classes/PHPCR.NodeType.ConstraintViolationException.html">\PHPCR\NodeType\ConstraintViolationException</a></code></th>
+<td>if removing the
+     specified item would violate a node type or implementation-specific
+     constraint and this implementation performs this validation
+     immediately instead of waiting until save.</td>
+</tr>
+<tr>
+<th><code><a href="../classes/PHPCR.AccessDeniedException.html">\PHPCR\AccessDeniedException</a></code></th>
+<td>if this item or an item in its
+     subgraph is currently the target of a REFERENCE property located in
+     this workspace but outside this item's subgraph and the current
+     Session does not have read access to that REFERENCE property or if
+     the current Session does not have sufficent privileges to remove
+     the item.</td>
+</tr>
+<tr>
+<th><code><a href="../classes/PHPCR.RepositoryException.html">\PHPCR\RepositoryException</a></code></th>
+<td>if another error occurs.</td>
+</tr>
+</table>
+</div></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="row"><footer class="span12">
+            Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
+            Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a10</a> and<br>
+            generated on 2012-10-02T11:32:34+02:00.<br></footer></div>
+</div>
+</body>
+</html>

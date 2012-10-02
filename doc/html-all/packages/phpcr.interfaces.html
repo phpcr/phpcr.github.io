@@ -1,0 +1,787 @@
+<!DOCTYPE html><html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+<meta charset="utf-8">
+<title>PHPCR API and PHPCR-Utils » phpcr\interfaces</title>
+<meta name="author" content="Mike van Riel">
+<meta name="description" content="">
+<link href="../css/template.css" rel="stylesheet" media="all">
+<script src="../js/jquery-1.7.1.min.js" type="text/javascript"></script><script src="../js/jquery-ui-1.8.2.custom.min.js" type="text/javascript"></script><script src="../js/jquery.mousewheel.min.js" type="text/javascript"></script><script src="../js/bootstrap.js" type="text/javascript"></script><script src="../js/template.js" type="text/javascript"></script><script src="../js/prettify/prettify.min.js" type="text/javascript"></script><link rel="shortcut icon" href="../img/favicon.ico">
+<link rel="apple-touch-icon" href="../img/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="72x72" href="../img/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="114x114" href="../img/apple-touch-icon-114x114.png">
+</head>
+<body>
+<div class="navbar navbar-fixed-top">
+<div class="navbar-inner"><div class="container">
+<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a><a class="brand" href="../index.html">PHPCR API and PHPCR-Utils</a><div class="nav-collapse"><ul class="nav">
+<li class="dropdown">
+<a href="#api" class="dropdown-toggle" data-toggle="dropdown">
+                                    API Documentation <b class="caret"></b></a><ul class="dropdown-menu">
+<li><a>Namespaces</a></li>
+<li><a href="../namespaces/PHPCR.html"><i class="icon-th"></i> PHPCR</a></li>
+<li><a>Packages</a></li>
+<li><a href="../packages/Default.html"><i class="icon-folder-open"></i> Default</a></li>
+<li><a href="../packages/phpcr.html"><i class="icon-folder-open"></i> phpcr</a></li>
+</ul>
+</li>
+<li class="dropdown" id="charts-menu">
+<a href="#charts" class="dropdown-toggle" data-toggle="dropdown">
+                                    Charts <b class="caret"></b></a><ul class="dropdown-menu"><li><a href="../graph_class.html"><i class="icon-list-alt"></i> Class hierarchy diagram</a></li></ul>
+</li>
+<li class="dropdown" id="reports-menu">
+<a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
+                                    Reports <b class="caret"></b></a><ul class="dropdown-menu">
+<li><a href="../errors.html"><i class="icon-remove-sign"></i> Errors 
+                <span class="label label-info">123</span></a></li>
+<li><a href="../markers.html"><i class="icon-map-marker"></i> Markers 
+                <ul><li>todo 
+                <span class="label label-info">12</span>
+</li></ul></a></li>
+<li><a href="../deprecated.html"><i class="icon-stop"></i> Deprecated elements 
+                <span class="label label-info">0</span></a></li>
+</ul>
+</li>
+</ul></div>
+</div></div>
+<div class="go_to_top"><a href="#___" style="color: inherit">Back to top  <i class="icon-upload icon-white"></i></a></div>
+</div>
+<div id="___" class="container">
+<noscript><div class="alert alert-warning">
+                            Javascript is disabled; several features are only available
+                            if Javascript is enabled.
+                        </div></noscript>
+<div class="row">
+<div class="span4">
+<div class="btn-group view pull-right" data-toggle="buttons-radio">
+<button class="btn details" title="Show descriptions and method names"><i class="icon-list"></i></button><button class="btn simple" title="Show only method names"><i class="icon-align-justify"></i></button>
+</div>
+<ul class="side-nav nav nav-list">
+<li class="nav-header">
+<i class="icon-map-marker"></i> Packages</li>
+<li>
+<a href="../packages/phpcr.interfaces.html" title="interfaces"><i class="icon-folder-open"></i>interfaces</a><ul class="nav nav-list nav-packages"></ul>
+</li>
+<li class="nav-header">
+<i class="icon-custom icon-interface"></i> Interfaces</li>
+<li><a href="#RepositoryInterface" title="The entry point into the content repository.">RepositoryInterface</a></li>
+<li><a href="#CredentialsInterface" title="Interface for all credentials that may be passed to the Repository::login()
+method.">CredentialsInterface</a></li>
+<li><a href="#VersionInterface" title="A Version object wraps an nt:version node.">VersionInterface</a></li>
+<li><a href="#VersionManagerInterface" title="The VersionManager object is accessed via
+WorkspaceInterface::getVersionManager().">VersionManagerInterface</a></li>
+<li><a href="#VersionHistoryInterface" title="A VersionHistory object wraps an nt:versionHistory node.">VersionHistoryInterface</a></li>
+<li><a href="#SessionInterface" title="Describes the implementation of a session class.">SessionInterface</a></li>
+<li><a href="#ImportUUIDBehaviorInterface" title="The possible actions specified by the uuidBehavior parameter in">ImportUUIDBehaviorInterface</a></li>
+<li><a href="#LockManagerInterface" title="This interface encapsulates methods for the management of locks.">LockManagerInterface</a></li>
+<li><a href="#LockInterface" title="Represents a lock placed on an item.">LockInterface</a></li>
+<li><a href="#AccessControlPolicyInterface" title="The AccessControlPolicyInterface is a marker interface for all kind of
+access control policies.">AccessControlPolicyInterface</a></li>
+<li><a href="#AccessControlEntryInterface" title="An AccessControlEntryInterface represents the association of one or more
+PrivilegeInterface objects with a specific principal.">AccessControlEntryInterface</a></li>
+<li><a href="#AccessControlManagerInterface" title="The AccessControlManager object is accessed via
+SessionInterface::getAccessControlManager().">AccessControlManagerInterface</a></li>
+<li><a href="#AccessControlListInterface" title="The AccessControlListInterface is an AccessControlPolicyInterface
+representing a list of access control entries.">AccessControlListInterface</a></li>
+<li><a href="#PrivilegeInterface" title="A privilege represents the capability of performing a particular set of
+operations on items in the JCR repository.">PrivilegeInterface</a></li>
+<li><a href="#NamedAccessControlPolicyInterface" title="A NamedAccessControlPolicy is an opaque access control policy that is
+described by a JCR name and optionally a description.">NamedAccessControlPolicyInterface</a></li>
+<li><a href="#NodeDefinitionTemplateInterface" title="The NodeDefinitionTemplate interface extends NodeDefinition with the addition
+of write methods, enabling the characteristics of a child node definition to
+be set, after which the NodeDefinitionTemplate is added to a NodeTypeTemplate.">NodeDefinitionTemplateInterface</a></li>
+<li><a href="#NodeDefinitionInterface" title="A node definition.">NodeDefinitionInterface</a></li>
+<li><a href="#PropertyDefinitionTemplateInterface" title="The PropertyDefinitionTemplate interface extends PropertyDefinition with the
+addition of write methods, enabling the characteristics of a child property
+definition to be set, after which the PropertyDefinitionTemplate is added to
+a NodeTypeTemplate.">PropertyDefinitionTemplateInterface</a></li>
+<li><a href="#NodeTypeTemplateInterface" title="The NodeTypeTemplate interface represents a simple container structure used
+to define node types which are then registered through the
+NodeTypeManagerInterface::registerNodeType() method.">NodeTypeTemplateInterface</a></li>
+<li><a href="#NodeTypeInterface" title='A NodeType object represents a "live" node type that is registered in the
+repository.'>NodeTypeInterface</a></li>
+<li><a href="#NodeTypeDefinitionInterface" title="The NodeTypeDefinition interface provides methods for discovering the
+static definition of a node type.">NodeTypeDefinitionInterface</a></li>
+<li><a href="#PropertyDefinitionInterface" title="A property definition.">PropertyDefinitionInterface</a></li>
+<li><a href="#NodeTypeManagerInterface" title="Allows for the retrieval and (in implementations that support it) the
+registration of node types.">NodeTypeManagerInterface</a></li>
+<li><a href="#ItemDefinitionInterface" title="Superclass of NodeDefinition and PropertyDefinition.">ItemDefinitionInterface</a></li>
+<li><a href="#PropertyInterface" title="The property interface describes how an item property shall look like.">PropertyInterface</a></li>
+<li><a href="#RepositoryFactoryInterface" title="RepositoryFactory is an interface for factory class implementations for
+Repositories.">RepositoryFactoryInterface</a></li>
+<li><a href="#HoldInterface" title="Hold represents a hold that can be applied to an existing node in order to
+prevent the node from being modified or removed.">HoldInterface</a></li>
+<li><a href="#RetentionPolicyInterface" title="A RetentionPolicy is an object with a name and an optional description.">RetentionPolicyInterface</a></li>
+<li><a href="#RetentionManagerInterface" title="The RetentionManager object is accessed via SessionInterface::getRetentionManager().">RetentionManagerInterface</a></li>
+<li><a href="#NamespaceRegistryInterface" title="Defines an interface to implement a single namespace registry.">NamespaceRegistryInterface</a></li>
+<li><a href="#NodeInterface" title="The Node interface represents a node in a workspace.">NodeInterface</a></li>
+<li><a href="#ItemVisitorInterface" title="Interface to define a visitor on an item.">ItemVisitorInterface</a></li>
+<li><a href="#ItemInterface" title="The Item is the base interface of Node and Property.">ItemInterface</a></li>
+<li><a href="#QueryInterface" title="A Query object.">QueryInterface</a></li>
+<li><a href="#JoinInterface" title="Performs a join between two node-tuple sources.">JoinInterface</a></li>
+<li><a href="#QueryObjectModelFactoryInterface" title="A QueryObjectModelFactory creates instances of the JCR query object model.">QueryObjectModelFactoryInterface</a></li>
+<li><a href="#DescendantNodeJoinConditionInterface" title="Tests whether the descendantSelector node is a descendant of the
+ancestorSelector node.">DescendantNodeJoinConditionInterface</a></li>
+<li><a href="#LengthInterface" title="Evaluates to the length (or lengths, if multi-valued) of a property.">LengthInterface</a></li>
+<li><a href="#NodeLocalNameInterface" title="Evaluates to a NAME value equal to the local (unprefixed) name of a node.">NodeLocalNameInterface</a></li>
+<li><a href="#AndInterface" title="Performs a logical conjunction of two other constraints.">AndInterface</a></li>
+<li><a href="#PropertyExistenceInterface" title="Tests the existence of a property.">PropertyExistenceInterface</a></li>
+<li><a href="#EquiJoinConditionInterface" title="Tests whether the value of a property in a first selector is equal to the
+value of a property in a second selector.">EquiJoinConditionInterface</a></li>
+<li><a href="#LowerCaseInterface" title="Evaluates to the lower-case string value (or values, if multi-valued) of
+operand.">LowerCaseInterface</a></li>
+<li><a href="#OrInterface" title="Performs a logical disjunction of two other constraints.">OrInterface</a></li>
+<li><a href="#SelectorInterface" title="Selects a subset of the nodes in the repository based on node type.">SelectorInterface</a></li>
+<li><a href="#OrderingInterface" title="Determines the relative order of two node-tuples by evaluating operand for
+each.">OrderingInterface</a></li>
+<li><a href="#FullTextSearchScoreInterface" title="Evaluates to a DOUBLE value equal to the full-text search score of a node.">FullTextSearchScoreInterface</a></li>
+<li><a href="#FullTextSearchInterface" title="Performs a full-text search.">FullTextSearchInterface</a></li>
+<li><a href="#ConstraintInterface" title="Filters the set of node-tuples formed by evaluating the query's selectors and
+the joins between them.">ConstraintInterface</a></li>
+<li><a href="#ChildNodeJoinConditionInterface" title="Tests whether the childSelector node is a child of the parentSelector node.">ChildNodeJoinConditionInterface</a></li>
+<li><a href="#SameNodeJoinConditionInterface" title='Tests whether two nodes are "the same" according to
+\PHPCR\ItemInterface::isSame()'>SameNodeJoinConditionInterface</a></li>
+<li><a href="#NodeNameInterface" title="Evaluates to a NAME value equal to the namespace-qualified name of a node.">NodeNameInterface</a></li>
+<li><a href="#UpperCaseInterface" title="Evaluates to the upper-case string value (or values, if multi-valued) of
+operand.">UpperCaseInterface</a></li>
+<li><a href="#JoinConditionInterface" title="Filters the set of node-tuples formed from a join.">JoinConditionInterface</a></li>
+<li><a href="#OperandInterface" title="An operand to a binary operation specified by a Comparison.">OperandInterface</a></li>
+<li><a href="#BindVariableValueInterface" title="Evaluates to the value of a bind variable.">BindVariableValueInterface</a></li>
+<li><a href="#QueryObjectModelInterface" title="A query in the JCR/PHPCR query object model.">QueryObjectModelInterface</a></li>
+<li><a href="#ComparisonInterface" title="Filters node-tuples based on the outcome of a binary operation.">ComparisonInterface</a></li>
+<li><a href="#SameNodeInterface" title="Tests whether the selector node is reachable by absolute path path.">SameNodeInterface</a></li>
+<li><a href="#DescendantNodeInterface" title="Tests whether the selector node is a descendant of a node reachable by
+absolute path path.">DescendantNodeInterface</a></li>
+<li><a href="#PropertyValueInterface" title="Evaluates to the value (or values, if multi-valued) of a property.">PropertyValueInterface</a></li>
+<li><a href="#SourceInterface" title="Evaluates to a set of node-tuples.">SourceInterface</a></li>
+<li><a href="#ChildNodeInterface" title="Tests whether the selector node is a child of a node reachable by absolute
+path path.">ChildNodeInterface</a></li>
+<li><a href="#QueryObjectModelConstantsInterface" title="Defines constants used in the query object model.">QueryObjectModelConstantsInterface</a></li>
+<li><a href="#NotInterface" title="Performs a logical negation of another constraint.">NotInterface</a></li>
+<li><a href="#ColumnInterface" title="Defines a column to include in the tabular view of query results.">ColumnInterface</a></li>
+<li><a href="#LiteralInterface" title="Evaluates to a literal value.">LiteralInterface</a></li>
+<li><a href="#DynamicOperandInterface" title="An operand whose value can only be determined in evaluating the query.">DynamicOperandInterface</a></li>
+<li><a href="#StaticOperandInterface" title="An operand whose value can be determined from static analysis of the query,
+prior to its evaluation.">StaticOperandInterface</a></li>
+<li><a href="#RowInterface" title="A row in the query result table.">RowInterface</a></li>
+<li><a href="#QueryResultInterface" title="A QueryResult object.">QueryResultInterface</a></li>
+<li><a href="#QueryManagerInterface" title="This interface encapsulates methods for the management of search queries.">QueryManagerInterface</a></li>
+<li><a href="#EventListenerInterface" title="An event listener.">EventListenerInterface</a></li>
+<li><a href="#EventJournalInterface" title="An EventJournal is an extended Iterator that provides the additional
+method skipTo().">EventJournalInterface</a></li>
+<li><a href="#ObservationManagerInterface" title="The ObservationManager object.">ObservationManagerInterface</a></li>
+<li><a href="#EventInterface" title="An event fired by the observation mechanism.">EventInterface</a></li>
+<li><a href="#WorkspaceInterface" title="Interface representing a view onto a persistent workspace within a repository.">WorkspaceInterface</a></li>
+<li class="nav-header">
+<i class="icon-custom icon-class"></i> Classes</li>
+<li><a href="#OnParentVersionAction" title="The possible actions specified by the onParentVersion attribute in a
+property definition within a node type definition.">OnParentVersionAction</a></li>
+<li><a href="#TraversingItemVisitor" title="An implementation of ItemVisitor.">TraversingItemVisitor</a></li>
+</ul>
+</div>
+<div class="span8 package-contents">
+<ul class="breadcrumb"><li>
+<a href="../index.html"><i class="icon-folder-open"></i></a><span class="divider">\</span><li><a href="../packages/phpcr.html">phpcr</a></li>
+<li class="active">
+<span class="divider">\</span><a href="../packages/phpcr.interfaces.html">interfaces</a>
+</li>
+</li></ul>
+<div class="package-indent">
+<h3>
+<i class="icon-custom icon-class"></i> Classes and interfaces</h3>
+<div id="CredentialsInterface" class="element ajax clickable interface">
+<h1>CredentialsInterface<a href="../classes/PHPCR.CredentialsInterface.html">¶</a>
+</h1>
+<p class="short_description">Interface for all credentials that may be passed to the Repository::login()
+method.</p>
+<div class="details collapse"></div>
+<a href="../classes/PHPCR.CredentialsInterface.html" class="more">« More »</a>
+</div>
+<div id="ImportUUIDBehaviorInterface" class="element ajax clickable interface">
+<h1>ImportUUIDBehaviorInterface<a href="../classes/PHPCR.ImportUUIDBehaviorInterface.html">¶</a>
+</h1>
+<p class="short_description">The possible actions specified by the uuidBehavior parameter in</p>
+<div class="details collapse"></div>
+<a href="../classes/PHPCR.ImportUUIDBehaviorInterface.html" class="more">« More »</a>
+</div>
+<div id="ItemInterface" class="element ajax clickable interface">
+<h1>ItemInterface<a href="../classes/PHPCR.ItemInterface.html">¶</a>
+</h1>
+<p class="short_description">The Item is the base interface of Node and Property.</p>
+<div class="details collapse"></div>
+<a href="../classes/PHPCR.ItemInterface.html" class="more">« More »</a>
+</div>
+<div id="ItemVisitorInterface" class="element ajax clickable interface">
+<h1>ItemVisitorInterface<a href="../classes/PHPCR.ItemVisitorInterface.html">¶</a>
+</h1>
+<p class="short_description">Interface to define a visitor on an item.</p>
+<div class="details collapse"></div>
+<a href="../classes/PHPCR.ItemVisitorInterface.html" class="more">« More »</a>
+</div>
+<div id="LockInterface" class="element ajax clickable interface">
+<h1>LockInterface<a href="../classes/PHPCR.Lock.LockInterface.html">¶</a>
+</h1>
+<p class="short_description">Represents a lock placed on an item.</p>
+<div class="details collapse"></div>
+<a href="../classes/PHPCR.Lock.LockInterface.html" class="more">« More »</a>
+</div>
+<div id="LockManagerInterface" class="element ajax clickable interface">
+<h1>LockManagerInterface<a href="../classes/PHPCR.Lock.LockManagerInterface.html">¶</a>
+</h1>
+<p class="short_description">This interface encapsulates methods for the management of locks.</p>
+<div class="details collapse"></div>
+<a href="../classes/PHPCR.Lock.LockManagerInterface.html" class="more">« More »</a>
+</div>
+<div id="NamespaceRegistryInterface" class="element ajax clickable interface">
+<h1>NamespaceRegistryInterface<a href="../classes/PHPCR.NamespaceRegistryInterface.html">¶</a>
+</h1>
+<p class="short_description">Defines an interface to implement a single namespace registry.</p>
+<div class="details collapse"></div>
+<a href="../classes/PHPCR.NamespaceRegistryInterface.html" class="more">« More »</a>
+</div>
+<div id="NodeInterface" class="element ajax clickable interface">
+<h1>NodeInterface<a href="../classes/PHPCR.NodeInterface.html">¶</a>
+</h1>
+<p class="short_description">The Node interface represents a node in a workspace.</p>
+<div class="details collapse"></div>
+<a href="../classes/PHPCR.NodeInterface.html" class="more">« More »</a>
+</div>
+<div id="ItemDefinitionInterface" class="element ajax clickable interface">
+<h1>ItemDefinitionInterface<a href="../classes/PHPCR.NodeType.ItemDefinitionInterface.html">¶</a>
+</h1>
+<p class="short_description">Superclass of NodeDefinition and PropertyDefinition.</p>
+<div class="details collapse"></div>
+<a href="../classes/PHPCR.NodeType.ItemDefinitionInterface.html" class="more">« More »</a>
+</div>
+<div id="NodeDefinitionInterface" class="element ajax clickable interface">
+<h1>NodeDefinitionInterface<a href="../classes/PHPCR.NodeType.NodeDefinitionInterface.html">¶</a>
+</h1>
+<p class="short_description">A node definition.</p>
+<div class="details collapse"></div>
+<a href="../classes/PHPCR.NodeType.NodeDefinitionInterface.html" class="more">« More »</a>
+</div>
+<div id="NodeDefinitionTemplateInterface" class="element ajax clickable interface">
+<h1>NodeDefinitionTemplateInterface<a href="../classes/PHPCR.NodeType.NodeDefinitionTemplateInterface.html">¶</a>
+</h1>
+<p class="short_description">The NodeDefinitionTemplate interface extends NodeDefinition with the addition
+of write methods, enabling the characteristics of a child node definition to
+be set, after which the NodeDefinitionTemplate is added to a NodeTypeTemplate.</p>
+<div class="details collapse"></div>
+<a href="../classes/PHPCR.NodeType.NodeDefinitionTemplateInterface.html" class="more">« More »</a>
+</div>
+<div id="NodeTypeDefinitionInterface" class="element ajax clickable interface">
+<h1>NodeTypeDefinitionInterface<a href="../classes/PHPCR.NodeType.NodeTypeDefinitionInterface.html">¶</a>
+</h1>
+<p class="short_description">The NodeTypeDefinition interface provides methods for discovering the
+static definition of a node type.</p>
+<div class="details collapse"></div>
+<a href="../classes/PHPCR.NodeType.NodeTypeDefinitionInterface.html" class="more">« More »</a>
+</div>
+<div id="NodeTypeInterface" class="element ajax clickable interface">
+<h1>NodeTypeInterface<a href="../classes/PHPCR.NodeType.NodeTypeInterface.html">¶</a>
+</h1>
+<p class="short_description">A NodeType object represents a "live" node type that is registered in the
+repository.</p>
+<div class="details collapse"></div>
+<a href="../classes/PHPCR.NodeType.NodeTypeInterface.html" class="more">« More »</a>
+</div>
+<div id="NodeTypeManagerInterface" class="element ajax clickable interface">
+<h1>NodeTypeManagerInterface<a href="../classes/PHPCR.NodeType.NodeTypeManagerInterface.html">¶</a>
+</h1>
+<p class="short_description">Allows for the retrieval and (in implementations that support it) the
+registration of node types.</p>
+<div class="details collapse"></div>
+<a href="../classes/PHPCR.NodeType.NodeTypeManagerInterface.html" class="more">« More »</a>
+</div>
+<div id="NodeTypeTemplateInterface" class="element ajax clickable interface">
+<h1>NodeTypeTemplateInterface<a href="../classes/PHPCR.NodeType.NodeTypeTemplateInterface.html">¶</a>
+</h1>
+<p class="short_description">The NodeTypeTemplate interface represents a simple container structure used
+to define node types which are then registered through the
+NodeTypeManagerInterface::registerNodeType() method.</p>
+<div class="details collapse"></div>
+<a href="../classes/PHPCR.NodeType.NodeTypeTemplateInterface.html" class="more">« More »</a>
+</div>
+<div id="PropertyDefinitionInterface" class="element ajax clickable interface">
+<h1>PropertyDefinitionInterface<a href="../classes/PHPCR.NodeType.PropertyDefinitionInterface.html">¶</a>
+</h1>
+<p class="short_description">A property definition.</p>
+<div class="details collapse"></div>
+<a href="../classes/PHPCR.NodeType.PropertyDefinitionInterface.html" class="more">« More »</a>
+</div>
+<div id="PropertyDefinitionTemplateInterface" class="element ajax clickable interface">
+<h1>PropertyDefinitionTemplateInterface<a href="../classes/PHPCR.NodeType.PropertyDefinitionTemplateInterface.html">¶</a>
+</h1>
+<p class="short_description">The PropertyDefinitionTemplate interface extends PropertyDefinition with the
+addition of write methods, enabling the characteristics of a child property
+definition to be set, after which the PropertyDefinitionTemplate is added to
+a NodeTypeTemplate.</p>
+<div class="details collapse"></div>
+<a href="../classes/PHPCR.NodeType.PropertyDefinitionTemplateInterface.html" class="more">« More »</a>
+</div>
+<div id="EventInterface" class="element ajax clickable interface">
+<h1>EventInterface<a href="../classes/PHPCR.Observation.EventInterface.html">¶</a>
+</h1>
+<p class="short_description">An event fired by the observation mechanism.</p>
+<div class="details collapse"></div>
+<a href="../classes/PHPCR.Observation.EventInterface.html" class="more">« More »</a>
+</div>
+<div id="EventJournalInterface" class="element ajax clickable interface">
+<h1>EventJournalInterface<a href="../classes/PHPCR.Observation.EventJournalInterface.html">¶</a>
+</h1>
+<p class="short_description">An EventJournal is an extended Iterator that provides the additional
+method skipTo().</p>
+<div class="details collapse"></div>
+<a href="../classes/PHPCR.Observation.EventJournalInterface.html" class="more">« More »</a>
+</div>
+<div id="EventListenerInterface" class="element ajax clickable interface">
+<h1>EventListenerInterface<a href="../classes/PHPCR.Observation.EventListenerInterface.html">¶</a>
+</h1>
+<p class="short_description">An event listener.</p>
+<div class="details collapse"></div>
+<a href="../classes/PHPCR.Observation.EventListenerInterface.html" class="more">« More »</a>
+</div>
+<div id="ObservationManagerInterface" class="element ajax clickable interface">
+<h1>ObservationManagerInterface<a href="../classes/PHPCR.Observation.ObservationManagerInterface.html">¶</a>
+</h1>
+<p class="short_description">The ObservationManager object.</p>
+<div class="details collapse"></div>
+<a href="../classes/PHPCR.Observation.ObservationManagerInterface.html" class="more">« More »</a>
+</div>
+<div id="PropertyInterface" class="element ajax clickable interface">
+<h1>PropertyInterface<a href="../classes/PHPCR.PropertyInterface.html">¶</a>
+</h1>
+<p class="short_description">The property interface describes how an item property shall look like.</p>
+<div class="details collapse"></div>
+<a href="../classes/PHPCR.PropertyInterface.html" class="more">« More »</a>
+</div>
+<div id="AndInterface" class="element ajax clickable interface">
+<h1>AndInterface<a href="../classes/PHPCR.Query.QOM.AndInterface.html">¶</a>
+</h1>
+<p class="short_description">Performs a logical conjunction of two other constraints.</p>
+<div class="details collapse"></div>
+<a href="../classes/PHPCR.Query.QOM.AndInterface.html" class="more">« More »</a>
+</div>
+<div id="BindVariableValueInterface" class="element ajax clickable interface">
+<h1>BindVariableValueInterface<a href="../classes/PHPCR.Query.QOM.BindVariableValueInterface.html">¶</a>
+</h1>
+<p class="short_description">Evaluates to the value of a bind variable.</p>
+<div class="details collapse"></div>
+<a href="../classes/PHPCR.Query.QOM.BindVariableValueInterface.html" class="more">« More »</a>
+</div>
+<div id="ChildNodeInterface" class="element ajax clickable interface">
+<h1>ChildNodeInterface<a href="../classes/PHPCR.Query.QOM.ChildNodeInterface.html">¶</a>
+</h1>
+<p class="short_description">Tests whether the selector node is a child of a node reachable by absolute
+path path.</p>
+<div class="details collapse"></div>
+<a href="../classes/PHPCR.Query.QOM.ChildNodeInterface.html" class="more">« More »</a>
+</div>
+<div id="ChildNodeJoinConditionInterface" class="element ajax clickable interface">
+<h1>ChildNodeJoinConditionInterface<a href="../classes/PHPCR.Query.QOM.ChildNodeJoinConditionInterface.html">¶</a>
+</h1>
+<p class="short_description">Tests whether the childSelector node is a child of the parentSelector node.</p>
+<div class="details collapse"></div>
+<a href="../classes/PHPCR.Query.QOM.ChildNodeJoinConditionInterface.html" class="more">« More »</a>
+</div>
+<div id="ColumnInterface" class="element ajax clickable interface">
+<h1>ColumnInterface<a href="../classes/PHPCR.Query.QOM.ColumnInterface.html">¶</a>
+</h1>
+<p class="short_description">Defines a column to include in the tabular view of query results.</p>
+<div class="details collapse"></div>
+<a href="../classes/PHPCR.Query.QOM.ColumnInterface.html" class="more">« More »</a>
+</div>
+<div id="ComparisonInterface" class="element ajax clickable interface">
+<h1>ComparisonInterface<a href="../classes/PHPCR.Query.QOM.ComparisonInterface.html">¶</a>
+</h1>
+<p class="short_description">Filters node-tuples based on the outcome of a binary operation.</p>
+<div class="details collapse"></div>
+<a href="../classes/PHPCR.Query.QOM.ComparisonInterface.html" class="more">« More »</a>
+</div>
+<div id="ConstraintInterface" class="element ajax clickable interface">
+<h1>ConstraintInterface<a href="../classes/PHPCR.Query.QOM.ConstraintInterface.html">¶</a>
+</h1>
+<p class="short_description">Filters the set of node-tuples formed by evaluating the query's selectors and
+the joins between them.</p>
+<div class="details collapse"></div>
+<a href="../classes/PHPCR.Query.QOM.ConstraintInterface.html" class="more">« More »</a>
+</div>
+<div id="DescendantNodeInterface" class="element ajax clickable interface">
+<h1>DescendantNodeInterface<a href="../classes/PHPCR.Query.QOM.DescendantNodeInterface.html">¶</a>
+</h1>
+<p class="short_description">Tests whether the selector node is a descendant of a node reachable by
+absolute path path.</p>
+<div class="details collapse"></div>
+<a href="../classes/PHPCR.Query.QOM.DescendantNodeInterface.html" class="more">« More »</a>
+</div>
+<div id="DescendantNodeJoinConditionInterface" class="element ajax clickable interface">
+<h1>DescendantNodeJoinConditionInterface<a href="../classes/PHPCR.Query.QOM.DescendantNodeJoinConditionInterface.html">¶</a>
+</h1>
+<p class="short_description">Tests whether the descendantSelector node is a descendant of the
+ancestorSelector node.</p>
+<div class="details collapse"></div>
+<a href="../classes/PHPCR.Query.QOM.DescendantNodeJoinConditionInterface.html" class="more">« More »</a>
+</div>
+<div id="DynamicOperandInterface" class="element ajax clickable interface">
+<h1>DynamicOperandInterface<a href="../classes/PHPCR.Query.QOM.DynamicOperandInterface.html">¶</a>
+</h1>
+<p class="short_description">An operand whose value can only be determined in evaluating the query.</p>
+<div class="details collapse"></div>
+<a href="../classes/PHPCR.Query.QOM.DynamicOperandInterface.html" class="more">« More »</a>
+</div>
+<div id="EquiJoinConditionInterface" class="element ajax clickable interface">
+<h1>EquiJoinConditionInterface<a href="../classes/PHPCR.Query.QOM.EquiJoinConditionInterface.html">¶</a>
+</h1>
+<p class="short_description">Tests whether the value of a property in a first selector is equal to the
+value of a property in a second selector.</p>
+<div class="details collapse"></div>
+<a href="../classes/PHPCR.Query.QOM.EquiJoinConditionInterface.html" class="more">« More »</a>
+</div>
+<div id="FullTextSearchInterface" class="element ajax clickable interface">
+<h1>FullTextSearchInterface<a href="../classes/PHPCR.Query.QOM.FullTextSearchInterface.html">¶</a>
+</h1>
+<p class="short_description">Performs a full-text search.</p>
+<div class="details collapse"></div>
+<a href="../classes/PHPCR.Query.QOM.FullTextSearchInterface.html" class="more">« More »</a>
+</div>
+<div id="FullTextSearchScoreInterface" class="element ajax clickable interface">
+<h1>FullTextSearchScoreInterface<a href="../classes/PHPCR.Query.QOM.FullTextSearchScoreInterface.html">¶</a>
+</h1>
+<p class="short_description">Evaluates to a DOUBLE value equal to the full-text search score of a node.</p>
+<div class="details collapse"></div>
+<a href="../classes/PHPCR.Query.QOM.FullTextSearchScoreInterface.html" class="more">« More »</a>
+</div>
+<div id="JoinConditionInterface" class="element ajax clickable interface">
+<h1>JoinConditionInterface<a href="../classes/PHPCR.Query.QOM.JoinConditionInterface.html">¶</a>
+</h1>
+<p class="short_description">Filters the set of node-tuples formed from a join.</p>
+<div class="details collapse"></div>
+<a href="../classes/PHPCR.Query.QOM.JoinConditionInterface.html" class="more">« More »</a>
+</div>
+<div id="JoinInterface" class="element ajax clickable interface">
+<h1>JoinInterface<a href="../classes/PHPCR.Query.QOM.JoinInterface.html">¶</a>
+</h1>
+<p class="short_description">Performs a join between two node-tuple sources.</p>
+<div class="details collapse"></div>
+<a href="../classes/PHPCR.Query.QOM.JoinInterface.html" class="more">« More »</a>
+</div>
+<div id="LengthInterface" class="element ajax clickable interface">
+<h1>LengthInterface<a href="../classes/PHPCR.Query.QOM.LengthInterface.html">¶</a>
+</h1>
+<p class="short_description">Evaluates to the length (or lengths, if multi-valued) of a property.</p>
+<div class="details collapse"></div>
+<a href="../classes/PHPCR.Query.QOM.LengthInterface.html" class="more">« More »</a>
+</div>
+<div id="LiteralInterface" class="element ajax clickable interface">
+<h1>LiteralInterface<a href="../classes/PHPCR.Query.QOM.LiteralInterface.html">¶</a>
+</h1>
+<p class="short_description">Evaluates to a literal value.</p>
+<div class="details collapse"></div>
+<a href="../classes/PHPCR.Query.QOM.LiteralInterface.html" class="more">« More »</a>
+</div>
+<div id="LowerCaseInterface" class="element ajax clickable interface">
+<h1>LowerCaseInterface<a href="../classes/PHPCR.Query.QOM.LowerCaseInterface.html">¶</a>
+</h1>
+<p class="short_description">Evaluates to the lower-case string value (or values, if multi-valued) of
+operand.</p>
+<div class="details collapse"></div>
+<a href="../classes/PHPCR.Query.QOM.LowerCaseInterface.html" class="more">« More »</a>
+</div>
+<div id="NodeLocalNameInterface" class="element ajax clickable interface">
+<h1>NodeLocalNameInterface<a href="../classes/PHPCR.Query.QOM.NodeLocalNameInterface.html">¶</a>
+</h1>
+<p class="short_description">Evaluates to a NAME value equal to the local (unprefixed) name of a node.</p>
+<div class="details collapse"></div>
+<a href="../classes/PHPCR.Query.QOM.NodeLocalNameInterface.html" class="more">« More »</a>
+</div>
+<div id="NodeNameInterface" class="element ajax clickable interface">
+<h1>NodeNameInterface<a href="../classes/PHPCR.Query.QOM.NodeNameInterface.html">¶</a>
+</h1>
+<p class="short_description">Evaluates to a NAME value equal to the namespace-qualified name of a node.</p>
+<div class="details collapse"></div>
+<a href="../classes/PHPCR.Query.QOM.NodeNameInterface.html" class="more">« More »</a>
+</div>
+<div id="NotInterface" class="element ajax clickable interface">
+<h1>NotInterface<a href="../classes/PHPCR.Query.QOM.NotInterface.html">¶</a>
+</h1>
+<p class="short_description">Performs a logical negation of another constraint.</p>
+<div class="details collapse"></div>
+<a href="../classes/PHPCR.Query.QOM.NotInterface.html" class="more">« More »</a>
+</div>
+<div id="OperandInterface" class="element ajax clickable interface">
+<h1>OperandInterface<a href="../classes/PHPCR.Query.QOM.OperandInterface.html">¶</a>
+</h1>
+<p class="short_description">An operand to a binary operation specified by a Comparison.</p>
+<div class="details collapse"></div>
+<a href="../classes/PHPCR.Query.QOM.OperandInterface.html" class="more">« More »</a>
+</div>
+<div id="OrInterface" class="element ajax clickable interface">
+<h1>OrInterface<a href="../classes/PHPCR.Query.QOM.OrInterface.html">¶</a>
+</h1>
+<p class="short_description">Performs a logical disjunction of two other constraints.</p>
+<div class="details collapse"></div>
+<a href="../classes/PHPCR.Query.QOM.OrInterface.html" class="more">« More »</a>
+</div>
+<div id="OrderingInterface" class="element ajax clickable interface">
+<h1>OrderingInterface<a href="../classes/PHPCR.Query.QOM.OrderingInterface.html">¶</a>
+</h1>
+<p class="short_description">Determines the relative order of two node-tuples by evaluating operand for
+each.</p>
+<div class="details collapse"></div>
+<a href="../classes/PHPCR.Query.QOM.OrderingInterface.html" class="more">« More »</a>
+</div>
+<div id="PropertyExistenceInterface" class="element ajax clickable interface">
+<h1>PropertyExistenceInterface<a href="../classes/PHPCR.Query.QOM.PropertyExistenceInterface.html">¶</a>
+</h1>
+<p class="short_description">Tests the existence of a property.</p>
+<div class="details collapse"></div>
+<a href="../classes/PHPCR.Query.QOM.PropertyExistenceInterface.html" class="more">« More »</a>
+</div>
+<div id="PropertyValueInterface" class="element ajax clickable interface">
+<h1>PropertyValueInterface<a href="../classes/PHPCR.Query.QOM.PropertyValueInterface.html">¶</a>
+</h1>
+<p class="short_description">Evaluates to the value (or values, if multi-valued) of a property.</p>
+<div class="details collapse"></div>
+<a href="../classes/PHPCR.Query.QOM.PropertyValueInterface.html" class="more">« More »</a>
+</div>
+<div id="QueryObjectModelConstantsInterface" class="element ajax clickable interface">
+<h1>QueryObjectModelConstantsInterface<a href="../classes/PHPCR.Query.QOM.QueryObjectModelConstantsInterface.html">¶</a>
+</h1>
+<p class="short_description">Defines constants used in the query object model.</p>
+<div class="details collapse"></div>
+<a href="../classes/PHPCR.Query.QOM.QueryObjectModelConstantsInterface.html" class="more">« More »</a>
+</div>
+<div id="QueryObjectModelFactoryInterface" class="element ajax clickable interface">
+<h1>QueryObjectModelFactoryInterface<a href="../classes/PHPCR.Query.QOM.QueryObjectModelFactoryInterface.html">¶</a>
+</h1>
+<p class="short_description">A QueryObjectModelFactory creates instances of the JCR query object model.</p>
+<div class="details collapse"></div>
+<a href="../classes/PHPCR.Query.QOM.QueryObjectModelFactoryInterface.html" class="more">« More »</a>
+</div>
+<div id="QueryObjectModelInterface" class="element ajax clickable interface">
+<h1>QueryObjectModelInterface<a href="../classes/PHPCR.Query.QOM.QueryObjectModelInterface.html">¶</a>
+</h1>
+<p class="short_description">A query in the JCR/PHPCR query object model.</p>
+<div class="details collapse"></div>
+<a href="../classes/PHPCR.Query.QOM.QueryObjectModelInterface.html" class="more">« More »</a>
+</div>
+<div id="SameNodeInterface" class="element ajax clickable interface">
+<h1>SameNodeInterface<a href="../classes/PHPCR.Query.QOM.SameNodeInterface.html">¶</a>
+</h1>
+<p class="short_description">Tests whether the selector node is reachable by absolute path path.</p>
+<div class="details collapse"></div>
+<a href="../classes/PHPCR.Query.QOM.SameNodeInterface.html" class="more">« More »</a>
+</div>
+<div id="SameNodeJoinConditionInterface" class="element ajax clickable interface">
+<h1>SameNodeJoinConditionInterface<a href="../classes/PHPCR.Query.QOM.SameNodeJoinConditionInterface.html">¶</a>
+</h1>
+<p class="short_description">Tests whether two nodes are "the same" according to
+\PHPCR\ItemInterface::isSame()</p>
+<div class="details collapse"></div>
+<a href="../classes/PHPCR.Query.QOM.SameNodeJoinConditionInterface.html" class="more">« More »</a>
+</div>
+<div id="SelectorInterface" class="element ajax clickable interface">
+<h1>SelectorInterface<a href="../classes/PHPCR.Query.QOM.SelectorInterface.html">¶</a>
+</h1>
+<p class="short_description">Selects a subset of the nodes in the repository based on node type.</p>
+<div class="details collapse"></div>
+<a href="../classes/PHPCR.Query.QOM.SelectorInterface.html" class="more">« More »</a>
+</div>
+<div id="SourceInterface" class="element ajax clickable interface">
+<h1>SourceInterface<a href="../classes/PHPCR.Query.QOM.SourceInterface.html">¶</a>
+</h1>
+<p class="short_description">Evaluates to a set of node-tuples.</p>
+<div class="details collapse"></div>
+<a href="../classes/PHPCR.Query.QOM.SourceInterface.html" class="more">« More »</a>
+</div>
+<div id="StaticOperandInterface" class="element ajax clickable interface">
+<h1>StaticOperandInterface<a href="../classes/PHPCR.Query.QOM.StaticOperandInterface.html">¶</a>
+</h1>
+<p class="short_description">An operand whose value can be determined from static analysis of the query,
+prior to its evaluation.</p>
+<div class="details collapse"></div>
+<a href="../classes/PHPCR.Query.QOM.StaticOperandInterface.html" class="more">« More »</a>
+</div>
+<div id="UpperCaseInterface" class="element ajax clickable interface">
+<h1>UpperCaseInterface<a href="../classes/PHPCR.Query.QOM.UpperCaseInterface.html">¶</a>
+</h1>
+<p class="short_description">Evaluates to the upper-case string value (or values, if multi-valued) of
+operand.</p>
+<div class="details collapse"></div>
+<a href="../classes/PHPCR.Query.QOM.UpperCaseInterface.html" class="more">« More »</a>
+</div>
+<div id="QueryInterface" class="element ajax clickable interface">
+<h1>QueryInterface<a href="../classes/PHPCR.Query.QueryInterface.html">¶</a>
+</h1>
+<p class="short_description">A Query object.</p>
+<div class="details collapse"></div>
+<a href="../classes/PHPCR.Query.QueryInterface.html" class="more">« More »</a>
+</div>
+<div id="QueryManagerInterface" class="element ajax clickable interface">
+<h1>QueryManagerInterface<a href="../classes/PHPCR.Query.QueryManagerInterface.html">¶</a>
+</h1>
+<p class="short_description">This interface encapsulates methods for the management of search queries.</p>
+<div class="details collapse"></div>
+<a href="../classes/PHPCR.Query.QueryManagerInterface.html" class="more">« More »</a>
+</div>
+<div id="QueryResultInterface" class="element ajax clickable interface">
+<h1>QueryResultInterface<a href="../classes/PHPCR.Query.QueryResultInterface.html">¶</a>
+</h1>
+<p class="short_description">A QueryResult object.</p>
+<div class="details collapse"></div>
+<a href="../classes/PHPCR.Query.QueryResultInterface.html" class="more">« More »</a>
+</div>
+<div id="RowInterface" class="element ajax clickable interface">
+<h1>RowInterface<a href="../classes/PHPCR.Query.RowInterface.html">¶</a>
+</h1>
+<p class="short_description">A row in the query result table.</p>
+<div class="details collapse"></div>
+<a href="../classes/PHPCR.Query.RowInterface.html" class="more">« More »</a>
+</div>
+<div id="RepositoryFactoryInterface" class="element ajax clickable interface">
+<h1>RepositoryFactoryInterface<a href="../classes/PHPCR.RepositoryFactoryInterface.html">¶</a>
+</h1>
+<p class="short_description">RepositoryFactory is an interface for factory class implementations for
+Repositories.</p>
+<div class="details collapse"></div>
+<a href="../classes/PHPCR.RepositoryFactoryInterface.html" class="more">« More »</a>
+</div>
+<div id="RepositoryInterface" class="element ajax clickable interface">
+<h1>RepositoryInterface<a href="../classes/PHPCR.RepositoryInterface.html">¶</a>
+</h1>
+<p class="short_description">The entry point into the content repository.</p>
+<div class="details collapse"></div>
+<a href="../classes/PHPCR.RepositoryInterface.html" class="more">« More »</a>
+</div>
+<div id="HoldInterface" class="element ajax clickable interface">
+<h1>HoldInterface<a href="../classes/PHPCR.Retention.HoldInterface.html">¶</a>
+</h1>
+<p class="short_description">Hold represents a hold that can be applied to an existing node in order to
+prevent the node from being modified or removed.</p>
+<div class="details collapse"></div>
+<a href="../classes/PHPCR.Retention.HoldInterface.html" class="more">« More »</a>
+</div>
+<div id="RetentionManagerInterface" class="element ajax clickable interface">
+<h1>RetentionManagerInterface<a href="../classes/PHPCR.Retention.RetentionManagerInterface.html">¶</a>
+</h1>
+<p class="short_description">The RetentionManager object is accessed via SessionInterface::getRetentionManager().</p>
+<div class="details collapse"></div>
+<a href="../classes/PHPCR.Retention.RetentionManagerInterface.html" class="more">« More »</a>
+</div>
+<div id="RetentionPolicyInterface" class="element ajax clickable interface">
+<h1>RetentionPolicyInterface<a href="../classes/PHPCR.Retention.RetentionPolicyInterface.html">¶</a>
+</h1>
+<p class="short_description">A RetentionPolicy is an object with a name and an optional description.</p>
+<div class="details collapse"></div>
+<a href="../classes/PHPCR.Retention.RetentionPolicyInterface.html" class="more">« More »</a>
+</div>
+<div id="AccessControlEntryInterface" class="element ajax clickable interface">
+<h1>AccessControlEntryInterface<a href="../classes/PHPCR.Security.AccessControlEntryInterface.html">¶</a>
+</h1>
+<p class="short_description">An AccessControlEntryInterface represents the association of one or more
+PrivilegeInterface objects with a specific principal.</p>
+<div class="details collapse"></div>
+<a href="../classes/PHPCR.Security.AccessControlEntryInterface.html" class="more">« More »</a>
+</div>
+<div id="AccessControlListInterface" class="element ajax clickable interface">
+<h1>AccessControlListInterface<a href="../classes/PHPCR.Security.AccessControlListInterface.html">¶</a>
+</h1>
+<p class="short_description">The AccessControlListInterface is an AccessControlPolicyInterface
+representing a list of access control entries.</p>
+<div class="details collapse"></div>
+<a href="../classes/PHPCR.Security.AccessControlListInterface.html" class="more">« More »</a>
+</div>
+<div id="AccessControlManagerInterface" class="element ajax clickable interface">
+<h1>AccessControlManagerInterface<a href="../classes/PHPCR.Security.AccessControlManagerInterface.html">¶</a>
+</h1>
+<p class="short_description">The AccessControlManager object is accessed via
+SessionInterface::getAccessControlManager().</p>
+<div class="details collapse"></div>
+<a href="../classes/PHPCR.Security.AccessControlManagerInterface.html" class="more">« More »</a>
+</div>
+<div id="AccessControlPolicyInterface" class="element ajax clickable interface">
+<h1>AccessControlPolicyInterface<a href="../classes/PHPCR.Security.AccessControlPolicyInterface.html">¶</a>
+</h1>
+<p class="short_description">The AccessControlPolicyInterface is a marker interface for all kind of
+access control policies.</p>
+<div class="details collapse"></div>
+<a href="../classes/PHPCR.Security.AccessControlPolicyInterface.html" class="more">« More »</a>
+</div>
+<div id="NamedAccessControlPolicyInterface" class="element ajax clickable interface">
+<h1>NamedAccessControlPolicyInterface<a href="../classes/PHPCR.Security.NamedAccessControlPolicyInterface.html">¶</a>
+</h1>
+<p class="short_description">A NamedAccessControlPolicy is an opaque access control policy that is
+described by a JCR name and optionally a description.</p>
+<div class="details collapse"></div>
+<a href="../classes/PHPCR.Security.NamedAccessControlPolicyInterface.html" class="more">« More »</a>
+</div>
+<div id="PrivilegeInterface" class="element ajax clickable interface">
+<h1>PrivilegeInterface<a href="../classes/PHPCR.Security.PrivilegeInterface.html">¶</a>
+</h1>
+<p class="short_description">A privilege represents the capability of performing a particular set of
+operations on items in the JCR repository.</p>
+<div class="details collapse"></div>
+<a href="../classes/PHPCR.Security.PrivilegeInterface.html" class="more">« More »</a>
+</div>
+<div id="SessionInterface" class="element ajax clickable interface">
+<h1>SessionInterface<a href="../classes/PHPCR.SessionInterface.html">¶</a>
+</h1>
+<p class="short_description">Describes the implementation of a session class.</p>
+<div class="details collapse"></div>
+<a href="../classes/PHPCR.SessionInterface.html" class="more">« More »</a>
+</div>
+<div id="VersionHistoryInterface" class="element ajax clickable interface">
+<h1>VersionHistoryInterface<a href="../classes/PHPCR.Version.VersionHistoryInterface.html">¶</a>
+</h1>
+<p class="short_description">A VersionHistory object wraps an nt:versionHistory node.</p>
+<div class="details collapse"></div>
+<a href="../classes/PHPCR.Version.VersionHistoryInterface.html" class="more">« More »</a>
+</div>
+<div id="VersionInterface" class="element ajax clickable interface">
+<h1>VersionInterface<a href="../classes/PHPCR.Version.VersionInterface.html">¶</a>
+</h1>
+<p class="short_description">A Version object wraps an nt:version node.</p>
+<div class="details collapse"></div>
+<a href="../classes/PHPCR.Version.VersionInterface.html" class="more">« More »</a>
+</div>
+<div id="VersionManagerInterface" class="element ajax clickable interface">
+<h1>VersionManagerInterface<a href="../classes/PHPCR.Version.VersionManagerInterface.html">¶</a>
+</h1>
+<p class="short_description">The VersionManager object is accessed via
+WorkspaceInterface::getVersionManager().</p>
+<div class="details collapse"></div>
+<a href="../classes/PHPCR.Version.VersionManagerInterface.html" class="more">« More »</a>
+</div>
+<div id="WorkspaceInterface" class="element ajax clickable interface">
+<h1>WorkspaceInterface<a href="../classes/PHPCR.WorkspaceInterface.html">¶</a>
+</h1>
+<p class="short_description">Interface representing a view onto a persistent workspace within a repository.</p>
+<div class="details collapse"></div>
+<a href="../classes/PHPCR.WorkspaceInterface.html" class="more">« More »</a>
+</div>
+<div id="TraversingItemVisitor" class="element ajax clickable class">
+<h1>TraversingItemVisitor<a href="../classes/PHPCR.Util.TraversingItemVisitor.html">¶</a>
+</h1>
+<p class="short_description">An implementation of ItemVisitor.</p>
+<div class="details collapse"></div>
+<a href="../classes/PHPCR.Util.TraversingItemVisitor.html" class="more">« More »</a>
+</div>
+<div id="OnParentVersionAction" class="element ajax clickable class">
+<h1>OnParentVersionAction<a href="../classes/PHPCR.Version.OnParentVersionAction.html">¶</a>
+</h1>
+<p class="short_description">The possible actions specified by the onParentVersion attribute in a
+property definition within a node type definition.</p>
+<div class="details collapse"></div>
+<a href="../classes/PHPCR.Version.OnParentVersionAction.html" class="more">« More »</a>
+</div>
+</div>
+</div>
+</div>
+<div class="row"><footer class="span12">
+            Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
+            Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a10</a> and<br>
+            generated on 2012-10-02T11:32:33+02:00.<br></footer></div>
+</div>
+</body>
+</html>

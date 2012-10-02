@@ -1,0 +1,100 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><title>PHPCR API and PHPCR-Utils</title><meta http-equiv="Content-Type" content="text/html; charset=utf-8"></meta><link rel="stylesheet" href="../css/template.css" type="text/css"></link><script type="text/javascript" src="../js/jquery-1.4.2.min.js"></script><script type="text/javascript" src="../js/jquery.tools.min.js"></script><script type="text/javascript" src="../js/jquery-ui-1.8.2.custom.min.js"></script><script type="text/javascript" src="../js/template.js"></script></head><body><div id="content"><h1 class="file">phpcr/src/PHPCR/Observation/ObservationManagerInterface.php</h1><div id="file-nav-box"><div id="file-nav-options">
+              Show:
+              <img src="../images/icons/visibility_public.png" alt="Public" id="show-public"></img><img src="../images/icons/visibility_protected.png" alt="Protected" id="show-protected"></img><img src="../images/icons/visibility_private.png" alt="Private" id="show-private"></img><span class="attribute" id="show-inherited">inherited</span></div><div id="file-nav-container"><ul id="file-nav"></ul><div style="clear: left;"></div></div><div id="file-nav-tab">
+              Table of Contents
+          </div></div><a name="top" class="anchor"></a><div id="file-description"><div class="short-description">This file is part of the PHPCR API and was originally ported from the Java
+JCR API to PHP by Karsten Dambekalns for the FLOW3 project.</div><div class="long-description"><p>Copyright 2008-2011 Karsten Dambekalns <a href="&#109;&#x61;&#x69;&#108;&#116;&#x6f;&#58;&#107;&#x61;&#114;&#115;&#x74;e&#110;&#x40;&#x74;&#121;&#x70;&#x6f;&#51;&#46;&#x6f;&#114;&#103;">&#107;&#x61;&#114;&#115;&#x74;e&#110;&#x40;&#x74;&#121;&#x70;&#x6f;&#51;&#46;&#x6f;&#114;&#103;</a></p>
+
+<p>Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at</p>
+
+<pre><code>http://www.apache.org/licenses/LICENSE-2.0
+</code></pre>
+
+<p>Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.</p></div></div><dl class="file-info"><dt>License</dt><dd><a href="http://www.apache.org/licenses/LICENSE-2.0">Apache Software License 2.0</a>
+         
+    </dd><dt>Link</dt><dd><a href="http://phpcr.github.com/">http://phpcr.github.com/</a>
+         
+    </dd></dl><a name="interfaces" class="anchor"></a><a id="\PHPCR\Observation\ObservationManagerInterface" class="anchor"></a><h2 class="interface">\PHPCR\Observation\ObservationManagerInterface<div class="to-top"><a href="#top">jump to top</a></div></h2><div class="class"><small class="package"><b>Package: </b>phpcr\interfaces</small><div class="short-description">The ObservationManager object.</div><div class="long-description"><p>Acquired via WorkspaceInterface::getObservationManager(). Allows for the
+registration and deregistration of event listeners.</p>
+
+<p>The \Traversable interface enables the implementation to be addressed with
+<b>foreach</b>. ObservationManager has to implement either \IteratorAggregate
+or \Iterator.
+The iterator is equivalent to <b>getRegisteredEventListeners()</b> returning
+a list of all registered event listeners. The iterator keys have no
+significant meaning.</p></div><dl class="class-info"><dt>Parent(s)</dt><dd>\Traversable</dd><dt>Api</dt><dd>
+         
+    </dd></dl><h3>Methods</h3><div><a id="\PHPCR\Observation\ObservationManagerInterface::addEventListener()" class="anchor"></a><div class="method public"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png"></img><img src="../images/icons/arrow_down.png" style="display: none;"></img></a><code class="title"><img src="../images/icons/method.png" alt="method" title="method"></img><img src="../images/icons/visibility_public.png" style="margin-right: 5px" alt="public"></img><span class="highlight">addEventListener</span><span class="nb-faded-text">(<a href="../files/phpcr.src.PHPCR.Observation.EventListenerInterface.html#\PHPCR\Observation\EventListenerInterface">\PHPCR\Observation\EventListenerInterface</a> $listener, integer $eventTypes, string $absPath, boolean $isDeep, array $uuid, array $nodeTypeName, boolean $noLocal)</span> : void</code><div class="description"><p class="short_description">Adds an event listener that listens for the specified eventTypes (a
+combination of one or more event types encoded as a bit mask value).</p></div><div class="code-tabs"><div class="long-description"><p>The set of events will be further filtered by the access rights of the c
+urrent Session as well as the restrictions specified by the parameters of
+this method. These restrictions are stated in terms of characteristics of the
+associated parent node of the event.</p>
+
+<p>The associated parent node of an event is the parent node of the item at (or
+formerly at) the path returned by EventInterface::getPath(). The following
+restrictions are available:
+- <b>absPath</b>, <b>isDeep</b>: Only events whose associated parent node is at absPath (or
+  within its subgraph, if isDeep is true) will be received. It is permissible
+  to register a listener for a path where no node currently exists.
+- <b>uuid</b>: Only events whose associated parent node has one of the identifiers in
+  this list will be received. If his parameter is null then no identifier-
+  related restriction is placed on events received. Note that specifying an
+  empty array instead of null would result in no nodes being listened to. The
+  term "UUID" is used for compatibility with JCR 1.0.
+- <b>nodeTypeName</b>: Only events whose associated parent node has one of the node
+  types (or a subtype of one of the node types) in this list will be received.
+  If his parameter is null then no node type-related restriction is placed on
+  events received. Note that specifying an empty array instead of null would
+  result in no nodes types being listened to.</p>
+
+<p>The restrictions are "ANDed" together. In other words, for a particular node
+to be "listened to" it must meet all the restrictions.
+Additionally, if noLocal is true, then events generated by the session
+through which the listener was registered are ignored. Otherwise, they are
+not ignored.</p>
+
+<p>The filters of an already-registered EventListener can be changed at runtime
+by re-registering the same EventListener object (i.e. the same actual object)
+with a new set of filter arguments. The implementation must ensure that no
+events are lost during the changeover.</p>
+
+<p>In addition to the filters placed on a listener above, the scope of
+observation support, in terms of which subgraphs are observable, may also be
+subject to implementation-specific restrictions. For example, in some
+repositories observation of changes in the jcr:system subgraph may not be
+supported</p></div><strong>Parameters</strong><table class="argument-info"><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><th>$listener</th><td><a href="../files/phpcr.src.PHPCR.Observation.EventListenerInterface.html#\PHPCR\Observation\EventListenerInterface">\PHPCR\Observation\EventListenerInterface</a></td><td><em><p>An EventListener object.</p></em></td></tr><tr><th>$eventTypes</th><td>integer</td><td><em><p>A combination of one or more event type constants encoded as a bitmask.</p></em></td></tr><tr><th>$absPath</th><td>string</td><td><em><p>The absolute path identifying the node to be observed.</p></em></td></tr><tr><th>$isDeep</th><td>boolean</td><td><em><p>Switch to define the given path as a reference to a child node.</p></em></td></tr><tr><th>$uuid</th><td>array</td><td><em><p>List of identifiers of events to be recieved.</p></em></td></tr><tr><th>$nodeTypeName</th><td>array</td><td><em><p>List of node type names to identify the events to be recieved.</p></em></td></tr><tr><th>$noLocal</th><td>boolean</td><td><em><p>switch to handle local events.</p></em></td></tr></table><strong>Throws</strong><table class="argument-info"><thead><tr><th>Exception</th><th>Description</th></tr></thead><tr><td><a href="../files/phpcr.src.PHPCR.RepositoryException.html#\PHPCR\RepositoryException">\PHPCR\RepositoryException</a></td><td><em>if an error occurs.</em></td></tr></table><strong>Details</strong><dl class="function-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\Observation\ObservationManagerInterface::getEventJournal()" class="anchor"></a><div class="method public"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png"></img><img src="../images/icons/arrow_down.png" style="display: none;"></img></a><code class="title"><img src="../images/icons/method.png" alt="method" title="method"></img><img src="../images/icons/visibility_public.png" style="margin-right: 5px" alt="public"></img><span class="highlight">getEventJournal</span><span class="nb-faded-text">(integer $eventTypes = null, string $absPath = null, boolean $isDeep = null, array $uuid = null, array $nodeTypeName = null)</span> : <a href="../files/phpcr.src.PHPCR.Observation.EventJournalInterface.html#\PHPCR\Observation\EventJournalInterface">\PHPCR\Observation\EventJournalInterface</a></code><div class="description"><p class="short_description">Retrieves the event journal for this workspace.</p></div><div class="code-tabs"><div class="long-description"><p>If journaled observation is not supported for this workspace, null is
+returned.</p>
+
+<p>Events returned in the EventJournal instance will be filtered according
+to the parameters of this method, the current session's access
+restrictions as well as any additional restrictions specified through
+implemention-specific configuration.</p>
+
+<p>The parameters of this method filter the event set in the same way as
+they do in addEventListener().</p></div><strong>Parameters</strong><table class="argument-info"><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><th>$eventTypes</th><td>integer</td><td><em><p>A combination of one or more event type constants encoded as a bitmask.</p></em></td></tr><tr><th>$absPath</th><td>string</td><td><em><p>an absolute path.</p></em></td></tr><tr><th>$isDeep</th><td>boolean</td><td><em><p>Switch to define the given path as a reference to a child node.</p></em></td></tr><tr><th>$uuid</th><td>array</td><td><em><p>array of identifiers.</p></em></td></tr><tr><th>$nodeTypeName</th><td>array</td><td><em><p>array of node type names.</p></em></td></tr></table><strong>Returns</strong><table class="argument-info"><thead><tr><th>Type</th><th>Description</th></tr></thead><tr><td><a href="../files/phpcr.src.PHPCR.Observation.EventJournalInterface.html#\PHPCR\Observation\EventJournalInterface">\PHPCR\Observation\EventJournalInterface</a></td><td>an EventJournal (or null).</td></tr></table><strong>Throws</strong><table class="argument-info"><thead><tr><th>Exception</th><th>Description</th></tr></thead><tr><td><a href="../files/phpcr.src.PHPCR.RepositoryException.html#\PHPCR\RepositoryException">\PHPCR\RepositoryException</a></td><td><em>if an error occurs</em></td></tr></table><strong>Details</strong><dl class="function-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\Observation\ObservationManagerInterface::getRegisteredEventListeners()" class="anchor"></a><div class="method public"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png"></img><img src="../images/icons/arrow_down.png" style="display: none;"></img></a><code class="title"><img src="../images/icons/method.png" alt="method" title="method"></img><img src="../images/icons/visibility_public.png" style="margin-right: 5px" alt="public"></img><span class="highlight">getRegisteredEventListeners</span><span class="nb-faded-text">()</span> : \PHPCR\Observation\Iterator</code><div class="description"><p class="short_description">Returns all event listeners that have been registered through this session.</p></div><div class="code-tabs"><div class="long-description"><p>If no listeners have been registered, an empty iterator is returned.</p></div><strong>Returns</strong><table class="argument-info"><thead><tr><th>Type</th><th>Description</th></tr></thead><tr><td>\PHPCR\Observation\Iterator</td><td>implementing &lt;b&gt;SeekableIterator&lt;/b&gt; and &lt;b&gt;Countable&lt;/b&gt;.
+                 Values are the EventListenerInterface instances. Keys have no meaning.</td></tr></table><strong>Throws</strong><table class="argument-info"><thead><tr><th>Exception</th><th>Description</th></tr></thead><tr><td><a href="../files/phpcr.src.PHPCR.RepositoryException.html#\PHPCR\RepositoryException">\PHPCR\RepositoryException</a></td><td><em>if an error occurs</em></td></tr></table><strong>Details</strong><dl class="function-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\Observation\ObservationManagerInterface::removeEventListener()" class="anchor"></a><div class="method public"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png"></img><img src="../images/icons/arrow_down.png" style="display: none;"></img></a><code class="title"><img src="../images/icons/method.png" alt="method" title="method"></img><img src="../images/icons/visibility_public.png" style="margin-right: 5px" alt="public"></img><span class="highlight">removeEventListener</span><span class="nb-faded-text">(<a href="../files/phpcr.src.PHPCR.Observation.EventListenerInterface.html#\PHPCR\Observation\EventListenerInterface">\PHPCR\Observation\EventListenerInterface</a> $listener)</span> : void</code><div class="description"><p class="short_description">Deregisters an event listener.</p></div><div class="code-tabs"><div class="long-description"><p>A listener may be deregistered while it is being executed. The deregistration
+method will block until the listener has completed executing. An exception to
+this rule is a listener which deregisters itself from within the onEvent
+method. In this case, the deregistration method returns immediately, but
+deregistration will effectively be delayed until the listener completes.</p></div><strong>Parameters</strong><table class="argument-info"><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><th>$listener</th><td><a href="../files/phpcr.src.PHPCR.Observation.EventListenerInterface.html#\PHPCR\Observation\EventListenerInterface">\PHPCR\Observation\EventListenerInterface</a></td><td><em><p>The listener to deregister.</p></em></td></tr></table><strong>Throws</strong><table class="argument-info"><thead><tr><th>Exception</th><th>Description</th></tr></thead><tr><td><a href="../files/phpcr.src.PHPCR.RepositoryException.html#\PHPCR\RepositoryException">\PHPCR\RepositoryException</a></td><td><em>if an error occurs.</em></td></tr></table><strong>Details</strong><dl class="function-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\Observation\ObservationManagerInterface::setUserData()" class="anchor"></a><div class="method public"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png"></img><img src="../images/icons/arrow_down.png" style="display: none;"></img></a><code class="title"><img src="../images/icons/method.png" alt="method" title="method"></img><img src="../images/icons/visibility_public.png" style="margin-right: 5px" alt="public"></img><span class="highlight">setUserData</span><span class="nb-faded-text">(string $userData)</span> : void</code><div class="description"><p class="short_description">Sets the user data information that will be returned by EventInterface::getUserData().</p></div><div class="code-tabs"><div class="long-description"></div><strong>Parameters</strong><table class="argument-info"><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><th>$userData</th><td>string</td><td><em><p>the user data</p></em></td></tr></table><strong>Throws</strong><table class="argument-info"><thead><tr><th>Exception</th><th>Description</th></tr></thead><tr><td><a href="../files/phpcr.src.PHPCR.RepositoryException.html#\PHPCR\RepositoryException">\PHPCR\RepositoryException</a></td><td><em>if an error occurs</em></td></tr></table><strong>Details</strong><dl class="function-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div></div></div></div><small class="footer">
+            Documentation was generated by
+            <a href="http://phpdoc.org">phpDocumentor
+                2.0.0a10</a>.
+        </small></body></html>

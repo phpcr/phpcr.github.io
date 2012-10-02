@@ -1,0 +1,392 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><title>PHPCR API and PHPCR-Utils</title><meta http-equiv="Content-Type" content="text/html; charset=utf-8"></meta><link rel="stylesheet" href="../css/template.css" type="text/css"></link><script type="text/javascript" src="../js/jquery-1.4.2.min.js"></script><script type="text/javascript" src="../js/jquery.tools.min.js"></script><script type="text/javascript" src="../js/jquery-ui-1.8.2.custom.min.js"></script><script type="text/javascript" src="../js/template.js"></script></head><body><div id="content"><h1 class="file">phpcr/src/PHPCR/NodeType/PropertyDefinitionTemplateInterface.php</h1><div id="file-nav-box"><div id="file-nav-options">
+              Show:
+              <img src="../images/icons/visibility_public.png" alt="Public" id="show-public"></img><img src="../images/icons/visibility_protected.png" alt="Protected" id="show-protected"></img><img src="../images/icons/visibility_private.png" alt="Private" id="show-private"></img><span class="attribute" id="show-inherited">inherited</span></div><div id="file-nav-container"><ul id="file-nav"></ul><div style="clear: left;"></div></div><div id="file-nav-tab">
+              Table of Contents
+          </div></div><a name="top" class="anchor"></a><div id="file-description"><div class="short-description">This file is part of the PHPCR API and was originally ported from the Java
+JCR API to PHP by Karsten Dambekalns for the FLOW3 project.</div><div class="long-description"><p>Copyright 2008-2011 Karsten Dambekalns <a href="&#109;&#x61;&#x69;&#108;&#116;&#x6f;&#58;&#107;&#x61;&#114;&#115;&#x74;e&#110;&#x40;&#x74;&#121;&#x70;&#x6f;&#51;&#46;&#x6f;&#114;&#103;">&#107;&#x61;&#114;&#115;&#x74;e&#110;&#x40;&#x74;&#121;&#x70;&#x6f;&#51;&#46;&#x6f;&#114;&#103;</a></p>
+
+<p>Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at</p>
+
+<pre><code>http://www.apache.org/licenses/LICENSE-2.0
+</code></pre>
+
+<p>Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.</p></div></div><dl class="file-info"><dt>License</dt><dd><a href="http://www.apache.org/licenses/LICENSE-2.0">Apache Software License 2.0</a>
+         
+    </dd><dt>Link</dt><dd><a href="http://phpcr.github.com/">http://phpcr.github.com/</a>
+         
+    </dd></dl><a name="interfaces" class="anchor"></a><a id="\PHPCR\NodeType\PropertyDefinitionTemplateInterface" class="anchor"></a><h2 class="interface">\PHPCR\NodeType\PropertyDefinitionTemplateInterface<div class="to-top"><a href="#top">jump to top</a></div></h2><div class="class"><small class="package"><b>Package: </b>phpcr\interfaces</small><div class="short-description">The PropertyDefinitionTemplate interface extends PropertyDefinition with the
+addition of write methods, enabling the characteristics of a child property
+definition to be set, after which the PropertyDefinitionTemplate is added to
+a NodeTypeTemplate.</div><div class="long-description"><p>See the corresponding get methods for each attribute in PropertyDefinition for
+the default values assumed when a new empty PropertyDefinitionTemplate is
+created (as opposed to one extracted from an existing NodeType).</p></div><dl class="class-info"><dt>Parent(s)</dt><dd><a href="../files/phpcr.src.PHPCR.NodeType.PropertyDefinitionInterface.html#\PHPCR\NodeType\PropertyDefinitionInterface">\PHPCR\NodeType\PropertyDefinitionInterface</a>
+            &lt;
+            <a href="../files/phpcr.src.PHPCR.NodeType.ItemDefinitionInterface.html#\PHPCR\NodeType\ItemDefinitionInterface" style="color: gray; font-size: 0.8em
+                ">\PHPCR\NodeType\ItemDefinitionInterface</a></dd><dt>Api</dt><dd>
+         
+    </dd></dl><h3>Methods</h3><div><a id="\PHPCR\NodeType\PropertyDefinitionTemplateInterface::getAvailableQueryOperators()" class="anchor"></a><div class="method public inherited_from "><a href="#" class="gripper"><img src="../images/icons/arrow_right.png"></img><img src="../images/icons/arrow_down.png" style="display: none;"></img></a><code class="title"><img src="../images/icons/method.png" alt="method" title="method"></img><img src="../images/icons/visibility_public.png" style="margin-right: 5px" alt="public"></img><span class="highlight">getAvailableQueryOperators</span><span class="nb-faded-text">()</span> : array</code><div class="description"><span class="attribute">inherited</span><p class="short_description">Returns the set of query comparison operators supported by this
+property.</p><small class="inherited_from">Inherited from:
+                    <a href="../files/phpcr.src.PHPCR.NodeType.PropertyDefinitionInterface.html#\PHPCR\NodeType\PropertyDefinitionInterface::getAvailableQueryOperators()">\PHPCR\NodeType\PropertyDefinitionInterface::getAvailableQueryOperators()</a></small></div><div class="code-tabs"><div class="long-description"><p>This attribute only takes effect if the node type holding the property
+definition has a queryable setting of true.</p>
+
+<p>JCR defines the comparison operators
+\PHPCR\Query\QueryObjectModelConstantsInterface::JCR_OPERATOR_*</p>
+
+<p>An implementation may define additional comparison operators.</p>
+
+<p>Note that the set of operators that can appear in this attribute may be
+limited by implementation-specific constraints that differ across
+property types. For example, some implementations may permit property
+definitions to provide JCR_OPERATOR_EQUAL_TO and
+JCR_OPERATOR_NOT_EQUAL_TO as available operators for BINARY properties
+while others may not.</p>
+
+<p>However, in all cases where a JCR-defined operator is potentially
+available for a given property type, its behavior must conform to the
+comparison semantics defined in the specification document (see 3.6.5
+Comparison of Values).</p></div><strong>Returns</strong><table class="argument-info"><thead><tr><th>Type</th><th>Description</th></tr></thead><tr><td>array</td><td>List of query operators.</td></tr></table><strong>Details</strong><dl class="function-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\NodeType\PropertyDefinitionTemplateInterface::getDeclaringNodeType()" class="anchor"></a><div class="method public inherited_from "><a href="#" class="gripper"><img src="../images/icons/arrow_right.png"></img><img src="../images/icons/arrow_down.png" style="display: none;"></img></a><code class="title"><img src="../images/icons/method.png" alt="method" title="method"></img><img src="../images/icons/visibility_public.png" style="margin-right: 5px" alt="public"></img><span class="highlight">getDeclaringNodeType</span><span class="nb-faded-text">()</span> : <a href="../files/phpcr.src.PHPCR.NodeType.NodeTypeInterface.html#\PHPCR\NodeType\NodeTypeInterface">\PHPCR\NodeType\NodeTypeInterface</a></code><div class="description"><span class="attribute">inherited</span><p class="short_description">Gets the node type that contains the declaration of this ItemDefinition.</p><small class="inherited_from">Inherited from:
+                    <a href="../files/phpcr.src.PHPCR.NodeType.ItemDefinitionInterface.html#\PHPCR\NodeType\ItemDefinitionInterface::getDeclaringNodeType()">\PHPCR\NodeType\ItemDefinitionInterface::getDeclaringNodeType()</a><a href="../files/phpcr.src.PHPCR.NodeType.PropertyDefinitionInterface.html#\PHPCR\NodeType\PropertyDefinitionInterface::getDeclaringNodeType()">\PHPCR\NodeType\PropertyDefinitionInterface::getDeclaringNodeType()</a></small></div><div class="code-tabs"><div class="long-description"><p>In implementations that support node type registration an ItemDefinition
+object may be acquired (in the form of a NodeDefinitionTemplate or
+PropertyDefinitionTemplate) that is not attached to a live NodeType. In
+such cases this method returns null.</p></div><strong>Returns</strong><table class="argument-info"><thead><tr><th>Type</th><th>Description</th></tr></thead><tr><td><a href="../files/phpcr.src.PHPCR.NodeType.NodeTypeInterface.html#\PHPCR\NodeType\NodeTypeInterface">\PHPCR\NodeType\NodeTypeInterface</a></td><td>A NodeType object.</td></tr></table><strong>Details</strong><dl class="function-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\NodeType\PropertyDefinitionTemplateInterface::getDefaultValues()" class="anchor"></a><div class="method public inherited_from "><a href="#" class="gripper"><img src="../images/icons/arrow_right.png"></img><img src="../images/icons/arrow_down.png" style="display: none;"></img></a><code class="title"><img src="../images/icons/method.png" alt="method" title="method"></img><img src="../images/icons/visibility_public.png" style="margin-right: 5px" alt="public"></img><span class="highlight">getDefaultValues</span><span class="nb-faded-text">()</span> : array</code><div class="description"><span class="attribute">inherited</span><p class="short_description">Gets the default value(s) of the property.</p><small class="inherited_from">Inherited from:
+                    <a href="../files/phpcr.src.PHPCR.NodeType.PropertyDefinitionInterface.html#\PHPCR\NodeType\PropertyDefinitionInterface::getDefaultValues()">\PHPCR\NodeType\PropertyDefinitionInterface::getDefaultValues()</a></small></div><div class="code-tabs"><div class="long-description"><p>These are the values that the property defined by this PropertyDefinition
+will be assigned if it is automatically created (that is, if
+ItemDefinitionInterface::isAutoCreated() returns true).
+This method returns an array of values. If the property is multi-
+valued, then this array represents the full set of values that the property
+will be assigned upon being auto-created. Note that this could be the empty
+array. If the property is single-valued, then the array returned will be
+of size 1.</p>
+
+<p>If null is returned, then the property has no fixed default value. This
+does not exclude the possibility that the property still assumes some
+value automatically, but that value may be parametrized (for example, "the
+current date") and hence not expressible as a single fixed value. In
+particular, this must be the case if isAutoCreated returns true and this
+method returns null.</p>
+
+<p>Note that to indicate a null value for this attribute in a node type
+definition that is stored in content, the jcr:defaultValues property is
+simply removed (since null values for properties are not allowed.</p>
+
+<p>In implementations that support node type registration, if this
+PropertyDefinition object is actually a newly-created empty
+PropertyDefinitionTemplate, then this method will return null.</p></div><strong>Returns</strong><table class="argument-info"><thead><tr><th>Type</th><th>Description</th></tr></thead><tr><td>array</td><td>An array of php values.</td></tr></table><strong>Details</strong><dl class="function-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\NodeType\PropertyDefinitionTemplateInterface::getName()" class="anchor"></a><div class="method public inherited_from "><a href="#" class="gripper"><img src="../images/icons/arrow_right.png"></img><img src="../images/icons/arrow_down.png" style="display: none;"></img></a><code class="title"><img src="../images/icons/method.png" alt="method" title="method"></img><img src="../images/icons/visibility_public.png" style="margin-right: 5px" alt="public"></img><span class="highlight">getName</span><span class="nb-faded-text">()</span> : string</code><div class="description"><span class="attribute">inherited</span><p class="short_description">Gets the name of the child item.</p><small class="inherited_from">Inherited from:
+                    <a href="../files/phpcr.src.PHPCR.NodeType.ItemDefinitionInterface.html#\PHPCR\NodeType\ItemDefinitionInterface::getName()">\PHPCR\NodeType\ItemDefinitionInterface::getName()</a><a href="../files/phpcr.src.PHPCR.NodeType.PropertyDefinitionInterface.html#\PHPCR\NodeType\PropertyDefinitionInterface::getName()">\PHPCR\NodeType\PropertyDefinitionInterface::getName()</a></small></div><div class="code-tabs"><div class="long-description"><p>If "*", this ItemDefinition defines a residual set of child items.
+That is, it defines the characteristics of all those child items with names
+apart from the names explicitly used in other child item definitions.</p>
+
+<p>In implementations that support node type registration, if this
+ItemDefinition object is actually a newly-created empty
+PropertyDefinitionTemplate or NodeDefinitionTemplate, then this method
+will return null.</p></div><strong>Returns</strong><table class="argument-info"><thead><tr><th>Type</th><th>Description</th></tr></thead><tr><td>string</td><td>A string denoting the name or "*".</td></tr></table><strong>Details</strong><dl class="function-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\NodeType\PropertyDefinitionTemplateInterface::getOnParentVersion()" class="anchor"></a><div class="method public inherited_from "><a href="#" class="gripper"><img src="../images/icons/arrow_right.png"></img><img src="../images/icons/arrow_down.png" style="display: none;"></img></a><code class="title"><img src="../images/icons/method.png" alt="method" title="method"></img><img src="../images/icons/visibility_public.png" style="margin-right: 5px" alt="public"></img><span class="highlight">getOnParentVersion</span><span class="nb-faded-text">()</span> : integer</code><div class="description"><span class="attribute">inherited</span><p class="short_description">Gets the OnParentVersion status of the child item.</p><small class="inherited_from">Inherited from:
+                    <a href="../files/phpcr.src.PHPCR.NodeType.ItemDefinitionInterface.html#\PHPCR\NodeType\ItemDefinitionInterface::getOnParentVersion()">\PHPCR\NodeType\ItemDefinitionInterface::getOnParentVersion()</a><a href="../files/phpcr.src.PHPCR.NodeType.PropertyDefinitionInterface.html#\PHPCR\NodeType\PropertyDefinitionInterface::getOnParentVersion()">\PHPCR\NodeType\PropertyDefinitionInterface::getOnParentVersion()</a></small></div><div class="code-tabs"><div class="long-description"><p>This governs what occurs (in implementations that support versioning)
+when the parent node of this item is checked-in. One of:</p>
+
+<ul>
+<li>OnParentVersionAction::COPY</li>
+<li>OnParentVersionAction::VERSION</li>
+<li>OnParentVersionAction::IGNORE</li>
+<li>OnParentVersionAction::INITIALIZE</li>
+<li>OnParentVersionAction::COMPUTE</li>
+<li>OnParentVersionAction::ABORT</li>
+</ul>
+
+<p>In implementations that support node type registration, if this
+ItemDefinition object is actually a newly-created empty
+PropertyDefinitionTemplateInterface or NodeDefinitionTemplateInterface,
+then this method will return OnParentVersionAction::COPY.</p></div><strong>Returns</strong><table class="argument-info"><thead><tr><th>Type</th><th>Description</th></tr></thead><tr><td>integer</td><td>An int constant member of OnParentVersionAction.</td></tr></table><strong>Details</strong><dl class="function-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\NodeType\PropertyDefinitionTemplateInterface::getRequiredType()" class="anchor"></a><div class="method public inherited_from "><a href="#" class="gripper"><img src="../images/icons/arrow_right.png"></img><img src="../images/icons/arrow_down.png" style="display: none;"></img></a><code class="title"><img src="../images/icons/method.png" alt="method" title="method"></img><img src="../images/icons/visibility_public.png" style="margin-right: 5px" alt="public"></img><span class="highlight">getRequiredType</span><span class="nb-faded-text">()</span> : integer</code><div class="description"><span class="attribute">inherited</span><p class="short_description">Gets the required type of the property.</p><small class="inherited_from">Inherited from:
+                    <a href="../files/phpcr.src.PHPCR.NodeType.PropertyDefinitionInterface.html#\PHPCR\NodeType\PropertyDefinitionInterface::getRequiredType()">\PHPCR\NodeType\PropertyDefinitionInterface::getRequiredType()</a></small></div><div class="code-tabs"><div class="long-description"><p>Possible property types of:</p>
+
+<ul>
+<li>PropertyType::STRING</li>
+<li>PropertyType::DATE</li>
+<li>PropertyType::BINARY</li>
+<li>PropertyType::DOUBLE</li>
+<li>PropertyType::DECIMAL</li>
+<li>PropertyType::LONG</li>
+<li>PropertyType::BOOLEAN</li>
+<li>PropertyType::NAME</li>
+<li>PropertyType::PATH</li>
+<li>PropertyType::URI</li>
+<li>PropertyType::REFERENCE</li>
+<li>PropertyType::WEAKREFERENCE</li>
+<li>PropertyType::UNDEFINED</li>
+</ul>
+
+<p>PropertyType::UNDEFINED is returned if this property may be of any type.</p>
+
+<p>In implementations that support node type registration, if this
+PropertyDefinition object is actually a newly-created empty
+PropertyDefinitionTemplate, then this method will return PropertyType::STRING.</p></div><strong>Returns</strong><table class="argument-info"><thead><tr><th>Type</th><th>Description</th></tr></thead><tr><td>integer</td><td>An integer constant member of PropertyType.</td></tr></table><strong>Details</strong><dl class="function-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\NodeType\PropertyDefinitionTemplateInterface::getValueConstraints()" class="anchor"></a><div class="method public inherited_from "><a href="#" class="gripper"><img src="../images/icons/arrow_right.png"></img><img src="../images/icons/arrow_down.png" style="display: none;"></img></a><code class="title"><img src="../images/icons/method.png" alt="method" title="method"></img><img src="../images/icons/visibility_public.png" style="margin-right: 5px" alt="public"></img><span class="highlight">getValueConstraints</span><span class="nb-faded-text">()</span> : array</code><div class="description"><span class="attribute">inherited</span><p class="short_description">Gets the array of constraint strings.</p><small class="inherited_from">Inherited from:
+                    <a href="../files/phpcr.src.PHPCR.NodeType.PropertyDefinitionInterface.html#\PHPCR\NodeType\PropertyDefinitionInterface::getValueConstraints()">\PHPCR\NodeType\PropertyDefinitionInterface::getValueConstraints()</a></small></div><div class="code-tabs"><div class="long-description"><p>Each string in the array specifies a constraint on the value of the property.
+The constraints are OR-ed together, meaning that in order to be valid, the
+value must meet at least one of the constraints. For example, a constraint
+array of ["constraint1", "constraint2", "constraint3"] has the interpretation:
+"the value of this property must meet at least one of constraint1, constraint2
+or constraint3".</p>
+
+<p>Reporting of value constraints is optional. An implementation may return
+null, indicating that value constraint information is unavailable (though
+a constraint may still exist).</p>
+
+<p>Returning an empty array, on the other hand, indicates that value constraint
+information is available and that no constraints are placed on this value.</p>
+
+<p>In the case of multi-value properties, the constraint string array returned
+applies to all the values of the property.</p>
+
+<p>The constraint strings themselves having differing formats and
+interpretations depending on the type of the property in question. The
+following describes the value constraint syntax for each property type:</p>
+
+<p><b>STRING</b> and <b>URI</b>: The constraint string is a regular
+expression pattern. For example the regular expression ".*" means "any
+string, including the empty string". Whereas a simple literal string
+(without any RE-specific meta-characters) like "banana" matches only the
+string "banana".</p>
+
+<p><b>PATH</b>: The constraint string is a JCR path with an optional "*"
+character after the last "/" character. For example, possible constraint
+strings for a property of type PATH include:</p>
+
+<ul>
+<li>"/myapp:products/myapp:televisions"</li>
+<li>"/myapp:products/myapp:televisions/"</li>
+<li>"/myapp:products/*"</li>
+<li>"myapp:products/myapp:televisions"</li>
+<li>"../myapp:televisions"</li>
+<li>"../myapp:televisions/*"</li>
+</ul>
+
+<p>The following principles apply:</p>
+
+<ul>
+<li>The "<em>" means "matches descendants" not "matches any subsequent path".
+For example, /a/</em> does not match /a/../c. The constraint must match the
+normalized path.</li>
+<li>Relative path constraint only match relative path values and absolute
+path constraints only match absolute path values.</li>
+<li>A trailing "/" has no effect (hence, 1 and 2, above, are equivalent).</li>
+<li>The trailing "<em>" character means that the value of the PATH property is
+restricted to the indicated subgraph (in other words any additional
+relative path can replace the "</em>"). For example, 3, above would allow
+/myapp:products/myapp:radios, /myapp:products/myapp:microwaves/X900,
+and so forth.</li>
+<li>A constraint without a "*" means that the PATH property is restricted
+to that precise path. For example, 1, above, would allow only the
+value /myapp:products/myapp:televisions.</li>
+<li>The constraint can indicate either a relative path or an absolute path
+depending on whether it includes a leading "/" character. 1 and 4,
+above for example, are distinct.</li>
+<li>The string returned must reflect the namespace mapping in the current
+Session (i.e., the current state of the namespace registry overlaid
+with any session-specific mappings). Constraint strings for PATH
+properties should be stored in fully-qualified form (using the actual
+URI instead of the prefix) and then be converted to prefix form
+according to the current mapping upon the
+PropertyDefinitionInterface::getValueConstraints() call.</li>
+</ul>
+
+<p><b>NAME</b>: The constraint string is a JCR name in prefix form. For example
+"myapp:products". No wildcards or other pattern matching are supported.
+As with PATH properties, the string returned must reflect the namespace
+mapping in the current Session. Constraint strings for NAME properties
+should be stored in fully-qualified form (using the actual URI instead of
+the prefix) and then be converted to prefix form according to the current
+mapping.</p>
+
+<p><b>REFERENCE</b> and <b>WEAKREFERENCE</b>: The constraint string is a
+JCR name in prefix form. This name is interpreted as a node type name
+and the REFERENCE or WEAKREFERENCE property is restricted to referring
+only to nodes that have at least the indicated node type. For example, a
+constraint of "mytype:document" would indicate that the property in
+question can only refer to nodes that have at least the node type
+mytype:document (assuming this was the only constraint returned in the
+array, recall that the array of constraints are to be ORed together). No
+wildcards or other pattern matching are supported.</p>
+
+<p>As with PATH properties, the string returned must reflect the namespace
+mapping in the current Session. Constraint strings for REFERENCE and
+WEAKREFERENCE properties should be stored by the implementation in
+fully-qualified form (using the actual URI instead of the prefix) and then
+be converted to prefix form according to the current mapping.</p>
+
+<p><b>BOOLEAN</b>: BOOLEAN properties will always report a value constraint
+consisting of an empty array (meaning no constraint). In implementations
+that support node type registration any value constraint set on BOOLEAN is
+ignored and discarded.</p>
+
+<p>The remaining types all have value constraints in the form of inclusive
+or exclusive ranges: i.e., "[min, max]", "(min, max)", "(min, max]" or
+"[min, max)". Where "[" and "]" indicate "inclusive", while "(" and ")"
+indicate "exclusive". A missing min or max value indicates no bound in
+that direction. For example [,5] means no minimum but a maximum of 5
+(inclusive) while [,] means simply that any value will suffice, The meaning
+of the min and max values themselves differ between types as follows:</p>
+
+<p><b>BINARY</b>: min and max specify the allowed size range of the binary
+value in bytes.</p>
+
+<p><b>DATE</b>: min and max are dates specifying the allowed date range. The date
+strings must be in the ISO8601-compliant format: YYYY-MM-DDThh:mm:ss.sssTZD.</p>
+
+<p><b>LONG, DOUBLE</b>: min and max are numbers.</p>
+
+<p>In implementations that support node type registration, when specifying
+that a DATE, LONG or DOUBLE is constrained to be equal to some disjunctive
+set of constants, a string consisting of just the constant itself, "c" may
+be used as a shorthand for the standard constraint notation of "[c, c]",
+where c is the constant. For example, to indicate that particular LONG
+property is constrained to be one of the values 2, 4, or 8, the constraint
+string array {"2", "4", "8"} can be used instead of the standard notation,
+{"[2,2]", "[4,4]", "[8,8]"}. However, even if this shorthand is used on
+registration, the value returned by
+PropertyDefinitionInterface::getValueConstraints() will always use the
+standard notation.</p>
+
+<p>Because constraints are returned as an array of disjunctive constraints,
+in many cases the elements of the array can serve directly as a "choice
+list". This may, for example, be used by an application to display
+options to the end user indicating the set of permitted values.</p>
+
+<p>In implementations that support node type registration, if this
+PropertyDefinition object is actually a newly-created empty
+PropertyDefinitionTemplate, then this method will return null.</p></div><strong>Returns</strong><table class="argument-info"><thead><tr><th>Type</th><th>Description</th></tr></thead><tr><td>array</td><td>a String array.</td></tr></table><strong>Details</strong><dl class="function-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\NodeType\PropertyDefinitionTemplateInterface::isAutoCreated()" class="anchor"></a><div class="method public inherited_from "><a href="#" class="gripper"><img src="../images/icons/arrow_right.png"></img><img src="../images/icons/arrow_down.png" style="display: none;"></img></a><code class="title"><img src="../images/icons/method.png" alt="method" title="method"></img><img src="../images/icons/visibility_public.png" style="margin-right: 5px" alt="public"></img><span class="highlight">isAutoCreated</span><span class="nb-faded-text">()</span> : boolean</code><div class="description"><span class="attribute">inherited</span><p class="short_description">Reports whether the item is to be automatically created when its parent
+node is created.</p><small class="inherited_from">Inherited from:
+                    <a href="../files/phpcr.src.PHPCR.NodeType.ItemDefinitionInterface.html#\PHPCR\NodeType\ItemDefinitionInterface::isAutoCreated()">\PHPCR\NodeType\ItemDefinitionInterface::isAutoCreated()</a><a href="../files/phpcr.src.PHPCR.NodeType.PropertyDefinitionInterface.html#\PHPCR\NodeType\PropertyDefinitionInterface::isAutoCreated()">\PHPCR\NodeType\PropertyDefinitionInterface::isAutoCreated()</a></small></div><div class="code-tabs"><div class="long-description"><p>If true, then this ItemDefinition will necessarily not
+be a residual set definition but will specify an actual item name (in
+other words getName() will not return "*").</p>
+
+<p>An autocreated non-protected item must be created immediately when
+its parent node is created in the transient session space. Creation of
+autocreated non-protected items is never delayed until save.</p>
+
+<p>An autocreated protected item should be created immediately when its
+parent node is created in the transient session space. Creation of
+autocreated protected items should not be delayed until save, though
+doing so does not violate JCR compliance.</p>
+
+<p>In implementations that support node type registration, if this
+ItemDefinition object is actually a newly-created empty
+PropertyDefinitionTemplate or NodeDefinitionTemplate, then this method
+will return false.</p></div><strong>Returns</strong><table class="argument-info"><thead><tr><th>Type</th><th>Description</th></tr></thead><tr><td>boolean</td><td>True, if the item is automatically created when its
+     parent node is created, else false.</td></tr></table><strong>Details</strong><dl class="function-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\NodeType\PropertyDefinitionTemplateInterface::isFullTextSearchable()" class="anchor"></a><div class="method public inherited_from "><a href="#" class="gripper"><img src="../images/icons/arrow_right.png"></img><img src="../images/icons/arrow_down.png" style="display: none;"></img></a><code class="title"><img src="../images/icons/method.png" alt="method" title="method"></img><img src="../images/icons/visibility_public.png" style="margin-right: 5px" alt="public"></img><span class="highlight">isFullTextSearchable</span><span class="nb-faded-text">()</span> : boolean</code><div class="description"><span class="attribute">inherited</span><p class="short_description">Determines if this property is full-text searchable.</p><small class="inherited_from">Inherited from:
+                    <a href="../files/phpcr.src.PHPCR.NodeType.PropertyDefinitionInterface.html#\PHPCR\NodeType\PropertyDefinitionInterface::isFullTextSearchable()">\PHPCR\NodeType\PropertyDefinitionInterface::isFullTextSearchable()</a></small></div><div class="code-tabs"><div class="long-description"><p>Returns true if this property is full-text searchable,
+meaning that its value is accessible through the full-text search
+function within a query.</p>
+
+<p>This attribute only takes effect if the node type holding the
+property definition has a queryable setting of true.</p></div><strong>Returns</strong><table class="argument-info"><thead><tr><th>Type</th><th>Description</th></tr></thead><tr><td>boolean</td><td>True, if this property is full-text searchable, else false.</td></tr></table><strong>Details</strong><dl class="function-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\NodeType\PropertyDefinitionTemplateInterface::isMandatory()" class="anchor"></a><div class="method public inherited_from "><a href="#" class="gripper"><img src="../images/icons/arrow_right.png"></img><img src="../images/icons/arrow_down.png" style="display: none;"></img></a><code class="title"><img src="../images/icons/method.png" alt="method" title="method"></img><img src="../images/icons/visibility_public.png" style="margin-right: 5px" alt="public"></img><span class="highlight">isMandatory</span><span class="nb-faded-text">()</span> : boolean</code><div class="description"><span class="attribute">inherited</span><p class="short_description">Reports whether the item is mandatory.</p><small class="inherited_from">Inherited from:
+                    <a href="../files/phpcr.src.PHPCR.NodeType.ItemDefinitionInterface.html#\PHPCR\NodeType\ItemDefinitionInterface::isMandatory()">\PHPCR\NodeType\ItemDefinitionInterface::isMandatory()</a><a href="../files/phpcr.src.PHPCR.NodeType.PropertyDefinitionInterface.html#\PHPCR\NodeType\PropertyDefinitionInterface::isMandatory()">\PHPCR\NodeType\PropertyDefinitionInterface::isMandatory()</a></small></div><div class="code-tabs"><div class="long-description"><p>A mandatory item is one that, if its parent node exists, must also exist.
+This means that a mandatory single-value property must have a value (since
+there is no such thing a null value). In the case of multi-value properties
+this means that the property must exist, though it can have zero or more
+values.</p>
+
+<p>An attempt to save a node that has a mandatory child item without first
+creating that child item will throw a ConstraintViolationException on save.</p>
+
+<p>In implementations that support node type registration, if this
+ItemDefinition object is actually a newly-created empty
+PropertyDefinitionTemplate or NodeDefinitionTemplate, then this method
+will return false.</p>
+
+<p>An item definition cannot be both residual and mandatory.</p></div><strong>Returns</strong><table class="argument-info"><thead><tr><th>Type</th><th>Description</th></tr></thead><tr><td>boolean</td><td>True, if the item is mandatory, else false.</td></tr></table><strong>Details</strong><dl class="function-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\NodeType\PropertyDefinitionTemplateInterface::isMultiple()" class="anchor"></a><div class="method public inherited_from "><a href="#" class="gripper"><img src="../images/icons/arrow_right.png"></img><img src="../images/icons/arrow_down.png" style="display: none;"></img></a><code class="title"><img src="../images/icons/method.png" alt="method" title="method"></img><img src="../images/icons/visibility_public.png" style="margin-right: 5px" alt="public"></img><span class="highlight">isMultiple</span><span class="nb-faded-text">()</span> : boolean</code><div class="description"><span class="attribute">inherited</span><p class="short_description">Reports whether this property can have multiple values.</p><small class="inherited_from">Inherited from:
+                    <a href="../files/phpcr.src.PHPCR.NodeType.PropertyDefinitionInterface.html#\PHPCR\NodeType\PropertyDefinitionInterface::isMultiple()">\PHPCR\NodeType\PropertyDefinitionInterface::isMultiple()</a></small></div><div class="code-tabs"><div class="long-description"><p><b>Note</b> that the isMultiple flag is special in that a given node
+type may have two property definitions that are identical in every
+respect except for the their isMultiple status. For example, a node type
+can specify two string properties both called X, one of which is
+multi-valued and the other not. An example of such a node type is
+nt:unstructured.</p>
+
+<p>In implementations that support node type registration, if this
+PropertyDefinition object is actually a newly-created empty
+PropertyDefinitionTemplate, then this method will return false.</p></div><strong>Returns</strong><table class="argument-info"><thead><tr><th>Type</th><th>Description</th></tr></thead><tr><td>boolean</td><td>True, if this property may have multiple values, else
+     false.</td></tr></table><strong>Details</strong><dl class="function-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\NodeType\PropertyDefinitionTemplateInterface::isProtected()" class="anchor"></a><div class="method public inherited_from "><a href="#" class="gripper"><img src="../images/icons/arrow_right.png"></img><img src="../images/icons/arrow_down.png" style="display: none;"></img></a><code class="title"><img src="../images/icons/method.png" alt="method" title="method"></img><img src="../images/icons/visibility_public.png" style="margin-right: 5px" alt="public"></img><span class="highlight">isProtected</span><span class="nb-faded-text">()</span> : boolean</code><div class="description"><span class="attribute">inherited</span><p class="short_description">Reports whether the child item is protected.</p><small class="inherited_from">Inherited from:
+                    <a href="../files/phpcr.src.PHPCR.NodeType.ItemDefinitionInterface.html#\PHPCR\NodeType\ItemDefinitionInterface::isProtected()">\PHPCR\NodeType\ItemDefinitionInterface::isProtected()</a><a href="../files/phpcr.src.PHPCR.NodeType.PropertyDefinitionInterface.html#\PHPCR\NodeType\PropertyDefinitionInterface::isProtected()">\PHPCR\NodeType\PropertyDefinitionInterface::isProtected()</a></small></div><div class="code-tabs"><div class="long-description"><p>In level 2 implementations, a protected item is one that cannot be
+removed (except by removing its parent) or modified through the the
+standard write methods of this API (that is, ItemInterface::remove(),
+NodeInterface::addNode(), NodeInterface::setProperty() and
+PropertyInterface::setValue()).</p>
+
+<p>A protected node may be removed or modified (in a level 2
+implementation), however, through some mechanism not defined by this
+specification or as a side-effect of operations other than the standard
+write methods of the API.</p>
+
+<p>In implementations that support node type registration, if this
+ItemDefinition object is actually a newly-created empty
+PropertyDefinitionTemplateInterface or NodeDefinitionTemplateInterface,
+then this method will return false.</p></div><strong>Returns</strong><table class="argument-info"><thead><tr><th>Type</th><th>Description</th></tr></thead><tr><td>boolean</td><td>True, if the child item is protected, else false.</td></tr></table><strong>Details</strong><dl class="function-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\NodeType\PropertyDefinitionTemplateInterface::isQueryOrderable()" class="anchor"></a><div class="method public inherited_from "><a href="#" class="gripper"><img src="../images/icons/arrow_right.png"></img><img src="../images/icons/arrow_down.png" style="display: none;"></img></a><code class="title"><img src="../images/icons/method.png" alt="method" title="method"></img><img src="../images/icons/visibility_public.png" style="margin-right: 5px" alt="public"></img><span class="highlight">isQueryOrderable</span><span class="nb-faded-text">()</span> : boolean</code><div class="description"><span class="attribute">inherited</span><p class="short_description">Report this property is orderable by a query.</p><small class="inherited_from">Inherited from:
+                    <a href="../files/phpcr.src.PHPCR.NodeType.PropertyDefinitionInterface.html#\PHPCR\NodeType\PropertyDefinitionInterface::isQueryOrderable()">\PHPCR\NodeType\PropertyDefinitionInterface::isQueryOrderable()</a></small></div><div class="code-tabs"><div class="long-description"><p>Returns true if this property is query orderable,
+meaning that query results may be ordered by this property
+using the order-by clause of a query.</p>
+
+<p>This attribute only takes effect if the node type holding the
+property definition has a queryable setting of true.</p></div><strong>Returns</strong><table class="argument-info"><thead><tr><th>Type</th><th>Description</th></tr></thead><tr><td>boolean</td><td>True, if this property is query orderable, else false.</td></tr></table><strong>Details</strong><dl class="function-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\NodeType\PropertyDefinitionTemplateInterface::setAutoCreated()" class="anchor"></a><div class="method public"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png"></img><img src="../images/icons/arrow_down.png" style="display: none;"></img></a><code class="title"><img src="../images/icons/method.png" alt="method" title="method"></img><img src="../images/icons/visibility_public.png" style="margin-right: 5px" alt="public"></img><span class="highlight">setAutoCreated</span><span class="nb-faded-text">(boolean $autoCreated)</span> : void</code><div class="description"><p class="short_description">Sets the auto-create status of the property.</p></div><div class="code-tabs"><div class="long-description"></div><strong>Parameters</strong><table class="argument-info"><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><th>$autoCreated</th><td>boolean</td><td><em><p>Flag to set the ability to be automatically created.</p></em></td></tr></table><strong>Details</strong><dl class="function-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\NodeType\PropertyDefinitionTemplateInterface::setAvailableQueryOperators()" class="anchor"></a><div class="method public"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png"></img><img src="../images/icons/arrow_down.png" style="display: none;"></img></a><code class="title"><img src="../images/icons/method.png" alt="method" title="method"></img><img src="../images/icons/visibility_public.png" style="margin-right: 5px" alt="public"></img><span class="highlight">setAvailableQueryOperators</span><span class="nb-faded-text">(array $operators)</span> : void</code><div class="description"><p class="short_description">Sets the queryable status of the property.</p></div><div class="code-tabs"><div class="long-description"></div><strong>Parameters</strong><table class="argument-info"><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><th>$operators</th><td>array</td><td><em><p>operators An array of String constants {@link PropertyDefinition::getAvailableQueryOperators()}.</p>
+</em></td></tr></table><strong>Details</strong><dl class="function-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\NodeType\PropertyDefinitionTemplateInterface::setDefaultValues()" class="anchor"></a><div class="method public"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png"></img><img src="../images/icons/arrow_down.png" style="display: none;"></img></a><code class="title"><img src="../images/icons/method.png" alt="method" title="method"></img><img src="../images/icons/visibility_public.png" style="margin-right: 5px" alt="public"></img><span class="highlight">setDefaultValues</span><span class="nb-faded-text">(array $defaultValues)</span> : void</code><div class="description"><p class="short_description">Sets the default value (or values, in the case of a multi-value property)
+of the property.</p></div><div class="code-tabs"><div class="long-description"></div><strong>Parameters</strong><table class="argument-info"><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><th>$defaultValues</th><td>array</td><td><em><p>A List of values in the correct type for this property.</p></em></td></tr></table><strong>Details</strong><dl class="function-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\NodeType\PropertyDefinitionTemplateInterface::setFullTextSearchable()" class="anchor"></a><div class="method public"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png"></img><img src="../images/icons/arrow_down.png" style="display: none;"></img></a><code class="title"><img src="../images/icons/method.png" alt="method" title="method"></img><img src="../images/icons/visibility_public.png" style="margin-right: 5px" alt="public"></img><span class="highlight">setFullTextSearchable</span><span class="nb-faded-text">(boolean $fullTextSearchable)</span> : void</code><div class="description"><p class="short_description">Sets the full-text-searchable status of the property.</p></div><div class="code-tabs"><div class="long-description"></div><strong>Parameters</strong><table class="argument-info"><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><th>$fullTextSearchable</th><td>boolean</td><td><em><p>The status of the ability to be fulltext-searchable..</p>
+</em></td></tr></table><strong>Details</strong><dl class="function-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\NodeType\PropertyDefinitionTemplateInterface::setMandatory()" class="anchor"></a><div class="method public"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png"></img><img src="../images/icons/arrow_down.png" style="display: none;"></img></a><code class="title"><img src="../images/icons/method.png" alt="method" title="method"></img><img src="../images/icons/visibility_public.png" style="margin-right: 5px" alt="public"></img><span class="highlight">setMandatory</span><span class="nb-faded-text">(boolean $mandatory)</span> : void</code><div class="description"><p class="short_description">Sets the mandatory status of the property.</p></div><div class="code-tabs"><div class="long-description"></div><strong>Parameters</strong><table class="argument-info"><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><th>$mandatory</th><td>boolean</td><td><em><p>The mandatory status of the property.</p></em></td></tr></table><strong>Details</strong><dl class="function-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\NodeType\PropertyDefinitionTemplateInterface::setMultiple()" class="anchor"></a><div class="method public"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png"></img><img src="../images/icons/arrow_down.png" style="display: none;"></img></a><code class="title"><img src="../images/icons/method.png" alt="method" title="method"></img><img src="../images/icons/visibility_public.png" style="margin-right: 5px" alt="public"></img><span class="highlight">setMultiple</span><span class="nb-faded-text">(boolean $multiple)</span> : void</code><div class="description"><p class="short_description">Sets the multi-value status of the property.</p></div><div class="code-tabs"><div class="long-description"></div><strong>Parameters</strong><table class="argument-info"><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><th>$multiple</th><td>boolean</td><td><em><p>The status of the ability to store multiple values.</p></em></td></tr></table><strong>Details</strong><dl class="function-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\NodeType\PropertyDefinitionTemplateInterface::setName()" class="anchor"></a><div class="method public"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png"></img><img src="../images/icons/arrow_down.png" style="display: none;"></img></a><code class="title"><img src="../images/icons/method.png" alt="method" title="method"></img><img src="../images/icons/visibility_public.png" style="margin-right: 5px" alt="public"></img><span class="highlight">setName</span><span class="nb-faded-text">(string $name)</span> : void</code><div class="description"><p class="short_description">Sets the name of the property.</p></div><div class="code-tabs"><div class="long-description"></div><strong>Parameters</strong><table class="argument-info"><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><th>$name</th><td>string</td><td><em><p>The name of the property definition template.</p></em></td></tr></table><strong>Details</strong><dl class="function-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\NodeType\PropertyDefinitionTemplateInterface::setOnParentVersion()" class="anchor"></a><div class="method public"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png"></img><img src="../images/icons/arrow_down.png" style="display: none;"></img></a><code class="title"><img src="../images/icons/method.png" alt="method" title="method"></img><img src="../images/icons/visibility_public.png" style="margin-right: 5px" alt="public"></img><span class="highlight">setOnParentVersion</span><span class="nb-faded-text">(integer $opv)</span> : void</code><div class="description"><p class="short_description">Sets the on-parent-version status of the property.</p></div><div class="code-tabs"><div class="long-description"></div><strong>Parameters</strong><table class="argument-info"><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><th>$opv</th><td>integer</td><td><em><p>an int constant member of OnParentVersionAction.</p></em></td></tr></table><strong>Details</strong><dl class="function-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\NodeType\PropertyDefinitionTemplateInterface::setProtected()" class="anchor"></a><div class="method public"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png"></img><img src="../images/icons/arrow_down.png" style="display: none;"></img></a><code class="title"><img src="../images/icons/method.png" alt="method" title="method"></img><img src="../images/icons/visibility_public.png" style="margin-right: 5px" alt="public"></img><span class="highlight">setProtected</span><span class="nb-faded-text">(boolean $protectedStatus)</span> : void</code><div class="description"><p class="short_description">Sets the protected status of the property.</p></div><div class="code-tabs"><div class="long-description"></div><strong>Parameters</strong><table class="argument-info"><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><th>$protectedStatus</th><td>boolean</td><td><em><p>The protection status of the property.</p></em></td></tr></table><strong>Details</strong><dl class="function-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\NodeType\PropertyDefinitionTemplateInterface::setQueryOrderable()" class="anchor"></a><div class="method public"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png"></img><img src="../images/icons/arrow_down.png" style="display: none;"></img></a><code class="title"><img src="../images/icons/method.png" alt="method" title="method"></img><img src="../images/icons/visibility_public.png" style="margin-right: 5px" alt="public"></img><span class="highlight">setQueryOrderable</span><span class="nb-faded-text">(boolean $queryOrderable)</span> : void</code><div class="description"><p class="short_description">Sets the query-orderable status of the property.</p></div><div class="code-tabs"><div class="long-description"></div><strong>Parameters</strong><table class="argument-info"><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><th>$queryOrderable</th><td>boolean</td><td><em><p>The status of the ability being query-orderable.</p>
+</em></td></tr></table><strong>Details</strong><dl class="function-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\NodeType\PropertyDefinitionTemplateInterface::setRequiredType()" class="anchor"></a><div class="method public"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png"></img><img src="../images/icons/arrow_down.png" style="display: none;"></img></a><code class="title"><img src="../images/icons/method.png" alt="method" title="method"></img><img src="../images/icons/visibility_public.png" style="margin-right: 5px" alt="public"></img><span class="highlight">setRequiredType</span><span class="nb-faded-text">(integer $type)</span> : void</code><div class="description"><p class="short_description">Sets the required type of the property.</p></div><div class="code-tabs"><div class="long-description"></div><strong>Parameters</strong><table class="argument-info"><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><th>$type</th><td>integer</td><td><em><p>An integer constant member of PropertyType.</p></em></td></tr></table><strong>Details</strong><dl class="function-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\NodeType\PropertyDefinitionTemplateInterface::setValueConstraints()" class="anchor"></a><div class="method public"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png"></img><img src="../images/icons/arrow_down.png" style="display: none;"></img></a><code class="title"><img src="../images/icons/method.png" alt="method" title="method"></img><img src="../images/icons/visibility_public.png" style="margin-right: 5px" alt="public"></img><span class="highlight">setValueConstraints</span><span class="nb-faded-text">(array $constraints)</span> : void</code><div class="description"><p class="short_description">Sets the value constraints of the property.</p></div><div class="code-tabs"><div class="long-description"></div><strong>Parameters</strong><table class="argument-info"><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><th>$constraints</th><td>array</td><td><em><p>List of constrains registered on the property.</p></em></td></tr></table><strong>Details</strong><dl class="function-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div></div></div></div><small class="footer">
+            Documentation was generated by
+            <a href="http://phpdoc.org">phpDocumentor
+                2.0.0a10</a>.
+        </small></body></html>

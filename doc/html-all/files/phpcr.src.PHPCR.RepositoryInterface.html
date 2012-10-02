@@ -1,0 +1,390 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><title>PHPCR API and PHPCR-Utils</title><meta http-equiv="Content-Type" content="text/html; charset=utf-8"></meta><link rel="stylesheet" href="../css/template.css" type="text/css"></link><script type="text/javascript" src="../js/jquery-1.4.2.min.js"></script><script type="text/javascript" src="../js/jquery.tools.min.js"></script><script type="text/javascript" src="../js/jquery-ui-1.8.2.custom.min.js"></script><script type="text/javascript" src="../js/template.js"></script></head><body><div id="content"><h1 class="file">phpcr/src/PHPCR/RepositoryInterface.php</h1><div id="file-nav-box"><div id="file-nav-options">
+              Show:
+              <img src="../images/icons/visibility_public.png" alt="Public" id="show-public"></img><img src="../images/icons/visibility_protected.png" alt="Protected" id="show-protected"></img><img src="../images/icons/visibility_private.png" alt="Private" id="show-private"></img><span class="attribute" id="show-inherited">inherited</span></div><div id="file-nav-container"><ul id="file-nav"></ul><div style="clear: left;"></div></div><div id="file-nav-tab">
+              Table of Contents
+          </div></div><a name="top" class="anchor"></a><div id="file-description"><div class="short-description">This file is part of the PHPCR API and was originally ported from the Java
+JCR API to PHP by Karsten Dambekalns for the FLOW3 project.</div><div class="long-description"><p>Copyright 2008-2011 Karsten Dambekalns <a href="&#109;&#x61;&#x69;&#108;&#116;&#x6f;&#58;&#107;&#x61;&#114;&#115;&#x74;e&#110;&#x40;&#x74;&#121;&#x70;&#x6f;&#51;&#46;&#x6f;&#114;&#103;">&#107;&#x61;&#114;&#115;&#x74;e&#110;&#x40;&#x74;&#121;&#x70;&#x6f;&#51;&#46;&#x6f;&#114;&#103;</a></p>
+
+<p>Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at</p>
+
+<pre><code>http://www.apache.org/licenses/LICENSE-2.0
+</code></pre>
+
+<p>Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.</p></div></div><dl class="file-info"><dt>License</dt><dd><a href="http://www.apache.org/licenses/LICENSE-2.0">Apache Software License 2.0</a>
+         
+    </dd><dt>Link</dt><dd><a href="http://phpcr.github.com/">http://phpcr.github.com/</a>
+         
+    </dd></dl><a name="interfaces" class="anchor"></a><a id="\PHPCR\RepositoryInterface" class="anchor"></a><h2 class="interface">\PHPCR\RepositoryInterface<div class="to-top"><a href="#top">jump to top</a></div></h2><div class="class"><small class="package"><b>Package: </b>phpcr\interfaces</small><div class="short-description">The entry point into the content repository.</div><div class="long-description"><p>The Repository object is usually acquired through an implementation of the
+RepositoryFactoryInterface.</p>
+
+<p><strong>PHPCR Note:</strong> This interface has been simplified compared to
+JCR:</p>
+
+<ul>
+<li>getDescriptor returns array on multivalue, single variable otherwise</li>
+<li>removed isSingleValueDescriptor</li>
+<li>removed getDescriptorValue and getDescriptorValues as ValueInterface has
+ been dropped. Use getDescriptor to get the variable value.</li>
+</ul></div><dl class="class-info"><dt>Api</dt><dd>
+         
+    </dd></dl><h3>Constants</h3><div><a id="\PHPCR\RepositoryInterface::SPEC_VERSION_DESC" class="anchor"></a><div class="constant publicC"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png" alt="&gt;"></img><img src="../images/icons/arrow_down.png" alt="V" style="display: none;"></img></a><code class="title"><img src="../images/icons/constant.png" alt="Constant"></img> 
+                <span class="highlight">SPEC_VERSION_DESC</span>
+                = "jcr.specification.version"</code><div class="description"><div class="short-description">The descriptor key for the version of the specification this repository
+implements.</div></div><div class="code-tabs"><div class="long-description"><p>For JCR 2.0 the value of this descriptor is the string "2.0".</p></div><dl class="constant-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\RepositoryInterface::SPEC_NAME_DESC" class="anchor"></a><div class="constant publicC"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png" alt="&gt;"></img><img src="../images/icons/arrow_down.png" alt="V" style="display: none;"></img></a><code class="title"><img src="../images/icons/constant.png" alt="Constant"></img> 
+                <span class="highlight">SPEC_NAME_DESC</span>
+                = "jcr.specification.name"</code><div class="description"><div class="short-description">The descriptor key for the name of the specification this repository
+implements.</div></div><div class="code-tabs"><div class="long-description"><p>For JCR 2.0 the value of this descriptor is the string "Content
+Repository for Java Technology API".</p></div><dl class="constant-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\RepositoryInterface::REP_VENDOR_DESC" class="anchor"></a><div class="constant publicC"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png" alt="&gt;"></img><img src="../images/icons/arrow_down.png" alt="V" style="display: none;"></img></a><code class="title"><img src="../images/icons/constant.png" alt="Constant"></img> 
+                <span class="highlight">REP_VENDOR_DESC</span>
+                = "jcr.repository.vendor"</code><div class="description"><div class="short-description">The descriptor key for the name of the repository vendor.</div></div><div class="code-tabs"><div class="long-description"><p>The descriptor returned for this key is a String.</p></div><dl class="constant-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\RepositoryInterface::REP_VENDOR_URL_DESC" class="anchor"></a><div class="constant publicC"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png" alt="&gt;"></img><img src="../images/icons/arrow_down.png" alt="V" style="display: none;"></img></a><code class="title"><img src="../images/icons/constant.png" alt="Constant"></img> 
+                <span class="highlight">REP_VENDOR_URL_DESC</span>
+                = "jcr.repository.vendor.url"</code><div class="description"><div class="short-description">The descriptor key for the URL of the repository vendor.</div></div><div class="code-tabs"><div class="long-description"><p>The descriptor returned for this key is a String.</p></div><dl class="constant-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\RepositoryInterface::REP_NAME_DESC" class="anchor"></a><div class="constant publicC"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png" alt="&gt;"></img><img src="../images/icons/arrow_down.png" alt="V" style="display: none;"></img></a><code class="title"><img src="../images/icons/constant.png" alt="Constant"></img> 
+                <span class="highlight">REP_NAME_DESC</span>
+                = "jcr.repository.name"</code><div class="description"><div class="short-description">The descriptor key for the name of this repository implementation.</div></div><div class="code-tabs"><div class="long-description"><p>The descriptor returned for this key is a String.</p></div><dl class="constant-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\RepositoryInterface::REP_VERSION_DESC" class="anchor"></a><div class="constant publicC"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png" alt="&gt;"></img><img src="../images/icons/arrow_down.png" alt="V" style="display: none;"></img></a><code class="title"><img src="../images/icons/constant.png" alt="Constant"></img> 
+                <span class="highlight">REP_VERSION_DESC</span>
+                = "jcr.repository.version"</code><div class="description"><div class="short-description">The descriptor key for the version of this repository implementation.</div></div><div class="code-tabs"><div class="long-description"><p>The descriptor returned for this key is a String.</p></div><dl class="constant-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\RepositoryInterface::WRITE_SUPPORTED" class="anchor"></a><div class="constant publicC"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png" alt="&gt;"></img><img src="../images/icons/arrow_down.png" alt="V" style="display: none;"></img></a><code class="title"><img src="../images/icons/constant.png" alt="Constant"></img> 
+                <span class="highlight">WRITE_SUPPORTED</span>
+                = "write.supported"</code><div class="description"><div class="short-description">Key to a boolean descriptor.</div></div><div class="code-tabs"><div class="long-description"><p>Returns true if and only if repository
+content can be updated through the JCR API (as opposed to having
+read-only access).</p></div><dl class="constant-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\RepositoryInterface::IDENTIFIER_STABILITY" class="anchor"></a><div class="constant publicC"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png" alt="&gt;"></img><img src="../images/icons/arrow_down.png" alt="V" style="display: none;"></img></a><code class="title"><img src="../images/icons/constant.png" alt="Constant"></img> 
+                <span class="highlight">IDENTIFIER_STABILITY</span>
+                = "identifier.stability"</code><div class="description"><div class="short-description">Key to a String descriptor.</div></div><div class="code-tabs"><div class="long-description"><p>Returns one of the following
+RepositoryInterface constants indicating the stability of identifiers:</p>
+
+<ul>
+<li>IDENTIFIER_STABILITY_METHOD_DURATION - Identifiers may change between
+ method calls.</li>
+<li>IDENTIFIER_STABILITY_SAVE_DURATION - Identifers are guaranteed stable
+ within a single save/refresh cycle.</li>
+<li>IDENTIFIER_STABILITY_SESSION_DURATION - Identifiers are guaranteed
+ stable within a single session.</li>
+<li>IDENTIFIER_STABILITY_INDEFINITE_DURATION - Identifers are guaranteed
+ to be stable forever.</li>
+</ul></div><dl class="constant-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\RepositoryInterface::IDENTIFIER_STABILITY_METHOD_DURATION" class="anchor"></a><div class="constant publicC"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png" alt="&gt;"></img><img src="../images/icons/arrow_down.png" alt="V" style="display: none;"></img></a><code class="title"><img src="../images/icons/constant.png" alt="Constant"></img> 
+                <span class="highlight">IDENTIFIER_STABILITY_METHOD_DURATION</span>
+                = "identifier.stability.method.duration"</code><div class="description"><div class="short-description">One of four possible values for the descriptor IDENTIFIER_STABILITY.</div></div><div class="code-tabs"><div class="long-description"><p>Indicates that identifiers may change between method calls.</p></div><dl class="constant-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\RepositoryInterface::IDENTIFIER_STABILITY_SAVE_DURATION" class="anchor"></a><div class="constant publicC"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png" alt="&gt;"></img><img src="../images/icons/arrow_down.png" alt="V" style="display: none;"></img></a><code class="title"><img src="../images/icons/constant.png" alt="Constant"></img> 
+                <span class="highlight">IDENTIFIER_STABILITY_SAVE_DURATION</span>
+                = "identifier.stability.save.duration"</code><div class="description"><div class="short-description">One of four possible values for the descriptor IDENTIFIER_STABILITY.</div></div><div class="code-tabs"><div class="long-description"><p>Indicates that identifiers are guaranteed stable within a single
+save/refresh cycle.</p></div><dl class="constant-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\RepositoryInterface::IDENTIFIER_STABILITY_SESSION_DURATION" class="anchor"></a><div class="constant publicC"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png" alt="&gt;"></img><img src="../images/icons/arrow_down.png" alt="V" style="display: none;"></img></a><code class="title"><img src="../images/icons/constant.png" alt="Constant"></img> 
+                <span class="highlight">IDENTIFIER_STABILITY_SESSION_DURATION</span>
+                = "identifier.stability.session.duration"</code><div class="description"><div class="short-description">One of four possible values for the descriptor IDENTIFIER_STABILITY.</div></div><div class="code-tabs"><div class="long-description"><p>Indicates that identifiers are guaranteed stable within a single
+session.</p></div><dl class="constant-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\RepositoryInterface::IDENTIFIER_STABILITY_INDEFINITE_DURATION" class="anchor"></a><div class="constant publicC"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png" alt="&gt;"></img><img src="../images/icons/arrow_down.png" alt="V" style="display: none;"></img></a><code class="title"><img src="../images/icons/constant.png" alt="Constant"></img> 
+                <span class="highlight">IDENTIFIER_STABILITY_INDEFINITE_DURATION</span>
+                = "identifier.stability.indefinite.duration"</code><div class="description"><div class="short-description">One of four possible values for the descriptor IDENTIFIER_STABILITY.</div></div><div class="code-tabs"><div class="long-description"><p>Indicates that identifiers are guaranteed to be stable forever.</p></div><dl class="constant-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\RepositoryInterface::OPTION_XML_EXPORT_SUPPORTED" class="anchor"></a><div class="constant publicC"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png" alt="&gt;"></img><img src="../images/icons/arrow_down.png" alt="V" style="display: none;"></img></a><code class="title"><img src="../images/icons/constant.png" alt="Constant"></img> 
+                <span class="highlight">OPTION_XML_EXPORT_SUPPORTED</span>
+                = "option.xml.export.supported"</code><div class="description"><div class="short-description">Key to a boolean descriptor.</div></div><div class="code-tabs"><div class="long-description"><p>Returns true if and only if XML export is
+supported.</p></div><dl class="constant-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\RepositoryInterface::OPTION_XML_IMPORT_SUPPORTED" class="anchor"></a><div class="constant publicC"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png" alt="&gt;"></img><img src="../images/icons/arrow_down.png" alt="V" style="display: none;"></img></a><code class="title"><img src="../images/icons/constant.png" alt="Constant"></img> 
+                <span class="highlight">OPTION_XML_IMPORT_SUPPORTED</span>
+                = "option.xml.import.supported"</code><div class="description"><div class="short-description">Key to a boolean descriptor.</div></div><div class="code-tabs"><div class="long-description"><p>Returns true if and only if XML import is
+supported.</p></div><dl class="constant-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\RepositoryInterface::OPTION_UNFILED_CONTENT_SUPPORTED" class="anchor"></a><div class="constant publicC"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png" alt="&gt;"></img><img src="../images/icons/arrow_down.png" alt="V" style="display: none;"></img></a><code class="title"><img src="../images/icons/constant.png" alt="Constant"></img> 
+                <span class="highlight">OPTION_UNFILED_CONTENT_SUPPORTED</span>
+                = "option.unfiled.content.supported"</code><div class="description"><div class="short-description">Key to a boolean descriptor.</div></div><div class="code-tabs"><div class="long-description"><p>Returns true if and only if unfiled content
+is supported.</p></div><dl class="constant-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\RepositoryInterface::OPTION_VERSIONING_SUPPORTED" class="anchor"></a><div class="constant publicC"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png" alt="&gt;"></img><img src="../images/icons/arrow_down.png" alt="V" style="display: none;"></img></a><code class="title"><img src="../images/icons/constant.png" alt="Constant"></img> 
+                <span class="highlight">OPTION_VERSIONING_SUPPORTED</span>
+                = "option.versioning.supported"</code><div class="description"><div class="short-description">Key to a boolean descriptor.</div></div><div class="code-tabs"><div class="long-description"><p>Returns true if and only if full versioning
+is supported.</p></div><dl class="constant-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\RepositoryInterface::OPTION_SIMPLE_VERSIONING_SUPPORTED" class="anchor"></a><div class="constant publicC"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png" alt="&gt;"></img><img src="../images/icons/arrow_down.png" alt="V" style="display: none;"></img></a><code class="title"><img src="../images/icons/constant.png" alt="Constant"></img> 
+                <span class="highlight">OPTION_SIMPLE_VERSIONING_SUPPORTED</span>
+                = "option.simple.versioning.supported"</code><div class="description"><div class="short-description">Key to a boolean descriptor.</div></div><div class="code-tabs"><div class="long-description"><p>Returns true if and only if simple
+versioning is supported.</p></div><dl class="constant-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\RepositoryInterface::OPTION_ACTIVITIES_SUPPORTED" class="anchor"></a><div class="constant publicC"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png" alt="&gt;"></img><img src="../images/icons/arrow_down.png" alt="V" style="display: none;"></img></a><code class="title"><img src="../images/icons/constant.png" alt="Constant"></img> 
+                <span class="highlight">OPTION_ACTIVITIES_SUPPORTED</span>
+                = "option.activities.supported"</code><div class="description"><div class="short-description">Key to a boolean descriptor.</div></div><div class="code-tabs"><div class="long-description"><p>Returns true if and only if activities are
+supported.</p></div><dl class="constant-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\RepositoryInterface::OPTION_BASELINES_SUPPORTED" class="anchor"></a><div class="constant publicC"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png" alt="&gt;"></img><img src="../images/icons/arrow_down.png" alt="V" style="display: none;"></img></a><code class="title"><img src="../images/icons/constant.png" alt="Constant"></img> 
+                <span class="highlight">OPTION_BASELINES_SUPPORTED</span>
+                = "option.baselines.supported"</code><div class="description"><div class="short-description">Key to a boolean descriptor.</div></div><div class="code-tabs"><div class="long-description"><p>Returns true if and only if configurations
+and baselines are supported.</p></div><dl class="constant-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\RepositoryInterface::OPTION_ACCESS_CONTROL_SUPPORTED" class="anchor"></a><div class="constant publicC"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png" alt="&gt;"></img><img src="../images/icons/arrow_down.png" alt="V" style="display: none;"></img></a><code class="title"><img src="../images/icons/constant.png" alt="Constant"></img> 
+                <span class="highlight">OPTION_ACCESS_CONTROL_SUPPORTED</span>
+                = "option.access.control.supported"</code><div class="description"><div class="short-description">Key to a boolean descriptor.</div></div><div class="code-tabs"><div class="long-description"><p>Returns true if and only if access control
+is supported.</p></div><dl class="constant-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\RepositoryInterface::OPTION_LOCKING_SUPPORTED" class="anchor"></a><div class="constant publicC"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png" alt="&gt;"></img><img src="../images/icons/arrow_down.png" alt="V" style="display: none;"></img></a><code class="title"><img src="../images/icons/constant.png" alt="Constant"></img> 
+                <span class="highlight">OPTION_LOCKING_SUPPORTED</span>
+                = "option.locking.supported"</code><div class="description"><div class="short-description">Key to a boolean descriptor.</div></div><div class="code-tabs"><div class="long-description"><p>Returns true if and only if locking is
+supported.</p></div><dl class="constant-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\RepositoryInterface::OPTION_OBSERVATION_SUPPORTED" class="anchor"></a><div class="constant publicC"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png" alt="&gt;"></img><img src="../images/icons/arrow_down.png" alt="V" style="display: none;"></img></a><code class="title"><img src="../images/icons/constant.png" alt="Constant"></img> 
+                <span class="highlight">OPTION_OBSERVATION_SUPPORTED</span>
+                = "option.observation.supported"</code><div class="description"><div class="short-description">Key to a boolean descriptor.</div></div><div class="code-tabs"><div class="long-description"><p>Returns true if and only if asynchronous
+observation is supported.</p></div><dl class="constant-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\RepositoryInterface::OPTION_JOURNALED_OBSERVATION_SUPPORTED" class="anchor"></a><div class="constant publicC"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png" alt="&gt;"></img><img src="../images/icons/arrow_down.png" alt="V" style="display: none;"></img></a><code class="title"><img src="../images/icons/constant.png" alt="Constant"></img> 
+                <span class="highlight">OPTION_JOURNALED_OBSERVATION_SUPPORTED</span>
+                = "option.journaled.observation.supported"</code><div class="description"><div class="short-description">Key to a boolean descriptor.</div></div><div class="code-tabs"><div class="long-description"><p>Returns true if and only if journaled
+observation is supported.</p></div><dl class="constant-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\RepositoryInterface::OPTION_RETENTION_SUPPORTED" class="anchor"></a><div class="constant publicC"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png" alt="&gt;"></img><img src="../images/icons/arrow_down.png" alt="V" style="display: none;"></img></a><code class="title"><img src="../images/icons/constant.png" alt="Constant"></img> 
+                <span class="highlight">OPTION_RETENTION_SUPPORTED</span>
+                = "option.retention.supported"</code><div class="description"><div class="short-description">Key to a boolean descriptor.</div></div><div class="code-tabs"><div class="long-description"><p>Returns true if and only if retention and
+hold are supported.</p></div><dl class="constant-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\RepositoryInterface::OPTION_LIFECYCLE_SUPPORTED" class="anchor"></a><div class="constant publicC"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png" alt="&gt;"></img><img src="../images/icons/arrow_down.png" alt="V" style="display: none;"></img></a><code class="title"><img src="../images/icons/constant.png" alt="Constant"></img> 
+                <span class="highlight">OPTION_LIFECYCLE_SUPPORTED</span>
+                = "option.lifecycle.supported"</code><div class="description"><div class="short-description">Key to a boolean descriptor.</div></div><div class="code-tabs"><div class="long-description"><p>Returns true if and only if lifecycles are
+supported.</p></div><dl class="constant-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\RepositoryInterface::OPTION_TRANSACTIONS_SUPPORTED" class="anchor"></a><div class="constant publicC"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png" alt="&gt;"></img><img src="../images/icons/arrow_down.png" alt="V" style="display: none;"></img></a><code class="title"><img src="../images/icons/constant.png" alt="Constant"></img> 
+                <span class="highlight">OPTION_TRANSACTIONS_SUPPORTED</span>
+                = "option.transactions.supported"</code><div class="description"><div class="short-description">Key to a boolean descriptor.</div></div><div class="code-tabs"><div class="long-description"><p>Returns true if and only if transactions
+are supported.</p></div><dl class="constant-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\RepositoryInterface::OPTION_WORKSPACE_MANAGEMENT_SUPPORTED" class="anchor"></a><div class="constant publicC"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png" alt="&gt;"></img><img src="../images/icons/arrow_down.png" alt="V" style="display: none;"></img></a><code class="title"><img src="../images/icons/constant.png" alt="Constant"></img> 
+                <span class="highlight">OPTION_WORKSPACE_MANAGEMENT_SUPPORTED</span>
+                = "option.workspace.management.supported"</code><div class="description"><div class="short-description">Key to a boolean descriptor.</div></div><div class="code-tabs"><div class="long-description"><p>Returns true if and only if workspace
+management is supported.</p></div><dl class="constant-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\RepositoryInterface::OPTION_UPDATE_PRIMARY_NODETYPE_SUPPORTED" class="anchor"></a><div class="constant publicC"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png" alt="&gt;"></img><img src="../images/icons/arrow_down.png" alt="V" style="display: none;"></img></a><code class="title"><img src="../images/icons/constant.png" alt="Constant"></img> 
+                <span class="highlight">OPTION_UPDATE_PRIMARY_NODETYPE_SUPPORTED</span>
+                = "option.update.primary.nodetype.supported"</code><div class="description"><div class="short-description">Key to a boolean descriptor.</div></div><div class="code-tabs"><div class="long-description"><p>Returns true if and only if the primary
+node type of an existing node can be updated.</p></div><dl class="constant-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\RepositoryInterface::OPTION_UPDATE_MIXIN_NODETYPES_SUPPORTED" class="anchor"></a><div class="constant publicC"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png" alt="&gt;"></img><img src="../images/icons/arrow_down.png" alt="V" style="display: none;"></img></a><code class="title"><img src="../images/icons/constant.png" alt="Constant"></img> 
+                <span class="highlight">OPTION_UPDATE_MIXIN_NODETYPES_SUPPORTED</span>
+                = "option.update.mixin.nodetypes.supported"</code><div class="description"><div class="short-description">Key to a boolean descriptor.</div></div><div class="code-tabs"><div class="long-description"><p>Returns true if and only if the mixin node
+types of an existing node can be added and removed.</p></div><dl class="constant-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\RepositoryInterface::OPTION_SHAREABLE_NODES_SUPPORTED" class="anchor"></a><div class="constant publicC"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png" alt="&gt;"></img><img src="../images/icons/arrow_down.png" alt="V" style="display: none;"></img></a><code class="title"><img src="../images/icons/constant.png" alt="Constant"></img> 
+                <span class="highlight">OPTION_SHAREABLE_NODES_SUPPORTED</span>
+                = "option.shareable.nodes.supported"</code><div class="description"><div class="short-description">Key to a boolean descriptor.</div></div><div class="code-tabs"><div class="long-description"><p>Returns true if and only if the creation of
+shareable nodes is supported.</p></div><dl class="constant-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\RepositoryInterface::OPTION_NODE_TYPE_MANAGEMENT_SUPPORTED" class="anchor"></a><div class="constant publicC"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png" alt="&gt;"></img><img src="../images/icons/arrow_down.png" alt="V" style="display: none;"></img></a><code class="title"><img src="../images/icons/constant.png" alt="Constant"></img> 
+                <span class="highlight">OPTION_NODE_TYPE_MANAGEMENT_SUPPORTED</span>
+                = "option.node.type.management.supported"</code><div class="description"><div class="short-description">Key to a boolean descriptor.</div></div><div class="code-tabs"><div class="long-description"><p>Returns true if and only if node type
+management is supported.</p></div><dl class="constant-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\RepositoryInterface::OPTION_NODE_AND_PROPERTY_WITH_SAME_NAME_SUPPORTED" class="anchor"></a><div class="constant publicC"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png" alt="&gt;"></img><img src="../images/icons/arrow_down.png" alt="V" style="display: none;"></img></a><code class="title"><img src="../images/icons/constant.png" alt="Constant"></img> 
+                <span class="highlight">OPTION_NODE_AND_PROPERTY_WITH_SAME_NAME_SUPPORTED</span>
+                = "option.node.and.property.with.same.name.supported"</code><div class="description"><div class="short-description">Key to a boolean descriptor.</div></div><div class="code-tabs"><div class="long-description"><p>Returns true if and only if node and
+property with same name is supported.</p></div><dl class="constant-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\RepositoryInterface::NODE_TYPE_MANAGEMENT_INHERITANCE" class="anchor"></a><div class="constant publicC"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png" alt="&gt;"></img><img src="../images/icons/arrow_down.png" alt="V" style="display: none;"></img></a><code class="title"><img src="../images/icons/constant.png" alt="Constant"></img> 
+                <span class="highlight">NODE_TYPE_MANAGEMENT_INHERITANCE</span>
+                = "node.type.management.inheritance"</code><div class="description"><div class="short-description">Key to string descriptor.</div></div><div class="code-tabs"><div class="long-description"><p>Returns one of the following
+RepositoryInterface constants indicating the level of support for node
+type inheritance:</p>
+
+<ul>
+<li><p>NODE_TYPE_MANAGEMENT_INHERITANCE_MINIMAL Registration of primary node
+ types is limited to those which have onlynt:base as supertype.
+ Registration of mixin node types is limited to those without any
+ supertypes.</p></li>
+<li><p>NODE_TYPE_MANAGEMENT_INHERITANCE_SINGLE Registration of primary node
+ types is limited to those with exactly one supertype. Registration
+ of mixin node types is limited to those with at most one supertype.</p></li>
+<li><p>NODE_TYPE_MANAGEMENT_INHERITANCE_MULTIPLE Primary node types can be
+ registered with one or more supertypes. Mixin node types can be
+ registered with zero or more supertypes.</p></li>
+</ul></div><dl class="constant-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\RepositoryInterface::NODE_TYPE_MANAGEMENT_INHERITANCE_MINIMAL" class="anchor"></a><div class="constant publicC"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png" alt="&gt;"></img><img src="../images/icons/arrow_down.png" alt="V" style="display: none;"></img></a><code class="title"><img src="../images/icons/constant.png" alt="Constant"></img> 
+                <span class="highlight">NODE_TYPE_MANAGEMENT_INHERITANCE_MINIMAL</span>
+                = "node.type.management.inheritance.minimal"</code><div class="description"><div class="short-description">One of three possible values for the descriptor
+NODE_TYPE_MANAGEMENT_INHERITANCE.</div></div><div class="code-tabs"><div class="long-description"><p>Indicates that registration of primary node types is limited to those
+which have only nt:base as supertype. Registration of mixin node types
+is limited to those without any supertypes.</p></div><dl class="constant-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\RepositoryInterface::NODE_TYPE_MANAGEMENT_INHERITANCE_SINGLE" class="anchor"></a><div class="constant publicC"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png" alt="&gt;"></img><img src="../images/icons/arrow_down.png" alt="V" style="display: none;"></img></a><code class="title"><img src="../images/icons/constant.png" alt="Constant"></img> 
+                <span class="highlight">NODE_TYPE_MANAGEMENT_INHERITANCE_SINGLE</span>
+                = "node.type.management.inheritance.single"</code><div class="description"><div class="short-description">One of three possible values for the descriptor
+NODE_TYPE_MANAGEMENT_INHERITANCE.</div></div><div class="code-tabs"><div class="long-description"><p>Indicates that registration of primary node types is limited to those
+with exactly one supertype. Registration of mixin node types is limited
+to those with at most one supertype.</p></div><dl class="constant-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\RepositoryInterface::NODE_TYPE_MANAGEMENT_INHERITANCE_MULTIPLE" class="anchor"></a><div class="constant publicC"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png" alt="&gt;"></img><img src="../images/icons/arrow_down.png" alt="V" style="display: none;"></img></a><code class="title"><img src="../images/icons/constant.png" alt="Constant"></img> 
+                <span class="highlight">NODE_TYPE_MANAGEMENT_INHERITANCE_MULTIPLE</span>
+                = "node.type.management.inheritance.multiple"</code><div class="description"><div class="short-description">One of three possible values for the descriptor
+NODE_TYPE_MANAGEMENT_INHERITANCE.</div></div><div class="code-tabs"><div class="long-description"><p>Indicates that primary node types can be registered with one or more
+supertypes. Mixin node types can be registered with zero or more
+supertypes.</p></div><dl class="constant-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\RepositoryInterface::NODE_TYPE_MANAGEMENT_OVERRIDES_SUPPORTED" class="anchor"></a><div class="constant publicC"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png" alt="&gt;"></img><img src="../images/icons/arrow_down.png" alt="V" style="display: none;"></img></a><code class="title"><img src="../images/icons/constant.png" alt="Constant"></img> 
+                <span class="highlight">NODE_TYPE_MANAGEMENT_OVERRIDES_SUPPORTED</span>
+                = "node.type.management.overrides.supported"</code><div class="description"><div class="short-description">Key to a boolean descriptor.</div></div><div class="code-tabs"><div class="long-description"><p>Returns true if and only if override of
+inherited property or child node definitions is supported.</p></div><dl class="constant-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\RepositoryInterface::NODE_TYPE_MANAGEMENT_PRIMARY_ITEM_NAME_SUPPORTED" class="anchor"></a><div class="constant publicC"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png" alt="&gt;"></img><img src="../images/icons/arrow_down.png" alt="V" style="display: none;"></img></a><code class="title"><img src="../images/icons/constant.png" alt="Constant"></img> 
+                <span class="highlight">NODE_TYPE_MANAGEMENT_PRIMARY_ITEM_NAME_SUPPORTED</span>
+                = "node.type.management.primary.item.name.supported"</code><div class="description"><div class="short-description">Key to a boolean descriptor.</div></div><div class="code-tabs"><div class="long-description"><p>Returns true if and only if primary items
+are supported.</p></div><dl class="constant-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\RepositoryInterface::NODE_TYPE_MANAGEMENT_ORDERABLE_CHILD_NODES_SUPPORTED" class="anchor"></a><div class="constant publicC"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png" alt="&gt;"></img><img src="../images/icons/arrow_down.png" alt="V" style="display: none;"></img></a><code class="title"><img src="../images/icons/constant.png" alt="Constant"></img> 
+                <span class="highlight">NODE_TYPE_MANAGEMENT_ORDERABLE_CHILD_NODES_SUPPORTED</span>
+                = "node.type.management.orderable.child.nodes.supported"</code><div class="description"><div class="short-description">Key to a boolean descriptor.</div></div><div class="code-tabs"><div class="long-description"><p>Returns true if and only if preservation of
+child node ordering is supported.</p></div><dl class="constant-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\RepositoryInterface::NODE_TYPE_MANAGEMENT_RESIDUAL_DEFINITIONS_SUPPORTED" class="anchor"></a><div class="constant publicC"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png" alt="&gt;"></img><img src="../images/icons/arrow_down.png" alt="V" style="display: none;"></img></a><code class="title"><img src="../images/icons/constant.png" alt="Constant"></img> 
+                <span class="highlight">NODE_TYPE_MANAGEMENT_RESIDUAL_DEFINITIONS_SUPPORTED</span>
+                = "node.type.management.residual.definitions.supported"</code><div class="description"><div class="short-description">Key to a boolean descriptor.</div></div><div class="code-tabs"><div class="long-description"><p>Returns true if and only if residual
+property and child node definitions are supported.</p></div><dl class="constant-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\RepositoryInterface::NODE_TYPE_MANAGEMENT_AUTOCREATED_DEFINITIONS_SUPPORTED" class="anchor"></a><div class="constant publicC"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png" alt="&gt;"></img><img src="../images/icons/arrow_down.png" alt="V" style="display: none;"></img></a><code class="title"><img src="../images/icons/constant.png" alt="Constant"></img> 
+                <span class="highlight">NODE_TYPE_MANAGEMENT_AUTOCREATED_DEFINITIONS_SUPPORTED</span>
+                = "node.type.management.autocreated.definitions.supported"</code><div class="description"><div class="short-description">Key to a boolean descriptor.</div></div><div class="code-tabs"><div class="long-description"><p>Returns true if and only if autocreated
+properties and child nodes are supported.</p></div><dl class="constant-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\RepositoryInterface::NODE_TYPE_MANAGEMENT_SAME_NAME_SIBLINGS_SUPPORTED" class="anchor"></a><div class="constant publicC"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png" alt="&gt;"></img><img src="../images/icons/arrow_down.png" alt="V" style="display: none;"></img></a><code class="title"><img src="../images/icons/constant.png" alt="Constant"></img> 
+                <span class="highlight">NODE_TYPE_MANAGEMENT_SAME_NAME_SIBLINGS_SUPPORTED</span>
+                = "node.type.management.same.name.siblings.supported"</code><div class="description"><div class="short-description">Key to a boolean descriptor.</div></div><div class="code-tabs"><div class="long-description"><p>Returns true if and only if same-name
+sibling child nodes are supported.</p></div><dl class="constant-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\RepositoryInterface::NODE_TYPE_MANAGEMENT_PROPERTY_TYPES" class="anchor"></a><div class="constant publicC"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png" alt="&gt;"></img><img src="../images/icons/arrow_down.png" alt="V" style="display: none;"></img></a><code class="title"><img src="../images/icons/constant.png" alt="Constant"></img> 
+                <span class="highlight">NODE_TYPE_MANAGEMENT_PROPERTY_TYPES</span>
+                = "node.type.management.property.types"</code><div class="description"><div class="short-description">Key to an integer[] descriptor.</div></div><div class="code-tabs"><div class="long-description"><p>Returns an array holding the
+PropertyType constants for the property types (including
+UNDEFINED, if supported) that a registered node type can specify, or a
+zero-length array if registered node types cannot specify property
+definitions.</p></div><dl class="constant-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\RepositoryInterface::NODE_TYPE_MANAGEMENT_MULTIVALUED_PROPERTIES_SUPPORTED" class="anchor"></a><div class="constant publicC"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png" alt="&gt;"></img><img src="../images/icons/arrow_down.png" alt="V" style="display: none;"></img></a><code class="title"><img src="../images/icons/constant.png" alt="Constant"></img> 
+                <span class="highlight">NODE_TYPE_MANAGEMENT_MULTIVALUED_PROPERTIES_SUPPORTED</span>
+                = "node.type.management.multivalued.properties.supported"</code><div class="description"><div class="short-description">Key to a boolean descriptor.</div></div><div class="code-tabs"><div class="long-description"><p>Returns true if and only if multivalue
+properties are supported.</p></div><dl class="constant-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\RepositoryInterface::NODE_TYPE_MANAGEMENT_MULTIPLE_BINARY_PROPERTIES_SUPPORTED" class="anchor"></a><div class="constant publicC"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png" alt="&gt;"></img><img src="../images/icons/arrow_down.png" alt="V" style="display: none;"></img></a><code class="title"><img src="../images/icons/constant.png" alt="Constant"></img> 
+                <span class="highlight">NODE_TYPE_MANAGEMENT_MULTIPLE_BINARY_PROPERTIES_SUPPORTED</span>
+                = "node.type.management.multiple.binary.properties.supported"</code><div class="description"><div class="short-description">Key to a boolean descriptor.</div></div><div class="code-tabs"><div class="long-description"><p>Returns true if and only if registration of
+a node types with more than one BINARY property is permitted.</p></div><dl class="constant-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\RepositoryInterface::NODE_TYPE_MANAGEMENT_VALUE_CONSTRAINTS_SUPPORTED" class="anchor"></a><div class="constant publicC"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png" alt="&gt;"></img><img src="../images/icons/arrow_down.png" alt="V" style="display: none;"></img></a><code class="title"><img src="../images/icons/constant.png" alt="Constant"></img> 
+                <span class="highlight">NODE_TYPE_MANAGEMENT_VALUE_CONSTRAINTS_SUPPORTED</span>
+                = "node.type.management.value.constraints.supported"</code><div class="description"><div class="short-description">Key to a boolean descriptor.</div></div><div class="code-tabs"><div class="long-description"><p>Returns true if and only value-constraints
+are supported.</p></div><dl class="constant-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\RepositoryInterface::NODE_TYPE_MANAGEMENT_UPDATE_IN_USE_SUPPORTED" class="anchor"></a><div class="constant publicC"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png" alt="&gt;"></img><img src="../images/icons/arrow_down.png" alt="V" style="display: none;"></img></a><code class="title"><img src="../images/icons/constant.png" alt="Constant"></img> 
+                <span class="highlight">NODE_TYPE_MANAGEMENT_UPDATE_IN_USE_SUPPORTED</span>
+                = "node.type.management.update.in.use.suported"</code><div class="description"><div class="short-description">Key to boolean descriptor.</div></div><div class="code-tabs"><div class="long-description"><p>Indicates that you can change node definitions
+that are in-use by existing nodes</p>
+
+<p>Note the typo of the value is also in JCR. see https://github.com/phpcr/phpcr/pull/43#issuecomment-8727677</p></div><dl class="constant-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\RepositoryInterface::QUERY_LANGUAGES" class="anchor"></a><div class="constant publicC"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png" alt="&gt;"></img><img src="../images/icons/arrow_down.png" alt="V" style="display: none;"></img></a><code class="title"><img src="../images/icons/constant.png" alt="Constant"></img> 
+                <span class="highlight">QUERY_LANGUAGES</span>
+                = "query.languages"</code><div class="description"><div class="short-description">Key to a string[] descriptor.</div></div><div class="code-tabs"><div class="long-description"><p>Returns an array holding the constants
+representing the supported query languages, or a zero-length if query is
+not supported.</p></div><dl class="constant-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\RepositoryInterface::QUERY_STORED_QUERIES_SUPPORTED" class="anchor"></a><div class="constant publicC"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png" alt="&gt;"></img><img src="../images/icons/arrow_down.png" alt="V" style="display: none;"></img></a><code class="title"><img src="../images/icons/constant.png" alt="Constant"></img> 
+                <span class="highlight">QUERY_STORED_QUERIES_SUPPORTED</span>
+                = "query.stored.queries.supported"</code><div class="description"><div class="short-description">Key to a boolean descriptor.</div></div><div class="code-tabs"><div class="long-description"><p>Returns true if and only if stored queries
+are supported.</p></div><dl class="constant-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\RepositoryInterface::QUERY_FULL_TEXT_SEARCH_SUPPORTED" class="anchor"></a><div class="constant publicC"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png" alt="&gt;"></img><img src="../images/icons/arrow_down.png" alt="V" style="display: none;"></img></a><code class="title"><img src="../images/icons/constant.png" alt="Constant"></img> 
+                <span class="highlight">QUERY_FULL_TEXT_SEARCH_SUPPORTED</span>
+                = "query.full.text.search.supported"</code><div class="description"><div class="short-description">Key to a boolean descriptor.</div></div><div class="code-tabs"><div class="long-description"><p>Returns true if and only if full-text
+search is supported.</p></div><dl class="constant-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\RepositoryInterface::QUERY_JOINS" class="anchor"></a><div class="constant publicC"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png" alt="&gt;"></img><img src="../images/icons/arrow_down.png" alt="V" style="display: none;"></img></a><code class="title"><img src="../images/icons/constant.png" alt="Constant"></img> 
+                <span class="highlight">QUERY_JOINS</span>
+                = "query.joins"</code><div class="description"><div class="short-description">Key to String descriptor.</div></div><div class="code-tabs"><div class="long-description"><p>Returns one of the following
+RepositoryInterface constants indicating the level of support for joins
+in queries:</p>
+
+<ul>
+<li>QUERY_JOINS_NONE - Joins are not supported. Queries are limited to a
+ single selector.</li>
+<li>QUERY_JOINS_INNER - Inner joins are supported.</li>
+<li>QUERY_JOINS_INNER_OUTER - Inner and outer joins are supported.</li>
+</ul></div><dl class="constant-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\RepositoryInterface::QUERY_JOINS_NONE" class="anchor"></a><div class="constant publicC"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png" alt="&gt;"></img><img src="../images/icons/arrow_down.png" alt="V" style="display: none;"></img></a><code class="title"><img src="../images/icons/constant.png" alt="Constant"></img> 
+                <span class="highlight">QUERY_JOINS_NONE</span>
+                = "query.joins.none"</code><div class="description"><div class="short-description">One of three possible values for the descriptor QUERY_JOINS .</div></div><div class="code-tabs"><div class="long-description"><p>Indicates
+that joins are not supported. Queries are limited to a single selector.</p></div><dl class="constant-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\RepositoryInterface::QUERY_JOINS_INNER" class="anchor"></a><div class="constant publicC"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png" alt="&gt;"></img><img src="../images/icons/arrow_down.png" alt="V" style="display: none;"></img></a><code class="title"><img src="../images/icons/constant.png" alt="Constant"></img> 
+                <span class="highlight">QUERY_JOINS_INNER</span>
+                = "query.joins.inner"</code><div class="description"><div class="short-description">One of three possible values for the descriptor QUERY_JOINS .</div></div><div class="code-tabs"><div class="long-description"><p>Indicates
+that inner joins are supported.</p></div><dl class="constant-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\RepositoryInterface::QUERY_JOINS_INNER_OUTER" class="anchor"></a><div class="constant publicC"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png" alt="&gt;"></img><img src="../images/icons/arrow_down.png" alt="V" style="display: none;"></img></a><code class="title"><img src="../images/icons/constant.png" alt="Constant"></img> 
+                <span class="highlight">QUERY_JOINS_INNER_OUTER</span>
+                = "query.joins.inner.outer"</code><div class="description"><div class="short-description">One of three possible values for the descriptor QUERY_JOINS .</div></div><div class="code-tabs"><div class="long-description"><p>Indicates
+that inner and outer joins are supported.</p></div><dl class="constant-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div></div><h3>Methods</h3><div><a id="\PHPCR\RepositoryInterface::getDescriptor()" class="anchor"></a><div class="method public"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png"></img><img src="../images/icons/arrow_down.png" style="display: none;"></img></a><code class="title"><img src="../images/icons/method.png" alt="method" title="method"></img><img src="../images/icons/visibility_public.png" style="margin-right: 5px" alt="public"></img><span class="highlight">getDescriptor</span><span class="nb-faded-text">(string $key)</span> : mixed</code><div class="description"><p class="short_description">Get the value(s) for this key.</p></div><div class="code-tabs"><div class="long-description"><p>If this is documented as a boolean property, this method returns a
+boolean, otherwise a string.</p></div><strong>Parameters</strong><table class="argument-info"><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><th>$key</th><td>string</td><td><em><p>a descriptor key.</p></em></td></tr></table><strong>Returns</strong><table class="argument-info"><thead><tr><th>Type</th><th>Description</th></tr></thead><tr><td>mixed</td><td>a descriptor value in string or boolean form or an array
+     of strings or booleans for multivalue descriptors</td></tr></table><strong>Details</strong><dl class="function-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\RepositoryInterface::getDescriptorKeys()" class="anchor"></a><div class="method public"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png"></img><img src="../images/icons/arrow_down.png" style="display: none;"></img></a><code class="title"><img src="../images/icons/method.png" alt="method" title="method"></img><img src="../images/icons/visibility_public.png" style="margin-right: 5px" alt="public"></img><span class="highlight">getDescriptorKeys</span><span class="nb-faded-text">()</span> : array</code><div class="description"><p class="short_description">Returns a string array holding all descriptor keys available for this
+implementation.</p></div><div class="code-tabs"><div class="long-description"><p>Both, the standard descriptors defined by the string constants in this
+interface and any implementation-specific descriptors. Used in
+conjunction with getDescriptor($key) to query information about this
+repository implementation.</p></div><strong>Returns</strong><table class="argument-info"><thead><tr><th>Type</th><th>Description</th></tr></thead><tr><td>array</td><td>a string array holding all descriptor keys</td></tr></table><strong>Details</strong><dl class="function-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\RepositoryInterface::isStandardDescriptor()" class="anchor"></a><div class="method public"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png"></img><img src="../images/icons/arrow_down.png" style="display: none;"></img></a><code class="title"><img src="../images/icons/method.png" alt="method" title="method"></img><img src="../images/icons/visibility_public.png" style="margin-right: 5px" alt="public"></img><span class="highlight">isStandardDescriptor</span><span class="nb-faded-text">(string $key)</span> : boolean</code><div class="description"><p class="short_description">Determines if the given identifier is a standard descriptor.</p></div><div class="code-tabs"><div class="long-description"><p>Returns true if $key is a standard descriptor defined by the string
+constants in this interface and false if it is either a valid
+implementation-specific key or not a valid key.</p></div><strong>Parameters</strong><table class="argument-info"><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><th>$key</th><td>string</td><td><em><p>a descriptor key.</p></em></td></tr></table><strong>Returns</strong><table class="argument-info"><thead><tr><th>Type</th><th>Description</th></tr></thead><tr><td>boolean</td><td>whether $key is a standard descriptor.</td></tr></table><strong>Details</strong><dl class="function-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\RepositoryInterface::login()" class="anchor"></a><div class="method public"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png"></img><img src="../images/icons/arrow_down.png" style="display: none;"></img></a><code class="title"><img src="../images/icons/method.png" alt="method" title="method"></img><img src="../images/icons/visibility_public.png" style="margin-right: 5px" alt="public"></img><span class="highlight">login</span><span class="nb-faded-text">(<a href="../files/phpcr.src.PHPCR.CredentialsInterface.html#\PHPCR\CredentialsInterface">\PHPCR\CredentialsInterface</a> $credentials = null, string $workspaceName = null)</span> : <a href="../files/phpcr.src.PHPCR.SessionInterface.html#\PHPCR\SessionInterface">\PHPCR\SessionInterface</a></code><div class="description"><p class="short_description">Authenticates the user using the supplied credentials.</p></div><div class="code-tabs"><div class="long-description"><p>If workspaceName is recognized as the name of an existing workspace in
+the repository and authorization to access that workspace is granted,
+then a new Session object is returned. The format of the string
+workspaceName depends upon the implementation. If credentials is null,
+it is assumed that authentication is handled by a mechanism external to
+the repository itself and that the repository implementation exists
+within a context (for example, an application server) that allows it to
+handle authorization of the request for access to the specified
+workspace.</p>
+
+<p>If workspaceName is null, a default workspace is automatically selected
+by the repository implementation. This may, for example, be the "home
+workspace" of the user whose credentials were passed, though this is
+entirely up to the configuration and implementation of the repository.
+Alternatively, it may be a "null workspace" that serves only to provide
+the method WorkspaceInterface::getAccessibleWorkspaceNames(), allowing
+the client to select from among available "real" workspaces.</p>
+
+<p><b>Note:</b> The Java API defines this method with multiple differing
+signatures.</p></div><strong>Parameters</strong><table class="argument-info"><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><th>$credentials</th><td><a href="../files/phpcr.src.PHPCR.CredentialsInterface.html#\PHPCR\CredentialsInterface">\PHPCR\CredentialsInterface</a></td><td><em><p>The credentials of the user</p></em></td></tr><tr><th>$workspaceName</th><td>string</td><td><em><p>the name of a workspace</p></em></td></tr></table><strong>Returns</strong><table class="argument-info"><thead><tr><th>Type</th><th>Description</th></tr></thead><tr><td><a href="../files/phpcr.src.PHPCR.SessionInterface.html#\PHPCR\SessionInterface">\PHPCR\SessionInterface</a></td><td>a valid session for the user to access
+     the repository</td></tr></table><strong>Throws</strong><table class="argument-info"><thead><tr><th>Exception</th><th>Description</th></tr></thead><tr><td><a href="../files/phpcr.src.PHPCR.LoginException.html#\PHPCR\LoginException">\PHPCR\LoginException</a></td><td><em>if authentication or authorization (for
+     the specified workspace) fails</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.NoSuchWorkspaceException.html#\PHPCR\NoSuchWorkspaceException">\PHPCR\NoSuchWorkspaceException</a></td><td><em>if the specified workspaceName
+     is not recognized</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.RepositoryException.html#\PHPCR\RepositoryException">\PHPCR\RepositoryException</a></td><td><em>if another error occurs</em></td></tr></table><strong>Details</strong><dl class="function-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div></div></div></div><small class="footer">
+            Documentation was generated by
+            <a href="http://phpdoc.org">phpDocumentor
+                2.0.0a10</a>.
+        </small></body></html>

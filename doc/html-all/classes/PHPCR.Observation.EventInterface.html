@@ -1,0 +1,406 @@
+<!DOCTYPE html><html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+<meta charset="utf-8">
+<title>PHPCR API and PHPCR-Utils » \PHPCR\Observation\EventInterface</title>
+<meta name="author" content="Mike van Riel">
+<meta name="description" content="">
+<link href="../css/template.css" rel="stylesheet" media="all">
+<script src="../js/jquery-1.7.1.min.js" type="text/javascript"></script><script src="../js/jquery-ui-1.8.2.custom.min.js" type="text/javascript"></script><script src="../js/jquery.mousewheel.min.js" type="text/javascript"></script><script src="../js/bootstrap.js" type="text/javascript"></script><script src="../js/template.js" type="text/javascript"></script><script src="../js/prettify/prettify.min.js" type="text/javascript"></script><link rel="shortcut icon" href="../img/favicon.ico">
+<link rel="apple-touch-icon" href="../img/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="72x72" href="../img/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="114x114" href="../img/apple-touch-icon-114x114.png">
+</head>
+<body>
+<div class="navbar navbar-fixed-top">
+<div class="navbar-inner"><div class="container">
+<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a><a class="brand" href="../index.html">PHPCR API and PHPCR-Utils</a><div class="nav-collapse"><ul class="nav">
+<li class="dropdown">
+<a href="#api" class="dropdown-toggle" data-toggle="dropdown">
+                                    API Documentation <b class="caret"></b></a><ul class="dropdown-menu">
+<li><a>Namespaces</a></li>
+<li><a href="../namespaces/PHPCR.html"><i class="icon-th"></i> PHPCR</a></li>
+<li><a>Packages</a></li>
+<li><a href="../packages/Default.html"><i class="icon-folder-open"></i> Default</a></li>
+<li><a href="../packages/phpcr.html"><i class="icon-folder-open"></i> phpcr</a></li>
+</ul>
+</li>
+<li class="dropdown" id="charts-menu">
+<a href="#charts" class="dropdown-toggle" data-toggle="dropdown">
+                                    Charts <b class="caret"></b></a><ul class="dropdown-menu"><li><a href="../graph_class.html"><i class="icon-list-alt"></i> Class hierarchy diagram</a></li></ul>
+</li>
+<li class="dropdown" id="reports-menu">
+<a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
+                                    Reports <b class="caret"></b></a><ul class="dropdown-menu">
+<li><a href="../errors.html"><i class="icon-remove-sign"></i> Errors 
+                <span class="label label-info">123</span></a></li>
+<li><a href="../markers.html"><i class="icon-map-marker"></i> Markers 
+                <ul><li>todo 
+                <span class="label label-info">12</span>
+</li></ul></a></li>
+<li><a href="../deprecated.html"><i class="icon-stop"></i> Deprecated elements 
+                <span class="label label-info">0</span></a></li>
+</ul>
+</li>
+</ul></div>
+</div></div>
+<div class="go_to_top"><a href="#___" style="color: inherit">Back to top  <i class="icon-upload icon-white"></i></a></div>
+</div>
+<div id="___" class="container">
+<noscript><div class="alert alert-warning">
+                            Javascript is disabled; several features are only available
+                            if Javascript is enabled.
+                        </div></noscript>
+<div class="row">
+<div class="span4">
+<span class="btn-group visibility" data-toggle="buttons-checkbox"><button class="btn public active" title="Show public elements">Public</button><button class="btn protected" title="Show protected elements">Protected</button><button class="btn private" title="Show private elements">Private</button><button class="btn inherited active" title="Show inherited elements">Inherited</button></span><div class="btn-group view pull-right" data-toggle="buttons-radio">
+<button class="btn details" title="Show descriptions and method names"><i class="icon-list"></i></button><button class="btn simple" title="Show only method names"><i class="icon-align-justify"></i></button>
+</div>
+<ul class="side-nav nav nav-list">
+<li class="nav-header">
+<i class="icon-custom icon-method"></i> Methods
+                    <ul>
+<li class="method public "><a href="#method_getDate" title="getDate :: Returns the date when the change was persisted that caused this event."><span class="description">Returns the date when the change was persisted that caused this event.</span><pre>getDate()</pre></a></li>
+<li class="method public "><a href="#method_getIdentifier" title="getIdentifier :: Returns the identifier associated with this event or null if this event
+has no associated identifier."><span class="description">Returns the identifier associated with this event or null if this event
+has no associated identifier.</span><pre>getIdentifier()</pre></a></li>
+<li class="method public "><a href="#method_getInfo" title="getInfo :: Returns the information map associated with this event."><span class="description">Returns the information map associated with this event.</span><pre>getInfo()</pre></a></li>
+<li class="method public "><a href="#method_getPath" title="getPath :: Returns the absolute path associated with this event or null if this
+event has no associated identifier."><span class="description">Returns the absolute path associated with this event or null if this
+event has no associated identifier.</span><pre>getPath()</pre></a></li>
+<li class="method public "><a href="#method_getType" title="getType :: Returns the type of this event: a constant defined by this interface."><span class="description">Returns the type of this event: a constant defined by this interface.</span><pre>getType()</pre></a></li>
+<li class="method public "><a href="#method_getUserData" title="getUserData :: Returns the user data set through ObservationManagerInterface::setUserData() on the
+ObservationManager bound to the Session that caused the event."><span class="description">Returns the user data set through ObservationManagerInterface::setUserData() on the
+ObservationManager bound to the Session that caused the event.</span><pre>getUserData()</pre></a></li>
+<li class="method public "><a href="#method_getUserID" title="getUserID :: Returns the user ID connected with this event."><span class="description">Returns the user ID connected with this event.</span><pre>getUserID()</pre></a></li>
+</ul>
+</li>
+<li class="nav-header">
+<i class="icon-custom icon-constant"></i> Constants
+                    <ul>
+<li class="constant  "><a href="#constant_NODE_ADDED" title="NODE_ADDED :: Generated on persist when a node is added."><span class="description">Generated on persist when a node is added.</span><pre>NODE_ADDED</pre></a></li>
+<li class="constant  "><a href="#constant_NODE_MOVED" title="NODE_MOVED :: Generated on persist when a node is moved."><span class="description">Generated on persist when a node is moved.</span><pre>NODE_MOVED</pre></a></li>
+<li class="constant  "><a href="#constant_NODE_REMOVED" title="NODE_REMOVED :: Generated on persist when a node is removed."><span class="description">Generated on persist when a node is removed.</span><pre>NODE_REMOVED</pre></a></li>
+<li class="constant  "><a href="#constant_PERSIST" title="PERSIST :: If event bundling is supported, this event is used to indicate a
+bundle boundary within the event journal."><span class="description">If event bundling is supported, this event is used to indicate a
+bundle boundary within the event journal.</span><pre>PERSIST</pre></a></li>
+<li class="constant  "><a href="#constant_PROPERTY_ADDED" title="PROPERTY_ADDED :: Generated on persist when a property is added."><span class="description">Generated on persist when a property is added.</span><pre>PROPERTY_ADDED</pre></a></li>
+<li class="constant  "><a href="#constant_PROPERTY_CHANGED" title="PROPERTY_CHANGED :: Generated on persist when a property is changed."><span class="description">Generated on persist when a property is changed.</span><pre>PROPERTY_CHANGED</pre></a></li>
+<li class="constant  "><a href="#constant_PROPERTY_REMOVED" title="PROPERTY_REMOVED :: Generated on persist when a property is removed."><span class="description">Generated on persist when a property is removed.</span><pre>PROPERTY_REMOVED</pre></a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="span8">
+<a id="\PHPCR\Observation\EventInterface"></a><ul class="breadcrumb">
+<li>
+<a href="../index.html"><i class="icon-custom icon-class"></i></a><span class="divider">\</span>
+</li>
+<li><a href="../namespaces/PHPCR.html">PHPCR</a></li>
+<li>
+<span class="divider">\</span><a href="../namespaces/PHPCR.Observation.html">Observation</a>
+</li>
+<li class="active">
+<span class="divider">\</span><a href="../classes/PHPCR.Observation.EventInterface.html">EventInterface</a>
+</li>
+</ul>
+<div class="element interface">
+<p class="short_description">An event fired by the observation mechanism.</p>
+<div class="details">
+<div class="long_description"></div>
+<table class="table table-bordered">
+<tr>
+<th>package</th>
+<td><a href="../packages/phpcr.interfaces.html">phpcr</a></td>
+</tr>
+<tr>
+<th>subpackage</th>
+<td>interfaces</td>
+</tr>
+<tr>
+<th>api</th>
+<td></td>
+</tr>
+</table>
+<h3>
+<i class="icon-custom icon-method"></i> Methods</h3>
+<a id="method_getDate"></a><div class="element clickable method public method_getDate" data-toggle="collapse" data-target=".method_getDate .collapse">
+<h2>Returns the date when the change was persisted that caused this event.</h2>
+<pre>getDate() : integer</pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>The date is represented as a millisecond value that is an offset from the
+Epoch, January 1, 1970 00:00:00.000 GMT (Gregorian). The granularity of
+the returned value is implementation dependent.</p></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+<h3>Exceptions</h3>
+<table class="table table-bordered"><tr>
+<th><code><a href="../classes/PHPCR.RepositoryException.html">\PHPCR\RepositoryException</a></code></th>
+<td>if an error occurs.</td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>integer</code>The date when the change was persisted that caused this event (milliseconds since epoch).</div>
+</div></div>
+</div>
+<a id="method_getIdentifier"></a><div class="element clickable method public method_getIdentifier" data-toggle="collapse" data-target=".method_getIdentifier .collapse">
+<h2>Returns the identifier associated with this event or null if this event
+has no associated identifier.</h2>
+<pre>getIdentifier() : string</pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>The meaning of the associated identifier depends upon the type of the event.
+See event type constants above.</p></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+<h3>Exceptions</h3>
+<table class="table table-bordered"><tr>
+<th><code><a href="../classes/PHPCR.RepositoryException.html">\PHPCR\RepositoryException</a></code></th>
+<td>if an error occurs.</td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>string</code>The identifier associated with this event or null.</div>
+</div></div>
+</div>
+<a id="method_getInfo"></a><div class="element clickable method public method_getInfo" data-toggle="collapse" data-target=".method_getInfo .collapse">
+<h2>Returns the information map associated with this event.</h2>
+<pre>getInfo() : array</pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>The meaning of the map depends upon the type of the event.
+See event type constants above.</p></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+<h3>Exceptions</h3>
+<table class="table table-bordered"><tr>
+<th><code><a href="../classes/PHPCR.RepositoryException.html">\PHPCR\RepositoryException</a></code></th>
+<td>if an error occurs.</td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>array</code>A list containing parameter information for instances of a NODE_MOVED event.</div>
+</div></div>
+</div>
+<a id="method_getPath"></a><div class="element clickable method public method_getPath" data-toggle="collapse" data-target=".method_getPath .collapse">
+<h2>Returns the absolute path associated with this event or null if this
+event has no associated identifier.</h2>
+<pre>getPath() : string</pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>The meaning of the associated path depends upon the type of the event.
+See event type constants above.</p></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+<h3>Exceptions</h3>
+<table class="table table-bordered"><tr>
+<th><code><a href="../classes/PHPCR.RepositoryException.html">\PHPCR\RepositoryException</a></code></th>
+<td>if an error occurs.</td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>string</code>The absolute path associated with this event or null.</div>
+</div></div>
+</div>
+<a id="method_getType"></a><div class="element clickable method public method_getType" data-toggle="collapse" data-target=".method_getType .collapse">
+<h2>Returns the type of this event: a constant defined by this interface.</h2>
+<pre>getType() : integer</pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>One of:
+- NODE_ADDED
+- NODE_REMOVED
+- PROPERTY_ADDED
+- PROPERTY_REMOVED
+- PROPERTY_CHANGED
+- NODE_MOVED
+- PERSIST</p></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>integer</code>the type of this event.</div>
+</div></div>
+</div>
+<a id="method_getUserData"></a><div class="element clickable method public method_getUserData" data-toggle="collapse" data-target=".method_getUserData .collapse">
+<h2>Returns the user data set through ObservationManagerInterface::setUserData() on the
+ObservationManager bound to the Session that caused the event.</h2>
+<pre>getUserData() : string</pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+<h3>Exceptions</h3>
+<table class="table table-bordered"><tr>
+<th><code><a href="../classes/PHPCR.RepositoryException.html">\PHPCR\RepositoryException</a></code></th>
+<td>if an error occurs.</td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>string</code>The user data string.</div>
+</div></div>
+</div>
+<a id="method_getUserID"></a><div class="element clickable method public method_getUserID" data-toggle="collapse" data-target=".method_getUserID .collapse">
+<h2>Returns the user ID connected with this event.</h2>
+<pre>getUserID() : string</pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>This is the string returned by SessionInterface::getUserID() of the session that caused the event.</p></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>string</code>The identifier of the user connected to the event.</div>
+</div></div>
+</div>
+<h3>
+<i class="icon-custom icon-constant"></i> Constants</h3>
+<a id="constant_NODE_ADDED"> </a><div class="element clickable constant  constant_NODE_ADDED" data-toggle="collapse" data-target=".constant_NODE_ADDED .collapse">
+<h2>Generated on persist when a node is added.</h2>
+<pre>NODE_ADDED </pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><ul>
+<li>getPath() returns the absolute path of the node that was added.</li>
+<li>getIdentifier() returns the identifier of the node that was added.</li>
+<li>getInfo() returns an empty array</li>
+</ul></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+</div></div>
+</div>
+<a id="constant_NODE_MOVED"> </a><div class="element clickable constant  constant_NODE_MOVED" data-toggle="collapse" data-target=".constant_NODE_MOVED .collapse">
+<h2>Generated on persist when a node is moved.</h2>
+<pre>NODE_MOVED </pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><ul>
+<li>getPath() returns the absolute path of the destination of the move.</li>
+<li>getIdentifier() returns the identifier of the moved node.</li>
+<li><p>getInfo() If the method that caused this event was a
+SessionInterface::move() or WorkspaceInterface::move() then the
+returned array has keys srcAbsPath and destAbsPath with values
+corresponding to the parameters passed to the move() method.</p>
+
+<p>If the method that caused this event was a NodeInterface::orderBefore()
+then the returned aray has keys srcChildRelPath and destChildRelPath
+with values corresponding to the parameters passed to the orderBefore()
+method.</p></li>
+</ul></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+</div></div>
+</div>
+<a id="constant_NODE_REMOVED"> </a><div class="element clickable constant  constant_NODE_REMOVED" data-toggle="collapse" data-target=".constant_NODE_REMOVED .collapse">
+<h2>Generated on persist when a node is removed.</h2>
+<pre>NODE_REMOVED </pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><ul>
+<li>getPath() returns the absolute path of the node that was removed.</li>
+<li>getIdentifier() returns the identifier of the node that was removed.</li>
+<li>getInfo() returns an empty array</li>
+</ul></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+</div></div>
+</div>
+<a id="constant_PERSIST"> </a><div class="element clickable constant  constant_PERSIST" data-toggle="collapse" data-target=".constant_PERSIST .collapse">
+<h2>If event bundling is supported, this event is used to indicate a
+bundle boundary within the event journal.</h2>
+<pre>PERSIST </pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><ul>
+<li>getPath() returns null.</li>
+<li>getIdentifier() returns null.</li>
+<li>getInfo() returns an empty array.</li>
+</ul></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+</div></div>
+</div>
+<a id="constant_PROPERTY_ADDED"> </a><div class="element clickable constant  constant_PROPERTY_ADDED" data-toggle="collapse" data-target=".constant_PROPERTY_ADDED .collapse">
+<h2>Generated on persist when a property is added.</h2>
+<pre>PROPERTY_ADDED </pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><ul>
+<li>getPath() returns the absolute path of the property that was added.</li>
+<li>getIdentifier() returns the identifier of the parent node of the property that was added.</li>
+<li>getInfo() returns an empty array</li>
+</ul></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+</div></div>
+</div>
+<a id="constant_PROPERTY_CHANGED"> </a><div class="element clickable constant  constant_PROPERTY_CHANGED" data-toggle="collapse" data-target=".constant_PROPERTY_CHANGED .collapse">
+<h2>Generated on persist when a property is changed.</h2>
+<pre>PROPERTY_CHANGED </pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><ul>
+<li>getPath() returns the absolute path of the property that was changed.</li>
+<li>getIdentifier() returns the identifier of the parent node of the property that was changed.</li>
+<li>getInfo() returns an empty array</li>
+</ul></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+</div></div>
+</div>
+<a id="constant_PROPERTY_REMOVED"> </a><div class="element clickable constant  constant_PROPERTY_REMOVED" data-toggle="collapse" data-target=".constant_PROPERTY_REMOVED .collapse">
+<h2>Generated on persist when a property is removed.</h2>
+<pre>PROPERTY_REMOVED </pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><ul>
+<li>getPath() returns the absolute path of the property that was removed.</li>
+<li>getIdentifier() returns the identifier of the parent node of the property that was removed.</li>
+<li>getInfo() returns an empty array</li>
+</ul></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+</div></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="row"><footer class="span12">
+            Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
+            Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a10</a> and<br>
+            generated on 2012-10-02T11:24:44+02:00.<br></footer></div>
+</div>
+</body>
+</html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><title>PHPCR API and PHPCR-Utils</title><meta http-equiv="Content-Type" content="text/html; charset=utf-8"></meta><link rel="stylesheet" href="../css/template.css" type="text/css"></link><script type="text/javascript" src="../js/jquery-1.4.2.min.js"></script><script type="text/javascript" src="../js/jquery.tools.min.js"></script><script type="text/javascript" src="../js/jquery-ui-1.8.2.custom.min.js"></script><script type="text/javascript" src="../js/template.js"></script></head><body><div id="content"><h1 class="file">phpcr/src/PHPCR/Lock/LockManagerInterface.php</h1><div id="file-nav-box"><div id="file-nav-options">
+              Show:
+              <img src="../images/icons/visibility_public.png" alt="Public" id="show-public"></img><img src="../images/icons/visibility_protected.png" alt="Protected" id="show-protected"></img><img src="../images/icons/visibility_private.png" alt="Private" id="show-private"></img><span class="attribute" id="show-inherited">inherited</span></div><div id="file-nav-container"><ul id="file-nav"></ul><div style="clear: left;"></div></div><div id="file-nav-tab">
+              Table of Contents
+          </div></div><a name="top" class="anchor"></a><div id="file-description"><div class="short-description">This file is part of the PHPCR API and was originally ported from the Java
+JCR API to PHP by Karsten Dambekalns for the FLOW3 project.</div><div class="long-description"><p>Copyright 2008-2011 Karsten Dambekalns <a href="&#109;&#x61;&#x69;&#108;&#116;&#x6f;&#58;&#107;&#x61;&#114;&#115;&#x74;e&#110;&#x40;&#x74;&#121;&#x70;&#x6f;&#51;&#46;&#x6f;&#114;&#103;">&#107;&#x61;&#114;&#115;&#x74;e&#110;&#x40;&#x74;&#121;&#x70;&#x6f;&#51;&#46;&#x6f;&#114;&#103;</a></p>
+
+<p>Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at</p>
+
+<pre><code>http://www.apache.org/licenses/LICENSE-2.0
+</code></pre>
+
+<p>Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.</p></div></div><dl class="file-info"><dt>License</dt><dd><a href="http://www.apache.org/licenses/LICENSE-2.0">Apache Software License 2.0</a>
+         
+    </dd><dt>Link</dt><dd><a href="http://phpcr.github.com/">http://phpcr.github.com/</a>
+         
+    </dd></dl><a name="interfaces" class="anchor"></a><a id="\PHPCR\Lock\LockManagerInterface" class="anchor"></a><h2 class="interface">\PHPCR\Lock\LockManagerInterface<div class="to-top"><a href="#top">jump to top</a></div></h2><div class="class"><small class="package"><b>Package: </b>phpcr\interfaces</small><div class="short-description">This interface encapsulates methods for the management of locks.</div><div class="long-description"><p>The \Traversable interface enables the implementation to be addressed with
+<b>foreach</b>. LockManager has to implement either \IteratorAggregate or
+\Iterator.
+The iterator is equivalent to <b>getLockTokens()</b> returning a list of all
+locks. The iterator keys have no significant meaning.</p></div><dl class="class-info"><dt>Parent(s)</dt><dd>\Traversable</dd><dt>Api</dt><dd>
+         
+    </dd></dl><h3>Methods</h3><div><a id="\PHPCR\Lock\LockManagerInterface::addLockToken()" class="anchor"></a><div class="method public"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png"></img><img src="../images/icons/arrow_down.png" style="display: none;"></img></a><code class="title"><img src="../images/icons/method.png" alt="method" title="method"></img><img src="../images/icons/visibility_public.png" style="margin-right: 5px" alt="public"></img><span class="highlight">addLockToken</span><span class="nb-faded-text">(string $lockToken)</span> : void</code><div class="description"><p class="short_description">Adds the specified lock token to the current Session.</p></div><div class="code-tabs"><div class="long-description"><p>Holding a lock token makes the current Session the owner of the lock
+specified by that particular lock token.</p></div><strong>Parameters</strong><table class="argument-info"><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><th>$lockToken</th><td>string</td><td><em><p>A lock token (a string).</p>
+</em></td></tr></table><strong>Throws</strong><table class="argument-info"><thead><tr><th>Exception</th><th>Description</th></tr></thead><tr><td><a href="../files/phpcr.src.PHPCR.Lock.LockException.html#\PHPCR\Lock\LockException">\PHPCR\Lock\LockException</a></td><td><em>if the specified lock token is already
+     held by another Session and the implementation does not support
+     simultaneous ownership of open-scoped locks.</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.RepositoryException.html#\PHPCR\RepositoryException">\PHPCR\RepositoryException</a></td><td><em>if another error occurs.</em></td></tr></table><strong>Details</strong><dl class="function-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\Lock\LockManagerInterface::getLock()" class="anchor"></a><div class="method public"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png"></img><img src="../images/icons/arrow_down.png" style="display: none;"></img></a><code class="title"><img src="../images/icons/method.png" alt="method" title="method"></img><img src="../images/icons/visibility_public.png" style="margin-right: 5px" alt="public"></img><span class="highlight">getLock</span><span class="nb-faded-text">(string $absPath)</span> : <a href="../files/phpcr.src.PHPCR.Lock.LockInterface.html#\PHPCR\Lock\LockInterface">\PHPCR\Lock\LockInterface</a></code><div class="description"><p class="short_description">Returns the Lock object that applies to the node at the specified
+absPath.</p></div><div class="code-tabs"><div class="long-description"><p>This may be either a lock on that node itself or a deep lock on a node
+above that node.</p></div><strong>Parameters</strong><table class="argument-info"><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><th>$absPath</th><td>string</td><td><em><p>absolute path of node for which to obtain the lock.</p></em></td></tr></table><strong>Returns</strong><table class="argument-info"><thead><tr><th>Type</th><th>Description</th></tr></thead><tr><td><a href="../files/phpcr.src.PHPCR.Lock.LockInterface.html#\PHPCR\Lock\LockInterface">\PHPCR\Lock\LockInterface</a></td><td>The applicable Lock object.</td></tr></table><strong>Throws</strong><table class="argument-info"><thead><tr><th>Exception</th><th>Description</th></tr></thead><tr><td><a href="../files/phpcr.src.PHPCR.Lock.LockException.html#\PHPCR\Lock\LockException">\PHPCR\Lock\LockException</a></td><td><em>if no lock applies to this node.</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.AccessDeniedException.html#\PHPCR\AccessDeniedException">\PHPCR\AccessDeniedException</a></td><td><em>if the current session does not
+     have sufficient access to get the lock.</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.PathNotFoundException.html#\PHPCR\PathNotFoundException">\PHPCR\PathNotFoundException</a></td><td><em>if no node is found at $absPath</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.RepositoryException.html#\PHPCR\RepositoryException">\PHPCR\RepositoryException</a></td><td><em>if another error occurs.</em></td></tr></table><strong>Details</strong><dl class="function-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\Lock\LockManagerInterface::getLockTokens()" class="anchor"></a><div class="method public"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png"></img><img src="../images/icons/arrow_down.png" style="display: none;"></img></a><code class="title"><img src="../images/icons/method.png" alt="method" title="method"></img><img src="../images/icons/visibility_public.png" style="margin-right: 5px" alt="public"></img><span class="highlight">getLockTokens</span><span class="nb-faded-text">()</span> : array</code><div class="description"><p class="short_description">Gets the list of previously registered tokens.</p></div><div class="code-tabs"><div class="long-description"><p>Returns an array containing all lock tokens currently held by the
+current Session. Note that any such tokens will represent open-scoped
+locks, since session-scoped locks do not have tokens.</p></div><strong>Returns</strong><table class="argument-info"><thead><tr><th>Type</th><th>Description</th></tr></thead><tr><td>array</td><td>an array of lock tokens (strings)</td></tr></table><strong>Throws</strong><table class="argument-info"><thead><tr><th>Exception</th><th>Description</th></tr></thead><tr><td><a href="../files/phpcr.src.PHPCR.RepositoryException.html#\PHPCR\RepositoryException">\PHPCR\RepositoryException</a></td><td><em>if an error occurs.</em></td></tr></table><strong>Details</strong><dl class="function-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\Lock\LockManagerInterface::holdsLock()" class="anchor"></a><div class="method public"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png"></img><img src="../images/icons/arrow_down.png" style="display: none;"></img></a><code class="title"><img src="../images/icons/method.png" alt="method" title="method"></img><img src="../images/icons/visibility_public.png" style="margin-right: 5px" alt="public"></img><span class="highlight">holdsLock</span><span class="nb-faded-text">(string $absPath)</span> : boolean</code><div class="description"><p class="short_description">Determines if the node identified by the passed path holds a lock.</p></div><div class="code-tabs"><div class="long-description"><p>Returns true if the node at absPath holds a lock; otherwise returns
+false. To hold a lock means that this node has actually had a lock
+placed on it specifically, as opposed to just having a lock apply to it
+due to a deep lock held by a node above.</p></div><strong>Parameters</strong><table class="argument-info"><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><th>$absPath</th><td>string</td><td><em><p>The absolute path of node to be checked.</p></em></td></tr></table><strong>Returns</strong><table class="argument-info"><thead><tr><th>Type</th><th>Description</th></tr></thead><tr><td>boolean</td><td>True, if the node identified by the given path holds a
+     lock, else false.</td></tr></table><strong>Throws</strong><table class="argument-info"><thead><tr><th>Exception</th><th>Description</th></tr></thead><tr><td><a href="../files/phpcr.src.PHPCR.PathNotFoundException.html#\PHPCR\PathNotFoundException">\PHPCR\PathNotFoundException</a></td><td><em>if no node is found at $absPath</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.RepositoryException.html#\PHPCR\RepositoryException">\PHPCR\RepositoryException</a></td><td><em>if an error occurs.</em></td></tr></table><strong>Details</strong><dl class="function-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\Lock\LockManagerInterface::isLocked()" class="anchor"></a><div class="method public"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png"></img><img src="../images/icons/arrow_down.png" style="display: none;"></img></a><code class="title"><img src="../images/icons/method.png" alt="method" title="method"></img><img src="../images/icons/visibility_public.png" style="margin-right: 5px" alt="public"></img><span class="highlight">isLocked</span><span class="nb-faded-text">(string $absPath)</span> : boolean</code><div class="description"><p class="short_description">Determines if the node at absPath is locked.</p></div><div class="code-tabs"><div class="long-description"><p>Returns true if the node at absPath is locked either as a result of a
+lock held by that node or by a deep lock on a node above that node;
+otherwise returns false.</p></div><strong>Parameters</strong><table class="argument-info"><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><th>$absPath</th><td>string</td><td><em><p>The absolute path of a node to be checked.</p></em></td></tr></table><strong>Returns</strong><table class="argument-info"><thead><tr><th>Type</th><th>Description</th></tr></thead><tr><td>boolean</td><td>True, if the identified node has a lock.</td></tr></table><strong>Throws</strong><table class="argument-info"><thead><tr><th>Exception</th><th>Description</th></tr></thead><tr><td><a href="../files/phpcr.src.PHPCR.PathNotFoundException.html#\PHPCR\PathNotFoundException">\PHPCR\PathNotFoundException</a></td><td><em>if no node is found at $absPath.</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.RepositoryException.html#\PHPCR\RepositoryException">\PHPCR\RepositoryException</a></td><td><em>if an error occurs.</em></td></tr></table><strong>Details</strong><dl class="function-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\Lock\LockManagerInterface::lock()" class="anchor"></a><div class="method public"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png"></img><img src="../images/icons/arrow_down.png" style="display: none;"></img></a><code class="title"><img src="../images/icons/method.png" alt="method" title="method"></img><img src="../images/icons/visibility_public.png" style="margin-right: 5px" alt="public"></img><span class="highlight">lock</span><span class="nb-faded-text">(string $absPath, boolean $isDeep, boolean $isSessionScoped, integer $timeoutHint = PHP_INT_MAX, string $ownerInfo = null)</span> : <a href="../files/phpcr.src.PHPCR.Lock.LockInterface.html#\PHPCR\Lock\LockInterface">\PHPCR\Lock\LockInterface</a></code><div class="description"><p class="short_description">Places a lock on the node at absPath.</p></div><div class="code-tabs"><div class="long-description"><p>If successful, the node is said to hold the lock.</p>
+
+<p>If <b>isDeep</b> is true then the lock applies to the specified node and
+all its descendant nodes; if false, the lock applies only to the
+specified node. On a successful lock, the jcr:lockIsDeep property of the
+locked node is set to this value.</p>
+
+<p>If <b>isSessionScoped</b> is true then this lock will expire upon the
+expiration of the current session (either through an automatic or
+explicit SessionInterface::logout()); if false, this lock does not
+expire until it is explicitly unlocked, it times out, or it is
+automatically unlocked due to a implementation-specific limitation.</p>
+
+<p>The <b>timeout</b> parameter specifies the number of seconds until the
+lock times out (if it is not refreshed with LockInterface::refresh() in
+the meantime). An implementation may use this information as a hint or
+ignore it altogether. Clients can discover the actual timeout by
+inspecting the returned Lock object.</p>
+
+<p>The <b>ownerInfo</b> parameter can be used to pass a string holding
+owner information relevant to the client. An implementation may either
+use or ignore this parameter. If it uses the parameter it must set the
+jcr:lockOwner property of the locked node to this value and return this
+value on LockInterface::getLockOwner(). If it ignores this parameter the
+jcr:lockOwner property (and the value returned by
+LockInterface::getLockOwner()) is set to either the value returned by
+SessionInterface::getUserID() of the owning session or an
+implementation-specific string identifying the owner.</p>
+
+<p>The method returns a Lock object representing the new lock. If the lock
+is open-scoped the returned lock will include a lock token. The lock
+token is also automatically added to the set of lock tokens held by the
+current session.</p>
+
+<p>The addition or change of the properties jcr:lockIsDeep and
+jcr:lockOwnerare persisted immediately; there is no need to call save.</p>
+
+<p>It is possible to lock a node even if it is checked-in.</p></div><strong>Parameters</strong><table class="argument-info"><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><th>$absPath</th><td>string</td><td><em><p>The absolute path of node to be locked</p></em></td></tr><tr><th>$isDeep</th><td>boolean</td><td><em><p>If true this lock will apply to this node and all its descendants; if false, it applies only to this node.</p></em></td></tr><tr><th>$isSessionScoped</th><td>boolean</td><td><em><p>If true, this lock expires with the current session; if false it expires when explicitly or automatically unlocked for some other reason.</p></em></td></tr><tr><th>$timeoutHint</th><td>integer</td><td><em><p>Desired lock timeout in seconds (servers are free to ignore this value); specify PHP_INT_MAX for no timeout. If not specified, defaults to no timeout.</p>
+</em></td></tr><tr><th>$ownerInfo</th><td>string</td><td><em><p>A string containing owner information supplied by the client; servers are free to ignore this value. If none is specified, the implementation chooses one (i.e. user name of current backend authentication credentials)</p>
+</em></td></tr></table><strong>Returns</strong><table class="argument-info"><thead><tr><th>Type</th><th>Description</th></tr></thead><tr><td><a href="../files/phpcr.src.PHPCR.Lock.LockInterface.html#\PHPCR\Lock\LockInterface">\PHPCR\Lock\LockInterface</a></td><td>A Lock object containing a lock token.</td></tr></table><strong>Throws</strong><table class="argument-info"><thead><tr><th>Exception</th><th>Description</th></tr></thead><tr><td><a href="../files/phpcr.src.PHPCR.Lock.LockException.html#\PHPCR\Lock\LockException">\PHPCR\Lock\LockException</a></td><td><em>if this node is not mix:lockable or
+     this node is already locked or isDeep is true and a descendant node
+     of this node already holds a lock.</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.AccessDeniedException.html#\PHPCR\AccessDeniedException">\PHPCR\AccessDeniedException</a></td><td><em>if this session does not have
+     sufficient access to lock this node.</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.InvalidItemStateException.html#\PHPCR\InvalidItemStateException">\PHPCR\InvalidItemStateException</a></td><td><em>if this node has pending
+     unsaved changes.</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.PathNotFoundException.html#\PHPCR\PathNotFoundException">\PHPCR\PathNotFoundException</a></td><td><em>if no node is found at $absPath</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.RepositoryException.html#\PHPCR\RepositoryException">\PHPCR\RepositoryException</a></td><td><em>if another error occurs.</em></td></tr></table><strong>Details</strong><dl class="function-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\Lock\LockManagerInterface::removeLockToken()" class="anchor"></a><div class="method public"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png"></img><img src="../images/icons/arrow_down.png" style="display: none;"></img></a><code class="title"><img src="../images/icons/method.png" alt="method" title="method"></img><img src="../images/icons/visibility_public.png" style="margin-right: 5px" alt="public"></img><span class="highlight">removeLockToken</span><span class="nb-faded-text">(string $lockToken)</span> : void</code><div class="description"><p class="short_description">Removes the specified lock token from this Session.</p></div><div class="code-tabs"><div class="long-description"></div><strong>Parameters</strong><table class="argument-info"><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><th>$lockToken</th><td>string</td><td><em><ul>
+<li>a lock token (a string)</li>
+</ul>
+</em></td></tr></table><strong>Throws</strong><table class="argument-info"><thead><tr><th>Exception</th><th>Description</th></tr></thead><tr><td><a href="../files/phpcr.src.PHPCR.Lock.LockException.html#\PHPCR\Lock\LockException">\PHPCR\Lock\LockException</a></td><td><em>if the current Session does not hold
+     the specified lock token.</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.RepositoryException.html#\PHPCR\RepositoryException">\PHPCR\RepositoryException</a></td><td><em>if another error occurs.</em></td></tr></table><strong>Details</strong><dl class="function-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\Lock\LockManagerInterface::unlock()" class="anchor"></a><div class="method public"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png"></img><img src="../images/icons/arrow_down.png" style="display: none;"></img></a><code class="title"><img src="../images/icons/method.png" alt="method" title="method"></img><img src="../images/icons/visibility_public.png" style="margin-right: 5px" alt="public"></img><span class="highlight">unlock</span><span class="nb-faded-text">(string $absPath)</span> : void</code><div class="description"><p class="short_description">Removes the lock on the node at absPath.</p></div><div class="code-tabs"><div class="long-description"><p>Also removes the properties jcr:lockOwner and jcr:lockIsDeep from that
+node. As well, the corresponding lock token is removed from the set of
+lock tokens held by the current Session.</p>
+
+<p>If the node does not currently hold a lock or holds a lock for which
+this Session is not the owner and is not a "lock-superuser", then a
+\PHPCR\Lock\LockException is thrown.</p>
+
+<p><b>Note:</b>
+However that the system may give permission to a non-owning session
+to unlock a lock. Typically such "lock-superuser" capability is intended
+to facilitate administrational clean-up of orphaned open-scoped locks.</p>
+
+<p>Note that it is possible to unlock a node even if it is checked-in (the
+lock-related properties will be changed despite the checked-in status).</p></div><strong>Parameters</strong><table class="argument-info"><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><th>$absPath</th><td>string</td><td><em><p>The absolute path of node to be unlocked.</p></em></td></tr></table><strong>Throws</strong><table class="argument-info"><thead><tr><th>Exception</th><th>Description</th></tr></thead><tr><td><a href="../files/phpcr.src.PHPCR.Lock.LockException.html#\PHPCR\Lock\LockException">\PHPCR\Lock\LockException</a></td><td><em>If this node does not currently hold a
+     lock or holds a lock for which this Session does not have the
+     correct lock token.</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.AccessDeniedException.html#\PHPCR\AccessDeniedException">\PHPCR\AccessDeniedException</a></td><td><em>if the current session does not
+     have permission to unlock this node.</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.InvalidItemStateException.html#\PHPCR\InvalidItemStateException">\PHPCR\InvalidItemStateException</a></td><td><em>if this node has pending
+     unsaved changes.</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.PathNotFoundException.html#\PHPCR\PathNotFoundException">\PHPCR\PathNotFoundException</a></td><td><em>if no node is found at $absPath</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.RepositoryException.html#\PHPCR\RepositoryException">\PHPCR\RepositoryException</a></td><td><em>if another error occurs.</em></td></tr></table><strong>Details</strong><dl class="function-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div></div></div></div><small class="footer">
+            Documentation was generated by
+            <a href="http://phpdoc.org">phpDocumentor
+                2.0.0a10</a>.
+        </small></body></html>

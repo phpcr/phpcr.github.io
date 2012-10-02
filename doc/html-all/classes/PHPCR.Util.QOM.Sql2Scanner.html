@@ -1,0 +1,280 @@
+<!DOCTYPE html><html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+<meta charset="utf-8">
+<title>PHPCR API and PHPCR-Utils » \PHPCR\Util\QOM\Sql2Scanner</title>
+<meta name="author" content="Mike van Riel">
+<meta name="description" content="">
+<link href="../css/template.css" rel="stylesheet" media="all">
+<script src="../js/jquery-1.7.1.min.js" type="text/javascript"></script><script src="../js/jquery-ui-1.8.2.custom.min.js" type="text/javascript"></script><script src="../js/jquery.mousewheel.min.js" type="text/javascript"></script><script src="../js/bootstrap.js" type="text/javascript"></script><script src="../js/template.js" type="text/javascript"></script><script src="../js/prettify/prettify.min.js" type="text/javascript"></script><link rel="shortcut icon" href="../img/favicon.ico">
+<link rel="apple-touch-icon" href="../img/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="72x72" href="../img/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="114x114" href="../img/apple-touch-icon-114x114.png">
+</head>
+<body>
+<div class="navbar navbar-fixed-top">
+<div class="navbar-inner"><div class="container">
+<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a><a class="brand" href="../index.html">PHPCR API and PHPCR-Utils</a><div class="nav-collapse"><ul class="nav">
+<li class="dropdown">
+<a href="#api" class="dropdown-toggle" data-toggle="dropdown">
+                                    API Documentation <b class="caret"></b></a><ul class="dropdown-menu">
+<li><a>Namespaces</a></li>
+<li><a href="../namespaces/PHPCR.html"><i class="icon-th"></i> PHPCR</a></li>
+<li><a>Packages</a></li>
+<li><a href="../packages/Default.html"><i class="icon-folder-open"></i> Default</a></li>
+<li><a href="../packages/phpcr.html"><i class="icon-folder-open"></i> phpcr</a></li>
+</ul>
+</li>
+<li class="dropdown" id="charts-menu">
+<a href="#charts" class="dropdown-toggle" data-toggle="dropdown">
+                                    Charts <b class="caret"></b></a><ul class="dropdown-menu"><li><a href="../graph_class.html"><i class="icon-list-alt"></i> Class hierarchy diagram</a></li></ul>
+</li>
+<li class="dropdown" id="reports-menu">
+<a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
+                                    Reports <b class="caret"></b></a><ul class="dropdown-menu">
+<li><a href="../errors.html"><i class="icon-remove-sign"></i> Errors 
+                <span class="label label-info">123</span></a></li>
+<li><a href="../markers.html"><i class="icon-map-marker"></i> Markers 
+                <ul><li>todo 
+                <span class="label label-info">12</span>
+</li></ul></a></li>
+<li><a href="../deprecated.html"><i class="icon-stop"></i> Deprecated elements 
+                <span class="label label-info">0</span></a></li>
+</ul>
+</li>
+</ul></div>
+</div></div>
+<div class="go_to_top"><a href="#___" style="color: inherit">Back to top  <i class="icon-upload icon-white"></i></a></div>
+</div>
+<div id="___" class="container">
+<noscript><div class="alert alert-warning">
+                            Javascript is disabled; several features are only available
+                            if Javascript is enabled.
+                        </div></noscript>
+<div class="row">
+<div class="span4">
+<span class="btn-group visibility" data-toggle="buttons-checkbox"><button class="btn public active" title="Show public elements">Public</button><button class="btn protected" title="Show protected elements">Protected</button><button class="btn private" title="Show private elements">Private</button><button class="btn inherited active" title="Show inherited elements">Inherited</button></span><div class="btn-group view pull-right" data-toggle="buttons-radio">
+<button class="btn details" title="Show descriptions and method names"><i class="icon-list"></i></button><button class="btn simple" title="Show only method names"><i class="icon-align-justify"></i></button>
+</div>
+<ul class="side-nav nav nav-list">
+<li class="nav-header">
+<i class="icon-custom icon-method"></i> Methods
+                    <ul>
+<li class="method public "><a href="#method___construct" title="__construct :: Construct a scanner with the given SQL2 statement"><span class="description">Construct a scanner with the given SQL2 statement</span><pre>__construct()</pre></a></li>
+<li class="method public "><a href="#method_expectToken" title="expectToken :: Expect the next token to be the given one and throw an exception if it's
+not the case."><span class="description">Expect the next token to be the given one and throw an exception if it's
+not the case.</span><pre>expectToken()</pre></a></li>
+<li class="method public "><a href="#method_expectTokens" title="expectTokens :: Expect the next tokens to be the one given in the array of tokens and
+throws an exception if it's not the case."><span class="description">Expect the next tokens to be the one given in the array of tokens and
+throws an exception if it's not the case.</span><pre>expectTokens()</pre></a></li>
+<li class="method public "><a href="#method_fetchNextToken" title="fetchNextToken :: Get the next token and remove it from the queue."><span class="description">Get the next token and remove it from the queue.</span><pre>fetchNextToken()</pre></a></li>
+<li class="method public "><a href="#method_lookupNextToken" title="lookupNextToken :: Get the next token without removing it from the queue."><span class="description">Get the next token without removing it from the queue.</span><pre>lookupNextToken()</pre></a></li>
+<li class="method public "><a href="#method_tokenIs" title="tokenIs :: Test the equality of two tokens"><span class="description">Test the equality of two tokens</span><pre>tokenIs()</pre></a></li>
+</ul>
+</li>
+<li class="nav-header protected">» Protected
+                    <ul>
+<li class="method protected "><a href="#method_scan" title="scan :: Scan a SQL2 string a extract the tokens"><span class="description">Scan a SQL2 string a extract the tokens</span><pre>scan()</pre></a></li>
+<li class="method protected "><a href="#method_tokenize" title="tokenize :: Tokenize a string returned by strtok to split the string at '.', ',', '(', '='
+and ')' characters."><span class="description">Tokenize a string returned by strtok to split the string at '.', ',', '(', '='
+and ')' characters.</span><pre>tokenize()</pre></a></li>
+</ul>
+</li>
+<li class="nav-header">
+<i class="icon-custom icon-property"></i> Properties
+                    <ul></ul>
+</li>
+<li class="nav-header protected">» Protected
+                    <ul>
+<li class="property protected "><a href="#property_curpos" title="$curpos :: "><span class="description">$curpos</span><pre>$curpos</pre></a></li>
+<li class="property protected "><a href="#property_sql2" title="$sql2 :: "><span class="description">$sql2</span><pre>$sql2</pre></a></li>
+<li class="property protected "><a href="#property_tokens" title="$tokens :: "><span class="description">$tokens</span><pre>$tokens</pre></a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="span8">
+<a id="\PHPCR\Util\QOM\Sql2Scanner"></a><ul class="breadcrumb">
+<li>
+<a href="../index.html"><i class="icon-custom icon-class"></i></a><span class="divider">\</span>
+</li>
+<li><a href="../namespaces/PHPCR.html">PHPCR</a></li>
+<li>
+<span class="divider">\</span><a href="../namespaces/PHPCR.Util.html">Util</a>
+</li>
+<li>
+<span class="divider">\</span><a href="../namespaces/PHPCR.Util.QOM.html">QOM</a>
+</li>
+<li class="active">
+<span class="divider">\</span><a href="../classes/PHPCR.Util.QOM.Sql2Scanner.html">Sql2Scanner</a>
+</li>
+</ul>
+<div class="element class">
+<p class="short_description">Split an SQL2 statement into string tokens.</p>
+<div class="details">
+<div class="long_description"><p>Allows lookup and fetching of tokens.</p></div>
+<h3>
+<i class="icon-custom icon-method"></i> Methods</h3>
+<a id="method___construct"></a><div class="element clickable method public method___construct" data-toggle="collapse" data-target=".method___construct .collapse">
+<h2>Construct a scanner with the given SQL2 statement</h2>
+<pre>__construct(string $sql2) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$sql2</h4>
+<code>string</code>
+</div>
+</div></div>
+</div>
+<a id="method_expectToken"></a><div class="element clickable method public method_expectToken" data-toggle="collapse" data-target=".method_expectToken .collapse">
+<h2>Expect the next token to be the given one and throw an exception if it's
+not the case.</h2>
+<pre>expectToken(string $token, boolean $case_insensitive) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>The equality test is done case sensitively/insensitively
+depending on the second parameter.</p></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$token</h4>
+<code>string</code><p>The expected token</p></div>
+<div class="subelement argument">
+<h4>$case_insensitive</h4>
+<code>boolean</code>
+</div>
+</div></div>
+</div>
+<a id="method_expectTokens"></a><div class="element clickable method public method_expectTokens" data-toggle="collapse" data-target=".method_expectTokens .collapse">
+<h2>Expect the next tokens to be the one given in the array of tokens and
+throws an exception if it's not the case.</h2>
+<pre>expectTokens(array $tokens, boolean $case_insensitive) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>see</th>
+<td><a href="">\PHPCR\Util\QOM\expectToken</a></td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$tokens</h4>
+<code>array</code>
+</div>
+<div class="subelement argument">
+<h4>$case_insensitive</h4>
+<code>boolean</code>
+</div>
+</div></div>
+</div>
+<a id="method_fetchNextToken"></a><div class="element clickable method public method_fetchNextToken" data-toggle="collapse" data-target=".method_fetchNextToken .collapse">
+<h2>Get the next token and remove it from the queue.</h2>
+<pre>fetchNextToken() : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>Return an empty string when there are no more tokens.</p></div>
+<h3>Returns</h3>
+<div class="subelement response"><code>string</code></div>
+</div></div>
+</div>
+<a id="method_lookupNextToken"></a><div class="element clickable method public method_lookupNextToken" data-toggle="collapse" data-target=".method_lookupNextToken .collapse">
+<h2>Get the next token without removing it from the queue.</h2>
+<pre>lookupNextToken($offset) : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>Return an empty string when there are no more tokens.</p></div>
+<h3>Parameters</h3>
+<div class="subelement argument"><h4>$offset</h4></div>
+<h3>Returns</h3>
+<div class="subelement response"><code>string</code></div>
+</div></div>
+</div>
+<a id="method_tokenIs"></a><div class="element clickable method public method_tokenIs" data-toggle="collapse" data-target=".method_tokenIs .collapse">
+<h2>Test the equality of two tokens</h2>
+<pre>tokenIs(string $token, string $value, boolean $case_insensitive) : boolean</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$token</h4>
+<code>string</code>
+</div>
+<div class="subelement argument">
+<h4>$value</h4>
+<code>string</code>
+</div>
+<div class="subelement argument">
+<h4>$case_insensitive</h4>
+<code>boolean</code>
+</div>
+<h3>Returns</h3>
+<div class="subelement response"><code>boolean</code></div>
+</div></div>
+</div>
+<a id="method_scan"></a><div class="element clickable method protected method_scan" data-toggle="collapse" data-target=".method_scan .collapse">
+<h2>Scan a SQL2 string a extract the tokens</h2>
+<pre>scan(string $sql2) : array</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$sql2</h4>
+<code>string</code>
+</div>
+<h3>Returns</h3>
+<div class="subelement response"><code>array</code></div>
+</div></div>
+</div>
+<a id="method_tokenize"></a><div class="element clickable method protected method_tokenize" data-toggle="collapse" data-target=".method_tokenize .collapse">
+<h2>Tokenize a string returned by strtok to split the string at '.', ',', '(', '='
+and ')' characters.</h2>
+<pre>tokenize(array $tokens, string $token) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$tokens</h4>
+<code>array</code>
+</div>
+<div class="subelement argument">
+<h4>$token</h4>
+<code>string</code>
+</div>
+</div></div>
+</div>
+<h3>
+<i class="icon-custom icon-property"></i> Properties</h3>
+<a id="property_curpos"> </a><div class="element clickable property protected property_curpos" data-toggle="collapse" data-target=".property_curpos .collapse">
+<h2>$curpos</h2>
+<pre>$curpos : int</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="property_sql2"> </a><div class="element clickable property protected property_sql2" data-toggle="collapse" data-target=".property_sql2 .collapse">
+<h2>$sql2</h2>
+<pre>$sql2 : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+<a id="property_tokens"> </a><div class="element clickable property protected property_tokens" data-toggle="collapse" data-target=".property_tokens .collapse">
+<h2>$tokens</h2>
+<pre>$tokens : array</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description"><div class="long_description"></div></div></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="row"><footer class="span12">
+            Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
+            Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a10</a> and<br>
+            generated on 2012-10-02T11:24:45+02:00.<br></footer></div>
+</div>
+</body>
+</html>

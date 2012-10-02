@@ -1,0 +1,1207 @@
+<html xmlns="http://www.w3.org/1999/xhtml"><head><title>PHPCR API doc including the PHPCR utils</title><meta http-equiv="Content-Type" content="text/html; charset=utf-8"></meta><link rel="stylesheet" href="css/black-tie/jquery-ui-1.8.2.custom.css" type="text/css"></link><link rel="stylesheet" href="css/jquery.treeview.css" type="text/css"></link><link rel="stylesheet" href="css/default.css" type="text/css"></link><script type="text/javascript" src="js/jquery-1.4.2.min.js"></script><script type="text/javascript" src="js/jquery-ui-1.8.2.custom.min.js"></script><script type="text/javascript" src="js/jquery.cookie.js"></script><script type="text/javascript" src="js/jquery.treeview.js"></script></head><body><script type="text/javascript">
+          $(document).ready(function()
+          {
+            $(".filetree").treeview({
+              animated: "fast",
+              collapsed: true,
+              persist: "cookie"
+            });
+          });
+
+          function jq_escape(myid)
+          {
+            return '#' + myid.replace(/(#|\$|:|\.|\(|\))/g, '\\$1');
+          }
+
+          function applySearchHash()
+          {
+            hashes = document.location.hash.substr(1, document.location.hash.length);
+            if (hashes != "")
+            {
+              hashes = hashes.split('/');
+              $.each(hashes, function(index, hash)
+              {
+                node = $(jq_escape(hash));
+                switch (node[0].nodeName)
+                {
+                  case 'DIV':
+                    tabs = node.parents('.tabs');
+                    $(tabs[0]).tabs('select', '#' + hash)
+                    break;
+                  case 'A':
+                    window.scrollTo(0, node.offset().top);
+                    break;
+                }
+              });
+            }
+          }
+
+          jQuery(function()
+          {
+            jQuery(".tabs").tabs();
+            applySearchHash();
+          });
+        </script><div id="maincontainer"><div id="header"><h1>PHPCR API doc including the PHPCR utils<img src="images/top-stopper.png"></img></h1></div><ul xmlns="" id="menu">
+<li><a href="graph.html">Class diagram</a></li>
+<li><a href="markers.html">TODO / Markers</a></li>
+<li><a href="parse_markers.html">Errors</a></li>
+</ul>
+<div id="content_container"><div xmlns="" id="content">
+<h1>phpcr/src/PHPCR/RepositoryInterface.php</h1>
+<div class="file_menu"><a href="#interfaces">Interfaces</a></div>
+<div class="properties">
+<h1>Properties</h1>
+<label class="property-key">license</label><div class="property-value"></div>
+<label class="property-key">link</label><div class="property-value"></div>
+</div>
+<h2>Description</h2>This file is part of the PHPCR API and was originally ported from the Java
+JCR API to PHP by Karsten Dambekalns for the FLOW3 project.<br><br><p>Copyright 2008-2011 Karsten Dambekalns <a href="&#109;&#x61;&#x69;&#108;&#116;&#x6f;&#58;&#107;&#x61;&#114;&#115;&#x74;e&#110;&#x40;&#x74;&#121;&#x70;&#x6f;&#51;&#46;&#x6f;&#114;&#103;">&#107;&#x61;&#114;&#115;&#x74;e&#110;&#x40;&#x74;&#121;&#x70;&#x6f;&#51;&#46;&#x6f;&#114;&#103;</a></p>
+
+<p>Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at</p>
+
+<pre><code>http://www.apache.org/licenses/LICENSE-2.0
+</code></pre>
+
+<p>Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.</p><br><a name="interfaces"></a><h2>Interfaces</h2>
+<div id="RepositoryInterface" class="interface">
+<h3>RepositoryInterface</h3>
+<div class="properties">
+<h1>Properties</h1>
+<label class="property-key">Extends</label><div class="property-value">
+         </div>
+<label class="property-key">Implements</label><div class="property-value"> 
+      </div>
+<label class="property-key">api</label><div class="property-value">
+<a title=""></a>
+             
+        </div>
+<label class="property-key">package</label><div class="property-value">
+<a title="">phpcr</a>
+             
+        </div>
+<label class="property-key">subpackage</label><div class="property-value">
+<a title="">interfaces</a>
+             
+        </div>
+<label class="property-key">Abstract</label><div class="property-value"> 
+      </div>
+<label class="property-key">Final</label><div class="property-value"> 
+      </div>
+</div>
+<h4>Description</h4>
+<em>The entry point into the content repository.</em><br><p>The Repository object is usually acquired through an implementation of the
+RepositoryFactoryInterface.</p>
+
+<p><strong>PHPCR Note:</strong> This interface has been simplified compared to
+JCR:</p>
+
+<ul>
+<li>getDescriptor returns array on multivalue, single variable otherwise</li>
+<li>removed isSingleValueDescriptor</li>
+<li>removed getDescriptorValue and getDescriptorValues as ValueInterface has
+ been dropped. Use getDescriptor to get the variable value.</li>
+</ul><br><div id="methods_RepositoryInterface">
+<h4>Methods</h4>
+<a style="font-style: italic;" href="#RepositoryInterface::getDescriptor()">getDescriptor</a>,
+      <a style="font-style: italic;" href="#RepositoryInterface::getDescriptorKeys()">getDescriptorKeys</a>,
+      <a style="font-style: italic;" href="#RepositoryInterface::isStandardDescriptor()">isStandardDescriptor</a>,
+      <a style="font-style: italic;" href="#RepositoryInterface::login()">login</a>,
+      <div class="method">
+<a id="RepositoryInterface::getDescriptor()"></a><h3>getDescriptor<span class="nb-faded-text">(
+          string
+             
+            $key,
+          
+          )
+        </span>
+        :
+        <span class="nb-faded-text">mixed</span>
+</h3>
+<h4>Description</h4>
+<em>Get the value(s) for this key.</em><br><small><p>If this is documented as a boolean property, this method returns a
+boolean, otherwise a string.</p></small><br><h4>Arguments</h4>
+<table>
+<thead><tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr></thead>
+<tbody><tr>
+<td>$key</td>
+<td style="white-space: normal;">string</td>
+<td><p>a descriptor key.</p></td>
+<td></td>
+</tr></tbody>
+</table>
+<h4>Return value</h4>
+<table>
+<thead><tr>
+<th>Type</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr>
+<td>mixed</td>
+<td>a descriptor value in string or boolean form or an array
+     of strings or booleans for multivalue descriptors</td>
+</tr></tbody>
+</table>
+<h4>Tags</h4>
+<table>
+<thead><tr>
+<th>Name</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr>
+<td>api</td>
+<td></td>
+</tr></tbody>
+</table>
+</div>
+<div class="method">
+<a id="RepositoryInterface::getDescriptorKeys()"></a><h3>getDescriptorKeys<span class="nb-faded-text">(
+          
+          )
+        </span>
+        :
+        <span class="nb-faded-text">array</span>
+</h3>
+<h4>Description</h4>
+<em>Returns a string array holding all descriptor keys available for this
+implementation.</em><br><small><p>Both, the standard descriptors defined by the string constants in this
+interface and any implementation-specific descriptors. Used in
+conjunction with getDescriptor($key) to query information about this
+repository implementation.</p></small><br><h4>Return value</h4>
+<table>
+<thead><tr>
+<th>Type</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr>
+<td>array</td>
+<td>a string array holding all descriptor keys</td>
+</tr></tbody>
+</table>
+<h4>Tags</h4>
+<table>
+<thead><tr>
+<th>Name</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr>
+<td>api</td>
+<td></td>
+</tr></tbody>
+</table>
+</div>
+<div class="method">
+<a id="RepositoryInterface::isStandardDescriptor()"></a><h3>isStandardDescriptor<span class="nb-faded-text">(
+          string
+             
+            $key,
+          
+          )
+        </span>
+        :
+        <span class="nb-faded-text">boolean</span>
+</h3>
+<h4>Description</h4>
+<em>Determines if the given identifier is a standard descriptor.</em><br><small><p>Returns true if $key is a standard descriptor defined by the string
+constants in this interface and false if it is either a valid
+implementation-specific key or not a valid key.</p></small><br><h4>Arguments</h4>
+<table>
+<thead><tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr></thead>
+<tbody><tr>
+<td>$key</td>
+<td style="white-space: normal;">string</td>
+<td><p>a descriptor key.</p></td>
+<td></td>
+</tr></tbody>
+</table>
+<h4>Return value</h4>
+<table>
+<thead><tr>
+<th>Type</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr>
+<td>boolean</td>
+<td>whether $key is a standard descriptor.</td>
+</tr></tbody>
+</table>
+<h4>Tags</h4>
+<table>
+<thead><tr>
+<th>Name</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr>
+<td>api</td>
+<td></td>
+</tr></tbody>
+</table>
+</div>
+<div class="method">
+<a id="RepositoryInterface::login()"></a><h3>login<span class="nb-faded-text">(
+          <a href="phpcr.src.PHPCR.CredentialsInterface.html#%5CPHPCR%5CCredentialsInterface">\PHPCR\CredentialsInterface</a>
+             
+            $credentials
+            = null,
+          string
+             
+            $workspaceName
+            = null,
+          
+          )
+        </span>
+        :
+        <span class="nb-faded-text">\PHPCR\SessionInterface</span>
+</h3>
+<h4>Description</h4>
+<em>Authenticates the user using the supplied credentials.</em><br><small><p>If workspaceName is recognized as the name of an existing workspace in
+the repository and authorization to access that workspace is granted,
+then a new Session object is returned. The format of the string
+workspaceName depends upon the implementation. If credentials is null,
+it is assumed that authentication is handled by a mechanism external to
+the repository itself and that the repository implementation exists
+within a context (for example, an application server) that allows it to
+handle authorization of the request for access to the specified
+workspace.</p>
+
+<p>If workspaceName is null, a default workspace is automatically selected
+by the repository implementation. This may, for example, be the "home
+workspace" of the user whose credentials were passed, though this is
+entirely up to the configuration and implementation of the repository.
+Alternatively, it may be a "null workspace" that serves only to provide
+the method WorkspaceInterface::getAccessibleWorkspaceNames(), allowing
+the client to select from among available "real" workspaces.</p>
+
+<p><b>Note:</b> The Java API defines this method with multiple differing
+signatures.</p></small><br><h4>Arguments</h4>
+<table>
+<thead><tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>$credentials</td>
+<td style="white-space: normal;"><a href="phpcr.src.PHPCR.CredentialsInterface.html#%5CPHPCR%5CCredentialsInterface">\PHPCR\CredentialsInterface</a></td>
+<td><p>The credentials of the user</p></td>
+<td>null</td>
+</tr>
+<tr>
+<td>$workspaceName</td>
+<td style="white-space: normal;">string</td>
+<td><p>the name of a workspace</p></td>
+<td>null</td>
+</tr>
+</tbody>
+</table>
+<h4>Return value</h4>
+<table>
+<thead><tr>
+<th>Type</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr>
+<td>\PHPCR\SessionInterface</td>
+<td>a valid session for the user to access
+     the repository</td>
+</tr></tbody>
+</table>
+<h4>Tags</h4>
+<table>
+<thead><tr>
+<th>Name</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>throws</td>
+<td>if authentication or authorization (for
+     the specified workspace) fails</td>
+</tr>
+<tr>
+<td>throws</td>
+<td>if the specified workspaceName
+     is not recognized</td>
+</tr>
+<tr>
+<td>throws</td>
+<td>if another error occurs</td>
+</tr>
+<tr>
+<td>api</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="constants_RepositoryInterface">
+<h4>Constants</h4>
+<a id="RepositoryInterface::IDENTIFIER_STABILITY"></a><div class="constant">
+<h3>
+<span class="nb-faded-text"> 
+        </span>IDENTIFIER_STABILITY<span class="nb-faded-text">
+         = "identifier.stability"</span>
+</h3>
+<em>Key to a String descriptor.</em><br><small>&lt;p&gt;Returns one of the following
+RepositoryInterface constants indicating the stability of identifiers:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;IDENTIFIER_STABILITY_METHOD_DURATION - Identifiers may change between
+ method calls.&lt;/li&gt;
+&lt;li&gt;IDENTIFIER_STABILITY_SAVE_DURATION - Identifers are guaranteed stable
+ within a single save/refresh cycle.&lt;/li&gt;
+&lt;li&gt;IDENTIFIER_STABILITY_SESSION_DURATION - Identifiers are guaranteed
+ stable within a single session.&lt;/li&gt;
+&lt;li&gt;IDENTIFIER_STABILITY_INDEFINITE_DURATION - Identifers are guaranteed
+ to be stable forever.&lt;/li&gt;
+&lt;/ul&gt;</small><br><br>
+</div>
+<a id="RepositoryInterface::IDENTIFIER_STABILITY_INDEFINITE_DURATION"></a><div class="constant">
+<h3>
+<span class="nb-faded-text"> 
+        </span>IDENTIFIER_STABILITY_INDEFINITE_DURATION<span class="nb-faded-text">
+         = "identifier.stability.indefinite.duration"</span>
+</h3>
+<em>One of four possible values for the descriptor IDENTIFIER_STABILITY.</em><br><small>&lt;p&gt;Indicates that identifiers are guaranteed to be stable forever.&lt;/p&gt;</small><br><br>
+</div>
+<a id="RepositoryInterface::IDENTIFIER_STABILITY_METHOD_DURATION"></a><div class="constant">
+<h3>
+<span class="nb-faded-text"> 
+        </span>IDENTIFIER_STABILITY_METHOD_DURATION<span class="nb-faded-text">
+         = "identifier.stability.method.duration"</span>
+</h3>
+<em>One of four possible values for the descriptor IDENTIFIER_STABILITY.</em><br><small>&lt;p&gt;Indicates that identifiers may change between method calls.&lt;/p&gt;</small><br><br>
+</div>
+<a id="RepositoryInterface::IDENTIFIER_STABILITY_SAVE_DURATION"></a><div class="constant">
+<h3>
+<span class="nb-faded-text"> 
+        </span>IDENTIFIER_STABILITY_SAVE_DURATION<span class="nb-faded-text">
+         = "identifier.stability.save.duration"</span>
+</h3>
+<em>One of four possible values for the descriptor IDENTIFIER_STABILITY.</em><br><small>&lt;p&gt;Indicates that identifiers are guaranteed stable within a single
+save/refresh cycle.&lt;/p&gt;</small><br><br>
+</div>
+<a id="RepositoryInterface::IDENTIFIER_STABILITY_SESSION_DURATION"></a><div class="constant">
+<h3>
+<span class="nb-faded-text"> 
+        </span>IDENTIFIER_STABILITY_SESSION_DURATION<span class="nb-faded-text">
+         = "identifier.stability.session.duration"</span>
+</h3>
+<em>One of four possible values for the descriptor IDENTIFIER_STABILITY.</em><br><small>&lt;p&gt;Indicates that identifiers are guaranteed stable within a single
+session.&lt;/p&gt;</small><br><br>
+</div>
+<a id="RepositoryInterface::NODE_TYPE_MANAGEMENT_AUTOCREATED_DEFINITIONS_SUPPORTED"></a><div class="constant">
+<h3>
+<span class="nb-faded-text"> 
+        </span>NODE_TYPE_MANAGEMENT_AUTOCREATED_DEFINITIONS_SUPPORTED<span class="nb-faded-text">
+         = "node.type.management.autocreated.definitions.supported"</span>
+</h3>
+<em>Key to a boolean descriptor.</em><br><small>&lt;p&gt;Returns true if and only if autocreated
+properties and child nodes are supported.&lt;/p&gt;</small><br><br>
+</div>
+<a id="RepositoryInterface::NODE_TYPE_MANAGEMENT_INHERITANCE"></a><div class="constant">
+<h3>
+<span class="nb-faded-text"> 
+        </span>NODE_TYPE_MANAGEMENT_INHERITANCE<span class="nb-faded-text">
+         = "node.type.management.inheritance"</span>
+</h3>
+<em>Key to string descriptor.</em><br><small>&lt;p&gt;Returns one of the following
+RepositoryInterface constants indicating the level of support for node
+type inheritance:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;NODE_TYPE_MANAGEMENT_INHERITANCE_MINIMAL Registration of primary node
+ types is limited to those which have onlynt:base as supertype.
+ Registration of mixin node types is limited to those without any
+ supertypes.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;NODE_TYPE_MANAGEMENT_INHERITANCE_SINGLE Registration of primary node
+ types is limited to those with exactly one supertype. Registration
+ of mixin node types is limited to those with at most one supertype.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;NODE_TYPE_MANAGEMENT_INHERITANCE_MULTIPLE Primary node types can be
+ registered with one or more supertypes. Mixin node types can be
+ registered with zero or more supertypes.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;</small><br><br>
+</div>
+<a id="RepositoryInterface::NODE_TYPE_MANAGEMENT_INHERITANCE_MINIMAL"></a><div class="constant">
+<h3>
+<span class="nb-faded-text"> 
+        </span>NODE_TYPE_MANAGEMENT_INHERITANCE_MINIMAL<span class="nb-faded-text">
+         = "node.type.management.inheritance.minimal"</span>
+</h3>
+<em>One of three possible values for the descriptor
+NODE_TYPE_MANAGEMENT_INHERITANCE.</em><br><small>&lt;p&gt;Indicates that registration of primary node types is limited to those
+which have only nt:base as supertype. Registration of mixin node types
+is limited to those without any supertypes.&lt;/p&gt;</small><br><br>
+</div>
+<a id="RepositoryInterface::NODE_TYPE_MANAGEMENT_INHERITANCE_MULTIPLE"></a><div class="constant">
+<h3>
+<span class="nb-faded-text"> 
+        </span>NODE_TYPE_MANAGEMENT_INHERITANCE_MULTIPLE<span class="nb-faded-text">
+         = "node.type.management.inheritance.multiple"</span>
+</h3>
+<em>One of three possible values for the descriptor
+NODE_TYPE_MANAGEMENT_INHERITANCE.</em><br><small>&lt;p&gt;Indicates that primary node types can be registered with one or more
+supertypes. Mixin node types can be registered with zero or more
+supertypes.&lt;/p&gt;</small><br><br>
+</div>
+<a id="RepositoryInterface::NODE_TYPE_MANAGEMENT_INHERITANCE_SINGLE"></a><div class="constant">
+<h3>
+<span class="nb-faded-text"> 
+        </span>NODE_TYPE_MANAGEMENT_INHERITANCE_SINGLE<span class="nb-faded-text">
+         = "node.type.management.inheritance.single"</span>
+</h3>
+<em>One of three possible values for the descriptor
+NODE_TYPE_MANAGEMENT_INHERITANCE.</em><br><small>&lt;p&gt;Indicates that registration of primary node types is limited to those
+with exactly one supertype. Registration of mixin node types is limited
+to those with at most one supertype.&lt;/p&gt;</small><br><br>
+</div>
+<a id="RepositoryInterface::NODE_TYPE_MANAGEMENT_MULTIPLE_BINARY_PROPERTIES_SUPPORTED"></a><div class="constant">
+<h3>
+<span class="nb-faded-text"> 
+        </span>NODE_TYPE_MANAGEMENT_MULTIPLE_BINARY_PROPERTIES_SUPPORTED<span class="nb-faded-text">
+         = "node.type.management.multiple.binary.properties.supported"</span>
+</h3>
+<em>Key to a boolean descriptor.</em><br><small>&lt;p&gt;Returns true if and only if registration of
+a node types with more than one BINARY property is permitted.&lt;/p&gt;</small><br><br>
+</div>
+<a id="RepositoryInterface::NODE_TYPE_MANAGEMENT_MULTIVALUED_PROPERTIES_SUPPORTED"></a><div class="constant">
+<h3>
+<span class="nb-faded-text"> 
+        </span>NODE_TYPE_MANAGEMENT_MULTIVALUED_PROPERTIES_SUPPORTED<span class="nb-faded-text">
+         = "node.type.management.multivalued.properties.supported"</span>
+</h3>
+<em>Key to a boolean descriptor.</em><br><small>&lt;p&gt;Returns true if and only if multivalue
+properties are supported.&lt;/p&gt;</small><br><br>
+</div>
+<a id="RepositoryInterface::NODE_TYPE_MANAGEMENT_ORDERABLE_CHILD_NODES_SUPPORTED"></a><div class="constant">
+<h3>
+<span class="nb-faded-text"> 
+        </span>NODE_TYPE_MANAGEMENT_ORDERABLE_CHILD_NODES_SUPPORTED<span class="nb-faded-text">
+         = "node.type.management.orderable.child.nodes.supported"</span>
+</h3>
+<em>Key to a boolean descriptor.</em><br><small>&lt;p&gt;Returns true if and only if preservation of
+child node ordering is supported.&lt;/p&gt;</small><br><br>
+</div>
+<a id="RepositoryInterface::NODE_TYPE_MANAGEMENT_OVERRIDES_SUPPORTED"></a><div class="constant">
+<h3>
+<span class="nb-faded-text"> 
+        </span>NODE_TYPE_MANAGEMENT_OVERRIDES_SUPPORTED<span class="nb-faded-text">
+         = "node.type.management.overrides.supported"</span>
+</h3>
+<em>Key to a boolean descriptor.</em><br><small>&lt;p&gt;Returns true if and only if override of
+inherited property or child node definitions is supported.&lt;/p&gt;</small><br><br>
+</div>
+<a id="RepositoryInterface::NODE_TYPE_MANAGEMENT_PRIMARY_ITEM_NAME_SUPPORTED"></a><div class="constant">
+<h3>
+<span class="nb-faded-text"> 
+        </span>NODE_TYPE_MANAGEMENT_PRIMARY_ITEM_NAME_SUPPORTED<span class="nb-faded-text">
+         = "node.type.management.primary.item.name.supported"</span>
+</h3>
+<em>Key to a boolean descriptor.</em><br><small>&lt;p&gt;Returns true if and only if primary items
+are supported.&lt;/p&gt;</small><br><br>
+</div>
+<a id="RepositoryInterface::NODE_TYPE_MANAGEMENT_PROPERTY_TYPES"></a><div class="constant">
+<h3>
+<span class="nb-faded-text"> 
+        </span>NODE_TYPE_MANAGEMENT_PROPERTY_TYPES<span class="nb-faded-text">
+         = "node.type.management.property.types"</span>
+</h3>
+<em>Key to an integer[] descriptor.</em><br><small>&lt;p&gt;Returns an array holding the
+PropertyType constants for the property types (including
+UNDEFINED, if supported) that a registered node type can specify, or a
+zero-length array if registered node types cannot specify property
+definitions.&lt;/p&gt;</small><br><br>
+</div>
+<a id="RepositoryInterface::NODE_TYPE_MANAGEMENT_RESIDUAL_DEFINITIONS_SUPPORTED"></a><div class="constant">
+<h3>
+<span class="nb-faded-text"> 
+        </span>NODE_TYPE_MANAGEMENT_RESIDUAL_DEFINITIONS_SUPPORTED<span class="nb-faded-text">
+         = "node.type.management.residual.definitions.supported"</span>
+</h3>
+<em>Key to a boolean descriptor.</em><br><small>&lt;p&gt;Returns true if and only if residual
+property and child node definitions are supported.&lt;/p&gt;</small><br><br>
+</div>
+<a id="RepositoryInterface::NODE_TYPE_MANAGEMENT_SAME_NAME_SIBLINGS_SUPPORTED"></a><div class="constant">
+<h3>
+<span class="nb-faded-text"> 
+        </span>NODE_TYPE_MANAGEMENT_SAME_NAME_SIBLINGS_SUPPORTED<span class="nb-faded-text">
+         = "node.type.management.same.name.siblings.supported"</span>
+</h3>
+<em>Key to a boolean descriptor.</em><br><small>&lt;p&gt;Returns true if and only if same-name
+sibling child nodes are supported.&lt;/p&gt;</small><br><br>
+</div>
+<a id="RepositoryInterface::NODE_TYPE_MANAGEMENT_UPDATE_IN_USE_SUPPORTED"></a><div class="constant">
+<h3>
+<span class="nb-faded-text"> 
+        </span>NODE_TYPE_MANAGEMENT_UPDATE_IN_USE_SUPPORTED<span class="nb-faded-text">
+         = "node.type.management.update.in.use.suported"</span>
+</h3>
+<em>Key to boolean descriptor.</em><br><small>&lt;p&gt;Indicates that you can change node definitions
+that are in-use by existing nodes&lt;/p&gt;
+
+&lt;p&gt;Note the typo of the value is also in JCR. see https://github.com/phpcr/phpcr/pull/43#issuecomment-8727677&lt;/p&gt;</small><br><br>
+</div>
+<a id="RepositoryInterface::NODE_TYPE_MANAGEMENT_VALUE_CONSTRAINTS_SUPPORTED"></a><div class="constant">
+<h3>
+<span class="nb-faded-text"> 
+        </span>NODE_TYPE_MANAGEMENT_VALUE_CONSTRAINTS_SUPPORTED<span class="nb-faded-text">
+         = "node.type.management.value.constraints.supported"</span>
+</h3>
+<em>Key to a boolean descriptor.</em><br><small>&lt;p&gt;Returns true if and only value-constraints
+are supported.&lt;/p&gt;</small><br><br>
+</div>
+<a id="RepositoryInterface::OPTION_ACCESS_CONTROL_SUPPORTED"></a><div class="constant">
+<h3>
+<span class="nb-faded-text"> 
+        </span>OPTION_ACCESS_CONTROL_SUPPORTED<span class="nb-faded-text">
+         = "option.access.control.supported"</span>
+</h3>
+<em>Key to a boolean descriptor.</em><br><small>&lt;p&gt;Returns true if and only if access control
+is supported.&lt;/p&gt;</small><br><br>
+</div>
+<a id="RepositoryInterface::OPTION_ACTIVITIES_SUPPORTED"></a><div class="constant">
+<h3>
+<span class="nb-faded-text"> 
+        </span>OPTION_ACTIVITIES_SUPPORTED<span class="nb-faded-text">
+         = "option.activities.supported"</span>
+</h3>
+<em>Key to a boolean descriptor.</em><br><small>&lt;p&gt;Returns true if and only if activities are
+supported.&lt;/p&gt;</small><br><br>
+</div>
+<a id="RepositoryInterface::OPTION_BASELINES_SUPPORTED"></a><div class="constant">
+<h3>
+<span class="nb-faded-text"> 
+        </span>OPTION_BASELINES_SUPPORTED<span class="nb-faded-text">
+         = "option.baselines.supported"</span>
+</h3>
+<em>Key to a boolean descriptor.</em><br><small>&lt;p&gt;Returns true if and only if configurations
+and baselines are supported.&lt;/p&gt;</small><br><br>
+</div>
+<a id="RepositoryInterface::OPTION_JOURNALED_OBSERVATION_SUPPORTED"></a><div class="constant">
+<h3>
+<span class="nb-faded-text"> 
+        </span>OPTION_JOURNALED_OBSERVATION_SUPPORTED<span class="nb-faded-text">
+         = "option.journaled.observation.supported"</span>
+</h3>
+<em>Key to a boolean descriptor.</em><br><small>&lt;p&gt;Returns true if and only if journaled
+observation is supported.&lt;/p&gt;</small><br><br>
+</div>
+<a id="RepositoryInterface::OPTION_LIFECYCLE_SUPPORTED"></a><div class="constant">
+<h3>
+<span class="nb-faded-text"> 
+        </span>OPTION_LIFECYCLE_SUPPORTED<span class="nb-faded-text">
+         = "option.lifecycle.supported"</span>
+</h3>
+<em>Key to a boolean descriptor.</em><br><small>&lt;p&gt;Returns true if and only if lifecycles are
+supported.&lt;/p&gt;</small><br><br>
+</div>
+<a id="RepositoryInterface::OPTION_LOCKING_SUPPORTED"></a><div class="constant">
+<h3>
+<span class="nb-faded-text"> 
+        </span>OPTION_LOCKING_SUPPORTED<span class="nb-faded-text">
+         = "option.locking.supported"</span>
+</h3>
+<em>Key to a boolean descriptor.</em><br><small>&lt;p&gt;Returns true if and only if locking is
+supported.&lt;/p&gt;</small><br><br>
+</div>
+<a id="RepositoryInterface::OPTION_NODE_AND_PROPERTY_WITH_SAME_NAME_SUPPORTED"></a><div class="constant">
+<h3>
+<span class="nb-faded-text"> 
+        </span>OPTION_NODE_AND_PROPERTY_WITH_SAME_NAME_SUPPORTED<span class="nb-faded-text">
+         = "option.node.and.property.with.same.name.supported"</span>
+</h3>
+<em>Key to a boolean descriptor.</em><br><small>&lt;p&gt;Returns true if and only if node and
+property with same name is supported.&lt;/p&gt;</small><br><br>
+</div>
+<a id="RepositoryInterface::OPTION_NODE_TYPE_MANAGEMENT_SUPPORTED"></a><div class="constant">
+<h3>
+<span class="nb-faded-text"> 
+        </span>OPTION_NODE_TYPE_MANAGEMENT_SUPPORTED<span class="nb-faded-text">
+         = "option.node.type.management.supported"</span>
+</h3>
+<em>Key to a boolean descriptor.</em><br><small>&lt;p&gt;Returns true if and only if node type
+management is supported.&lt;/p&gt;</small><br><br>
+</div>
+<a id="RepositoryInterface::OPTION_OBSERVATION_SUPPORTED"></a><div class="constant">
+<h3>
+<span class="nb-faded-text"> 
+        </span>OPTION_OBSERVATION_SUPPORTED<span class="nb-faded-text">
+         = "option.observation.supported"</span>
+</h3>
+<em>Key to a boolean descriptor.</em><br><small>&lt;p&gt;Returns true if and only if asynchronous
+observation is supported.&lt;/p&gt;</small><br><br>
+</div>
+<a id="RepositoryInterface::OPTION_RETENTION_SUPPORTED"></a><div class="constant">
+<h3>
+<span class="nb-faded-text"> 
+        </span>OPTION_RETENTION_SUPPORTED<span class="nb-faded-text">
+         = "option.retention.supported"</span>
+</h3>
+<em>Key to a boolean descriptor.</em><br><small>&lt;p&gt;Returns true if and only if retention and
+hold are supported.&lt;/p&gt;</small><br><br>
+</div>
+<a id="RepositoryInterface::OPTION_SHAREABLE_NODES_SUPPORTED"></a><div class="constant">
+<h3>
+<span class="nb-faded-text"> 
+        </span>OPTION_SHAREABLE_NODES_SUPPORTED<span class="nb-faded-text">
+         = "option.shareable.nodes.supported"</span>
+</h3>
+<em>Key to a boolean descriptor.</em><br><small>&lt;p&gt;Returns true if and only if the creation of
+shareable nodes is supported.&lt;/p&gt;</small><br><br>
+</div>
+<a id="RepositoryInterface::OPTION_SIMPLE_VERSIONING_SUPPORTED"></a><div class="constant">
+<h3>
+<span class="nb-faded-text"> 
+        </span>OPTION_SIMPLE_VERSIONING_SUPPORTED<span class="nb-faded-text">
+         = "option.simple.versioning.supported"</span>
+</h3>
+<em>Key to a boolean descriptor.</em><br><small>&lt;p&gt;Returns true if and only if simple
+versioning is supported.&lt;/p&gt;</small><br><br>
+</div>
+<a id="RepositoryInterface::OPTION_TRANSACTIONS_SUPPORTED"></a><div class="constant">
+<h3>
+<span class="nb-faded-text"> 
+        </span>OPTION_TRANSACTIONS_SUPPORTED<span class="nb-faded-text">
+         = "option.transactions.supported"</span>
+</h3>
+<em>Key to a boolean descriptor.</em><br><small>&lt;p&gt;Returns true if and only if transactions
+are supported.&lt;/p&gt;</small><br><br>
+</div>
+<a id="RepositoryInterface::OPTION_UNFILED_CONTENT_SUPPORTED"></a><div class="constant">
+<h3>
+<span class="nb-faded-text"> 
+        </span>OPTION_UNFILED_CONTENT_SUPPORTED<span class="nb-faded-text">
+         = "option.unfiled.content.supported"</span>
+</h3>
+<em>Key to a boolean descriptor.</em><br><small>&lt;p&gt;Returns true if and only if unfiled content
+is supported.&lt;/p&gt;</small><br><br>
+</div>
+<a id="RepositoryInterface::OPTION_UPDATE_MIXIN_NODETYPES_SUPPORTED"></a><div class="constant">
+<h3>
+<span class="nb-faded-text"> 
+        </span>OPTION_UPDATE_MIXIN_NODETYPES_SUPPORTED<span class="nb-faded-text">
+         = "option.update.mixin.nodetypes.supported"</span>
+</h3>
+<em>Key to a boolean descriptor.</em><br><small>&lt;p&gt;Returns true if and only if the mixin node
+types of an existing node can be added and removed.&lt;/p&gt;</small><br><br>
+</div>
+<a id="RepositoryInterface::OPTION_UPDATE_PRIMARY_NODETYPE_SUPPORTED"></a><div class="constant">
+<h3>
+<span class="nb-faded-text"> 
+        </span>OPTION_UPDATE_PRIMARY_NODETYPE_SUPPORTED<span class="nb-faded-text">
+         = "option.update.primary.nodetype.supported"</span>
+</h3>
+<em>Key to a boolean descriptor.</em><br><small>&lt;p&gt;Returns true if and only if the primary
+node type of an existing node can be updated.&lt;/p&gt;</small><br><br>
+</div>
+<a id="RepositoryInterface::OPTION_VERSIONING_SUPPORTED"></a><div class="constant">
+<h3>
+<span class="nb-faded-text"> 
+        </span>OPTION_VERSIONING_SUPPORTED<span class="nb-faded-text">
+         = "option.versioning.supported"</span>
+</h3>
+<em>Key to a boolean descriptor.</em><br><small>&lt;p&gt;Returns true if and only if full versioning
+is supported.&lt;/p&gt;</small><br><br>
+</div>
+<a id="RepositoryInterface::OPTION_WORKSPACE_MANAGEMENT_SUPPORTED"></a><div class="constant">
+<h3>
+<span class="nb-faded-text"> 
+        </span>OPTION_WORKSPACE_MANAGEMENT_SUPPORTED<span class="nb-faded-text">
+         = "option.workspace.management.supported"</span>
+</h3>
+<em>Key to a boolean descriptor.</em><br><small>&lt;p&gt;Returns true if and only if workspace
+management is supported.&lt;/p&gt;</small><br><br>
+</div>
+<a id="RepositoryInterface::OPTION_XML_EXPORT_SUPPORTED"></a><div class="constant">
+<h3>
+<span class="nb-faded-text"> 
+        </span>OPTION_XML_EXPORT_SUPPORTED<span class="nb-faded-text">
+         = "option.xml.export.supported"</span>
+</h3>
+<em>Key to a boolean descriptor.</em><br><small>&lt;p&gt;Returns true if and only if XML export is
+supported.&lt;/p&gt;</small><br><br>
+</div>
+<a id="RepositoryInterface::OPTION_XML_IMPORT_SUPPORTED"></a><div class="constant">
+<h3>
+<span class="nb-faded-text"> 
+        </span>OPTION_XML_IMPORT_SUPPORTED<span class="nb-faded-text">
+         = "option.xml.import.supported"</span>
+</h3>
+<em>Key to a boolean descriptor.</em><br><small>&lt;p&gt;Returns true if and only if XML import is
+supported.&lt;/p&gt;</small><br><br>
+</div>
+<a id="RepositoryInterface::QUERY_FULL_TEXT_SEARCH_SUPPORTED"></a><div class="constant">
+<h3>
+<span class="nb-faded-text"> 
+        </span>QUERY_FULL_TEXT_SEARCH_SUPPORTED<span class="nb-faded-text">
+         = "query.full.text.search.supported"</span>
+</h3>
+<em>Key to a boolean descriptor.</em><br><small>&lt;p&gt;Returns true if and only if full-text
+search is supported.&lt;/p&gt;</small><br><br>
+</div>
+<a id="RepositoryInterface::QUERY_JOINS"></a><div class="constant">
+<h3>
+<span class="nb-faded-text"> 
+        </span>QUERY_JOINS<span class="nb-faded-text">
+         = "query.joins"</span>
+</h3>
+<em>Key to String descriptor.</em><br><small>&lt;p&gt;Returns one of the following
+RepositoryInterface constants indicating the level of support for joins
+in queries:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;QUERY_JOINS_NONE - Joins are not supported. Queries are limited to a
+ single selector.&lt;/li&gt;
+&lt;li&gt;QUERY_JOINS_INNER - Inner joins are supported.&lt;/li&gt;
+&lt;li&gt;QUERY_JOINS_INNER_OUTER - Inner and outer joins are supported.&lt;/li&gt;
+&lt;/ul&gt;</small><br><br>
+</div>
+<a id="RepositoryInterface::QUERY_JOINS_INNER"></a><div class="constant">
+<h3>
+<span class="nb-faded-text"> 
+        </span>QUERY_JOINS_INNER<span class="nb-faded-text">
+         = "query.joins.inner"</span>
+</h3>
+<em>One of three possible values for the descriptor QUERY_JOINS .</em><br><small>&lt;p&gt;Indicates
+that inner joins are supported.&lt;/p&gt;</small><br><br>
+</div>
+<a id="RepositoryInterface::QUERY_JOINS_INNER_OUTER"></a><div class="constant">
+<h3>
+<span class="nb-faded-text"> 
+        </span>QUERY_JOINS_INNER_OUTER<span class="nb-faded-text">
+         = "query.joins.inner.outer"</span>
+</h3>
+<em>One of three possible values for the descriptor QUERY_JOINS .</em><br><small>&lt;p&gt;Indicates
+that inner and outer joins are supported.&lt;/p&gt;</small><br><br>
+</div>
+<a id="RepositoryInterface::QUERY_JOINS_NONE"></a><div class="constant">
+<h3>
+<span class="nb-faded-text"> 
+        </span>QUERY_JOINS_NONE<span class="nb-faded-text">
+         = "query.joins.none"</span>
+</h3>
+<em>One of three possible values for the descriptor QUERY_JOINS .</em><br><small>&lt;p&gt;Indicates
+that joins are not supported. Queries are limited to a single selector.&lt;/p&gt;</small><br><br>
+</div>
+<a id="RepositoryInterface::QUERY_LANGUAGES"></a><div class="constant">
+<h3>
+<span class="nb-faded-text"> 
+        </span>QUERY_LANGUAGES<span class="nb-faded-text">
+         = "query.languages"</span>
+</h3>
+<em>Key to a string[] descriptor.</em><br><small>&lt;p&gt;Returns an array holding the constants
+representing the supported query languages, or a zero-length if query is
+not supported.&lt;/p&gt;</small><br><br>
+</div>
+<a id="RepositoryInterface::QUERY_STORED_QUERIES_SUPPORTED"></a><div class="constant">
+<h3>
+<span class="nb-faded-text"> 
+        </span>QUERY_STORED_QUERIES_SUPPORTED<span class="nb-faded-text">
+         = "query.stored.queries.supported"</span>
+</h3>
+<em>Key to a boolean descriptor.</em><br><small>&lt;p&gt;Returns true if and only if stored queries
+are supported.&lt;/p&gt;</small><br><br>
+</div>
+<a id="RepositoryInterface::REP_NAME_DESC"></a><div class="constant">
+<h3>
+<span class="nb-faded-text"> 
+        </span>REP_NAME_DESC<span class="nb-faded-text">
+         = "jcr.repository.name"</span>
+</h3>
+<em>The descriptor key for the name of this repository implementation.</em><br><small>&lt;p&gt;The descriptor returned for this key is a String.&lt;/p&gt;</small><br><br>
+</div>
+<a id="RepositoryInterface::REP_VENDOR_DESC"></a><div class="constant">
+<h3>
+<span class="nb-faded-text"> 
+        </span>REP_VENDOR_DESC<span class="nb-faded-text">
+         = "jcr.repository.vendor"</span>
+</h3>
+<em>The descriptor key for the name of the repository vendor.</em><br><small>&lt;p&gt;The descriptor returned for this key is a String.&lt;/p&gt;</small><br><br>
+</div>
+<a id="RepositoryInterface::REP_VENDOR_URL_DESC"></a><div class="constant">
+<h3>
+<span class="nb-faded-text"> 
+        </span>REP_VENDOR_URL_DESC<span class="nb-faded-text">
+         = "jcr.repository.vendor.url"</span>
+</h3>
+<em>The descriptor key for the URL of the repository vendor.</em><br><small>&lt;p&gt;The descriptor returned for this key is a String.&lt;/p&gt;</small><br><br>
+</div>
+<a id="RepositoryInterface::REP_VERSION_DESC"></a><div class="constant">
+<h3>
+<span class="nb-faded-text"> 
+        </span>REP_VERSION_DESC<span class="nb-faded-text">
+         = "jcr.repository.version"</span>
+</h3>
+<em>The descriptor key for the version of this repository implementation.</em><br><small>&lt;p&gt;The descriptor returned for this key is a String.&lt;/p&gt;</small><br><br>
+</div>
+<a id="RepositoryInterface::SPEC_NAME_DESC"></a><div class="constant">
+<h3>
+<span class="nb-faded-text"> 
+        </span>SPEC_NAME_DESC<span class="nb-faded-text">
+         = "jcr.specification.name"</span>
+</h3>
+<em>The descriptor key for the name of the specification this repository
+implements.</em><br><small>&lt;p&gt;For JCR 2.0 the value of this descriptor is the string "Content
+Repository for Java Technology API".&lt;/p&gt;</small><br><br>
+</div>
+<a id="RepositoryInterface::SPEC_VERSION_DESC"></a><div class="constant">
+<h3>
+<span class="nb-faded-text"> 
+        </span>SPEC_VERSION_DESC<span class="nb-faded-text">
+         = "jcr.specification.version"</span>
+</h3>
+<em>The descriptor key for the version of the specification this repository
+implements.</em><br><small>&lt;p&gt;For JCR 2.0 the value of this descriptor is the string "2.0".&lt;/p&gt;</small><br><br>
+</div>
+<a id="RepositoryInterface::WRITE_SUPPORTED"></a><div class="constant">
+<h3>
+<span class="nb-faded-text"> 
+        </span>WRITE_SUPPORTED<span class="nb-faded-text">
+         = "write.supported"</span>
+</h3>
+<em>Key to a boolean descriptor.</em><br><small>&lt;p&gt;Returns true if and only if repository
+content can be updated through the JCR API (as opposed to having
+read-only access).&lt;/p&gt;</small><br><br>
+</div>
+</div>
+<div style="clear: both"></div>
+</div>
+</div>
+<small xmlns="" class="footer">Documentation was generated by <a href="http://www.phpdoc.org">phpDocumentor 2.0.0a10</a>.</small></div><div id="index"><div class="padder"><script xmlns="" type="text/javascript">
+      $(function() {
+
+        var is_chrome = /chrome/.test( navigator.userAgent.toLowerCase() );
+        var is_local = /file:\/\//.test(document.location.href);
+        if (is_chrome && is_local)
+        {
+          // search is disabled on chrome with local files due to http://code.google.com/p/chromium/issues/detail?id=40787
+          return;
+        }
+
+        $("#search_box").show();
+        var search_index = {};
+        $.ajax({
+          url: "search_index.xml",
+          dataType: ($.browser.msie) ? "text" : "xml",
+          error: function(data) {
+            alert('An error occurred using the search data');
+          },
+          success: function( data ) {
+            var xml;
+            if (typeof data == "string") {
+              xml = new ActiveXObject("Microsoft.XMLDOM");
+              xml.async = false;
+              xml.loadXML(data);
+            } else {
+              xml = data;
+            }
+
+            search_index = $("node", xml).map(function() {
+              type = $("type", this).text();
+              return {
+                value: $("value", this).text(),
+                label: '<img src="images/icons/'+type+'.png" align="absmiddle">'+$("value", this).text(),
+                id: $("id", this).text(),
+              };
+            }).get();
+
+            $("#search_box").autocomplete({
+              source: search_index,
+              select: function(event, ui) {
+                // redirect to the documentation
+                if ((parent) && (parent.content))
+                {
+                  parent.content.document.location = ''+ui.item.id;
+                }
+                else
+                {
+                  jQuery(document).location = ''+ui.item.id;
+                }
+                applySearchHash();
+              }
+            });
+          }
+        });
+      });
+    </script><input id="search_box"></input><div class="section">
+<h1>Namespaces</h1>
+<ul id="namespaces-" class="filetree"><li class="closed">
+<span class="folder">PHPCR</span><ul>
+<li><span class="class"><a href="phpcr.src.PHPCR.AccessDeniedException.html#AccessDeniedException">AccessDeniedException</a><br><small>Exception to be thrown by access-related methods.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.CredentialsInterface.html#CredentialsInterface">CredentialsInterface</a><br><small>Interface for all credentials that may be passed to the Repository::login()
+method.</small></span></li>
+<li><span class="class"><a href="phpcr.src.PHPCR.GuestCredentials.html#GuestCredentials">GuestCredentials</a><br><small>GuestCredentials is used to obtain a "guest", "public" or "anonymous" session.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.ImportUUIDBehaviorInterface.html#ImportUUIDBehaviorInterface">ImportUUIDBehaviorInterface</a><br><small>The possible actions specified by the uuidBehavior parameter in</small></span></li>
+<li><span class="class"><a href="phpcr.src.PHPCR.InvalidItemStateException.html#InvalidItemStateException">InvalidItemStateException</a><br><small>This exception shall be thrown in case of an issue of a state of an element.</small></span></li>
+<li><span class="class"><a href="phpcr.src.PHPCR.InvalidLifecycleTransitionException.html#InvalidLifecycleTransitionException">InvalidLifecycleTransitionException</a><br><small>Exception thrown by Lifecycle management-related methods.</small></span></li>
+<li><span class="class"><a href="phpcr.src.PHPCR.InvalidSerializedDataException.html#InvalidSerializedDataException">InvalidSerializedDataException</a><br><small>Exception to be thrown by the deserialization methods of Session.</small></span></li>
+<li><span class="class"><a href="phpcr.src.PHPCR.ItemExistsException.html#ItemExistsException">ItemExistsException</a><br><small>An exception thrown when an attempt is made to place an item in a position
+where another item already exists.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.ItemInterface.html#ItemInterface">ItemInterface</a><br><small>The Item is the base interface of Node and Property.</small></span></li>
+<li><span class="class"><a href="phpcr.src.PHPCR.ItemNotFoundException.html#ItemNotFoundException">ItemNotFoundException</a><br><small>Exception thrown by methods of Item, Node and Workspace when an item is not found.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.ItemVisitorInterface.html#ItemVisitorInterface">ItemVisitorInterface</a><br><small>Interface to define a visitor on an item.</small></span></li>
+<li><span class="class"><a href="phpcr.src.PHPCR.LoginException.html#LoginException">LoginException</a><br><small>Shall be thrown in case of invalid login credentials.</small></span></li>
+<li><span class="class"><a href="phpcr.src.PHPCR.MergeException.html#MergeException">MergeException</a><br><small>Exception thrown by NodeInterface::merge()</small></span></li>
+<li><span class="class"><a href="phpcr.src.PHPCR.NamespaceException.html#NamespaceException">NamespaceException</a><br><small>Definition of an Exception to be thrown in case of a namespace issue within
+a session.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.NamespaceRegistryInterface.html#NamespaceRegistryInterface">NamespaceRegistryInterface</a><br><small>Defines an interface to implement a single namespace registry.</small></span></li>
+<li><span class="class"><a href="phpcr.src.PHPCR.NoSuchWorkspaceException.html#NoSuchWorkspaceException">NoSuchWorkspaceException</a><br><small>Exception thrown by RepositoryInterface::login() when a specific workspace
+is not found.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.NodeInterface.html#NodeInterface">NodeInterface</a><br><small>The Node interface represents a node in a workspace.</small></span></li>
+<li><span class="class"><a href="phpcr.src.PHPCR.PathNotFoundException.html#PathNotFoundException">PathNotFoundException</a><br><small>Exception thrown when no Item exists at the specified path or when the
+specified path implies intermediary Nodes that do not exist.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.PropertyInterface.html#PropertyInterface">PropertyInterface</a><br><small>The property interface describes how an item property shall look like.</small></span></li>
+<li><span class="class"><a href="phpcr.src.PHPCR.PropertyType.html#PropertyType">PropertyType</a><br><small>The property types supported by the JCR standard.</small></span></li>
+<li><span class="class"><a href="phpcr.src.PHPCR.ReferentialIntegrityException.html#ReferentialIntegrityException">ReferentialIntegrityException</a><br><small>Exception thrown on referential integrity violation.</small></span></li>
+<li><span class="class"><a href="phpcr.src.PHPCR.RepositoryException.html#RepositoryException">RepositoryException</a><br><small>Main exception thrown by classes in this package.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.RepositoryFactoryInterface.html#RepositoryFactoryInterface">RepositoryFactoryInterface</a><br><small>RepositoryFactory is an interface for factory class implementations for
+Repositories.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.RepositoryInterface.html#RepositoryInterface">RepositoryInterface</a><br><small>The entry point into the content repository.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.SessionInterface.html#SessionInterface">SessionInterface</a><br><small>Describes the implementation of a session class.</small></span></li>
+<li><span class="class"><a href="phpcr.src.PHPCR.SimpleCredentials.html#SimpleCredentials">SimpleCredentials</a><br><small>SimpleCredentials implements the Credentials interface and represents simple
+user ID/password credentials.</small></span></li>
+<li><span class="class"><a href="phpcr.src.PHPCR.UnsupportedRepositoryOperationException.html#UnsupportedRepositoryOperationException">UnsupportedRepositoryOperationException</a><br><small>Thrown by methods that are not supported by a particular implementation.</small></span></li>
+<li><span class="class"><a href="phpcr.src.PHPCR.ValueFormatException.html#ValueFormatException">ValueFormatException</a><br><small>Exception thrown when an attempt is made to assign a value to a property
+that has an invalid format, given the type of the property.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.WorkspaceInterface.html#WorkspaceInterface">WorkspaceInterface</a><br><small>Interface representing a view onto a persistent workspace within a repository.</small></span></li>
+<li class="closed">
+<span class="folder">Lock</span><ul>
+<li><span class="class"><a href="phpcr.src.PHPCR.Lock.LockException.html#LockException">LockException</a><br><small>Exception thrown when a lock-related error occurs.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.Lock.LockInterface.html#LockInterface">LockInterface</a><br><small>Represents a lock placed on an item.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.Lock.LockManagerInterface.html#LockManagerInterface">LockManagerInterface</a><br><small>This interface encapsulates methods for the management of locks.</small></span></li>
+</ul>
+</li>
+<li class="closed">
+<span class="folder">NodeType</span><ul>
+<li><span class="class"><a href="phpcr.src.PHPCR.NodeType.ConstraintViolationException.html#ConstraintViolationException">ConstraintViolationException</a><br><small>Exception thrown when an action would violate a constraint on repository
+structure.</small></span></li>
+<li><span class="class"><a href="phpcr.src.PHPCR.NodeType.InvalidNodeTypeDefinitionException.html#InvalidNodeTypeDefinitionException">InvalidNodeTypeDefinitionException</a><br><small>Exception thrown when an attempt is made to register an invalid node
+type definition template.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.NodeType.ItemDefinitionInterface.html#ItemDefinitionInterface">ItemDefinitionInterface</a><br><small>Superclass of NodeDefinition and PropertyDefinition.</small></span></li>
+<li><span class="class"><a href="phpcr.src.PHPCR.NodeType.NoSuchNodeTypeException.html#NoSuchNodeTypeException">NoSuchNodeTypeException</a><br><small>Exception thrown by node type-related methods.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.NodeType.NodeDefinitionInterface.html#NodeDefinitionInterface">NodeDefinitionInterface</a><br><small>A node definition.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.NodeType.NodeDefinitionTemplateInterface.html#NodeDefinitionTemplateInterface">NodeDefinitionTemplateInterface</a><br><small>The NodeDefinitionTemplate interface extends NodeDefinition with the addition
+of write methods, enabling the characteristics of a child node definition to
+be set, after which the NodeDefinitionTemplate is added to a NodeTypeTemplate.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.NodeType.NodeTypeDefinitionInterface.html#NodeTypeDefinitionInterface">NodeTypeDefinitionInterface</a><br><small>The NodeTypeDefinition interface provides methods for discovering the
+static definition of a node type.</small></span></li>
+<li><span class="class"><a href="phpcr.src.PHPCR.NodeType.NodeTypeExistsException.html#NodeTypeExistsException">NodeTypeExistsException</a><br><small>Exception thrown when an attempt is made to register a node type that
+already exists, and allowUpdate has not been set to true.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.NodeType.NodeTypeInterface.html#NodeTypeInterface">NodeTypeInterface</a><br><small>A NodeType object represents a "live" node type that is registered in the
+repository.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.NodeType.NodeTypeManagerInterface.html#NodeTypeManagerInterface">NodeTypeManagerInterface</a><br><small>Allows for the retrieval and (in implementations that support it) the
+registration of node types.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.NodeType.NodeTypeTemplateInterface.html#NodeTypeTemplateInterface">NodeTypeTemplateInterface</a><br><small>The NodeTypeTemplate interface represents a simple container structure used
+to define node types which are then registered through the
+NodeTypeManagerInterface::registerNodeType() method.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.NodeType.PropertyDefinitionInterface.html#PropertyDefinitionInterface">PropertyDefinitionInterface</a><br><small>A property definition.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.NodeType.PropertyDefinitionTemplateInterface.html#PropertyDefinitionTemplateInterface">PropertyDefinitionTemplateInterface</a><br><small>The PropertyDefinitionTemplate interface extends PropertyDefinition with the
+addition of write methods, enabling the characteristics of a child property
+definition to be set, after which the PropertyDefinitionTemplate is added to
+a NodeTypeTemplate.</small></span></li>
+</ul>
+</li>
+<li class="closed">
+<span class="folder">Observation</span><ul>
+<li><span class="interface"><a href="phpcr.src.PHPCR.Observation.EventInterface.html#EventInterface">EventInterface</a><br><small>An event fired by the observation mechanism.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.Observation.EventJournalInterface.html#EventJournalInterface">EventJournalInterface</a><br><small>An EventJournal is an extended Iterator that provides the additional
+method skipTo().</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.Observation.EventListenerInterface.html#EventListenerInterface">EventListenerInterface</a><br><small>An event listener.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.Observation.ObservationManagerInterface.html#ObservationManagerInterface">ObservationManagerInterface</a><br><small>The ObservationManager object.</small></span></li>
+</ul>
+</li>
+<li class="closed">
+<span class="folder">Query</span><ul>
+<li><span class="class"><a href="phpcr.src.PHPCR.Query.InvalidQueryException.html#InvalidQueryException">InvalidQueryException</a><br><small>Thrown by methods of Query.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.Query.QueryInterface.html#QueryInterface">QueryInterface</a><br><small>A Query object.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.Query.QueryManagerInterface.html#QueryManagerInterface">QueryManagerInterface</a><br><small>This interface encapsulates methods for the management of search queries.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.Query.QueryResultInterface.html#QueryResultInterface">QueryResultInterface</a><br><small>A QueryResult object.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.Query.RowInterface.html#RowInterface">RowInterface</a><br><small>A row in the query result table.</small></span></li>
+<li class="closed">
+<span class="folder">QOM</span><ul>
+<li><span class="interface"><a href="phpcr.src.PHPCR.Query.QOM.AndInterface.html#AndInterface">AndInterface</a><br><small>Performs a logical conjunction of two other constraints.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.Query.QOM.BindVariableValueInterface.html#BindVariableValueInterface">BindVariableValueInterface</a><br><small>Evaluates to the value of a bind variable.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.Query.QOM.ChildNodeInterface.html#ChildNodeInterface">ChildNodeInterface</a><br><small>Tests whether the selector node is a child of a node reachable by absolute
+path path.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.Query.QOM.ChildNodeJoinConditionInterface.html#ChildNodeJoinConditionInterface">ChildNodeJoinConditionInterface</a><br><small>Tests whether the childSelector node is a child of the parentSelector node.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.Query.QOM.ColumnInterface.html#ColumnInterface">ColumnInterface</a><br><small>Defines a column to include in the tabular view of query results.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.Query.QOM.ComparisonInterface.html#ComparisonInterface">ComparisonInterface</a><br><small>Filters node-tuples based on the outcome of a binary operation.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.Query.QOM.ConstraintInterface.html#ConstraintInterface">ConstraintInterface</a><br><small>Filters the set of node-tuples formed by evaluating the query&#39;s selectors and
+the joins between them.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.Query.QOM.DescendantNodeInterface.html#DescendantNodeInterface">DescendantNodeInterface</a><br><small>Tests whether the selector node is a descendant of a node reachable by
+absolute path path.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.Query.QOM.DescendantNodeJoinConditionInterface.html#DescendantNodeJoinConditionInterface">DescendantNodeJoinConditionInterface</a><br><small>Tests whether the descendantSelector node is a descendant of the
+ancestorSelector node.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.Query.QOM.DynamicOperandInterface.html#DynamicOperandInterface">DynamicOperandInterface</a><br><small>An operand whose value can only be determined in evaluating the query.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.Query.QOM.EquiJoinConditionInterface.html#EquiJoinConditionInterface">EquiJoinConditionInterface</a><br><small>Tests whether the value of a property in a first selector is equal to the
+value of a property in a second selector.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.Query.QOM.FullTextSearchInterface.html#FullTextSearchInterface">FullTextSearchInterface</a><br><small>Performs a full-text search.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.Query.QOM.FullTextSearchScoreInterface.html#FullTextSearchScoreInterface">FullTextSearchScoreInterface</a><br><small>Evaluates to a DOUBLE value equal to the full-text search score of a node.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.Query.QOM.JoinConditionInterface.html#JoinConditionInterface">JoinConditionInterface</a><br><small>Filters the set of node-tuples formed from a join.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.Query.QOM.JoinInterface.html#JoinInterface">JoinInterface</a><br><small>Performs a join between two node-tuple sources.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.Query.QOM.LengthInterface.html#LengthInterface">LengthInterface</a><br><small>Evaluates to the length (or lengths, if multi-valued) of a property.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.Query.QOM.LiteralInterface.html#LiteralInterface">LiteralInterface</a><br><small>Evaluates to a literal value.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.Query.QOM.LowerCaseInterface.html#LowerCaseInterface">LowerCaseInterface</a><br><small>Evaluates to the lower-case string value (or values, if multi-valued) of
+operand.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.Query.QOM.NodeLocalNameInterface.html#NodeLocalNameInterface">NodeLocalNameInterface</a><br><small>Evaluates to a NAME value equal to the local (unprefixed) name of a node.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.Query.QOM.NodeNameInterface.html#NodeNameInterface">NodeNameInterface</a><br><small>Evaluates to a NAME value equal to the namespace-qualified name of a node.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.Query.QOM.NotInterface.html#NotInterface">NotInterface</a><br><small>Performs a logical negation of another constraint.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.Query.QOM.OperandInterface.html#OperandInterface">OperandInterface</a><br><small>An operand to a binary operation specified by a Comparison.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.Query.QOM.OrInterface.html#OrInterface">OrInterface</a><br><small>Performs a logical disjunction of two other constraints.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.Query.QOM.OrderingInterface.html#OrderingInterface">OrderingInterface</a><br><small>Determines the relative order of two node-tuples by evaluating operand for
+each.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.Query.QOM.PropertyExistenceInterface.html#PropertyExistenceInterface">PropertyExistenceInterface</a><br><small>Tests the existence of a property.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.Query.QOM.PropertyValueInterface.html#PropertyValueInterface">PropertyValueInterface</a><br><small>Evaluates to the value (or values, if multi-valued) of a property.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.Query.QOM.QueryObjectModelConstantsInterface.html#QueryObjectModelConstantsInterface">QueryObjectModelConstantsInterface</a><br><small>Defines constants used in the query object model.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.Query.QOM.QueryObjectModelFactoryInterface.html#QueryObjectModelFactoryInterface">QueryObjectModelFactoryInterface</a><br><small>A QueryObjectModelFactory creates instances of the JCR query object model.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.Query.QOM.QueryObjectModelInterface.html#QueryObjectModelInterface">QueryObjectModelInterface</a><br><small>A query in the JCR/PHPCR query object model.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.Query.QOM.SameNodeInterface.html#SameNodeInterface">SameNodeInterface</a><br><small>Tests whether the selector node is reachable by absolute path path.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.Query.QOM.SameNodeJoinConditionInterface.html#SameNodeJoinConditionInterface">SameNodeJoinConditionInterface</a><br><small>Tests whether two nodes are "the same" according to
+\PHPCR\ItemInterface::isSame()</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.Query.QOM.SelectorInterface.html#SelectorInterface">SelectorInterface</a><br><small>Selects a subset of the nodes in the repository based on node type.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.Query.QOM.SourceInterface.html#SourceInterface">SourceInterface</a><br><small>Evaluates to a set of node-tuples.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.Query.QOM.StaticOperandInterface.html#StaticOperandInterface">StaticOperandInterface</a><br><small>An operand whose value can be determined from static analysis of the query,
+prior to its evaluation.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.Query.QOM.UpperCaseInterface.html#UpperCaseInterface">UpperCaseInterface</a><br><small>Evaluates to the upper-case string value (or values, if multi-valued) of
+operand.</small></span></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="closed">
+<span class="folder">Retention</span><ul>
+<li><span class="interface"><a href="phpcr.src.PHPCR.Retention.HoldInterface.html#HoldInterface">HoldInterface</a><br><small>Hold represents a hold that can be applied to an existing node in order to
+prevent the node from being modified or removed.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.Retention.RetentionManagerInterface.html#RetentionManagerInterface">RetentionManagerInterface</a><br><small>The RetentionManager object is accessed via SessionInterface::getRetentionManager().</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.Retention.RetentionPolicyInterface.html#RetentionPolicyInterface">RetentionPolicyInterface</a><br><small>A RetentionPolicy is an object with a name and an optional description.</small></span></li>
+</ul>
+</li>
+<li class="closed">
+<span class="folder">Security</span><ul>
+<li><span class="interface"><a href="phpcr.src.PHPCR.Security.AccessControlEntryInterface.html#AccessControlEntryInterface">AccessControlEntryInterface</a><br><small>An AccessControlEntryInterface represents the association of one or more
+PrivilegeInterface objects with a specific principal.</small></span></li>
+<li><span class="class"><a href="phpcr.src.PHPCR.Security.AccessControlException.html#AccessControlException">AccessControlException</a><br><small>Exception thrown by access control related methods of AccessControlManager.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.Security.AccessControlListInterface.html#AccessControlListInterface">AccessControlListInterface</a><br><small>The AccessControlListInterface is an AccessControlPolicyInterface
+representing a list of access control entries.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.Security.AccessControlManagerInterface.html#AccessControlManagerInterface">AccessControlManagerInterface</a><br><small>The AccessControlManager object is accessed via
+SessionInterface::getAccessControlManager().</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.Security.AccessControlPolicyInterface.html#AccessControlPolicyInterface">AccessControlPolicyInterface</a><br><small>The AccessControlPolicyInterface is a marker interface for all kind of
+access control policies.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.Security.NamedAccessControlPolicyInterface.html#NamedAccessControlPolicyInterface">NamedAccessControlPolicyInterface</a><br><small>A NamedAccessControlPolicy is an opaque access control policy that is
+described by a JCR name and optionally a description.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.Security.PrincipalInterface.html#PrincipalInterface">PrincipalInterface</a><br><small>As there are no ACL standard interfaces in PHP this interface provides the
+Principal interface similar to the java.security.Principal</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.Security.PrivilegeInterface.html#PrivilegeInterface">PrivilegeInterface</a><br><small>A privilege represents the capability of performing a particular set of
+operations on items in the JCR repository.</small></span></li>
+</ul>
+</li>
+<li class="closed">
+<span class="folder">Transaction</span><ul>
+<li><span class="class"><a href="phpcr.src.PHPCR.Transaction.RollbackException.html#RollbackException">RollbackException</a><br><small>RollbackException exception is thrown when the transaction has been rolled back instead of committed.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.Transaction.UserTransactionInterface.html#UserTransactionInterface">UserTransactionInterface</a><br><small>As there is no transaction standard in PHP this interface provides a
+transaction interface similar to the
+&lt;a href="http://en.wikipedia.org/wiki/Java_Transaction_API"&gt;Java Transaction
+API (JTA)&lt;/a&gt;</small></span></li>
+</ul>
+</li>
+<li class="closed">
+<span class="folder">Util</span><ul>
+<li><span class="class"><a href="phpcr-utils.src.PHPCR.Util.NodeHelper.html#NodeHelper">NodeHelper</a><br><small>Helper with only static methods to work with PHPCR nodes</small></span></li>
+<li><span class="class"><a href="phpcr-utils.src.PHPCR.Util.TraversingItemVisitor.html#TraversingItemVisitor">TraversingItemVisitor</a><br><small>An implementation of ItemVisitor.</small></span></li>
+<li><span class="class"><a href="phpcr-utils.src.PHPCR.Util.TreeWalker.html#TreeWalker">TreeWalker</a><br><small>TODO: this should base on the TraversingItemVisitor</small></span></li>
+<li><span class="interface"><a href="phpcr-utils.src.PHPCR.Util.TreeWalkerFilterInterface.html#TreeWalkerFilterInterface">TreeWalkerFilterInterface</a><br><small></small></span></li>
+<li><span class="class"><a href="phpcr-utils.src.PHPCR.Util.UUIDHelper.html#UUIDHelper">UUIDHelper</a><br><small>static helper functions to deal with UUID&#39;s</small></span></li>
+<li class="closed">
+<span class="folder">Console</span><ul>
+<li class="closed">
+<span class="folder">Command</span><ul>
+<li><span class="class"><a href="phpcr-utils.src.PHPCR.Util.Console.Command.CreateWorkspaceCommand.html#CreateWorkspaceCommand">CreateWorkspaceCommand</a><br><small>A command to create a workspace in the phcpr repository</small></span></li>
+<li><span class="class"><a href="phpcr-utils.src.PHPCR.Util.Console.Command.DumpCommand.html#DumpCommand">DumpCommand</a><br><small></small></span></li>
+<li><span class="class"><a href="phpcr-utils.src.PHPCR.Util.Console.Command.ImportXmlCommand.html#ImportXmlCommand">ImportXmlCommand</a><br><small></small></span></li>
+<li><span class="class"><a href="phpcr-utils.src.PHPCR.Util.Console.Command.PurgeCommand.html#PurgeCommand">PurgeCommand</a><br><small></small></span></li>
+<li><span class="class"><a href="phpcr-utils.src.PHPCR.Util.Console.Command.QueryCommand.html#QueryCommand">QueryCommand</a><br><small></small></span></li>
+<li><span class="class"><a href="phpcr-utils.src.PHPCR.Util.Console.Command.RegisterNodeTypesCommand.html#RegisterNodeTypesCommand">RegisterNodeTypesCommand</a><br><small>Command to load and register a node type defined in a CND file.</small></span></li>
+</ul>
+</li>
+<li class="closed">
+<span class="folder">Helper</span><ul>
+<li><span class="class"><a href="phpcr-utils.src.PHPCR.Util.Console.Helper.ConsoleParametersParser.html#ConsoleParametersParser">ConsoleParametersParser</a><br><small></small></span></li>
+<li><span class="class"><a href="phpcr-utils.src.PHPCR.Util.Console.Helper.PhpcrHelper.html#PhpcrHelper">PhpcrHelper</a><br><small>Helper class to make the session instance available to console command</small></span></li>
+<li class="closed">
+<span class="folder">TreeDumper</span><ul>
+<li><span class="class"><a href="phpcr-utils.src.PHPCR.Util.Console.Helper.TreeDumper.ConsoleDumperNodeVisitor.html#ConsoleDumperNodeVisitor">ConsoleDumperNodeVisitor</a><br><small>TODO: this should base on the TraversingItemVisitor</small></span></li>
+<li><span class="class"><a href="phpcr-utils.src.PHPCR.Util.Console.Helper.TreeDumper.ConsoleDumperPropertyVisitor.html#ConsoleDumperPropertyVisitor">ConsoleDumperPropertyVisitor</a><br><small>TODO: this should base on the TraversingItemVisitor</small></span></li>
+<li><span class="class"><a href="phpcr-utils.src.PHPCR.Util.Console.Helper.TreeDumper.SystemNodeFilter.html#SystemNodeFilter">SystemNodeFilter</a><br><small>Filter system properties and nodes based on their name.</small></span></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="closed">
+<span class="folder">QOM</span><ul>
+<li><span class="class"><a href="phpcr-utils.src.PHPCR.Util.QOM.BaseQomToSqlQueryConverter.html#BaseQomToSqlQueryConverter">BaseQomToSqlQueryConverter</a><br><small></small></span></li>
+<li><span class="class"><a href="phpcr-utils.src.PHPCR.Util.QOM.BaseSqlGenerator.html#BaseSqlGenerator">BaseSqlGenerator</a><br><small></small></span></li>
+<li><span class="class"><a href="phpcr-utils.src.PHPCR.Util.QOM.NotSupportedConstraintException.html#NotSupportedConstraintException">NotSupportedConstraintException</a><br><small></small></span></li>
+<li><span class="class"><a href="phpcr-utils.src.PHPCR.Util.QOM.NotSupportedOperandException.html#NotSupportedOperandException">NotSupportedOperandException</a><br><small></small></span></li>
+<li><span class="class"><a href="phpcr-utils.src.PHPCR.Util.QOM.QomToSql1QueryConverter.html#QomToSql1QueryConverter">QomToSql1QueryConverter</a><br><small>Convert a QOM query into an SQL2 statement</small></span></li>
+<li><span class="class"><a href="phpcr-utils.src.PHPCR.Util.QOM.QomToSql2QueryConverter.html#QomToSql2QueryConverter">QomToSql2QueryConverter</a><br><small>Convert a QOM query into an SQL2 statement</small></span></li>
+<li><span class="class"><a href="phpcr-utils.src.PHPCR.Util.QOM.QueryBuilder.html#QueryBuilder">QueryBuilder</a><br><small>QueryBuilder class is responsible for dynamically create QOM queries.</small></span></li>
+<li><span class="class"><a href="phpcr-utils.src.PHPCR.Util.QOM.Sql1Generator.html#Sql1Generator">Sql1Generator</a><br><small>Generate SQL1 statements</small></span></li>
+<li><span class="class"><a href="phpcr-utils.src.PHPCR.Util.QOM.Sql2Generator.html#Sql2Generator">Sql2Generator</a><br><small>Generate SQL2 statements</small></span></li>
+<li><span class="class"><a href="phpcr-utils.src.PHPCR.Util.QOM.Sql2Scanner.html#Sql2Scanner">Sql2Scanner</a><br><small>Split an SQL2 statement into string tokens.</small></span></li>
+<li><span class="class"><a href="phpcr-utils.src.PHPCR.Util.QOM.Sql2ToQomQueryConverter.html#Sql2ToQomQueryConverter">Sql2ToQomQueryConverter</a><br><small>Parse SQL2 statements and output a corresponding QOM objects tree</small></span></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="closed">
+<span class="folder">Version</span><ul>
+<li><span class="class"><a href="phpcr.src.PHPCR.Version.ActivityViolationException.html#ActivityViolationException">ActivityViolationException</a><br><small>Exception will be thrown by NodeInterface::checkout() and
+NodeInterface::checkpoint() if an activity A is present on the current
+session and any of the following conditions is met:</small></span></li>
+<li><span class="class"><a href="phpcr.src.PHPCR.Version.LabelExistsVersionException.html#LabelExistsVersionException">LabelExistsVersionException</a><br><small>Exception thrown by VersionHistoryInterface::addVersionLabel() if moveLabel
+is set to false and an attempt is made to add a label that already exists in
+the VersionHistory.</small></span></li>
+<li><span class="class"><a href="phpcr.src.PHPCR.Version.OnParentVersionAction.html#OnParentVersionAction">OnParentVersionAction</a><br><small>The possible actions specified by the onParentVersion attribute in a
+property definition within a node type definition.</small></span></li>
+<li><span class="class"><a href="phpcr.src.PHPCR.Version.VersionException.html#VersionException">VersionException</a><br><small>Exception thrown by VersionInterface::addSuccessor() if an invalid version
+graph operation is attempted.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.Version.VersionHistoryInterface.html#VersionHistoryInterface">VersionHistoryInterface</a><br><small>A VersionHistory object wraps an nt:versionHistory node.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.Version.VersionInterface.html#VersionInterface">VersionInterface</a><br><small>A Version object wraps an nt:version node.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.Version.VersionManagerInterface.html#VersionManagerInterface">VersionManagerInterface</a><br><small>The VersionManager object is accessed via
+WorkspaceInterface::getVersionManager().</small></span></li>
+</ul>
+</li>
+</ul>
+</li></ul>
+</div><div class="section">
+<h1>Packages</h1>
+<ul id="packages-" class="filetree">
+<li class="closed">
+<span class="folder">Default</span><ul id="packages_Default" class="filetree"></ul>
+</li>
+<li class="closed">
+<span class="folder">phpcr</span><ul id="packages_phpcr" class="filetree"><li class="closed"><span class="class"><a href="phpcr.src.PHPCR.PropertyType.html#PropertyType">PropertyType</a><br><small>The property types supported by the JCR standard.</small></span></li></ul>
+</li>
+</ul>
+</div>
+</div></div><div id="footer"><div class="padder"></div></div></div></body></html>

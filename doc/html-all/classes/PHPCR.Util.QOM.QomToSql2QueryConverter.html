@@ -1,0 +1,723 @@
+<!DOCTYPE html><html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+<meta charset="utf-8">
+<title>PHPCR API and PHPCR-Utils » \PHPCR\Util\QOM\QomToSql2QueryConverter</title>
+<meta name="author" content="Mike van Riel">
+<meta name="description" content="">
+<link href="../css/template.css" rel="stylesheet" media="all">
+<script src="../js/jquery-1.7.1.min.js" type="text/javascript"></script><script src="../js/jquery-ui-1.8.2.custom.min.js" type="text/javascript"></script><script src="../js/jquery.mousewheel.min.js" type="text/javascript"></script><script src="../js/bootstrap.js" type="text/javascript"></script><script src="../js/template.js" type="text/javascript"></script><script src="../js/prettify/prettify.min.js" type="text/javascript"></script><link rel="shortcut icon" href="../img/favicon.ico">
+<link rel="apple-touch-icon" href="../img/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="72x72" href="../img/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="114x114" href="../img/apple-touch-icon-114x114.png">
+</head>
+<body>
+<div class="navbar navbar-fixed-top">
+<div class="navbar-inner"><div class="container">
+<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a><a class="brand" href="../index.html">PHPCR API and PHPCR-Utils</a><div class="nav-collapse"><ul class="nav">
+<li class="dropdown">
+<a href="#api" class="dropdown-toggle" data-toggle="dropdown">
+                                    API Documentation <b class="caret"></b></a><ul class="dropdown-menu">
+<li><a>Namespaces</a></li>
+<li><a href="../namespaces/PHPCR.html"><i class="icon-th"></i> PHPCR</a></li>
+<li><a>Packages</a></li>
+<li><a href="../packages/Default.html"><i class="icon-folder-open"></i> Default</a></li>
+<li><a href="../packages/phpcr.html"><i class="icon-folder-open"></i> phpcr</a></li>
+</ul>
+</li>
+<li class="dropdown" id="charts-menu">
+<a href="#charts" class="dropdown-toggle" data-toggle="dropdown">
+                                    Charts <b class="caret"></b></a><ul class="dropdown-menu"><li><a href="../graph_class.html"><i class="icon-list-alt"></i> Class hierarchy diagram</a></li></ul>
+</li>
+<li class="dropdown" id="reports-menu">
+<a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
+                                    Reports <b class="caret"></b></a><ul class="dropdown-menu">
+<li><a href="../errors.html"><i class="icon-remove-sign"></i> Errors 
+                <span class="label label-info">123</span></a></li>
+<li><a href="../markers.html"><i class="icon-map-marker"></i> Markers 
+                <ul><li>todo 
+                <span class="label label-info">12</span>
+</li></ul></a></li>
+<li><a href="../deprecated.html"><i class="icon-stop"></i> Deprecated elements 
+                <span class="label label-info">0</span></a></li>
+</ul>
+</li>
+</ul></div>
+</div></div>
+<div class="go_to_top"><a href="#___" style="color: inherit">Back to top  <i class="icon-upload icon-white"></i></a></div>
+</div>
+<div id="___" class="container">
+<noscript><div class="alert alert-warning">
+                            Javascript is disabled; several features are only available
+                            if Javascript is enabled.
+                        </div></noscript>
+<div class="row">
+<div class="span4">
+<span class="btn-group visibility" data-toggle="buttons-checkbox"><button class="btn public active" title="Show public elements">Public</button><button class="btn protected" title="Show protected elements">Protected</button><button class="btn private" title="Show private elements">Private</button><button class="btn inherited active" title="Show inherited elements">Inherited</button></span><div class="btn-group view pull-right" data-toggle="buttons-radio">
+<button class="btn details" title="Show descriptions and method names"><i class="icon-list"></i></button><button class="btn simple" title="Show only method names"><i class="icon-align-justify"></i></button>
+</div>
+<ul class="side-nav nav nav-list">
+<li class="nav-header">
+<i class="icon-custom icon-method"></i> Methods
+                    <ul>
+<li class="method public inherited"><a href="#method___construct" title="__construct :: "><span class="description">__construct()
+        </span><pre>__construct()</pre></a></li>
+<li class="method public inherited"><a href="#method_convert" title="convert :: Query ::= 'SELECT' columns
+    'FROM' Source
+    ['WHERE' Constraint]
+    ['ORDER BY' orderings]"><span class="description">Query ::= 'SELECT' columns
+    'FROM' Source
+    ['WHERE' Constraint]
+    ['ORDER BY' orderings]</span><pre>convert()</pre></a></li>
+</ul>
+</li>
+<li class="nav-header protected">» Protected
+                    <ul>
+<li class="method protected inherited"><a href="#method_convertBindVariable" title="convertBindVariable :: "><span class="description">convertBindVariable()
+        </span><pre>convertBindVariable()</pre></a></li>
+<li class="method protected "><a href="#method_convertChildNodeJoinCondition" title="convertChildNodeJoinCondition :: ChildNodeJoinCondition ::=
+  'ISCHILDNODE(' childSelectorName ','
+                 parentSelectorName ')'
+  childSelectorName ::= selectorName
+  parentSelectorName ::= selectorName"><span class="description">ChildNodeJoinCondition ::=
+  'ISCHILDNODE(' childSelectorName ','
+                 parentSelectorName ')'
+  childSelectorName ::= selectorName
+  parentSelectorName ::= selectorName</span><pre>convertChildNodeJoinCondition()</pre></a></li>
+<li class="method protected inherited"><a href="#method_convertColumns" title="convertColumns :: columns ::= (Column ',' {Column}) | '*'
+Column ::= ([selectorName'.']propertyName
+            ['AS' columnName]) |
+           (selectorName'.*')    // If only one selector exists
+selectorName ::= Name
+propertyName ::= Name
+columnName ::= Name"><span class="description">columns ::= (Column ',' {Column}) | '*'
+Column ::= ([selectorName'.']propertyName
+            ['AS' columnName]) |
+           (selectorName'.*')    // If only one selector exists
+selectorName ::= Name
+propertyName ::= Name
+columnName ::= Name</span><pre>convertColumns()</pre></a></li>
+<li class="method protected inherited"><a href="#method_convertComparison" title="convertComparison :: Comparison ::= DynamicOperand Operator StaticOperand"><span class="description">Comparison ::= DynamicOperand Operator StaticOperand</span><pre>convertComparison()</pre></a></li>
+<li class="method protected "><a href="#method_convertConstraint" title="convertConstraint :: Constraint ::= And | Or | Not | Comparison |
+         PropertyExistence | FullTextSearch |
+         SameNode | ChildNode | DescendantNode"><span class="description">Constraint ::= And | Or | Not | Comparison |
+         PropertyExistence | FullTextSearch |
+         SameNode | ChildNode | DescendantNode</span><pre>convertConstraint()</pre></a></li>
+<li class="method protected "><a href="#method_convertDescendantNodeJoinCondition" title="convertDescendantNodeJoinCondition :: DescendantNodeJoinCondition ::=
+  'ISDESCENDANTNODE(' descendantSelectorName ','
+                      ancestorSelectorName ')'
+  descendantSelectorName ::= selectorName
+  ancestorSelectorName ::= selectorName"><span class="description">DescendantNodeJoinCondition ::=
+  'ISDESCENDANTNODE(' descendantSelectorName ','
+                      ancestorSelectorName ')'
+  descendantSelectorName ::= selectorName
+  ancestorSelectorName ::= selectorName</span><pre>convertDescendantNodeJoinCondition()</pre></a></li>
+<li class="method protected "><a href="#method_convertDynamicOperand" title="convertDynamicOperand :: DynamicOperand ::= PropertyValue | Length | NodeName |
+             NodeLocalName | FullTextSearchScore |
+             LowerCase | UpperCase"><span class="description">DynamicOperand ::= PropertyValue | Length | NodeName |
+             NodeLocalName | FullTextSearchScore |
+             LowerCase | UpperCase</span><pre>convertDynamicOperand()</pre></a></li>
+<li class="method protected "><a href="#method_convertEquiJoinCondition" title="convertEquiJoinCondition :: EquiJoinCondition ::= selector1Name'.'property1Name '='
+                      selector2Name'.'property2Name
+  selector1Name ::= selectorName
+  selector2Name ::= selectorName
+  property1Name ::= propertyName
+  property2Name ::= propertyName"><span class="description">EquiJoinCondition ::= selector1Name'.'property1Name '='
+                      selector2Name'.'property2Name
+  selector1Name ::= selectorName
+  selector2Name ::= selectorName
+  property1Name ::= propertyName
+  property2Name ::= propertyName</span><pre>convertEquiJoinCondition()</pre></a></li>
+<li class="method protected inherited"><a href="#method_convertFullTextSearch" title="convertFullTextSearch :: FullTextSearch ::=
+      'CONTAINS(' ([selectorName'.']propertyName |
+                   selectorName'.*') ','
+                   FullTextSearchExpression ')'
+                     // If only one selector exists in this query,
+                        explicit specification of the selectorName
+                        preceding the propertyName is optional"><span class="description">FullTextSearch ::=
+      'CONTAINS(' ([selectorName'.']propertyName |
+                   selectorName'.*') ','
+                   FullTextSearchExpression ')'
+                     // If only one selector exists in this query,
+                        explicit specification of the selectorName
+                        preceding the propertyName is optional</span><pre>convertFullTextSearch()</pre></a></li>
+<li class="method protected inherited"><a href="#method_convertFullTextSearchExpression" title="convertFullTextSearchExpression :: FullTextSearchExpression ::= BindVariable | ''' FullTextSearchLiteral '''"><span class="description">FullTextSearchExpression ::= BindVariable | ''' FullTextSearchLiteral '''</span><pre>convertFullTextSearchExpression()</pre></a></li>
+<li class="method protected "><a href="#method_convertJoin" title="convertJoin :: Join ::= left [JoinType] 'JOIN' right 'ON' JoinCondition
+   // If JoinType is omitted INNER is assumed."><span class="description">Join ::= left [JoinType] 'JOIN' right 'ON' JoinCondition
+   // If JoinType is omitted INNER is assumed.</span><pre>convertJoin()</pre></a></li>
+<li class="method protected "><a href="#method_convertJoinCondition" title="convertJoinCondition :: JoinCondition ::= EquiJoinCondition |
+            SameNodeJoinCondition |
+            ChildNodeJoinCondition |
+            DescendantNodeJoinCondition"><span class="description">JoinCondition ::= EquiJoinCondition |
+            SameNodeJoinCondition |
+            ChildNodeJoinCondition |
+            DescendantNodeJoinCondition</span><pre>convertJoinCondition()</pre></a></li>
+<li class="method protected inherited"><a href="#method_convertLiteral" title="convertLiteral :: "><span class="description">convertLiteral()
+        </span><pre>convertLiteral()</pre></a></li>
+<li class="method protected inherited"><a href="#method_convertOrderings" title="convertOrderings :: orderings ::= Ordering {',' Ordering}
+Ordering ::= DynamicOperand [Order]
+Order ::= Ascending | Descending
+Ascending ::= 'ASC'
+Descending ::= 'DESC'"><span class="description">orderings ::= Ordering {',' Ordering}
+Ordering ::= DynamicOperand [Order]
+Order ::= Ascending | Descending
+Ascending ::= 'ASC'
+Descending ::= 'DESC'</span><pre>convertOrderings()</pre></a></li>
+<li class="method protected inherited"><a href="#method_convertPath" title="convertPath :: "><span class="description">convertPath()
+        </span><pre>convertPath()</pre></a></li>
+<li class="method protected inherited"><a href="#method_convertPropertyExistence" title="convertPropertyExistence :: PropertyExistence ::=
+  selectorName'.'propertyName 'IS NOT NULL' |
+  propertyName 'IS NOT NULL'    If only one
+                                selector exists in
+                                this query"><span class="description">PropertyExistence ::=
+  selectorName'.'propertyName 'IS NOT NULL' |
+  propertyName 'IS NOT NULL'    If only one
+                                selector exists in
+                                this query</span><pre>convertPropertyExistence()</pre></a></li>
+<li class="method protected inherited"><a href="#method_convertPropertyValue" title="convertPropertyValue :: PropertyValue ::= [selectorName'.'] propertyName     // If only one selector exists"><span class="description">PropertyValue ::= [selectorName'.'] propertyName     // If only one selector exists</span><pre>convertPropertyValue()</pre></a></li>
+<li class="method protected "><a href="#method_convertSameNodeJoinCondition" title="convertSameNodeJoinCondition :: SameNodeJoinCondition ::=
+  'ISSAMENODE(' selector1Name ','
+                 selector2Name
+                 [',' selector2Path] ')'
+  selector2Path ::= Path"><span class="description">SameNodeJoinCondition ::=
+  'ISSAMENODE(' selector1Name ','
+                 selector2Name
+                 [',' selector2Path] ')'
+  selector2Path ::= Path</span><pre>convertSameNodeJoinCondition()</pre></a></li>
+<li class="method protected inherited"><a href="#method_convertSelector" title="convertSelector :: Selector ::= nodeTypeName ['AS' selectorName]
+nodeTypeName ::= Name"><span class="description">Selector ::= nodeTypeName ['AS' selectorName]
+nodeTypeName ::= Name</span><pre>convertSelector()</pre></a></li>
+<li class="method protected "><a href="#method_convertSource" title="convertSource :: Source ::= Selector | Join"><span class="description">Source ::= Selector | Join</span><pre>convertSource()</pre></a></li>
+<li class="method protected inherited"><a href="#method_convertStaticOperand" title="convertStaticOperand :: StaticOperand ::= Literal | BindVariableValue"><span class="description">StaticOperand ::= Literal | BindVariableValue</span><pre>convertStaticOperand()</pre></a></li>
+</ul>
+</li>
+<li class="nav-header">
+<i class="icon-custom icon-property"></i> Properties
+                    <ul></ul>
+</li>
+<li class="nav-header protected">» Protected
+                    <ul><li class="property protected inherited"><a href="#property_generator" title="$generator :: "><span class="description">$generator</span><pre>$generator</pre></a></li></ul>
+</li>
+</ul>
+</div>
+<div class="span8">
+<a id="\PHPCR\Util\QOM\QomToSql2QueryConverter"></a><ul class="breadcrumb">
+<li>
+<a href="../index.html"><i class="icon-custom icon-class"></i></a><span class="divider">\</span>
+</li>
+<li><a href="../namespaces/PHPCR.html">PHPCR</a></li>
+<li>
+<span class="divider">\</span><a href="../namespaces/PHPCR.Util.html">Util</a>
+</li>
+<li>
+<span class="divider">\</span><a href="../namespaces/PHPCR.Util.QOM.html">QOM</a>
+</li>
+<li class="active">
+<span class="divider">\</span><a href="../classes/PHPCR.Util.QOM.QomToSql2QueryConverter.html">QomToSql2QueryConverter</a>
+</li>
+</ul>
+<div class="element class">
+<p class="short_description">Convert a QOM query into an SQL2 statement</p>
+<div class="details">
+<div class="long_description"></div>
+<h3>
+<i class="icon-custom icon-method"></i> Methods</h3>
+<a id="method___construct"></a><div class="element clickable method public method___construct" data-toggle="collapse" data-target=".method___construct .collapse">
+<h2>__construct()
+        </h2>
+<pre>__construct(\PHPCR\Util\QOM\BaseSqlGenerator $generator) </pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\PHPCR\Util\QOM\BaseQomToSqlQueryConverter::__construct()</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument"><h4>$generator</h4></div>
+</div></div>
+</div>
+<a id="method_convert"></a><div class="element clickable method public method_convert" data-toggle="collapse" data-target=".method_convert .collapse">
+<h2>Query ::= 'SELECT' columns
+    'FROM' Source
+    ['WHERE' Constraint]
+    ['ORDER BY' orderings]</h2>
+<pre>convert(\PHPCR\Query\QOM\QueryObjectModelInterface $query) : string</pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\PHPCR\Util\QOM\BaseQomToSqlQueryConverter::convert()</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$query</h4>
+<code><a href="../classes/PHPCR.Query.QOM.QueryObjectModelInterface.html">\PHPCR\Query\QOM\QueryObjectModelInterface</a></code>
+</div>
+<h3>Returns</h3>
+<div class="subelement response"><code>string</code></div>
+</div></div>
+</div>
+<a id="method_convertBindVariable"></a><div class="element clickable method protected method_convertBindVariable" data-toggle="collapse" data-target=".method_convertBindVariable .collapse">
+<h2>convertBindVariable()
+        </h2>
+<pre>convertBindVariable($var) </pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\PHPCR\Util\QOM\BaseQomToSqlQueryConverter::convertBindVariable()</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument"><h4>$var</h4></div>
+</div></div>
+</div>
+<a id="method_convertChildNodeJoinCondition"></a><div class="element clickable method protected method_convertChildNodeJoinCondition" data-toggle="collapse" data-target=".method_convertChildNodeJoinCondition .collapse">
+<h2>ChildNodeJoinCondition ::=
+  'ISCHILDNODE(' childSelectorName ','
+                 parentSelectorName ')'
+  childSelectorName ::= selectorName
+  parentSelectorName ::= selectorName</h2>
+<pre>convertChildNodeJoinCondition(\PHPCR\Query\QOM\ChildNodeJoinConditionInterface $condition) : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$condition</h4>
+<code><a href="../classes/PHPCR.Query.QOM.ChildNodeJoinConditionInterface.html">\PHPCR\Query\QOM\ChildNodeJoinConditionInterface</a></code>
+</div>
+<h3>Returns</h3>
+<div class="subelement response"><code>string</code></div>
+</div></div>
+</div>
+<a id="method_convertColumns"></a><div class="element clickable method protected method_convertColumns" data-toggle="collapse" data-target=".method_convertColumns .collapse">
+<h2>columns ::= (Column ',' {Column}) | '*'
+Column ::= ([selectorName'.']propertyName
+            ['AS' columnName]) |
+           (selectorName'.*')    // If only one selector exists
+selectorName ::= Name
+propertyName ::= Name
+columnName ::= Name</h2>
+<pre>convertColumns(array $columns) : string</pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\PHPCR\Util\QOM\BaseQomToSqlQueryConverter::convertColumns()</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$columns</h4>
+<code>array</code>
+</div>
+<h3>Returns</h3>
+<div class="subelement response"><code>string</code></div>
+</div></div>
+</div>
+<a id="method_convertComparison"></a><div class="element clickable method protected method_convertComparison" data-toggle="collapse" data-target=".method_convertComparison .collapse">
+<h2>Comparison ::= DynamicOperand Operator StaticOperand</h2>
+<pre>convertComparison(\PHPCR\Query\QOM\ComparisonInterface $comparison) : string</pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>Operator ::= EqualTo | NotEqualTo | LessThan |
+       LessThanOrEqualTo | GreaterThan |
+       GreaterThanOrEqualTo | Like
+EqualTo ::= '='
+NotEqualTo ::= '&lt;>'
+LessThan ::= '&lt;'
+LessThanOrEqualTo ::= '&lt;='
+GreaterThan ::= '>'
+GreaterThanOrEqualTo ::= '>='
+Like ::= 'LIKE'</p></div>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\PHPCR\Util\QOM\BaseQomToSqlQueryConverter::convertComparison()</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$comparison</h4>
+<code><a href="../classes/PHPCR.Query.QOM.ComparisonInterface.html">\PHPCR\Query\QOM\ComparisonInterface</a></code>
+</div>
+<h3>Returns</h3>
+<div class="subelement response"><code>string</code></div>
+</div></div>
+</div>
+<a id="method_convertConstraint"></a><div class="element clickable method protected method_convertConstraint" data-toggle="collapse" data-target=".method_convertConstraint .collapse">
+<h2>Constraint ::= And | Or | Not | Comparison |
+         PropertyExistence | FullTextSearch |
+         SameNode | ChildNode | DescendantNode</h2>
+<pre>convertConstraint(\PHPCR\Query\QOM\ConstraintInterface $constraint) : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>And ::= constraint1 'AND' constraint2
+Or ::= constraint1 'OR' constraint2
+Not ::= 'NOT' Constraint</p>
+
+<p>SameNode ::= 'ISSAMENODE(' [selectorName ','] Path ')'
+       // If only one selector exists in this query, explicit
+          specification of the selectorName is optional</p>
+
+<p>ChildNode ::= 'ISCHILDNODE(' [selectorName ','] Path ')'
+       // If only one selector exists in this query, explicit
+          specification of the selectorName is optional</p>
+
+<p>DescendantNode ::= 'ISDESCENDANTNODE(' [selectorName ','] Path ')'
+       // If only one selector exists in this query, explicit
+          specification of the selectorName is optional</p></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$constraint</h4>
+<code><a href="../classes/PHPCR.Query.QOM.ConstraintInterface.html">\PHPCR\Query\QOM\ConstraintInterface</a></code>
+</div>
+<h3>Returns</h3>
+<div class="subelement response"><code>string</code></div>
+</div></div>
+</div>
+<a id="method_convertDescendantNodeJoinCondition"></a><div class="element clickable method protected method_convertDescendantNodeJoinCondition" data-toggle="collapse" data-target=".method_convertDescendantNodeJoinCondition .collapse">
+<h2>DescendantNodeJoinCondition ::=
+  'ISDESCENDANTNODE(' descendantSelectorName ','
+                      ancestorSelectorName ')'
+  descendantSelectorName ::= selectorName
+  ancestorSelectorName ::= selectorName</h2>
+<pre>convertDescendantNodeJoinCondition(\PHPCR\Query\QOM\DescendantNodeJoinConditionInterface $condition) : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$condition</h4>
+<code><a href="../classes/PHPCR.Query.QOM.DescendantNodeJoinConditionInterface.html">\PHPCR\Query\QOM\DescendantNodeJoinConditionInterface</a></code>
+</div>
+<h3>Returns</h3>
+<div class="subelement response"><code>string</code></div>
+</div></div>
+</div>
+<a id="method_convertDynamicOperand"></a><div class="element clickable method protected method_convertDynamicOperand" data-toggle="collapse" data-target=".method_convertDynamicOperand .collapse">
+<h2>DynamicOperand ::= PropertyValue | Length | NodeName |
+             NodeLocalName | FullTextSearchScore |
+             LowerCase | UpperCase</h2>
+<pre>convertDynamicOperand(\PHPCR\Query\QOM\DynamicOperandInterface $operand) : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>Length ::= 'LENGTH(' PropertyValue ')'
+NodeName ::= 'NAME(' [selectorName] ')'              // If only one selector exists
+NodeLocalName ::= 'LOCALNAME(' [selectorName] ')'    // If only one selector exists
+FullTextSearchScore ::= 'SCORE(' [selectorName] ')'  // If only one selector exists
+LowerCase ::= 'LOWER(' DynamicOperand ')'
+UpperCase ::= 'UPPER(' DynamicOperand ')'</p></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$operand</h4>
+<code><a href="../classes/PHPCR.Query.QOM.DynamicOperandInterface.html">\PHPCR\Query\QOM\DynamicOperandInterface</a></code>
+</div>
+<h3>Returns</h3>
+<div class="subelement response"><code>string</code></div>
+</div></div>
+</div>
+<a id="method_convertEquiJoinCondition"></a><div class="element clickable method protected method_convertEquiJoinCondition" data-toggle="collapse" data-target=".method_convertEquiJoinCondition .collapse">
+<h2>EquiJoinCondition ::= selector1Name'.'property1Name '='
+                      selector2Name'.'property2Name
+  selector1Name ::= selectorName
+  selector2Name ::= selectorName
+  property1Name ::= propertyName
+  property2Name ::= propertyName</h2>
+<pre>convertEquiJoinCondition(\PHPCR\Query\QOM\EquiJoinConditionInterface $condition) : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$condition</h4>
+<code><a href="../classes/PHPCR.Query.QOM.EquiJoinConditionInterface.html">\PHPCR\Query\QOM\EquiJoinConditionInterface</a></code>
+</div>
+<h3>Returns</h3>
+<div class="subelement response"><code>string</code></div>
+</div></div>
+</div>
+<a id="method_convertFullTextSearch"></a><div class="element clickable method protected method_convertFullTextSearch" data-toggle="collapse" data-target=".method_convertFullTextSearch .collapse">
+<h2>FullTextSearch ::=
+      'CONTAINS(' ([selectorName'.']propertyName |
+                   selectorName'.*') ','
+                   FullTextSearchExpression ')'
+                     // If only one selector exists in this query,
+                        explicit specification of the selectorName
+                        preceding the propertyName is optional</h2>
+<pre>convertFullTextSearch(\PHPCR\Query\QOM\FullTextSearchInterface $constraint) : string</pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\PHPCR\Util\QOM\BaseQomToSqlQueryConverter::convertFullTextSearch()</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$constraint</h4>
+<code><a href="../classes/PHPCR.Query.QOM.FullTextSearchInterface.html">\PHPCR\Query\QOM\FullTextSearchInterface</a></code>
+</div>
+<h3>Returns</h3>
+<div class="subelement response"><code>string</code></div>
+</div></div>
+</div>
+<a id="method_convertFullTextSearchExpression"></a><div class="element clickable method protected method_convertFullTextSearchExpression" data-toggle="collapse" data-target=".method_convertFullTextSearchExpression .collapse">
+<h2>FullTextSearchExpression ::= BindVariable | ''' FullTextSearchLiteral '''</h2>
+<pre>convertFullTextSearchExpression($literal) : string</pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\PHPCR\Util\QOM\BaseQomToSqlQueryConverter::convertFullTextSearchExpression()</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument"><h4>$literal</h4></div>
+<h3>Returns</h3>
+<div class="subelement response"><code>string</code></div>
+</div></div>
+</div>
+<a id="method_convertJoin"></a><div class="element clickable method protected method_convertJoin" data-toggle="collapse" data-target=".method_convertJoin .collapse">
+<h2>Join ::= left [JoinType] 'JOIN' right 'ON' JoinCondition
+   // If JoinType is omitted INNER is assumed.</h2>
+<pre>convertJoin(\PHPCR\Query\QOM\JoinInterface $join) : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>left ::= Source
+right ::= Source</p>
+
+<p>JoinType ::= Inner | LeftOuter | RightOuter
+Inner ::= 'INNER'
+LeftOuter ::= 'LEFT OUTER'
+RightOuter ::= 'RIGHT OUTER'</p></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$join</h4>
+<code><a href="../classes/PHPCR.Query.QOM.JoinInterface.html">\PHPCR\Query\QOM\JoinInterface</a></code>
+</div>
+<h3>Returns</h3>
+<div class="subelement response"><code>string</code></div>
+</div></div>
+</div>
+<a id="method_convertJoinCondition"></a><div class="element clickable method protected method_convertJoinCondition" data-toggle="collapse" data-target=".method_convertJoinCondition .collapse">
+<h2>JoinCondition ::= EquiJoinCondition |
+            SameNodeJoinCondition |
+            ChildNodeJoinCondition |
+            DescendantNodeJoinCondition</h2>
+<pre>convertJoinCondition(\PHPCR\Query\QOM\JoinConditionInterface $condition) : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$condition</h4>
+<code><a href="../classes/PHPCR.Query.QOM.JoinConditionInterface.html">\PHPCR\Query\QOM\JoinConditionInterface</a></code>
+</div>
+<h3>Returns</h3>
+<div class="subelement response"><code>string</code></div>
+</div></div>
+</div>
+<a id="method_convertLiteral"></a><div class="element clickable method protected method_convertLiteral" data-toggle="collapse" data-target=".method_convertLiteral .collapse">
+<h2>convertLiteral()
+        </h2>
+<pre>convertLiteral($literal) </pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\PHPCR\Util\QOM\BaseQomToSqlQueryConverter::convertLiteral()</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument"><h4>$literal</h4></div>
+</div></div>
+</div>
+<a id="method_convertOrderings"></a><div class="element clickable method protected method_convertOrderings" data-toggle="collapse" data-target=".method_convertOrderings .collapse">
+<h2>orderings ::= Ordering {',' Ordering}
+Ordering ::= DynamicOperand [Order]
+Order ::= Ascending | Descending
+Ascending ::= 'ASC'
+Descending ::= 'DESC'</h2>
+<pre>convertOrderings(array $orderings) : string</pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\PHPCR\Util\QOM\BaseQomToSqlQueryConverter::convertOrderings()</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$orderings</h4>
+<code>array</code>
+</div>
+<h3>Returns</h3>
+<div class="subelement response"><code>string</code></div>
+</div></div>
+</div>
+<a id="method_convertPath"></a><div class="element clickable method protected method_convertPath" data-toggle="collapse" data-target=".method_convertPath .collapse">
+<h2>convertPath()
+        </h2>
+<pre>convertPath($path) </pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\PHPCR\Util\QOM\BaseQomToSqlQueryConverter::convertPath()</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument"><h4>$path</h4></div>
+</div></div>
+</div>
+<a id="method_convertPropertyExistence"></a><div class="element clickable method protected method_convertPropertyExistence" data-toggle="collapse" data-target=".method_convertPropertyExistence .collapse">
+<h2>PropertyExistence ::=
+  selectorName'.'propertyName 'IS NOT NULL' |
+  propertyName 'IS NOT NULL'    If only one
+                                selector exists in
+                                this query</h2>
+<pre>convertPropertyExistence(\PHPCR\Query\QOM\PropertyExistenceInterface $constraint) : string</pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>Note: The negation, 'NOT x IS NOT NULL'
+     can be written 'x IS NULL'</p></div>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\PHPCR\Util\QOM\BaseQomToSqlQueryConverter::convertPropertyExistence()</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$constraint</h4>
+<code><a href="../classes/PHPCR.Query.QOM.PropertyExistenceInterface.html">\PHPCR\Query\QOM\PropertyExistenceInterface</a></code>
+</div>
+<h3>Returns</h3>
+<div class="subelement response"><code>string</code></div>
+</div></div>
+</div>
+<a id="method_convertPropertyValue"></a><div class="element clickable method protected method_convertPropertyValue" data-toggle="collapse" data-target=".method_convertPropertyValue .collapse">
+<h2>PropertyValue ::= [selectorName'.'] propertyName     // If only one selector exists</h2>
+<pre>convertPropertyValue(\PHPCR\Query\QOM\PropertyValueInterface $operand) : string</pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\PHPCR\Util\QOM\BaseQomToSqlQueryConverter::convertPropertyValue()</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument"><h4>$operand</h4></div>
+<h3>Returns</h3>
+<div class="subelement response"><code>string</code></div>
+</div></div>
+</div>
+<a id="method_convertSameNodeJoinCondition"></a><div class="element clickable method protected method_convertSameNodeJoinCondition" data-toggle="collapse" data-target=".method_convertSameNodeJoinCondition .collapse">
+<h2>SameNodeJoinCondition ::=
+  'ISSAMENODE(' selector1Name ','
+                 selector2Name
+                 [',' selector2Path] ')'
+  selector2Path ::= Path</h2>
+<pre>convertSameNodeJoinCondition(\PHPCR\Query\QOM\SameNodeJoinConditionInterface $condition) : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$condition</h4>
+<code><a href="../classes/PHPCR.Query.QOM.SameNodeJoinConditionInterface.html">\PHPCR\Query\QOM\SameNodeJoinConditionInterface</a></code>
+</div>
+<h3>Returns</h3>
+<div class="subelement response"><code>string</code></div>
+</div></div>
+</div>
+<a id="method_convertSelector"></a><div class="element clickable method protected method_convertSelector" data-toggle="collapse" data-target=".method_convertSelector .collapse">
+<h2>Selector ::= nodeTypeName ['AS' selectorName]
+nodeTypeName ::= Name</h2>
+<pre>convertSelector(\PHPCR\Query\QOM\SelectorInterface $selector) : string</pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\PHPCR\Util\QOM\BaseQomToSqlQueryConverter::convertSelector()</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$selector</h4>
+<code><a href="../classes/PHPCR.Query.QOM.SelectorInterface.html">\PHPCR\Query\QOM\SelectorInterface</a></code>
+</div>
+<h3>Returns</h3>
+<div class="subelement response"><code>string</code></div>
+</div></div>
+</div>
+<a id="method_convertSource"></a><div class="element clickable method protected method_convertSource" data-toggle="collapse" data-target=".method_convertSource .collapse">
+<h2>Source ::= Selector | Join</h2>
+<pre>convertSource(\PHPCR\Query\QOM\SourceInterface $source) : string</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$source</h4>
+<code><a href="../classes/PHPCR.Query.QOM.SourceInterface.html">\PHPCR\Query\QOM\SourceInterface</a></code>
+</div>
+<h3>Returns</h3>
+<div class="subelement response"><code>string</code></div>
+</div></div>
+</div>
+<a id="method_convertStaticOperand"></a><div class="element clickable method protected method_convertStaticOperand" data-toggle="collapse" data-target=".method_convertStaticOperand .collapse">
+<h2>StaticOperand ::= Literal | BindVariableValue</h2>
+<pre>convertStaticOperand(\PHPCR\Query\QOM\StaticOperandInterface $operand) : string</pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>Literal ::= CastLiteral | UncastLiteral
+CastLiteral ::= 'CAST(' UncastLiteral ' AS ' PropertyType ')'</p>
+
+<p>PropertyType ::= 'STRING' | 'BINARY' | 'DATE' | 'LONG' | 'DOUBLE' |
+                 'DECIMAL' | 'BOOLEAN' | 'NAME' | 'PATH' |
+                 'REFERENCE' | 'WEAKREFERENCE' | 'URI'
+UncastLiteral ::= UnquotedLiteral | ''' UnquotedLiteral ''' | '“' UnquotedLiteral '“'
+UnquotedLiteral ::= // String form of a JCR Value</p>
+
+<p>BindVariableValue ::= '$'bindVariableName
+bindVariableName ::= Prefix</p></div>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\PHPCR\Util\QOM\BaseQomToSqlQueryConverter::convertStaticOperand()</td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$operand</h4>
+<code><a href="../classes/PHPCR.Query.QOM.StaticOperandInterface.html">\PHPCR\Query\QOM\StaticOperandInterface</a></code>
+</div>
+<h3>Returns</h3>
+<div class="subelement response"><code>string</code></div>
+</div></div>
+</div>
+<h3>
+<i class="icon-custom icon-property"></i> Properties</h3>
+<a id="property_generator"> </a><div class="element clickable property protected property_generator" data-toggle="collapse" data-target=".property_generator .collapse">
+<h2>$generator</h2>
+<pre>$generator : <a href="../classes/PHPCR.Util.QOM.Sql2Generator.html">\PHPCR\Util\QOM\Sql2Generator</a></pre>
+<div class="labels"><span class="label">Inherited</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>inherited_from</th>
+<td>\PHPCR\Util\QOM\BaseQomToSqlQueryConverter::$$generator</td>
+</tr></table>
+</div></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="row"><footer class="span12">
+            Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
+            Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a10</a> and<br>
+            generated on 2012-10-02T11:24:45+02:00.<br></footer></div>
+</div>
+</body>
+</html>

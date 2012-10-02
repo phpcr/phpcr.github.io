@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- documentation file for phpDocumentor2 -->
+<phpdoc>
+    <title>PHPCR API and PHPCR-Utils</title>
+    <parser>
+        <target>../html-all/</target>
+    </parser>
+    <transformer>
+        <target>../html-all/</target>
+    </transformer>
+    <transformations>
+        <template>new-black</template>
+    </transformations>
+    <files>
+        <directory>../../../phpcr/src</directory>
+        <directory>../../../phpcr-utils/src</directory>
+    </files>
+</phpdoc>

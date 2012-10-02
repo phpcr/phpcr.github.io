@@ -1,0 +1,401 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><title>PHPCR API and PHPCR-Utils</title><meta http-equiv="Content-Type" content="text/html; charset=utf-8"></meta><link rel="stylesheet" href="../css/template.css" type="text/css"></link><script type="text/javascript" src="../js/jquery-1.4.2.min.js"></script><script type="text/javascript" src="../js/jquery.tools.min.js"></script><script type="text/javascript" src="../js/jquery-ui-1.8.2.custom.min.js"></script><script type="text/javascript" src="../js/template.js"></script></head><body><div id="content"><h1 class="file">phpcr/src/PHPCR/Version/VersionManagerInterface.php</h1><div id="file-nav-box"><div id="file-nav-options">
+              Show:
+              <img src="../images/icons/visibility_public.png" alt="Public" id="show-public"></img><img src="../images/icons/visibility_protected.png" alt="Protected" id="show-protected"></img><img src="../images/icons/visibility_private.png" alt="Private" id="show-private"></img><span class="attribute" id="show-inherited">inherited</span></div><div id="file-nav-container"><ul id="file-nav"></ul><div style="clear: left;"></div></div><div id="file-nav-tab">
+              Table of Contents
+          </div></div><a name="top" class="anchor"></a><div id="file-description"><div class="short-description">This file is part of the PHPCR API and was originally ported from the Java
+JCR API to PHP by Karsten Dambekalns for the FLOW3 project.</div><div class="long-description"><p>Copyright 2008-2011 Karsten Dambekalns <a href="&#109;&#x61;&#x69;&#108;&#116;&#x6f;&#58;&#107;&#x61;&#114;&#115;&#x74;e&#110;&#x40;&#x74;&#121;&#x70;&#x6f;&#51;&#46;&#x6f;&#114;&#103;">&#107;&#x61;&#114;&#115;&#x74;e&#110;&#x40;&#x74;&#121;&#x70;&#x6f;&#51;&#46;&#x6f;&#114;&#103;</a></p>
+
+<p>Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at</p>
+
+<pre><code>http://www.apache.org/licenses/LICENSE-2.0
+</code></pre>
+
+<p>Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.</p></div></div><dl class="file-info"><dt>License</dt><dd><a href="http://www.apache.org/licenses/LICENSE-2.0">Apache Software License 2.0</a>
+         
+    </dd><dt>Link</dt><dd><a href="http://phpcr.github.com/">http://phpcr.github.com/</a>
+         
+    </dd></dl><a name="interfaces" class="anchor"></a><a id="\PHPCR\Version\VersionManagerInterface" class="anchor"></a><h2 class="interface">\PHPCR\Version\VersionManagerInterface<div class="to-top"><a href="#top">jump to top</a></div></h2><div class="class"><small class="package"><b>Package: </b>phpcr\interfaces</small><div class="short-description">The VersionManager object is accessed via
+WorkspaceInterface::getVersionManager().</div><div class="long-description"><p>It provides methods for:</p>
+
+<ul>
+<li>Version graph functionality (version history, base version, successors
+ predecessors)</li>
+<li>Basic version operations (checkin, checkout, checkpoint)</li>
+<li>Restore feature</li>
+<li>Label feature</li>
+<li>Merge feature</li>
+<li>Configuration feature</li>
+<li>Activity feature</li>
+</ul></div><dl class="class-info"><dt>Api</dt><dd>
+         
+    </dd></dl><h3>Methods</h3><div><a id="\PHPCR\Version\VersionManagerInterface::cancelMerge()" class="anchor"></a><div class="method public"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png"></img><img src="../images/icons/arrow_down.png" style="display: none;"></img></a><code class="title"><img src="../images/icons/method.png" alt="method" title="method"></img><img src="../images/icons/visibility_public.png" style="margin-right: 5px" alt="public"></img><span class="highlight">cancelMerge</span><span class="nb-faded-text">(string $absPath, <a href="../files/phpcr.src.PHPCR.Version.VersionInterface.html#\PHPCR\Version\VersionInterface">\PHPCR\Version\VersionInterface</a> $version)</span> : void</code><div class="description"><p class="short_description">Cancels the merge process with respect to the node at absPath and the
+specified version.</p></div><div class="code-tabs"><div class="long-description"><p>See doneMerge(string, Version) for a full explanation. Also see
+merge(string, string, boolean) for more details.</p>
+
+<p>If successful, these changes are dispatched immediately, there is no
+need to call save.</p></div><strong>Parameters</strong><table class="argument-info"><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><th>$absPath</th><td>string</td><td><em><p>The absolute path to a node the privileges shall be fetched of.</p></em></td></tr><tr><th>$version</th><td><a href="../files/phpcr.src.PHPCR.Version.VersionInterface.html#\PHPCR\Version\VersionInterface">\PHPCR\Version\VersionInterface</a></td><td><em><p>a version referred to by the jcr:mergeFailed property of the node at absPath.</p></em></td></tr></table><strong>Throws</strong><table class="argument-info"><thead><tr><th>Exception</th><th>Description</th></tr></thead><tr><td><a href="../files/phpcr.src.PHPCR.Version.VersionException.html#\PHPCR\Version\VersionException">\PHPCR\Version\VersionException</a></td><td><em>if the version specified is not
+     among those referenced in the jcr:mergeFailed  property of the node
+     at absPath  or if the node is currently checked-in.</em></td></tr><tr><td>\PHPCR\InvalidItemStateExceptionif</td><td><em>there are unsaved changes
+     pending on the node at absPath.</em></td></tr><tr><td>\PHPCR\UnsupportedRepositoryOperationExceptionif</td><td><em>the node at
+     absPath is not versionable.</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.RepositoryException.html#\PHPCR\RepositoryException">\PHPCR\RepositoryException</a></td><td><em>if another error occurs.</em></td></tr></table><strong>Details</strong><dl class="function-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\Version\VersionManagerInterface::checkin()" class="anchor"></a><div class="method public"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png"></img><img src="../images/icons/arrow_down.png" style="display: none;"></img></a><code class="title"><img src="../images/icons/method.png" alt="method" title="method"></img><img src="../images/icons/visibility_public.png" style="margin-right: 5px" alt="public"></img><span class="highlight">checkin</span><span class="nb-faded-text">(string $absPath)</span> : <a href="../files/phpcr.src.PHPCR.Version.VersionInterface.html#\PHPCR\Version\VersionInterface">\PHPCR\Version\VersionInterface</a></code><div class="description"><p class="short_description">Creates for the versionable node at absPath a new version with a system
+generated version name and returns that version (which will be the new
+base version of this node).</p></div><div class="code-tabs"><div class="long-description"><p>Sets the jcr:checkedOut property to false
+thus putting the node into the checked-in state. This means that the node
+and its connected non-versionable subgraph become read-only. A node's
+connected non-versionable subgraph is the set of non-versionable descendant
+nodes reachable from that node through child links without encountering
+any versionable nodes. In other words, the read-only status flows down
+from the checked-in node along every child link until either a versionable
+node is encountered or an item with no children is encountered. In a
+system that supports only simple versioning the connected non-versionable
+subgraph will be equivalent to the whole subgraph, since simple-versionable
+nodes cannot have simple-versionable descendants.</p>
+
+<p>Read-only status means that an item cannot be altered by the client using
+standard API methods (addNode, setProperty, etc.). The only exceptions to
+this rule are the restore(), restoreByLabel(), merge() and Node::update()
+operations; these do not respect read-only status due to check-in. Note
+that remove of a read-only node is possible, as long as its parent is not
+read-only (since removal is an alteration of the parent node).</p>
+
+<p>If this node is already checked-in, this method has no effect but returns
+the current base version of this node.</p>
+
+<p>If checkin succeeds, the change to the jcr:isCheckedOut property is
+dispatched immediately.</p></div><strong>Parameters</strong><table class="argument-info"><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><th>$absPath</th><td>string</td><td><em><p>an absolute path.</p></em></td></tr></table><strong>Returns</strong><table class="argument-info"><thead><tr><th>Type</th><th>Description</th></tr></thead><tr><td><a href="../files/phpcr.src.PHPCR.Version.VersionInterface.html#\PHPCR\Version\VersionInterface">\PHPCR\Version\VersionInterface</a></td><td>the created version.</td></tr></table><strong>Throws</strong><table class="argument-info"><thead><tr><th>Exception</th><th>Description</th></tr></thead><tr><td>\PHPCR\Verson\VersionException</td><td><em>if jcr:predecessors does not
+     contain at least one value or if a child item of the node at
+     absPath has an OnParentVersion status of ABORT. This includes the
+     case where an unresolved merge failure exists on the node, as
+     indicated by the presence of a jcr:mergeFailed property.</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.UnsupportedRepositoryOperationException.html#\PHPCR\UnsupportedRepositoryOperationException">\PHPCR\UnsupportedRepositoryOperationException</a></td><td><em>If the node at
+     $absPath is not versionable.</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.InvalidItemStateException.html#\PHPCR\InvalidItemStateException">\PHPCR\InvalidItemStateException</a></td><td><em>If unsaved changes exist on the
+     node at $absPath.</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.Lock.LockException.html#\PHPCR\Lock\LockException">\PHPCR\Lock\LockException</a></td><td><em>if a lock prevents the operation.</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.RepositoryException.html#\PHPCR\RepositoryException">\PHPCR\RepositoryException</a></td><td><em>If another error occurs.</em></td></tr></table><strong>Details</strong><dl class="function-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\Version\VersionManagerInterface::checkout()" class="anchor"></a><div class="method public"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png"></img><img src="../images/icons/arrow_down.png" style="display: none;"></img></a><code class="title"><img src="../images/icons/method.png" alt="method" title="method"></img><img src="../images/icons/visibility_public.png" style="margin-right: 5px" alt="public"></img><span class="highlight">checkout</span><span class="nb-faded-text">(string $absPath)</span> : void</code><div class="description"><p class="short_description">Sets the versionable node at $absPath to checked-out status by setting
+its jcr:isCheckedOut property to true.</p></div><div class="code-tabs"><div class="long-description"><p>Under full versioning it also sets
+the jcr:predecessors property to be a reference to the current base
+version (the same value as held in jcr:baseVersion).</p>
+
+<p>This method puts the node into the checked-out state, making it and its
+connected non-versionable subgraph no longer read-only (see checkin() for
+an explanation of the term "connected non-versionable subgraph". Under
+simple versioning this will simply be the whole subgraph).</p>
+
+<p>If successful, these changes are persisted immediately, there is no need
+to call save.</p>
+
+<p>If this node is already checked-out, this method has no effect.</p></div><strong>Parameters</strong><table class="argument-info"><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><th>$absPath</th><td>string</td><td><em><p>an absolute path.</p></em></td></tr></table><strong>Throws</strong><table class="argument-info"><thead><tr><th>Exception</th><th>Description</th></tr></thead><tr><td><a href="../files/phpcr.src.PHPCR.UnsupportedRepositoryOperationException.html#\PHPCR\UnsupportedRepositoryOperationException">\PHPCR\UnsupportedRepositoryOperationException</a></td><td><em>If the node at
+     absPath is not versionable.</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.Lock.LockException.html#\PHPCR\Lock\LockException">\PHPCR\Lock\LockException</a></td><td><em>if a lock prevents the checkout.</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.Version.ActivityViolationException.html#\PHPCR\Version\ActivityViolationException">\PHPCR\Version\ActivityViolationException</a></td><td><em>If the checkout
+     conflicts with the activity present on the current session.</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.RepositoryException.html#\PHPCR\RepositoryException">\PHPCR\RepositoryException</a></td><td><em>If another error occurs.</em></td></tr></table><strong>Details</strong><dl class="function-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\Version\VersionManagerInterface::checkpoint()" class="anchor"></a><div class="method public"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png"></img><img src="../images/icons/arrow_down.png" style="display: none;"></img></a><code class="title"><img src="../images/icons/method.png" alt="method" title="method"></img><img src="../images/icons/visibility_public.png" style="margin-right: 5px" alt="public"></img><span class="highlight">checkpoint</span><span class="nb-faded-text">(string $absPath)</span> : <a href="../files/phpcr.src.PHPCR.Version.VersionInterface.html#\PHPCR\Version\VersionInterface">\PHPCR\Version\VersionInterface</a></code><div class="description"><p class="short_description">Performs a checkin() followed by a checkout() on the versionable node at
+$absPath.</p></div><div class="code-tabs"><div class="long-description"><p>If this node is already checked-in, this method is equivalent to checkout().</p></div><strong>Parameters</strong><table class="argument-info"><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><th>$absPath</th><td>string</td><td><em><p>an absolute path.</p></em></td></tr></table><strong>Returns</strong><table class="argument-info"><thead><tr><th>Type</th><th>Description</th></tr></thead><tr><td><a href="../files/phpcr.src.PHPCR.Version.VersionInterface.html#\PHPCR\Version\VersionInterface">\PHPCR\Version\VersionInterface</a></td><td>the created version.</td></tr></table><strong>Throws</strong><table class="argument-info"><thead><tr><th>Exception</th><th>Description</th></tr></thead><tr><td><a href="../files/phpcr.src.PHPCR.Version.VersionException.html#\PHPCR\Version\VersionException">\PHPCR\Version\VersionException</a></td><td><em>if a child item of the node at
+     absPath has an OnParentVersion of ABORT. This includes the case
+     where an unresolved merge failure exists on the node, as indicated
+     by the presence of the jcr:mergeFailed.</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.UnsupportedRepositoryOperationException.html#\PHPCR\UnsupportedRepositoryOperationException">\PHPCR\UnsupportedRepositoryOperationException</a></td><td><em>if the node at
+     absPath is not versionable.</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.InvalidItemStateException.html#\PHPCR\InvalidItemStateException">\PHPCR\InvalidItemStateException</a></td><td><em>if there are unsaved changes
+     pending on the node at absPath.</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.Lock.LockException.html#\PHPCR\Lock\LockException">\PHPCR\Lock\LockException</a></td><td><em>if a lock prevents the operation.</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.RepositoryException.html#\PHPCR\RepositoryException">\PHPCR\RepositoryException</a></td><td><em>if another error occurs.</em></td></tr></table><strong>Details</strong><dl class="function-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\Version\VersionManagerInterface::createActivity()" class="anchor"></a><div class="method public"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png"></img><img src="../images/icons/arrow_down.png" style="display: none;"></img></a><code class="title"><img src="../images/icons/method.png" alt="method" title="method"></img><img src="../images/icons/visibility_public.png" style="margin-right: 5px" alt="public"></img><span class="highlight">createActivity</span><span class="nb-faded-text">(string $title)</span> : <a href="../files/phpcr.src.PHPCR.NodeInterface.html#\PHPCR\NodeInterface">\PHPCR\NodeInterface</a></code><div class="description"><p class="short_description">This method creates a new nt:activity at an implementation-determined
+location in the /jcr:system/jcr:activities subgraph.</p></div><div class="code-tabs"><div class="long-description"><p>The repository may, but is not required to, use the title as a hint for
+what to name the new activity node. The new activity Node is returned.</p>
+
+<p>The new node is dispatched immediately and does not require a save.</p></div><strong>Parameters</strong><table class="argument-info"><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><th>$title</th><td>string</td><td><em><p>The tilte of the activity to be created.</p></em></td></tr></table><strong>Returns</strong><table class="argument-info"><thead><tr><th>Type</th><th>Description</th></tr></thead><tr><td><a href="../files/phpcr.src.PHPCR.NodeInterface.html#\PHPCR\NodeInterface">\PHPCR\NodeInterface</a></td><td>the new activity Node.</td></tr></table><strong>Throws</strong><table class="argument-info"><thead><tr><th>Exception</th><th>Description</th></tr></thead><tr><td><a href="../files/phpcr.src.PHPCR.UnsupportedRepositoryOperationException.html#\PHPCR\UnsupportedRepositoryOperationException">\PHPCR\UnsupportedRepositoryOperationException</a></td><td><em>if the repository
+     does not support activities.</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.RepositoryException.html#\PHPCR\RepositoryException">\PHPCR\RepositoryException</a></td><td><em>if another error occurs.</em></td></tr></table><strong>Details</strong><dl class="function-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\Version\VersionManagerInterface::createConfiguration()" class="anchor"></a><div class="method public"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png"></img><img src="../images/icons/arrow_down.png" style="display: none;"></img></a><code class="title"><img src="../images/icons/method.png" alt="method" title="method"></img><img src="../images/icons/visibility_public.png" style="margin-right: 5px" alt="public"></img><span class="highlight">createConfiguration</span><span class="nb-faded-text">(string $absPath, <a href="../files/phpcr.src.PHPCR.Version.VersionInterface.html#\PHPCR\Version\VersionInterface">\PHPCR\Version\VersionInterface</a> $baseline)</span> : <a href="../files/phpcr.src.PHPCR.NodeInterface.html#\PHPCR\NodeInterface">\PHPCR\NodeInterface</a></code><div class="description"><p class="short_description">Calling createConfiguration on the node N at absPath creates, in the
+configuration storage, a new nt:configuration node whose root is N.</p></div><div class="code-tabs"><div class="long-description"><p>A
+reference to N is recorded in the jcr:root property of the new
+configuration, and a reference to the new configuration is recorded in
+the jcr:configuration property of N.</p>
+
+<p>If the specified baseline is null, a new version history is created to
+store baselines of the new configuration, and the jcr:baseVersion of the
+new configuration references the root of the new version history. If the
+specified baseline is not null, the jcr:baseVersion of the new
+configuration references the specified baseline.</p>
+
+<p>The changes are persisted immediately, a save is not required.</p></div><strong>Parameters</strong><table class="argument-info"><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><th>$absPath</th><td>string</td><td><em><p>The absolute path to a node the privileges shall be fetched of.</p></em></td></tr><tr><th>$baseline</th><td><a href="../files/phpcr.src.PHPCR.Version.VersionInterface.html#\PHPCR\Version\VersionInterface">\PHPCR\Version\VersionInterface</a></td><td><em><p>a Version</p></em></td></tr></table><strong>Returns</strong><table class="argument-info"><thead><tr><th>Type</th><th>Description</th></tr></thead><tr><td><a href="../files/phpcr.src.PHPCR.NodeInterface.html#\PHPCR\NodeInterface">\PHPCR\NodeInterface</a></td><td>a new nt:configuration node</td></tr></table><strong>Throws</strong><table class="argument-info"><thead><tr><th>Exception</th><th>Description</th></tr></thead><tr><td><a href="../files/phpcr.src.PHPCR.UnsupportedRepositoryOperationException.html#\PHPCR\UnsupportedRepositoryOperationException">\PHPCR\UnsupportedRepositoryOperationException</a></td><td><em>if N is not
+     versionable.</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.RepositoryException.html#\PHPCR\RepositoryException">\PHPCR\RepositoryException</a></td><td><em>if another error occurs.</em></td></tr></table><strong>Details</strong><dl class="function-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\Version\VersionManagerInterface::doneMerge()" class="anchor"></a><div class="method public"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png"></img><img src="../images/icons/arrow_down.png" style="display: none;"></img></a><code class="title"><img src="../images/icons/method.png" alt="method" title="method"></img><img src="../images/icons/visibility_public.png" style="margin-right: 5px" alt="public"></img><span class="highlight">doneMerge</span><span class="nb-faded-text">(string $absPath, <a href="../files/phpcr.src.PHPCR.Version.VersionInterface.html#\PHPCR\Version\VersionInterface">\PHPCR\Version\VersionInterface</a> $version)</span> : void</code><div class="description"><p class="short_description">Completes the merge process with respect to the node at absPath and the
+specified version.</p></div><div class="code-tabs"><div class="long-description"><p>When the merge(string, string, boolean) method is called on a node, every
+versionable node in that subgraph is compared with its corresponding node
+in the indicated other workspace and a "merge test result" is determined
+indicating one of the following:</p>
+
+<ol>
+<li>
+  This node will be updated to the state of its correspondee (if the
+  base version of the correspondee is more recent in terms of version
+  history)
+</li><li>
+  This node will be left alone (if this node's base version is more
+  recent in terms of version history).
+</li><li>
+  This node will be marked as having failed the merge test (if this
+  node's base version is on a different branch of the version history
+  from the base version of its corresponding node in the other
+  workspace, thus preventing an automatic determination of which is more
+  recent).
+</li>
+</ol>
+
+<p>(See merge() for more details)</p>
+
+<p>In the last case the merge of the non-versionable subgraph (the "content")
+of this node must be done by the application (for example, by providing a
+merge tool for the user).</p>
+
+<p>Additionally, once the content of the nodes has been merged, their version
+graph branches must also be merged. The JCR versioning system provides for
+this by keeping a record, for each versionable node that fails the merge
+test, of the base version of the corresponding node that caused the merge
+failure. This record is kept in the jcr:mergeFailed property of this node.
+After a merge, this property will contain one or more (if multiple merges
+have been performed) REFERENCEs that point to the "offending versions".</p>
+
+<p>To complete the merge process, the client calls doneMerge(Version v)
+passing the version object referred to be the jcr:mergeFailed property
+that the client wishes to connect to this node in the version graph. This
+has the effect of moving the reference to the indicated version from the
+jcr:mergeFailed property of this node to the jcr:predecessors.</p>
+
+<p>If the client chooses not to connect this node to a particular version
+referenced in the jcr:mergeFailed property, he calls cancelMerge(String,
+Version).
+This has the effect of removing the reference to the specified version
+from jcr:mergeFailed without adding it to jcr:predecessors.</p>
+
+<p>Once the last reference in jcr:mergeFailed has been either moved to
+jcr:predecessors (with doneMerge) or just removed from jcr:mergeFailed
+(with cancelMerge) the jcr:mergeFailed property is automatically removed,
+thus enabling this node to be checked-in, creating a new version (note
+that before the jcr:mergeFailed is removed, its OnParentVersion setting of
+ABORT prevents checkin). This new version will have a predecessor
+connection to each version for which doneMerge was called, thus joining
+those branches of the version graph.</p>
+
+<p>If successful, these changes are dispatched immediately, there is no need
+to call save.</p></div><strong>Parameters</strong><table class="argument-info"><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><th>$absPath</th><td>string</td><td><em><p>The absolute path to a node the privileges shall be fetched of.</p></em></td></tr><tr><th>$version</th><td><a href="../files/phpcr.src.PHPCR.Version.VersionInterface.html#\PHPCR\Version\VersionInterface">\PHPCR\Version\VersionInterface</a></td><td><em><p>a version referred to by the jcr:mergeFailed property of the node at absPath.</p></em></td></tr></table><strong>Throws</strong><table class="argument-info"><thead><tr><th>Exception</th><th>Description</th></tr></thead><tr><td><a href="../files/phpcr.src.PHPCR.Version.VersionException.html#\PHPCR\Version\VersionException">\PHPCR\Version\VersionException</a></td><td><em>if the version specified is not
+     among those referenced in this node's jcr:mergeFailed or if the
+     node is currently checked-in.</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.InvalidItemStateException.html#\PHPCR\InvalidItemStateException">\PHPCR\InvalidItemStateException</a></td><td><em>if there are unsaved changes
+     pending on the node at absPath.</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.UnsupportedRepositoryOperationException.html#\PHPCR\UnsupportedRepositoryOperationException">\PHPCR\UnsupportedRepositoryOperationException</a></td><td><em>if the node at
+     absPath is not versionable.</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.RepositoryException.html#\PHPCR\RepositoryException">\PHPCR\RepositoryException</a></td><td><em>if another error occurs.</em></td></tr></table><strong>Details</strong><dl class="function-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\Version\VersionManagerInterface::getActivity()" class="anchor"></a><div class="method public"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png"></img><img src="../images/icons/arrow_down.png" style="display: none;"></img></a><code class="title"><img src="../images/icons/method.png" alt="method" title="method"></img><img src="../images/icons/visibility_public.png" style="margin-right: 5px" alt="public"></img><span class="highlight">getActivity</span><span class="nb-faded-text">()</span> : <a href="../files/phpcr.src.PHPCR.NodeInterface.html#\PHPCR\NodeInterface">\PHPCR\NodeInterface</a></code><div class="description"><p class="short_description">Returns the node representing the current activity or null if there is no
+current activity.</p></div><div class="code-tabs"><div class="long-description"></div><strong>Returns</strong><table class="argument-info"><thead><tr><th>Type</th><th>Description</th></tr></thead><tr><td><a href="../files/phpcr.src.PHPCR.NodeInterface.html#\PHPCR\NodeInterface">\PHPCR\NodeInterface</a></td><td>An nt:activity node or null.</td></tr></table><strong>Throws</strong><table class="argument-info"><thead><tr><th>Exception</th><th>Description</th></tr></thead><tr><td><a href="../files/phpcr.src.PHPCR.UnsupportedRepositoryOperationException.html#\PHPCR\UnsupportedRepositoryOperationException">\PHPCR\UnsupportedRepositoryOperationException</a></td><td><em>if the repository
+     does not support activities.</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.RepositoryException.html#\PHPCR\RepositoryException">\PHPCR\RepositoryException</a></td><td><em>if another error occurs.</em></td></tr></table><strong>Details</strong><dl class="function-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\Version\VersionManagerInterface::getBaseVersion()" class="anchor"></a><div class="method public"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png"></img><img src="../images/icons/arrow_down.png" style="display: none;"></img></a><code class="title"><img src="../images/icons/method.png" alt="method" title="method"></img><img src="../images/icons/visibility_public.png" style="margin-right: 5px" alt="public"></img><span class="highlight">getBaseVersion</span><span class="nb-faded-text">(string $absPath)</span> : <a href="../files/phpcr.src.PHPCR.Version.VersionInterface.html#\PHPCR\Version\VersionInterface">\PHPCR\Version\VersionInterface</a></code><div class="description"><p class="short_description">Returns the current base version of the versionable node at absPath.</p></div><div class="code-tabs"><div class="long-description"></div><strong>Parameters</strong><table class="argument-info"><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><th>$absPath</th><td>string</td><td><em><p>The absolute path to a node the privileges shall be fetched of.</p></em></td></tr></table><strong>Returns</strong><table class="argument-info"><thead><tr><th>Type</th><th>Description</th></tr></thead><tr><td><a href="../files/phpcr.src.PHPCR.Version.VersionInterface.html#\PHPCR\Version\VersionInterface">\PHPCR\Version\VersionInterface</a></td><td>a Version object.</td></tr></table><strong>Throws</strong><table class="argument-info"><thead><tr><th>Exception</th><th>Description</th></tr></thead><tr><td><a href="../files/phpcr.src.PHPCR.UnsupportedRepositoryOperationException.html#\PHPCR\UnsupportedRepositoryOperationException">\PHPCR\UnsupportedRepositoryOperationException</a></td><td><em>if the node at
+     absPath is not versionable.</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.RepositoryException.html#\PHPCR\RepositoryException">\PHPCR\RepositoryException</a></td><td><em>if another error occurs.</em></td></tr></table><strong>Details</strong><dl class="function-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\Version\VersionManagerInterface::getVersionHistory()" class="anchor"></a><div class="method public"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png"></img><img src="../images/icons/arrow_down.png" style="display: none;"></img></a><code class="title"><img src="../images/icons/method.png" alt="method" title="method"></img><img src="../images/icons/visibility_public.png" style="margin-right: 5px" alt="public"></img><span class="highlight">getVersionHistory</span><span class="nb-faded-text">(string $absPath)</span> : <a href="../files/phpcr.src.PHPCR.Version.VersionHistoryInterface.html#\PHPCR\Version\VersionHistoryInterface">\PHPCR\Version\VersionHistoryInterface</a></code><div class="description"><p class="short_description">Returns the VersionHistory object of the node at $absPath.</p></div><div class="code-tabs"><div class="long-description"><p>This object
+provides access to the nt:versionHistory node holding this node's
+versions.</p></div><strong>Parameters</strong><table class="argument-info"><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><th>$absPath</th><td>string</td><td><em><p>The absolute path to a node the privileges shall be fetched of.</p></em></td></tr></table><strong>Returns</strong><table class="argument-info"><thead><tr><th>Type</th><th>Description</th></tr></thead><tr><td><a href="../files/phpcr.src.PHPCR.Version.VersionHistoryInterface.html#\PHPCR\Version\VersionHistoryInterface">\PHPCR\Version\VersionHistoryInterface</a></td><td>a VersionHistory object</td></tr></table><strong>Throws</strong><table class="argument-info"><thead><tr><th>Exception</th><th>Description</th></tr></thead><tr><td><a href="../files/phpcr.src.PHPCR.UnsupportedRepositoryOperationException.html#\PHPCR\UnsupportedRepositoryOperationException">\PHPCR\UnsupportedRepositoryOperationException</a></td><td><em>if the node at
+     absPath is not versionable.</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.RepositoryException.html#\PHPCR\RepositoryException">\PHPCR\RepositoryException</a></td><td><em>If another error occurs.</em></td></tr></table><strong>Details</strong><dl class="function-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\Version\VersionManagerInterface::isCheckedOut()" class="anchor"></a><div class="method public"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png"></img><img src="../images/icons/arrow_down.png" style="display: none;"></img></a><code class="title"><img src="../images/icons/method.png" alt="method" title="method"></img><img src="../images/icons/visibility_public.png" style="margin-right: 5px" alt="public"></img><span class="highlight">isCheckedOut</span><span class="nb-faded-text">(string $absPath)</span> : boolean</code><div class="description"><p class="short_description">Check whether the node at path is checked out.</p></div><div class="code-tabs"><div class="long-description"><p>Returns true if the node at $absPath is either</p>
+
+<ul>
+<li>versionable (full or simple) and currently checked-out,</li>
+<li>non-versionable and its nearest versionable ancestor is checked-out or</li>
+<li>non-versionable and it has no versionable ancestor.</li>
+</ul>
+
+<p>Returns false if the node at $absPath is either</p>
+
+<ul>
+<li>versionable (full or simple) and currently checked-in or</li>
+<li>non-versionable and its nearest versionable ancestor is checked-in.</li>
+</ul></div><strong>Parameters</strong><table class="argument-info"><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><th>$absPath</th><td>string</td><td><em><p>The absolute path to a node the privileges shall be fetched of.</p></em></td></tr></table><strong>Returns</strong><table class="argument-info"><thead><tr><th>Type</th><th>Description</th></tr></thead><tr><td>boolean</td><td>True, if the node identified by the given path is
+     checked out, else false.</td></tr></table><strong>Throws</strong><table class="argument-info"><thead><tr><th>Exception</th><th>Description</th></tr></thead><tr><td><a href="../files/phpcr.src.PHPCR.RepositoryException.html#\PHPCR\RepositoryException">\PHPCR\RepositoryException</a></td><td><em>if an error occurs.</em></td></tr></table><strong>Details</strong><dl class="function-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\Version\VersionManagerInterface::merge()" class="anchor"></a><div class="method public"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png"></img><img src="../images/icons/arrow_down.png" style="display: none;"></img></a><code class="title"><img src="../images/icons/method.png" alt="method" title="method"></img><img src="../images/icons/visibility_public.png" style="margin-right: 5px" alt="public"></img><span class="highlight">merge</span><span class="nb-faded-text">(string | <a href="../files/phpcr.src.PHPCR.NodeInterface.html#\PHPCR\NodeInterface">\PHPCR\NodeInterface</a> $source, string $srcWorkspace = null, boolean $bestEffort = null, boolean $isShallow = false)</span> : \PHPCR\Version\Iterator</code><div class="description"><p class="short_description">If an nt:activity Node is given:</p></div><div class="code-tabs"><div class="long-description"><p>This method merges the changes that were made under the specified
+activity into the current workspace.</p>
+
+<p>An activity A will be associated with a set of versions through the
+jcr:activity reference of each version node in the set. We call each
+such associated version a member of A.</p>
+
+<p>For each version history H that contains one or more members of A, one
+such member will be the latest member of A in H. The latest member of A
+in H is the version in H that is a member of A and that has no successor
+versions (to any degree) that are also members of A.</p>
+
+<p>The set of versions that are the latest members of A in their respective
+version histories is called the change set of A. It fully describes the
+changes made under the activity A.</p>
+
+<p>This method performs a shallow merge into the current workspace of each
+version in the change set of the activity specified by activityNode. If
+there is no corresponding node in this workspace for a given member of
+the change set, that member is ignored.</p>
+
+<p>If an absolute path is given:</p>
+
+<p>This method can be thought of as a version-sensitive update.</p>
+
+<p>If isShallow is true, it tests the node at absPath against its
+corresponding node in srcWorkspace with respect to the relation between
+their respective base versions and either updates the node in question
+or not, depending on the outcome of the test.</p>
+
+<p>If isShallow is false, this method recursively tests each versionable
+node in the subgraph as mentioned above.</p>
+
+<p>If isShallow is true and this node is not versionable, then this method
+returns and no changes are made.</p>
+
+<p>A MergeException is thrown if bestEffort is false and a versionable node
+is encountered whose corresponding node's base version is on a divergent
+branch from the base version of the node at absPath.</p>
+
+<p>This is a worksapce-write method and therefore any changes are dispatched
+immediately.</p>
+
+<p>This method returns an iterator over all versionable nodes in the
+subgraph that received a merge result of fail. If bestEffort is false,
+this iterator will be empty (since if merge returns successfully,
+instead of throwing an exception, it will be because no failures were
+encountered).
+If bestEffort is true, this iterator will contain all nodes that received
+a fail during the course of this merge operation.</p>
+
+<p>See the JCR specifications for more details on the behavior of this
+method.</p>
+
+<p>Note: The Java API defines this with multiple differing signatures.</p></div><strong>Parameters</strong><table class="argument-info"><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><th>$source</th><td>string | <a href="../files/phpcr.src.PHPCR.NodeInterface.html#\PHPCR\NodeInterface">\PHPCR\NodeInterface</a></td><td><em><p>an absolute path or an nt:activity node.</p></em></td></tr><tr><th>$srcWorkspace</th><td>string</td><td><em><p>the name of the source workspace (optional if $source is a Node).</p>
+</em></td></tr><tr><th>$bestEffort</th><td>boolean</td><td><em><p>a boolean (optional if $source is a Node)</p>
+</em></td></tr><tr><th>$isShallow</th><td>boolean</td><td><em><p>a boolean (optional)</p>
+</em></td></tr></table><strong>Returns</strong><table class="argument-info"><thead><tr><th>Type</th><th>Description</th></tr></thead><tr><td>\PHPCR\Version\Iterator</td><td>implementing &lt;b&gt;SeekableIterator&lt;/b&gt; and
+     &lt;b&gt;Countable&lt;/b&gt;. Keys are the Node names, values the corresponding
+     NodeInterface instances that received a merge result of "fail" in
+     the course of this operation.</td></tr></table><strong>Throws</strong><table class="argument-info"><thead><tr><th>Exception</th><th>Description</th></tr></thead><tr><td><a href="../files/phpcr.src.PHPCR.MergeException.html#\PHPCR\MergeException">\PHPCR\MergeException</a></td><td><em>- if bestEffort is false and a failed
+     merge result is encountered.</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.InvalidItemStateException.html#\PHPCR\InvalidItemStateException">\PHPCR\InvalidItemStateException</a></td><td><em>if this session (not
+     necessarily the node at absPath) has pending unsaved changes.</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.NoSuchWorkspaceException.html#\PHPCR\NoSuchWorkspaceException">\PHPCR\NoSuchWorkspaceException</a></td><td><em>if srcWorkspace does not exist.</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.AccessDeniedException.html#\PHPCR\AccessDeniedException">\PHPCR\AccessDeniedException</a></td><td><em>if the current session does not
+     have sufficient rights to perform the operation.</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.Lock.LockException.html#\PHPCR\Lock\LockException">\PHPCR\Lock\LockException</a></td><td><em>if a lock prevents the merge.</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.Version.VersionException.html#\PHPCR\Version\VersionException">\PHPCR\Version\VersionException</a></td><td><em>if the specified node is not an
+     nt:activity node.</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.UnsupportedRepositoryOperationException.html#\PHPCR\UnsupportedRepositoryOperationException">\PHPCR\UnsupportedRepositoryOperationException</a></td><td><em>if this operation
+     is not supported by this implementation.</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.RepositoryException.html#\PHPCR\RepositoryException">\PHPCR\RepositoryException</a></td><td><em>if another error occurs.</em></td></tr></table><strong>Details</strong><dl class="function-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\Version\VersionManagerInterface::removeActivity()" class="anchor"></a><div class="method public"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png"></img><img src="../images/icons/arrow_down.png" style="display: none;"></img></a><code class="title"><img src="../images/icons/method.png" alt="method" title="method"></img><img src="../images/icons/visibility_public.png" style="margin-right: 5px" alt="public"></img><span class="highlight">removeActivity</span><span class="nb-faded-text">(<a href="../files/phpcr.src.PHPCR.NodeInterface.html#\PHPCR\NodeInterface">\PHPCR\NodeInterface</a> $activityNode)</span> : void</code><div class="description"><p class="short_description">This method removes the given $activityNode.</p></div><div class="code-tabs"><div class="long-description"><p>The change is dispatched immediately and does not require a save.</p></div><strong>Parameters</strong><table class="argument-info"><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><th>$activityNode</th><td><a href="../files/phpcr.src.PHPCR.NodeInterface.html#\PHPCR\NodeInterface">\PHPCR\NodeInterface</a></td><td><em><p>an activity Node</p></em></td></tr></table><strong>Throws</strong><table class="argument-info"><thead><tr><th>Exception</th><th>Description</th></tr></thead><tr><td><a href="../files/phpcr.src.PHPCR.UnsupportedRepositoryOperationException.html#\PHPCR\UnsupportedRepositoryOperationException">\PHPCR\UnsupportedRepositoryOperationException</a></td><td><em>if the repository
+     does not support activities.</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.RepositoryException.html#\PHPCR\RepositoryException">\PHPCR\RepositoryException</a></td><td><em>if another error occurs.</em></td></tr></table><strong>Details</strong><dl class="function-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\Version\VersionManagerInterface::restore()" class="anchor"></a><div class="method public"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png"></img><img src="../images/icons/arrow_down.png" style="display: none;"></img></a><code class="title"><img src="../images/icons/method.png" alt="method" title="method"></img><img src="../images/icons/visibility_public.png" style="margin-right: 5px" alt="public"></img><span class="highlight">restore</span><span class="nb-faded-text">(boolean $removeExisting, string | array | <a href="../files/phpcr.src.PHPCR.Version.VersionInterface.html#\PHPCR\Version\VersionInterface">\PHPCR\Version\VersionInterface</a> $version, string $absPath = null)</span> : void</code><div class="description"><p class="short_description">Attempt to restore an old version of a node.</p></div><div class="code-tabs"><div class="long-description"><p><em>If $absPath is given and $version is a version name:</em>
+ Restores the node at $absPath to the state defined by the version with
+ the specified version name ($version).
+ This method will work regardless of whether the node at absPath is
+ checked-in or not.</p>
+
+<p><em>If $absPath is given and $version is a VersionInterface instance:
+</em>
+ Restores the specified version to $absPath. There must be no existing
+ node at $absPath. If one exists, a VersionException is thrown.
+ There must be a parent node to the location at $absPath, otherwise a
+ PathNotFoundException is thrown.
+ If the would-be parent of the location $absPath is actually a property,
+ or if a node type restriction would be violated, then a
+ ConstraintViolationException is thrown.</p>
+
+<p><em>If $version is VersionInterface instance:</em>
+ Restores the node in the current workspace that is the versionable node
+ of the specified version to the state reflected in that version.
+ This method ignores checked-in status.</p>
+
+<p><em>If $version is an array of VersionInterface instances:</em>
+ Restores a set of versions at once. Used in cases where a "chicken and
+ egg" problem of mutually referring REFERENCE properties would prevent
+ the restore in any serial order.
+ The following restrictions apply to the set of versions specified: If S
+ is the set of versions being restored simultaneously,
+ - For every version V in S that corresponds to a missing node, there
+   must also be a parent of V in S.
+ - S must contain at least one version that corresponds to an existing
+   node in the workspace.
+ - No V in S can be a root version (jcr:rootVersion).
+ If any of these restrictions does not hold, the restore will fail
+ because the system will be unable to determine the path locations to
+ which one or more versions are to be restored. In this case a
+ VersionException is thrown.
+ The versionable nodes in the current workspace that correspond to the
+ versions being restored define a set of (one or more) subgraphs.</p>
+
+<p><em>If the restore succeeds the changes made are dispatched immediately;
+</em>
+there is no need to call save.</p>
+
+<p>If an array of VersionInterface instances is restored, an identifier
+collision occurs when the current workspace contains a node outside these
+subgraphs that has the same identifier as one of the nodes that would be
+introduced by the restore operation into one of these subgraphs.
+Else, an identifier collision occurs when a node exists outside the
+subgraph rooted at absPath with the same identifier as a node that would
+be introduced by the restore operation into the affected subgraph.
+The result in such a case is governed by the removeExisting flag. If
+$removeExisting is true, then the incoming node takes precedence, and the
+existing node (and its subgraph) is removed (if possible; otherwise a
+RepositoryException is thrown). If $removeExisting is false, then an
+ItemExistsException is thrown and no changes are made. Note that this
+applies not only to cases where the restored node itself conflicts with
+an existing node but also to cases where a conflict occurs with any node
+that would be introduced into the workspace by the restore operation. In
+particular, conflicts involving subnodes of the restored node that have
+OnParentVersion settings of COPY or VERSION are also governed by the
+$removeExisting flag.</p>
+
+<p><b>Note:</b> The Java API defines this with multiple differing
+signatures, you need to act accordingly in your implementation.</p></div><strong>Parameters</strong><table class="argument-info"><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><th>$removeExisting</th><td>boolean</td><td><em><p>a boolean flag that governs what happens in case of an identifier collision</p></em></td></tr><tr><th>$version</th><td>string | array | <a href="../files/phpcr.src.PHPCR.Version.VersionInterface.html#\PHPCR\Version\VersionInterface">\PHPCR\Version\VersionInterface</a></td><td><em><p>a version name, an an array of Version objects or a Version object</p></em></td></tr><tr><th>$absPath</th><td>string</td><td><em><p>The absolute path to a node the privileges shall be fetched of.</p></em></td></tr></table><strong>Throws</strong><table class="argument-info"><thead><tr><th>Exception</th><th>Description</th></tr></thead><tr><td><a href="../files/phpcr.src.PHPCR.Version.VersionException.html#\PHPCR\Version\VersionException">\PHPCR\Version\VersionException</a></td><td><em>if the specified version does
+     not have a corresponding node in the workspace this VersionManager
+     has been created for or if an attempt is made to restore the root
+     version (jcr:rootVersion).</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.ItemExistsException.html#\PHPCR\ItemExistsException">\PHPCR\ItemExistsException</a></td><td><em>if $removeExisting is false and an
+     identifier collision occurs or a node exists at $absPath.</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.InvalidItemStateException.html#\PHPCR\InvalidItemStateException">\PHPCR\InvalidItemStateException</a></td><td><em>if this Session has pending
+     unsaved changes.</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.UnsupportedRepositoryOperationException.html#\PHPCR\UnsupportedRepositoryOperationException">\PHPCR\UnsupportedRepositoryOperationException</a></td><td><em>if versioning is
+     not supported.</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.Lock.LockException.html#\PHPCR\Lock\LockException">\PHPCR\Lock\LockException</a></td><td><em>if a lock prevents the restore.</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.RepositoryException.html#\PHPCR\RepositoryException">\PHPCR\RepositoryException</a></td><td><em>if another error occurs.</em></td></tr></table><strong>Details</strong><dl class="function-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\Version\VersionManagerInterface::restoreByLabel()" class="anchor"></a><div class="method public"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png"></img><img src="../images/icons/arrow_down.png" style="display: none;"></img></a><code class="title"><img src="../images/icons/method.png" alt="method" title="method"></img><img src="../images/icons/visibility_public.png" style="margin-right: 5px" alt="public"></img><span class="highlight">restoreByLabel</span><span class="nb-faded-text">(string $absPath, string $versionLabel, boolean $removeExisting)</span> : void</code><div class="description"><p class="short_description">Restores the version of the node at absPath with the specified version
+label.</p></div><div class="code-tabs"><div class="long-description"><p>If this node is not versionable, an
+UnsupportedRepositoryOperationException is thrown. If successful, the
+change is persisted immediately and there is no need to call save.</p>
+
+<p>This method will work regardless of whether the node at absPath is
+checked-in or not.</p>
+
+<p>An identifier collision occurs when a node exists outside the subgraph
+rooted at this node with the same identifier as a node that would be
+introduced by the restoreByLabel operation into the subgraph at this node.
+The result in such a case is governed by the removeExisting flag. If
+removeExisting is true, then the incoming node takes precedence, and the
+existing node (and its subgraph) is removed (if possible; otherwise a
+RepositoryException is thrown). If removeExisting is false, then a
+ItemExistsException is thrown and no changes are made. Note that this
+applies not only to cases where the restored node itself conflicts with
+an existing node but also to cases where a conflict occurs with any node
+that would be introduced into the workspace by the restore operation. In
+particular, conflicts involving subnodes of the restored node that have
+OnParentVersion settings of COPY or VERSION are also governed by the
+removeExisting flag.</p></div><strong>Parameters</strong><table class="argument-info"><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><th>$absPath</th><td>string</td><td><em><p>The absolute path to a node the privileges shall be fetched of.</p></em></td></tr><tr><th>$versionLabel</th><td>string</td><td><em><p>a String</p></em></td></tr><tr><th>$removeExisting</th><td>boolean</td><td><em><p>a boolean flag that governs what happens in case of an identifier collision.</p></em></td></tr></table><strong>Throws</strong><table class="argument-info"><thead><tr><th>Exception</th><th>Description</th></tr></thead><tr><td><a href="../files/phpcr.src.PHPCR.UnsupportedRepositoryOperationException.html#\PHPCR\UnsupportedRepositoryOperationException">\PHPCR\UnsupportedRepositoryOperationException</a></td><td><em>if the node at
+     absPath is not versionable.</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.Version.VersionException.html#\PHPCR\Version\VersionException">\PHPCR\Version\VersionException</a></td><td><em>if the specified versionLabel
+     does not exist in this node's version history.</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.ItemExistsException.html#\PHPCR\ItemExistsException">\PHPCR\ItemExistsException</a></td><td><em>if removeExisting is false and an
+     identifier collision occurs.</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.Lock.LockException.html#\PHPCR\Lock\LockException">\PHPCR\Lock\LockException</a></td><td><em>if a lock prevents the restore.</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.InvalidItemStateException.html#\PHPCR\InvalidItemStateException">\PHPCR\InvalidItemStateException</a></td><td><em>if this Session (not
+     necessarily the Node at absPath) has pending unsaved changes.</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.RepositoryException.html#\PHPCR\RepositoryException">\PHPCR\RepositoryException</a></td><td><em>If another error occurs.</em></td></tr></table><strong>Details</strong><dl class="function-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\Version\VersionManagerInterface::setActivity()" class="anchor"></a><div class="method public"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png"></img><img src="../images/icons/arrow_down.png" style="display: none;"></img></a><code class="title"><img src="../images/icons/method.png" alt="method" title="method"></img><img src="../images/icons/visibility_public.png" style="margin-right: 5px" alt="public"></img><span class="highlight">setActivity</span><span class="nb-faded-text">(<a href="../files/phpcr.src.PHPCR.NodeInterface.html#\PHPCR\NodeInterface">\PHPCR\NodeInterface</a> $activity)</span> : <a href="../files/phpcr.src.PHPCR.NodeInterface.html#\PHPCR\NodeInterface">\PHPCR\NodeInterface</a></code><div class="description"><p class="short_description">This method is called by the client to set the current activity on the
+session from which this version manager has been obtained.</p></div><div class="code-tabs"><div class="long-description"><p>Changing the
+current activity is done by calling setActivity again. Cancelling the
+current activity (so that the session has no current activity) is done
+by calling setActivity(null). The activity Node is returned.</p></div><strong>Parameters</strong><table class="argument-info"><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><th>$activity</th><td><a href="../files/phpcr.src.PHPCR.NodeInterface.html#\PHPCR\NodeInterface">\PHPCR\NodeInterface</a></td><td><em><p>an activity node</p></em></td></tr></table><strong>Returns</strong><table class="argument-info"><thead><tr><th>Type</th><th>Description</th></tr></thead><tr><td><a href="../files/phpcr.src.PHPCR.NodeInterface.html#\PHPCR\NodeInterface">\PHPCR\NodeInterface</a></td><td>the activity node</td></tr></table><strong>Throws</strong><table class="argument-info"><thead><tr><th>Exception</th><th>Description</th></tr></thead><tr><td><a href="../files/phpcr.src.PHPCR.UnsupportedRepositoryOperationException.html#\PHPCR\UnsupportedRepositoryOperationException">\PHPCR\UnsupportedRepositoryOperationException</a></td><td><em>if the repository
+     does not support activities or if activity is not a nt:activity node.</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.RepositoryException.html#\PHPCR\RepositoryException">\PHPCR\RepositoryException</a></td><td><em>if another error occurs.</em></td></tr></table><strong>Details</strong><dl class="function-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div></div></div></div><small class="footer">
+            Documentation was generated by
+            <a href="http://phpdoc.org">phpDocumentor
+                2.0.0a10</a>.
+        </small></body></html>

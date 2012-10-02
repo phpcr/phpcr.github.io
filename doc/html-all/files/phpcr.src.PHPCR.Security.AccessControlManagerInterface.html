@@ -1,0 +1,143 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><title>PHPCR API and PHPCR-Utils</title><meta http-equiv="Content-Type" content="text/html; charset=utf-8"></meta><link rel="stylesheet" href="../css/template.css" type="text/css"></link><script type="text/javascript" src="../js/jquery-1.4.2.min.js"></script><script type="text/javascript" src="../js/jquery.tools.min.js"></script><script type="text/javascript" src="../js/jquery-ui-1.8.2.custom.min.js"></script><script type="text/javascript" src="../js/template.js"></script></head><body><div id="content"><h1 class="file">phpcr/src/PHPCR/Security/AccessControlManagerInterface.php</h1><div id="file-nav-box"><div id="file-nav-options">
+              Show:
+              <img src="../images/icons/visibility_public.png" alt="Public" id="show-public"></img><img src="../images/icons/visibility_protected.png" alt="Protected" id="show-protected"></img><img src="../images/icons/visibility_private.png" alt="Private" id="show-private"></img><span class="attribute" id="show-inherited">inherited</span></div><div id="file-nav-container"><ul id="file-nav"></ul><div style="clear: left;"></div></div><div id="file-nav-tab">
+              Table of Contents
+          </div></div><a name="top" class="anchor"></a><div id="file-description"><div class="short-description">This file is part of the PHPCR API and was originally ported from the Java
+JCR API to PHP by Karsten Dambekalns for the FLOW3 project.</div><div class="long-description"><p>Copyright 2008-2011 Karsten Dambekalns <a href="&#109;&#x61;&#x69;&#108;&#116;&#x6f;&#58;&#107;&#x61;&#114;&#115;&#x74;e&#110;&#x40;&#x74;&#121;&#x70;&#x6f;&#51;&#46;&#x6f;&#114;&#103;">&#107;&#x61;&#114;&#115;&#x74;e&#110;&#x40;&#x74;&#121;&#x70;&#x6f;&#51;&#46;&#x6f;&#114;&#103;</a></p>
+
+<p>Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at</p>
+
+<pre><code>http://www.apache.org/licenses/LICENSE-2.0
+</code></pre>
+
+<p>Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.</p></div></div><dl class="file-info"><dt>License</dt><dd><a href="http://www.apache.org/licenses/LICENSE-2.0">Apache Software License 2.0</a>
+         
+    </dd><dt>Link</dt><dd><a href="http://phpcr.github.com/">http://phpcr.github.com/</a>
+         
+    </dd></dl><a name="interfaces" class="anchor"></a><a id="\PHPCR\Security\AccessControlManagerInterface" class="anchor"></a><h2 class="interface">\PHPCR\Security\AccessControlManagerInterface<div class="to-top"><a href="#top">jump to top</a></div></h2><div class="class"><small class="package"><b>Package: </b>phpcr\interfaces</small><div class="short-description">The AccessControlManager object is accessed via
+SessionInterface::getAccessControlManager().</div><div class="long-description"><p>It provides methods for:</p>
+
+<ul>
+<li>Access control discovery</li>
+<li>Assigning access control policies</li>
+</ul></div><dl class="class-info"><dt>Api</dt><dd>
+         
+    </dd></dl><h3>Methods</h3><div><a id="\PHPCR\Security\AccessControlManagerInterface::getApplicablePolicies()" class="anchor"></a><div class="method public"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png"></img><img src="../images/icons/arrow_down.png" style="display: none;"></img></a><code class="title"><img src="../images/icons/method.png" alt="method" title="method"></img><img src="../images/icons/visibility_public.png" style="margin-right: 5px" alt="public"></img><span class="highlight">getApplicablePolicies</span><span class="nb-faded-text">(string $absPath)</span> : \Iterator</code><div class="description"><p class="short_description">Returns the access control policies that are capable of being applied to
+the node at absPath.</p></div><div class="code-tabs"><div class="long-description"></div><strong>Parameters</strong><table class="argument-info"><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><th>$absPath</th><td>string</td><td><em><p>The absolute path to the node of which privileges are requested.</p></em></td></tr></table><strong>Returns</strong><table class="argument-info"><thead><tr><th>Type</th><th>Description</th></tr></thead><tr><td>\Iterator</td><td>over the applicable access control policies
+     implementing &lt;b&gt;SeekableIterator&lt;/b&gt; and &lt;b&gt;Countable&lt;/b&gt;. Values
+     are the AccessControlPolicyInterface instances. Keys have no
+     meaning. Returns an empty iterator if no policies are applicable.</td></tr></table><strong>Throws</strong><table class="argument-info"><thead><tr><th>Exception</th><th>Description</th></tr></thead><tr><td><a href="../files/phpcr.src.PHPCR.PathNotFoundException.html#\PHPCR\PathNotFoundException">\PHPCR\PathNotFoundException</a></td><td><em>if no node at absPath exists or the
+     session does not have sufficent access to retrieve a node at that
+     location.</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.AccessDeniedException.html#\PHPCR\AccessDeniedException">\PHPCR\AccessDeniedException</a></td><td><em>if the session lacks
+     READ_ACCESS_CONTROL privilege for the absPath node.</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.RepositoryException.html#\PHPCR\RepositoryException">\PHPCR\RepositoryException</a></td><td><em>if another error occurs.</em></td></tr></table><strong>Details</strong><dl class="function-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\Security\AccessControlManagerInterface::getEffectivePolicies()" class="anchor"></a><div class="method public"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png"></img><img src="../images/icons/arrow_down.png" style="display: none;"></img></a><code class="title"><img src="../images/icons/method.png" alt="method" title="method"></img><img src="../images/icons/visibility_public.png" style="margin-right: 5px" alt="public"></img><span class="highlight">getEffectivePolicies</span><span class="nb-faded-text">(string $absPath)</span> : array</code><div class="description"><p class="short_description">Gets the access control policies currently in effect on the node
+identified by the given path.</p></div><div class="code-tabs"><div class="long-description"><p>Returns the AccessControlPolicy objects that currently are in effect at
+the node at $absPath. This may be policies set through this API or some
+implementation specific (default) policies.</p></div><strong>Parameters</strong><table class="argument-info"><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><th>$absPath</th><td>string</td><td><em><p>The absolute path to the node of which privileges are requested.</p></em></td></tr></table><strong>Returns</strong><table class="argument-info"><thead><tr><th>Type</th><th>Description</th></tr></thead><tr><td>array</td><td>an array of AccessControlPolicy objects.</td></tr></table><strong>Throws</strong><table class="argument-info"><thead><tr><th>Exception</th><th>Description</th></tr></thead><tr><td><a href="../files/phpcr.src.PHPCR.PathNotFoundException.html#\PHPCR\PathNotFoundException">\PHPCR\PathNotFoundException</a></td><td><em>if no node at absPath exists or the
+     session does not have sufficent access to retrieve a node at that
+     location.</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.AccessDeniedException.html#\PHPCR\AccessDeniedException">\PHPCR\AccessDeniedException</a></td><td><em>if the session lacks
+     READ_ACCESS_CONTROL privilege for the absPath node.</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.RepositoryException.html#\PHPCR\RepositoryException">\PHPCR\RepositoryException</a></td><td><em>if another error occurs.</em></td></tr></table><strong>Details</strong><dl class="function-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\Security\AccessControlManagerInterface::getPolicies()" class="anchor"></a><div class="method public"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png"></img><img src="../images/icons/arrow_down.png" style="display: none;"></img></a><code class="title"><img src="../images/icons/method.png" alt="method" title="method"></img><img src="../images/icons/visibility_public.png" style="margin-right: 5px" alt="public"></img><span class="highlight">getPolicies</span><span class="nb-faded-text">(string $absPath)</span> : array</code><div class="description"><p class="short_description">Gets the access control policies previously set to the node identified
+by the given path.</p></div><div class="code-tabs"><div class="long-description"><p>Returns the AccessControlPolicy objects that have been set to the node
+at $absPath or an empty array if no policy has been set. This method
+reflects the binding state, including transient policy modifications.
+Use getEffectivePolicies(String) in order to determine the policy that
+effectively applies at absPath.</p></div><strong>Parameters</strong><table class="argument-info"><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><th>$absPath</th><td>string</td><td><em><p>The absolute path to a node the privileges shall be fetched of.</p></em></td></tr></table><strong>Returns</strong><table class="argument-info"><thead><tr><th>Type</th><th>Description</th></tr></thead><tr><td>array</td><td>an array of AccessControlPolicy objects or an empty array
+     if no policy has been set.</td></tr></table><strong>Throws</strong><table class="argument-info"><thead><tr><th>Exception</th><th>Description</th></tr></thead><tr><td><a href="../files/phpcr.src.PHPCR.PathNotFoundException.html#\PHPCR\PathNotFoundException">\PHPCR\PathNotFoundException</a></td><td><em>if no node at absPath exists or the
+     session does not have sufficent access to retrieve a node at that
+     location.</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.AccessDeniedException.html#\PHPCR\AccessDeniedException">\PHPCR\AccessDeniedException</a></td><td><em>if the session lacks
+     READ_ACCESS_CONTROL privilege for the absPath node.</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.RepositoryException.html#\PHPCR\RepositoryException">\PHPCR\RepositoryException</a></td><td><em>if another error occurs.</em></td></tr></table><strong>Details</strong><dl class="function-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\Security\AccessControlManagerInterface::getPrivileges()" class="anchor"></a><div class="method public"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png"></img><img src="../images/icons/arrow_down.png" style="display: none;"></img></a><code class="title"><img src="../images/icons/method.png" alt="method" title="method"></img><img src="../images/icons/visibility_public.png" style="margin-right: 5px" alt="public"></img><span class="highlight">getPrivileges</span><span class="nb-faded-text">(string $absPath)</span> : array</code><div class="description"><p class="short_description">Reads the privileges of an existing node identfied by its path.</p></div><div class="code-tabs"><div class="long-description"><p>Returns the privileges the session has for absolute path absPath, which
+must be an existing node. The returned privileges are those for which
+AccessControlManagerInterface::hasPrivileges() would return true.</p>
+
+<p>The results reported by the this method reflect the net effect of the
+currently applied control mechanisms. It does not reflect unsaved access
+control policies or unsaved access control entries. Changes to access
+control status caused by these mechanisms only take effect on
+SessionInterface::save() and are only then reflected in the results of
+the privilege test methods.</p></div><strong>Parameters</strong><table class="argument-info"><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><th>$absPath</th><td>string</td><td><em><p>The absolute path to a node the privileges shall be fetched of.</p></em></td></tr></table><strong>Returns</strong><table class="argument-info"><thead><tr><th>Type</th><th>Description</th></tr></thead><tr><td>array</td><td>an array of Privileges.</td></tr></table><strong>Throws</strong><table class="argument-info"><thead><tr><th>Exception</th><th>Description</th></tr></thead><tr><td><a href="../files/phpcr.src.PHPCR.PathNotFoundException.html#\PHPCR\PathNotFoundException">\PHPCR\PathNotFoundException</a></td><td><em>if no node at absPath exists or the
+     session does not have sufficent access to retrieve a node at that
+     location.</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.RepositoryException.html#\PHPCR\RepositoryException">\PHPCR\RepositoryException</a></td><td><em>if another error occurs.</em></td></tr></table><strong>Details</strong><dl class="function-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\Security\AccessControlManagerInterface::getSupportedPrivileges()" class="anchor"></a><div class="method public"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png"></img><img src="../images/icons/arrow_down.png" style="display: none;"></img></a><code class="title"><img src="../images/icons/method.png" alt="method" title="method"></img><img src="../images/icons/visibility_public.png" style="margin-right: 5px" alt="public"></img><span class="highlight">getSupportedPrivileges</span><span class="nb-faded-text">(string $absPath)</span> : array</code><div class="description"><p class="short_description">Gets privileges of an existing node identified by its path.</p></div><div class="code-tabs"><div class="long-description"><p>Returns the privileges supported for absolute path $absPath, which must
+be an existing node. This method does not return the privileges held by
+the session. Instead, it returns the privileges that the repository
+supports.</p></div><strong>Parameters</strong><table class="argument-info"><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><th>$absPath</th><td>string</td><td><em><p>The absolute path to a node the privileges shall be fetched of.</p></em></td></tr></table><strong>Returns</strong><table class="argument-info"><thead><tr><th>Type</th><th>Description</th></tr></thead><tr><td>array</td><td>An array of Privileges.</td></tr></table><strong>Throws</strong><table class="argument-info"><thead><tr><th>Exception</th><th>Description</th></tr></thead><tr><td><a href="../files/phpcr.src.PHPCR.PathNotFoundException.html#\PHPCR\PathNotFoundException">\PHPCR\PathNotFoundException</a></td><td><em>if no node at absPath exists or the
+     session does not have privilege to retrieve the node.</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.RepositoryException.html#\PHPCR\RepositoryException">\PHPCR\RepositoryException</a></td><td><em>if another error occurs.</em></td></tr></table><strong>Details</strong><dl class="function-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\Security\AccessControlManagerInterface::hasPrivileges()" class="anchor"></a><div class="method public"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png"></img><img src="../images/icons/arrow_down.png" style="display: none;"></img></a><code class="title"><img src="../images/icons/method.png" alt="method" title="method"></img><img src="../images/icons/visibility_public.png" style="margin-right: 5px" alt="public"></img><span class="highlight">hasPrivileges</span><span class="nb-faded-text">(string $absPath, array $privileges)</span> : boolean</code><div class="description"><p class="short_description">Determines if the node identified its path has the given set of
+privileges.</p></div><div class="code-tabs"><div class="long-description"><p>Returns whether the session has the specified privileges for absolute
+path $absPath, which must be an existing node. Testing an aggregate
+privilege is equivalent to testing each non aggregate privilege among
+the set returned by calling PrivilegeInterface::getAggregatePrivileges()
+for that privilege.</p>
+
+<p>The results reported by this method reflect the net effect of the
+currently applied control mechanisms. It does not reflect unsaved access
+control policies or unsaved access control entries. Changes to access
+control status caused by these mechanisms only take effect on
+SessionInterface::save() and are only then reflected in the results of
+the privilege test methods.</p></div><strong>Parameters</strong><table class="argument-info"><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><th>$absPath</th><td>string</td><td><em><p>The absolute path to a node the privileges shall be fetched of.</p></em></td></tr><tr><th>$privileges</th><td>array</td><td><em><p>an array of Privileges.</p></em></td></tr></table><strong>Returns</strong><table class="argument-info"><thead><tr><th>Type</th><th>Description</th></tr></thead><tr><td>boolean</td><td>true if the session has the specified privileges; false
+     otherwise.</td></tr></table><strong>Throws</strong><table class="argument-info"><thead><tr><th>Exception</th><th>Description</th></tr></thead><tr><td><a href="../files/phpcr.src.PHPCR.PathNotFoundException.html#\PHPCR\PathNotFoundException">\PHPCR\PathNotFoundException</a></td><td><em>if no node at $absPath exists or
+     the session does not have sufficent access to retrieve a node at
+     that location.</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.RepositoryException.html#\PHPCR\RepositoryException">\PHPCR\RepositoryException</a></td><td><em>if another error occurs.</em></td></tr></table><strong>Details</strong><dl class="function-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\Security\AccessControlManagerInterface::privilegeFromName()" class="anchor"></a><div class="method public"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png"></img><img src="../images/icons/arrow_down.png" style="display: none;"></img></a><code class="title"><img src="../images/icons/method.png" alt="method" title="method"></img><img src="../images/icons/visibility_public.png" style="margin-right: 5px" alt="public"></img><span class="highlight">privilegeFromName</span><span class="nb-faded-text">(string $privilegeName)</span> : <a href="../files/phpcr.src.PHPCR.Security.PrivilegeInterface.html#\PHPCR\Security\PrivilegeInterface">\PHPCR\Security\PrivilegeInterface</a></code><div class="description"><p class="short_description">Returns the privilege with the specified privilegeName.</p></div><div class="code-tabs"><div class="long-description"></div><strong>Parameters</strong><table class="argument-info"><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><th>$privilegeName</th><td>string</td><td><em><p>The name of an existing privilege.</p></em></td></tr></table><strong>Returns</strong><table class="argument-info"><thead><tr><th>Type</th><th>Description</th></tr></thead><tr><td><a href="../files/phpcr.src.PHPCR.Security.PrivilegeInterface.html#\PHPCR\Security\PrivilegeInterface">\PHPCR\Security\PrivilegeInterface</a></td><td>the Privilege with the
+     specified $privilegeName.</td></tr></table><strong>Throws</strong><table class="argument-info"><thead><tr><th>Exception</th><th>Description</th></tr></thead><tr><td><a href="../files/phpcr.src.PHPCR.Security.AccessControlException.html#\PHPCR\Security\AccessControlException">\PHPCR\Security\AccessControlException</a></td><td><em>if no privilege with the
+     specified name exists.</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.RepositoryException.html#\PHPCR\RepositoryException">\PHPCR\RepositoryException</a></td><td><em>if another error occurs.</em></td></tr></table><strong>Details</strong><dl class="function-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\Security\AccessControlManagerInterface::removePolicy()" class="anchor"></a><div class="method public"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png"></img><img src="../images/icons/arrow_down.png" style="display: none;"></img></a><code class="title"><img src="../images/icons/method.png" alt="method" title="method"></img><img src="../images/icons/visibility_public.png" style="margin-right: 5px" alt="public"></img><span class="highlight">removePolicy</span><span class="nb-faded-text">(string $absPath, <a href="../files/phpcr.src.PHPCR.Security.AccessControlPolicyInterface.html#\PHPCR\Security\AccessControlPolicyInterface">\PHPCR\Security\AccessControlPolicyInterface</a> $policy)</span> : void</code><div class="description"><p class="short_description">Removes the specified AccessControlPolicyInterface from the node at $absPath.</p></div><div class="code-tabs"><div class="long-description"><p>An AccessControlPolicyInterface can only be removed if it was bound to the
+specified node through this API before. The effect of the removal only
+takes place upon SessionInterface::save(). Note, that an implementation
+default or any other effective AccessControlPolicyInterface that has not been
+applied to the node before may never be removed using this method.</p></div><strong>Parameters</strong><table class="argument-info"><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><th>$absPath</th><td>string</td><td><em><p>The absolute path to the node of which privileges are requested.</p></em></td></tr><tr><th>$policy</th><td><a href="../files/phpcr.src.PHPCR.Security.AccessControlPolicyInterface.html#\PHPCR\Security\AccessControlPolicyInterface">\PHPCR\Security\AccessControlPolicyInterface</a></td><td><em><p>the policy to be removed.</p></em></td></tr></table><strong>Throws</strong><table class="argument-info"><thead><tr><th>Exception</th><th>Description</th></tr></thead><tr><td><a href="../files/phpcr.src.PHPCR.PathNotFoundException.html#\PHPCR\PathNotFoundException">\PHPCR\PathNotFoundException</a></td><td><em>if no node at absPath exists or the
+     session does not have sufficent access to retrieve a node at that
+     location.</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.Security.AccessControlException.html#\PHPCR\Security\AccessControlException">\PHPCR\Security\AccessControlException</a></td><td><em>if the policy to remove
+     does not exist at the node at absPath.</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.AccessDeniedException.html#\PHPCR\AccessDeniedException">\PHPCR\AccessDeniedException</a></td><td><em>if the session lacks
+     MODIFY_ACCESS_CONTROL privilege for the absPath node.</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.Lock.LockException.html#\PHPCR\Lock\LockException">\PHPCR\Lock\LockException</a></td><td><em>if a lock applies at the node at
+     absPath and this implementation performs this validation
+     immediately instead of waiting until save.</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.Version.VersionException.html#\PHPCR\Version\VersionException">\PHPCR\Version\VersionException</a></td><td><em>if the node at absPath is
+     versionable and checked-in or is non-versionable but its nearest
+     versionable ancestor is checked-in and this implementation performs
+     this validation immediately instead of waiting until save.</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.RepositoryException.html#\PHPCR\RepositoryException">\PHPCR\RepositoryException</a></td><td><em>if another error occurs.</em></td></tr></table><strong>Details</strong><dl class="function-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\Security\AccessControlManagerInterface::setPolicy()" class="anchor"></a><div class="method public"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png"></img><img src="../images/icons/arrow_down.png" style="display: none;"></img></a><code class="title"><img src="../images/icons/method.png" alt="method" title="method"></img><img src="../images/icons/visibility_public.png" style="margin-right: 5px" alt="public"></img><span class="highlight">setPolicy</span><span class="nb-faded-text">(string $absPath, <a href="../files/phpcr.src.PHPCR.Security.AccessControlPolicyInterface.html#\PHPCR\Security\AccessControlPolicyInterface">\PHPCR\Security\AccessControlPolicyInterface</a> $policy)</span> : void</code><div class="description"><p class="short_description">Binds the policy to the node at absPath.</p></div><div class="code-tabs"><div class="long-description"><p>The behavior of AccessControlManagerInterface::setPolicy() differs
+depending on how the policy object was originally acquired.</p>
+
+<p>If the policy was acquired through
+AccessControlManagerInterface::getApplicablePolicies() then that policy
+object is added to the node at absPath.</p>
+
+<p>On the other hand, if the policy was acquired through
+AccessControlManagerInterface::getPolicies() then that policy object
+(usually after being altered) replaces its former version on the node at
+$absPath.</p>
+
+<p>This is a session-write method and therefore the access control policy
+is only dispatched on Session::save() and will only take effect upon
+persist.</p></div><strong>Parameters</strong><table class="argument-info"><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><th>$absPath</th><td>string</td><td><em><p>The absolute path to the node of which privileges are requested.</p></em></td></tr><tr><th>$policy</th><td><a href="../files/phpcr.src.PHPCR.Security.AccessControlPolicyInterface.html#\PHPCR\Security\AccessControlPolicyInterface">\PHPCR\Security\AccessControlPolicyInterface</a></td><td><em><p>The AccessControlPolicy to be applied.</p></em></td></tr></table><strong>Throws</strong><table class="argument-info"><thead><tr><th>Exception</th><th>Description</th></tr></thead><tr><td><a href="../files/phpcr.src.PHPCR.PathNotFoundException.html#\PHPCR\PathNotFoundException">\PHPCR\PathNotFoundException</a></td><td><em>if no node at absPath exists or the
+     session does not have sufficent access to retrieve a node at that
+     location.</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.Security.AccessControlException.html#\PHPCR\Security\AccessControlException">\PHPCR\Security\AccessControlException</a></td><td><em>if the policy is not
+     applicable.</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.AccessDeniedException.html#\PHPCR\AccessDeniedException">\PHPCR\AccessDeniedException</a></td><td><em>if the session lacks
+     MODIFY_ACCESS_CONTROL privilege for the absPath node.</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.Lock.LockException.html#\PHPCR\Lock\LockException">\PHPCR\Lock\LockException</a></td><td><em>if a lock applies at the node at
+     absPath and this implementation performsthis validation immediately
+     instead of waiting until save.</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.Version.VersionException.html#\PHPCR\Version\VersionException">\PHPCR\Version\VersionException</a></td><td><em>if the node at absPath is
+     read-only due to a checked-in node and this implementation performs
+     this validation immediately.</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.RepositoryException.html#\PHPCR\RepositoryException">\PHPCR\RepositoryException</a></td><td><em>if another error occurs.</em></td></tr></table><strong>Details</strong><dl class="function-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div></div></div></div><small class="footer">
+            Documentation was generated by
+            <a href="http://phpdoc.org">phpDocumentor
+                2.0.0a10</a>.
+        </small></body></html>

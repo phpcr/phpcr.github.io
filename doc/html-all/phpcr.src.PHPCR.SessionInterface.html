@@ -1,0 +1,2903 @@
+<html xmlns="http://www.w3.org/1999/xhtml"><head><title>PHPCR API doc including the PHPCR utils</title><meta http-equiv="Content-Type" content="text/html; charset=utf-8"></meta><link rel="stylesheet" href="css/black-tie/jquery-ui-1.8.2.custom.css" type="text/css"></link><link rel="stylesheet" href="css/jquery.treeview.css" type="text/css"></link><link rel="stylesheet" href="css/default.css" type="text/css"></link><script type="text/javascript" src="js/jquery-1.4.2.min.js"></script><script type="text/javascript" src="js/jquery-ui-1.8.2.custom.min.js"></script><script type="text/javascript" src="js/jquery.cookie.js"></script><script type="text/javascript" src="js/jquery.treeview.js"></script></head><body><script type="text/javascript">
+          $(document).ready(function()
+          {
+            $(".filetree").treeview({
+              animated: "fast",
+              collapsed: true,
+              persist: "cookie"
+            });
+          });
+
+          function jq_escape(myid)
+          {
+            return '#' + myid.replace(/(#|\$|:|\.|\(|\))/g, '\\$1');
+          }
+
+          function applySearchHash()
+          {
+            hashes = document.location.hash.substr(1, document.location.hash.length);
+            if (hashes != "")
+            {
+              hashes = hashes.split('/');
+              $.each(hashes, function(index, hash)
+              {
+                node = $(jq_escape(hash));
+                switch (node[0].nodeName)
+                {
+                  case 'DIV':
+                    tabs = node.parents('.tabs');
+                    $(tabs[0]).tabs('select', '#' + hash)
+                    break;
+                  case 'A':
+                    window.scrollTo(0, node.offset().top);
+                    break;
+                }
+              });
+            }
+          }
+
+          jQuery(function()
+          {
+            jQuery(".tabs").tabs();
+            applySearchHash();
+          });
+        </script><div id="maincontainer"><div id="header"><h1>PHPCR API doc including the PHPCR utils<img src="images/top-stopper.png"></img></h1></div><ul xmlns="" id="menu">
+<li><a href="graph.html">Class diagram</a></li>
+<li><a href="markers.html">TODO / Markers</a></li>
+<li><a href="parse_markers.html">Errors</a></li>
+</ul>
+<div id="content_container"><div xmlns="" id="content">
+<h1>phpcr/src/PHPCR/SessionInterface.php</h1>
+<div class="file_menu"><a href="#interfaces">Interfaces</a></div>
+<div class="properties">
+<h1>Properties</h1>
+<label class="property-key">license</label><div class="property-value"></div>
+<label class="property-key">link</label><div class="property-value"></div>
+</div>
+<h2>Description</h2>This file is part of the PHPCR API and was originally ported from the Java
+JCR API to PHP by Karsten Dambekalns for the FLOW3 project.<br><br><p>Copyright 2008-2011 Karsten Dambekalns <a href="&#109;&#x61;&#x69;&#108;&#116;&#x6f;&#58;&#107;&#x61;&#114;&#115;&#x74;e&#110;&#x40;&#x74;&#121;&#x70;&#x6f;&#51;&#46;&#x6f;&#114;&#103;">&#107;&#x61;&#114;&#115;&#x74;e&#110;&#x40;&#x74;&#121;&#x70;&#x6f;&#51;&#46;&#x6f;&#114;&#103;</a></p>
+
+<p>Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at</p>
+
+<pre><code>http://www.apache.org/licenses/LICENSE-2.0
+</code></pre>
+
+<p>Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.</p><br><a name="interfaces"></a><h2>Interfaces</h2>
+<div id="SessionInterface" class="interface">
+<h3>SessionInterface</h3>
+<div class="properties">
+<h1>Properties</h1>
+<label class="property-key">Extends</label><div class="property-value">
+         </div>
+<label class="property-key">Implements</label><div class="property-value"> 
+      </div>
+<label class="property-key">api</label><div class="property-value">
+<a title=""></a>
+             
+        </div>
+<label class="property-key">package</label><div class="property-value">
+<a title="">phpcr</a>
+             
+        </div>
+<label class="property-key">subpackage</label><div class="property-value">
+<a title="">interfaces</a>
+             
+        </div>
+<label class="property-key">Abstract</label><div class="property-value"> 
+      </div>
+<label class="property-key">Final</label><div class="property-value"> 
+      </div>
+</div>
+<h4>Description</h4>
+<em>Describes the implementation of a session class.</em><br><p>The Session object provides read and (in level 2) write access to the
+content of a particular workspace in the repository.</p>
+
+<p>The Session object is returned by Repository::login(). It encapsulates both
+the authorization settings of a particular user (as specified by the passed
+Credentials) and a binding to the workspace specified by the workspaceName
+passed on login.</p>
+
+<p>Each Session object is associated one-to-one with a Workspace object. The
+Workspace object represents a "view" of an actual repository workspace
+entity as seen through the authorization settings of its associated Session.</p>
+
+<p><b>PHPCR Note:</b>
+  We removed getValueFactory as the ValueFactory interface has
+  been removed. To set properties, use NodeInterface::setProperty() or
+  PropertyInterface::setValue() with native PHP variables.</p><br><div id="methods_SessionInterface">
+<h4>Methods</h4>
+<a style="font-style: italic;" href="#SessionInterface::checkPermission()">checkPermission</a>,
+      <a style="font-style: italic;" href="#SessionInterface::exportDocumentView()">exportDocumentView</a>,
+      <a style="font-style: italic;" href="#SessionInterface::exportSystemView()">exportSystemView</a>,
+      <a style="font-style: italic;" href="#SessionInterface::getAccessControlManager()">getAccessControlManager</a>,
+      <a style="font-style: italic;" href="#SessionInterface::getAttribute()">getAttribute</a>,
+      <a style="font-style: italic;" href="#SessionInterface::getAttributeNames()">getAttributeNames</a>,
+      <a style="font-style: italic;" href="#SessionInterface::getItem()">getItem</a>,
+      <a style="font-style: italic;" href="#SessionInterface::getNamespacePrefix()">getNamespacePrefix</a>,
+      <a style="font-style: italic;" href="#SessionInterface::getNamespacePrefixes()">getNamespacePrefixes</a>,
+      <a style="font-style: italic;" href="#SessionInterface::getNamespaceURI()">getNamespaceURI</a>,
+      <a style="font-style: italic;" href="#SessionInterface::getNode()">getNode</a>,
+      <a style="font-style: italic;" href="#SessionInterface::getNodeByIdentifier()">getNodeByIdentifier</a>,
+      <a style="font-style: italic;" href="#SessionInterface::getNodes()">getNodes</a>,
+      <a style="font-style: italic;" href="#SessionInterface::getNodesByIdentifier()">getNodesByIdentifier</a>,
+      <a style="font-style: italic;" href="#SessionInterface::getProperty()">getProperty</a>,
+      <a style="font-style: italic;" href="#SessionInterface::getRepository()">getRepository</a>,
+      <a style="font-style: italic;" href="#SessionInterface::getRetentionManager()">getRetentionManager</a>,
+      <a style="font-style: italic;" href="#SessionInterface::getRootNode()">getRootNode</a>,
+      <a style="font-style: italic;" href="#SessionInterface::getUserID()">getUserID</a>,
+      <a style="font-style: italic;" href="#SessionInterface::getWorkspace()">getWorkspace</a>,
+      <a style="font-style: italic;" href="#SessionInterface::hasCapability()">hasCapability</a>,
+      <a style="font-style: italic;" href="#SessionInterface::hasPendingChanges()">hasPendingChanges</a>,
+      <a style="font-style: italic;" href="#SessionInterface::hasPermission()">hasPermission</a>,
+      <a style="font-style: italic;" href="#SessionInterface::impersonate()">impersonate</a>,
+      <a style="font-style: italic;" href="#SessionInterface::importXML()">importXML</a>,
+      <a style="font-style: italic;" href="#SessionInterface::isLive()">isLive</a>,
+      <a style="font-style: italic;" href="#SessionInterface::itemExists()">itemExists</a>,
+      <a style="font-style: italic;" href="#SessionInterface::logout()">logout</a>,
+      <a style="font-style: italic;" href="#SessionInterface::move()">move</a>,
+      <a style="font-style: italic;" href="#SessionInterface::nodeExists()">nodeExists</a>,
+      <a style="font-style: italic;" href="#SessionInterface::propertyExists()">propertyExists</a>,
+      <a style="font-style: italic;" href="#SessionInterface::refresh()">refresh</a>,
+      <a style="font-style: italic;" href="#SessionInterface::removeItem()">removeItem</a>,
+      <a style="font-style: italic;" href="#SessionInterface::save()">save</a>,
+      <a style="font-style: italic;" href="#SessionInterface::setNamespacePrefix()">setNamespacePrefix</a>,
+      <div class="method">
+<a id="SessionInterface::checkPermission()"></a><h3>checkPermission<span class="nb-faded-text">(
+          string
+             
+            $absPath,
+          string
+             
+            $actions,
+          
+          )
+        </span>
+        :
+        <span class="nb-faded-text">void</span>
+</h3>
+<h4>Description</h4>
+<em>Determines whether this Session has permission to perform the specified
+actions at the specified absPath.</em><br><small><p>This method quietly returns if the access request is
+permitted, or throws a \PHPCR\Security\AccessControlException otherwise.
+The actions parameter is a comma separated list of action strings.</p>
+
+<p>The following action strings are defined:</p>
+
+<ul>
+<li>add_node: If checkPermission(path, "add_node") returns quietly, then
+ this Session has permission to add a node at path, otherwise
+ permission is denied.</li>
+<li>set_property: If checkPermission(path, "set_property") returns
+ quietly, then this Session has permission to set (add or change) a
+ property at path, otherwise permission is denied.</li>
+<li>remove: If checkPermission(path, "remove") returns quietly, then this
+ Session has permission to remove an item at path, otherwise
+ permission is denied.</li>
+<li>read: If checkPermission(path, "read") returns quietly, then this
+ Session has permission to retrieve (and read the value of, in the
+ case of a property) an item at path, otherwise permission is
+ denied.</li>
+</ul>
+
+<p>When more than one action is specified in the actions parameter, this
+method will only return true if this Session has permission to perform
+all of the listed actions at the specified path.</p>
+
+<p>The information returned through this method will only reflect the
+access control status (both JCR defined and implementation-specific) and
+not other restrictions that may exist, such as node type constraints.
+For example, even though hasPermission may indicate that a particular
+Session may add a property at /A/B/C, the node type of the node at /A/B
+may prevent the addition of a property called C.</p></small><br><h4>Arguments</h4>
+<table>
+<thead><tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>$absPath</td>
+<td style="white-space: normal;">string</td>
+<td><p>an absolute path.</p></td>
+<td></td>
+</tr>
+<tr>
+<td>$actions</td>
+<td style="white-space: normal;">string</td>
+<td><p>a comma separated list of action strings.</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h4>Return value</h4>
+<table>
+<thead><tr>
+<th>Type</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr>
+<td>void</td>
+<td></td>
+</tr></tbody>
+</table>
+<h4>Tags</h4>
+<table>
+<thead><tr>
+<th>Name</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>throws</td>
+<td>If permission is denied.</td>
+</tr>
+<tr>
+<td>throws</td>
+<td>if another error occurs.</td>
+</tr>
+<tr>
+<td>api</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="method">
+<a id="SessionInterface::exportDocumentView()"></a><h3>exportDocumentView<span class="nb-faded-text">(
+          string
+             
+            $absPath,
+          resource
+             
+            $stream,
+          boolean
+             
+            $skipBinary,
+          boolean
+             
+            $noRecurse,
+          
+          )
+        </span>
+        :
+        <span class="nb-faded-text">void</span>
+</h3>
+<h4>Description</h4>
+<em>Serializes the node (and if $noRecurse is false, the whole subgraph) at
+$absPath as an XML stream and outputs it to the supplied URI.</em><br><small><p>The resulting XML is in the document view form. Note that $absPath must
+be the path of a node, not a property.</p>
+
+<p>If $skipBinary is true then any properties of PropertyType::BINARY will
+be serialized as if they are empty. That is, the existence of the
+property will be serialized, but its content will not appear in the
+serialized output (the value of the attribute will be empty). If
+$skipBinary is false then the actual value(s) of each BINARY property is
+recorded using Base64 encoding.</p>
+
+<p>If $noRecurse is true then only the node at $absPath and its properties,
+but not its child nodes, are serialized. If $noRecurse is false then the
+entire subgraph rooted at $absPath is serialized.</p>
+
+<p>If the user lacks read access to some subsection of the specified tree,
+that section simply does not get serialized, since, from the user's
+point of view, it is not there.</p>
+
+<p>The serialized output will reflect the state of the current workspace as
+modified by the state of this Session. This means that pending changes
+(regardless of whether they are valid according to node type
+constraints) and all namespace mappings in the namespace registry, as
+modified by the current session-mappings, are reflected in the output.</p>
+
+<p>The output XML will be encoded in UTF-8.</p></small><br><h4>Arguments</h4>
+<table>
+<thead><tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>$absPath</td>
+<td style="white-space: normal;">string</td>
+<td><p>The path of the root of the subgraph to be serialized. This must be the path to a node, not a property</p></td>
+<td></td>
+</tr>
+<tr>
+<td>$stream</td>
+<td style="white-space: normal;">resource</td>
+<td><p>The stream resource (i.e. aquired with fopen) to which the XML serialization of the subgraph will be output. Must support the fwrite method.</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td>$skipBinary</td>
+<td style="white-space: normal;">boolean</td>
+<td><p>A boolean governing whether binary properties are to be serialized.</p></td>
+<td></td>
+</tr>
+<tr>
+<td>$noRecurse</td>
+<td style="white-space: normal;">boolean</td>
+<td><p>A boolean governing whether the subgraph at absPath is to be recursed.</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h4>Return value</h4>
+<table>
+<thead><tr>
+<th>Type</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr>
+<td>void</td>
+<td></td>
+</tr></tbody>
+</table>
+<h4>Tags</h4>
+<table>
+<thead><tr>
+<th>Name</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>throws</td>
+<td>if no node exists at absPath.</td>
+</tr>
+<tr>
+<td>throws</td>
+<td>if an error during an I/O operation occurs.</td>
+</tr>
+<tr>
+<td>throws</td>
+<td>if another error occurs.</td>
+</tr>
+<tr>
+<td>api</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="method">
+<a id="SessionInterface::exportSystemView()"></a><h3>exportSystemView<span class="nb-faded-text">(
+          string
+             
+            $absPath,
+          resource
+             
+            $stream,
+          boolean
+             
+            $skipBinary,
+          boolean
+             
+            $noRecurse,
+          
+          )
+        </span>
+        :
+        <span class="nb-faded-text">void</span>
+</h3>
+<h4>Description</h4>
+<em>Serializes the node (and if $noRecurse is false, the whole subgraph) at
+$absPath as an XML stream and outputs it to the supplied URI.</em><br><small><p>The
+resulting XML is in the system view form. Note that $absPath must be
+the path of a node, not a property.</p>
+
+<p>If $skipBinary is true then any properties of PropertyType::BINARY will
+be serialized as if they are empty. That is, the existence of the
+property will be serialized, but its content will not appear in the
+serialized output (the <sv:value> element will have no content). Note
+that in the case of multi-value BINARY properties, the number of values
+in the property will be reflected in the serialized output, though they
+will all be empty. If $skipBinary is false then the actual value(s) of
+each BINARY property is recorded using Base64 encoding.</p>
+
+<p>If $noRecurse is true then only the node at $absPath and its properties,
+but not its child nodes, are serialized. If $noRecurse is false then the
+entire subgraph rooted at $absPath is serialized.</p>
+
+<p>If the user lacks read access to some subsection of the specified tree,
+that section simply does not get serialized, since, from the user's
+point of view, it is not there.</p>
+
+<p>The serialized output will reflect the state of the current workspace as
+modified by the state of this Session. This means that pending changes
+(regardless of whether they are valid according to node type
+constraints) and all namespace mappings in the namespace registry, as
+modified by the current session-mappings, are reflected in the output.</p>
+
+<p>The output XML will be encoded in UTF-8.</p></small><br><h4>Arguments</h4>
+<table>
+<thead><tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>$absPath</td>
+<td style="white-space: normal;">string</td>
+<td><p>The path of the root of the subgraph to be serialized. This must be the path to a node, not a property</p></td>
+<td></td>
+</tr>
+<tr>
+<td>$stream</td>
+<td style="white-space: normal;">resource</td>
+<td><p>The stream resource (i.e. aquired with fopen) to which the XML serialization of the subgraph will be output. Must support the fwrite method.</p>
+</td>
+<td></td>
+</tr>
+<tr>
+<td>$skipBinary</td>
+<td style="white-space: normal;">boolean</td>
+<td><p>A boolean governing whether binary properties are to be serialized.</p></td>
+<td></td>
+</tr>
+<tr>
+<td>$noRecurse</td>
+<td style="white-space: normal;">boolean</td>
+<td><p>A boolean governing whether the subgraph at absPath is to be recursed.</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h4>Return value</h4>
+<table>
+<thead><tr>
+<th>Type</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr>
+<td>void</td>
+<td></td>
+</tr></tbody>
+</table>
+<h4>Tags</h4>
+<table>
+<thead><tr>
+<th>Name</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>throws</td>
+<td>if no node exists at absPath.</td>
+</tr>
+<tr>
+<td>throws</td>
+<td>if an error during an I/O operation occurs.</td>
+</tr>
+<tr>
+<td>throws</td>
+<td>if another error occurs.</td>
+</tr>
+<tr>
+<td>api</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="method">
+<a id="SessionInterface::getAccessControlManager()"></a><h3>getAccessControlManager<span class="nb-faded-text">(
+          
+          )
+        </span>
+        :
+        <span class="nb-faded-text">\PHPCR\Security\AccessControlManager</span>
+</h3>
+<h4>Description</h4>
+<em>Returns the access control manager for this Session.</em><br><h4>Return value</h4>
+<table>
+<thead><tr>
+<th>Type</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr>
+<td>\PHPCR\Security\AccessControlManager</td>
+<td>the access control manager
+     for this Session</td>
+</tr></tbody>
+</table>
+<h4>Tags</h4>
+<table>
+<thead><tr>
+<th>Name</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>throws</td>
+<td>if access control
+     is not supported.</td>
+</tr>
+<tr>
+<td>throws</td>
+<td>if another error occurs.</td>
+</tr>
+<tr>
+<td>api</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="method">
+<a id="SessionInterface::getAttribute()"></a><h3>getAttribute<span class="nb-faded-text">(
+          string
+             
+            $name,
+          
+          )
+        </span>
+        :
+        <span class="nb-faded-text">mixed</span>
+</h3>
+<h4>Description</h4>
+<em>Returns the value of the named attribute, or null if no
+attribute of the given name exists.</em><br><small><p>See getAttributeNames().</p></small><br><h4>Arguments</h4>
+<table>
+<thead><tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr></thead>
+<tbody><tr>
+<td>$name</td>
+<td style="white-space: normal;">string</td>
+<td><p>The name of an attribute passed in the credentials used to acquire this session.</p></td>
+<td></td>
+</tr></tbody>
+</table>
+<h4>Return value</h4>
+<table>
+<thead><tr>
+<th>Type</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr>
+<td>mixed</td>
+<td>The value of the attribute or null if no attribute of the
+     given name exists.</td>
+</tr></tbody>
+</table>
+<h4>Tags</h4>
+<table>
+<thead><tr>
+<th>Name</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr>
+<td>api</td>
+<td></td>
+</tr></tbody>
+</table>
+</div>
+<div class="method">
+<a id="SessionInterface::getAttributeNames()"></a><h3>getAttributeNames<span class="nb-faded-text">(
+          
+          )
+        </span>
+        :
+        <span class="nb-faded-text">array</span>
+</h3>
+<h4>Description</h4>
+<em>Returns the names of the attributes set in this session as a result of
+the Credentials that were used to acquire it.</em><br><small><p>Not all Credentials implementations will contain attributes (though, for
+example, SimpleCredentials does allow for them). This method returns an
+empty array if the Credentials instance did not provide attributes.</p></small><br><h4>Return value</h4>
+<table>
+<thead><tr>
+<th>Type</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr>
+<td>array</td>
+<td>A string array containing the names of all attributes
+     passed in the credentials used to acquire this session.</td>
+</tr></tbody>
+</table>
+<h4>Tags</h4>
+<table>
+<thead><tr>
+<th>Name</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr>
+<td>api</td>
+<td></td>
+</tr></tbody>
+</table>
+</div>
+<div class="method">
+<a id="SessionInterface::getItem()"></a><h3>getItem<span class="nb-faded-text">(
+          string
+             
+            $absPath,
+          
+          )
+        </span>
+        :
+        <span class="nb-faded-text">\PHPCR\ItemInterface</span>
+</h3>
+<h4>Description</h4>
+<em>Returns the node at the specified absolute path in the workspace.</em><br><small><p>If no
+such node exists, then it returns the property at the specified path.</p>
+
+<p>This method should only be used if the application does not know whether
+the item at the indicated path is property or node. In cases where the
+application has this information, either SessionInterface::getNode() or
+SessionInterface::getProperty() should be used, as appropriate. In many
+repository implementations the node and property-specific methods are
+likely to be more efficient than getItem.</p></small><br><h4>Arguments</h4>
+<table>
+<thead><tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr></thead>
+<tbody><tr>
+<td>$absPath</td>
+<td style="white-space: normal;">string</td>
+<td><p>An absolute path.</p></td>
+<td></td>
+</tr></tbody>
+</table>
+<h4>Return value</h4>
+<table>
+<thead><tr>
+<th>Type</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr>
+<td>\PHPCR\ItemInterface</td>
+<td></td>
+</tr></tbody>
+</table>
+<h4>Tags</h4>
+<table>
+<thead><tr>
+<th>Name</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>throws</td>
+<td>if no accessible item is found at
+     the specified path.</td>
+</tr>
+<tr>
+<td>throws</td>
+<td>if another error occurs.</td>
+</tr>
+<tr>
+<td>api</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="method">
+<a id="SessionInterface::getNamespacePrefix()"></a><h3>getNamespacePrefix<span class="nb-faded-text">(
+          string
+             
+            $uri,
+          
+          )
+        </span>
+        :
+        <span class="nb-faded-text">string</span>
+</h3>
+<h4>Description</h4>
+<em>Returns the prefix to which the given uri is mapped as currently set in
+this Session.</em><br><h4>Arguments</h4>
+<table>
+<thead><tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr></thead>
+<tbody><tr>
+<td>$uri</td>
+<td style="white-space: normal;">string</td>
+<td><p>The loaction of the namespace definition (usually a uri).</p>
+</td>
+<td></td>
+</tr></tbody>
+</table>
+<h4>Return value</h4>
+<table>
+<thead><tr>
+<th>Type</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr>
+<td>string</td>
+<td>The prefix of a namespace identified by its uri.</td>
+</tr></tbody>
+</table>
+<h4>Tags</h4>
+<table>
+<thead><tr>
+<th>Name</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>throws</td>
+<td>if the specified uri is unknown.</td>
+</tr>
+<tr>
+<td>throws</td>
+<td>if another error occurs</td>
+</tr>
+<tr>
+<td>api</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="method">
+<a id="SessionInterface::getNamespacePrefixes()"></a><h3>getNamespacePrefixes<span class="nb-faded-text">(
+          
+          )
+        </span>
+        :
+        <span class="nb-faded-text">array</span>
+</h3>
+<h4>Description</h4>
+<em>Returns all prefixes currently mapped to URIs in this Session.</em><br><h4>Return value</h4>
+<table>
+<thead><tr>
+<th>Type</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr>
+<td>array</td>
+<td>The list of currently registered namespace prefixes.</td>
+</tr></tbody>
+</table>
+<h4>Tags</h4>
+<table>
+<thead><tr>
+<th>Name</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>throws</td>
+<td>if an error occurs</td>
+</tr>
+<tr>
+<td>api</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="method">
+<a id="SessionInterface::getNamespaceURI()"></a><h3>getNamespaceURI<span class="nb-faded-text">(
+          string
+             
+            $prefix,
+          
+          )
+        </span>
+        :
+        <span class="nb-faded-text">string</span>
+</h3>
+<h4>Description</h4>
+<em>Returns the URI to which the given prefix is mapped as currently set in
+this Session.</em><br><h4>Arguments</h4>
+<table>
+<thead><tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr></thead>
+<tbody><tr>
+<td>$prefix</td>
+<td style="white-space: normal;">string</td>
+<td><p>The identifier of the namespace location to be returned.</p></td>
+<td></td>
+</tr></tbody>
+</table>
+<h4>Return value</h4>
+<table>
+<thead><tr>
+<th>Type</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr>
+<td>string</td>
+<td>The location of the namespace definition identified by
+     its prefix.</td>
+</tr></tbody>
+</table>
+<h4>Tags</h4>
+<table>
+<thead><tr>
+<th>Name</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>throws</td>
+<td>if the specified prefix is unknown.</td>
+</tr>
+<tr>
+<td>throws</td>
+<td>if another error occurs</td>
+</tr>
+<tr>
+<td>api</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="method">
+<a id="SessionInterface::getNode()"></a><h3>getNode<span class="nb-faded-text">(
+          string
+             
+            $absPath,
+          
+          )
+        </span>
+        :
+        <span class="nb-faded-text">\PHPCR\NodeInterface</span>
+</h3>
+<h4>Description</h4>
+<em>Returns the node at the specified absolute path in the workspace.</em><br><h4>Arguments</h4>
+<table>
+<thead><tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr></thead>
+<tbody><tr>
+<td>$absPath</td>
+<td style="white-space: normal;">string</td>
+<td><p>An absolute path.</p></td>
+<td></td>
+</tr></tbody>
+</table>
+<h4>Return value</h4>
+<table>
+<thead><tr>
+<th>Type</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr>
+<td>\PHPCR\NodeInterface</td>
+<td>A node</td>
+</tr></tbody>
+</table>
+<h4>Tags</h4>
+<table>
+<thead><tr>
+<th>Name</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>throws</td>
+<td>if no accessible node is found at the specified path.</td>
+</tr>
+<tr>
+<td>throws</td>
+<td>if another error occurs.</td>
+</tr>
+<tr>
+<td>api</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="method">
+<a id="SessionInterface::getNodeByIdentifier()"></a><h3>getNodeByIdentifier<span class="nb-faded-text">(
+          string
+             
+            $id,
+          
+          )
+        </span>
+        :
+        <span class="nb-faded-text">\PHPCR\NodeInterface</span>
+</h3>
+<h4>Description</h4>
+<em>Returns the node specified by the given identifier.</em><br><small><p>Applies to both referenceable and non-referenceable nodes.</p></small><br><h4>Arguments</h4>
+<table>
+<thead><tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr></thead>
+<tbody><tr>
+<td>$id</td>
+<td style="white-space: normal;">string</td>
+<td><p>An identifier.</p></td>
+<td></td>
+</tr></tbody>
+</table>
+<h4>Return value</h4>
+<table>
+<thead><tr>
+<th>Type</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr>
+<td>\PHPCR\NodeInterface</td>
+<td>A Node.</td>
+</tr></tbody>
+</table>
+<h4>Tags</h4>
+<table>
+<thead><tr>
+<th>Name</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>throws</td>
+<td>if no node with the specified
+     identifier exists or if this Session does not have read access to
+     the node with the specified identifier.</td>
+</tr>
+<tr>
+<td>throws</td>
+<td>if another error occurs.</td>
+</tr>
+<tr>
+<td>api</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="method">
+<a id="SessionInterface::getNodes()"></a><h3>getNodes<span class="nb-faded-text">(
+          array
+             
+            $absPaths,
+          
+          )
+        </span>
+        :
+        <span class="nb-faded-text">array</span>
+</h3>
+<h4>Description</h4>
+<em>Returns all nodes specified in the absPath array.</em><br><small><p>Paths that cannot be found will be ignored and missing in the returned
+array</p></small><br><h4>Arguments</h4>
+<table>
+<thead><tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr></thead>
+<tbody><tr>
+<td>$absPaths</td>
+<td style="white-space: normal;">array</td>
+<td><p>An array containing absolute paths.</p></td>
+<td></td>
+</tr></tbody>
+</table>
+<h4>Return value</h4>
+<table>
+<thead><tr>
+<th>Type</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr>
+<td>array</td>
+<td>containing all found NodeInterface keyed by path</td>
+</tr></tbody>
+</table>
+<h4>Tags</h4>
+<table>
+<thead><tr>
+<th>Name</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>throws</td>
+<td>if an error occurs.</td>
+</tr>
+<tr>
+<td>api</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="method">
+<a id="SessionInterface::getNodesByIdentifier()"></a><h3>getNodesByIdentifier<span class="nb-faded-text">(
+          array
+             
+            $ids,
+          
+          )
+        </span>
+        :
+        <span class="nb-faded-text">array</span>
+</h3>
+<h4>Description</h4>
+<em>Returns the nodes specified by the given identifiers.</em><br><small><p>Applies to both referenceable and non-referenceable nodes.</p>
+
+<p>Uuids that cannot be found will be ignored and missing from the
+returned array.</p></small><br><h4>Arguments</h4>
+<table>
+<thead><tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr></thead>
+<tbody><tr>
+<td>$ids</td>
+<td style="white-space: normal;">array</td>
+<td><p>An array of identifiers.</p></td>
+<td></td>
+</tr></tbody>
+</table>
+<h4>Return value</h4>
+<table>
+<thead><tr>
+<th>Type</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr>
+<td>array</td>
+<td>containing all found NodeInterface keyed by uuid</td>
+</tr></tbody>
+</table>
+<h4>Tags</h4>
+<table>
+<thead><tr>
+<th>Name</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>throws</td>
+<td>if an error occurs.</td>
+</tr>
+<tr>
+<td>api</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="method">
+<a id="SessionInterface::getProperty()"></a><h3>getProperty<span class="nb-faded-text">(
+          string
+             
+            $absPath,
+          
+          )
+        </span>
+        :
+        <span class="nb-faded-text">\PHPCR\PropertyInterface</span>
+</h3>
+<h4>Description</h4>
+<em>Returns the property at the specified absolute path in the workspace.</em><br><h4>Arguments</h4>
+<table>
+<thead><tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr></thead>
+<tbody><tr>
+<td>$absPath</td>
+<td style="white-space: normal;">string</td>
+<td><p>An absolute path.</p></td>
+<td></td>
+</tr></tbody>
+</table>
+<h4>Return value</h4>
+<table>
+<thead><tr>
+<th>Type</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr>
+<td>\PHPCR\PropertyInterface</td>
+<td>A property</td>
+</tr></tbody>
+</table>
+<h4>Tags</h4>
+<table>
+<thead><tr>
+<th>Name</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>throws</td>
+<td>if no accessible property is found
+     at the specified path.</td>
+</tr>
+<tr>
+<td>throws</td>
+<td>if another error occurs.</td>
+</tr>
+<tr>
+<td>api</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="method">
+<a id="SessionInterface::getRepository()"></a><h3>getRepository<span class="nb-faded-text">(
+          
+          )
+        </span>
+        :
+        <span class="nb-faded-text">\PHPCR\RepositoryInterface</span>
+</h3>
+<h4>Description</h4>
+<em>Returns the Repository object through which this session was acquired.</em><br><h4>Return value</h4>
+<table>
+<thead><tr>
+<th>Type</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr>
+<td>\PHPCR\RepositoryInterface</td>
+<td>a Repository object.</td>
+</tr></tbody>
+</table>
+<h4>Tags</h4>
+<table>
+<thead><tr>
+<th>Name</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr>
+<td>api</td>
+<td></td>
+</tr></tbody>
+</table>
+</div>
+<div class="method">
+<a id="SessionInterface::getRetentionManager()"></a><h3>getRetentionManager<span class="nb-faded-text">(
+          
+          )
+        </span>
+        :
+        <span class="nb-faded-text">\PHPCR\Retention\RetentionManagerInterface</span>
+</h3>
+<h4>Description</h4>
+<em>Returns the retention and hold manager for this Session.</em><br><h4>Return value</h4>
+<table>
+<thead><tr>
+<th>Type</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr>
+<td>\PHPCR\Retention\RetentionManagerInterface</td>
+<td>the retention manager
+     for this Session.</td>
+</tr></tbody>
+</table>
+<h4>Tags</h4>
+<table>
+<thead><tr>
+<th>Name</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>throws</td>
+<td>if retention and
+     hold are not supported.</td>
+</tr>
+<tr>
+<td>throws</td>
+<td>if another error occurs.</td>
+</tr>
+<tr>
+<td>api</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="method">
+<a id="SessionInterface::getRootNode()"></a><h3>getRootNode<span class="nb-faded-text">(
+          
+          )
+        </span>
+        :
+        <span class="nb-faded-text">\PHPCR\NodeInterface</span>
+</h3>
+<h4>Description</h4>
+<em>Returns the root node of the workspace, "/".</em><br><small><p>This node is the main access point to the content of the workspace.</p></small><br><h4>Return value</h4>
+<table>
+<thead><tr>
+<th>Type</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr>
+<td>\PHPCR\NodeInterface</td>
+<td>The root node of the workspace: a Node object.</td>
+</tr></tbody>
+</table>
+<h4>Tags</h4>
+<table>
+<thead><tr>
+<th>Name</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>throws</td>
+<td>if an error occurs.</td>
+</tr>
+<tr>
+<td>api</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="method">
+<a id="SessionInterface::getUserID()"></a><h3>getUserID<span class="nb-faded-text">(
+          
+          )
+        </span>
+        :
+        <span class="nb-faded-text">string</span>
+</h3>
+<h4>Description</h4>
+<em>Gets the user ID associated with this Session.</em><br><small><p>How the user ID is set is up to the implementation, it may be a string
+passed in as part of the credentials or it may be a string acquired in
+some other way. This method is free to return an "anonymous user ID" or
+null.</p></small><br><h4>Return value</h4>
+<table>
+<thead><tr>
+<th>Type</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr>
+<td>string</td>
+<td>The user id associated with this Session.</td>
+</tr></tbody>
+</table>
+<h4>Tags</h4>
+<table>
+<thead><tr>
+<th>Name</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr>
+<td>api</td>
+<td></td>
+</tr></tbody>
+</table>
+</div>
+<div class="method">
+<a id="SessionInterface::getWorkspace()"></a><h3>getWorkspace<span class="nb-faded-text">(
+          
+          )
+        </span>
+        :
+        <span class="nb-faded-text">\PHPCR\WorkspaceInterface</span>
+</h3>
+<h4>Description</h4>
+<em>Returns the Workspace attached to this Session.</em><br><h4>Return value</h4>
+<table>
+<thead><tr>
+<th>Type</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr>
+<td>\PHPCR\WorkspaceInterface</td>
+<td>a Workspace object.</td>
+</tr></tbody>
+</table>
+<h4>Tags</h4>
+<table>
+<thead><tr>
+<th>Name</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr>
+<td>api</td>
+<td></td>
+</tr></tbody>
+</table>
+</div>
+<div class="method">
+<a id="SessionInterface::hasCapability()"></a><h3>hasCapability<span class="nb-faded-text">(
+          string
+             
+            $methodName,
+          object
+             
+            $target,
+          array
+             
+            $arguments,
+          
+          )
+        </span>
+        :
+        <span class="nb-faded-text">boolean</span>
+</h3>
+<h4>Description</h4>
+<em>Checks whether an operation can be performed given as much context as
+can be determined by the repository, including:</em><br><small><ul>
+<li>Permissions granted to the current user, including access control
+ privileges.</li>
+<li>Current state of the target object (reflecting locks, checkin/checkout
+status, retention and hold status etc.).</li>
+<li>Repository capabilities.</li>
+<li>Node type-enforced restrictions.</li>
+<li>Repository configuration-specific restrictions.</li>
+</ul>
+
+<p>The implementation of this method is best effort: returning false
+guarantees that the operation cannot be performed, but returning true
+does not guarantee the opposite.</p>
+
+<p>The methodName parameter identifies the method in question by its name
+as defined in the phpdoc.</p>
+
+<p>The target parameter identifies the object on which the specified method
+is called.</p>
+
+<p>The arguments parameter contains a hash map consisting of parameter name
+mapping to parameter value.</p>
+
+<p>For example, given a Session $s and Node $n then</p>
+
+<pre>
+
+$p['relPath'] = 'foo';
+$b = $s->hasCapability("addNode", $n, $p);
+</pre>
+
+<p>will result in $b === false if a child node called foo cannot be added
+to the node $n within the session $s.</p></small><br><h4>Arguments</h4>
+<table>
+<thead><tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>$methodName</td>
+<td style="white-space: normal;">string</td>
+<td><p>the name of the method.</p></td>
+<td></td>
+</tr>
+<tr>
+<td>$target</td>
+<td style="white-space: normal;">object</td>
+<td><p>the target object of the operation.</p></td>
+<td></td>
+</tr>
+<tr>
+<td>$arguments</td>
+<td style="white-space: normal;">array</td>
+<td><p>the arguments of the operation.</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h4>Return value</h4>
+<table>
+<thead><tr>
+<th>Type</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr>
+<td>boolean</td>
+<td>false if the operation cannot be performed, true if the
+     operation can be performed or if the repository cannot determine
+     whether the operation can be performed.</td>
+</tr></tbody>
+</table>
+<h4>Tags</h4>
+<table>
+<thead><tr>
+<th>Name</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>throws</td>
+<td>if an error occurs</td>
+</tr>
+<tr>
+<td>api</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="method">
+<a id="SessionInterface::hasPendingChanges()"></a><h3>hasPendingChanges<span class="nb-faded-text">(
+          
+          )
+        </span>
+        :
+        <span class="nb-faded-text">boolean</span>
+</h3>
+<h4>Description</h4>
+<em>Determines if the current session has pending changes.</em><br><small><p>Returns true if this session holds pending (that is, unsaved) changes;
+otherwise returns false.</p></small><br><h4>Return value</h4>
+<table>
+<thead><tr>
+<th>Type</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr>
+<td>boolean</td>
+<td>a boolean</td>
+</tr></tbody>
+</table>
+<h4>Tags</h4>
+<table>
+<thead><tr>
+<th>Name</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>throws</td>
+<td>if an error occurs</td>
+</tr>
+<tr>
+<td>api</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="method">
+<a id="SessionInterface::hasPermission()"></a><h3>hasPermission<span class="nb-faded-text">(
+          string
+             
+            $absPath,
+          string
+             
+            $actions,
+          
+          )
+        </span>
+        :
+        <span class="nb-faded-text">boolean</span>
+</h3>
+<h4>Description</h4>
+<em>Determines if the current session is permitted to run the passed
+actions.</em><br><small><p>Returns true if this Session has permission to perform the specified
+actions at the specified absPath and false otherwise.
+The actions parameter is a comma separated list of action strings.</p>
+
+<p>The following action strings are defined:</p>
+
+<ul>
+<li>add_node: If hasPermission(path, "add_node") returns true, then this
+ Session has permission to add a node at path.</li>
+<li>set_property: If hasPermission(path, "set_property") returns true,
+ then this Session has permission to set (add or change) a property
+ at path.</li>
+<li>remove: If hasPermission(path, "remove") returns true, then this
+ Session has permission to remove an item at path.</li>
+<li>read: If hasPermission(path, "read") returns true, then this Session
+ has permission to retrieve (and read the value of, in the case of
+ a property) an item at path.</li>
+</ul>
+
+<p>When more than one action is specified in the actions parameter, this
+method will only return true if this Session has permission to perform
+all of the listed actions at the specified path.</p>
+
+<p>The information returned through this method will only reflect the
+access control status (both JCR defined and implementation-specific) and
+not other restrictions that may exist, such as node type constraints. For
+example, even though hasPermission may indicate that a particular Session
+may add a property at /A/B/C, the node type of the node at /A/B may
+prevent the addition of a property called C.</p></small><br><h4>Arguments</h4>
+<table>
+<thead><tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>$absPath</td>
+<td style="white-space: normal;">string</td>
+<td><p>an absolute path.</p></td>
+<td></td>
+</tr>
+<tr>
+<td>$actions</td>
+<td style="white-space: normal;">string</td>
+<td><p>a comma separated list of action strings.</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h4>Return value</h4>
+<table>
+<thead><tr>
+<th>Type</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr>
+<td>boolean</td>
+<td>true if this Session has permission to perform the
+     specified actions at the specified absPath.</td>
+</tr></tbody>
+</table>
+<h4>Tags</h4>
+<table>
+<thead><tr>
+<th>Name</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>throws</td>
+<td>if an error occurs.</td>
+</tr>
+<tr>
+<td>api</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="method">
+<a id="SessionInterface::impersonate()"></a><h3>impersonate<span class="nb-faded-text">(
+          <a href="phpcr.src.PHPCR.CredentialsInterface.html#%5CPHPCR%5CCredentialsInterface">\PHPCR\CredentialsInterface</a>
+             
+            $credentials,
+          
+          )
+        </span>
+        :
+        <span class="nb-faded-text">\PHPCR\SessionInterface</span>
+</h3>
+<h4>Description</h4>
+<em>Returns a new session in accordance with the specified (new)
+Credentials.</em><br><small><p>Allows the current user to "impersonate" another using incomplete or
+relaxed credentials requirements (perhaps including a user name but no
+password, for example), assuming that this Session gives them that
+permission. The new Session is tied to a new Workspace instance. In
+other words, Workspace instances are not re-used. However, the Workspace
+instance returned represents the same actual persistent workspace entity
+in the repository as is represented by the Workspace object tied to this
+Session.</p></small><br><h4>Arguments</h4>
+<table>
+<thead><tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr></thead>
+<tbody><tr>
+<td>$credentials</td>
+<td style="white-space: normal;"><a href="phpcr.src.PHPCR.CredentialsInterface.html#%5CPHPCR%5CCredentialsInterface">\PHPCR\CredentialsInterface</a></td>
+<td><p>A Credentials object</p></td>
+<td></td>
+</tr></tbody>
+</table>
+<h4>Return value</h4>
+<table>
+<thead><tr>
+<th>Type</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr>
+<td>\PHPCR\SessionInterface</td>
+<td>a Session object</td>
+</tr></tbody>
+</table>
+<h4>Tags</h4>
+<table>
+<thead><tr>
+<th>Name</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>throws</td>
+<td>if the current session does not have
+     sufficient access to perform the operation.</td>
+</tr>
+<tr>
+<td>throws</td>
+<td>if another error occurs.</td>
+</tr>
+<tr>
+<td>api</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="method">
+<a id="SessionInterface::importXML()"></a><h3>importXML<span class="nb-faded-text">(
+          string
+             
+            $parentAbsPath,
+          string
+             
+            $uri,
+          integer
+             
+            $uuidBehavior,
+          
+          )
+        </span>
+        :
+        <span class="nb-faded-text">void</span>
+</h3>
+<h4>Description</h4>
+<em>Deserializes an XML document and adds the resulting item subgraph as a
+child of the node at $parentAbsPath.</em><br><small><p>If the incoming XML does not appear to be a JCR system view XML document
+then it is interpreted as a document view XML document.</p>
+
+<p>The tree of new items is built in the transient storage of the Session.
+In order to persist the new content, save must be called. The advantage
+of this through-the-session method is that (depending on what constraint
+checks the implementation leaves until save) structures that violate
+node type constraints can be imported, fixed and then saved. The
+disadvantage is that a large import will result in a large cache of
+pending nodes in the session. See WorkspaceInterface::importXML() for a
+version of this method that does not go through the Session.</p>
+
+<p>The flag $uuidBehavior governs how the identifiers of incoming nodes are
+handled. There are four options:</p>
+
+<ul>
+<li>ImportUUIDBehavior::IMPORT_UUID_CREATE_NEW: Incoming nodes are added
+ in the same way that new node is added with Node::addNode(). That
+ is, they are either assigned newly created identifiers upon
+ addition or upon save (depending on the implementation, see 4.9.1.1
+ When Identifiers are Assigned in the specification). In either
+ case, identifier collisions will not occur.
+ (Weak)references will point to the original node if existing, to
+ the imported node with matching id otherwise.</li>
+<li>ImportUUIDBehavior::IMPORT_UUID_COLLISION_REMOVE_EXISTING: If an
+ incoming node has the same identifier as a node already existing in
+ the workspace then the already existing node (and its subgraph) is
+ removed from wherever it may be in the workspace before the
+ incoming node is added. Note that this can result in nodes
+ "disappearing" from locations in the workspace that are remote from
+ the location to which the incoming subgraph is being written. Both
+ the removal and the new addition will be dispatched on save.</li>
+<li>ImportUUIDBehavior::IMPORT_UUID_COLLISION_REPLACE_EXISTING: If an
+ incoming node has the same identifier as a node already existing in
+ the workspace, then the already-existing node is replaced by the
+ incoming node in the same position as the existing node. Note that
+ this may result in the incoming subgraph being disaggregated and
+ "spread around" to different locations in the workspace. In the
+ most extreme case this behavior may result in no node at all being
+ added as child of parentAbsPath. This will occur if the topmost
+ element of the incoming XML has the same identifier as an existing
+ node elsewhere in the workspace. The change will be dispatched on
+ save.</li>
+<li>ImportUUIDBehavior::IMPORT_UUID_COLLISION_THROW: If an incoming node
+ has the same identifier as a node already existing in the workspace
+ then an ItemExistsException is thrown.</li>
+</ul>
+
+<p>Unlike WorkspaceInterface::importXML(), this method does not
+necessarily enforce all node type constraints during deserialization.
+Those that would be immediately enforced in a normal write method
+(NodeInterface::addNode(), NodeInterface::setProperty() etc.) of this
+implementation cause an immediate ConstraintViolationException during
+deserialization. All other constraints are checked on save, just as they
+are in normal write operations. However, which node type constraints are
+enforced depends upon whether node type information in the imported data
+is respected, and this is an implementation-specific issue.</p></small><br><h4>Arguments</h4>
+<table>
+<thead><tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>$parentAbsPath</td>
+<td style="white-space: normal;">string</td>
+<td><p>the absolute path of the node below which the deserialized subgraph is added.</p></td>
+<td></td>
+</tr>
+<tr>
+<td>$uri</td>
+<td style="white-space: normal;">string</td>
+<td><p>Source location for the XML to be read, Can be anything that works with fopen.</p></td>
+<td></td>
+</tr>
+<tr>
+<td>$uuidBehavior</td>
+<td style="white-space: normal;">integer</td>
+<td><p>a four-value flag that governs how incoming identifiers are handled.</p>
+</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h4>Return value</h4>
+<table>
+<thead><tr>
+<th>Type</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr>
+<td>void</td>
+<td></td>
+</tr></tbody>
+</table>
+<h4>Tags</h4>
+<table>
+<thead><tr>
+<th>Name</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>throws</td>
+<td>if an error during an I/O operation occurs.</td>
+</tr>
+<tr>
+<td>throws</td>
+<td>if no node exists at parentAbsPath
+     and this implementation performs this validation immediately.</td>
+</tr>
+<tr>
+<td>throws</td>
+<td>if deserialization would overwrite an
+     existing item and this implementation performs this validation
+     immediately.</td>
+</tr>
+<tr>
+<td>throws</td>
+<td>if a node type or
+     other implementation-specific constraint is violated that would be
+     checked on a session write method or if uuidBehavior is set to
+     IMPORT_UUID_COLLISION_REMOVE_EXISTING and an incoming node has the
+     same UUID as the node at parentAbsPath or one of its ancestors.</td>
+</tr>
+<tr>
+<td>throws</td>
+<td>if the node at $parentAbsPath is
+     read-only due to a checked-in node and this implementation performs
+     this validation immediately.</td>
+</tr>
+<tr>
+<td>throws</td>
+<td>if incoming stream is not
+     a valid XML document.</td>
+</tr>
+<tr>
+<td>throws</td>
+<td>if a lock prevents the addition of the
+     subgraph and this implementation performs this validation
+     immediately.</td>
+</tr>
+<tr>
+<td>throws</td>
+<td>if another error occurs.</td>
+</tr>
+<tr>
+<td>api</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="method">
+<a id="SessionInterface::isLive()"></a><h3>isLive<span class="nb-faded-text">(
+          
+          )
+        </span>
+        :
+        <span class="nb-faded-text">boolean</span>
+</h3>
+<h4>Description</h4>
+<em>Determines if the current session is still valid.</em><br><small><p>Returns true if this Session object is usable by the client. Otherwise,
+returns false.</p>
+
+<p>A usable Session is one that is neither logged-out, timed-out nor in
+any other way disconnected from the repository.</p></small><br><h4>Return value</h4>
+<table>
+<thead><tr>
+<th>Type</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr>
+<td>boolean</td>
+<td>true if this Session is usable, false otherwise.</td>
+</tr></tbody>
+</table>
+<h4>Tags</h4>
+<table>
+<thead><tr>
+<th>Name</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr>
+<td>api</td>
+<td></td>
+</tr></tbody>
+</table>
+</div>
+<div class="method">
+<a id="SessionInterface::itemExists()"></a><h3>itemExists<span class="nb-faded-text">(
+          string
+             
+            $absPath,
+          
+          )
+        </span>
+        :
+        <span class="nb-faded-text">boolean</span>
+</h3>
+<h4>Description</h4>
+<em>Determines if the item identified by a path does exists.</em><br><small><p>Returns true if an item exists at absPath and this Session has read
+access to it; otherwise returns false.</p></small><br><h4>Arguments</h4>
+<table>
+<thead><tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr></thead>
+<tbody><tr>
+<td>$absPath</td>
+<td style="white-space: normal;">string</td>
+<td><p>An absolute path to an item to be found.</p></td>
+<td></td>
+</tr></tbody>
+</table>
+<h4>Return value</h4>
+<table>
+<thead><tr>
+<th>Type</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr>
+<td>boolean</td>
+<td>True if the item exists, else false.</td>
+</tr></tbody>
+</table>
+<h4>Tags</h4>
+<table>
+<thead><tr>
+<th>Name</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>throws</td>
+<td>if absPath is not a well-formed
+     absolute path.</td>
+</tr>
+<tr>
+<td>api</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="method">
+<a id="SessionInterface::logout()"></a><h3>logout<span class="nb-faded-text">(
+          
+          )
+        </span>
+        :
+        <span class="nb-faded-text">void</span>
+</h3>
+<h4>Description</h4>
+<em>Releases all resources associated with this Session.</em><br><small><p>This method should be called when a Session is no longer needed.</p></small><br><h4>Return value</h4>
+<table>
+<thead><tr>
+<th>Type</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr>
+<td>void</td>
+<td></td>
+</tr></tbody>
+</table>
+<h4>Tags</h4>
+<table>
+<thead><tr>
+<th>Name</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr>
+<td>api</td>
+<td></td>
+</tr></tbody>
+</table>
+</div>
+<div class="method">
+<a id="SessionInterface::move()"></a><h3>move<span class="nb-faded-text">(
+          string
+             
+            $srcAbsPath,
+          string
+             
+            $destAbsPath,
+          
+          )
+        </span>
+        :
+        <span class="nb-faded-text">void</span>
+</h3>
+<h4>Description</h4>
+<em>Moves the node at srcAbsPath (and its entire subgraph) to the new
+location at destAbsPath.</em><br><small><p>This is a session-write method and therefor requires a save to dispatch
+the change.</p>
+
+<p>The identifiers of referenceable nodes must not be changed by a move.
+The identifiers of non-referenceable nodes may change.</p>
+
+<p>A ConstraintViolationException is thrown either immediately, on dispatch
+or on persist, if performing this operation would violate a node type or
+implementation-specific constraint. Implementations may differ on when
+this validation is performed.</p>
+
+<p>As well, a ConstraintViolationException will be thrown on persist if an
+attempt is made to separately save either the source or destination
+node.</p>
+
+<p>Note that this behaviour differs from that of WorkspaceInterface::move(
+$srcAbsPath, $destAbsPath), which is a workspace-write method and
+therefore immediately dispatches changes.</p>
+
+<p>The destAbsPath provided must not have an index on its final element. If
+ordering is supported by the node type of the parent node of the new
+location, then the newly moved node is appended to the end of the child
+node list.</p>
+
+<p>This method cannot be used to move an individual property by itself. It
+moves an entire node and its subgraph.</p></small><br><h4>Arguments</h4>
+<table>
+<thead><tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>$srcAbsPath</td>
+<td style="white-space: normal;">string</td>
+<td><p>the root of the subgraph to be moved.</p></td>
+<td></td>
+</tr>
+<tr>
+<td>$destAbsPath</td>
+<td style="white-space: normal;">string</td>
+<td><p>the location to which the subgraph is to be moved.</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h4>Return value</h4>
+<table>
+<thead><tr>
+<th>Type</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr>
+<td>void</td>
+<td></td>
+</tr></tbody>
+</table>
+<h4>Tags</h4>
+<table>
+<thead><tr>
+<th>Name</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>throws</td>
+<td>if a node already exists at
+     destAbsPath and same-name siblings are not allowed.</td>
+</tr>
+<tr>
+<td>throws</td>
+<td>if either srcAbsPath or destAbsPath
+     cannot be found and this implementation performs this validation
+     immediately.</td>
+</tr>
+<tr>
+<td>throws</td>
+<td>if the parent node of
+     destAbsPath or the parent node of srcAbsPath is versionable and
+     checked-in, or or is non-versionable and its nearest versionable
+     ancestor is checked-in and this implementation performs this
+     validation immediately.</td>
+</tr>
+<tr>
+<td>throws</td>
+<td>if a node-type or
+     other constraint violation is detected immediately and this
+     implementation performs this validation immediately.</td>
+</tr>
+<tr>
+<td>throws</td>
+<td>if the move operation would violate a
+     lock and this implementation performs this validation immediately.</td>
+</tr>
+<tr>
+<td>throws</td>
+<td>if the last element of destAbsPath
+     has an index or if another error occurs.</td>
+</tr>
+<tr>
+<td>api</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="method">
+<a id="SessionInterface::nodeExists()"></a><h3>nodeExists<span class="nb-faded-text">(
+          string
+             
+            $absPath,
+          
+          )
+        </span>
+        :
+        <span class="nb-faded-text">boolean</span>
+</h3>
+<h4>Description</h4>
+<em>Determines if the node identified by the given absolute path does exist.</em><br><small><p>Returns true if a node exists at absPath and this Session has read
+access to it; otherwise returns false.</p></small><br><h4>Arguments</h4>
+<table>
+<thead><tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr></thead>
+<tbody><tr>
+<td>$absPath</td>
+<td style="white-space: normal;">string</td>
+<td><p>An absolute path to the node to be found.</p></td>
+<td></td>
+</tr></tbody>
+</table>
+<h4>Return value</h4>
+<table>
+<thead><tr>
+<th>Type</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr>
+<td>boolean</td>
+<td>True if the item does esist</td>
+</tr></tbody>
+</table>
+<h4>Tags</h4>
+<table>
+<thead><tr>
+<th>Name</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>throws</td>
+<td>if absPath is not a well-formed
+     absolute path.</td>
+</tr>
+<tr>
+<td>api</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="method">
+<a id="SessionInterface::propertyExists()"></a><h3>propertyExists<span class="nb-faded-text">(
+          string
+             
+            $absPath,
+          
+          )
+        </span>
+        :
+        <span class="nb-faded-text">boolean</span>
+</h3>
+<h4>Description</h4>
+<em>Determines the existance of a property.</em><br><small><p>Returns true if a property exists at absPath and this Session has read
+access to it; otherwise returns false.</p></small><br><h4>Arguments</h4>
+<table>
+<thead><tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr></thead>
+<tbody><tr>
+<td>$absPath</td>
+<td style="white-space: normal;">string</td>
+<td><p>An absolute path to the property to be found.</p></td>
+<td></td>
+</tr></tbody>
+</table>
+<h4>Return value</h4>
+<table>
+<thead><tr>
+<th>Type</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr>
+<td>boolean</td>
+<td>True if the property is available.</td>
+</tr></tbody>
+</table>
+<h4>Tags</h4>
+<table>
+<thead><tr>
+<th>Name</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>throws</td>
+<td>if absPath is not a well-formed
+     absolute path.</td>
+</tr>
+<tr>
+<td>api</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="method">
+<a id="SessionInterface::refresh()"></a><h3>refresh<span class="nb-faded-text">(
+          boolean
+             
+            $keepChanges,
+          
+          )
+        </span>
+        :
+        <span class="nb-faded-text">void</span>
+</h3>
+<h4>Description</h4>
+<em>Reloads the current session.</em><br><small><p>If keepChanges is false, this method discards all pending changes
+currently recorded in this Session and returns all items to reflect the
+current saved state. Outside a transaction this state is simply the
+current state of persistent storage. Within a transaction, this state
+will reflect persistent storage as modified by changes that have been
+saved but not yet committed.</p>
+
+<p>If keepChanges is true then pending change are not discarded but items
+that do not have changes pending have their state refreshed to reflect
+the current saved state, thus revealing changes made by other sessions.</p>
+
+<p>Implementors note: For performance reasons, implementations should only
+mark nodes as dirty and reload them from the backend only if actually
+needed.</p></small><br><h4>Arguments</h4>
+<table>
+<thead><tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr></thead>
+<tbody><tr>
+<td>$keepChanges</td>
+<td style="white-space: normal;">boolean</td>
+<td><p>Switch to override current changes kept in the session.</p></td>
+<td></td>
+</tr></tbody>
+</table>
+<h4>Return value</h4>
+<table>
+<thead><tr>
+<th>Type</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr>
+<td>void</td>
+<td></td>
+</tr></tbody>
+</table>
+<h4>Tags</h4>
+<table>
+<thead><tr>
+<th>Name</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>throws</td>
+<td>if an error occurs.</td>
+</tr>
+<tr>
+<td>api</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="method">
+<a id="SessionInterface::removeItem()"></a><h3>removeItem<span class="nb-faded-text">(
+          string
+             
+            $absPath,
+          
+          )
+        </span>
+        :
+        <span class="nb-faded-text">void</span>
+</h3>
+<h4>Description</h4>
+<em>Removes the specified item and its subgraph.</em><br><small><p>This is a session-write method and therefore requires a save in order to
+dispatch the change.</p>
+
+<p>If a node with same-name siblings is removed, this decrements by one the
+indices of all the siblings with indices greater than that of the
+removed node. In other words, a removal compacts the array of same-name
+siblings and causes the minimal re-numbering required to maintain the
+original order but leave no gaps in the numbering.</p></small><br><h4>Arguments</h4>
+<table>
+<thead><tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr></thead>
+<tbody><tr>
+<td>$absPath</td>
+<td style="white-space: normal;">string</td>
+<td><p>the absolute path of the item to be removed.</p></td>
+<td></td>
+</tr></tbody>
+</table>
+<h4>Return value</h4>
+<table>
+<thead><tr>
+<th>Type</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr>
+<td>void</td>
+<td></td>
+</tr></tbody>
+</table>
+<h4>Tags</h4>
+<table>
+<thead><tr>
+<th>Name</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>throws</td>
+<td>if the parent node of the item
+     at absPath is read-only due to a checked-in node and this
+     implementation performs this validation immediately.</td>
+</tr>
+<tr>
+<td>throws</td>
+<td>if a lock prevents the removal of the
+     specified item and this implementation performs this validation
+     immediately instead.</td>
+</tr>
+<tr>
+<td>throws</td>
+<td>if removing the
+     specified item would violate a node type or implementation-specific
+     constraint and this implementation performs this validation
+     immediately.</td>
+</tr>
+<tr>
+<td>throws</td>
+<td>if no accessible item is found at
+     $absPath property or if the specified item or an item in its
+     subgraph is currently the target of a REFERENCE property located in
+     this workspace but outside the specified item's subgraph and the
+     current Session does not have read access to that REFERENCE
+     property.</td>
+</tr>
+<tr>
+<td>throws</td>
+<td>if another error occurs.</td>
+</tr>
+<tr>
+<td>see</td>
+<td>\PHPCR\Item::remove()</td>
+</tr>
+<tr>
+<td>api</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="method">
+<a id="SessionInterface::save()"></a><h3>save<span class="nb-faded-text">(
+          
+          )
+        </span>
+        :
+        <span class="nb-faded-text">void</span>
+</h3>
+<h4>Description</h4>
+<em>Validates all pending changes currently recorded in this Session.</em><br><small><p>If validation of all pending changes succeeds, then this change
+information is cleared from the Session.</p>
+
+<p>If the save occurs outside a transaction, the changes are dispatched and
+persisted. Upon being persisted the changes become potentially visible
+to other Sessions bound to the same persitent workspace.</p>
+
+<p>If the save occurs within a transaction, the changes are dispatched but
+are not persisted until the transaction is committed.</p>
+
+<p>If validation fails, then no pending changes are dispatched and they
+remain recorded on the Session. There is no best-effort or partial save.</p></small><br><h4>Return value</h4>
+<table>
+<thead><tr>
+<th>Type</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr>
+<td>void</td>
+<td></td>
+</tr></tbody>
+</table>
+<h4>Tags</h4>
+<table>
+<thead><tr>
+<th>Name</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>throws</td>
+<td>if any of the changes to be
+     persisted would violate the access privileges of the this Session.
+     Also thrown if any of the changes to be persisted would cause the
+     removal of a node that is currently referenced by a REFERENCE
+     property that this Session does not have read access to.</td>
+</tr>
+<tr>
+<td>throws</td>
+<td>if any of the changes to be persisted
+     would be prevented by the presence of an already existing item in
+     the workspace.</td>
+</tr>
+<tr>
+<td>throws</td>
+<td>if any of the
+     changes to be persisted would violate a node type or restriction.
+     Additionally, a repository may use this exception to enforce
+     implementation- or configuration-dependent restrictions.</td>
+</tr>
+<tr>
+<td>throws</td>
+<td>if any of the changes to be
+     persisted conflicts with a change already persisted through another
+     session and the implementation is such that this conflict can only
+     be detected at save-time and therefore was not detected earlier, at
+     change-time.</td>
+</tr>
+<tr>
+<td>throws</td>
+<td>if any of the changes to be
+     persisted would cause the removal of a node that is currently
+     referenced by a REFERENCE property that this Session has read
+     access to.</td>
+</tr>
+<tr>
+<td>throws</td>
+<td>if the save would make a result
+     in a change to persistent storage that would violate the read-only
+     status of a checked-in node.</td>
+</tr>
+<tr>
+<td>throws</td>
+<td>if the save would result in a change
+     to persistent storage that would violate a lock.</td>
+</tr>
+<tr>
+<td>throws</td>
+<td>if the save would result
+     in the addition of a node with an unrecognized node type.</td>
+</tr>
+<tr>
+<td>throws</td>
+<td>if another error occurs.</td>
+</tr>
+<tr>
+<td>api</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="method">
+<a id="SessionInterface::setNamespacePrefix()"></a><h3>setNamespacePrefix<span class="nb-faded-text">(
+          string
+             
+            $prefix,
+          string
+             
+            $uri,
+          
+          )
+        </span>
+        :
+        <span class="nb-faded-text">void</span>
+</h3>
+<h4>Description</h4>
+<em>Sets the name of a namespace prefix.</em><br><small><p>Within the scope of this Session, this method maps uri to prefix. The
+remapping only affects operations done through this Session. To clear
+all remappings, the client must acquire a new Session.
+All local mappings already present in the Session that include either
+the specified prefix or the specified uri are removed and the new
+mapping is added.</p></small><br><h4>Arguments</h4>
+<table>
+<thead><tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>$prefix</td>
+<td style="white-space: normal;">string</td>
+<td><p>The namespace prefix to be set as identifier.</p></td>
+<td></td>
+</tr>
+<tr>
+<td>$uri</td>
+<td style="white-space: normal;">string</td>
+<td><p>The loaction of the namespace definition (usually an uri).</p>
+</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h4>Return value</h4>
+<table>
+<thead><tr>
+<th>Type</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr>
+<td>void</td>
+<td></td>
+</tr></tbody>
+</table>
+<h4>Tags</h4>
+<table>
+<thead><tr>
+<th>Name</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>throws</td>
+<td>if an attempt is made to map a
+     namespace URI to a prefix beginning with the characters "xml" (in
+     any combination of case) or if an attempt is made to map either the
+     empty prefix or the empty namespace (i.e., if either $prefix or
+     $uri are the empty string).</td>
+</tr>
+<tr>
+<td>throws</td>
+<td>if another error occurs.</td>
+</tr>
+<tr>
+<td>api</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="constants_SessionInterface">
+<h4>Constants</h4>
+<a id="SessionInterface::ACTION_ADD_NODE"></a><div class="constant">
+<h3>
+<span class="nb-faded-text"> 
+        </span>ACTION_ADD_NODE<span class="nb-faded-text">
+         = 'add_node'</span>
+</h3>
+<em>A constant representing the add_node action string, used to determine if
+this Session has permission to add a new node.</em><br><small></small><br><br>
+</div>
+<a id="SessionInterface::ACTION_READ"></a><div class="constant">
+<h3>
+<span class="nb-faded-text"> 
+        </span>ACTION_READ<span class="nb-faded-text">
+         = 'read'</span>
+</h3>
+<em>A constant representing the read action string, used to determine if
+this Session has permission to retrieve an item (and read the value, in
+the case of a property).</em><br><small></small><br><br>
+</div>
+<a id="SessionInterface::ACTION_REMOVE"></a><div class="constant">
+<h3>
+<span class="nb-faded-text"> 
+        </span>ACTION_REMOVE<span class="nb-faded-text">
+         = 'remove'</span>
+</h3>
+<em>A constant representing the remove action string, used to determine if
+this Session has permission to remove an item.</em><br><small></small><br><br>
+</div>
+<a id="SessionInterface::ACTION_SET_PROPERTY"></a><div class="constant">
+<h3>
+<span class="nb-faded-text"> 
+        </span>ACTION_SET_PROPERTY<span class="nb-faded-text">
+         = 'set_property'</span>
+</h3>
+<em>A constant representing the set_property action string, used to
+determine ifthis Session has permission to set (add or modify) a
+property.</em><br><small></small><br><br>
+</div>
+</div>
+<div style="clear: both"></div>
+</div>
+</div>
+<small xmlns="" class="footer">Documentation was generated by <a href="http://www.phpdoc.org">phpDocumentor 2.0.0a10</a>.</small></div><div id="index"><div class="padder"><script xmlns="" type="text/javascript">
+      $(function() {
+
+        var is_chrome = /chrome/.test( navigator.userAgent.toLowerCase() );
+        var is_local = /file:\/\//.test(document.location.href);
+        if (is_chrome && is_local)
+        {
+          // search is disabled on chrome with local files due to http://code.google.com/p/chromium/issues/detail?id=40787
+          return;
+        }
+
+        $("#search_box").show();
+        var search_index = {};
+        $.ajax({
+          url: "search_index.xml",
+          dataType: ($.browser.msie) ? "text" : "xml",
+          error: function(data) {
+            alert('An error occurred using the search data');
+          },
+          success: function( data ) {
+            var xml;
+            if (typeof data == "string") {
+              xml = new ActiveXObject("Microsoft.XMLDOM");
+              xml.async = false;
+              xml.loadXML(data);
+            } else {
+              xml = data;
+            }
+
+            search_index = $("node", xml).map(function() {
+              type = $("type", this).text();
+              return {
+                value: $("value", this).text(),
+                label: '<img src="images/icons/'+type+'.png" align="absmiddle">'+$("value", this).text(),
+                id: $("id", this).text(),
+              };
+            }).get();
+
+            $("#search_box").autocomplete({
+              source: search_index,
+              select: function(event, ui) {
+                // redirect to the documentation
+                if ((parent) && (parent.content))
+                {
+                  parent.content.document.location = ''+ui.item.id;
+                }
+                else
+                {
+                  jQuery(document).location = ''+ui.item.id;
+                }
+                applySearchHash();
+              }
+            });
+          }
+        });
+      });
+    </script><input id="search_box"></input><div class="section">
+<h1>Namespaces</h1>
+<ul id="namespaces-" class="filetree"><li class="closed">
+<span class="folder">PHPCR</span><ul>
+<li><span class="class"><a href="phpcr.src.PHPCR.AccessDeniedException.html#AccessDeniedException">AccessDeniedException</a><br><small>Exception to be thrown by access-related methods.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.CredentialsInterface.html#CredentialsInterface">CredentialsInterface</a><br><small>Interface for all credentials that may be passed to the Repository::login()
+method.</small></span></li>
+<li><span class="class"><a href="phpcr.src.PHPCR.GuestCredentials.html#GuestCredentials">GuestCredentials</a><br><small>GuestCredentials is used to obtain a "guest", "public" or "anonymous" session.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.ImportUUIDBehaviorInterface.html#ImportUUIDBehaviorInterface">ImportUUIDBehaviorInterface</a><br><small>The possible actions specified by the uuidBehavior parameter in</small></span></li>
+<li><span class="class"><a href="phpcr.src.PHPCR.InvalidItemStateException.html#InvalidItemStateException">InvalidItemStateException</a><br><small>This exception shall be thrown in case of an issue of a state of an element.</small></span></li>
+<li><span class="class"><a href="phpcr.src.PHPCR.InvalidLifecycleTransitionException.html#InvalidLifecycleTransitionException">InvalidLifecycleTransitionException</a><br><small>Exception thrown by Lifecycle management-related methods.</small></span></li>
+<li><span class="class"><a href="phpcr.src.PHPCR.InvalidSerializedDataException.html#InvalidSerializedDataException">InvalidSerializedDataException</a><br><small>Exception to be thrown by the deserialization methods of Session.</small></span></li>
+<li><span class="class"><a href="phpcr.src.PHPCR.ItemExistsException.html#ItemExistsException">ItemExistsException</a><br><small>An exception thrown when an attempt is made to place an item in a position
+where another item already exists.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.ItemInterface.html#ItemInterface">ItemInterface</a><br><small>The Item is the base interface of Node and Property.</small></span></li>
+<li><span class="class"><a href="phpcr.src.PHPCR.ItemNotFoundException.html#ItemNotFoundException">ItemNotFoundException</a><br><small>Exception thrown by methods of Item, Node and Workspace when an item is not found.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.ItemVisitorInterface.html#ItemVisitorInterface">ItemVisitorInterface</a><br><small>Interface to define a visitor on an item.</small></span></li>
+<li><span class="class"><a href="phpcr.src.PHPCR.LoginException.html#LoginException">LoginException</a><br><small>Shall be thrown in case of invalid login credentials.</small></span></li>
+<li><span class="class"><a href="phpcr.src.PHPCR.MergeException.html#MergeException">MergeException</a><br><small>Exception thrown by NodeInterface::merge()</small></span></li>
+<li><span class="class"><a href="phpcr.src.PHPCR.NamespaceException.html#NamespaceException">NamespaceException</a><br><small>Definition of an Exception to be thrown in case of a namespace issue within
+a session.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.NamespaceRegistryInterface.html#NamespaceRegistryInterface">NamespaceRegistryInterface</a><br><small>Defines an interface to implement a single namespace registry.</small></span></li>
+<li><span class="class"><a href="phpcr.src.PHPCR.NoSuchWorkspaceException.html#NoSuchWorkspaceException">NoSuchWorkspaceException</a><br><small>Exception thrown by RepositoryInterface::login() when a specific workspace
+is not found.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.NodeInterface.html#NodeInterface">NodeInterface</a><br><small>The Node interface represents a node in a workspace.</small></span></li>
+<li><span class="class"><a href="phpcr.src.PHPCR.PathNotFoundException.html#PathNotFoundException">PathNotFoundException</a><br><small>Exception thrown when no Item exists at the specified path or when the
+specified path implies intermediary Nodes that do not exist.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.PropertyInterface.html#PropertyInterface">PropertyInterface</a><br><small>The property interface describes how an item property shall look like.</small></span></li>
+<li><span class="class"><a href="phpcr.src.PHPCR.PropertyType.html#PropertyType">PropertyType</a><br><small>The property types supported by the JCR standard.</small></span></li>
+<li><span class="class"><a href="phpcr.src.PHPCR.ReferentialIntegrityException.html#ReferentialIntegrityException">ReferentialIntegrityException</a><br><small>Exception thrown on referential integrity violation.</small></span></li>
+<li><span class="class"><a href="phpcr.src.PHPCR.RepositoryException.html#RepositoryException">RepositoryException</a><br><small>Main exception thrown by classes in this package.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.RepositoryFactoryInterface.html#RepositoryFactoryInterface">RepositoryFactoryInterface</a><br><small>RepositoryFactory is an interface for factory class implementations for
+Repositories.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.RepositoryInterface.html#RepositoryInterface">RepositoryInterface</a><br><small>The entry point into the content repository.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.SessionInterface.html#SessionInterface">SessionInterface</a><br><small>Describes the implementation of a session class.</small></span></li>
+<li><span class="class"><a href="phpcr.src.PHPCR.SimpleCredentials.html#SimpleCredentials">SimpleCredentials</a><br><small>SimpleCredentials implements the Credentials interface and represents simple
+user ID/password credentials.</small></span></li>
+<li><span class="class"><a href="phpcr.src.PHPCR.UnsupportedRepositoryOperationException.html#UnsupportedRepositoryOperationException">UnsupportedRepositoryOperationException</a><br><small>Thrown by methods that are not supported by a particular implementation.</small></span></li>
+<li><span class="class"><a href="phpcr.src.PHPCR.ValueFormatException.html#ValueFormatException">ValueFormatException</a><br><small>Exception thrown when an attempt is made to assign a value to a property
+that has an invalid format, given the type of the property.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.WorkspaceInterface.html#WorkspaceInterface">WorkspaceInterface</a><br><small>Interface representing a view onto a persistent workspace within a repository.</small></span></li>
+<li class="closed">
+<span class="folder">Lock</span><ul>
+<li><span class="class"><a href="phpcr.src.PHPCR.Lock.LockException.html#LockException">LockException</a><br><small>Exception thrown when a lock-related error occurs.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.Lock.LockInterface.html#LockInterface">LockInterface</a><br><small>Represents a lock placed on an item.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.Lock.LockManagerInterface.html#LockManagerInterface">LockManagerInterface</a><br><small>This interface encapsulates methods for the management of locks.</small></span></li>
+</ul>
+</li>
+<li class="closed">
+<span class="folder">NodeType</span><ul>
+<li><span class="class"><a href="phpcr.src.PHPCR.NodeType.ConstraintViolationException.html#ConstraintViolationException">ConstraintViolationException</a><br><small>Exception thrown when an action would violate a constraint on repository
+structure.</small></span></li>
+<li><span class="class"><a href="phpcr.src.PHPCR.NodeType.InvalidNodeTypeDefinitionException.html#InvalidNodeTypeDefinitionException">InvalidNodeTypeDefinitionException</a><br><small>Exception thrown when an attempt is made to register an invalid node
+type definition template.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.NodeType.ItemDefinitionInterface.html#ItemDefinitionInterface">ItemDefinitionInterface</a><br><small>Superclass of NodeDefinition and PropertyDefinition.</small></span></li>
+<li><span class="class"><a href="phpcr.src.PHPCR.NodeType.NoSuchNodeTypeException.html#NoSuchNodeTypeException">NoSuchNodeTypeException</a><br><small>Exception thrown by node type-related methods.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.NodeType.NodeDefinitionInterface.html#NodeDefinitionInterface">NodeDefinitionInterface</a><br><small>A node definition.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.NodeType.NodeDefinitionTemplateInterface.html#NodeDefinitionTemplateInterface">NodeDefinitionTemplateInterface</a><br><small>The NodeDefinitionTemplate interface extends NodeDefinition with the addition
+of write methods, enabling the characteristics of a child node definition to
+be set, after which the NodeDefinitionTemplate is added to a NodeTypeTemplate.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.NodeType.NodeTypeDefinitionInterface.html#NodeTypeDefinitionInterface">NodeTypeDefinitionInterface</a><br><small>The NodeTypeDefinition interface provides methods for discovering the
+static definition of a node type.</small></span></li>
+<li><span class="class"><a href="phpcr.src.PHPCR.NodeType.NodeTypeExistsException.html#NodeTypeExistsException">NodeTypeExistsException</a><br><small>Exception thrown when an attempt is made to register a node type that
+already exists, and allowUpdate has not been set to true.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.NodeType.NodeTypeInterface.html#NodeTypeInterface">NodeTypeInterface</a><br><small>A NodeType object represents a "live" node type that is registered in the
+repository.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.NodeType.NodeTypeManagerInterface.html#NodeTypeManagerInterface">NodeTypeManagerInterface</a><br><small>Allows for the retrieval and (in implementations that support it) the
+registration of node types.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.NodeType.NodeTypeTemplateInterface.html#NodeTypeTemplateInterface">NodeTypeTemplateInterface</a><br><small>The NodeTypeTemplate interface represents a simple container structure used
+to define node types which are then registered through the
+NodeTypeManagerInterface::registerNodeType() method.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.NodeType.PropertyDefinitionInterface.html#PropertyDefinitionInterface">PropertyDefinitionInterface</a><br><small>A property definition.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.NodeType.PropertyDefinitionTemplateInterface.html#PropertyDefinitionTemplateInterface">PropertyDefinitionTemplateInterface</a><br><small>The PropertyDefinitionTemplate interface extends PropertyDefinition with the
+addition of write methods, enabling the characteristics of a child property
+definition to be set, after which the PropertyDefinitionTemplate is added to
+a NodeTypeTemplate.</small></span></li>
+</ul>
+</li>
+<li class="closed">
+<span class="folder">Observation</span><ul>
+<li><span class="interface"><a href="phpcr.src.PHPCR.Observation.EventInterface.html#EventInterface">EventInterface</a><br><small>An event fired by the observation mechanism.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.Observation.EventJournalInterface.html#EventJournalInterface">EventJournalInterface</a><br><small>An EventJournal is an extended Iterator that provides the additional
+method skipTo().</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.Observation.EventListenerInterface.html#EventListenerInterface">EventListenerInterface</a><br><small>An event listener.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.Observation.ObservationManagerInterface.html#ObservationManagerInterface">ObservationManagerInterface</a><br><small>The ObservationManager object.</small></span></li>
+</ul>
+</li>
+<li class="closed">
+<span class="folder">Query</span><ul>
+<li><span class="class"><a href="phpcr.src.PHPCR.Query.InvalidQueryException.html#InvalidQueryException">InvalidQueryException</a><br><small>Thrown by methods of Query.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.Query.QueryInterface.html#QueryInterface">QueryInterface</a><br><small>A Query object.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.Query.QueryManagerInterface.html#QueryManagerInterface">QueryManagerInterface</a><br><small>This interface encapsulates methods for the management of search queries.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.Query.QueryResultInterface.html#QueryResultInterface">QueryResultInterface</a><br><small>A QueryResult object.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.Query.RowInterface.html#RowInterface">RowInterface</a><br><small>A row in the query result table.</small></span></li>
+<li class="closed">
+<span class="folder">QOM</span><ul>
+<li><span class="interface"><a href="phpcr.src.PHPCR.Query.QOM.AndInterface.html#AndInterface">AndInterface</a><br><small>Performs a logical conjunction of two other constraints.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.Query.QOM.BindVariableValueInterface.html#BindVariableValueInterface">BindVariableValueInterface</a><br><small>Evaluates to the value of a bind variable.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.Query.QOM.ChildNodeInterface.html#ChildNodeInterface">ChildNodeInterface</a><br><small>Tests whether the selector node is a child of a node reachable by absolute
+path path.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.Query.QOM.ChildNodeJoinConditionInterface.html#ChildNodeJoinConditionInterface">ChildNodeJoinConditionInterface</a><br><small>Tests whether the childSelector node is a child of the parentSelector node.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.Query.QOM.ColumnInterface.html#ColumnInterface">ColumnInterface</a><br><small>Defines a column to include in the tabular view of query results.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.Query.QOM.ComparisonInterface.html#ComparisonInterface">ComparisonInterface</a><br><small>Filters node-tuples based on the outcome of a binary operation.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.Query.QOM.ConstraintInterface.html#ConstraintInterface">ConstraintInterface</a><br><small>Filters the set of node-tuples formed by evaluating the query&#39;s selectors and
+the joins between them.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.Query.QOM.DescendantNodeInterface.html#DescendantNodeInterface">DescendantNodeInterface</a><br><small>Tests whether the selector node is a descendant of a node reachable by
+absolute path path.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.Query.QOM.DescendantNodeJoinConditionInterface.html#DescendantNodeJoinConditionInterface">DescendantNodeJoinConditionInterface</a><br><small>Tests whether the descendantSelector node is a descendant of the
+ancestorSelector node.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.Query.QOM.DynamicOperandInterface.html#DynamicOperandInterface">DynamicOperandInterface</a><br><small>An operand whose value can only be determined in evaluating the query.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.Query.QOM.EquiJoinConditionInterface.html#EquiJoinConditionInterface">EquiJoinConditionInterface</a><br><small>Tests whether the value of a property in a first selector is equal to the
+value of a property in a second selector.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.Query.QOM.FullTextSearchInterface.html#FullTextSearchInterface">FullTextSearchInterface</a><br><small>Performs a full-text search.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.Query.QOM.FullTextSearchScoreInterface.html#FullTextSearchScoreInterface">FullTextSearchScoreInterface</a><br><small>Evaluates to a DOUBLE value equal to the full-text search score of a node.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.Query.QOM.JoinConditionInterface.html#JoinConditionInterface">JoinConditionInterface</a><br><small>Filters the set of node-tuples formed from a join.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.Query.QOM.JoinInterface.html#JoinInterface">JoinInterface</a><br><small>Performs a join between two node-tuple sources.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.Query.QOM.LengthInterface.html#LengthInterface">LengthInterface</a><br><small>Evaluates to the length (or lengths, if multi-valued) of a property.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.Query.QOM.LiteralInterface.html#LiteralInterface">LiteralInterface</a><br><small>Evaluates to a literal value.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.Query.QOM.LowerCaseInterface.html#LowerCaseInterface">LowerCaseInterface</a><br><small>Evaluates to the lower-case string value (or values, if multi-valued) of
+operand.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.Query.QOM.NodeLocalNameInterface.html#NodeLocalNameInterface">NodeLocalNameInterface</a><br><small>Evaluates to a NAME value equal to the local (unprefixed) name of a node.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.Query.QOM.NodeNameInterface.html#NodeNameInterface">NodeNameInterface</a><br><small>Evaluates to a NAME value equal to the namespace-qualified name of a node.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.Query.QOM.NotInterface.html#NotInterface">NotInterface</a><br><small>Performs a logical negation of another constraint.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.Query.QOM.OperandInterface.html#OperandInterface">OperandInterface</a><br><small>An operand to a binary operation specified by a Comparison.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.Query.QOM.OrInterface.html#OrInterface">OrInterface</a><br><small>Performs a logical disjunction of two other constraints.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.Query.QOM.OrderingInterface.html#OrderingInterface">OrderingInterface</a><br><small>Determines the relative order of two node-tuples by evaluating operand for
+each.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.Query.QOM.PropertyExistenceInterface.html#PropertyExistenceInterface">PropertyExistenceInterface</a><br><small>Tests the existence of a property.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.Query.QOM.PropertyValueInterface.html#PropertyValueInterface">PropertyValueInterface</a><br><small>Evaluates to the value (or values, if multi-valued) of a property.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.Query.QOM.QueryObjectModelConstantsInterface.html#QueryObjectModelConstantsInterface">QueryObjectModelConstantsInterface</a><br><small>Defines constants used in the query object model.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.Query.QOM.QueryObjectModelFactoryInterface.html#QueryObjectModelFactoryInterface">QueryObjectModelFactoryInterface</a><br><small>A QueryObjectModelFactory creates instances of the JCR query object model.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.Query.QOM.QueryObjectModelInterface.html#QueryObjectModelInterface">QueryObjectModelInterface</a><br><small>A query in the JCR/PHPCR query object model.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.Query.QOM.SameNodeInterface.html#SameNodeInterface">SameNodeInterface</a><br><small>Tests whether the selector node is reachable by absolute path path.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.Query.QOM.SameNodeJoinConditionInterface.html#SameNodeJoinConditionInterface">SameNodeJoinConditionInterface</a><br><small>Tests whether two nodes are "the same" according to
+\PHPCR\ItemInterface::isSame()</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.Query.QOM.SelectorInterface.html#SelectorInterface">SelectorInterface</a><br><small>Selects a subset of the nodes in the repository based on node type.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.Query.QOM.SourceInterface.html#SourceInterface">SourceInterface</a><br><small>Evaluates to a set of node-tuples.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.Query.QOM.StaticOperandInterface.html#StaticOperandInterface">StaticOperandInterface</a><br><small>An operand whose value can be determined from static analysis of the query,
+prior to its evaluation.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.Query.QOM.UpperCaseInterface.html#UpperCaseInterface">UpperCaseInterface</a><br><small>Evaluates to the upper-case string value (or values, if multi-valued) of
+operand.</small></span></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="closed">
+<span class="folder">Retention</span><ul>
+<li><span class="interface"><a href="phpcr.src.PHPCR.Retention.HoldInterface.html#HoldInterface">HoldInterface</a><br><small>Hold represents a hold that can be applied to an existing node in order to
+prevent the node from being modified or removed.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.Retention.RetentionManagerInterface.html#RetentionManagerInterface">RetentionManagerInterface</a><br><small>The RetentionManager object is accessed via SessionInterface::getRetentionManager().</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.Retention.RetentionPolicyInterface.html#RetentionPolicyInterface">RetentionPolicyInterface</a><br><small>A RetentionPolicy is an object with a name and an optional description.</small></span></li>
+</ul>
+</li>
+<li class="closed">
+<span class="folder">Security</span><ul>
+<li><span class="interface"><a href="phpcr.src.PHPCR.Security.AccessControlEntryInterface.html#AccessControlEntryInterface">AccessControlEntryInterface</a><br><small>An AccessControlEntryInterface represents the association of one or more
+PrivilegeInterface objects with a specific principal.</small></span></li>
+<li><span class="class"><a href="phpcr.src.PHPCR.Security.AccessControlException.html#AccessControlException">AccessControlException</a><br><small>Exception thrown by access control related methods of AccessControlManager.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.Security.AccessControlListInterface.html#AccessControlListInterface">AccessControlListInterface</a><br><small>The AccessControlListInterface is an AccessControlPolicyInterface
+representing a list of access control entries.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.Security.AccessControlManagerInterface.html#AccessControlManagerInterface">AccessControlManagerInterface</a><br><small>The AccessControlManager object is accessed via
+SessionInterface::getAccessControlManager().</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.Security.AccessControlPolicyInterface.html#AccessControlPolicyInterface">AccessControlPolicyInterface</a><br><small>The AccessControlPolicyInterface is a marker interface for all kind of
+access control policies.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.Security.NamedAccessControlPolicyInterface.html#NamedAccessControlPolicyInterface">NamedAccessControlPolicyInterface</a><br><small>A NamedAccessControlPolicy is an opaque access control policy that is
+described by a JCR name and optionally a description.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.Security.PrincipalInterface.html#PrincipalInterface">PrincipalInterface</a><br><small>As there are no ACL standard interfaces in PHP this interface provides the
+Principal interface similar to the java.security.Principal</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.Security.PrivilegeInterface.html#PrivilegeInterface">PrivilegeInterface</a><br><small>A privilege represents the capability of performing a particular set of
+operations on items in the JCR repository.</small></span></li>
+</ul>
+</li>
+<li class="closed">
+<span class="folder">Transaction</span><ul>
+<li><span class="class"><a href="phpcr.src.PHPCR.Transaction.RollbackException.html#RollbackException">RollbackException</a><br><small>RollbackException exception is thrown when the transaction has been rolled back instead of committed.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.Transaction.UserTransactionInterface.html#UserTransactionInterface">UserTransactionInterface</a><br><small>As there is no transaction standard in PHP this interface provides a
+transaction interface similar to the
+&lt;a href="http://en.wikipedia.org/wiki/Java_Transaction_API"&gt;Java Transaction
+API (JTA)&lt;/a&gt;</small></span></li>
+</ul>
+</li>
+<li class="closed">
+<span class="folder">Util</span><ul>
+<li><span class="class"><a href="phpcr-utils.src.PHPCR.Util.NodeHelper.html#NodeHelper">NodeHelper</a><br><small>Helper with only static methods to work with PHPCR nodes</small></span></li>
+<li><span class="class"><a href="phpcr-utils.src.PHPCR.Util.TraversingItemVisitor.html#TraversingItemVisitor">TraversingItemVisitor</a><br><small>An implementation of ItemVisitor.</small></span></li>
+<li><span class="class"><a href="phpcr-utils.src.PHPCR.Util.TreeWalker.html#TreeWalker">TreeWalker</a><br><small>TODO: this should base on the TraversingItemVisitor</small></span></li>
+<li><span class="interface"><a href="phpcr-utils.src.PHPCR.Util.TreeWalkerFilterInterface.html#TreeWalkerFilterInterface">TreeWalkerFilterInterface</a><br><small></small></span></li>
+<li><span class="class"><a href="phpcr-utils.src.PHPCR.Util.UUIDHelper.html#UUIDHelper">UUIDHelper</a><br><small>static helper functions to deal with UUID&#39;s</small></span></li>
+<li class="closed">
+<span class="folder">Console</span><ul>
+<li class="closed">
+<span class="folder">Command</span><ul>
+<li><span class="class"><a href="phpcr-utils.src.PHPCR.Util.Console.Command.CreateWorkspaceCommand.html#CreateWorkspaceCommand">CreateWorkspaceCommand</a><br><small>A command to create a workspace in the phcpr repository</small></span></li>
+<li><span class="class"><a href="phpcr-utils.src.PHPCR.Util.Console.Command.DumpCommand.html#DumpCommand">DumpCommand</a><br><small></small></span></li>
+<li><span class="class"><a href="phpcr-utils.src.PHPCR.Util.Console.Command.ImportXmlCommand.html#ImportXmlCommand">ImportXmlCommand</a><br><small></small></span></li>
+<li><span class="class"><a href="phpcr-utils.src.PHPCR.Util.Console.Command.PurgeCommand.html#PurgeCommand">PurgeCommand</a><br><small></small></span></li>
+<li><span class="class"><a href="phpcr-utils.src.PHPCR.Util.Console.Command.QueryCommand.html#QueryCommand">QueryCommand</a><br><small></small></span></li>
+<li><span class="class"><a href="phpcr-utils.src.PHPCR.Util.Console.Command.RegisterNodeTypesCommand.html#RegisterNodeTypesCommand">RegisterNodeTypesCommand</a><br><small>Command to load and register a node type defined in a CND file.</small></span></li>
+</ul>
+</li>
+<li class="closed">
+<span class="folder">Helper</span><ul>
+<li><span class="class"><a href="phpcr-utils.src.PHPCR.Util.Console.Helper.ConsoleParametersParser.html#ConsoleParametersParser">ConsoleParametersParser</a><br><small></small></span></li>
+<li><span class="class"><a href="phpcr-utils.src.PHPCR.Util.Console.Helper.PhpcrHelper.html#PhpcrHelper">PhpcrHelper</a><br><small>Helper class to make the session instance available to console command</small></span></li>
+<li class="closed">
+<span class="folder">TreeDumper</span><ul>
+<li><span class="class"><a href="phpcr-utils.src.PHPCR.Util.Console.Helper.TreeDumper.ConsoleDumperNodeVisitor.html#ConsoleDumperNodeVisitor">ConsoleDumperNodeVisitor</a><br><small>TODO: this should base on the TraversingItemVisitor</small></span></li>
+<li><span class="class"><a href="phpcr-utils.src.PHPCR.Util.Console.Helper.TreeDumper.ConsoleDumperPropertyVisitor.html#ConsoleDumperPropertyVisitor">ConsoleDumperPropertyVisitor</a><br><small>TODO: this should base on the TraversingItemVisitor</small></span></li>
+<li><span class="class"><a href="phpcr-utils.src.PHPCR.Util.Console.Helper.TreeDumper.SystemNodeFilter.html#SystemNodeFilter">SystemNodeFilter</a><br><small>Filter system properties and nodes based on their name.</small></span></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="closed">
+<span class="folder">QOM</span><ul>
+<li><span class="class"><a href="phpcr-utils.src.PHPCR.Util.QOM.BaseQomToSqlQueryConverter.html#BaseQomToSqlQueryConverter">BaseQomToSqlQueryConverter</a><br><small></small></span></li>
+<li><span class="class"><a href="phpcr-utils.src.PHPCR.Util.QOM.BaseSqlGenerator.html#BaseSqlGenerator">BaseSqlGenerator</a><br><small></small></span></li>
+<li><span class="class"><a href="phpcr-utils.src.PHPCR.Util.QOM.NotSupportedConstraintException.html#NotSupportedConstraintException">NotSupportedConstraintException</a><br><small></small></span></li>
+<li><span class="class"><a href="phpcr-utils.src.PHPCR.Util.QOM.NotSupportedOperandException.html#NotSupportedOperandException">NotSupportedOperandException</a><br><small></small></span></li>
+<li><span class="class"><a href="phpcr-utils.src.PHPCR.Util.QOM.QomToSql1QueryConverter.html#QomToSql1QueryConverter">QomToSql1QueryConverter</a><br><small>Convert a QOM query into an SQL2 statement</small></span></li>
+<li><span class="class"><a href="phpcr-utils.src.PHPCR.Util.QOM.QomToSql2QueryConverter.html#QomToSql2QueryConverter">QomToSql2QueryConverter</a><br><small>Convert a QOM query into an SQL2 statement</small></span></li>
+<li><span class="class"><a href="phpcr-utils.src.PHPCR.Util.QOM.QueryBuilder.html#QueryBuilder">QueryBuilder</a><br><small>QueryBuilder class is responsible for dynamically create QOM queries.</small></span></li>
+<li><span class="class"><a href="phpcr-utils.src.PHPCR.Util.QOM.Sql1Generator.html#Sql1Generator">Sql1Generator</a><br><small>Generate SQL1 statements</small></span></li>
+<li><span class="class"><a href="phpcr-utils.src.PHPCR.Util.QOM.Sql2Generator.html#Sql2Generator">Sql2Generator</a><br><small>Generate SQL2 statements</small></span></li>
+<li><span class="class"><a href="phpcr-utils.src.PHPCR.Util.QOM.Sql2Scanner.html#Sql2Scanner">Sql2Scanner</a><br><small>Split an SQL2 statement into string tokens.</small></span></li>
+<li><span class="class"><a href="phpcr-utils.src.PHPCR.Util.QOM.Sql2ToQomQueryConverter.html#Sql2ToQomQueryConverter">Sql2ToQomQueryConverter</a><br><small>Parse SQL2 statements and output a corresponding QOM objects tree</small></span></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="closed">
+<span class="folder">Version</span><ul>
+<li><span class="class"><a href="phpcr.src.PHPCR.Version.ActivityViolationException.html#ActivityViolationException">ActivityViolationException</a><br><small>Exception will be thrown by NodeInterface::checkout() and
+NodeInterface::checkpoint() if an activity A is present on the current
+session and any of the following conditions is met:</small></span></li>
+<li><span class="class"><a href="phpcr.src.PHPCR.Version.LabelExistsVersionException.html#LabelExistsVersionException">LabelExistsVersionException</a><br><small>Exception thrown by VersionHistoryInterface::addVersionLabel() if moveLabel
+is set to false and an attempt is made to add a label that already exists in
+the VersionHistory.</small></span></li>
+<li><span class="class"><a href="phpcr.src.PHPCR.Version.OnParentVersionAction.html#OnParentVersionAction">OnParentVersionAction</a><br><small>The possible actions specified by the onParentVersion attribute in a
+property definition within a node type definition.</small></span></li>
+<li><span class="class"><a href="phpcr.src.PHPCR.Version.VersionException.html#VersionException">VersionException</a><br><small>Exception thrown by VersionInterface::addSuccessor() if an invalid version
+graph operation is attempted.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.Version.VersionHistoryInterface.html#VersionHistoryInterface">VersionHistoryInterface</a><br><small>A VersionHistory object wraps an nt:versionHistory node.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.Version.VersionInterface.html#VersionInterface">VersionInterface</a><br><small>A Version object wraps an nt:version node.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.Version.VersionManagerInterface.html#VersionManagerInterface">VersionManagerInterface</a><br><small>The VersionManager object is accessed via
+WorkspaceInterface::getVersionManager().</small></span></li>
+</ul>
+</li>
+</ul>
+</li></ul>
+</div><div class="section">
+<h1>Packages</h1>
+<ul id="packages-" class="filetree">
+<li class="closed">
+<span class="folder">Default</span><ul id="packages_Default" class="filetree"></ul>
+</li>
+<li class="closed">
+<span class="folder">phpcr</span><ul id="packages_phpcr" class="filetree"><li class="closed"><span class="class"><a href="phpcr.src.PHPCR.PropertyType.html#PropertyType">PropertyType</a><br><small>The property types supported by the JCR standard.</small></span></li></ul>
+</li>
+</ul>
+</div>
+</div></div><div id="footer"><div class="padder"></div></div></div></body></html>

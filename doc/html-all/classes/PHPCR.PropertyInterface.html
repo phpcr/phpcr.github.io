@@ -1,0 +1,2190 @@
+<!DOCTYPE html><html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+<meta charset="utf-8">
+<title>PHPCR API and PHPCR-Utils » \PHPCR\PropertyInterface</title>
+<meta name="author" content="Mike van Riel">
+<meta name="description" content="">
+<link href="../css/template.css" rel="stylesheet" media="all">
+<script src="../js/jquery-1.7.1.min.js" type="text/javascript"></script><script src="../js/jquery-ui-1.8.2.custom.min.js" type="text/javascript"></script><script src="../js/jquery.mousewheel.min.js" type="text/javascript"></script><script src="../js/bootstrap.js" type="text/javascript"></script><script src="../js/template.js" type="text/javascript"></script><script src="../js/prettify/prettify.min.js" type="text/javascript"></script><link rel="shortcut icon" href="../img/favicon.ico">
+<link rel="apple-touch-icon" href="../img/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="72x72" href="../img/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="114x114" href="../img/apple-touch-icon-114x114.png">
+</head>
+<body>
+<div class="navbar navbar-fixed-top">
+<div class="navbar-inner"><div class="container">
+<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a><a class="brand" href="../index.html">PHPCR API and PHPCR-Utils</a><div class="nav-collapse"><ul class="nav">
+<li class="dropdown">
+<a href="#api" class="dropdown-toggle" data-toggle="dropdown">
+                                    API Documentation <b class="caret"></b></a><ul class="dropdown-menu">
+<li><a>Namespaces</a></li>
+<li><a href="../namespaces/PHPCR.html"><i class="icon-th"></i> PHPCR</a></li>
+<li><a>Packages</a></li>
+<li><a href="../packages/Default.html"><i class="icon-folder-open"></i> Default</a></li>
+<li><a href="../packages/phpcr.html"><i class="icon-folder-open"></i> phpcr</a></li>
+</ul>
+</li>
+<li class="dropdown" id="charts-menu">
+<a href="#charts" class="dropdown-toggle" data-toggle="dropdown">
+                                    Charts <b class="caret"></b></a><ul class="dropdown-menu"><li><a href="../graph_class.html"><i class="icon-list-alt"></i> Class hierarchy diagram</a></li></ul>
+</li>
+<li class="dropdown" id="reports-menu">
+<a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
+                                    Reports <b class="caret"></b></a><ul class="dropdown-menu">
+<li><a href="../errors.html"><i class="icon-remove-sign"></i> Errors 
+                <span class="label label-info">123</span></a></li>
+<li><a href="../markers.html"><i class="icon-map-marker"></i> Markers 
+                <ul><li>todo 
+                <span class="label label-info">12</span>
+</li></ul></a></li>
+<li><a href="../deprecated.html"><i class="icon-stop"></i> Deprecated elements 
+                <span class="label label-info">0</span></a></li>
+</ul>
+</li>
+</ul></div>
+</div></div>
+<div class="go_to_top"><a href="#___" style="color: inherit">Back to top  <i class="icon-upload icon-white"></i></a></div>
+</div>
+<div id="___" class="container">
+<noscript><div class="alert alert-warning">
+                            Javascript is disabled; several features are only available
+                            if Javascript is enabled.
+                        </div></noscript>
+<div class="row">
+<div class="span4">
+<span class="btn-group visibility" data-toggle="buttons-checkbox"><button class="btn public active" title="Show public elements">Public</button><button class="btn protected" title="Show protected elements">Protected</button><button class="btn private" title="Show private elements">Private</button><button class="btn inherited active" title="Show inherited elements">Inherited</button></span><div class="btn-group view pull-right" data-toggle="buttons-radio">
+<button class="btn details" title="Show descriptions and method names"><i class="icon-list"></i></button><button class="btn simple" title="Show only method names"><i class="icon-align-justify"></i></button>
+</div>
+<ul class="side-nav nav nav-list">
+<li class="nav-header">
+<i class="icon-custom icon-method"></i> Methods
+                    <ul>
+<li class="method public inherited"><a href="#method_accept" title="accept :: Call the ItemVisitor::visit() method."><span class="description">Call the ItemVisitor::visit() method.</span><pre>accept()</pre></a></li>
+<li class="method public "><a href="#method_addValue" title="addValue :: Appends a value to a multi-value property."><span class="description">Appends a value to a multi-value property.</span><pre>addValue()</pre></a></li>
+<li class="method public inherited"><a href="#method_getAncestor" title="getAncestor :: Returns the ancestor of this Item at the specified depth."><span class="description">Returns the ancestor of this Item at the specified depth.</span><pre>getAncestor()</pre></a></li>
+<li class="method public "><a href="#method_getBinary" title="getBinary :: Returns a Binary representation of the value of this property."><span class="description">Returns a Binary representation of the value of this property.</span><pre>getBinary()</pre></a></li>
+<li class="method public "><a href="#method_getBoolean" title="getBoolean :: Returns a boolean representation of the value of this property."><span class="description">Returns a boolean representation of the value of this property.</span><pre>getBoolean()</pre></a></li>
+<li class="method public "><a href="#method_getDate" title="getDate :: Returns a \DateTime representation of the value of this property."><span class="description">Returns a \DateTime representation of the value of this property.</span><pre>getDate()</pre></a></li>
+<li class="method public "><a href="#method_getDecimal" title="getDecimal :: Returns an arbitrary precision number (encoded as string) representation
+of this value (a BigDecimal in Java)."><span class="description">Returns an arbitrary precision number (encoded as string) representation
+of this value (a BigDecimal in Java).</span><pre>getDecimal()</pre></a></li>
+<li class="method public "><a href="#method_getDefinition" title="getDefinition :: Returns the property definition that applies to this property."><span class="description">Returns the property definition that applies to this property.</span><pre>getDefinition()</pre></a></li>
+<li class="method public inherited"><a href="#method_getDepth" title="getDepth :: Returns the depth of this Item in the workspace item graph."><span class="description">Returns the depth of this Item in the workspace item graph.</span><pre>getDepth()</pre></a></li>
+<li class="method public "><a href="#method_getDouble" title="getDouble :: Returns a float representation of the value of this property."><span class="description">Returns a float representation of the value of this property.</span><pre>getDouble()</pre></a></li>
+<li class="method public "><a href="#method_getLength" title="getLength :: Returns the length(s) of the value(s) of this property."><span class="description">Returns the length(s) of the value(s) of this property.</span><pre>getLength()</pre></a></li>
+<li class="method public "><a href="#method_getLong" title="getLong :: Returns an integer representation of the value of this property."><span class="description">Returns an integer representation of the value of this property.</span><pre>getLong()</pre></a></li>
+<li class="method public inherited"><a href="#method_getName" title="getName :: Returns the name of this Item in qualified form."><span class="description">Returns the name of this Item in qualified form.</span><pre>getName()</pre></a></li>
+<li class="method public "><a href="#method_getNode" title="getNode :: Gets the node the property refers to by its type."><span class="description">Gets the node the property refers to by its type.</span><pre>getNode()</pre></a></li>
+<li class="method public inherited"><a href="#method_getParent" title="getParent :: Returns the parent of this Item."><span class="description">Returns the parent of this Item.</span><pre>getParent()</pre></a></li>
+<li class="method public inherited"><a href="#method_getPath" title="getPath :: Returns the normalized absolute path to this item."><span class="description">Returns the normalized absolute path to this item.</span><pre>getPath()</pre></a></li>
+<li class="method public "><a href="#method_getProperty" title="getProperty :: Gets the property the property refers to by its type."><span class="description">Gets the property the property refers to by its type.</span><pre>getProperty()</pre></a></li>
+<li class="method public inherited"><a href="#method_getSession" title="getSession :: Returns the Session through which this Item was acquired."><span class="description">Returns the Session through which this Item was acquired.</span><pre>getSession()</pre></a></li>
+<li class="method public "><a href="#method_getString" title="getString :: Returns a String representation of the value of this property."><span class="description">Returns a String representation of the value of this property.</span><pre>getString()</pre></a></li>
+<li class="method public "><a href="#method_getType" title="getType :: Returns the type of this Property."><span class="description">Returns the type of this Property.</span><pre>getType()</pre></a></li>
+<li class="method public "><a href="#method_getValue" title="getValue :: Get the value in format default for the PropertyType of this property."><span class="description">Get the value in format default for the PropertyType of this property.</span><pre>getValue()</pre></a></li>
+<li class="method public inherited"><a href="#method_isModified" title="isModified :: Indicates if the current item has been modified."><span class="description">Indicates if the current item has been modified.</span><pre>isModified()</pre></a></li>
+<li class="method public "><a href="#method_isMultiple" title="isMultiple :: Determines if the current property is multi-valued."><span class="description">Determines if the current property is multi-valued.</span><pre>isMultiple()</pre></a></li>
+<li class="method public inherited"><a href="#method_isNew" title="isNew :: Determines if the current item is a new one."><span class="description">Determines if the current item is a new one.</span><pre>isNew()</pre></a></li>
+<li class="method public inherited"><a href="#method_isNode" title="isNode :: Indicates whether this Item is a Node or a Property."><span class="description">Indicates whether this Item is a Node or a Property.</span><pre>isNode()</pre></a></li>
+<li class="method public inherited"><a href="#method_isSame" title="isSame :: Determines if this Item object represents the same actual workspace item
+as the object otherItem."><span class="description">Determines if this Item object represents the same actual workspace item
+as the object otherItem.</span><pre>isSame()</pre></a></li>
+<li class="method public inherited"><a href="#method_refresh" title="refresh :: Updates the state of the current item."><span class="description">Updates the state of the current item.</span><pre>refresh()</pre></a></li>
+<li class="method public inherited"><a href="#method_remove" title="remove :: Removes this item (and its subgraph)."><span class="description">Removes this item (and its subgraph).</span><pre>remove()</pre></a></li>
+<li class="method public "><a href="#method_setValue" title="setValue :: Sets the value of this property to the value."><span class="description">Sets the value of this property to the value.</span><pre>setValue()</pre></a></li>
+</ul>
+</li>
+<li class="nav-header">
+<i class="icon-custom icon-constant"></i> Constants
+                    <ul>
+<li class="constant  "><a href="#constant_JCR_ACTIVITY" title="JCR_ACTIVITY :: A constant for the property name jcr:activity (in extended form),
+declared in node types mix:versionable and nt:version."><span class="description">A constant for the property name jcr:activity (in extended form),
+declared in node types mix:versionable and nt:version.</span><pre>JCR_ACTIVITY</pre></a></li>
+<li class="constant  "><a href="#constant_JCR_AUTOCREATED" title="JCR_AUTOCREATED :: A constant for the property name jcr:autoCreated (in extended form),
+declared in node types nt:propertyDefinition and nt:childNodeDefinition."><span class="description">A constant for the property name jcr:autoCreated (in extended form),
+declared in node types nt:propertyDefinition and nt:childNodeDefinition.</span><pre>JCR_AUTOCREATED</pre></a></li>
+<li class="constant  "><a href="#constant_JCR_BASE_VERSION" title="JCR_BASE_VERSION :: A constant for the property name jcr:baseVersion (in extended form),
+declared in node type mix:versionable."><span class="description">A constant for the property name jcr:baseVersion (in extended form),
+declared in node type mix:versionable.</span><pre>JCR_BASE_VERSION</pre></a></li>
+<li class="constant  "><a href="#constant_JCR_CHILD_VERSION_HISTORY" title="JCR_CHILD_VERSION_HISTORY :: A constant for the property name jcr:childVersionHistory (in extended form),
+declared in node type nt:versionedChild."><span class="description">A constant for the property name jcr:childVersionHistory (in extended form),
+declared in node type nt:versionedChild.</span><pre>JCR_CHILD_VERSION_HISTORY</pre></a></li>
+<li class="constant  "><a href="#constant_JCR_CONFIGURATION" title="JCR_CONFIGURATION :: A constant for the property name jcr:configuration (in extended form),
+declared in node type mix:versionable."><span class="description">A constant for the property name jcr:configuration (in extended form),
+declared in node type mix:versionable.</span><pre>JCR_CONFIGURATION</pre></a></li>
+<li class="constant  "><a href="#constant_JCR_CONTENT" title="JCR_CONTENT :: A constant for the property name jcr:content (in extended form),
+declared in node type nt:linkedFile."><span class="description">A constant for the property name jcr:content (in extended form),
+declared in node type nt:linkedFile.</span><pre>JCR_CONTENT</pre></a></li>
+<li class="constant  "><a href="#constant_JCR_COPIED_FROM" title="JCR_COPIED_FROM :: A constant for the property name jcr:copiedFrom (in extended form),
+declared in node type nt:version."><span class="description">A constant for the property name jcr:copiedFrom (in extended form),
+declared in node type nt:version.</span><pre>JCR_COPIED_FROM</pre></a></li>
+<li class="constant  "><a href="#constant_JCR_CREATED" title="JCR_CREATED :: A constant for the property name jcr:created (in extended form),
+declared in node types mix:created and nt:version."><span class="description">A constant for the property name jcr:created (in extended form),
+declared in node types mix:created and nt:version.</span><pre>JCR_CREATED</pre></a></li>
+<li class="constant  "><a href="#constant_JCR_CREATED_BY" title="JCR_CREATED_BY :: A constant for the property name jcr:createdBy (in extended form),
+declared in node type mix:created."><span class="description">A constant for the property name jcr:createdBy (in extended form),
+declared in node type mix:created.</span><pre>JCR_CREATED_BY</pre></a></li>
+<li class="constant  "><a href="#constant_JCR_CURRENT_LIFECYCLE_STATE" title="JCR_CURRENT_LIFECYCLE_STATE :: A constant for the property name jcr:currentLifecycleState (in extended form),
+declared in node type mix:lifecycle."><span class="description">A constant for the property name jcr:currentLifecycleState (in extended form),
+declared in node type mix:lifecycle.</span><pre>JCR_CURRENT_LIFECYCLE_STATE</pre></a></li>
+<li class="constant  "><a href="#constant_JCR_DATA" title="JCR_DATA :: A constant for the property name jcr:data (in extended form),
+declared in node type nt:resource."><span class="description">A constant for the property name jcr:data (in extended form),
+declared in node type nt:resource.</span><pre>JCR_DATA</pre></a></li>
+<li class="constant  "><a href="#constant_JCR_DEFAULT_PRIMARY_TYPE" title="JCR_DEFAULT_PRIMARY_TYPE :: A constant for the property name jcr:defaultPrimaryType (in extended form),
+declared in node type nt:childNodeDefinition."><span class="description">A constant for the property name jcr:defaultPrimaryType (in extended form),
+declared in node type nt:childNodeDefinition.</span><pre>JCR_DEFAULT_PRIMARY_TYPE</pre></a></li>
+<li class="constant  "><a href="#constant_JCR_DEFAULT_VALUES" title="JCR_DEFAULT_VALUES :: A constant for the property name jcr:defaultValues (in extended form),
+declared in node type nt:propertyDefinition."><span class="description">A constant for the property name jcr:defaultValues (in extended form),
+declared in node type nt:propertyDefinition.</span><pre>JCR_DEFAULT_VALUES</pre></a></li>
+<li class="constant  "><a href="#constant_JCR_DESCRIPTION" title="JCR_DESCRIPTION :: A constant for the property name jcr:description (in extended form),
+declared in node type mix:title."><span class="description">A constant for the property name jcr:description (in extended form),
+declared in node type mix:title.</span><pre>JCR_DESCRIPTION</pre></a></li>
+<li class="constant  "><a href="#constant_JCR_ENCODING" title="JCR_ENCODING :: A constant for the property name jcr:encoding (in extended form),
+declared in node type mix:mimeType."><span class="description">A constant for the property name jcr:encoding (in extended form),
+declared in node type mix:mimeType.</span><pre>JCR_ENCODING</pre></a></li>
+<li class="constant  "><a href="#constant_JCR_FROZEN_MIXIN_TYPES" title="JCR_FROZEN_MIXIN_TYPES :: A constant for the property name jcr:frozenMixinTypes (in extended form),
+declared in node type nt:frozenNode."><span class="description">A constant for the property name jcr:frozenMixinTypes (in extended form),
+declared in node type nt:frozenNode.</span><pre>JCR_FROZEN_MIXIN_TYPES</pre></a></li>
+<li class="constant  "><a href="#constant_JCR_FROZEN_PRIMARY_TYPE" title="JCR_FROZEN_PRIMARY_TYPE :: A constant for the property name jcr:frozenPrimaryType (in extended form),
+declared in node type nt:frozenNode."><span class="description">A constant for the property name jcr:frozenPrimaryType (in extended form),
+declared in node type nt:frozenNode.</span><pre>JCR_FROZEN_PRIMARY_TYPE</pre></a></li>
+<li class="constant  "><a href="#constant_JCR_FROZEN_UUID" title="JCR_FROZEN_UUID :: A constant for the property name jcr:frozenUuid (in extended form),
+declared in node type nt:frozenNode."><span class="description">A constant for the property name jcr:frozenUuid (in extended form),
+declared in node type nt:frozenNode.</span><pre>JCR_FROZEN_UUID</pre></a></li>
+<li class="constant  "><a href="#constant_JCR_HAS_ORDERABLE_CHILD_NODES" title="JCR_HAS_ORDERABLE_CHILD_NODES :: A constant for the property name jcr:hasOrderableChildNodes (in extended form),
+declared in node type nt:nodeType."><span class="description">A constant for the property name jcr:hasOrderableChildNodes (in extended form),
+declared in node type nt:nodeType.</span><pre>JCR_HAS_ORDERABLE_CHILD_NODES</pre></a></li>
+<li class="constant  "><a href="#constant_JCR_HOST" title="JCR_HOST :: A constant for the property name jcr:host (in extended form),
+declared in node type nt:address."><span class="description">A constant for the property name jcr:host (in extended form),
+declared in node type nt:address.</span><pre>JCR_HOST</pre></a></li>
+<li class="constant  "><a href="#constant_JCR_ID" title="JCR_ID :: A constant for the property name jcr:id (in extended form),
+declared in node type nt:address."><span class="description">A constant for the property name jcr:id (in extended form),
+declared in node type nt:address.</span><pre>JCR_ID</pre></a></li>
+<li class="constant  "><a href="#constant_JCR_IS_ABSTRACT" title="JCR_IS_ABSTRACT :: A constant for the property name jcr:isAbstract (in extended form),
+declared in node type nt:nodeType."><span class="description">A constant for the property name jcr:isAbstract (in extended form),
+declared in node type nt:nodeType.</span><pre>JCR_IS_ABSTRACT</pre></a></li>
+<li class="constant  "><a href="#constant_JCR_IS_CHECKED_OUT" title="JCR_IS_CHECKED_OUT :: A constant for the property name jcr:isCheckedOut (in extended form),
+declared in node type mix:simpleVersionable."><span class="description">A constant for the property name jcr:isCheckedOut (in extended form),
+declared in node type mix:simpleVersionable.</span><pre>JCR_IS_CHECKED_OUT</pre></a></li>
+<li class="constant  "><a href="#constant_JCR_IS_MIXIN" title="JCR_IS_MIXIN :: A constant for the property name jcr:isMixin (in extended form),
+declared in node type nt:nodeType."><span class="description">A constant for the property name jcr:isMixin (in extended form),
+declared in node type nt:nodeType.</span><pre>JCR_IS_MIXIN</pre></a></li>
+<li class="constant  "><a href="#constant_JCR_LANGUAGE" title="JCR_LANGUAGE :: A constant for the property name jcr:language (in extended form),
+declared in node types mix:language and nt:query."><span class="description">A constant for the property name jcr:language (in extended form),
+declared in node types mix:language and nt:query.</span><pre>JCR_LANGUAGE</pre></a></li>
+<li class="constant  "><a href="#constant_JCR_LAST_MODIFIED" title="JCR_LAST_MODIFIED :: A constant for the property name jcr:lastModified (in extended form),
+declared in node type mix:lastModified."><span class="description">A constant for the property name jcr:lastModified (in extended form),
+declared in node type mix:lastModified.</span><pre>JCR_LAST_MODIFIED</pre></a></li>
+<li class="constant  "><a href="#constant_JCR_LAST_MODIFIED_BY" title="JCR_LAST_MODIFIED_BY :: A constant for the property name jcr:lastModifiedBy (in extended form),
+declared in node type mix:lastModified."><span class="description">A constant for the property name jcr:lastModifiedBy (in extended form),
+declared in node type mix:lastModified.</span><pre>JCR_LAST_MODIFIED_BY</pre></a></li>
+<li class="constant  "><a href="#constant_JCR_LIFECYCLE_POLICY" title="JCR_LIFECYCLE_POLICY :: A constant for the property name jcr:lifecyclePolicy (in extended form),
+declared in node type mix:lifecycle."><span class="description">A constant for the property name jcr:lifecyclePolicy (in extended form),
+declared in node type mix:lifecycle.</span><pre>JCR_LIFECYCLE_POLICY</pre></a></li>
+<li class="constant  "><a href="#constant_JCR_LOCK_IS_DEEP" title="JCR_LOCK_IS_DEEP :: A constant for the property name jcr:lockIsDeep (in extended form),
+declared in node type mix:lockable."><span class="description">A constant for the property name jcr:lockIsDeep (in extended form),
+declared in node type mix:lockable.</span><pre>JCR_LOCK_IS_DEEP</pre></a></li>
+<li class="constant  "><a href="#constant_JCR_LOCK_OWNER" title="JCR_LOCK_OWNER :: A constant for the property name jcr:lockOwner (in extended form),
+declared in node type mix:lockable."><span class="description">A constant for the property name jcr:lockOwner (in extended form),
+declared in node type mix:lockable.</span><pre>JCR_LOCK_OWNER</pre></a></li>
+<li class="constant  "><a href="#constant_JCR_MANDATORY" title="JCR_MANDATORY :: A constant for the property name jcr:mandatory (in extended form),
+declared in node types nt:propertyDefinition and nt:childNodeDefinition."><span class="description">A constant for the property name jcr:mandatory (in extended form),
+declared in node types nt:propertyDefinition and nt:childNodeDefinition.</span><pre>JCR_MANDATORY</pre></a></li>
+<li class="constant  "><a href="#constant_JCR_MERGE_FAILED" title="JCR_MERGE_FAILED :: A constant for the property name jcr:mergeFailed (in extended form),
+declared in node type mix:versionable."><span class="description">A constant for the property name jcr:mergeFailed (in extended form),
+declared in node type mix:versionable.</span><pre>JCR_MERGE_FAILED</pre></a></li>
+<li class="constant  "><a href="#constant_JCR_MIMETYPE" title="JCR_MIMETYPE :: A constant for the property name jcr:mimeType (in extended form),
+declared in node type mix:mimeType."><span class="description">A constant for the property name jcr:mimeType (in extended form),
+declared in node type mix:mimeType.</span><pre>JCR_MIMETYPE</pre></a></li>
+<li class="constant  "><a href="#constant_JCR_MIXIN_TYPES" title="JCR_MIXIN_TYPES :: A constant for the property name jcr:mixinTypes (in extended form),
+declared in node type nt:base."><span class="description">A constant for the property name jcr:mixinTypes (in extended form),
+declared in node type nt:base.</span><pre>JCR_MIXIN_TYPES</pre></a></li>
+<li class="constant  "><a href="#constant_JCR_MULTIPLE" title="JCR_MULTIPLE :: A constant for the property name jcr:multiple (in extended form),
+declared in node type nt:propertyDefinition."><span class="description">A constant for the property name jcr:multiple (in extended form),
+declared in node type nt:propertyDefinition.</span><pre>JCR_MULTIPLE</pre></a></li>
+<li class="constant  "><a href="#constant_JCR_NAME" title="JCR_NAME :: A constant for the property name jcr:name (in extended form),
+declared in node types nt:propertyDefinition and nt:childNodeDefinition."><span class="description">A constant for the property name jcr:name (in extended form),
+declared in node types nt:propertyDefinition and nt:childNodeDefinition.</span><pre>JCR_NAME</pre></a></li>
+<li class="constant  "><a href="#constant_JCR_NODE_TYPE_NAME" title="JCR_NODE_TYPE_NAME :: A constant for the property name jcr:nodeTypeName (in extended form),
+declared in node type nt:nodeType."><span class="description">A constant for the property name jcr:nodeTypeName (in extended form),
+declared in node type nt:nodeType.</span><pre>JCR_NODE_TYPE_NAME</pre></a></li>
+<li class="constant  "><a href="#constant_JCR_ON_PARENT_VERSION" title="JCR_ON_PARENT_VERSION :: A constant for the property name jcr:onParentVersion (in extended form),
+declared in node types nt:propertyDefinition and nt:childNodeDefinition."><span class="description">A constant for the property name jcr:onParentVersion (in extended form),
+declared in node types nt:propertyDefinition and nt:childNodeDefinition.</span><pre>JCR_ON_PARENT_VERSION</pre></a></li>
+<li class="constant  "><a href="#constant_JCR_PATH" title="JCR_PATH :: A constant for the property name jcr:path (in extended form),
+declared in node type nt:address."><span class="description">A constant for the property name jcr:path (in extended form),
+declared in node type nt:address.</span><pre>JCR_PATH</pre></a></li>
+<li class="constant  "><a href="#constant_JCR_PORT" title="JCR_PORT :: A constant for the property name jcr:port (in extended form),
+declared in node type nt:address."><span class="description">A constant for the property name jcr:port (in extended form),
+declared in node type nt:address.</span><pre>JCR_PORT</pre></a></li>
+<li class="constant  "><a href="#constant_JCR_PREDECESSORS" title="JCR_PREDECESSORS :: A constant for the property name jcr:predecessors (in extended form),
+declared in node types mix:versionable and nt:version."><span class="description">A constant for the property name jcr:predecessors (in extended form),
+declared in node types mix:versionable and nt:version.</span><pre>JCR_PREDECESSORS</pre></a></li>
+<li class="constant  "><a href="#constant_JCR_PRIMARY_ITEM_NAME" title="JCR_PRIMARY_ITEM_NAME :: A constant for the property name jcr:primaryItemName (in extended form),
+declared in node type nt:nodeType."><span class="description">A constant for the property name jcr:primaryItemName (in extended form),
+declared in node type nt:nodeType.</span><pre>JCR_PRIMARY_ITEM_NAME</pre></a></li>
+<li class="constant  "><a href="#constant_JCR_PRIMARY_TYPE" title="JCR_PRIMARY_TYPE :: A constant for the property name jcr:primaryType (in extended form),
+declared in node type nt:base."><span class="description">A constant for the property name jcr:primaryType (in extended form),
+declared in node type nt:base.</span><pre>JCR_PRIMARY_TYPE</pre></a></li>
+<li class="constant  "><a href="#constant_JCR_PROTECTED" title="JCR_PROTECTED :: A constant for the property name jcr:protected (in extended form),
+declared in node types nt:propertyDefinition and nt:childNodeDefinition."><span class="description">A constant for the property name jcr:protected (in extended form),
+declared in node types nt:propertyDefinition and nt:childNodeDefinition.</span><pre>JCR_PROTECTED</pre></a></li>
+<li class="constant  "><a href="#constant_JCR_PROTOCOL" title="JCR_PROTOCOL :: A constant for the property name jcr:protocol (in extended form),
+declared in node type nt:address."><span class="description">A constant for the property name jcr:protocol (in extended form),
+declared in node type nt:address.</span><pre>JCR_PROTOCOL</pre></a></li>
+<li class="constant  "><a href="#constant_JCR_REPOSITORY" title="JCR_REPOSITORY :: A constant for the property name jcr:repository (in extended form),
+declared in node type nt:address."><span class="description">A constant for the property name jcr:repository (in extended form),
+declared in node type nt:address.</span><pre>JCR_REPOSITORY</pre></a></li>
+<li class="constant  "><a href="#constant_JCR_REQUIRED_PRIMARY_TYPES" title="JCR_REQUIRED_PRIMARY_TYPES :: A constant for the property name jcr:requiredPrimaryTypes (in extended form),
+declared in node type nt:childNodeDefinition."><span class="description">A constant for the property name jcr:requiredPrimaryTypes (in extended form),
+declared in node type nt:childNodeDefinition.</span><pre>JCR_REQUIRED_PRIMARY_TYPES</pre></a></li>
+<li class="constant  "><a href="#constant_JCR_REQUIRED_TYPE" title="JCR_REQUIRED_TYPE :: A constant for the property name jcr:requiredType (in extended form),
+declared in node type nt:propertyDefinition."><span class="description">A constant for the property name jcr:requiredType (in extended form),
+declared in node type nt:propertyDefinition.</span><pre>JCR_REQUIRED_TYPE</pre></a></li>
+<li class="constant  "><a href="#constant_JCR_ROOT" title="JCR_ROOT :: A constant for the property name jcr:root (in extended form),
+declared in node type nt:configuration."><span class="description">A constant for the property name jcr:root (in extended form),
+declared in node type nt:configuration.</span><pre>JCR_ROOT</pre></a></li>
+<li class="constant  "><a href="#constant_JCR_SAME_NAME_SIBLINGS" title="JCR_SAME_NAME_SIBLINGS :: A constant for the property name jcr:sameNameSiblings (in extended form),
+declared in node type nt:childNodeDefinition."><span class="description">A constant for the property name jcr:sameNameSiblings (in extended form),
+declared in node type nt:childNodeDefinition.</span><pre>JCR_SAME_NAME_SIBLINGS</pre></a></li>
+<li class="constant  "><a href="#constant_JCR_STATEMENT" title="JCR_STATEMENT :: A constant for the property name jcr:statement (in extended form),
+declared in node type nt:query."><span class="description">A constant for the property name jcr:statement (in extended form),
+declared in node type nt:query.</span><pre>JCR_STATEMENT</pre></a></li>
+<li class="constant  "><a href="#constant_JCR_SUCCESSORS" title="JCR_SUCCESSORS :: A constant for the property name jcr:successors (in extended form),
+declared in node type nt:version."><span class="description">A constant for the property name jcr:successors (in extended form),
+declared in node type nt:version.</span><pre>JCR_SUCCESSORS</pre></a></li>
+<li class="constant  "><a href="#constant_JCR_SUPERTYPES" title="JCR_SUPERTYPES :: A constant for the property name jcr:supertypes (in extended form),
+declared in node type nt:nodeType."><span class="description">A constant for the property name jcr:supertypes (in extended form),
+declared in node type nt:nodeType.</span><pre>JCR_SUPERTYPES</pre></a></li>
+<li class="constant  "><a href="#constant_JCR_TITLE" title="JCR_TITLE :: A constant for the property name jcr:title (in extended form),
+declared in node types mix:title and nt:activity."><span class="description">A constant for the property name jcr:title (in extended form),
+declared in node types mix:title and nt:activity.</span><pre>JCR_TITLE</pre></a></li>
+<li class="constant  "><a href="#constant_JCR_UUID" title="JCR_UUID :: A constant for the property name jcr:uuid (in extended form),
+declared in node type mix:referenceable."><span class="description">A constant for the property name jcr:uuid (in extended form),
+declared in node type mix:referenceable.</span><pre>JCR_UUID</pre></a></li>
+<li class="constant  "><a href="#constant_JCR_VALUE_CONSTRAINTS" title="JCR_VALUE_CONSTRAINTS :: A constant for the property name jcr:valueConstraints (in extended form),
+declared in node type nt:propertyDefinition."><span class="description">A constant for the property name jcr:valueConstraints (in extended form),
+declared in node type nt:propertyDefinition.</span><pre>JCR_VALUE_CONSTRAINTS</pre></a></li>
+<li class="constant  "><a href="#constant_JCR_VERSIONABLE_UUID" title="JCR_VERSIONABLE_UUID :: A constant for the property name jcr:versionableUuid (in extended form),
+declared in node type nt:version."><span class="description">A constant for the property name jcr:versionableUuid (in extended form),
+declared in node type nt:version.</span><pre>JCR_VERSIONABLE_UUID</pre></a></li>
+<li class="constant  "><a href="#constant_JCR_VERSION_HISTORY" title="JCR_VERSION_HISTORY :: A constant for the property name jcr:versionHistory (in extended form),
+declared in node type mix:versionable."><span class="description">A constant for the property name jcr:versionHistory (in extended form),
+declared in node type mix:versionable.</span><pre>JCR_VERSION_HISTORY</pre></a></li>
+<li class="constant  "><a href="#constant_JCR_WORKSPACE" title="JCR_WORKSPACE :: A constant for the property name jcr:workspace (in extended form),
+declared in node type nt:address."><span class="description">A constant for the property name jcr:workspace (in extended form),
+declared in node type nt:address.</span><pre>JCR_WORKSPACE</pre></a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="span8">
+<a id="\PHPCR\PropertyInterface"></a><ul class="breadcrumb">
+<li>
+<a href="../index.html"><i class="icon-custom icon-class"></i></a><span class="divider">\</span>
+</li>
+<li><a href="../namespaces/PHPCR.html">PHPCR</a></li>
+<li class="active">
+<span class="divider">\</span><a href="../classes/PHPCR.PropertyInterface.html">PropertyInterface</a>
+</li>
+</ul>
+<div class="element interface">
+<p class="short_description">The property interface describes how an item property shall look like.</p>
+<div class="details">
+<div class="long_description"><p>A Property object represents the smallest granularity of content storage.
+It has a single parent node and no children. A property consists of a name
+and a value, or in the case of multi-value properties, a set of values all
+of the same type.</p>
+
+<p>The \Traversable interface enables the implementation to be addressed with
+<b>foreach</b>. Properties have to implement either \IteratorAggregate or
+\Iterator.
+The iterator is equivalent to <b>getValue()</b> returning an iterator
+of all values of this property (which is exactly one except for multi-valued
+properties). The iterator keys have no significant meaning.</p>
+
+<p><b>PHPCR Note:</b>
+We removed the Value interface and consequently the getValue() and
+getValues() methods. If you just want the property value in its native type,
+use getValue, or just NodeInterface::getPropertyValue.
+The PropertyInterface::getXX methods also work for multi-valued properties.
+They return arrays in case of multi-valued.
+PropertyInterface::setValue completely replaces the
+ValueFactory::createValue method.</p></div>
+<table class="table table-bordered">
+<tr>
+<th>package</th>
+<td><a href="../packages/phpcr.interfaces.html">phpcr</a></td>
+</tr>
+<tr>
+<th>subpackage</th>
+<td>interfaces</td>
+</tr>
+<tr>
+<th>api</th>
+<td></td>
+</tr>
+</table>
+<h3>
+<i class="icon-custom icon-method"></i> Methods</h3>
+<a id="method_accept"></a><div class="element clickable method public method_accept" data-toggle="collapse" data-target=".method_accept .collapse">
+<h2>Call the ItemVisitor::visit() method.</h2>
+<pre>accept(\PHPCR\ItemVisitorInterface $visitor) </pre>
+<div class="labels">
+<span class="label label-info">API</span><span class="label">Inherited</span>
+</div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>This is less relevant in PHP (Java had it to avoid typecasting in the
+visitor). We leave it here, to allow sanity checks or other operations
+an implementation might wants to do.</p></div>
+<table class="table table-bordered">
+<tr>
+<th>api</th>
+<td></td>
+</tr>
+<tr>
+<th>inherited_from</th>
+<td>\PHPCR\ItemInterface::accept()</td>
+</tr>
+</table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$visitor</h4>
+<code><a href="../classes/PHPCR.ItemVisitorInterface.html">\PHPCR\ItemVisitorInterface</a></code><p>The ItemVisitor to be accepted.</p></div>
+<h3>Exceptions</h3>
+<table class="table table-bordered"><tr>
+<th><code><a href="../classes/PHPCR.RepositoryException.html">\PHPCR\RepositoryException</a></code></th>
+<td>if an error occurs.</td>
+</tr></table>
+</div></div>
+</div>
+<a id="method_addValue"></a><div class="element clickable method public method_addValue" data-toggle="collapse" data-target=".method_addValue .collapse">
+<h2>Appends a value to a multi-value property.</h2>
+<pre>addValue(mixed $value) </pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>It is added at the end of the
+list.</p>
+
+<p><strong>PHPCR Note:</strong> This is a new method not found in Java JCR.
+In PHP appending to strings is easy and this is more convenient than
+getting the property and appending to the array and setting again.</p></div>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$value</h4>
+<code>mixed</code>
+</div>
+<h3>Exceptions</h3>
+<table class="table table-bordered"><tr>
+<th><code><a href="../classes/PHPCR.ValueFormatException.html">\PHPCR\ValueFormatException</a></code></th>
+<td>if the property is not multi-value.</td>
+</tr></table>
+</div></div>
+</div>
+<a id="method_getAncestor"></a><div class="element clickable method public method_getAncestor" data-toggle="collapse" data-target=".method_getAncestor .collapse">
+<h2>Returns the ancestor of this Item at the specified depth.</h2>
+<pre>getAncestor(integer $depth) : <a href="../classes/PHPCR.ItemInterface.html">\PHPCR\ItemInterface</a></pre>
+<div class="labels">
+<span class="label label-info">API</span><span class="label">Inherited</span>
+</div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>An ancestor of depth x is the Item that is x levels down along the path
+from the root node to this Item.</p>
+
+<ul>
+<li>depth = 0 returns the root node of a workspace.</li>
+<li>depth = 1 returns the child of the root node along the path to this
+ Item.</li>
+<li>depth = 2 returns the grandchild of the root node along the path to
+ this Item.</li>
+<li>And so on to depth = n, where n is the depth of this Item, which
+ returns this Item itself.</li>
+</ul>
+
+<p>If this node has more than one path (i.e., if it is a descendant of a
+shared node) then the path used to define the ancestor is implementaion-
+dependent.</p></div>
+<table class="table table-bordered">
+<tr>
+<th>api</th>
+<td></td>
+</tr>
+<tr>
+<th>inherited_from</th>
+<td>\PHPCR\ItemInterface::getAncestor()</td>
+</tr>
+</table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$depth</h4>
+<code>integer</code><p>An integer, 0 <= depth <= n where n is the depth of this Item.</p>
+</div>
+<h3>Exceptions</h3>
+<table class="table table-bordered">
+<tr>
+<th><code><a href="../classes/PHPCR.ItemNotFoundException.html">\PHPCR\ItemNotFoundException</a></code></th>
+<td>if depth < 0 or depth > n
+     where n is the depth of this item.</td>
+</tr>
+<tr>
+<th><code><a href="../classes/PHPCR.AccessDeniedException.html">\PHPCR\AccessDeniedException</a></code></th>
+<td>if the current session does not
+     have sufficient access to retrieve the specified node.</td>
+</tr>
+<tr>
+<th><code><a href="../classes/PHPCR.RepositoryException.html">\PHPCR\RepositoryException</a></code></th>
+<td>if another error occurs.</td>
+</tr>
+</table>
+<h3>Returns</h3>
+<div class="subelement response">
+<code><a href="../classes/PHPCR.ItemInterface.html">\PHPCR\ItemInterface</a></code>The ancestor of this Item at the specified
+     depth.</div>
+</div></div>
+</div>
+<a id="method_getBinary"></a><div class="element clickable method public method_getBinary" data-toggle="collapse" data-target=".method_getBinary .collapse">
+<h2>Returns a Binary representation of the value of this property.</h2>
+<pre>getBinary() : resource | array</pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>The Binary object in turn provides methods to access the binary data
+itself. Uses the standard conversion to binary (see JCR specification).</p></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+<h3>Exceptions</h3>
+<table class="table table-bordered"><tr>
+<th><code><a href="../classes/PHPCR.RepositoryException.html">\PHPCR\RepositoryException</a></code></th>
+<td>if another error occurs</td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>resource</code><code>array</code>A stream resource if the underlying binary</div>
+</div></div>
+</div>
+<a id="method_getBoolean"></a><div class="element clickable method public method_getBoolean" data-toggle="collapse" data-target=".method_getBoolean .collapse">
+<h2>Returns a boolean representation of the value of this property.</h2>
+<pre>getBoolean() : boolean | array</pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p><b>PHP Note:</b>Keep in mind that according to the specification, not
+all property types can be converted to boolean. Most actually can not
+be converted - see PropertyType::convertType().
+If you want to know if a value is empty in the PHP sense, use
+getString() and do your checks on the string.</p></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+<h3>Exceptions</h3>
+<table class="table table-bordered">
+<tr>
+<th><code><a href="../classes/PHPCR.ValueFormatException.html">\PHPCR\ValueFormatException</a></code></th>
+<td>if conversion to a boolean is not
+     possible</td>
+</tr>
+<tr>
+<th><code><a href="../classes/PHPCR.RepositoryException.html">\PHPCR\RepositoryException</a></code></th>
+<td>if another error occurs</td>
+</tr>
+</table>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>boolean</code><code>array</code>A boolean representation of the value of this property,
+     or an array of boolean for multi-valued properties.</div>
+</div></div>
+</div>
+<a id="method_getDate"></a><div class="element clickable method public method_getDate" data-toggle="collapse" data-target=".method_getDate .collapse">
+<h2>Returns a \DateTime representation of the value of this property.</h2>
+<pre>getDate() : <a href="http://php.net/manual/en/class.datetime.php">\DateTime</a> | array</pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>The object returned is a copy of the stored value, so changes to it are
+not reflected in internal storage.</p></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+<h3>Exceptions</h3>
+<table class="table table-bordered">
+<tr>
+<th><code><a href="../classes/PHPCR.ValueFormatException.html">\PHPCR\ValueFormatException</a></code></th>
+<td>if conversion to \DateTime is not
+     possible</td>
+</tr>
+<tr>
+<th><code><a href="../classes/PHPCR.RepositoryException.html">\PHPCR\RepositoryException</a></code></th>
+<td>if another error occurs</td>
+</tr>
+</table>
+<h3>Returns</h3>
+<div class="subelement response">
+<code><a href="http://php.net/manual/en/class.datetime.php">\DateTime</a></code><code>array</code>A date representation of the value of this property,
+     or an array of DateTime for multi-valued properties.</div>
+</div></div>
+</div>
+<a id="method_getDecimal"></a><div class="element clickable method public method_getDecimal" data-toggle="collapse" data-target=".method_getDecimal .collapse">
+<h2>Returns an arbitrary precision number (encoded as string) representation
+of this value (a BigDecimal in Java).</h2>
+<pre>getDecimal() : string | array</pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>The string must be encoded with the C locale because of
+http://bugs.php.net/bug.php?id=16532</p></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+<h3>Exceptions</h3>
+<table class="table table-bordered">
+<tr>
+<th><code><a href="../classes/PHPCR.ValueFormatException.html">\PHPCR\ValueFormatException</a></code></th>
+<td>if conversion to a number string is
+     not possible</td>
+</tr>
+<tr>
+<th><code><a href="../classes/PHPCR.RepositoryException.html">\PHPCR\RepositoryException</a></code></th>
+<td>if another error occurs</td>
+</tr>
+</table>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>string</code><code>array</code>A string representation of the value of this property, or
+     an array of strings for multi-valued properties.</div>
+</div></div>
+</div>
+<a id="method_getDefinition"></a><div class="element clickable method public method_getDefinition" data-toggle="collapse" data-target=".method_getDefinition .collapse">
+<h2>Returns the property definition that applies to this property.</h2>
+<pre>getDefinition() : <a href="../classes/PHPCR.NodeType.PropertyDefinitionInterface.html">\PHPCR\NodeType\PropertyDefinitionInterface</a></pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>In some cases there may appear to be more than one definition that could
+apply to this node. However, it is assumed that upon creation or change
+of this property, a single particular definition is chosen by the
+implementation. It is that definition that this method returns. How this
+governing definition is selected upon property creation or change from
+among others which may have been applicable is an implementation issue
+and is not covered by this specification.</p></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+<h3>Exceptions</h3>
+<table class="table table-bordered"><tr>
+<th><code><a href="../classes/PHPCR.RepositoryException.html">\PHPCR\RepositoryException</a></code></th>
+<td>if an error occurs.</td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response">
+<code><a href="../classes/PHPCR.NodeType.PropertyDefinitionInterface.html">\PHPCR\NodeType\PropertyDefinitionInterface</a></code>a PropertyDefinition
+     object.</div>
+</div></div>
+</div>
+<a id="method_getDepth"></a><div class="element clickable method public method_getDepth" data-toggle="collapse" data-target=".method_getDepth .collapse">
+<h2>Returns the depth of this Item in the workspace item graph.</h2>
+<pre>getDepth() : integer</pre>
+<div class="labels">
+<span class="label label-info">API</span><span class="label">Inherited</span>
+</div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><ul>
+<li>The root node returns 0.</li>
+<li>A property or child node of the root node returns 1.</li>
+<li>A property or child node of a child node of the root returns 2.</li>
+<li>And so on to this Item.</li>
+</ul></div>
+<table class="table table-bordered">
+<tr>
+<th>api</th>
+<td></td>
+</tr>
+<tr>
+<th>inherited_from</th>
+<td>\PHPCR\ItemInterface::getDepth()</td>
+</tr>
+</table>
+<h3>Exceptions</h3>
+<table class="table table-bordered"><tr>
+<th><code><a href="../classes/PHPCR.RepositoryException.html">\PHPCR\RepositoryException</a></code></th>
+<td>if an error occurs.</td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>integer</code>The depth of this Item in the workspace item graph.</div>
+</div></div>
+</div>
+<a id="method_getDouble"></a><div class="element clickable method public method_getDouble" data-toggle="collapse" data-target=".method_getDouble .collapse">
+<h2>Returns a float representation of the value of this property.</h2>
+<pre>getDouble() : float | array</pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+<h3>Exceptions</h3>
+<table class="table table-bordered">
+<tr>
+<th><code><a href="../classes/PHPCR.ValueFormatException.html">\PHPCR\ValueFormatException</a></code></th>
+<td>if conversion to a double is not possible</td>
+</tr>
+<tr>
+<th><code><a href="../classes/PHPCR.RepositoryException.html">\PHPCR\RepositoryException</a></code></th>
+<td>if another error occurs</td>
+</tr>
+</table>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>float</code><code>array</code>A float representation of the value of this property, or
+     an array of float for multi-valued properties.</div>
+</div></div>
+</div>
+<a id="method_getLength"></a><div class="element clickable method public method_getLength" data-toggle="collapse" data-target=".method_getLength .collapse">
+<h2>Returns the length(s) of the value(s) of this property.</h2>
+<pre>getLength() : integer | array</pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>For a BINARY property, getLength returns the number of bytes.
+For other property types, getLength returns the same value that would be
+returned by calling strlen() on the value when it has been converted to
+a STRING according to standard JCR propety type conversion.</p>
+
+<p>Returns -1 if the implementation cannot determine the length.</p>
+
+<p>For multi-valuedproperties, the same rules apply, but returns an array of
+lengths with the same order as the values have in getValue.</p></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+<h3>Exceptions</h3>
+<table class="table table-bordered"><tr>
+<th><code><a href="../classes/PHPCR.RepositoryException.html">\PHPCR\RepositoryException</a></code></th>
+<td>if an error occurs.</td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>integer</code><code>array</code>the length of this value, or an array of lengths
+     for multi-valued properties</div>
+</div></div>
+</div>
+<a id="method_getLong"></a><div class="element clickable method public method_getLong" data-toggle="collapse" data-target=".method_getLong .collapse">
+<h2>Returns an integer representation of the value of this property.</h2>
+<pre>getLong() : integer | array</pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+<h3>Exceptions</h3>
+<table class="table table-bordered">
+<tr>
+<th><code><a href="../classes/PHPCR.ValueFormatException.html">\PHPCR\ValueFormatException</a></code></th>
+<td>if conversion to integer is not
+     possible</td>
+</tr>
+<tr>
+<th><code><a href="../classes/PHPCR.RepositoryException.html">\PHPCR\RepositoryException</a></code></th>
+<td>if another error occurs</td>
+</tr>
+</table>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>integer</code><code>array</code>An integer representation of the value of this property,
+     or an array of integer for multi-valued properties.</div>
+</div></div>
+</div>
+<a id="method_getName"></a><div class="element clickable method public method_getName" data-toggle="collapse" data-target=".method_getName .collapse">
+<h2>Returns the name of this Item in qualified form.</h2>
+<pre>getName() : string</pre>
+<div class="labels">
+<span class="label label-info">API</span><span class="label">Inherited</span>
+</div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>If this Item is the root node of the workspace, an empty string is returned.</p></div>
+<table class="table table-bordered">
+<tr>
+<th>api</th>
+<td></td>
+</tr>
+<tr>
+<th>inherited_from</th>
+<td>\PHPCR\ItemInterface::getName()</td>
+</tr>
+</table>
+<h3>Exceptions</h3>
+<table class="table table-bordered"><tr>
+<th><code><a href="../classes/PHPCR.RepositoryException.html">\PHPCR\RepositoryException</a></code></th>
+<td>if an error occurs.</td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>string</code>the name of this Item in qualified form or an empty
+     string if this Item is the root node of a workspace.</div>
+</div></div>
+</div>
+<a id="method_getNode"></a><div class="element clickable method public method_getNode" data-toggle="collapse" data-target=".method_getNode .collapse">
+<h2>Gets the node the property refers to by its type.</h2>
+<pre>getNode() : <a href="../classes/PHPCR.NodeInterface.html">\PHPCR\NodeInterface</a> | array</pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>If this property is of type REFERENCE, WEAKREFERENCE or PATH (or
+convertible to one of these types) this method returns the Node to
+which this property refers.
+If this property is of type PATH and it contains a relative path, it is
+interpreted relative to the parent node of this property. For example "."
+refers to the parent node itself, ".." to the parent of the parent node
+and "foo" to a sibling node of this property.</p>
+
+<p>If you do not want to dereference the nodes yet, you can use getString
+to get the unique ids and use the SessionInterface::getNodeByIdentifier
+as all referenced nodes are referenciable and thus must have a uuid.
+If its a PATH property, you will need the node of this property and use
+getNodes to get the nodes with relative or absolute path.</p></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+<h3>Exceptions</h3>
+<table class="table table-bordered">
+<tr>
+<th><code><a href="../classes/PHPCR.ValueFormatException.html">\PHPCR\ValueFormatException</a></code></th>
+<td>if this property cannot be converted
+     to a referring type (REFERENCE, WEAKREFERENCE or PATH) or if this
+     property is a referring type but is currently part of the frozen
+     state of a version in version storage.</td>
+</tr>
+<tr>
+<th><code><a href="../classes/PHPCR.ItemNotFoundException.html">\PHPCR\ItemNotFoundException</a></code></th>
+<td>If this property is of type PATH or
+     WEAKREFERENCE and no target node accessible by the current Session
+     exists in this workspace. Note that this applies even if the
+     property is a PATH and a property exists at the specified location.
+     To dereference to a target property (as opposed to a target node),
+     the method PropertyInterface::getProperty() is used.</td>
+</tr>
+<tr>
+<th><code><a href="../classes/PHPCR.RepositoryException.html">\PHPCR\RepositoryException</a></code></th>
+<td>if another error occurs.</td>
+</tr>
+</table>
+<h3>Returns</h3>
+<div class="subelement response">
+<code><a href="../classes/PHPCR.NodeInterface.html">\PHPCR\NodeInterface</a></code><code>array</code>the referenced Node, or an array of Nodes
+     for multi-valued properties.</div>
+</div></div>
+</div>
+<a id="method_getParent"></a><div class="element clickable method public method_getParent" data-toggle="collapse" data-target=".method_getParent .collapse">
+<h2>Returns the parent of this Item.</h2>
+<pre>getParent() : <a href="../classes/PHPCR.NodeInterface.html">\PHPCR\NodeInterface</a></pre>
+<div class="labels">
+<span class="label label-info">API</span><span class="label">Inherited</span>
+</div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered">
+<tr>
+<th>api</th>
+<td></td>
+</tr>
+<tr>
+<th>inherited_from</th>
+<td>\PHPCR\ItemInterface::getParent()</td>
+</tr>
+</table>
+<h3>Exceptions</h3>
+<table class="table table-bordered">
+<tr>
+<th><code><a href="../classes/PHPCR.ItemNotFoundException.html">\PHPCR\ItemNotFoundException</a></code></th>
+<td>if this Item is the root node of a
+     workspace.</td>
+</tr>
+<tr>
+<th><code><a href="../classes/PHPCR.AccessDeniedException.html">\PHPCR\AccessDeniedException</a></code></th>
+<td>if the current session does not
+     have sufficent access to retrieve the parent of this item.</td>
+</tr>
+<tr>
+<th><code><a href="../classes/PHPCR.RepositoryException.html">\PHPCR\RepositoryException</a></code></th>
+<td>if another error occurs.</td>
+</tr>
+</table>
+<h3>Returns</h3>
+<div class="subelement response">
+<code><a href="../classes/PHPCR.NodeInterface.html">\PHPCR\NodeInterface</a></code>The parent of this Item.</div>
+</div></div>
+</div>
+<a id="method_getPath"></a><div class="element clickable method public method_getPath" data-toggle="collapse" data-target=".method_getPath .collapse">
+<h2>Returns the normalized absolute path to this item.</h2>
+<pre>getPath() : string</pre>
+<div class="labels">
+<span class="label label-info">API</span><span class="label">Inherited</span>
+</div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered">
+<tr>
+<th>api</th>
+<td></td>
+</tr>
+<tr>
+<th>inherited_from</th>
+<td>\PHPCR\ItemInterface::getPath()</td>
+</tr>
+</table>
+<h3>Exceptions</h3>
+<table class="table table-bordered"><tr>
+<th><code><a href="../classes/PHPCR.RepositoryException.html">\PHPCR\RepositoryException</a></code></th>
+<td>if an error occurs.</td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>string</code>the normalized absolute path of this Item.</div>
+</div></div>
+</div>
+<a id="method_getProperty"></a><div class="element clickable method public method_getProperty" data-toggle="collapse" data-target=".method_getProperty .collapse">
+<h2>Gets the property the property refers to by its type.</h2>
+<pre>getProperty() : <a href="../classes/PHPCR.PropertyInterface.html">\PHPCR\PropertyInterface</a> | array</pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>If this property is of type PATH (or convertible to this type) this
+method returns the Property to which this property refers.
+If this property contains a relative path, it is interpreted relative
+to the parent node of this property. Therefore, when resolving such a
+relative path, the segment "." refers to the parent node itself, ".." to
+the parent of the parent node and "foo" to a sibling property of this
+property or this property itself.</p>
+
+<p>For example, if this property is located at /a/b/c and it has a value of
+"../d" then this method will return the property at /a/d if such exists.</p></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+<h3>Exceptions</h3>
+<table class="table table-bordered">
+<tr>
+<th><code><a href="../classes/PHPCR.ValueFormatException.html">\PHPCR\ValueFormatException</a></code></th>
+<td>if this property cannot be converted
+     to a PATH or if this property is a referring type but is currently
+     part of the frozen state of a version in version storage.</td>
+</tr>
+<tr>
+<th><code><a href="../classes/PHPCR.ItemNotFoundException.html">\PHPCR\ItemNotFoundException</a></code></th>
+<td>If no property accessible by the
+     current Session exists in this workspace at the specified path.
+     Note that this applies even if a node exists at the specified
+     location. To dereference to a target node, the method
+     PropertyInterface::getNode() is used.</td>
+</tr>
+<tr>
+<th><code><a href="../classes/PHPCR.RepositoryException.html">\PHPCR\RepositoryException</a></code></th>
+<td>if another error occurs</td>
+</tr>
+</table>
+<h3>Returns</h3>
+<div class="subelement response">
+<code><a href="../classes/PHPCR.PropertyInterface.html">\PHPCR\PropertyInterface</a></code><code>array</code>the referenced property, or an array of
+     properties for multi-valued properties.</div>
+</div></div>
+</div>
+<a id="method_getSession"></a><div class="element clickable method public method_getSession" data-toggle="collapse" data-target=".method_getSession .collapse">
+<h2>Returns the Session through which this Item was acquired.</h2>
+<pre>getSession() : <a href="../classes/PHPCR.SessionInterface.html">\PHPCR\SessionInterface</a></pre>
+<div class="labels">
+<span class="label label-info">API</span><span class="label">Inherited</span>
+</div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered">
+<tr>
+<th>api</th>
+<td></td>
+</tr>
+<tr>
+<th>inherited_from</th>
+<td>\PHPCR\ItemInterface::getSession()</td>
+</tr>
+</table>
+<h3>Exceptions</h3>
+<table class="table table-bordered"><tr>
+<th><code><a href="../classes/PHPCR.RepositoryException.html">\PHPCR\RepositoryException</a></code></th>
+<td>if an error occurs.</td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response">
+<code><a href="../classes/PHPCR.SessionInterface.html">\PHPCR\SessionInterface</a></code>the Session through which this Item was
+     acquired.</div>
+</div></div>
+</div>
+<a id="method_getString"></a><div class="element clickable method public method_getString" data-toggle="collapse" data-target=".method_getString .collapse">
+<h2>Returns a String representation of the value of this property.</h2>
+<pre>getString() : \PHPCR\string\array</pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+<h3>Exceptions</h3>
+<table class="table table-bordered">
+<tr>
+<th><code><a href="../classes/PHPCR.ValueFormatException.html">\PHPCR\ValueFormatException</a></code></th>
+<td>if conversion to a String is not possible</td>
+</tr>
+<tr>
+<th><code><a href="../classes/PHPCR.RepositoryException.html">\PHPCR\RepositoryException</a></code></th>
+<td>if another error occurs.</td>
+</tr>
+</table>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>\PHPCR\string\array</code>A string representation of the value of this property, or
+     an array of string for multi-valued properties.</div>
+</div></div>
+</div>
+<a id="method_getType"></a><div class="element clickable method public method_getType" data-toggle="collapse" data-target=".method_getType .collapse">
+<h2>Returns the type of this Property.</h2>
+<pre>getType() : integer</pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>Following property types are available:</p>
+
+<ul>
+<li>PropertyType::STRING</li>
+<li>PropertyType::BINARY</li>
+<li>PropertyType::DATE</li>
+<li>PropertyType::DOUBLE</li>
+<li>PropertyType::LONG</li>
+<li>PropertyType::BOOLEAN</li>
+<li>PropertyType::NAME</li>
+<li>PropertyType::PATH</li>
+<li>PropertyType::REFERENCE</li>
+<li>PropertyType::WEAKREFERENCE</li>
+<li>PropertyType::URI</li>
+</ul>
+
+<p>The type returned is that which was set at property creation. Note that
+for some property p, the type returned by $p->getType() will differ from
+the type returned by $p->getDefinition()->getRequiredType() only in the
+case where the latter returns UNDEFINED. The type of a property instance
+is never UNDEFINED (it must always have some actual type).</p></div>
+<table class="table table-bordered">
+<tr>
+<th>see</th>
+<td><a href="phpcr.src.PHPCR.PropertyType.html#%5CPHPCR%5CPropertyType">\PHPCR\PropertyType</a></td>
+</tr>
+<tr>
+<th>api</th>
+<td></td>
+</tr>
+</table>
+<h3>Exceptions</h3>
+<table class="table table-bordered"><tr>
+<th><code><a href="../classes/PHPCR.RepositoryException.html">\PHPCR\RepositoryException</a></code></th>
+<td>if an error occurs</td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>integer</code>The numerical representation of a property type.</div>
+</div></div>
+</div>
+<a id="method_getValue"></a><div class="element clickable method public method_getValue" data-toggle="collapse" data-target=".method_getValue .collapse">
+<h2>Get the value in format default for the PropertyType of this property.</h2>
+<pre>getValue() : mixed</pre>
+<div class="labels"></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>In case of a (WEAK)REFERENCE, the node is dereferenced and returned. For
+all other cases including PATH, the value is returned as is. If you want
+to dereference a PATH to a property or node, you need to explicitly call
+getNode() resp. getProperty().</p>
+
+<p><b>PHPCR Note:</b> We dropped the Value interface as its unnecessary
+with weak typing.</p></div>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>mixed</code>value of this property, or array in case of multi-value.</div>
+</div></div>
+</div>
+<a id="method_isModified"></a><div class="element clickable method public method_isModified" data-toggle="collapse" data-target=".method_isModified .collapse">
+<h2>Indicates if the current item has been modified.</h2>
+<pre>isModified() : boolean</pre>
+<div class="labels">
+<span class="label label-info">API</span><span class="label">Inherited</span>
+</div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>Returns true if this Item has been saved but has subsequently been
+modified through the current session and therefore the state of this
+item as recorded in the session differs from the state of this item as
+saved. Within a transaction, isModified on an Item may return false
+(because the Item has been saved since the modification) even if the
+modification in question is not in persistent storage (because the
+transaction has not yet been committed).</p>
+
+<p>Note that in read-only implementations, this method will always return
+false.</p></div>
+<table class="table table-bordered">
+<tr>
+<th>api</th>
+<td></td>
+</tr>
+<tr>
+<th>inherited_from</th>
+<td>\PHPCR\ItemInterface::isModified()</td>
+</tr>
+</table>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>boolean</code>true if this item is modified; false otherwise.</div>
+</div></div>
+</div>
+<a id="method_isMultiple"></a><div class="element clickable method public method_isMultiple" data-toggle="collapse" data-target=".method_isMultiple .collapse">
+<h2>Determines if the current property is multi-valued.</h2>
+<pre>isMultiple() : boolean</pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>Returns true if this property is multi-valued and false if this property
+is single-valued.</p></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+<h3>Exceptions</h3>
+<table class="table table-bordered"><tr>
+<th><code><a href="../classes/PHPCR.RepositoryException.html">\PHPCR\RepositoryException</a></code></th>
+<td>if an error occurs.</td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>boolean</code>true if this property is multi-valued; false otherwise.</div>
+</div></div>
+</div>
+<a id="method_isNew"></a><div class="element clickable method public method_isNew" data-toggle="collapse" data-target=".method_isNew .collapse">
+<h2>Determines if the current item is a new one.</h2>
+<pre>isNew() : boolean</pre>
+<div class="labels">
+<span class="label label-info">API</span><span class="label">Inherited</span>
+</div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>Returns true if this is a new item, meaning that it exists only in
+transient storage on the Session and has not yet been saved. Within a
+transaction, isNew on an Item may return false (because the item has
+been saved) even if that Item is not in persistent storage (because the
+transaction has not yet been committed).</p>
+
+<p>Note that if an item returns true on isNew, then by definition is parent
+will return true on isModified.</p>
+
+<p>Note that in read-only implementations, this method will always return
+false.</p></div>
+<table class="table table-bordered">
+<tr>
+<th>api</th>
+<td></td>
+</tr>
+<tr>
+<th>inherited_from</th>
+<td>\PHPCR\ItemInterface::isNew()</td>
+</tr>
+</table>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>boolean</code>true if this item is new; false otherwise.</div>
+</div></div>
+</div>
+<a id="method_isNode"></a><div class="element clickable method public method_isNode" data-toggle="collapse" data-target=".method_isNode .collapse">
+<h2>Indicates whether this Item is a Node or a Property.</h2>
+<pre>isNode() : boolean</pre>
+<div class="labels">
+<span class="label label-info">API</span><span class="label">Inherited</span>
+</div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>Returns true if this Item is a Node; Returns false if this Item is a
+Property.</p></div>
+<table class="table table-bordered">
+<tr>
+<th>api</th>
+<td></td>
+</tr>
+<tr>
+<th>inherited_from</th>
+<td>\PHPCR\ItemInterface::isNode()</td>
+</tr>
+</table>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>boolean</code>true if this Item is a Node, false if it is a Property.</div>
+</div></div>
+</div>
+<a id="method_isSame"></a><div class="element clickable method public method_isSame" data-toggle="collapse" data-target=".method_isSame .collapse">
+<h2>Determines if this Item object represents the same actual workspace item
+as the object otherItem.</h2>
+<pre>isSame(\PHPCR\ItemInterface $otherItem) : boolean</pre>
+<div class="labels">
+<span class="label label-info">API</span><span class="label">Inherited</span>
+</div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>Two Item objects represent the same workspace item if all the following
+are true:</p>
+
+<ul>
+<li>Both objects were acquired through Session objects that were created
+by the same Repository object.</li>
+<li>Both objects were acquired through Session objects bound to the same
+repository workspace.</li>
+<li>The objects are either both Node objects or both Property
+objects.</li>
+<li>If they are Node objects, they have the same identifier.</li>
+<li>If they are Property objects they have identical names and
+isSame() is true of their parent nodes.</li>
+</ul>
+
+<p>This method does not compare the states of the two items. For example, if
+two Item objects representing the same actual workspace item have been
+retrieved through two different sessions and one has been modified, then
+this method will still return true when comparing these two objects.
+Note that if two Item objects representing the same workspace item are
+retrieved through the same session they will always reflect the same
+state.</p></div>
+<table class="table table-bordered">
+<tr>
+<th>api</th>
+<td></td>
+</tr>
+<tr>
+<th>inherited_from</th>
+<td>\PHPCR\ItemInterface::isSame()</td>
+</tr>
+</table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$otherItem</h4>
+<code><a href="../classes/PHPCR.ItemInterface.html">\PHPCR\ItemInterface</a></code><p>the Item object to be tested for identity with this Item.</p></div>
+<h3>Exceptions</h3>
+<table class="table table-bordered"><tr>
+<th><code><a href="../classes/PHPCR.RepositoryException.html">\PHPCR\RepositoryException</a></code></th>
+<td>if an error occurs.</td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>boolean</code>true if this Item object and otherItem represent the
+     same actual repository item; false otherwise.</div>
+</div></div>
+</div>
+<a id="method_refresh"></a><div class="element clickable method public method_refresh" data-toggle="collapse" data-target=".method_refresh .collapse">
+<h2>Updates the state of the current item.</h2>
+<pre>refresh(boolean $keepChanges) : void</pre>
+<div class="labels">
+<span class="label label-info">API</span><span class="label">Inherited</span>
+</div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>If keepChanges is false, this method discards all pending changes
+currently recorded in this Session that apply to this Item or any
+of its descendants (that is, the subgraph rooted at this Item) and
+returns all items to reflect the current saved state. Outside a
+transaction this state is simple the current state of persistent
+storage. Within a transaction, this state will reflect persistent
+storage as modified by changes that have been saved but not yet
+committed.</p>
+
+<p>If keepChanges is true then pending change are not discarded but
+items that do not have changes pending have their state refreshed
+to reflect the current saved state, thus revealing changes made by
+other sessions.</p></div>
+<table class="table table-bordered">
+<tr>
+<th>api</th>
+<td></td>
+</tr>
+<tr>
+<th>inherited_from</th>
+<td>\PHPCR\ItemInterface::refresh()</td>
+</tr>
+</table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$keepChanges</h4>
+<code>boolean</code><p>a boolean</p></div>
+<h3>Exceptions</h3>
+<table class="table table-bordered">
+<tr>
+<th><code><a href="../classes/PHPCR.InvalidItemStateException.html">\PHPCR\InvalidItemStateException</a></code></th>
+<td>if this Item object represents
+     a workspace item that has been removed (either by this session or
+     another).</td>
+</tr>
+<tr>
+<th><code><a href="../classes/PHPCR.RepositoryException.html">\PHPCR\RepositoryException</a></code></th>
+<td>if another error occurs.</td>
+</tr>
+</table>
+</div></div>
+</div>
+<a id="method_remove"></a><div class="element clickable method public method_remove" data-toggle="collapse" data-target=".method_remove .collapse">
+<h2>Removes this item (and its subgraph).</h2>
+<pre>remove() : void</pre>
+<div class="labels">
+<span class="label label-info">API</span><span class="label">Inherited</span>
+</div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>To persist a removal, a save must be performed that includes the (former)
+parent of the removed item within its scope.</p>
+
+<p>If a node with same-name siblings is removed, this decrements by one the
+indices of all the siblings with indices greater than that of the removed
+node. In other words, a removal compacts the array of same-name siblings
+and causes the minimal re-numbering required to maintain the original
+order but leave no gaps in the numbering.</p></div>
+<table class="table table-bordered">
+<tr>
+<th>see</th>
+<td><a href="phpcr.src.PHPCR.SessionInterface.html#%5CPHPCR%5CSessionInterface::removeItem(String)">\PHPCR\SessionInterface::removeItem(String)</a></td>
+</tr>
+<tr>
+<th>api</th>
+<td></td>
+</tr>
+<tr>
+<th>inherited_from</th>
+<td>\PHPCR\ItemInterface::remove()</td>
+</tr>
+</table>
+<h3>Exceptions</h3>
+<table class="table table-bordered">
+<tr>
+<th><code><a href="../classes/PHPCR.Version.VersionException.html">\PHPCR\Version\VersionException</a></code></th>
+<td>if the parent node of this item
+     is versionable and checked-in or is non-versionable but its nearest
+     versionable ancestor is checked-in and this implementation performs
+     this validation immediately instead of waiting until save.</td>
+</tr>
+<tr>
+<th><code><a href="../classes/PHPCR.Lock.LockException.html">\PHPCR\Lock\LockException</a></code></th>
+<td>if a lock prevents the removal of this
+     item and this implementation performs this validation immediately
+     instead of waiting until save.</td>
+</tr>
+<tr>
+<th><code><a href="../classes/PHPCR.NodeType.ConstraintViolationException.html">\PHPCR\NodeType\ConstraintViolationException</a></code></th>
+<td>if removing the
+     specified item would violate a node type or implementation-specific
+     constraint and this implementation performs this validation
+     immediately instead of waiting until save.</td>
+</tr>
+<tr>
+<th><code><a href="../classes/PHPCR.AccessDeniedException.html">\PHPCR\AccessDeniedException</a></code></th>
+<td>if this item or an item in its
+     subgraph is currently the target of a REFERENCE property located in
+     this workspace but outside this item's subgraph and the current
+     Session does not have read access to that REFERENCE property or if
+     the current Session does not have sufficent privileges to remove
+     the item.</td>
+</tr>
+<tr>
+<th><code><a href="../classes/PHPCR.RepositoryException.html">\PHPCR\RepositoryException</a></code></th>
+<td>if another error occurs.</td>
+</tr>
+</table>
+</div></div>
+</div>
+<a id="method_setValue"></a><div class="element clickable method public method_setValue" data-toggle="collapse" data-target=".method_setValue .collapse">
+<h2>Sets the value of this property to the value.</h2>
+<pre>setValue(mixed $value, integer $type) : void</pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>If the type parameter is present and this implementation supports
+dynamic re-binding of properties, this property changes its type.
+First, a conversion of value into that type is attempted with
+PropertyType::convertType() and if there is no ValueFormatException,
+the property type changes to the new type.
+If the node type does not allow the requested type, a
+ConstraintViolationException is thrown.
+If the implementation does not support dynamic re-binding, an
+UnsupportedRepositoryException is thrown if the type parameter is
+present and different from the current type.</p>
+
+<p>If no explicit type is given, then the type is derived from the value.
+(First value in case of multi-valuedproperty.)
+If the node type allows the type of the parameter, this property changes
+its type to the type of the value. Otherwise, a conversion of the value
+into the required type is attempted with PropertyType::convertType()</p>
+
+<p>If value is of type PropertyInterface, the value of the property is
+copied into this property. (If type is set, the property value is
+converted into this type, otherwise the type of the property is used
+as in the case of no explicit type).
+This can be used to copy a binary from one property into another without
+getting the stream. The implemenation should take care to detect the
+case and copy the binary data directly in the backend for optimal
+performance.</p>
+
+<p>The type detection follows PropertyType::determineType. Thus, passing a
+Node object without an explicit type (REFERENCE or WEAKREFERENCE) will
+create a REFERENCE property. If the specified node is not referenceable,
+a ValueFormatException is thrown.</p>
+
+<p>To create a PATH property with a reference to an other property, you can
+call setValue with the return value of getPath called on the other
+property and the PATH type constant. Passing the property itself and the
+PATH type will convert the <em>value</em> of the property to a path.</p>
+
+<p>When assigning a stream resource to write a binary property, the client
+application must leave the stream alone afterwards. The PHPCR
+implementation is responsible for closing it after saving.</p>
+
+<p>This method is a session-write and therefore requires a</p>
+
+<pre><code>save</code></pre>
+
+<p>to dispatch the change.</p>
+
+<p>If value is an array:
+If this property is not multi-valued then a ValueFormatException is
+thrown immediately.</p>
+
+<p><strong>PHPCR Note:</strong> The Java API defines this method with
+     multiple differing signatures.
+<strong>PHPCR Note:</strong> Because we removed the Value interface,
+     this method replaces ValueFactory::createValue.</p></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$value</h4>
+<code>mixed</code><p>The value to set</p></div>
+<div class="subelement argument">
+<h4>$type</h4>
+<code>integer</code><p>Type request for the property, optional. Must be a constant from PropertyType</p></div>
+<h3>Exceptions</h3>
+<table class="table table-bordered">
+<tr>
+<th><code><a href="../classes/PHPCR.ValueFormatException.html">\PHPCR\ValueFormatException</a></code></th>
+<td>if the type or format of the
+     specified value is incompatible with the type of this property.</td>
+</tr>
+<tr>
+<th><code><a href="../classes/PHPCR.Version.VersionException.html">\PHPCR\Version\VersionException</a></code></th>
+<td>if this property belongs to a
+     node that is read-only due to a checked-in node and this
+     implementation performs this validation immediately.</td>
+</tr>
+<tr>
+<th><code><a href="../classes/PHPCR.Lock.LockException.html">\PHPCR\Lock\LockException</a></code></th>
+<td>if a lock prevents the setting of the
+     value and this implementation performs this validation immediately.</td>
+</tr>
+<tr>
+<th><code><a href="../classes/PHPCR.NodeType.ConstraintViolationException.html">\PHPCR\NodeType\ConstraintViolationException</a></code></th>
+<td>if the change would
+     violate a node-type or other constraint and this implementation
+     performs this validation immediately.</td>
+</tr>
+<tr>
+<th><code><a href="../classes/PHPCR.UnsupportedRepositoryOperationException.html">\PHPCR\UnsupportedRepositoryOperationException</a></code></th>
+<td>if the type
+     parameter is set and different from the current type and this
+     implementation does not support dynamic re-binding</td>
+</tr>
+<tr>
+<th><code><a href="http://php.net/manual/en/class.invalidargumentexception.php">\InvalidArgumentException</a></code></th>
+<td>if the specified DateTime value
+     cannot be expressed in the ISO 8601-based format defined in the JCR
+     2.0 specification and the implementation does not support dates
+     incompatible with that format.</td>
+</tr>
+<tr>
+<th><code><a href="../classes/PHPCR.RepositoryException.html">\PHPCR\RepositoryException</a></code></th>
+<td>if another error occurs.</td>
+</tr>
+</table>
+</div></div>
+</div>
+<h3>
+<i class="icon-custom icon-constant"></i> Constants</h3>
+<a id="constant_JCR_ACTIVITY"> </a><div class="element clickable constant  constant_JCR_ACTIVITY" data-toggle="collapse" data-target=".constant_JCR_ACTIVITY .collapse">
+<h2>A constant for the property name jcr:activity (in extended form),
+declared in node types mix:versionable and nt:version.</h2>
+<pre>JCR_ACTIVITY </pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+</div></div>
+</div>
+<a id="constant_JCR_AUTOCREATED"> </a><div class="element clickable constant  constant_JCR_AUTOCREATED" data-toggle="collapse" data-target=".constant_JCR_AUTOCREATED .collapse">
+<h2>A constant for the property name jcr:autoCreated (in extended form),
+declared in node types nt:propertyDefinition and nt:childNodeDefinition.</h2>
+<pre>JCR_AUTOCREATED </pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+</div></div>
+</div>
+<a id="constant_JCR_BASE_VERSION"> </a><div class="element clickable constant  constant_JCR_BASE_VERSION" data-toggle="collapse" data-target=".constant_JCR_BASE_VERSION .collapse">
+<h2>A constant for the property name jcr:baseVersion (in extended form),
+declared in node type mix:versionable.</h2>
+<pre>JCR_BASE_VERSION </pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+</div></div>
+</div>
+<a id="constant_JCR_CHILD_VERSION_HISTORY"> </a><div class="element clickable constant  constant_JCR_CHILD_VERSION_HISTORY" data-toggle="collapse" data-target=".constant_JCR_CHILD_VERSION_HISTORY .collapse">
+<h2>A constant for the property name jcr:childVersionHistory (in extended form),
+declared in node type nt:versionedChild.</h2>
+<pre>JCR_CHILD_VERSION_HISTORY </pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+</div></div>
+</div>
+<a id="constant_JCR_CONFIGURATION"> </a><div class="element clickable constant  constant_JCR_CONFIGURATION" data-toggle="collapse" data-target=".constant_JCR_CONFIGURATION .collapse">
+<h2>A constant for the property name jcr:configuration (in extended form),
+declared in node type mix:versionable.</h2>
+<pre>JCR_CONFIGURATION </pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+</div></div>
+</div>
+<a id="constant_JCR_CONTENT"> </a><div class="element clickable constant  constant_JCR_CONTENT" data-toggle="collapse" data-target=".constant_JCR_CONTENT .collapse">
+<h2>A constant for the property name jcr:content (in extended form),
+declared in node type nt:linkedFile.</h2>
+<pre>JCR_CONTENT </pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p><b>Note:</b> jcr:content is also the name of a child node declared in nt:file.</p></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+</div></div>
+</div>
+<a id="constant_JCR_COPIED_FROM"> </a><div class="element clickable constant  constant_JCR_COPIED_FROM" data-toggle="collapse" data-target=".constant_JCR_COPIED_FROM .collapse">
+<h2>A constant for the property name jcr:copiedFrom (in extended form),
+declared in node type nt:version.</h2>
+<pre>JCR_COPIED_FROM </pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+</div></div>
+</div>
+<a id="constant_JCR_CREATED"> </a><div class="element clickable constant  constant_JCR_CREATED" data-toggle="collapse" data-target=".constant_JCR_CREATED .collapse">
+<h2>A constant for the property name jcr:created (in extended form),
+declared in node types mix:created and nt:version.</h2>
+<pre>JCR_CREATED </pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+</div></div>
+</div>
+<a id="constant_JCR_CREATED_BY"> </a><div class="element clickable constant  constant_JCR_CREATED_BY" data-toggle="collapse" data-target=".constant_JCR_CREATED_BY .collapse">
+<h2>A constant for the property name jcr:createdBy (in extended form),
+declared in node type mix:created.</h2>
+<pre>JCR_CREATED_BY </pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+</div></div>
+</div>
+<a id="constant_JCR_CURRENT_LIFECYCLE_STATE"> </a><div class="element clickable constant  constant_JCR_CURRENT_LIFECYCLE_STATE" data-toggle="collapse" data-target=".constant_JCR_CURRENT_LIFECYCLE_STATE .collapse">
+<h2>A constant for the property name jcr:currentLifecycleState (in extended form),
+declared in node type mix:lifecycle.</h2>
+<pre>JCR_CURRENT_LIFECYCLE_STATE </pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+</div></div>
+</div>
+<a id="constant_JCR_DATA"> </a><div class="element clickable constant  constant_JCR_DATA" data-toggle="collapse" data-target=".constant_JCR_DATA .collapse">
+<h2>A constant for the property name jcr:data (in extended form),
+declared in node type nt:resource.</h2>
+<pre>JCR_DATA </pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+</div></div>
+</div>
+<a id="constant_JCR_DEFAULT_PRIMARY_TYPE"> </a><div class="element clickable constant  constant_JCR_DEFAULT_PRIMARY_TYPE" data-toggle="collapse" data-target=".constant_JCR_DEFAULT_PRIMARY_TYPE .collapse">
+<h2>A constant for the property name jcr:defaultPrimaryType (in extended form),
+declared in node type nt:childNodeDefinition.</h2>
+<pre>JCR_DEFAULT_PRIMARY_TYPE </pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+</div></div>
+</div>
+<a id="constant_JCR_DEFAULT_VALUES"> </a><div class="element clickable constant  constant_JCR_DEFAULT_VALUES" data-toggle="collapse" data-target=".constant_JCR_DEFAULT_VALUES .collapse">
+<h2>A constant for the property name jcr:defaultValues (in extended form),
+declared in node type nt:propertyDefinition.</h2>
+<pre>JCR_DEFAULT_VALUES </pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+</div></div>
+</div>
+<a id="constant_JCR_DESCRIPTION"> </a><div class="element clickable constant  constant_JCR_DESCRIPTION" data-toggle="collapse" data-target=".constant_JCR_DESCRIPTION .collapse">
+<h2>A constant for the property name jcr:description (in extended form),
+declared in node type mix:title.</h2>
+<pre>JCR_DESCRIPTION </pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+</div></div>
+</div>
+<a id="constant_JCR_ENCODING"> </a><div class="element clickable constant  constant_JCR_ENCODING" data-toggle="collapse" data-target=".constant_JCR_ENCODING .collapse">
+<h2>A constant for the property name jcr:encoding (in extended form),
+declared in node type mix:mimeType.</h2>
+<pre>JCR_ENCODING </pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+</div></div>
+</div>
+<a id="constant_JCR_FROZEN_MIXIN_TYPES"> </a><div class="element clickable constant  constant_JCR_FROZEN_MIXIN_TYPES" data-toggle="collapse" data-target=".constant_JCR_FROZEN_MIXIN_TYPES .collapse">
+<h2>A constant for the property name jcr:frozenMixinTypes (in extended form),
+declared in node type nt:frozenNode.</h2>
+<pre>JCR_FROZEN_MIXIN_TYPES </pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+</div></div>
+</div>
+<a id="constant_JCR_FROZEN_PRIMARY_TYPE"> </a><div class="element clickable constant  constant_JCR_FROZEN_PRIMARY_TYPE" data-toggle="collapse" data-target=".constant_JCR_FROZEN_PRIMARY_TYPE .collapse">
+<h2>A constant for the property name jcr:frozenPrimaryType (in extended form),
+declared in node type nt:frozenNode.</h2>
+<pre>JCR_FROZEN_PRIMARY_TYPE </pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+</div></div>
+</div>
+<a id="constant_JCR_FROZEN_UUID"> </a><div class="element clickable constant  constant_JCR_FROZEN_UUID" data-toggle="collapse" data-target=".constant_JCR_FROZEN_UUID .collapse">
+<h2>A constant for the property name jcr:frozenUuid (in extended form),
+declared in node type nt:frozenNode.</h2>
+<pre>JCR_FROZEN_UUID </pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+</div></div>
+</div>
+<a id="constant_JCR_HAS_ORDERABLE_CHILD_NODES"> </a><div class="element clickable constant  constant_JCR_HAS_ORDERABLE_CHILD_NODES" data-toggle="collapse" data-target=".constant_JCR_HAS_ORDERABLE_CHILD_NODES .collapse">
+<h2>A constant for the property name jcr:hasOrderableChildNodes (in extended form),
+declared in node type nt:nodeType.</h2>
+<pre>JCR_HAS_ORDERABLE_CHILD_NODES </pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+</div></div>
+</div>
+<a id="constant_JCR_HOST"> </a><div class="element clickable constant  constant_JCR_HOST" data-toggle="collapse" data-target=".constant_JCR_HOST .collapse">
+<h2>A constant for the property name jcr:host (in extended form),
+declared in node type nt:address.</h2>
+<pre>JCR_HOST </pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+</div></div>
+</div>
+<a id="constant_JCR_ID"> </a><div class="element clickable constant  constant_JCR_ID" data-toggle="collapse" data-target=".constant_JCR_ID .collapse">
+<h2>A constant for the property name jcr:id (in extended form),
+declared in node type nt:address.</h2>
+<pre>JCR_ID </pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+</div></div>
+</div>
+<a id="constant_JCR_IS_ABSTRACT"> </a><div class="element clickable constant  constant_JCR_IS_ABSTRACT" data-toggle="collapse" data-target=".constant_JCR_IS_ABSTRACT .collapse">
+<h2>A constant for the property name jcr:isAbstract (in extended form),
+declared in node type nt:nodeType.</h2>
+<pre>JCR_IS_ABSTRACT </pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+</div></div>
+</div>
+<a id="constant_JCR_IS_CHECKED_OUT"> </a><div class="element clickable constant  constant_JCR_IS_CHECKED_OUT" data-toggle="collapse" data-target=".constant_JCR_IS_CHECKED_OUT .collapse">
+<h2>A constant for the property name jcr:isCheckedOut (in extended form),
+declared in node type mix:simpleVersionable.</h2>
+<pre>JCR_IS_CHECKED_OUT </pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+</div></div>
+</div>
+<a id="constant_JCR_IS_MIXIN"> </a><div class="element clickable constant  constant_JCR_IS_MIXIN" data-toggle="collapse" data-target=".constant_JCR_IS_MIXIN .collapse">
+<h2>A constant for the property name jcr:isMixin (in extended form),
+declared in node type nt:nodeType.</h2>
+<pre>JCR_IS_MIXIN </pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+</div></div>
+</div>
+<a id="constant_JCR_LANGUAGE"> </a><div class="element clickable constant  constant_JCR_LANGUAGE" data-toggle="collapse" data-target=".constant_JCR_LANGUAGE .collapse">
+<h2>A constant for the property name jcr:language (in extended form),
+declared in node types mix:language and nt:query.</h2>
+<pre>JCR_LANGUAGE </pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+</div></div>
+</div>
+<a id="constant_JCR_LAST_MODIFIED"> </a><div class="element clickable constant  constant_JCR_LAST_MODIFIED" data-toggle="collapse" data-target=".constant_JCR_LAST_MODIFIED .collapse">
+<h2>A constant for the property name jcr:lastModified (in extended form),
+declared in node type mix:lastModified.</h2>
+<pre>JCR_LAST_MODIFIED </pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+</div></div>
+</div>
+<a id="constant_JCR_LAST_MODIFIED_BY"> </a><div class="element clickable constant  constant_JCR_LAST_MODIFIED_BY" data-toggle="collapse" data-target=".constant_JCR_LAST_MODIFIED_BY .collapse">
+<h2>A constant for the property name jcr:lastModifiedBy (in extended form),
+declared in node type mix:lastModified.</h2>
+<pre>JCR_LAST_MODIFIED_BY </pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+</div></div>
+</div>
+<a id="constant_JCR_LIFECYCLE_POLICY"> </a><div class="element clickable constant  constant_JCR_LIFECYCLE_POLICY" data-toggle="collapse" data-target=".constant_JCR_LIFECYCLE_POLICY .collapse">
+<h2>A constant for the property name jcr:lifecyclePolicy (in extended form),
+declared in node type mix:lifecycle.</h2>
+<pre>JCR_LIFECYCLE_POLICY </pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+</div></div>
+</div>
+<a id="constant_JCR_LOCK_IS_DEEP"> </a><div class="element clickable constant  constant_JCR_LOCK_IS_DEEP" data-toggle="collapse" data-target=".constant_JCR_LOCK_IS_DEEP .collapse">
+<h2>A constant for the property name jcr:lockIsDeep (in extended form),
+declared in node type mix:lockable.</h2>
+<pre>JCR_LOCK_IS_DEEP </pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+</div></div>
+</div>
+<a id="constant_JCR_LOCK_OWNER"> </a><div class="element clickable constant  constant_JCR_LOCK_OWNER" data-toggle="collapse" data-target=".constant_JCR_LOCK_OWNER .collapse">
+<h2>A constant for the property name jcr:lockOwner (in extended form),
+declared in node type mix:lockable.</h2>
+<pre>JCR_LOCK_OWNER </pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+</div></div>
+</div>
+<a id="constant_JCR_MANDATORY"> </a><div class="element clickable constant  constant_JCR_MANDATORY" data-toggle="collapse" data-target=".constant_JCR_MANDATORY .collapse">
+<h2>A constant for the property name jcr:mandatory (in extended form),
+declared in node types nt:propertyDefinition and nt:childNodeDefinition.</h2>
+<pre>JCR_MANDATORY </pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+</div></div>
+</div>
+<a id="constant_JCR_MERGE_FAILED"> </a><div class="element clickable constant  constant_JCR_MERGE_FAILED" data-toggle="collapse" data-target=".constant_JCR_MERGE_FAILED .collapse">
+<h2>A constant for the property name jcr:mergeFailed (in extended form),
+declared in node type mix:versionable.</h2>
+<pre>JCR_MERGE_FAILED </pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+</div></div>
+</div>
+<a id="constant_JCR_MIMETYPE"> </a><div class="element clickable constant  constant_JCR_MIMETYPE" data-toggle="collapse" data-target=".constant_JCR_MIMETYPE .collapse">
+<h2>A constant for the property name jcr:mimeType (in extended form),
+declared in node type mix:mimeType.</h2>
+<pre>JCR_MIMETYPE </pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+</div></div>
+</div>
+<a id="constant_JCR_MIXIN_TYPES"> </a><div class="element clickable constant  constant_JCR_MIXIN_TYPES" data-toggle="collapse" data-target=".constant_JCR_MIXIN_TYPES .collapse">
+<h2>A constant for the property name jcr:mixinTypes (in extended form),
+declared in node type nt:base.</h2>
+<pre>JCR_MIXIN_TYPES </pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+</div></div>
+</div>
+<a id="constant_JCR_MULTIPLE"> </a><div class="element clickable constant  constant_JCR_MULTIPLE" data-toggle="collapse" data-target=".constant_JCR_MULTIPLE .collapse">
+<h2>A constant for the property name jcr:multiple (in extended form),
+declared in node type nt:propertyDefinition.</h2>
+<pre>JCR_MULTIPLE </pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+</div></div>
+</div>
+<a id="constant_JCR_NAME"> </a><div class="element clickable constant  constant_JCR_NAME" data-toggle="collapse" data-target=".constant_JCR_NAME .collapse">
+<h2>A constant for the property name jcr:name (in extended form),
+declared in node types nt:propertyDefinition and nt:childNodeDefinition.</h2>
+<pre>JCR_NAME </pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+</div></div>
+</div>
+<a id="constant_JCR_NODE_TYPE_NAME"> </a><div class="element clickable constant  constant_JCR_NODE_TYPE_NAME" data-toggle="collapse" data-target=".constant_JCR_NODE_TYPE_NAME .collapse">
+<h2>A constant for the property name jcr:nodeTypeName (in extended form),
+declared in node type nt:nodeType.</h2>
+<pre>JCR_NODE_TYPE_NAME </pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+</div></div>
+</div>
+<a id="constant_JCR_ON_PARENT_VERSION"> </a><div class="element clickable constant  constant_JCR_ON_PARENT_VERSION" data-toggle="collapse" data-target=".constant_JCR_ON_PARENT_VERSION .collapse">
+<h2>A constant for the property name jcr:onParentVersion (in extended form),
+declared in node types nt:propertyDefinition and nt:childNodeDefinition.</h2>
+<pre>JCR_ON_PARENT_VERSION </pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+</div></div>
+</div>
+<a id="constant_JCR_PATH"> </a><div class="element clickable constant  constant_JCR_PATH" data-toggle="collapse" data-target=".constant_JCR_PATH .collapse">
+<h2>A constant for the property name jcr:path (in extended form),
+declared in node type nt:address.</h2>
+<pre>JCR_PATH </pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+</div></div>
+</div>
+<a id="constant_JCR_PORT"> </a><div class="element clickable constant  constant_JCR_PORT" data-toggle="collapse" data-target=".constant_JCR_PORT .collapse">
+<h2>A constant for the property name jcr:port (in extended form),
+declared in node type nt:address.</h2>
+<pre>JCR_PORT </pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+</div></div>
+</div>
+<a id="constant_JCR_PREDECESSORS"> </a><div class="element clickable constant  constant_JCR_PREDECESSORS" data-toggle="collapse" data-target=".constant_JCR_PREDECESSORS .collapse">
+<h2>A constant for the property name jcr:predecessors (in extended form),
+declared in node types mix:versionable and nt:version.</h2>
+<pre>JCR_PREDECESSORS </pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+</div></div>
+</div>
+<a id="constant_JCR_PRIMARY_ITEM_NAME"> </a><div class="element clickable constant  constant_JCR_PRIMARY_ITEM_NAME" data-toggle="collapse" data-target=".constant_JCR_PRIMARY_ITEM_NAME .collapse">
+<h2>A constant for the property name jcr:primaryItemName (in extended form),
+declared in node type nt:nodeType.</h2>
+<pre>JCR_PRIMARY_ITEM_NAME </pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+</div></div>
+</div>
+<a id="constant_JCR_PRIMARY_TYPE"> </a><div class="element clickable constant  constant_JCR_PRIMARY_TYPE" data-toggle="collapse" data-target=".constant_JCR_PRIMARY_TYPE .collapse">
+<h2>A constant for the property name jcr:primaryType (in extended form),
+declared in node type nt:base.</h2>
+<pre>JCR_PRIMARY_TYPE </pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+</div></div>
+</div>
+<a id="constant_JCR_PROTECTED"> </a><div class="element clickable constant  constant_JCR_PROTECTED" data-toggle="collapse" data-target=".constant_JCR_PROTECTED .collapse">
+<h2>A constant for the property name jcr:protected (in extended form),
+declared in node types nt:propertyDefinition and nt:childNodeDefinition.</h2>
+<pre>JCR_PROTECTED </pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+</div></div>
+</div>
+<a id="constant_JCR_PROTOCOL"> </a><div class="element clickable constant  constant_JCR_PROTOCOL" data-toggle="collapse" data-target=".constant_JCR_PROTOCOL .collapse">
+<h2>A constant for the property name jcr:protocol (in extended form),
+declared in node type nt:address.</h2>
+<pre>JCR_PROTOCOL </pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+</div></div>
+</div>
+<a id="constant_JCR_REPOSITORY"> </a><div class="element clickable constant  constant_JCR_REPOSITORY" data-toggle="collapse" data-target=".constant_JCR_REPOSITORY .collapse">
+<h2>A constant for the property name jcr:repository (in extended form),
+declared in node type nt:address.</h2>
+<pre>JCR_REPOSITORY </pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+</div></div>
+</div>
+<a id="constant_JCR_REQUIRED_PRIMARY_TYPES"> </a><div class="element clickable constant  constant_JCR_REQUIRED_PRIMARY_TYPES" data-toggle="collapse" data-target=".constant_JCR_REQUIRED_PRIMARY_TYPES .collapse">
+<h2>A constant for the property name jcr:requiredPrimaryTypes (in extended form),
+declared in node type nt:childNodeDefinition.</h2>
+<pre>JCR_REQUIRED_PRIMARY_TYPES </pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+</div></div>
+</div>
+<a id="constant_JCR_REQUIRED_TYPE"> </a><div class="element clickable constant  constant_JCR_REQUIRED_TYPE" data-toggle="collapse" data-target=".constant_JCR_REQUIRED_TYPE .collapse">
+<h2>A constant for the property name jcr:requiredType (in extended form),
+declared in node type nt:propertyDefinition.</h2>
+<pre>JCR_REQUIRED_TYPE </pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+</div></div>
+</div>
+<a id="constant_JCR_ROOT"> </a><div class="element clickable constant  constant_JCR_ROOT" data-toggle="collapse" data-target=".constant_JCR_ROOT .collapse">
+<h2>A constant for the property name jcr:root (in extended form),
+declared in node type nt:configuration.</h2>
+<pre>JCR_ROOT </pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+</div></div>
+</div>
+<a id="constant_JCR_SAME_NAME_SIBLINGS"> </a><div class="element clickable constant  constant_JCR_SAME_NAME_SIBLINGS" data-toggle="collapse" data-target=".constant_JCR_SAME_NAME_SIBLINGS .collapse">
+<h2>A constant for the property name jcr:sameNameSiblings (in extended form),
+declared in node type nt:childNodeDefinition.</h2>
+<pre>JCR_SAME_NAME_SIBLINGS </pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+</div></div>
+</div>
+<a id="constant_JCR_STATEMENT"> </a><div class="element clickable constant  constant_JCR_STATEMENT" data-toggle="collapse" data-target=".constant_JCR_STATEMENT .collapse">
+<h2>A constant for the property name jcr:statement (in extended form),
+declared in node type nt:query.</h2>
+<pre>JCR_STATEMENT </pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+</div></div>
+</div>
+<a id="constant_JCR_SUCCESSORS"> </a><div class="element clickable constant  constant_JCR_SUCCESSORS" data-toggle="collapse" data-target=".constant_JCR_SUCCESSORS .collapse">
+<h2>A constant for the property name jcr:successors (in extended form),
+declared in node type nt:version.</h2>
+<pre>JCR_SUCCESSORS </pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+</div></div>
+</div>
+<a id="constant_JCR_SUPERTYPES"> </a><div class="element clickable constant  constant_JCR_SUPERTYPES" data-toggle="collapse" data-target=".constant_JCR_SUPERTYPES .collapse">
+<h2>A constant for the property name jcr:supertypes (in extended form),
+declared in node type nt:nodeType.</h2>
+<pre>JCR_SUPERTYPES </pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+</div></div>
+</div>
+<a id="constant_JCR_TITLE"> </a><div class="element clickable constant  constant_JCR_TITLE" data-toggle="collapse" data-target=".constant_JCR_TITLE .collapse">
+<h2>A constant for the property name jcr:title (in extended form),
+declared in node types mix:title and nt:activity.</h2>
+<pre>JCR_TITLE </pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+</div></div>
+</div>
+<a id="constant_JCR_UUID"> </a><div class="element clickable constant  constant_JCR_UUID" data-toggle="collapse" data-target=".constant_JCR_UUID .collapse">
+<h2>A constant for the property name jcr:uuid (in extended form),
+declared in node type mix:referenceable.</h2>
+<pre>JCR_UUID </pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+</div></div>
+</div>
+<a id="constant_JCR_VALUE_CONSTRAINTS"> </a><div class="element clickable constant  constant_JCR_VALUE_CONSTRAINTS" data-toggle="collapse" data-target=".constant_JCR_VALUE_CONSTRAINTS .collapse">
+<h2>A constant for the property name jcr:valueConstraints (in extended form),
+declared in node type nt:propertyDefinition.</h2>
+<pre>JCR_VALUE_CONSTRAINTS </pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+</div></div>
+</div>
+<a id="constant_JCR_VERSIONABLE_UUID"> </a><div class="element clickable constant  constant_JCR_VERSIONABLE_UUID" data-toggle="collapse" data-target=".constant_JCR_VERSIONABLE_UUID .collapse">
+<h2>A constant for the property name jcr:versionableUuid (in extended form),
+declared in node type nt:version.</h2>
+<pre>JCR_VERSIONABLE_UUID </pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+</div></div>
+</div>
+<a id="constant_JCR_VERSION_HISTORY"> </a><div class="element clickable constant  constant_JCR_VERSION_HISTORY" data-toggle="collapse" data-target=".constant_JCR_VERSION_HISTORY .collapse">
+<h2>A constant for the property name jcr:versionHistory (in extended form),
+declared in node type mix:versionable.</h2>
+<pre>JCR_VERSION_HISTORY </pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+</div></div>
+</div>
+<a id="constant_JCR_WORKSPACE"> </a><div class="element clickable constant  constant_JCR_WORKSPACE" data-toggle="collapse" data-target=".constant_JCR_WORKSPACE .collapse">
+<h2>A constant for the property name jcr:workspace (in extended form),
+declared in node type nt:address.</h2>
+<pre>JCR_WORKSPACE </pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+</div></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="row"><footer class="span12">
+            Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
+            Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a10</a> and<br>
+            generated on 2012-10-02T11:32:34+02:00.<br></footer></div>
+</div>
+</body>
+</html>

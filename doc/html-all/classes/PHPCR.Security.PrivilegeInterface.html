@@ -1,0 +1,486 @@
+<!DOCTYPE html><html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+<meta charset="utf-8">
+<title>PHPCR API and PHPCR-Utils » \PHPCR\Security\PrivilegeInterface</title>
+<meta name="author" content="Mike van Riel">
+<meta name="description" content="">
+<link href="../css/template.css" rel="stylesheet" media="all">
+<script src="../js/jquery-1.7.1.min.js" type="text/javascript"></script><script src="../js/jquery-ui-1.8.2.custom.min.js" type="text/javascript"></script><script src="../js/jquery.mousewheel.min.js" type="text/javascript"></script><script src="../js/bootstrap.js" type="text/javascript"></script><script src="../js/template.js" type="text/javascript"></script><script src="../js/prettify/prettify.min.js" type="text/javascript"></script><link rel="shortcut icon" href="../img/favicon.ico">
+<link rel="apple-touch-icon" href="../img/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="72x72" href="../img/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="114x114" href="../img/apple-touch-icon-114x114.png">
+</head>
+<body>
+<div class="navbar navbar-fixed-top">
+<div class="navbar-inner"><div class="container">
+<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a><a class="brand" href="../index.html">PHPCR API and PHPCR-Utils</a><div class="nav-collapse"><ul class="nav">
+<li class="dropdown">
+<a href="#api" class="dropdown-toggle" data-toggle="dropdown">
+                                    API Documentation <b class="caret"></b></a><ul class="dropdown-menu">
+<li><a>Namespaces</a></li>
+<li><a href="../namespaces/PHPCR.html"><i class="icon-th"></i> PHPCR</a></li>
+<li><a>Packages</a></li>
+<li><a href="../packages/Default.html"><i class="icon-folder-open"></i> Default</a></li>
+<li><a href="../packages/phpcr.html"><i class="icon-folder-open"></i> phpcr</a></li>
+</ul>
+</li>
+<li class="dropdown" id="charts-menu">
+<a href="#charts" class="dropdown-toggle" data-toggle="dropdown">
+                                    Charts <b class="caret"></b></a><ul class="dropdown-menu"><li><a href="../graph_class.html"><i class="icon-list-alt"></i> Class hierarchy diagram</a></li></ul>
+</li>
+<li class="dropdown" id="reports-menu">
+<a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
+                                    Reports <b class="caret"></b></a><ul class="dropdown-menu">
+<li><a href="../errors.html"><i class="icon-remove-sign"></i> Errors 
+                <span class="label label-info">123</span></a></li>
+<li><a href="../markers.html"><i class="icon-map-marker"></i> Markers 
+                <ul><li>todo 
+                <span class="label label-info">12</span>
+</li></ul></a></li>
+<li><a href="../deprecated.html"><i class="icon-stop"></i> Deprecated elements 
+                <span class="label label-info">0</span></a></li>
+</ul>
+</li>
+</ul></div>
+</div></div>
+<div class="go_to_top"><a href="#___" style="color: inherit">Back to top  <i class="icon-upload icon-white"></i></a></div>
+</div>
+<div id="___" class="container">
+<noscript><div class="alert alert-warning">
+                            Javascript is disabled; several features are only available
+                            if Javascript is enabled.
+                        </div></noscript>
+<div class="row">
+<div class="span4">
+<span class="btn-group visibility" data-toggle="buttons-checkbox"><button class="btn public active" title="Show public elements">Public</button><button class="btn protected" title="Show protected elements">Protected</button><button class="btn private" title="Show private elements">Private</button><button class="btn inherited active" title="Show inherited elements">Inherited</button></span><div class="btn-group view pull-right" data-toggle="buttons-radio">
+<button class="btn details" title="Show descriptions and method names"><i class="icon-list"></i></button><button class="btn simple" title="Show only method names"><i class="icon-align-justify"></i></button>
+</div>
+<ul class="side-nav nav nav-list">
+<li class="nav-header">
+<i class="icon-custom icon-method"></i> Methods
+                    <ul>
+<li class="method public "><a href="#method_getAggregatePrivileges" title="getAggregatePrivileges :: If this privilege is an aggregate privilege, returns the privileges it
+contains, the privileges contained by any aggregate privileges among
+those, and so on (the transitive closure of privileges contained by this
+privilege)."><span class="description">If this privilege is an aggregate privilege, returns the privileges it
+contains, the privileges contained by any aggregate privileges among
+those, and so on (the transitive closure of privileges contained by this
+privilege).</span><pre>getAggregatePrivileges()</pre></a></li>
+<li class="method public "><a href="#method_getDeclaredAggregatePrivileges" title="getDeclaredAggregatePrivileges :: If this privilege is an aggregate privilege, returns the privileges
+directly contained by the aggregate privilege."><span class="description">If this privilege is an aggregate privilege, returns the privileges
+directly contained by the aggregate privilege.</span><pre>getDeclaredAggregatePrivileges()</pre></a></li>
+<li class="method public "><a href="#method_getName" title="getName :: Returns the name of this privilege."><span class="description">Returns the name of this privilege.</span><pre>getName()</pre></a></li>
+<li class="method public "><a href="#method_isAbstract" title="isAbstract :: Returns whether this privilege is an abstract privilege."><span class="description">Returns whether this privilege is an abstract privilege.</span><pre>isAbstract()</pre></a></li>
+<li class="method public "><a href="#method_isAggregate" title="isAggregate :: Returns whether this privilege is an aggregate privilege."><span class="description">Returns whether this privilege is an aggregate privilege.</span><pre>isAggregate()</pre></a></li>
+</ul>
+</li>
+<li class="nav-header">
+<i class="icon-custom icon-constant"></i> Constants
+                    <ul>
+<li class="constant  "><a href="#constant_JCR_ADD_CHILD_NODES" title="JCR_ADD_CHILD_NODES :: A constant representing jcr:addChildNodes (in extended form), the
+privilege to create child nodes of a node."><span class="description">A constant representing jcr:addChildNodes (in extended form), the
+privilege to create child nodes of a node.</span><pre>JCR_ADD_CHILD_NODES</pre></a></li>
+<li class="constant  "><a href="#constant_JCR_ALL" title="JCR_ALL :: A constant representing jcr:all (in extended form), an aggregate
+privilege that contains all predefined privileges."><span class="description">A constant representing jcr:all (in extended form), an aggregate
+privilege that contains all predefined privileges.</span><pre>JCR_ALL</pre></a></li>
+<li class="constant  "><a href="#constant_JCR_LIFECYCLE_MANAGEMENT" title="JCR_LIFECYCLE_MANAGEMENT :: A constant representing jcr:lifecycleManagement (in extended form), the
+privilege to perform lifecycle operations on a node."><span class="description">A constant representing jcr:lifecycleManagement (in extended form), the
+privilege to perform lifecycle operations on a node.</span><pre>JCR_LIFECYCLE_MANAGEMENT</pre></a></li>
+<li class="constant  "><a href="#constant_JCR_LOCK_MANAGEMENT" title="JCR_LOCK_MANAGEMENT :: A constant representing jcr:lockManagement (in extended form), the
+privilege to lock and unlock a node."><span class="description">A constant representing jcr:lockManagement (in extended form), the
+privilege to lock and unlock a node.</span><pre>JCR_LOCK_MANAGEMENT</pre></a></li>
+<li class="constant  "><a href="#constant_JCR_MODIFY_ACCESS_CONTROL" title="JCR_MODIFY_ACCESS_CONTROL :: A constant representing jcr:modifyAccessControl (in extended form), the
+privilege to modify the access control policies of a node."><span class="description">A constant representing jcr:modifyAccessControl (in extended form), the
+privilege to modify the access control policies of a node.</span><pre>JCR_MODIFY_ACCESS_CONTROL</pre></a></li>
+<li class="constant  "><a href="#constant_JCR_MODIFY_PROPERTIES" title="JCR_MODIFY_PROPERTIES :: A constant representing jcr:modifyProperties (in extended form), the
+privilege to create, modify and remove the properties of a node."><span class="description">A constant representing jcr:modifyProperties (in extended form), the
+privilege to create, modify and remove the properties of a node.</span><pre>JCR_MODIFY_PROPERTIES</pre></a></li>
+<li class="constant  "><a href="#constant_JCR_NODE_TYPE_MANAGEMENT" title="JCR_NODE_TYPE_MANAGEMENT :: A constant representing jcr:nodeTypeManagement (in extended form), the
+privilege to add and remove mixin node types and change the primary node
+type of a node."><span class="description">A constant representing jcr:nodeTypeManagement (in extended form), the
+privilege to add and remove mixin node types and change the primary node
+type of a node.</span><pre>JCR_NODE_TYPE_MANAGEMENT</pre></a></li>
+<li class="constant  "><a href="#constant_JCR_READ" title="JCR_READ :: A constant representing jcr:read (in extended form), the privilege to
+retrieve a node and get its properties and their values."><span class="description">A constant representing jcr:read (in extended form), the privilege to
+retrieve a node and get its properties and their values.</span><pre>JCR_READ</pre></a></li>
+<li class="constant  "><a href="#constant_JCR_READ_ACCESS_CONTROL" title="JCR_READ_ACCESS_CONTROL :: A constant representing jcr:readAccessControl (in extended form), the
+privilege to get the access control policy of a node."><span class="description">A constant representing jcr:readAccessControl (in extended form), the
+privilege to get the access control policy of a node.</span><pre>JCR_READ_ACCESS_CONTROL</pre></a></li>
+<li class="constant  "><a href="#constant_JCR_REMOVE_CHILD_NODES" title="JCR_REMOVE_CHILD_NODES :: A constant representing jcr:removeChildNodes (in extended form), the
+privilege to remove child nodes of a node."><span class="description">A constant representing jcr:removeChildNodes (in extended form), the
+privilege to remove child nodes of a node.</span><pre>JCR_REMOVE_CHILD_NODES</pre></a></li>
+<li class="constant  "><a href="#constant_JCR_REMOVE_NODE" title="JCR_REMOVE_NODE :: A constant representing jcr:removeNode (in extended form), the privilege
+to remove a node."><span class="description">A constant representing jcr:removeNode (in extended form), the privilege
+to remove a node.</span><pre>JCR_REMOVE_NODE</pre></a></li>
+<li class="constant  "><a href="#constant_JCR_RETENTION_MANAGEMENT" title="JCR_RETENTION_MANAGEMENT :: A constant representing jcr:retentionManagement (in extended form), the
+privilege to perform retention management operations on a node."><span class="description">A constant representing jcr:retentionManagement (in extended form), the
+privilege to perform retention management operations on a node.</span><pre>JCR_RETENTION_MANAGEMENT</pre></a></li>
+<li class="constant  "><a href="#constant_JCR_VERSION_MANAGEMENT" title="JCR_VERSION_MANAGEMENT :: A constant representing jcr:versionManagment (in extended form), the
+privilege to perform versioning operations on a node."><span class="description">A constant representing jcr:versionManagment (in extended form), the
+privilege to perform versioning operations on a node.</span><pre>JCR_VERSION_MANAGEMENT</pre></a></li>
+<li class="constant  "><a href="#constant_JCR_WRITE" title="JCR_WRITE :: A constant representing jcr:write (in extended form), an aggregate
+privilege that contains:"><span class="description">A constant representing jcr:write (in extended form), an aggregate
+privilege that contains:</span><pre>JCR_WRITE</pre></a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="span8">
+<a id="\PHPCR\Security\PrivilegeInterface"></a><ul class="breadcrumb">
+<li>
+<a href="../index.html"><i class="icon-custom icon-class"></i></a><span class="divider">\</span>
+</li>
+<li><a href="../namespaces/PHPCR.html">PHPCR</a></li>
+<li>
+<span class="divider">\</span><a href="../namespaces/PHPCR.Security.html">Security</a>
+</li>
+<li class="active">
+<span class="divider">\</span><a href="../classes/PHPCR.Security.PrivilegeInterface.html">PrivilegeInterface</a>
+</li>
+</ul>
+<div class="element interface">
+<p class="short_description">A privilege represents the capability of performing a particular set of
+operations on items in the JCR repository.</p>
+<div class="details">
+<div class="long_description"><p>Each privilege is identified by a JCR name. JCR defines a set of standard
+privileges in the jcr namespace. Implementations may add additional
+privileges in namespaces other than jcr.</p>
+
+<p>A privilege may be an aggregate privilege. Aggregate privileges are sets of
+other privileges. Granting, denying, or testing an aggregate privilege is
+equivalent to individually granting, denying, or testing each privilege it
+contains. The privileges contained by an aggregate privilege may themselves
+be aggregate privileges if the resulting privilege graph is acyclic.</p>
+
+<p>A privilege may be an abstract privilege. Abstract privileges cannot
+themselves be granted or denied, but can be composed into aggregate
+privileges which are granted or denied.</p>
+
+<p>A privilege can be both aggregate and abstract.</p></div>
+<table class="table table-bordered">
+<tr>
+<th>package</th>
+<td><a href="../packages/phpcr.interfaces.html">phpcr</a></td>
+</tr>
+<tr>
+<th>subpackage</th>
+<td>interfaces</td>
+</tr>
+<tr>
+<th>api</th>
+<td></td>
+</tr>
+</table>
+<h3>
+<i class="icon-custom icon-method"></i> Methods</h3>
+<a id="method_getAggregatePrivileges"></a><div class="element clickable method public method_getAggregatePrivileges" data-toggle="collapse" data-target=".method_getAggregatePrivileges .collapse">
+<h2>If this privilege is an aggregate privilege, returns the privileges it
+contains, the privileges contained by any aggregate privileges among
+those, and so on (the transitive closure of privileges contained by this
+privilege).</h2>
+<pre>getAggregatePrivileges() : array</pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>Otherwise returns an empty array.</p></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>array</code>an array of Privileges</div>
+</div></div>
+</div>
+<a id="method_getDeclaredAggregatePrivileges"></a><div class="element clickable method public method_getDeclaredAggregatePrivileges" data-toggle="collapse" data-target=".method_getDeclaredAggregatePrivileges .collapse">
+<h2>If this privilege is an aggregate privilege, returns the privileges
+directly contained by the aggregate privilege.</h2>
+<pre>getDeclaredAggregatePrivileges() : array</pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>Otherwise returns an empty
+array.</p></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>array</code>an array of Privileges</div>
+</div></div>
+</div>
+<a id="method_getName"></a><div class="element clickable method public method_getName" data-toggle="collapse" data-target=".method_getName .collapse">
+<h2>Returns the name of this privilege.</h2>
+<pre>getName() : string</pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>string</code>the name of this privilege.</div>
+</div></div>
+</div>
+<a id="method_isAbstract"></a><div class="element clickable method public method_isAbstract" data-toggle="collapse" data-target=".method_isAbstract .collapse">
+<h2>Returns whether this privilege is an abstract privilege.</h2>
+<pre>isAbstract() : boolean</pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>boolean</code>true if this privilege is an abstract privilege; false
+     otherwise.</div>
+</div></div>
+</div>
+<a id="method_isAggregate"></a><div class="element clickable method public method_isAggregate" data-toggle="collapse" data-target=".method_isAggregate .collapse">
+<h2>Returns whether this privilege is an aggregate privilege.</h2>
+<pre>isAggregate() : boolean</pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>boolean</code>true if this privilege is an aggregate privilege; false
+     otherwise.</div>
+</div></div>
+</div>
+<h3>
+<i class="icon-custom icon-constant"></i> Constants</h3>
+<a id="constant_JCR_ADD_CHILD_NODES"> </a><div class="element clickable constant  constant_JCR_ADD_CHILD_NODES" data-toggle="collapse" data-target=".constant_JCR_ADD_CHILD_NODES .collapse">
+<h2>A constant representing jcr:addChildNodes (in extended form), the
+privilege to create child nodes of a node.</h2>
+<pre>JCR_ADD_CHILD_NODES </pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+</div></div>
+</div>
+<a id="constant_JCR_ALL"> </a><div class="element clickable constant  constant_JCR_ALL" data-toggle="collapse" data-target=".constant_JCR_ALL .collapse">
+<h2>A constant representing jcr:all (in extended form), an aggregate
+privilege that contains all predefined privileges.</h2>
+<pre>JCR_ALL </pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><ul>
+<li>jcr:read</li>
+<li>jcr:write</li>
+<li>jcr:readAccessControl</li>
+<li>jcr:modifyAccessControl</li>
+<li>jcr:lockManagement</li>
+<li>jcr:versionManagement</li>
+<li>jcr:nodeTypeManagement</li>
+<li>jcr:retentionManagement</li>
+<li>jcr:lifecycleManagement</li>
+</ul>
+
+<p>It should, in addition, include all implementation-defined privileges.</p></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+</div></div>
+</div>
+<a id="constant_JCR_LIFECYCLE_MANAGEMENT"> </a><div class="element clickable constant  constant_JCR_LIFECYCLE_MANAGEMENT" data-toggle="collapse" data-target=".constant_JCR_LIFECYCLE_MANAGEMENT .collapse">
+<h2>A constant representing jcr:lifecycleManagement (in extended form), the
+privilege to perform lifecycle operations on a node.</h2>
+<pre>JCR_LIFECYCLE_MANAGEMENT </pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+</div></div>
+</div>
+<a id="constant_JCR_LOCK_MANAGEMENT"> </a><div class="element clickable constant  constant_JCR_LOCK_MANAGEMENT" data-toggle="collapse" data-target=".constant_JCR_LOCK_MANAGEMENT .collapse">
+<h2>A constant representing jcr:lockManagement (in extended form), the
+privilege to lock and unlock a node.</h2>
+<pre>JCR_LOCK_MANAGEMENT </pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+</div></div>
+</div>
+<a id="constant_JCR_MODIFY_ACCESS_CONTROL"> </a><div class="element clickable constant  constant_JCR_MODIFY_ACCESS_CONTROL" data-toggle="collapse" data-target=".constant_JCR_MODIFY_ACCESS_CONTROL .collapse">
+<h2>A constant representing jcr:modifyAccessControl (in extended form), the
+privilege to modify the access control policies of a node.</h2>
+<pre>JCR_MODIFY_ACCESS_CONTROL </pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+</div></div>
+</div>
+<a id="constant_JCR_MODIFY_PROPERTIES"> </a><div class="element clickable constant  constant_JCR_MODIFY_PROPERTIES" data-toggle="collapse" data-target=".constant_JCR_MODIFY_PROPERTIES .collapse">
+<h2>A constant representing jcr:modifyProperties (in extended form), the
+privilege to create, modify and remove the properties of a node.</h2>
+<pre>JCR_MODIFY_PROPERTIES </pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+</div></div>
+</div>
+<a id="constant_JCR_NODE_TYPE_MANAGEMENT"> </a><div class="element clickable constant  constant_JCR_NODE_TYPE_MANAGEMENT" data-toggle="collapse" data-target=".constant_JCR_NODE_TYPE_MANAGEMENT .collapse">
+<h2>A constant representing jcr:nodeTypeManagement (in extended form), the
+privilege to add and remove mixin node types and change the primary node
+type of a node.</h2>
+<pre>JCR_NODE_TYPE_MANAGEMENT </pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+</div></div>
+</div>
+<a id="constant_JCR_READ"> </a><div class="element clickable constant  constant_JCR_READ" data-toggle="collapse" data-target=".constant_JCR_READ .collapse">
+<h2>A constant representing jcr:read (in extended form), the privilege to
+retrieve a node and get its properties and their values.</h2>
+<pre>JCR_READ </pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+</div></div>
+</div>
+<a id="constant_JCR_READ_ACCESS_CONTROL"> </a><div class="element clickable constant  constant_JCR_READ_ACCESS_CONTROL" data-toggle="collapse" data-target=".constant_JCR_READ_ACCESS_CONTROL .collapse">
+<h2>A constant representing jcr:readAccessControl (in extended form), the
+privilege to get the access control policy of a node.</h2>
+<pre>JCR_READ_ACCESS_CONTROL </pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+</div></div>
+</div>
+<a id="constant_JCR_REMOVE_CHILD_NODES"> </a><div class="element clickable constant  constant_JCR_REMOVE_CHILD_NODES" data-toggle="collapse" data-target=".constant_JCR_REMOVE_CHILD_NODES .collapse">
+<h2>A constant representing jcr:removeChildNodes (in extended form), the
+privilege to remove child nodes of a node.</h2>
+<pre>JCR_REMOVE_CHILD_NODES </pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>In order to actually remove a node requires jcr:removeNode on that node
+and jcr:removeChildNodes on the parent node.</p>
+
+<p>The distinction is provided in order to reflect implementations that
+internally model "remove" as a "unlink" instead of a "delete". A
+repository that uses the "unlink" model can have jcr:removeNode in every
+access control policy, so that removal is effectively controlled by
+jcr:removeChildNodes.</p></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+</div></div>
+</div>
+<a id="constant_JCR_REMOVE_NODE"> </a><div class="element clickable constant  constant_JCR_REMOVE_NODE" data-toggle="collapse" data-target=".constant_JCR_REMOVE_NODE .collapse">
+<h2>A constant representing jcr:removeNode (in extended form), the privilege
+to remove a node.</h2>
+<pre>JCR_REMOVE_NODE </pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>In order to actually remove a node requires jcr:removeNode on that node
+and jcr:removeChildNodes on the parent node.</p>
+
+<p>The distinction is provided in order to reflect implementations that
+internally model "remove" as a "delete" instead of a "unlink". A
+repository that uses the "delete" model can have jcr:removeChildNodes in
+every access control policy, so that removal is effectively controlled
+by jcr:removeNode.</p></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+</div></div>
+</div>
+<a id="constant_JCR_RETENTION_MANAGEMENT"> </a><div class="element clickable constant  constant_JCR_RETENTION_MANAGEMENT" data-toggle="collapse" data-target=".constant_JCR_RETENTION_MANAGEMENT .collapse">
+<h2>A constant representing jcr:retentionManagement (in extended form), the
+privilege to perform retention management operations on a node.</h2>
+<pre>JCR_RETENTION_MANAGEMENT </pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+</div></div>
+</div>
+<a id="constant_JCR_VERSION_MANAGEMENT"> </a><div class="element clickable constant  constant_JCR_VERSION_MANAGEMENT" data-toggle="collapse" data-target=".constant_JCR_VERSION_MANAGEMENT .collapse">
+<h2>A constant representing jcr:versionManagment (in extended form), the
+privilege to perform versioning operations on a node.</h2>
+<pre>JCR_VERSION_MANAGEMENT </pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+</div></div>
+</div>
+<a id="constant_JCR_WRITE"> </a><div class="element clickable constant  constant_JCR_WRITE" data-toggle="collapse" data-target=".constant_JCR_WRITE .collapse">
+<h2>A constant representing jcr:write (in extended form), an aggregate
+privilege that contains:</h2>
+<pre>JCR_WRITE </pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><ul>
+<li>jcr:modifyProperties</li>
+<li>jcr:addChildNodes</li>
+<li>jcr:removeNode</li>
+<li>jcr:removeChildNodes</li>
+</ul></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+</div></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="row"><footer class="span12">
+            Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
+            Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a10</a> and<br>
+            generated on 2012-10-02T11:32:34+02:00.<br></footer></div>
+</div>
+</body>
+</html>

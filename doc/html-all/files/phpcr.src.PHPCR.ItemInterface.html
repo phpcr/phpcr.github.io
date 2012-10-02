@@ -1,0 +1,166 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><title>PHPCR API and PHPCR-Utils</title><meta http-equiv="Content-Type" content="text/html; charset=utf-8"></meta><link rel="stylesheet" href="../css/template.css" type="text/css"></link><script type="text/javascript" src="../js/jquery-1.4.2.min.js"></script><script type="text/javascript" src="../js/jquery.tools.min.js"></script><script type="text/javascript" src="../js/jquery-ui-1.8.2.custom.min.js"></script><script type="text/javascript" src="../js/template.js"></script></head><body><div id="content"><h1 class="file">phpcr/src/PHPCR/ItemInterface.php</h1><div id="file-nav-box"><div id="file-nav-options">
+              Show:
+              <img src="../images/icons/visibility_public.png" alt="Public" id="show-public"></img><img src="../images/icons/visibility_protected.png" alt="Protected" id="show-protected"></img><img src="../images/icons/visibility_private.png" alt="Private" id="show-private"></img><span class="attribute" id="show-inherited">inherited</span></div><div id="file-nav-container"><ul id="file-nav"></ul><div style="clear: left;"></div></div><div id="file-nav-tab">
+              Table of Contents
+          </div></div><a name="top" class="anchor"></a><div id="file-description"><div class="short-description">This file is part of the PHPCR API and was originally ported from the Java
+JCR API to PHP by Karsten Dambekalns for the FLOW3 project.</div><div class="long-description"><p>Copyright 2008-2011 Karsten Dambekalns <a href="&#109;&#x61;&#x69;&#108;&#116;&#x6f;&#58;&#107;&#x61;&#114;&#115;&#x74;e&#110;&#x40;&#x74;&#121;&#x70;&#x6f;&#51;&#46;&#x6f;&#114;&#103;">&#107;&#x61;&#114;&#115;&#x74;e&#110;&#x40;&#x74;&#121;&#x70;&#x6f;&#51;&#46;&#x6f;&#114;&#103;</a></p>
+
+<p>Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at</p>
+
+<pre><code>http://www.apache.org/licenses/LICENSE-2.0
+</code></pre>
+
+<p>Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.</p></div></div><dl class="file-info"><dt>License</dt><dd><a href="http://www.apache.org/licenses/LICENSE-2.0">Apache Software License 2.0</a>
+         
+    </dd><dt>Link</dt><dd><a href="http://phpcr.github.com/">http://phpcr.github.com/</a>
+         
+    </dd></dl><a name="interfaces" class="anchor"></a><a id="\PHPCR\ItemInterface" class="anchor"></a><h2 class="interface">\PHPCR\ItemInterface<div class="to-top"><a href="#top">jump to top</a></div></h2><div class="class"><small class="package"><b>Package: </b>phpcr\interfaces</small><div class="short-description">The Item is the base interface of Node and Property.</div><div class="long-description"></div><dl class="class-info"><dt>Children</dt><dd><a href="../files/phpcr.src.PHPCR.PropertyInterface.html#\PHPCR\PropertyInterface">\PHPCR\PropertyInterface</a></dd><dd><a href="../files/phpcr.src.PHPCR.NodeInterface.html#\PHPCR\NodeInterface">\PHPCR\NodeInterface</a></dd><dt>Api</dt><dd>
+         
+    </dd></dl><h3>Methods</h3><div><a id="\PHPCR\ItemInterface::accept()" class="anchor"></a><div class="method public"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png"></img><img src="../images/icons/arrow_down.png" style="display: none;"></img></a><code class="title"><img src="../images/icons/method.png" alt="method" title="method"></img><img src="../images/icons/visibility_public.png" style="margin-right: 5px" alt="public"></img><span class="highlight">accept</span><span class="nb-faded-text">(<a href="../files/phpcr.src.PHPCR.ItemVisitorInterface.html#\PHPCR\ItemVisitorInterface">\PHPCR\ItemVisitorInterface</a> $visitor)</span> : void</code><div class="description"><p class="short_description">Call the ItemVisitor::visit() method.</p></div><div class="code-tabs"><div class="long-description"><p>This is less relevant in PHP (Java had it to avoid typecasting in the
+visitor). We leave it here, to allow sanity checks or other operations
+an implementation might wants to do.</p></div><strong>Parameters</strong><table class="argument-info"><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><th>$visitor</th><td><a href="../files/phpcr.src.PHPCR.ItemVisitorInterface.html#\PHPCR\ItemVisitorInterface">\PHPCR\ItemVisitorInterface</a></td><td><em><p>The ItemVisitor to be accepted.</p></em></td></tr></table><strong>Throws</strong><table class="argument-info"><thead><tr><th>Exception</th><th>Description</th></tr></thead><tr><td><a href="../files/phpcr.src.PHPCR.RepositoryException.html#\PHPCR\RepositoryException">\PHPCR\RepositoryException</a></td><td><em>if an error occurs.</em></td></tr></table><strong>Details</strong><dl class="function-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\ItemInterface::getAncestor()" class="anchor"></a><div class="method public"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png"></img><img src="../images/icons/arrow_down.png" style="display: none;"></img></a><code class="title"><img src="../images/icons/method.png" alt="method" title="method"></img><img src="../images/icons/visibility_public.png" style="margin-right: 5px" alt="public"></img><span class="highlight">getAncestor</span><span class="nb-faded-text">(integer $depth)</span> : <a href="../files/phpcr.src.PHPCR.ItemInterface.html#\PHPCR\ItemInterface">\PHPCR\ItemInterface</a></code><div class="description"><p class="short_description">Returns the ancestor of this Item at the specified depth.</p></div><div class="code-tabs"><div class="long-description"><p>An ancestor of depth x is the Item that is x levels down along the path
+from the root node to this Item.</p>
+
+<ul>
+<li>depth = 0 returns the root node of a workspace.</li>
+<li>depth = 1 returns the child of the root node along the path to this
+ Item.</li>
+<li>depth = 2 returns the grandchild of the root node along the path to
+ this Item.</li>
+<li>And so on to depth = n, where n is the depth of this Item, which
+ returns this Item itself.</li>
+</ul>
+
+<p>If this node has more than one path (i.e., if it is a descendant of a
+shared node) then the path used to define the ancestor is implementaion-
+dependent.</p></div><strong>Parameters</strong><table class="argument-info"><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><th>$depth</th><td>integer</td><td><em><p>An integer, 0 <= depth <= n where n is the depth of this Item.</p>
+</em></td></tr></table><strong>Returns</strong><table class="argument-info"><thead><tr><th>Type</th><th>Description</th></tr></thead><tr><td><a href="../files/phpcr.src.PHPCR.ItemInterface.html#\PHPCR\ItemInterface">\PHPCR\ItemInterface</a></td><td>The ancestor of this Item at the specified
+     depth.</td></tr></table><strong>Throws</strong><table class="argument-info"><thead><tr><th>Exception</th><th>Description</th></tr></thead><tr><td><a href="../files/phpcr.src.PHPCR.ItemNotFoundException.html#\PHPCR\ItemNotFoundException">\PHPCR\ItemNotFoundException</a></td><td><em>if depth < 0 or depth > n
+     where n is the depth of this item.</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.AccessDeniedException.html#\PHPCR\AccessDeniedException">\PHPCR\AccessDeniedException</a></td><td><em>if the current session does not
+     have sufficient access to retrieve the specified node.</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.RepositoryException.html#\PHPCR\RepositoryException">\PHPCR\RepositoryException</a></td><td><em>if another error occurs.</em></td></tr></table><strong>Details</strong><dl class="function-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\ItemInterface::getDepth()" class="anchor"></a><div class="method public"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png"></img><img src="../images/icons/arrow_down.png" style="display: none;"></img></a><code class="title"><img src="../images/icons/method.png" alt="method" title="method"></img><img src="../images/icons/visibility_public.png" style="margin-right: 5px" alt="public"></img><span class="highlight">getDepth</span><span class="nb-faded-text">()</span> : integer</code><div class="description"><p class="short_description">Returns the depth of this Item in the workspace item graph.</p></div><div class="code-tabs"><div class="long-description"><ul>
+<li>The root node returns 0.</li>
+<li>A property or child node of the root node returns 1.</li>
+<li>A property or child node of a child node of the root returns 2.</li>
+<li>And so on to this Item.</li>
+</ul></div><strong>Returns</strong><table class="argument-info"><thead><tr><th>Type</th><th>Description</th></tr></thead><tr><td>integer</td><td>The depth of this Item in the workspace item graph.</td></tr></table><strong>Throws</strong><table class="argument-info"><thead><tr><th>Exception</th><th>Description</th></tr></thead><tr><td><a href="../files/phpcr.src.PHPCR.RepositoryException.html#\PHPCR\RepositoryException">\PHPCR\RepositoryException</a></td><td><em>if an error occurs.</em></td></tr></table><strong>Details</strong><dl class="function-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\ItemInterface::getName()" class="anchor"></a><div class="method public"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png"></img><img src="../images/icons/arrow_down.png" style="display: none;"></img></a><code class="title"><img src="../images/icons/method.png" alt="method" title="method"></img><img src="../images/icons/visibility_public.png" style="margin-right: 5px" alt="public"></img><span class="highlight">getName</span><span class="nb-faded-text">()</span> : string</code><div class="description"><p class="short_description">Returns the name of this Item in qualified form.</p></div><div class="code-tabs"><div class="long-description"><p>If this Item is the root node of the workspace, an empty string is returned.</p></div><strong>Returns</strong><table class="argument-info"><thead><tr><th>Type</th><th>Description</th></tr></thead><tr><td>string</td><td>the name of this Item in qualified form or an empty
+     string if this Item is the root node of a workspace.</td></tr></table><strong>Throws</strong><table class="argument-info"><thead><tr><th>Exception</th><th>Description</th></tr></thead><tr><td><a href="../files/phpcr.src.PHPCR.RepositoryException.html#\PHPCR\RepositoryException">\PHPCR\RepositoryException</a></td><td><em>if an error occurs.</em></td></tr></table><strong>Details</strong><dl class="function-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\ItemInterface::getParent()" class="anchor"></a><div class="method public"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png"></img><img src="../images/icons/arrow_down.png" style="display: none;"></img></a><code class="title"><img src="../images/icons/method.png" alt="method" title="method"></img><img src="../images/icons/visibility_public.png" style="margin-right: 5px" alt="public"></img><span class="highlight">getParent</span><span class="nb-faded-text">()</span> : <a href="../files/phpcr.src.PHPCR.NodeInterface.html#\PHPCR\NodeInterface">\PHPCR\NodeInterface</a></code><div class="description"><p class="short_description">Returns the parent of this Item.</p></div><div class="code-tabs"><div class="long-description"></div><strong>Returns</strong><table class="argument-info"><thead><tr><th>Type</th><th>Description</th></tr></thead><tr><td><a href="../files/phpcr.src.PHPCR.NodeInterface.html#\PHPCR\NodeInterface">\PHPCR\NodeInterface</a></td><td>The parent of this Item.</td></tr></table><strong>Throws</strong><table class="argument-info"><thead><tr><th>Exception</th><th>Description</th></tr></thead><tr><td><a href="../files/phpcr.src.PHPCR.ItemNotFoundException.html#\PHPCR\ItemNotFoundException">\PHPCR\ItemNotFoundException</a></td><td><em>if this Item is the root node of a
+     workspace.</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.AccessDeniedException.html#\PHPCR\AccessDeniedException">\PHPCR\AccessDeniedException</a></td><td><em>if the current session does not
+     have sufficent access to retrieve the parent of this item.</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.RepositoryException.html#\PHPCR\RepositoryException">\PHPCR\RepositoryException</a></td><td><em>if another error occurs.</em></td></tr></table><strong>Details</strong><dl class="function-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\ItemInterface::getPath()" class="anchor"></a><div class="method public"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png"></img><img src="../images/icons/arrow_down.png" style="display: none;"></img></a><code class="title"><img src="../images/icons/method.png" alt="method" title="method"></img><img src="../images/icons/visibility_public.png" style="margin-right: 5px" alt="public"></img><span class="highlight">getPath</span><span class="nb-faded-text">()</span> : string</code><div class="description"><p class="short_description">Returns the normalized absolute path to this item.</p></div><div class="code-tabs"><div class="long-description"></div><strong>Returns</strong><table class="argument-info"><thead><tr><th>Type</th><th>Description</th></tr></thead><tr><td>string</td><td>the normalized absolute path of this Item.</td></tr></table><strong>Throws</strong><table class="argument-info"><thead><tr><th>Exception</th><th>Description</th></tr></thead><tr><td><a href="../files/phpcr.src.PHPCR.RepositoryException.html#\PHPCR\RepositoryException">\PHPCR\RepositoryException</a></td><td><em>if an error occurs.</em></td></tr></table><strong>Details</strong><dl class="function-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\ItemInterface::getSession()" class="anchor"></a><div class="method public"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png"></img><img src="../images/icons/arrow_down.png" style="display: none;"></img></a><code class="title"><img src="../images/icons/method.png" alt="method" title="method"></img><img src="../images/icons/visibility_public.png" style="margin-right: 5px" alt="public"></img><span class="highlight">getSession</span><span class="nb-faded-text">()</span> : <a href="../files/phpcr.src.PHPCR.SessionInterface.html#\PHPCR\SessionInterface">\PHPCR\SessionInterface</a></code><div class="description"><p class="short_description">Returns the Session through which this Item was acquired.</p></div><div class="code-tabs"><div class="long-description"></div><strong>Returns</strong><table class="argument-info"><thead><tr><th>Type</th><th>Description</th></tr></thead><tr><td><a href="../files/phpcr.src.PHPCR.SessionInterface.html#\PHPCR\SessionInterface">\PHPCR\SessionInterface</a></td><td>the Session through which this Item was
+     acquired.</td></tr></table><strong>Throws</strong><table class="argument-info"><thead><tr><th>Exception</th><th>Description</th></tr></thead><tr><td><a href="../files/phpcr.src.PHPCR.RepositoryException.html#\PHPCR\RepositoryException">\PHPCR\RepositoryException</a></td><td><em>if an error occurs.</em></td></tr></table><strong>Details</strong><dl class="function-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\ItemInterface::isModified()" class="anchor"></a><div class="method public"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png"></img><img src="../images/icons/arrow_down.png" style="display: none;"></img></a><code class="title"><img src="../images/icons/method.png" alt="method" title="method"></img><img src="../images/icons/visibility_public.png" style="margin-right: 5px" alt="public"></img><span class="highlight">isModified</span><span class="nb-faded-text">()</span> : boolean</code><div class="description"><p class="short_description">Indicates if the current item has been modified.</p></div><div class="code-tabs"><div class="long-description"><p>Returns true if this Item has been saved but has subsequently been
+modified through the current session and therefore the state of this
+item as recorded in the session differs from the state of this item as
+saved. Within a transaction, isModified on an Item may return false
+(because the Item has been saved since the modification) even if the
+modification in question is not in persistent storage (because the
+transaction has not yet been committed).</p>
+
+<p>Note that in read-only implementations, this method will always return
+false.</p></div><strong>Returns</strong><table class="argument-info"><thead><tr><th>Type</th><th>Description</th></tr></thead><tr><td>boolean</td><td>true if this item is modified; false otherwise.</td></tr></table><strong>Details</strong><dl class="function-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\ItemInterface::isNew()" class="anchor"></a><div class="method public"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png"></img><img src="../images/icons/arrow_down.png" style="display: none;"></img></a><code class="title"><img src="../images/icons/method.png" alt="method" title="method"></img><img src="../images/icons/visibility_public.png" style="margin-right: 5px" alt="public"></img><span class="highlight">isNew</span><span class="nb-faded-text">()</span> : boolean</code><div class="description"><p class="short_description">Determines if the current item is a new one.</p></div><div class="code-tabs"><div class="long-description"><p>Returns true if this is a new item, meaning that it exists only in
+transient storage on the Session and has not yet been saved. Within a
+transaction, isNew on an Item may return false (because the item has
+been saved) even if that Item is not in persistent storage (because the
+transaction has not yet been committed).</p>
+
+<p>Note that if an item returns true on isNew, then by definition is parent
+will return true on isModified.</p>
+
+<p>Note that in read-only implementations, this method will always return
+false.</p></div><strong>Returns</strong><table class="argument-info"><thead><tr><th>Type</th><th>Description</th></tr></thead><tr><td>boolean</td><td>true if this item is new; false otherwise.</td></tr></table><strong>Details</strong><dl class="function-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\ItemInterface::isNode()" class="anchor"></a><div class="method public"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png"></img><img src="../images/icons/arrow_down.png" style="display: none;"></img></a><code class="title"><img src="../images/icons/method.png" alt="method" title="method"></img><img src="../images/icons/visibility_public.png" style="margin-right: 5px" alt="public"></img><span class="highlight">isNode</span><span class="nb-faded-text">()</span> : boolean</code><div class="description"><p class="short_description">Indicates whether this Item is a Node or a Property.</p></div><div class="code-tabs"><div class="long-description"><p>Returns true if this Item is a Node; Returns false if this Item is a
+Property.</p></div><strong>Returns</strong><table class="argument-info"><thead><tr><th>Type</th><th>Description</th></tr></thead><tr><td>boolean</td><td>true if this Item is a Node, false if it is a Property.</td></tr></table><strong>Details</strong><dl class="function-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\ItemInterface::isSame()" class="anchor"></a><div class="method public"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png"></img><img src="../images/icons/arrow_down.png" style="display: none;"></img></a><code class="title"><img src="../images/icons/method.png" alt="method" title="method"></img><img src="../images/icons/visibility_public.png" style="margin-right: 5px" alt="public"></img><span class="highlight">isSame</span><span class="nb-faded-text">(<a href="../files/phpcr.src.PHPCR.ItemInterface.html#\PHPCR\ItemInterface">\PHPCR\ItemInterface</a> $otherItem)</span> : boolean</code><div class="description"><p class="short_description">Determines if this Item object represents the same actual workspace item
+as the object otherItem.</p></div><div class="code-tabs"><div class="long-description"><p>Two Item objects represent the same workspace item if all the following
+are true:</p>
+
+<ul>
+<li>Both objects were acquired through Session objects that were created
+by the same Repository object.</li>
+<li>Both objects were acquired through Session objects bound to the same
+repository workspace.</li>
+<li>The objects are either both Node objects or both Property
+objects.</li>
+<li>If they are Node objects, they have the same identifier.</li>
+<li>If they are Property objects they have identical names and
+isSame() is true of their parent nodes.</li>
+</ul>
+
+<p>This method does not compare the states of the two items. For example, if
+two Item objects representing the same actual workspace item have been
+retrieved through two different sessions and one has been modified, then
+this method will still return true when comparing these two objects.
+Note that if two Item objects representing the same workspace item are
+retrieved through the same session they will always reflect the same
+state.</p></div><strong>Parameters</strong><table class="argument-info"><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><th>$otherItem</th><td><a href="../files/phpcr.src.PHPCR.ItemInterface.html#\PHPCR\ItemInterface">\PHPCR\ItemInterface</a></td><td><em><p>the Item object to be tested for identity with this Item.</p></em></td></tr></table><strong>Returns</strong><table class="argument-info"><thead><tr><th>Type</th><th>Description</th></tr></thead><tr><td>boolean</td><td>true if this Item object and otherItem represent the
+     same actual repository item; false otherwise.</td></tr></table><strong>Throws</strong><table class="argument-info"><thead><tr><th>Exception</th><th>Description</th></tr></thead><tr><td><a href="../files/phpcr.src.PHPCR.RepositoryException.html#\PHPCR\RepositoryException">\PHPCR\RepositoryException</a></td><td><em>if an error occurs.</em></td></tr></table><strong>Details</strong><dl class="function-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\ItemInterface::refresh()" class="anchor"></a><div class="method public"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png"></img><img src="../images/icons/arrow_down.png" style="display: none;"></img></a><code class="title"><img src="../images/icons/method.png" alt="method" title="method"></img><img src="../images/icons/visibility_public.png" style="margin-right: 5px" alt="public"></img><span class="highlight">refresh</span><span class="nb-faded-text">(boolean $keepChanges)</span> : void</code><div class="description"><p class="short_description">Updates the state of the current item.</p></div><div class="code-tabs"><div class="long-description"><p>If keepChanges is false, this method discards all pending changes
+currently recorded in this Session that apply to this Item or any
+of its descendants (that is, the subgraph rooted at this Item) and
+returns all items to reflect the current saved state. Outside a
+transaction this state is simple the current state of persistent
+storage. Within a transaction, this state will reflect persistent
+storage as modified by changes that have been saved but not yet
+committed.</p>
+
+<p>If keepChanges is true then pending change are not discarded but
+items that do not have changes pending have their state refreshed
+to reflect the current saved state, thus revealing changes made by
+other sessions.</p></div><strong>Parameters</strong><table class="argument-info"><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><th>$keepChanges</th><td>boolean</td><td><em><p>a boolean</p></em></td></tr></table><strong>Throws</strong><table class="argument-info"><thead><tr><th>Exception</th><th>Description</th></tr></thead><tr><td><a href="../files/phpcr.src.PHPCR.InvalidItemStateException.html#\PHPCR\InvalidItemStateException">\PHPCR\InvalidItemStateException</a></td><td><em>if this Item object represents
+     a workspace item that has been removed (either by this session or
+     another).</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.RepositoryException.html#\PHPCR\RepositoryException">\PHPCR\RepositoryException</a></td><td><em>if another error occurs.</em></td></tr></table><strong>Details</strong><dl class="function-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\ItemInterface::remove()" class="anchor"></a><div class="method public"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png"></img><img src="../images/icons/arrow_down.png" style="display: none;"></img></a><code class="title"><img src="../images/icons/method.png" alt="method" title="method"></img><img src="../images/icons/visibility_public.png" style="margin-right: 5px" alt="public"></img><span class="highlight">remove</span><span class="nb-faded-text">()</span> : void</code><div class="description"><p class="short_description">Removes this item (and its subgraph).</p></div><div class="code-tabs"><div class="long-description"><p>To persist a removal, a save must be performed that includes the (former)
+parent of the removed item within its scope.</p>
+
+<p>If a node with same-name siblings is removed, this decrements by one the
+indices of all the siblings with indices greater than that of the removed
+node. In other words, a removal compacts the array of same-name siblings
+and causes the minimal re-numbering required to maintain the original
+order but leave no gaps in the numbering.</p></div><strong>Throws</strong><table class="argument-info"><thead><tr><th>Exception</th><th>Description</th></tr></thead><tr><td><a href="../files/phpcr.src.PHPCR.Version.VersionException.html#\PHPCR\Version\VersionException">\PHPCR\Version\VersionException</a></td><td><em>if the parent node of this item
+     is versionable and checked-in or is non-versionable but its nearest
+     versionable ancestor is checked-in and this implementation performs
+     this validation immediately instead of waiting until save.</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.Lock.LockException.html#\PHPCR\Lock\LockException">\PHPCR\Lock\LockException</a></td><td><em>if a lock prevents the removal of this
+     item and this implementation performs this validation immediately
+     instead of waiting until save.</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.NodeType.ConstraintViolationException.html#\PHPCR\NodeType\ConstraintViolationException">\PHPCR\NodeType\ConstraintViolationException</a></td><td><em>if removing the
+     specified item would violate a node type or implementation-specific
+     constraint and this implementation performs this validation
+     immediately instead of waiting until save.</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.AccessDeniedException.html#\PHPCR\AccessDeniedException">\PHPCR\AccessDeniedException</a></td><td><em>if this item or an item in its
+     subgraph is currently the target of a REFERENCE property located in
+     this workspace but outside this item's subgraph and the current
+     Session does not have read access to that REFERENCE property or if
+     the current Session does not have sufficent privileges to remove
+     the item.</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.RepositoryException.html#\PHPCR\RepositoryException">\PHPCR\RepositoryException</a></td><td><em>if another error occurs.</em></td></tr></table><strong>Details</strong><dl class="function-info"><dt>Api</dt><dd>
+         
+    </dd><dt>See</dt><dd><a href="../files/
+                         phpcr.src.PHPCR.SessionInterface.html#\PHPCR\SessionInterface::removeItem(String)">\PHPCR\SessionInterface::removeItem(String)</a>
+         
+    </dd></dl></div><div class="clear"></div></div></div></div></div><small class="footer">
+            Documentation was generated by
+            <a href="http://phpdoc.org">phpDocumentor
+                2.0.0a10</a>.
+        </small></body></html>

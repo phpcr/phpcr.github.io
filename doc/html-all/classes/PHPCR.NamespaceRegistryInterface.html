@@ -1,0 +1,506 @@
+<!DOCTYPE html><html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+<meta charset="utf-8">
+<title>PHPCR API and PHPCR-Utils » \PHPCR\NamespaceRegistryInterface</title>
+<meta name="author" content="Mike van Riel">
+<meta name="description" content="">
+<link href="../css/template.css" rel="stylesheet" media="all">
+<script src="../js/jquery-1.7.1.min.js" type="text/javascript"></script><script src="../js/jquery-ui-1.8.2.custom.min.js" type="text/javascript"></script><script src="../js/jquery.mousewheel.min.js" type="text/javascript"></script><script src="../js/bootstrap.js" type="text/javascript"></script><script src="../js/template.js" type="text/javascript"></script><script src="../js/prettify/prettify.min.js" type="text/javascript"></script><link rel="shortcut icon" href="../img/favicon.ico">
+<link rel="apple-touch-icon" href="../img/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="72x72" href="../img/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="114x114" href="../img/apple-touch-icon-114x114.png">
+</head>
+<body>
+<div class="navbar navbar-fixed-top">
+<div class="navbar-inner"><div class="container">
+<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a><a class="brand" href="../index.html">PHPCR API and PHPCR-Utils</a><div class="nav-collapse"><ul class="nav">
+<li class="dropdown">
+<a href="#api" class="dropdown-toggle" data-toggle="dropdown">
+                                    API Documentation <b class="caret"></b></a><ul class="dropdown-menu">
+<li><a>Namespaces</a></li>
+<li><a href="../namespaces/PHPCR.html"><i class="icon-th"></i> PHPCR</a></li>
+<li><a>Packages</a></li>
+<li><a href="../packages/Default.html"><i class="icon-folder-open"></i> Default</a></li>
+<li><a href="../packages/phpcr.html"><i class="icon-folder-open"></i> phpcr</a></li>
+</ul>
+</li>
+<li class="dropdown" id="charts-menu">
+<a href="#charts" class="dropdown-toggle" data-toggle="dropdown">
+                                    Charts <b class="caret"></b></a><ul class="dropdown-menu"><li><a href="../graph_class.html"><i class="icon-list-alt"></i> Class hierarchy diagram</a></li></ul>
+</li>
+<li class="dropdown" id="reports-menu">
+<a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
+                                    Reports <b class="caret"></b></a><ul class="dropdown-menu">
+<li><a href="../errors.html"><i class="icon-remove-sign"></i> Errors 
+                <span class="label label-info">123</span></a></li>
+<li><a href="../markers.html"><i class="icon-map-marker"></i> Markers 
+                <ul><li>todo 
+                <span class="label label-info">12</span>
+</li></ul></a></li>
+<li><a href="../deprecated.html"><i class="icon-stop"></i> Deprecated elements 
+                <span class="label label-info">0</span></a></li>
+</ul>
+</li>
+</ul></div>
+</div></div>
+<div class="go_to_top"><a href="#___" style="color: inherit">Back to top  <i class="icon-upload icon-white"></i></a></div>
+</div>
+<div id="___" class="container">
+<noscript><div class="alert alert-warning">
+                            Javascript is disabled; several features are only available
+                            if Javascript is enabled.
+                        </div></noscript>
+<div class="row">
+<div class="span4">
+<span class="btn-group visibility" data-toggle="buttons-checkbox"><button class="btn public active" title="Show public elements">Public</button><button class="btn protected" title="Show protected elements">Protected</button><button class="btn private" title="Show private elements">Private</button><button class="btn inherited active" title="Show inherited elements">Inherited</button></span><div class="btn-group view pull-right" data-toggle="buttons-radio">
+<button class="btn details" title="Show descriptions and method names"><i class="icon-list"></i></button><button class="btn simple" title="Show only method names"><i class="icon-align-justify"></i></button>
+</div>
+<ul class="side-nav nav nav-list">
+<li class="nav-header">
+<i class="icon-custom icon-method"></i> Methods
+                    <ul>
+<li class="method public "><a href="#method_getPrefix" title="getPrefix :: Returns the prefix which is mapped to the given uri."><span class="description">Returns the prefix which is mapped to the given uri.</span><pre>getPrefix()</pre></a></li>
+<li class="method public "><a href="#method_getPrefixes" title="getPrefixes :: Returns an array holding all currently registered namespace prefixes."><span class="description">Returns an array holding all currently registered namespace prefixes.</span><pre>getPrefixes()</pre></a></li>
+<li class="method public "><a href="#method_getURI" title="getURI :: Returns the namespace URI to which the given prefix is mapped."><span class="description">Returns the namespace URI to which the given prefix is mapped.</span><pre>getURI()</pre></a></li>
+<li class="method public "><a href="#method_getURIs" title="getURIs :: Returns an array holding all currently registered namespace URIs."><span class="description">Returns an array holding all currently registered namespace URIs.</span><pre>getURIs()</pre></a></li>
+<li class="method public "><a href="#method_registerNamespace" title="registerNamespace :: Sets a one-to-one mapping between prefix and uri in the global namespace
+registry of this repository."><span class="description">Sets a one-to-one mapping between prefix and uri in the global namespace
+registry of this repository.</span><pre>registerNamespace()</pre></a></li>
+<li class="method public "><a href="#method_unregisterNamespace" title="unregisterNamespace :: Removes a namespace mapping from the registry."><span class="description">Removes a namespace mapping from the registry.</span><pre>unregisterNamespace()</pre></a></li>
+</ul>
+</li>
+<li class="nav-header">
+<i class="icon-custom icon-constant"></i> Constants
+                    <ul>
+<li class="constant  "><a href="#constant_NAMESPACE_EMPTY" title='NAMESPACE_EMPTY :: A constant for the predefined namespace mapped by default to the prefix "" (the empty prefix)'><span class="description">A constant for the predefined namespace mapped by default to the prefix "" (the empty prefix)</span><pre>NAMESPACE_EMPTY</pre></a></li>
+<li class="constant  "><a href="#constant_NAMESPACE_JCR" title='NAMESPACE_JCR :: A constant for the predefined namespace mapped by default to the prefix "jcr"'><span class="description">A constant for the predefined namespace mapped by default to the prefix "jcr"</span><pre>NAMESPACE_JCR</pre></a></li>
+<li class="constant  "><a href="#constant_NAMESPACE_MIX" title='NAMESPACE_MIX :: A constant for the predefined namespace mapped by default to the prefix "mix"'><span class="description">A constant for the predefined namespace mapped by default to the prefix "mix"</span><pre>NAMESPACE_MIX</pre></a></li>
+<li class="constant  "><a href="#constant_NAMESPACE_NT" title='NAMESPACE_NT :: A constant for the predefined namespace mapped by default to the prefix "nt"'><span class="description">A constant for the predefined namespace mapped by default to the prefix "nt"</span><pre>NAMESPACE_NT</pre></a></li>
+<li class="constant  "><a href="#constant_NAMESPACE_SV" title='NAMESPACE_SV :: A constant for the predefined namespace mapped by default to the prefix "sv"'><span class="description">A constant for the predefined namespace mapped by default to the prefix "sv"</span><pre>NAMESPACE_SV</pre></a></li>
+<li class="constant  "><a href="#constant_NAMESPACE_XML" title='NAMESPACE_XML :: A constant for the predefined namespace mapped by default to the prefix "xml"'><span class="description">A constant for the predefined namespace mapped by default to the prefix "xml"</span><pre>NAMESPACE_XML</pre></a></li>
+<li class="constant  "><a href="#constant_PREFIX_EMPTY" title='PREFIX_EMPTY :: A constant for the predefined namespace prefix "" (the empty prefix).'><span class="description">A constant for the predefined namespace prefix "" (the empty prefix).</span><pre>PREFIX_EMPTY</pre></a></li>
+<li class="constant  "><a href="#constant_PREFIX_JCR" title='PREFIX_JCR :: A constant for the predefined namespace prefix "jcr".'><span class="description">A constant for the predefined namespace prefix "jcr".</span><pre>PREFIX_JCR</pre></a></li>
+<li class="constant  "><a href="#constant_PREFIX_MIX" title='PREFIX_MIX :: A constant for the predefined namespace prefix "mix".'><span class="description">A constant for the predefined namespace prefix "mix".</span><pre>PREFIX_MIX</pre></a></li>
+<li class="constant  "><a href="#constant_PREFIX_NT" title='PREFIX_NT :: A constant for the predefined namespace prefix "nt".'><span class="description">A constant for the predefined namespace prefix "nt".</span><pre>PREFIX_NT</pre></a></li>
+<li class="constant  "><a href="#constant_PREFIX_SV" title='PREFIX_SV :: A constant for the predefined namespace prefix "sv"'><span class="description">A constant for the predefined namespace prefix "sv"</span><pre>PREFIX_SV</pre></a></li>
+<li class="constant  "><a href="#constant_PREFIX_XML" title='PREFIX_XML :: A constant for the predefined namespace prefix "xml".'><span class="description">A constant for the predefined namespace prefix "xml".</span><pre>PREFIX_XML</pre></a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="span8">
+<a id="\PHPCR\NamespaceRegistryInterface"></a><ul class="breadcrumb">
+<li>
+<a href="../index.html"><i class="icon-custom icon-class"></i></a><span class="divider">\</span>
+</li>
+<li><a href="../namespaces/PHPCR.html">PHPCR</a></li>
+<li class="active">
+<span class="divider">\</span><a href="../classes/PHPCR.NamespaceRegistryInterface.html">NamespaceRegistryInterface</a>
+</li>
+</ul>
+<div class="element interface">
+<p class="short_description">Defines an interface to implement a single namespace registry.</p>
+<div class="details">
+<div class="long_description"><p>Each repository has a single, persistent namespace registry represented by
+the NamespaceRegistry object, accessed via WorkspaceInterface::getNamespaceRegistry().
+The namespace registry contains the default prefixes of the registered
+namespaces. The namespace registry may contain namespaces that are not used
+in repository content, and there may be repository content with namespaces
+that are not included n the registry.</p>
+
+<p>The \Traversable interface enables the implementation to be addressed with
+<b>foreach</b>. NamespaceRegistry has to implement either \IteratorAggregate
+or \Iterator.
+The iterator lets you iterate over all namespaces, with the prefixes as keys
+and corresponding url as value.</p></div>
+<table class="table table-bordered">
+<tr>
+<th>package</th>
+<td><a href="../packages/phpcr.interfaces.html">phpcr</a></td>
+</tr>
+<tr>
+<th>subpackage</th>
+<td>interfaces</td>
+</tr>
+<tr>
+<th>api</th>
+<td></td>
+</tr>
+</table>
+<h3>
+<i class="icon-custom icon-method"></i> Methods</h3>
+<a id="method_getPrefix"></a><div class="element clickable method public method_getPrefix" data-toggle="collapse" data-target=".method_getPrefix .collapse">
+<h2>Returns the prefix which is mapped to the given uri.</h2>
+<pre>getPrefix(string $uri) : string</pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$uri</h4>
+<code>string</code><p>a string</p></div>
+<h3>Exceptions</h3>
+<table class="table table-bordered">
+<tr>
+<th><code><a href="../classes/PHPCR.NamespaceException.html">\PHPCR\NamespaceException</a></code></th>
+<td>if a mapping with the specified uri
+     does not exist.</td>
+</tr>
+<tr>
+<th><code><a href="../classes/PHPCR.RepositoryException.html">\PHPCR\RepositoryException</a></code></th>
+<td>if another error occurs</td>
+</tr>
+</table>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>string</code>a string</div>
+</div></div>
+</div>
+<a id="method_getPrefixes"></a><div class="element clickable method public method_getPrefixes" data-toggle="collapse" data-target=".method_getPrefixes .collapse">
+<h2>Returns an array holding all currently registered namespace prefixes.</h2>
+<pre>getPrefixes() : array</pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+<h3>Exceptions</h3>
+<table class="table table-bordered"><tr>
+<th><code><a href="../classes/PHPCR.RepositoryException.html">\PHPCR\RepositoryException</a></code></th>
+<td>if an error occurs.</td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>array</code>a string array</div>
+</div></div>
+</div>
+<a id="method_getURI"></a><div class="element clickable method public method_getURI" data-toggle="collapse" data-target=".method_getURI .collapse">
+<h2>Returns the namespace URI to which the given prefix is mapped.</h2>
+<pre>getURI(string $prefix) : string</pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$prefix</h4>
+<code>string</code><p>a string</p></div>
+<h3>Exceptions</h3>
+<table class="table table-bordered">
+<tr>
+<th><code><a href="../classes/PHPCR.NamespaceException.html">\PHPCR\NamespaceException</a></code></th>
+<td>if a mapping with the specified prefix
+     does not exist.</td>
+</tr>
+<tr>
+<th><code><a href="../classes/PHPCR.RepositoryException.html">\PHPCR\RepositoryException</a></code></th>
+<td>if another error occurs</td>
+</tr>
+</table>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>string</code>a string</div>
+</div></div>
+</div>
+<a id="method_getURIs"></a><div class="element clickable method public method_getURIs" data-toggle="collapse" data-target=".method_getURIs .collapse">
+<h2>Returns an array holding all currently registered namespace URIs.</h2>
+<pre>getURIs() : array</pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+<h3>Exceptions</h3>
+<table class="table table-bordered"><tr>
+<th><code><a href="../classes/PHPCR.RepositoryException.html">\PHPCR\RepositoryException</a></code></th>
+<td>if an error occurs.</td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>array</code>a string array</div>
+</div></div>
+</div>
+<a id="method_registerNamespace"></a><div class="element clickable method public method_registerNamespace" data-toggle="collapse" data-target=".method_registerNamespace .collapse">
+<h2>Sets a one-to-one mapping between prefix and uri in the global namespace
+registry of this repository.</h2>
+<pre>registerNamespace(string $prefix, string $uri) : void</pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>Assigning a new prefix to a URI that already exists in the namespace
+registry erases the old prefix. In general this can almost always be
+done, though an implementation is free to prevent particular
+remappings by throwing a NamespaceException.</p>
+
+<p>On the other hand, taking a prefix that is already assigned to a URI
+and re-assigning it to a new URI in effect unregisters that URI.
+Therefore, the same restrictions apply to this operation as to
+NamespaceRegistryInterface::unregisterNamespace():</p>
+
+<ul>
+<li>Attempting to re-assign a built-in prefix (jcr, nt, mix, sv, xml,
+or the empty prefix) to a new URI will throw a
+NamespaceException.</li>
+<li>Attempting to register a namespace with a prefix that begins with
+the characters "xml" (in any combination of case) will throw a
+NamespaceException.</li>
+<li>An implementation may prevent the re-assignment of any other namespace
+prefixes for implementation-specific reasons by throwing a
+NamespaceException.</li>
+</ul></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$prefix</h4>
+<code>string</code><p>The prefix to be mapped.</p></div>
+<div class="subelement argument">
+<h4>$uri</h4>
+<code>string</code><p>The URI to be mapped.</p></div>
+<h3>Exceptions</h3>
+<table class="table table-bordered">
+<tr>
+<th><code><a href="../classes/PHPCR.NamespaceException.html">\PHPCR\NamespaceException</a></code></th>
+<td>If an attempt is made to re-assign a
+     built-in prefix to a new URI or, to register a namespace with a
+     prefix that begins with the characters "xml" (in any combination of
+     case) or an attempt is made to perform a prefix re-assignment that
+     is forbidden for implementation-specific reasons.</td>
+</tr>
+<tr>
+<th><code><a href="../classes/PHPCR.UnsupportedRepositoryOperationException.html">\PHPCR\UnsupportedRepositoryOperationException</a></code></th>
+<td>if this
+     repository does not support namespace registry changes.</td>
+</tr>
+<tr>
+<th><code><a href="../classes/PHPCR.AccessDeniedException.html">\PHPCR\AccessDeniedException</a></code></th>
+<td>if the current session does not
+     have sufficient access to register the namespace.</td>
+</tr>
+<tr>
+<th><code><a href="../classes/PHPCR.RepositoryException.html">\PHPCR\RepositoryException</a></code></th>
+<td>if another error occurs.</td>
+</tr>
+</table>
+</div></div>
+</div>
+<a id="method_unregisterNamespace"></a><div class="element clickable method public method_unregisterNamespace" data-toggle="collapse" data-target=".method_unregisterNamespace .collapse">
+<h2>Removes a namespace mapping from the registry.</h2>
+<pre>unregisterNamespace(string $prefix) : void</pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>The following restrictions apply:</p>
+
+<ul>
+<li>Attempting to unregister a built-in namespace (jcr, nt, mix, sv, xml or
+the empty namespace) will throw a NamespaceException.</li>
+<li>An attempt to unregister a namespace that is not currently registered
+will throw a NamespaceException.</li>
+<li>An implementation may prevent the unregistering of any other namespace
+for implementation-specific reasons by throwing a
+NamespaceException.</li>
+</ul></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$prefix</h4>
+<code>string</code><p>The prefix of the mapping to be removed.</p></div>
+<h3>Exceptions</h3>
+<table class="table table-bordered">
+<tr>
+<th><code><a href="../classes/PHPCR.NamespaceException.html">\PHPCR\NamespaceException</a></code></th>
+<td>unregister a built-in namespace or a
+     namespace that is not currently registered or a namespace whose
+     unregistration is forbidden for implementation-specific reasons.</td>
+</tr>
+<tr>
+<th><code><a href="../classes/PHPCR.UnsupportedRepositoryOperationException.html">\PHPCR\UnsupportedRepositoryOperationException</a></code></th>
+<td>if this
+     repository does not support namespace registry changes.</td>
+</tr>
+<tr>
+<th><code><a href="../classes/PHPCR.AccessDeniedException.html">\PHPCR\AccessDeniedException</a></code></th>
+<td>if the current session does not
+     have sufficient access to unregister the namespace.</td>
+</tr>
+<tr>
+<th><code><a href="../classes/PHPCR.RepositoryException.html">\PHPCR\RepositoryException</a></code></th>
+<td>if another error occurs.</td>
+</tr>
+</table>
+</div></div>
+</div>
+<h3>
+<i class="icon-custom icon-constant"></i> Constants</h3>
+<a id="constant_NAMESPACE_EMPTY"> </a><div class="element clickable constant  constant_NAMESPACE_EMPTY" data-toggle="collapse" data-target=".constant_NAMESPACE_EMPTY .collapse">
+<h2>A constant for the predefined namespace mapped by default to the prefix "" (the empty prefix)</h2>
+<pre>NAMESPACE_EMPTY </pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+</div></div>
+</div>
+<a id="constant_NAMESPACE_JCR"> </a><div class="element clickable constant  constant_NAMESPACE_JCR" data-toggle="collapse" data-target=".constant_NAMESPACE_JCR .collapse">
+<h2>A constant for the predefined namespace mapped by default to the prefix "jcr"</h2>
+<pre>NAMESPACE_JCR </pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+</div></div>
+</div>
+<a id="constant_NAMESPACE_MIX"> </a><div class="element clickable constant  constant_NAMESPACE_MIX" data-toggle="collapse" data-target=".constant_NAMESPACE_MIX .collapse">
+<h2>A constant for the predefined namespace mapped by default to the prefix "mix"</h2>
+<pre>NAMESPACE_MIX </pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+</div></div>
+</div>
+<a id="constant_NAMESPACE_NT"> </a><div class="element clickable constant  constant_NAMESPACE_NT" data-toggle="collapse" data-target=".constant_NAMESPACE_NT .collapse">
+<h2>A constant for the predefined namespace mapped by default to the prefix "nt"</h2>
+<pre>NAMESPACE_NT </pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+</div></div>
+</div>
+<a id="constant_NAMESPACE_SV"> </a><div class="element clickable constant  constant_NAMESPACE_SV" data-toggle="collapse" data-target=".constant_NAMESPACE_SV .collapse">
+<h2>A constant for the predefined namespace mapped by default to the prefix "sv"</h2>
+<pre>NAMESPACE_SV </pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+</div></div>
+</div>
+<a id="constant_NAMESPACE_XML"> </a><div class="element clickable constant  constant_NAMESPACE_XML" data-toggle="collapse" data-target=".constant_NAMESPACE_XML .collapse">
+<h2>A constant for the predefined namespace mapped by default to the prefix "xml"</h2>
+<pre>NAMESPACE_XML </pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+</div></div>
+</div>
+<a id="constant_PREFIX_EMPTY"> </a><div class="element clickable constant  constant_PREFIX_EMPTY" data-toggle="collapse" data-target=".constant_PREFIX_EMPTY .collapse">
+<h2>A constant for the predefined namespace prefix "" (the empty prefix).</h2>
+<pre>PREFIX_EMPTY </pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+</div></div>
+</div>
+<a id="constant_PREFIX_JCR"> </a><div class="element clickable constant  constant_PREFIX_JCR" data-toggle="collapse" data-target=".constant_PREFIX_JCR .collapse">
+<h2>A constant for the predefined namespace prefix "jcr".</h2>
+<pre>PREFIX_JCR </pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+</div></div>
+</div>
+<a id="constant_PREFIX_MIX"> </a><div class="element clickable constant  constant_PREFIX_MIX" data-toggle="collapse" data-target=".constant_PREFIX_MIX .collapse">
+<h2>A constant for the predefined namespace prefix "mix".</h2>
+<pre>PREFIX_MIX </pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+</div></div>
+</div>
+<a id="constant_PREFIX_NT"> </a><div class="element clickable constant  constant_PREFIX_NT" data-toggle="collapse" data-target=".constant_PREFIX_NT .collapse">
+<h2>A constant for the predefined namespace prefix "nt".</h2>
+<pre>PREFIX_NT </pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+</div></div>
+</div>
+<a id="constant_PREFIX_SV"> </a><div class="element clickable constant  constant_PREFIX_SV" data-toggle="collapse" data-target=".constant_PREFIX_SV .collapse">
+<h2>A constant for the predefined namespace prefix "sv"</h2>
+<pre>PREFIX_SV </pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+</div></div>
+</div>
+<a id="constant_PREFIX_XML"> </a><div class="element clickable constant  constant_PREFIX_XML" data-toggle="collapse" data-target=".constant_PREFIX_XML .collapse">
+<h2>A constant for the predefined namespace prefix "xml".</h2>
+<pre>PREFIX_XML </pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+</div></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="row"><footer class="span12">
+            Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
+            Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a10</a> and<br>
+            generated on 2012-10-02T11:32:34+02:00.<br></footer></div>
+</div>
+</body>
+</html>

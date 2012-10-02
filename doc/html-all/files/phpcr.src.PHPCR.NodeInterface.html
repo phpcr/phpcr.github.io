@@ -1,0 +1,721 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><title>PHPCR API and PHPCR-Utils</title><meta http-equiv="Content-Type" content="text/html; charset=utf-8"></meta><link rel="stylesheet" href="../css/template.css" type="text/css"></link><script type="text/javascript" src="../js/jquery-1.4.2.min.js"></script><script type="text/javascript" src="../js/jquery.tools.min.js"></script><script type="text/javascript" src="../js/jquery-ui-1.8.2.custom.min.js"></script><script type="text/javascript" src="../js/template.js"></script></head><body><div id="content"><h1 class="file">phpcr/src/PHPCR/NodeInterface.php</h1><div id="file-nav-box"><div id="file-nav-options">
+              Show:
+              <img src="../images/icons/visibility_public.png" alt="Public" id="show-public"></img><img src="../images/icons/visibility_protected.png" alt="Protected" id="show-protected"></img><img src="../images/icons/visibility_private.png" alt="Private" id="show-private"></img><span class="attribute" id="show-inherited">inherited</span></div><div id="file-nav-container"><ul id="file-nav"></ul><div style="clear: left;"></div></div><div id="file-nav-tab">
+              Table of Contents
+          </div></div><a name="top" class="anchor"></a><div id="file-description"><div class="short-description">This file is part of the PHPCR API and was originally ported from the Java
+JCR API to PHP by Karsten Dambekalns for the FLOW3 project.</div><div class="long-description"><p>Copyright 2008-2011 Karsten Dambekalns <a href="&#109;&#x61;&#x69;&#108;&#116;&#x6f;&#58;&#107;&#x61;&#114;&#115;&#x74;e&#110;&#x40;&#x74;&#121;&#x70;&#x6f;&#51;&#46;&#x6f;&#114;&#103;">&#107;&#x61;&#114;&#115;&#x74;e&#110;&#x40;&#x74;&#121;&#x70;&#x6f;&#51;&#46;&#x6f;&#114;&#103;</a></p>
+
+<p>Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at</p>
+
+<pre><code>http://www.apache.org/licenses/LICENSE-2.0
+</code></pre>
+
+<p>Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.</p></div></div><dl class="file-info"><dt>License</dt><dd><a href="http://www.apache.org/licenses/LICENSE-2.0">Apache Software License 2.0</a>
+         
+    </dd><dt>Link</dt><dd><a href="http://phpcr.github.com/">http://phpcr.github.com/</a>
+         
+    </dd></dl><a name="interfaces" class="anchor"></a><a id="\PHPCR\NodeInterface" class="anchor"></a><h2 class="interface">\PHPCR\NodeInterface<div class="to-top"><a href="#top">jump to top</a></div></h2><div class="class"><small class="package"><b>Package: </b>phpcr\interfaces</small><div class="short-description">The Node interface represents a node in a workspace.</div><div class="long-description"><p>The \Traversable interface enables the implementation to be addressed with
+<b>foreach</b>. Nodes have to implement either \IteratorAggregate or
+\Iterator.
+The iterator is equivalent to <b>getNodes()</b> with no filter, returning
+a list of all child nodes. Keys are the node names, values the node
+instances.</p></div><dl class="class-info"><dt>Parent(s)</dt><dd><a href="../files/phpcr.src.PHPCR.ItemInterface.html#\PHPCR\ItemInterface">\PHPCR\ItemInterface</a></dd><dt>Children</dt><dd><a href="../files/phpcr.src.PHPCR.Version.VersionInterface.html#\PHPCR\Version\VersionInterface">\PHPCR\Version\VersionInterface</a></dd><dd><a href="../files/phpcr.src.PHPCR.Version.VersionHistoryInterface.html#\PHPCR\Version\VersionHistoryInterface">\PHPCR\Version\VersionHistoryInterface</a></dd><dt>Api</dt><dd>
+         
+    </dd></dl><h3>Constants</h3><div><a id="\PHPCR\NodeInterface::JCR_CONTENT" class="anchor"></a><div class="constant publicC"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png" alt="&gt;"></img><img src="../images/icons/arrow_down.png" alt="V" style="display: none;"></img></a><code class="title"><img src="../images/icons/constant.png" alt="Constant"></img> 
+                <span class="highlight">JCR_CONTENT</span>
+                = "{http://www.jcp.org/jcr/1.0}content"</code><div class="description"><div class="short-description">A constant for the JCR name jcr:content.</div></div><div class="code-tabs"><div class="long-description"><p>This is the name of
+a child node declared in NodeType nt:file and a property declared in
+nt:linkedFile.</p></div><dl class="constant-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\NodeInterface::JCR_PROPERTY_DEFINITION" class="anchor"></a><div class="constant publicC"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png" alt="&gt;"></img><img src="../images/icons/arrow_down.png" alt="V" style="display: none;"></img></a><code class="title"><img src="../images/icons/constant.png" alt="Constant"></img> 
+                <span class="highlight">JCR_PROPERTY_DEFINITION</span>
+                = "{http://www.jcp.org/jcr/1.0}propertyDefinition"</code><div class="description"><div class="short-description">A constant for the node name jcr:propertyDefinition declared in nt:nodeType.</div></div><div class="code-tabs"><div class="long-description"></div><dl class="constant-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\NodeInterface::JCR_CHILD_NODE_DEFINITION" class="anchor"></a><div class="constant publicC"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png" alt="&gt;"></img><img src="../images/icons/arrow_down.png" alt="V" style="display: none;"></img></a><code class="title"><img src="../images/icons/constant.png" alt="Constant"></img> 
+                <span class="highlight">JCR_CHILD_NODE_DEFINITION</span>
+                = "{http://www.jcp.org/jcr/1.0}childNodeDefinition"</code><div class="description"><div class="short-description">A constant for the node name jcr:childNodeDefinition declared in nt:nodeType.</div></div><div class="code-tabs"><div class="long-description"></div><dl class="constant-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\NodeInterface::JCR_ROOT_VERSION" class="anchor"></a><div class="constant publicC"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png" alt="&gt;"></img><img src="../images/icons/arrow_down.png" alt="V" style="display: none;"></img></a><code class="title"><img src="../images/icons/constant.png" alt="Constant"></img> 
+                <span class="highlight">JCR_ROOT_VERSION</span>
+                = "{http://www.jcp.org/jcr/1.0}rootVersion"</code><div class="description"><div class="short-description">A constant for the node name jcr:rootVersion declared in nt:versionHistory.</div></div><div class="code-tabs"><div class="long-description"></div><dl class="constant-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\NodeInterface::JCR_VERSION_LABELS" class="anchor"></a><div class="constant publicC"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png" alt="&gt;"></img><img src="../images/icons/arrow_down.png" alt="V" style="display: none;"></img></a><code class="title"><img src="../images/icons/constant.png" alt="Constant"></img> 
+                <span class="highlight">JCR_VERSION_LABELS</span>
+                = "{http://www.jcp.org/jcr/1.0}versionLabels"</code><div class="description"><div class="short-description">A constant for the node name jcr:versionLabels declared in nt:versionHistory.</div></div><div class="code-tabs"><div class="long-description"></div><dl class="constant-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\NodeInterface::JCR_FROZEN_NODE" class="anchor"></a><div class="constant publicC"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png" alt="&gt;"></img><img src="../images/icons/arrow_down.png" alt="V" style="display: none;"></img></a><code class="title"><img src="../images/icons/constant.png" alt="Constant"></img> 
+                <span class="highlight">JCR_FROZEN_NODE</span>
+                = "{http://www.jcp.org/jcr/1.0}frozenNode"</code><div class="description"><div class="short-description">A constant for the node name jcr:frozenNode declared in nt:version.</div></div><div class="code-tabs"><div class="long-description"></div><dl class="constant-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div></div><h3>Methods</h3><div><a id="\PHPCR\NodeInterface::accept()" class="anchor"></a><div class="method public inherited_from "><a href="#" class="gripper"><img src="../images/icons/arrow_right.png"></img><img src="../images/icons/arrow_down.png" style="display: none;"></img></a><code class="title"><img src="../images/icons/method.png" alt="method" title="method"></img><img src="../images/icons/visibility_public.png" style="margin-right: 5px" alt="public"></img><span class="highlight">accept</span><span class="nb-faded-text">(<a href="../files/phpcr.src.PHPCR.ItemVisitorInterface.html#\PHPCR\ItemVisitorInterface">\PHPCR\ItemVisitorInterface</a> $visitor)</span> : void</code><div class="description"><span class="attribute">inherited</span><p class="short_description">Call the ItemVisitor::visit() method.</p><small class="inherited_from">Inherited from:
+                    <a href="../files/phpcr.src.PHPCR.ItemInterface.html#\PHPCR\ItemInterface::accept()">\PHPCR\ItemInterface::accept()</a></small></div><div class="code-tabs"><div class="long-description"><p>This is less relevant in PHP (Java had it to avoid typecasting in the
+visitor). We leave it here, to allow sanity checks or other operations
+an implementation might wants to do.</p></div><strong>Parameters</strong><table class="argument-info"><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><th>$visitor</th><td><a href="../files/phpcr.src.PHPCR.ItemVisitorInterface.html#\PHPCR\ItemVisitorInterface">\PHPCR\ItemVisitorInterface</a></td><td><em><p>The ItemVisitor to be accepted.</p></em></td></tr></table><strong>Throws</strong><table class="argument-info"><thead><tr><th>Exception</th><th>Description</th></tr></thead><tr><td><a href="../files/phpcr.src.PHPCR.RepositoryException.html#\PHPCR\RepositoryException">\PHPCR\RepositoryException</a></td><td><em>if an error occurs.</em></td></tr></table><strong>Details</strong><dl class="function-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\NodeInterface::addMixin()" class="anchor"></a><div class="method public"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png"></img><img src="../images/icons/arrow_down.png" style="display: none;"></img></a><code class="title"><img src="../images/icons/method.png" alt="method" title="method"></img><img src="../images/icons/visibility_public.png" style="margin-right: 5px" alt="public"></img><span class="highlight">addMixin</span><span class="nb-faded-text">(string $mixinName)</span> : void</code><div class="description"><p class="short_description">Adds the mixin node type named $mixinName to this node.</p></div><div class="code-tabs"><div class="long-description"><p>If this node is already of type $mixinName (either due to a previously
+added mixin or due to its primary type, through inheritance) then this
+method has no effect. Otherwise $mixinName is added to this node's
+jcr:mixinTypes property.</p>
+
+<p>Semantically, the new node type may take effect immediately, on dispatch
+or on persist. The behavior is adopted must be the same as the behavior
+adopted for NodeInterface::setPrimaryType() and the behavior that
+occurs when a node is first created.</p>
+
+<p>A ConstraintViolationException is thrown either immediately or on save
+if a conflict with another assigned mixin or the primary node type or
+for an implementation-specific reason. Implementations may differ on
+when this validation is done.</p>
+
+<p>In some implementations it may only be possible to add mixin types
+before a a node is persisted for the first time. In such cases any
+later calls to $addMixin will throw a ConstraintViolationException
+either immediately, on dispatch or on persist.</p></div><strong>Parameters</strong><table class="argument-info"><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><th>$mixinName</th><td>string</td><td><em><p>the name of the mixin node type to be added</p></em></td></tr></table><strong>Throws</strong><table class="argument-info"><thead><tr><th>Exception</th><th>Description</th></tr></thead><tr><td><a href="../files/phpcr.src.PHPCR.NodeType.NoSuchNodeTypeException.html#\PHPCR\NodeType\NoSuchNodeTypeException">\PHPCR\NodeType\NoSuchNodeTypeException</a></td><td><em>if the specified
+     mixinName is not recognized and this implementation performs this
+     validation immediately instead of waiting until save.</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.NodeType.ConstraintViolationException.html#\PHPCR\NodeType\ConstraintViolationException">\PHPCR\NodeType\ConstraintViolationException</a></td><td><em>if the specified mixin node
+     type is prevented from being assigned.</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.Version.VersionException.html#\PHPCR\Version\VersionException">\PHPCR\Version\VersionException</a></td><td><em>if this node is versionable and
+     checked-in or is non-versionable but its nearest versionable
+     ancestor is checked-in and this implementation performs this
+     validation immediately instead of waiting until save.</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.Lock.LockException.html#\PHPCR\Lock\LockException">\PHPCR\Lock\LockException</a></td><td><em>if a lock prevents the addition of the
+     mixin and this implementation performs this validation immediately
+     instead of waiting until save.</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.RepositoryException.html#\PHPCR\RepositoryException">\PHPCR\RepositoryException</a></td><td><em>if another error occurs.</em></td></tr></table><strong>Details</strong><dl class="function-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\NodeInterface::addNode()" class="anchor"></a><div class="method public"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png"></img><img src="../images/icons/arrow_down.png" style="display: none;"></img></a><code class="title"><img src="../images/icons/method.png" alt="method" title="method"></img><img src="../images/icons/visibility_public.png" style="margin-right: 5px" alt="public"></img><span class="highlight">addNode</span><span class="nb-faded-text">(string $relPath, string $primaryNodeTypeName = null)</span> : <a href="../files/phpcr.src.PHPCR.NodeInterface.html#\PHPCR\NodeInterface">\PHPCR\NodeInterface</a></code><div class="description"><p class="short_description">Creates a new node at the specified $relPath</p></div><div class="code-tabs"><div class="long-description"><p>This is session-write method, meaning that the addition of the new node
+is dispatched upon SessionInterface::save().</p>
+
+<p>The $relPath provided must not have an index on its final element,
+otherwise a RepositoryException is thrown.</p>
+
+<p>If ordering is supported by the node type of the parent node of the new
+node then the new node is appended to the end of the child node list.</p>
+
+<p>If $primaryNodeTypeName is specified, this type will be used (or a
+ConstraintViolationException thrown if this child type is not allowed).
+Otherwise the new node's primary node type will be determined by the
+child node definitions in the node types of its parent. This may occur
+either immediately, on dispatch (save, whether within or without
+transactions) or on persist (save without transactions, commit within
+a transaction), depending on the implementation.</p></div><strong>Parameters</strong><table class="argument-info"><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><th>$relPath</th><td>string</td><td><em><p>The path of the new node to be created.</p></em></td></tr><tr><th>$primaryNodeTypeName</th><td>string</td><td><em><p>The name of the primary node type of the new node. Optional.</p></em></td></tr></table><strong>Returns</strong><table class="argument-info"><thead><tr><th>Type</th><th>Description</th></tr></thead><tr><td><a href="../files/phpcr.src.PHPCR.NodeInterface.html#\PHPCR\NodeInterface">\PHPCR\NodeInterface</a></td><td>The node that was added.</td></tr></table><strong>Throws</strong><table class="argument-info"><thead><tr><th>Exception</th><th>Description</th></tr></thead><tr><td><a href="../files/phpcr.src.PHPCR.ItemExistsException.html#\PHPCR\ItemExistsException">\PHPCR\ItemExistsException</a></td><td><em>if an item at the specified path
+     already exists, same-name siblings are not allowed and this
+     implementation performs this validation immediately.</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.PathNotFoundException.html#\PHPCR\PathNotFoundException">\PHPCR\PathNotFoundException</a></td><td><em>if the specified path implies
+     intermediary Nodes that do not exist or the last element of relPath
+     has an index, and this implementation performs this validation
+     immediately.</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.NodeType.ConstraintViolationException.html#\PHPCR\NodeType\ConstraintViolationException">\PHPCR\NodeType\ConstraintViolationException</a></td><td><em>if a node type or
+     implementation-specific constraint is violated or if an attempt is
+     made to add a node as the child of a property and this
+     implementation performs this validation immediately.</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.Version.VersionException.html#\PHPCR\Version\VersionException">\PHPCR\Version\VersionException</a></td><td><em>if the node to which the new
+     child is being added is read-only due to a checked-in node and this
+     implementation performs this validation immediately.</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.Lock.LockException.html#\PHPCR\Lock\LockException">\PHPCR\Lock\LockException</a></td><td><em>if a lock prevents the addition of the
+     node and this implementation performs this validation immediately
+     instead of waiting until save.</em></td></tr><tr><td><a href="../files/http://php.net/manual/en/class.invalidargumentexception.php">\InvalidArgumentException</a></td><td><em>if $relPath is an absolute path</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.RepositoryException.html#\PHPCR\RepositoryException">\PHPCR\RepositoryException</a></td><td><em>if the last element of relPath has an
+     index or if another error occurs.</em></td></tr></table><strong>Details</strong><dl class="function-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\NodeInterface::canAddMixin()" class="anchor"></a><div class="method public"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png"></img><img src="../images/icons/arrow_down.png" style="display: none;"></img></a><code class="title"><img src="../images/icons/method.png" alt="method" title="method"></img><img src="../images/icons/visibility_public.png" style="margin-right: 5px" alt="public"></img><span class="highlight">canAddMixin</span><span class="nb-faded-text">(string $mixinName)</span> : boolean</code><div class="description"><p class="short_description">Determine if a mixin node type may be added to the current node.</p></div><div class="code-tabs"><div class="long-description"><p>Returns true if the specified mixin node type called $mixinName can be
+added to this node. Returns false otherwise. A result of false must be
+returned in each of the following cases:</p>
+
+<ul>
+<li>The mixin's definition conflicts with an existing primary or mixin
+node type of this node.</li>
+<li>This node is versionable and checked-in or is non-versionable and
+its nearest versionable ancestor is checked-in.</li>
+<li>This node is protected (as defined in this node's NodeDefinition,
+found in the node type of this node's parent).</li>
+<li>An access control restriction would prevent the addition of the mixin.</li>
+<li>A lock would prevent the addition of the mixin.</li>
+<li>An implementation-specific restriction would prevent the addition of
+the mixin.</li>
+</ul></div><strong>Parameters</strong><table class="argument-info"><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><th>$mixinName</th><td>string</td><td><em><p>The name of the mixin to be tested.</p></em></td></tr></table><strong>Returns</strong><table class="argument-info"><thead><tr><th>Type</th><th>Description</th></tr></thead><tr><td>boolean</td><td>true if the specified mixin node type, mixinName, can be
+     added to this node; false otherwise.</td></tr></table><strong>Throws</strong><table class="argument-info"><thead><tr><th>Exception</th><th>Description</th></tr></thead><tr><td><a href="../files/phpcr.src.PHPCR.NodeType.NoSuchNodeTypeException.html#\PHPCR\NodeType\NoSuchNodeTypeException">\PHPCR\NodeType\NoSuchNodeTypeException</a></td><td><em>if the specified mixin
+     node type name is not recognized.</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.RepositoryException.html#\PHPCR\RepositoryException">\PHPCR\RepositoryException</a></td><td><em>if another error occurs.</em></td></tr></table><strong>Details</strong><dl class="function-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\NodeInterface::followLifecycleTransition()" class="anchor"></a><div class="method public"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png"></img><img src="../images/icons/arrow_down.png" style="display: none;"></img></a><code class="title"><img src="../images/icons/method.png" alt="method" title="method"></img><img src="../images/icons/visibility_public.png" style="margin-right: 5px" alt="public"></img><span class="highlight">followLifecycleTransition</span><span class="nb-faded-text">(string $transition)</span> : void</code><div class="description"><p class="short_description">Causes the lifecycle state of this node to undergo the specified
+transition.</p></div><div class="code-tabs"><div class="long-description"><p>This method may change the value of the jcr:currentLifecycleState
+property, in most cases it is expected that the implementation will
+change the value to that of the passed transition parameter, though this
+is an implementation-specific issue. If the jcr:currentLifecycleState
+property is changed the change is persisted immediately, there is no
+need to call save.</p></div><strong>Parameters</strong><table class="argument-info"><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><th>$transition</th><td>string</td><td><em><p>a state transition</p></em></td></tr></table><strong>Throws</strong><table class="argument-info"><thead><tr><th>Exception</th><th>Description</th></tr></thead><tr><td><a href="../files/phpcr.src.PHPCR.UnsupportedRepositoryOperationException.html#\PHPCR\UnsupportedRepositoryOperationException">\PHPCR\UnsupportedRepositoryOperationException</a></td><td><em>if this
+     implementation does not support lifecycle actions or if this node
+     does not have the mix:lifecycle mixin.</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.InvalidLifecycleTransitionException.html#\PHPCR\InvalidLifecycleTransitionException">\PHPCR\InvalidLifecycleTransitionException</a></td><td><em>if the lifecycle
+     transition is not successful.</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.RepositoryException.html#\PHPCR\RepositoryException">\PHPCR\RepositoryException</a></td><td><em>if another error occurs.</em></td></tr></table><strong>Details</strong><dl class="function-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\NodeInterface::getAllowedLifecycleTransitions()" class="anchor"></a><div class="method public"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png"></img><img src="../images/icons/arrow_down.png" style="display: none;"></img></a><code class="title"><img src="../images/icons/method.png" alt="method" title="method"></img><img src="../images/icons/visibility_public.png" style="margin-right: 5px" alt="public"></img><span class="highlight">getAllowedLifecycleTransitions</span><span class="nb-faded-text">()</span> : array</code><div class="description"><p class="short_description">Returns the list of valid state transitions for this node.</p></div><div class="code-tabs"><div class="long-description"></div><strong>Returns</strong><table class="argument-info"><thead><tr><th>Type</th><th>Description</th></tr></thead><tr><td>array</td><td>a string array.</td></tr></table><strong>Throws</strong><table class="argument-info"><thead><tr><th>Exception</th><th>Description</th></tr></thead><tr><td><a href="../files/phpcr.src.PHPCR.UnsupportedRepositoryOperationException.html#\PHPCR\UnsupportedRepositoryOperationException">\PHPCR\UnsupportedRepositoryOperationException</a></td><td><em>if this
+     implementation does not support lifecycle actions or if this node
+     does not have the mix:lifecycle mixin.</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.RepositoryException.html#\PHPCR\RepositoryException">\PHPCR\RepositoryException</a></td><td><em>if another error occurs.</em></td></tr></table><strong>Details</strong><dl class="function-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\NodeInterface::getAncestor()" class="anchor"></a><div class="method public inherited_from "><a href="#" class="gripper"><img src="../images/icons/arrow_right.png"></img><img src="../images/icons/arrow_down.png" style="display: none;"></img></a><code class="title"><img src="../images/icons/method.png" alt="method" title="method"></img><img src="../images/icons/visibility_public.png" style="margin-right: 5px" alt="public"></img><span class="highlight">getAncestor</span><span class="nb-faded-text">(integer $depth)</span> : <a href="../files/phpcr.src.PHPCR.ItemInterface.html#\PHPCR\ItemInterface">\PHPCR\ItemInterface</a></code><div class="description"><span class="attribute">inherited</span><p class="short_description">Returns the ancestor of this Item at the specified depth.</p><small class="inherited_from">Inherited from:
+                    <a href="../files/phpcr.src.PHPCR.ItemInterface.html#\PHPCR\ItemInterface::getAncestor()">\PHPCR\ItemInterface::getAncestor()</a></small></div><div class="code-tabs"><div class="long-description"><p>An ancestor of depth x is the Item that is x levels down along the path
+from the root node to this Item.</p>
+
+<ul>
+<li>depth = 0 returns the root node of a workspace.</li>
+<li>depth = 1 returns the child of the root node along the path to this
+ Item.</li>
+<li>depth = 2 returns the grandchild of the root node along the path to
+ this Item.</li>
+<li>And so on to depth = n, where n is the depth of this Item, which
+ returns this Item itself.</li>
+</ul>
+
+<p>If this node has more than one path (i.e., if it is a descendant of a
+shared node) then the path used to define the ancestor is implementaion-
+dependent.</p></div><strong>Parameters</strong><table class="argument-info"><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><th>$depth</th><td>integer</td><td><em><p>An integer, 0 <= depth <= n where n is the depth of this Item.</p>
+</em></td></tr></table><strong>Returns</strong><table class="argument-info"><thead><tr><th>Type</th><th>Description</th></tr></thead><tr><td><a href="../files/phpcr.src.PHPCR.ItemInterface.html#\PHPCR\ItemInterface">\PHPCR\ItemInterface</a></td><td>The ancestor of this Item at the specified
+     depth.</td></tr></table><strong>Throws</strong><table class="argument-info"><thead><tr><th>Exception</th><th>Description</th></tr></thead><tr><td><a href="../files/phpcr.src.PHPCR.ItemNotFoundException.html#\PHPCR\ItemNotFoundException">\PHPCR\ItemNotFoundException</a></td><td><em>if depth < 0 or depth > n
+     where n is the depth of this item.</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.AccessDeniedException.html#\PHPCR\AccessDeniedException">\PHPCR\AccessDeniedException</a></td><td><em>if the current session does not
+     have sufficient access to retrieve the specified node.</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.RepositoryException.html#\PHPCR\RepositoryException">\PHPCR\RepositoryException</a></td><td><em>if another error occurs.</em></td></tr></table><strong>Details</strong><dl class="function-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\NodeInterface::getCorrespondingNodePath()" class="anchor"></a><div class="method public"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png"></img><img src="../images/icons/arrow_down.png" style="display: none;"></img></a><code class="title"><img src="../images/icons/method.png" alt="method" title="method"></img><img src="../images/icons/visibility_public.png" style="margin-right: 5px" alt="public"></img><span class="highlight">getCorrespondingNodePath</span><span class="nb-faded-text">(string $workspaceName)</span> : string</code><div class="description"><p class="short_description">Returns the absolute path of the node in the specified workspace that
+corresponds to this node.</p></div><div class="code-tabs"><div class="long-description"></div><strong>Parameters</strong><table class="argument-info"><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><th>$workspaceName</th><td>string</td><td><em><p>the name of the workspace.</p></em></td></tr></table><strong>Returns</strong><table class="argument-info"><thead><tr><th>Type</th><th>Description</th></tr></thead><tr><td>string</td><td>the absolute path to the corresponding node.</td></tr></table><strong>Throws</strong><table class="argument-info"><thead><tr><th>Exception</th><th>Description</th></tr></thead><tr><td><a href="../files/phpcr.src.PHPCR.ItemNotFoundException.html#\PHPCR\ItemNotFoundException">\PHPCR\ItemNotFoundException</a></td><td><em>if no corresponding node is found.</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.NoSuchWorkspaceException.html#\PHPCR\NoSuchWorkspaceException">\PHPCR\NoSuchWorkspaceException</a></td><td><em>if the workspace is unknown.</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.AccessDeniedException.html#\PHPCR\AccessDeniedException">\PHPCR\AccessDeniedException</a></td><td><em>if the current session has
+     insufficient access capabilities to perform this operation.</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.RepositoryException.html#\PHPCR\RepositoryException">\PHPCR\RepositoryException</a></td><td><em>if another error occurs.</em></td></tr></table><strong>Details</strong><dl class="function-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\NodeInterface::getDefinition()" class="anchor"></a><div class="method public"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png"></img><img src="../images/icons/arrow_down.png" style="display: none;"></img></a><code class="title"><img src="../images/icons/method.png" alt="method" title="method"></img><img src="../images/icons/visibility_public.png" style="margin-right: 5px" alt="public"></img><span class="highlight">getDefinition</span><span class="nb-faded-text">()</span> : <a href="../files/phpcr.src.PHPCR.NodeType.NodeDefinitionInterface.html#\PHPCR\NodeType\NodeDefinitionInterface">\PHPCR\NodeType\NodeDefinitionInterface</a></code><div class="description"><p class="short_description">Returns the node definition that applies to this node.</p></div><div class="code-tabs"><div class="long-description"><p>In some cases there may appear to be more than one definition that could
+apply to this node.
+However, it is assumed that upon creation of this node, a single particular
+definition was used and it is that definition that this method returns.
+How this governing definition is selected upon node creation from among
+others which may have been applicable is an implementation issue and is
+not covered by this specification. The NodeDefinition returned when this
+method is called on the root node of a workspace is also up to the
+implementation.</p></div><strong>Returns</strong><table class="argument-info"><thead><tr><th>Type</th><th>Description</th></tr></thead><tr><td><a href="../files/phpcr.src.PHPCR.NodeType.NodeDefinitionInterface.html#\PHPCR\NodeType\NodeDefinitionInterface">\PHPCR\NodeType\NodeDefinitionInterface</a></td><td>a NodeDefinition object.</td></tr></table><strong>Throws</strong><table class="argument-info"><thead><tr><th>Exception</th><th>Description</th></tr></thead><tr><td><a href="../files/phpcr.src.PHPCR.RepositoryException.html#\PHPCR\RepositoryException">\PHPCR\RepositoryException</a></td><td><em>if an error occurs.</em></td></tr></table><strong>Details</strong><dl class="function-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\NodeInterface::getDepth()" class="anchor"></a><div class="method public inherited_from "><a href="#" class="gripper"><img src="../images/icons/arrow_right.png"></img><img src="../images/icons/arrow_down.png" style="display: none;"></img></a><code class="title"><img src="../images/icons/method.png" alt="method" title="method"></img><img src="../images/icons/visibility_public.png" style="margin-right: 5px" alt="public"></img><span class="highlight">getDepth</span><span class="nb-faded-text">()</span> : integer</code><div class="description"><span class="attribute">inherited</span><p class="short_description">Returns the depth of this Item in the workspace item graph.</p><small class="inherited_from">Inherited from:
+                    <a href="../files/phpcr.src.PHPCR.ItemInterface.html#\PHPCR\ItemInterface::getDepth()">\PHPCR\ItemInterface::getDepth()</a></small></div><div class="code-tabs"><div class="long-description"><ul>
+<li>The root node returns 0.</li>
+<li>A property or child node of the root node returns 1.</li>
+<li>A property or child node of a child node of the root returns 2.</li>
+<li>And so on to this Item.</li>
+</ul></div><strong>Returns</strong><table class="argument-info"><thead><tr><th>Type</th><th>Description</th></tr></thead><tr><td>integer</td><td>The depth of this Item in the workspace item graph.</td></tr></table><strong>Throws</strong><table class="argument-info"><thead><tr><th>Exception</th><th>Description</th></tr></thead><tr><td><a href="../files/phpcr.src.PHPCR.RepositoryException.html#\PHPCR\RepositoryException">\PHPCR\RepositoryException</a></td><td><em>if an error occurs.</em></td></tr></table><strong>Details</strong><dl class="function-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\NodeInterface::getIdentifier()" class="anchor"></a><div class="method public"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png"></img><img src="../images/icons/arrow_down.png" style="display: none;"></img></a><code class="title"><img src="../images/icons/method.png" alt="method" title="method"></img><img src="../images/icons/visibility_public.png" style="margin-right: 5px" alt="public"></img><span class="highlight">getIdentifier</span><span class="nb-faded-text">()</span> : string</code><div class="description"><p class="short_description">Returns the identifier of the current node.</p></div><div class="code-tabs"><div class="long-description"><p>Applies to both referenceable and non-referenceable nodes.</p></div><strong>Returns</strong><table class="argument-info"><thead><tr><th>Type</th><th>Description</th></tr></thead><tr><td>string</td><td>the identifier of this node</td></tr></table><strong>Throws</strong><table class="argument-info"><thead><tr><th>Exception</th><th>Description</th></tr></thead><tr><td><a href="../files/phpcr.src.PHPCR.RepositoryException.html#\PHPCR\RepositoryException">\PHPCR\RepositoryException</a></td><td><em>if an error occurs.</em></td></tr></table><strong>Details</strong><dl class="function-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\NodeInterface::getIndex()" class="anchor"></a><div class="method public"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png"></img><img src="../images/icons/arrow_down.png" style="display: none;"></img></a><code class="title"><img src="../images/icons/method.png" alt="method" title="method"></img><img src="../images/icons/visibility_public.png" style="margin-right: 5px" alt="public"></img><span class="highlight">getIndex</span><span class="nb-faded-text">()</span> : integer</code><div class="description"><p class="short_description">This method returns the index of this node within the ordered set of its
+same-name sibling nodes.</p></div><div class="code-tabs"><div class="long-description"><p>This index is the one used to address same-name siblings using the
+square-bracket notation, e.g., /a[3]/b[4]. Note that the index always
+starts at 1 (not 0), for compatibility with XPath. As a result, for
+nodes that do not have same-name-siblings, this method will always
+return 1.</p></div><strong>Returns</strong><table class="argument-info"><thead><tr><th>Type</th><th>Description</th></tr></thead><tr><td>integer</td><td>The index of this node within the ordered set of its
+     same-name sibling nodes.</td></tr></table><strong>Throws</strong><table class="argument-info"><thead><tr><th>Exception</th><th>Description</th></tr></thead><tr><td><a href="../files/phpcr.src.PHPCR.RepositoryException.html#\PHPCR\RepositoryException">\PHPCR\RepositoryException</a></td><td><em>if an error occurs.</em></td></tr></table><strong>Details</strong><dl class="function-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\NodeInterface::getMixinNodeTypes()" class="anchor"></a><div class="method public"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png"></img><img src="../images/icons/arrow_down.png" style="display: none;"></img></a><code class="title"><img src="../images/icons/method.png" alt="method" title="method"></img><img src="../images/icons/visibility_public.png" style="margin-right: 5px" alt="public"></img><span class="highlight">getMixinNodeTypes</span><span class="nb-faded-text">()</span> : array</code><div class="description"><p class="short_description">Returns an array of NodeType objects representing the mixin node types
+in effect for this node.</p></div><div class="code-tabs"><div class="long-description"><p>This includes only those mixin types explicitly assigned to this node.
+It does not include mixin types inherited through the addition of
+supertypes to the primary type hierarchy or through the addition of
+supertypes to the type hierarchy of any of the declared mixin types.</p></div><strong>Returns</strong><table class="argument-info"><thead><tr><th>Type</th><th>Description</th></tr></thead><tr><td>array</td><td>of \PHPCR\NodeType\NodeTypeInterface objects.</td></tr></table><strong>Throws</strong><table class="argument-info"><thead><tr><th>Exception</th><th>Description</th></tr></thead><tr><td><a href="../files/phpcr.src.PHPCR.RepositoryException.html#\PHPCR\RepositoryException">\PHPCR\RepositoryException</a></td><td><em>if an error occurs</em></td></tr></table><strong>Details</strong><dl class="function-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\NodeInterface::getName()" class="anchor"></a><div class="method public inherited_from "><a href="#" class="gripper"><img src="../images/icons/arrow_right.png"></img><img src="../images/icons/arrow_down.png" style="display: none;"></img></a><code class="title"><img src="../images/icons/method.png" alt="method" title="method"></img><img src="../images/icons/visibility_public.png" style="margin-right: 5px" alt="public"></img><span class="highlight">getName</span><span class="nb-faded-text">()</span> : string</code><div class="description"><span class="attribute">inherited</span><p class="short_description">Returns the name of this Item in qualified form.</p><small class="inherited_from">Inherited from:
+                    <a href="../files/phpcr.src.PHPCR.ItemInterface.html#\PHPCR\ItemInterface::getName()">\PHPCR\ItemInterface::getName()</a></small></div><div class="code-tabs"><div class="long-description"><p>If this Item is the root node of the workspace, an empty string is returned.</p></div><strong>Returns</strong><table class="argument-info"><thead><tr><th>Type</th><th>Description</th></tr></thead><tr><td>string</td><td>the name of this Item in qualified form or an empty
+     string if this Item is the root node of a workspace.</td></tr></table><strong>Throws</strong><table class="argument-info"><thead><tr><th>Exception</th><th>Description</th></tr></thead><tr><td><a href="../files/phpcr.src.PHPCR.RepositoryException.html#\PHPCR\RepositoryException">\PHPCR\RepositoryException</a></td><td><em>if an error occurs.</em></td></tr></table><strong>Details</strong><dl class="function-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\NodeInterface::getNode()" class="anchor"></a><div class="method public"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png"></img><img src="../images/icons/arrow_down.png" style="display: none;"></img></a><code class="title"><img src="../images/icons/method.png" alt="method" title="method"></img><img src="../images/icons/visibility_public.png" style="margin-right: 5px" alt="public"></img><span class="highlight">getNode</span><span class="nb-faded-text">(string $relPath)</span> : <a href="../files/phpcr.src.PHPCR.NodeInterface.html#\PHPCR\NodeInterface">\PHPCR\NodeInterface</a></code><div class="description"><p class="short_description">Returns the node at relPath relative to this node.</p></div><div class="code-tabs"><div class="long-description"><p>If relPath contains a path element that refers to a node with same-name
+sibling nodes without explicitly including an index using the
+array-style notation ([x]), then the index [1] is assumed (indexing of
+same name siblings begins at 1, not 0, in order to preserve
+compatibility with XPath).</p>
+
+<p>Within the scope of a single Session object, if a Node object has been
+acquired, any subsequent call of getNode reacquiring the same node must
+return a Node object reflecting the same state as the earlier Node
+object. Whether this object is actually the same Node instance, or
+simply one wrapping the same state, is up to the implementation.</p></div><strong>Parameters</strong><table class="argument-info"><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><th>$relPath</th><td>string</td><td><em><p>The relative path of the node to retrieve.</p></em></td></tr></table><strong>Returns</strong><table class="argument-info"><thead><tr><th>Type</th><th>Description</th></tr></thead><tr><td><a href="../files/phpcr.src.PHPCR.NodeInterface.html#\PHPCR\NodeInterface">\PHPCR\NodeInterface</a></td><td>The node at relPath.</td></tr></table><strong>Throws</strong><table class="argument-info"><thead><tr><th>Exception</th><th>Description</th></tr></thead><tr><td><a href="../files/phpcr.src.PHPCR.PathNotFoundException.html#\PHPCR\PathNotFoundException">\PHPCR\PathNotFoundException</a></td><td><em>if no node exists at the specified
+     path or the current Session does not read access to the node at
+     the specified path, or if $relPath is an absolute path</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.RepositoryException.html#\PHPCR\RepositoryException">\PHPCR\RepositoryException</a></td><td><em>if another error occurs.</em></td></tr></table><strong>Details</strong><dl class="function-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\NodeInterface::getNodes()" class="anchor"></a><div class="method public"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png"></img><img src="../images/icons/arrow_down.png" style="display: none;"></img></a><code class="title"><img src="../images/icons/method.png" alt="method" title="method"></img><img src="../images/icons/visibility_public.png" style="margin-right: 5px" alt="public"></img><span class="highlight">getNodes</span><span class="nb-faded-text">(string | array $filter = null)</span> : \Iterator</code><div class="description"><p class="short_description">Get a set of nodes gathered by the definition of a filter.</p></div><div class="code-tabs"><div class="long-description"><p>If $filter is a string:
+Gets all child nodes of this node accessible through the current Session
+that match namePattern (if no pattern is given, all accessible child
+nodes are returned). Does not include properties of this Node. The
+pattern may be a full name or a partial name with one or more wildcard
+characters ("*"), or a disjunction (using the "|" character to represent
+logical OR) of these.
+For example,</p>
+
+<pre><code>N->getNodes("jcr:* | myapp:report | my doc")</code></pre>
+
+<p>would return an iterator holding all accessible child nodes of N that
+are either called 'myapp:report', begin with the prefix 'jcr:' or are
+called 'my doc'.</p>
+
+<p>The substrings within the pattern that are delimited by "|" characters
+and which may contain wildcard characters ("*") are called "globs".</p>
+
+<p>Note that leading and trailing whitespace around a glob is ignored, but
+whitespace within a disjunct forms part of the pattern to be matched.</p>
+
+<p>If $filter is an array:
+Gets all child nodes of this node accessible through the current
+Session that match one or more of the $filter strings in the passed
+array.</p>
+
+<p>A glob may be a full name or a partial name with one or more wildcard
+characters ("<em>"). For example,
+ N->getNodes(array("jcr:</em>", "myapp:report", "my doc"))
+would return an iterator holding all accessible child nodes of N that
+are either called 'myapp:report', begin with the prefix 'jcr:' or are
+called 'my doc'.</p>
+
+<p>Note that unlike in the case of the getNodes(<string>) leading and
+trailing whitespace around a glob is not ignored.</p>
+
+<p>The pattern is matched against the names (not the paths) of the
+immediate child nodes of this node.</p>
+
+<p>If this node has no accessible matching child nodes, then an empty
+iterator is returned.</p>
+
+<p>The same reacquisition semantics apply as with getNode($relPath).</p></div><strong>Parameters</strong><table class="argument-info"><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><th>$filter</th><td>string | array</td><td><em><p>a name pattern or an array of globbing strings.</p></em></td></tr></table><strong>Returns</strong><table class="argument-info"><thead><tr><th>Type</th><th>Description</th></tr></thead><tr><td>\Iterator</td><td>over all (matching) child Nodes implementing
+     &lt;b&gt;SeekableIterator&lt;/b&gt; and &lt;b&gt;Countable&lt;/b&gt;. Keys are the Node
+     names, values the corresponding NodeInterface instances.</td></tr></table><strong>Throws</strong><table class="argument-info"><thead><tr><th>Exception</th><th>Description</th></tr></thead><tr><td><a href="../files/phpcr.src.PHPCR.RepositoryException.html#\PHPCR\RepositoryException">\PHPCR\RepositoryException</a></td><td><em>if an error occurs.</em></td></tr></table><strong>Details</strong><dl class="function-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\NodeInterface::getParent()" class="anchor"></a><div class="method public inherited_from "><a href="#" class="gripper"><img src="../images/icons/arrow_right.png"></img><img src="../images/icons/arrow_down.png" style="display: none;"></img></a><code class="title"><img src="../images/icons/method.png" alt="method" title="method"></img><img src="../images/icons/visibility_public.png" style="margin-right: 5px" alt="public"></img><span class="highlight">getParent</span><span class="nb-faded-text">()</span> : <a href="../files/phpcr.src.PHPCR.NodeInterface.html#\PHPCR\NodeInterface">\PHPCR\NodeInterface</a></code><div class="description"><span class="attribute">inherited</span><p class="short_description">Returns the parent of this Item.</p><small class="inherited_from">Inherited from:
+                    <a href="../files/phpcr.src.PHPCR.ItemInterface.html#\PHPCR\ItemInterface::getParent()">\PHPCR\ItemInterface::getParent()</a></small></div><div class="code-tabs"><div class="long-description"></div><strong>Returns</strong><table class="argument-info"><thead><tr><th>Type</th><th>Description</th></tr></thead><tr><td><a href="../files/phpcr.src.PHPCR.NodeInterface.html#\PHPCR\NodeInterface">\PHPCR\NodeInterface</a></td><td>The parent of this Item.</td></tr></table><strong>Throws</strong><table class="argument-info"><thead><tr><th>Exception</th><th>Description</th></tr></thead><tr><td><a href="../files/phpcr.src.PHPCR.ItemNotFoundException.html#\PHPCR\ItemNotFoundException">\PHPCR\ItemNotFoundException</a></td><td><em>if this Item is the root node of a
+     workspace.</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.AccessDeniedException.html#\PHPCR\AccessDeniedException">\PHPCR\AccessDeniedException</a></td><td><em>if the current session does not
+     have sufficent access to retrieve the parent of this item.</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.RepositoryException.html#\PHPCR\RepositoryException">\PHPCR\RepositoryException</a></td><td><em>if another error occurs.</em></td></tr></table><strong>Details</strong><dl class="function-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\NodeInterface::getPath()" class="anchor"></a><div class="method public inherited_from "><a href="#" class="gripper"><img src="../images/icons/arrow_right.png"></img><img src="../images/icons/arrow_down.png" style="display: none;"></img></a><code class="title"><img src="../images/icons/method.png" alt="method" title="method"></img><img src="../images/icons/visibility_public.png" style="margin-right: 5px" alt="public"></img><span class="highlight">getPath</span><span class="nb-faded-text">()</span> : string</code><div class="description"><span class="attribute">inherited</span><p class="short_description">Returns the normalized absolute path to this item.</p><small class="inherited_from">Inherited from:
+                    <a href="../files/phpcr.src.PHPCR.ItemInterface.html#\PHPCR\ItemInterface::getPath()">\PHPCR\ItemInterface::getPath()</a></small></div><div class="code-tabs"><div class="long-description"></div><strong>Returns</strong><table class="argument-info"><thead><tr><th>Type</th><th>Description</th></tr></thead><tr><td>string</td><td>the normalized absolute path of this Item.</td></tr></table><strong>Throws</strong><table class="argument-info"><thead><tr><th>Exception</th><th>Description</th></tr></thead><tr><td><a href="../files/phpcr.src.PHPCR.RepositoryException.html#\PHPCR\RepositoryException">\PHPCR\RepositoryException</a></td><td><em>if an error occurs.</em></td></tr></table><strong>Details</strong><dl class="function-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\NodeInterface::getPrimaryItem()" class="anchor"></a><div class="method public"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png"></img><img src="../images/icons/arrow_down.png" style="display: none;"></img></a><code class="title"><img src="../images/icons/method.png" alt="method" title="method"></img><img src="../images/icons/visibility_public.png" style="margin-right: 5px" alt="public"></img><span class="highlight">getPrimaryItem</span><span class="nb-faded-text">()</span> : <a href="../files/phpcr.src.PHPCR.ItemInterface.html#\PHPCR\ItemInterface">\PHPCR\ItemInterface</a></code><div class="description"><p class="short_description">Returns the primary child item of the current node.</p></div><div class="code-tabs"><div class="long-description"><p>The primary node type of this node may specify one child item (child
+node or property) of this node as the primary child item. This method
+returns that item.</p>
+
+<p>In cases where the primary child item specifies the name of a set
+same-name sibling child nodes, the node returned will be the one among
+the same-name siblings with index [1].</p>
+
+<p>The same reacquisition semantics apply as with getNode(String).</p></div><strong>Returns</strong><table class="argument-info"><thead><tr><th>Type</th><th>Description</th></tr></thead><tr><td><a href="../files/phpcr.src.PHPCR.ItemInterface.html#\PHPCR\ItemInterface">\PHPCR\ItemInterface</a></td><td>the primary child item.</td></tr></table><strong>Throws</strong><table class="argument-info"><thead><tr><th>Exception</th><th>Description</th></tr></thead><tr><td><a href="../files/phpcr.src.PHPCR.ItemNotFoundException.html#\PHPCR\ItemNotFoundException">\PHPCR\ItemNotFoundException</a></td><td><em>if this node does not have a
+     primary child item, either because none is declared in the node
+     type or because a declared primary item is not present on this node
+     instance, or because none accessible through the current Session</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.RepositoryException.html#\PHPCR\RepositoryException">\PHPCR\RepositoryException</a></td><td><em>if another error occurs.</em></td></tr></table><strong>Details</strong><dl class="function-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\NodeInterface::getPrimaryNodeType()" class="anchor"></a><div class="method public"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png"></img><img src="../images/icons/arrow_down.png" style="display: none;"></img></a><code class="title"><img src="../images/icons/method.png" alt="method" title="method"></img><img src="../images/icons/visibility_public.png" style="margin-right: 5px" alt="public"></img><span class="highlight">getPrimaryNodeType</span><span class="nb-faded-text">()</span> : <a href="../files/phpcr.src.PHPCR.NodeType.NodeTypeInterface.html#\PHPCR\NodeType\NodeTypeInterface">\PHPCR\NodeType\NodeTypeInterface</a></code><div class="description"><p class="short_description">Returns the primary node type in effect for this node.</p></div><div class="code-tabs"><div class="long-description"><p>Which NodeType is returned when this method is called on the root node
+of a workspace is up to the implementation.</p></div><strong>Returns</strong><table class="argument-info"><thead><tr><th>Type</th><th>Description</th></tr></thead><tr><td><a href="../files/phpcr.src.PHPCR.NodeType.NodeTypeInterface.html#\PHPCR\NodeType\NodeTypeInterface">\PHPCR\NodeType\NodeTypeInterface</a></td><td>a NodeType object.</td></tr></table><strong>Throws</strong><table class="argument-info"><thead><tr><th>Exception</th><th>Description</th></tr></thead><tr><td><a href="../files/phpcr.src.PHPCR.RepositoryException.html#\PHPCR\RepositoryException">\PHPCR\RepositoryException</a></td><td><em>if an error occurs</em></td></tr></table><strong>Details</strong><dl class="function-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\NodeInterface::getProperties()" class="anchor"></a><div class="method public"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png"></img><img src="../images/icons/arrow_down.png" style="display: none;"></img></a><code class="title"><img src="../images/icons/method.png" alt="method" title="method"></img><img src="../images/icons/visibility_public.png" style="margin-right: 5px" alt="public"></img><span class="highlight">getProperties</span><span class="nb-faded-text">(string | array $filter = null)</span> : \Iterator</code><div class="description"><p class="short_description">Get an iteratable set of properties gathered on behalf of a filter.</p></div><div class="code-tabs"><div class="long-description"><p>If $filter is a string:
+Gets all properties of this node accessible through the current Session
+that match namePattern (if no pattern is given, all accessible
+properties are returned). Does not include child nodes of this node. The
+pattern may be a full name or a partial name with one or more wildcard
+characters ("*"), or a disjunction (using the "|" character to represent
+logical OR) of these. For example,</p>
+
+<pre><code>$n->getProperties("jcr:* | myapp:name | my doc")</code></pre>
+
+<p>would return an iterator holding all accessible properties of N
+that are either called 'myapp:name', begin with the prefix 'jcr:' or are
+called 'my doc'.</p>
+
+<p>The substrings within the pattern that are delimited by "|" characters
+and which may contain wildcard characters ("*") are called globs.</p>
+
+<p>Note that leading and trailing whitespace around a glob is ignored, but
+whitespace within a disjunct forms part of the pattern to be matched.</p>
+
+<p>If $filter is an array:
+Gets all properties of this node accessible through the current
+Session that match one or more of the $filter strings in the passed
+array.</p>
+
+<p>A glob may be a full name or a partial name with one or more wildcard
+characters ("<em>"). For example,
+ N->getProperties(array("jcr:</em>", "myapp:report", "my doc"))
+would return an iterator holding all accessible properties of N
+that are either called 'myapp:report', begin with the prefix 'jcr:' or
+are called 'my doc'.</p>
+
+<p>Note that unlike in the case of getProperties(<string>) leading and
+trailing whitespace around a glob is not ignored.</p>
+
+<p>The pattern is matched against the names (not the paths) of the
+immediate child properties of this node.</p>
+
+<p>If this node has no accessible matching properties, then an empty
+iterator is returned.</p>
+
+<p>The same reacquisition semantics apply as with getNode(String).</p></div><strong>Parameters</strong><table class="argument-info"><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><th>$filter</th><td>string | array</td><td><em><p>a name pattern</p></em></td></tr></table><strong>Returns</strong><table class="argument-info"><thead><tr><th>Type</th><th>Description</th></tr></thead><tr><td>\Iterator</td><td>implementing &lt;b&gt;SeekableIterator&lt;/b&gt; and
+     &lt;b&gt;Countable&lt;/b&gt;. Keys are the property names, values the
+     corresponding PropertyInterface instances.</td></tr></table><strong>Throws</strong><table class="argument-info"><thead><tr><th>Exception</th><th>Description</th></tr></thead><tr><td><a href="../files/phpcr.src.PHPCR.RepositoryException.html#\PHPCR\RepositoryException">\PHPCR\RepositoryException</a></td><td><em>if an error occurs.</em></td></tr></table><strong>Details</strong><dl class="function-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\NodeInterface::getPropertiesValues()" class="anchor"></a><div class="method public"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png"></img><img src="../images/icons/arrow_down.png" style="display: none;"></img></a><code class="title"><img src="../images/icons/method.png" alt="method" title="method"></img><img src="../images/icons/visibility_public.png" style="margin-right: 5px" alt="public"></img><span class="highlight">getPropertiesValues</span><span class="nb-faded-text">(string | array $filter = null, boolean $dereference = true)</span> : array</code><div class="description"><p class="short_description">Shortcut for getProperties and then getting the values of the properties.</p></div><div class="code-tabs"><div class="long-description"><p>Apart from returning php native values instead of properties, this
+method has the same semantics as getProperties()</p>
+
+<p>To improve performance, implementations should avoid instantiating the
+property objects for this method</p></div><strong>Parameters</strong><table class="argument-info"><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><th>$filter</th><td>string | array</td><td><em><p>a name pattern</p></em></td></tr><tr><th>$dereference</th><td>boolean</td><td><em><p>whether to dereference REFERENCE, WEAKREFERENCE and PATH properties or just return id/path strings</p>
+</em></td></tr></table><strong>Returns</strong><table class="argument-info"><thead><tr><th>Type</th><th>Description</th></tr></thead><tr><td>array</td><td>Keys are the property names, values the corresponding
+  property value (or array of values in case of multi-valued properties)
+  If $dereference is false, reference properties are uuid strings and
+  path properties path strings instead of the referenced node instances.</td></tr></table><strong>Throws</strong><table class="argument-info"><thead><tr><th>Exception</th><th>Description</th></tr></thead><tr><td><a href="../files/phpcr.src.PHPCR.RepositoryException.html#\PHPCR\RepositoryException">\PHPCR\RepositoryException</a></td><td><em>if an error occurs.</em></td></tr></table><strong>Details</strong><dl class="function-info"><dt>Api</dt><dd>
+         
+    </dd><dt>See</dt><dd><a href="../files/
+                         phpcr.src.PHPCR.NodeInterface.html#\PHPCR\NodeInterface::getProperties()">\PHPCR\NodeInterface::getProperties()</a>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\NodeInterface::getProperty()" class="anchor"></a><div class="method public"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png"></img><img src="../images/icons/arrow_down.png" style="display: none;"></img></a><code class="title"><img src="../images/icons/method.png" alt="method" title="method"></img><img src="../images/icons/visibility_public.png" style="margin-right: 5px" alt="public"></img><span class="highlight">getProperty</span><span class="nb-faded-text">(string $relPath)</span> : <a href="../files/phpcr.src.PHPCR.PropertyInterface.html#\PHPCR\PropertyInterface">\PHPCR\PropertyInterface</a></code><div class="description"><p class="short_description">Returns the property at relPath relative to this node.</p></div><div class="code-tabs"><div class="long-description"><p>The same reacquisition semantics apply as with getNode(String).</p></div><strong>Parameters</strong><table class="argument-info"><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><th>$relPath</th><td>string</td><td><em><p>The relative path of the property to retrieve.</p></em></td></tr></table><strong>Returns</strong><table class="argument-info"><thead><tr><th>Type</th><th>Description</th></tr></thead><tr><td><a href="../files/phpcr.src.PHPCR.PropertyInterface.html#\PHPCR\PropertyInterface">\PHPCR\PropertyInterface</a></td><td>The property at relPath.</td></tr></table><strong>Throws</strong><table class="argument-info"><thead><tr><th>Exception</th><th>Description</th></tr></thead><tr><td><a href="../files/phpcr.src.PHPCR.PathNotFoundException.html#\PHPCR\PathNotFoundException">\PHPCR\PathNotFoundException</a></td><td><em>if no property exists at the
+     specified path or if the current Session does not have read access
+     to the specified property.</em></td></tr><tr><td><a href="../files/http://php.net/manual/en/class.invalidargumentexception.php">\InvalidArgumentException</a></td><td><em>if $relPath is an absolute path</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.RepositoryException.html#\PHPCR\RepositoryException">\PHPCR\RepositoryException</a></td><td><em>if another error occurs.</em></td></tr></table><strong>Details</strong><dl class="function-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\NodeInterface::getPropertyValue()" class="anchor"></a><div class="method public"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png"></img><img src="../images/icons/arrow_down.png" style="display: none;"></img></a><code class="title"><img src="../images/icons/method.png" alt="method" title="method"></img><img src="../images/icons/visibility_public.png" style="margin-right: 5px" alt="public"></img><span class="highlight">getPropertyValue</span><span class="nb-faded-text">(string $name, integer $type = null)</span> : mixed</code><div class="description"><p class="short_description">Returns the property of this node with name $name.</p></div><div class="code-tabs"><div class="long-description"><p>If $type is set, attempts to convert the value to the specified type.
+This is a shortcut for getProperty()->getXX()</p></div><strong>Parameters</strong><table class="argument-info"><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><th>$name</th><td>string</td><td><em><p>Name of this property</p></em></td></tr><tr><th>$type</th><td>integer</td><td><em><p>Type conversion request, optional. Must be a constant from {@link PropertyType}</p>
+</em></td></tr></table><strong>Returns</strong><table class="argument-info"><thead><tr><th>Type</th><th>Description</th></tr></thead><tr><td>mixed</td><td>The value of the property with $name.</td></tr></table><strong>Throws</strong><table class="argument-info"><thead><tr><th>Exception</th><th>Description</th></tr></thead><tr><td><a href="../files/phpcr.src.PHPCR.PathNotFoundException.html#\PHPCR\PathNotFoundException">\PHPCR\PathNotFoundException</a></td><td><em>if no property exists at the
+     specified path or if the current Session does not have read access
+     to the specified property.</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.ValueFormatException.html#\PHPCR\ValueFormatException">\PHPCR\ValueFormatException</a></td><td><em>if the type or format of the
+     property can not be converted to the specified type.</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.RepositoryException.html#\PHPCR\RepositoryException">\PHPCR\RepositoryException</a></td><td><em>if another error occurs.</em></td></tr></table><strong>Details</strong><dl class="function-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\NodeInterface::getReferences()" class="anchor"></a><div class="method public"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png"></img><img src="../images/icons/arrow_down.png" style="display: none;"></img></a><code class="title"><img src="../images/icons/method.png" alt="method" title="method"></img><img src="../images/icons/visibility_public.png" style="margin-right: 5px" alt="public"></img><span class="highlight">getReferences</span><span class="nb-faded-text">(string $name = null)</span> : \Iterator</code><div class="description"><p class="short_description">This method returns all REFERENCE properties that refer to this node,
+have the specified name and that are accessible through the current
+Session.</p></div><div class="code-tabs"><div class="long-description"><p>If the name parameter is null then all referring REFERENCES are returned
+regardless of name.</p>
+
+<p>Some implementations may only return properties that have been
+persisted. Some may return both properties that have been persisted and
+those that have been dispatched but not persisted (for example, those
+saved within a transaction but not yet committed) while others
+implementations may return these two categories of property as well as
+properties that are still pending and not yet dispatched.</p>
+
+<p>In implementations that support versioning, this method does not return
+properties that are part of the frozen state of a version in version
+storage.</p>
+
+<p>If this node has no referring properties with the specified name, an
+empty iterator is returned.</p></div><strong>Parameters</strong><table class="argument-info"><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><th>$name</th><td>string</td><td><em><p>Name of referring REFERENCE properties to be returned; if null then all referring REFERENCEs are returned.</p></em></td></tr></table><strong>Returns</strong><table class="argument-info"><thead><tr><th>Type</th><th>Description</th></tr></thead><tr><td>\Iterator</td><td>implementing &lt;b&gt;SeekableIterator&lt;/b&gt; and
+     &lt;b&gt;Countable&lt;/b&gt;. Keys are the property names, values the
+     corresponding PropertyInterface instances.</td></tr></table><strong>Throws</strong><table class="argument-info"><thead><tr><th>Exception</th><th>Description</th></tr></thead><tr><td><a href="../files/phpcr.src.PHPCR.RepositoryException.html#\PHPCR\RepositoryException">\PHPCR\RepositoryException</a></td><td><em>if an error occurs</em></td></tr></table><strong>Details</strong><dl class="function-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\NodeInterface::getSession()" class="anchor"></a><div class="method public inherited_from "><a href="#" class="gripper"><img src="../images/icons/arrow_right.png"></img><img src="../images/icons/arrow_down.png" style="display: none;"></img></a><code class="title"><img src="../images/icons/method.png" alt="method" title="method"></img><img src="../images/icons/visibility_public.png" style="margin-right: 5px" alt="public"></img><span class="highlight">getSession</span><span class="nb-faded-text">()</span> : <a href="../files/phpcr.src.PHPCR.SessionInterface.html#\PHPCR\SessionInterface">\PHPCR\SessionInterface</a></code><div class="description"><span class="attribute">inherited</span><p class="short_description">Returns the Session through which this Item was acquired.</p><small class="inherited_from">Inherited from:
+                    <a href="../files/phpcr.src.PHPCR.ItemInterface.html#\PHPCR\ItemInterface::getSession()">\PHPCR\ItemInterface::getSession()</a></small></div><div class="code-tabs"><div class="long-description"></div><strong>Returns</strong><table class="argument-info"><thead><tr><th>Type</th><th>Description</th></tr></thead><tr><td><a href="../files/phpcr.src.PHPCR.SessionInterface.html#\PHPCR\SessionInterface">\PHPCR\SessionInterface</a></td><td>the Session through which this Item was
+     acquired.</td></tr></table><strong>Throws</strong><table class="argument-info"><thead><tr><th>Exception</th><th>Description</th></tr></thead><tr><td><a href="../files/phpcr.src.PHPCR.RepositoryException.html#\PHPCR\RepositoryException">\PHPCR\RepositoryException</a></td><td><em>if an error occurs.</em></td></tr></table><strong>Details</strong><dl class="function-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\NodeInterface::getSharedSet()" class="anchor"></a><div class="method public"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png"></img><img src="../images/icons/arrow_down.png" style="display: none;"></img></a><code class="title"><img src="../images/icons/method.png" alt="method" title="method"></img><img src="../images/icons/visibility_public.png" style="margin-right: 5px" alt="public"></img><span class="highlight">getSharedSet</span><span class="nb-faded-text">()</span> : \Iterator</code><div class="description"><p class="short_description">Returns an iterator over all nodes that are in the shared set of this
+node.</p></div><div class="code-tabs"><div class="long-description"><p>If this node is not shared then the returned iterator contains only this
+node.</p></div><strong>Returns</strong><table class="argument-info"><thead><tr><th>Type</th><th>Description</th></tr></thead><tr><td>\Iterator</td><td>implementing &lt;b&gt;SeekableIterator&lt;/b&gt; and
+     &lt;b&gt;Countable&lt;/b&gt;. Keys are the Node names, values the corresponding
+     NodeInterface instances.</td></tr></table><strong>Throws</strong><table class="argument-info"><thead><tr><th>Exception</th><th>Description</th></tr></thead><tr><td><a href="../files/phpcr.src.PHPCR.RepositoryException.html#\PHPCR\RepositoryException">\PHPCR\RepositoryException</a></td><td><em>if an error occurs.</em></td></tr></table><strong>Details</strong><dl class="function-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\NodeInterface::getWeakReferences()" class="anchor"></a><div class="method public"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png"></img><img src="../images/icons/arrow_down.png" style="display: none;"></img></a><code class="title"><img src="../images/icons/method.png" alt="method" title="method"></img><img src="../images/icons/visibility_public.png" style="margin-right: 5px" alt="public"></img><span class="highlight">getWeakReferences</span><span class="nb-faded-text">(string $name = null)</span> : \Iterator</code><div class="description"><p class="short_description">This method returns all WEAKREFERENCE properties that refer to this
+node, have the specified name and that are accessible through the
+current Session.</p></div><div class="code-tabs"><div class="long-description"><p>If the name parameter is null then all referring WEAKREFERENCE are
+returned regardless of name.</p>
+
+<p>Some level 2 implementations may only return properties that have been
+saved (in a transactional setting this includes both those properties
+that have been saved but not yet committed, as well as properties that
+have been committed). Other level 2 implementations may additionally
+return properties that have been added within the current Session but
+are not yet saved.</p>
+
+<p>In implementations that support versioning, this method does not return
+properties that are part of the frozen state of a version in version
+storage.</p>
+
+<p>If this node has no referring properties with the specified name, an
+empty iterator is returned.</p></div><strong>Parameters</strong><table class="argument-info"><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><th>$name</th><td>string</td><td><em><p>name of referring WEAKREFERENCE properties to be returned; if null then all referring WEAKREFERENCEs are returned</p></em></td></tr></table><strong>Returns</strong><table class="argument-info"><thead><tr><th>Type</th><th>Description</th></tr></thead><tr><td>\Iterator</td><td>implementing &lt;b&gt;SeekableIterator&lt;/b&gt; and
+     &lt;b&gt;Countable&lt;/b&gt;. Keys are the property names, values the
+     corresponding PropertyInterface instances.</td></tr></table><strong>Throws</strong><table class="argument-info"><thead><tr><th>Exception</th><th>Description</th></tr></thead><tr><td><a href="../files/phpcr.src.PHPCR.RepositoryException.html#\PHPCR\RepositoryException">\PHPCR\RepositoryException</a></td><td><em>if an error occurs</em></td></tr></table><strong>Details</strong><dl class="function-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\NodeInterface::hasNode()" class="anchor"></a><div class="method public"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png"></img><img src="../images/icons/arrow_down.png" style="display: none;"></img></a><code class="title"><img src="../images/icons/method.png" alt="method" title="method"></img><img src="../images/icons/visibility_public.png" style="margin-right: 5px" alt="public"></img><span class="highlight">hasNode</span><span class="nb-faded-text">(string $relPath)</span> : boolean</code><div class="description"><p class="short_description">Indicates whether a node exists at relPath</p></div><div class="code-tabs"><div class="long-description"><p>Returns true if a node accessible through the current Session exists at
+relPath and false otherwise.</p></div><strong>Parameters</strong><table class="argument-info"><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><th>$relPath</th><td>string</td><td><em><p>The path of a (possible) node.</p>
+</em></td></tr></table><strong>Returns</strong><table class="argument-info"><thead><tr><th>Type</th><th>Description</th></tr></thead><tr><td>boolean</td><td>true if a node exists at relPath; false otherwise.</td></tr></table><strong>Throws</strong><table class="argument-info"><thead><tr><th>Exception</th><th>Description</th></tr></thead><tr><td><a href="../files/http://php.net/manual/en/class.invalidargumentexception.php">\InvalidArgumentException</a></td><td><em>if $relPath is an absolute path</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.RepositoryException.html#\PHPCR\RepositoryException">\PHPCR\RepositoryException</a></td><td><em>if an error occurs.</em></td></tr></table><strong>Details</strong><dl class="function-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\NodeInterface::hasNodes()" class="anchor"></a><div class="method public"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png"></img><img src="../images/icons/arrow_down.png" style="display: none;"></img></a><code class="title"><img src="../images/icons/method.png" alt="method" title="method"></img><img src="../images/icons/visibility_public.png" style="margin-right: 5px" alt="public"></img><span class="highlight">hasNodes</span><span class="nb-faded-text">()</span> : boolean</code><div class="description"><p class="short_description">Indicates whether this node has any child nodes.</p></div><div class="code-tabs"><div class="long-description"><p>Returns true if this node has one or more child nodes accessible through
+the current Session; false otherwise.</p></div><strong>Returns</strong><table class="argument-info"><thead><tr><th>Type</th><th>Description</th></tr></thead><tr><td>boolean</td><td>true if this node has one or more child nodes; false
+     otherwise.</td></tr></table><strong>Throws</strong><table class="argument-info"><thead><tr><th>Exception</th><th>Description</th></tr></thead><tr><td><a href="../files/phpcr.src.PHPCR.RepositoryException.html#\PHPCR\RepositoryException">\PHPCR\RepositoryException</a></td><td><em>if an error occurs.</em></td></tr></table><strong>Details</strong><dl class="function-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\NodeInterface::hasProperties()" class="anchor"></a><div class="method public"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png"></img><img src="../images/icons/arrow_down.png" style="display: none;"></img></a><code class="title"><img src="../images/icons/method.png" alt="method" title="method"></img><img src="../images/icons/visibility_public.png" style="margin-right: 5px" alt="public"></img><span class="highlight">hasProperties</span><span class="nb-faded-text">()</span> : boolean</code><div class="description"><p class="short_description">Indicates whether this node has properties.</p></div><div class="code-tabs"><div class="long-description"><p>Returns true if this node has one or more properties accessible through
+the current Session; false otherwise.</p></div><strong>Returns</strong><table class="argument-info"><thead><tr><th>Type</th><th>Description</th></tr></thead><tr><td>boolean</td><td>true if this node has one or more properties; false
+     otherwise.</td></tr></table><strong>Throws</strong><table class="argument-info"><thead><tr><th>Exception</th><th>Description</th></tr></thead><tr><td><a href="../files/phpcr.src.PHPCR.RepositoryException.html#\PHPCR\RepositoryException">\PHPCR\RepositoryException</a></td><td><em>if an error occurs.</em></td></tr></table><strong>Details</strong><dl class="function-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\NodeInterface::hasProperty()" class="anchor"></a><div class="method public"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png"></img><img src="../images/icons/arrow_down.png" style="display: none;"></img></a><code class="title"><img src="../images/icons/method.png" alt="method" title="method"></img><img src="../images/icons/visibility_public.png" style="margin-right: 5px" alt="public"></img><span class="highlight">hasProperty</span><span class="nb-faded-text">(string $relPath)</span> : boolean</code><div class="description"><p class="short_description">Indicates whether a property exists at relPath.</p></div><div class="code-tabs"><div class="long-description"><p>Returns true if a property accessible through the current Session exists
+at relPath and false otherwise.</p></div><strong>Parameters</strong><table class="argument-info"><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><th>$relPath</th><td>string</td><td><em><p>The path of a (possible) property.</p>
+</em></td></tr></table><strong>Returns</strong><table class="argument-info"><thead><tr><th>Type</th><th>Description</th></tr></thead><tr><td>boolean</td><td>true if a property exists at relPath; false otherwise.</td></tr></table><strong>Throws</strong><table class="argument-info"><thead><tr><th>Exception</th><th>Description</th></tr></thead><tr><td><a href="../files/http://php.net/manual/en/class.invalidargumentexception.php">\InvalidArgumentException</a></td><td><em>if $relPath is an absolute path</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.RepositoryException.html#\PHPCR\RepositoryException">\PHPCR\RepositoryException</a></td><td><em>if an error occurs.</em></td></tr></table><strong>Details</strong><dl class="function-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\NodeInterface::isCheckedOut()" class="anchor"></a><div class="method public"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png"></img><img src="../images/icons/arrow_down.png" style="display: none;"></img></a><code class="title"><img src="../images/icons/method.png" alt="method" title="method"></img><img src="../images/icons/visibility_public.png" style="margin-right: 5px" alt="public"></img><span class="highlight">isCheckedOut</span><span class="nb-faded-text">()</span> : boolean</code><div class="description"><p class="short_description">Determine if the current node is currently checked out.</p></div><div class="code-tabs"><div class="long-description"><p>Returns false if this node is currently in the checked-in state (either
+due to its own status as a versionable node or due to the effect of
+a versionable node being checked in above it). Otherwise this method
+returns true. This includes the case where the repository does not
+support versioning (and therefore all nodes are always "checked-out",
+by default).</p></div><strong>Returns</strong><table class="argument-info"><thead><tr><th>Type</th><th>Description</th></tr></thead><tr><td>boolean</td><td></td></tr></table><strong>Throws</strong><table class="argument-info"><thead><tr><th>Exception</th><th>Description</th></tr></thead><tr><td><a href="../files/phpcr.src.PHPCR.RepositoryException.html#\PHPCR\RepositoryException">\PHPCR\RepositoryException</a></td><td><em>if an error occurs.</em></td></tr></table><strong>Details</strong><dl class="function-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\NodeInterface::isLocked()" class="anchor"></a><div class="method public"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png"></img><img src="../images/icons/arrow_down.png" style="display: none;"></img></a><code class="title"><img src="../images/icons/method.png" alt="method" title="method"></img><img src="../images/icons/visibility_public.png" style="margin-right: 5px" alt="public"></img><span class="highlight">isLocked</span><span class="nb-faded-text">()</span> : \PHPCR\boolean.</code><div class="description"><p class="short_description">Determine if the current node has been locked.</p></div><div class="code-tabs"><div class="long-description"><p>Returns true if this node is locked either as a result of a lock held
+by this node or by a deep lock on a node above this node;
+otherwise returns false. This includes the case where a repository does
+not support locking (in which case all nodes are "unlocked" by default).</p></div><strong>Returns</strong><table class="argument-info"><thead><tr><th>Type</th><th>Description</th></tr></thead><tr><td>\PHPCR\boolean.</td><td></td></tr></table><strong>Throws</strong><table class="argument-info"><thead><tr><th>Exception</th><th>Description</th></tr></thead><tr><td><a href="../files/phpcr.src.PHPCR.RepositoryException.html#\PHPCR\RepositoryException">\PHPCR\RepositoryException</a></td><td><em>if an error occurs.</em></td></tr></table><strong>Details</strong><dl class="function-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\NodeInterface::isModified()" class="anchor"></a><div class="method public inherited_from "><a href="#" class="gripper"><img src="../images/icons/arrow_right.png"></img><img src="../images/icons/arrow_down.png" style="display: none;"></img></a><code class="title"><img src="../images/icons/method.png" alt="method" title="method"></img><img src="../images/icons/visibility_public.png" style="margin-right: 5px" alt="public"></img><span class="highlight">isModified</span><span class="nb-faded-text">()</span> : boolean</code><div class="description"><span class="attribute">inherited</span><p class="short_description">Indicates if the current item has been modified.</p><small class="inherited_from">Inherited from:
+                    <a href="../files/phpcr.src.PHPCR.ItemInterface.html#\PHPCR\ItemInterface::isModified()">\PHPCR\ItemInterface::isModified()</a></small></div><div class="code-tabs"><div class="long-description"><p>Returns true if this Item has been saved but has subsequently been
+modified through the current session and therefore the state of this
+item as recorded in the session differs from the state of this item as
+saved. Within a transaction, isModified on an Item may return false
+(because the Item has been saved since the modification) even if the
+modification in question is not in persistent storage (because the
+transaction has not yet been committed).</p>
+
+<p>Note that in read-only implementations, this method will always return
+false.</p></div><strong>Returns</strong><table class="argument-info"><thead><tr><th>Type</th><th>Description</th></tr></thead><tr><td>boolean</td><td>true if this item is modified; false otherwise.</td></tr></table><strong>Details</strong><dl class="function-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\NodeInterface::isNew()" class="anchor"></a><div class="method public inherited_from "><a href="#" class="gripper"><img src="../images/icons/arrow_right.png"></img><img src="../images/icons/arrow_down.png" style="display: none;"></img></a><code class="title"><img src="../images/icons/method.png" alt="method" title="method"></img><img src="../images/icons/visibility_public.png" style="margin-right: 5px" alt="public"></img><span class="highlight">isNew</span><span class="nb-faded-text">()</span> : boolean</code><div class="description"><span class="attribute">inherited</span><p class="short_description">Determines if the current item is a new one.</p><small class="inherited_from">Inherited from:
+                    <a href="../files/phpcr.src.PHPCR.ItemInterface.html#\PHPCR\ItemInterface::isNew()">\PHPCR\ItemInterface::isNew()</a></small></div><div class="code-tabs"><div class="long-description"><p>Returns true if this is a new item, meaning that it exists only in
+transient storage on the Session and has not yet been saved. Within a
+transaction, isNew on an Item may return false (because the item has
+been saved) even if that Item is not in persistent storage (because the
+transaction has not yet been committed).</p>
+
+<p>Note that if an item returns true on isNew, then by definition is parent
+will return true on isModified.</p>
+
+<p>Note that in read-only implementations, this method will always return
+false.</p></div><strong>Returns</strong><table class="argument-info"><thead><tr><th>Type</th><th>Description</th></tr></thead><tr><td>boolean</td><td>true if this item is new; false otherwise.</td></tr></table><strong>Details</strong><dl class="function-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\NodeInterface::isNode()" class="anchor"></a><div class="method public inherited_from "><a href="#" class="gripper"><img src="../images/icons/arrow_right.png"></img><img src="../images/icons/arrow_down.png" style="display: none;"></img></a><code class="title"><img src="../images/icons/method.png" alt="method" title="method"></img><img src="../images/icons/visibility_public.png" style="margin-right: 5px" alt="public"></img><span class="highlight">isNode</span><span class="nb-faded-text">()</span> : boolean</code><div class="description"><span class="attribute">inherited</span><p class="short_description">Indicates whether this Item is a Node or a Property.</p><small class="inherited_from">Inherited from:
+                    <a href="../files/phpcr.src.PHPCR.ItemInterface.html#\PHPCR\ItemInterface::isNode()">\PHPCR\ItemInterface::isNode()</a></small></div><div class="code-tabs"><div class="long-description"><p>Returns true if this Item is a Node; Returns false if this Item is a
+Property.</p></div><strong>Returns</strong><table class="argument-info"><thead><tr><th>Type</th><th>Description</th></tr></thead><tr><td>boolean</td><td>true if this Item is a Node, false if it is a Property.</td></tr></table><strong>Details</strong><dl class="function-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\NodeInterface::isNodeType()" class="anchor"></a><div class="method public"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png"></img><img src="../images/icons/arrow_down.png" style="display: none;"></img></a><code class="title"><img src="../images/icons/method.png" alt="method" title="method"></img><img src="../images/icons/visibility_public.png" style="margin-right: 5px" alt="public"></img><span class="highlight">isNodeType</span><span class="nb-faded-text">(string $nodeTypeName)</span> : boolean</code><div class="description"><p class="short_description">Returns true if this node is of the specified primary node type or mixin
+type, or a subtype thereof.</p></div><div class="code-tabs"><div class="long-description"><p>Returns false otherwise. This method respects the effective node type of
+the node.</p></div><strong>Parameters</strong><table class="argument-info"><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><th>$nodeTypeName</th><td>string</td><td><em><p>the name of a node type.</p></em></td></tr></table><strong>Returns</strong><table class="argument-info"><thead><tr><th>Type</th><th>Description</th></tr></thead><tr><td>boolean</td><td>true if this node is of the specified primary node type
+           or mixin type, or a subtype thereof. Returns false otherwise.</td></tr></table><strong>Throws</strong><table class="argument-info"><thead><tr><th>Exception</th><th>Description</th></tr></thead><tr><td><a href="../files/phpcr.src.PHPCR.RepositoryException.html#\PHPCR\RepositoryException">\PHPCR\RepositoryException</a></td><td><em>if an error occurs.</em></td></tr></table><strong>Details</strong><dl class="function-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\NodeInterface::isSame()" class="anchor"></a><div class="method public inherited_from "><a href="#" class="gripper"><img src="../images/icons/arrow_right.png"></img><img src="../images/icons/arrow_down.png" style="display: none;"></img></a><code class="title"><img src="../images/icons/method.png" alt="method" title="method"></img><img src="../images/icons/visibility_public.png" style="margin-right: 5px" alt="public"></img><span class="highlight">isSame</span><span class="nb-faded-text">(<a href="../files/phpcr.src.PHPCR.ItemInterface.html#\PHPCR\ItemInterface">\PHPCR\ItemInterface</a> $otherItem)</span> : boolean</code><div class="description"><span class="attribute">inherited</span><p class="short_description">Determines if this Item object represents the same actual workspace item
+as the object otherItem.</p><small class="inherited_from">Inherited from:
+                    <a href="../files/phpcr.src.PHPCR.ItemInterface.html#\PHPCR\ItemInterface::isSame()">\PHPCR\ItemInterface::isSame()</a></small></div><div class="code-tabs"><div class="long-description"><p>Two Item objects represent the same workspace item if all the following
+are true:</p>
+
+<ul>
+<li>Both objects were acquired through Session objects that were created
+by the same Repository object.</li>
+<li>Both objects were acquired through Session objects bound to the same
+repository workspace.</li>
+<li>The objects are either both Node objects or both Property
+objects.</li>
+<li>If they are Node objects, they have the same identifier.</li>
+<li>If they are Property objects they have identical names and
+isSame() is true of their parent nodes.</li>
+</ul>
+
+<p>This method does not compare the states of the two items. For example, if
+two Item objects representing the same actual workspace item have been
+retrieved through two different sessions and one has been modified, then
+this method will still return true when comparing these two objects.
+Note that if two Item objects representing the same workspace item are
+retrieved through the same session they will always reflect the same
+state.</p></div><strong>Parameters</strong><table class="argument-info"><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><th>$otherItem</th><td><a href="../files/phpcr.src.PHPCR.ItemInterface.html#\PHPCR\ItemInterface">\PHPCR\ItemInterface</a></td><td><em><p>the Item object to be tested for identity with this Item.</p></em></td></tr></table><strong>Returns</strong><table class="argument-info"><thead><tr><th>Type</th><th>Description</th></tr></thead><tr><td>boolean</td><td>true if this Item object and otherItem represent the
+     same actual repository item; false otherwise.</td></tr></table><strong>Throws</strong><table class="argument-info"><thead><tr><th>Exception</th><th>Description</th></tr></thead><tr><td><a href="../files/phpcr.src.PHPCR.RepositoryException.html#\PHPCR\RepositoryException">\PHPCR\RepositoryException</a></td><td><em>if an error occurs.</em></td></tr></table><strong>Details</strong><dl class="function-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\NodeInterface::orderBefore()" class="anchor"></a><div class="method public"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png"></img><img src="../images/icons/arrow_down.png" style="display: none;"></img></a><code class="title"><img src="../images/icons/method.png" alt="method" title="method"></img><img src="../images/icons/visibility_public.png" style="margin-right: 5px" alt="public"></img><span class="highlight">orderBefore</span><span class="nb-faded-text">(string $srcChildRelPath, string $destChildRelPath)</span> : void</code><div class="description"><p class="short_description">Insert a child node before another child identified by its path.</p></div><div class="code-tabs"><div class="long-description"><p>If this node supports child node ordering, this method inserts the child
+node at srcChildRelPath into the child node list at the position
+immediately before destChildRelPath.</p>
+
+<p>To place the node srcChildRelPath at the end of the list, a
+destChildRelPath of null is used.</p>
+
+<p>Note that (apart from the case where destChildRelPath is null) both of
+these arguments must be relative paths of depth one, in other words they
+are the names of the child nodes, possibly suffixed with an index.</p>
+
+<p>If srcChildRelPath and destChildRelPath are the same, then no change is
+made.</p>
+
+<p>This is session-write method, meaning that a change made by this method
+is dispatched on save.</p></div><strong>Parameters</strong><table class="argument-info"><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><th>$srcChildRelPath</th><td>string</td><td><em><p>the relative path to the child node (that is, name plus possible index) to be moved in the ordering</p>
+</em></td></tr><tr><th>$destChildRelPath</th><td>string</td><td><em><p>the the relative path to the child node (that is, name plus possible index) before which the node srcChildRelPath will be placed.</p>
+</em></td></tr></table><strong>Throws</strong><table class="argument-info"><thead><tr><th>Exception</th><th>Description</th></tr></thead><tr><td><a href="../files/phpcr.src.PHPCR.UnsupportedRepositoryOperationException.html#\PHPCR\UnsupportedRepositoryOperationException">\PHPCR\UnsupportedRepositoryOperationException</a></td><td><em>if ordering is
+     not supported on this node.</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.NodeType.ConstraintViolationException.html#\PHPCR\NodeType\ConstraintViolationException">\PHPCR\NodeType\ConstraintViolationException</a></td><td><em>if an implementation-
+     specific ordering restriction is violated and this implementation
+     performs this validation immediately instead of waiting until save.</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.ItemNotFoundException.html#\PHPCR\ItemNotFoundException">\PHPCR\ItemNotFoundException</a></td><td><em>if either parameter is not the
+     relative path of a child node of this node.</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.Version.VersionException.html#\PHPCR\Version\VersionException">\PHPCR\Version\VersionException</a></td><td><em>if this node is read-only due to
+     a checked-in node and this implementation performs this validation
+     immediately.</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.Lock.LockException.html#\PHPCR\Lock\LockException">\PHPCR\Lock\LockException</a></td><td><em>if a lock prevents the re-ordering and
+     this implementation performs this validation immediately.</em></td></tr><tr><td><a href="../files/http://php.net/manual/en/class.invalidargumentexception.php">\InvalidArgumentException</a></td><td><em>if $srcChildRelPath is an absolute path
+     or $destChildRelPath is non-null and any of the two paths is of
+     depth more than 1.</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.RepositoryException.html#\PHPCR\RepositoryException">\PHPCR\RepositoryException</a></td><td><em>if another error occurs.</em></td></tr></table><strong>Details</strong><dl class="function-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\NodeInterface::refresh()" class="anchor"></a><div class="method public inherited_from "><a href="#" class="gripper"><img src="../images/icons/arrow_right.png"></img><img src="../images/icons/arrow_down.png" style="display: none;"></img></a><code class="title"><img src="../images/icons/method.png" alt="method" title="method"></img><img src="../images/icons/visibility_public.png" style="margin-right: 5px" alt="public"></img><span class="highlight">refresh</span><span class="nb-faded-text">(boolean $keepChanges)</span> : void</code><div class="description"><span class="attribute">inherited</span><p class="short_description">Updates the state of the current item.</p><small class="inherited_from">Inherited from:
+                    <a href="../files/phpcr.src.PHPCR.ItemInterface.html#\PHPCR\ItemInterface::refresh()">\PHPCR\ItemInterface::refresh()</a></small></div><div class="code-tabs"><div class="long-description"><p>If keepChanges is false, this method discards all pending changes
+currently recorded in this Session that apply to this Item or any
+of its descendants (that is, the subgraph rooted at this Item) and
+returns all items to reflect the current saved state. Outside a
+transaction this state is simple the current state of persistent
+storage. Within a transaction, this state will reflect persistent
+storage as modified by changes that have been saved but not yet
+committed.</p>
+
+<p>If keepChanges is true then pending change are not discarded but
+items that do not have changes pending have their state refreshed
+to reflect the current saved state, thus revealing changes made by
+other sessions.</p></div><strong>Parameters</strong><table class="argument-info"><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><th>$keepChanges</th><td>boolean</td><td><em><p>a boolean</p></em></td></tr></table><strong>Throws</strong><table class="argument-info"><thead><tr><th>Exception</th><th>Description</th></tr></thead><tr><td><a href="../files/phpcr.src.PHPCR.InvalidItemStateException.html#\PHPCR\InvalidItemStateException">\PHPCR\InvalidItemStateException</a></td><td><em>if this Item object represents
+     a workspace item that has been removed (either by this session or
+     another).</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.RepositoryException.html#\PHPCR\RepositoryException">\PHPCR\RepositoryException</a></td><td><em>if another error occurs.</em></td></tr></table><strong>Details</strong><dl class="function-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\NodeInterface::remove()" class="anchor"></a><div class="method public inherited_from "><a href="#" class="gripper"><img src="../images/icons/arrow_right.png"></img><img src="../images/icons/arrow_down.png" style="display: none;"></img></a><code class="title"><img src="../images/icons/method.png" alt="method" title="method"></img><img src="../images/icons/visibility_public.png" style="margin-right: 5px" alt="public"></img><span class="highlight">remove</span><span class="nb-faded-text">()</span> : void</code><div class="description"><span class="attribute">inherited</span><p class="short_description">Removes this item (and its subgraph).</p><small class="inherited_from">Inherited from:
+                    <a href="../files/phpcr.src.PHPCR.ItemInterface.html#\PHPCR\ItemInterface::remove()">\PHPCR\ItemInterface::remove()</a></small></div><div class="code-tabs"><div class="long-description"><p>To persist a removal, a save must be performed that includes the (former)
+parent of the removed item within its scope.</p>
+
+<p>If a node with same-name siblings is removed, this decrements by one the
+indices of all the siblings with indices greater than that of the removed
+node. In other words, a removal compacts the array of same-name siblings
+and causes the minimal re-numbering required to maintain the original
+order but leave no gaps in the numbering.</p></div><strong>Throws</strong><table class="argument-info"><thead><tr><th>Exception</th><th>Description</th></tr></thead><tr><td><a href="../files/phpcr.src.PHPCR.Version.VersionException.html#\PHPCR\Version\VersionException">\PHPCR\Version\VersionException</a></td><td><em>if the parent node of this item
+     is versionable and checked-in or is non-versionable but its nearest
+     versionable ancestor is checked-in and this implementation performs
+     this validation immediately instead of waiting until save.</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.Lock.LockException.html#\PHPCR\Lock\LockException">\PHPCR\Lock\LockException</a></td><td><em>if a lock prevents the removal of this
+     item and this implementation performs this validation immediately
+     instead of waiting until save.</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.NodeType.ConstraintViolationException.html#\PHPCR\NodeType\ConstraintViolationException">\PHPCR\NodeType\ConstraintViolationException</a></td><td><em>if removing the
+     specified item would violate a node type or implementation-specific
+     constraint and this implementation performs this validation
+     immediately instead of waiting until save.</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.AccessDeniedException.html#\PHPCR\AccessDeniedException">\PHPCR\AccessDeniedException</a></td><td><em>if this item or an item in its
+     subgraph is currently the target of a REFERENCE property located in
+     this workspace but outside this item's subgraph and the current
+     Session does not have read access to that REFERENCE property or if
+     the current Session does not have sufficent privileges to remove
+     the item.</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.RepositoryException.html#\PHPCR\RepositoryException">\PHPCR\RepositoryException</a></td><td><em>if another error occurs.</em></td></tr></table><strong>Details</strong><dl class="function-info"><dt>Api</dt><dd>
+         
+    </dd><dt>See</dt><dd><a href="../files/
+                         phpcr.src.PHPCR.SessionInterface.html#\PHPCR\SessionInterface::removeItem(String)">\PHPCR\SessionInterface::removeItem(String)</a>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\NodeInterface::removeMixin()" class="anchor"></a><div class="method public"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png"></img><img src="../images/icons/arrow_down.png" style="display: none;"></img></a><code class="title"><img src="../images/icons/method.png" alt="method" title="method"></img><img src="../images/icons/visibility_public.png" style="margin-right: 5px" alt="public"></img><span class="highlight">removeMixin</span><span class="nb-faded-text">(string $mixinName)</span> : void</code><div class="description"><p class="short_description">Removes the specified mixin node type from this node and removes
+mixinName from this node's jcr:mixinTypes property.</p></div><div class="code-tabs"><div class="long-description"><p>Both the semantic change in effective node type and the persistence of
+the change to the jcr:mixinTypes  property occur on persist.</p></div><strong>Parameters</strong><table class="argument-info"><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><th>$mixinName</th><td>string</td><td><em><p>the name of the mixin node type to be removed.</p></em></td></tr></table><strong>Throws</strong><table class="argument-info"><thead><tr><th>Exception</th><th>Description</th></tr></thead><tr><td><a href="../files/phpcr.src.PHPCR.NodeType.NoSuchNodeTypeException.html#\PHPCR\NodeType\NoSuchNodeTypeException">\PHPCR\NodeType\NoSuchNodeTypeException</a></td><td><em>if the specified
+     mixinName is not currently assigned to this node and this
+     implementation performs this validation immediately.</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.NodeType.ConstraintViolationException.html#\PHPCR\NodeType\ConstraintViolationException">\PHPCR\NodeType\ConstraintViolationException</a></td><td><em>if the specified mixin node
+     type is prevented from being removed and this implementation
+     performs this validation immediately.</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.Version.VersionException.html#\PHPCR\Version\VersionException">\PHPCR\Version\VersionException</a></td><td><em>if this node is read-only due to
+     a checked-in node and this implementation performs this validation
+     immediately.</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.Lock.LockException.html#\PHPCR\Lock\LockException">\PHPCR\Lock\LockException</a></td><td><em>if a lock prevents the removal of the
+     mixin and this implementation performs this validation immediately.</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.RepositoryException.html#\PHPCR\RepositoryException">\PHPCR\RepositoryException</a></td><td><em>if another error occurs.</em></td></tr></table><strong>Details</strong><dl class="function-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\NodeInterface::removeShare()" class="anchor"></a><div class="method public"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png"></img><img src="../images/icons/arrow_down.png" style="display: none;"></img></a><code class="title"><img src="../images/icons/method.png" alt="method" title="method"></img><img src="../images/icons/visibility_public.png" style="margin-right: 5px" alt="public"></img><span class="highlight">removeShare</span><span class="nb-faded-text">()</span> : void</code><div class="description"><p class="short_description">Removes this node, but does not remove any other node in the shared set
+of this node.</p></div><div class="code-tabs"><div class="long-description"></div><strong>Throws</strong><table class="argument-info"><thead><tr><th>Exception</th><th>Description</th></tr></thead><tr><td><a href="../files/phpcr.src.PHPCR.Version.VersionException.html#\PHPCR\Version\VersionException">\PHPCR\Version\VersionException</a></td><td><em>if the parent node of this item
+     is versionable and checked-in or is non-versionable but its nearest
+     versionable ancestor is checked-in and this implementation performs
+     this validation immediately instead of waiting until save.</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.Lock.LockException.html#\PHPCR\Lock\LockException">\PHPCR\Lock\LockException</a></td><td><em>if a lock prevents the removal of this
+     item and this implementation performs this validation immediately
+     instead of waiting until save.</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.NodeType.ConstraintViolationException.html#\PHPCR\NodeType\ConstraintViolationException">\PHPCR\NodeType\ConstraintViolationException</a></td><td><em>if removing the
+     specified item would violate a node type or implementation-specific
+     constraint and this implementation performs this validation
+     immediately instead of waiting until save.</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.RepositoryException.html#\PHPCR\RepositoryException">\PHPCR\RepositoryException</a></td><td><em>if this node cannot be removed
+     without removing another node in the shared set of this node or
+     another error occurs.</em></td></tr></table><strong>Details</strong><dl class="function-info"><dt>Api</dt><dd>
+         
+    </dd><dt>See</dt><dd>\PHPCR\removeSharedSet()
+         
+    </dd><dt>See</dt><dd>\PHPCR\Item::remove()
+         
+    </dd><dt>See</dt><dd><a href="../files/
+                         phpcr.src.PHPCR.SessionInterface.html#\PHPCR\SessionInterface::removeItem">\PHPCR\SessionInterface::removeItem</a>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\NodeInterface::removeSharedSet()" class="anchor"></a><div class="method public"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png"></img><img src="../images/icons/arrow_down.png" style="display: none;"></img></a><code class="title"><img src="../images/icons/method.png" alt="method" title="method"></img><img src="../images/icons/visibility_public.png" style="margin-right: 5px" alt="public"></img><span class="highlight">removeSharedSet</span><span class="nb-faded-text">()</span> : void</code><div class="description"><p class="short_description">Removes this node and every other node in the shared set of this node.</p></div><div class="code-tabs"><div class="long-description"><p>This removal must be done atomically, i.e., if one of the nodes cannot
+be removed, the method throws the exception NodeInterface::remove()
+would have thrown in that case, and none of the nodes are removed.</p>
+
+<p>If this node is not shared this method removes only this node.</p></div><strong>Throws</strong><table class="argument-info"><thead><tr><th>Exception</th><th>Description</th></tr></thead><tr><td><a href="../files/phpcr.src.PHPCR.Version.VersionException.html#\PHPCR\Version\VersionException">\PHPCR\Version\VersionException</a></td><td><em>if the parent node of this item
+     is versionable and checked-in or is non-versionable but its nearest
+     versionable ancestor is checked-in and this implementation performs
+     this validation immediately.</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.Lock.LockException.html#\PHPCR\Lock\LockException">\PHPCR\Lock\LockException</a></td><td><em>if a lock prevents the removal of this
+     item and this implementation performs this validation immediately.</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.NodeType.ConstraintViolationException.html#\PHPCR\NodeType\ConstraintViolationException">\PHPCR\NodeType\ConstraintViolationException</a></td><td><em>if removing the
+     specified item would violate a node type or implementation-specific
+     constraint and this implementation performs this validation immediately.</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.RepositoryException.html#\PHPCR\RepositoryException">\PHPCR\RepositoryException</a></td><td><em>if another error occurs.</em></td></tr></table><strong>Details</strong><dl class="function-info"><dt>Api</dt><dd>
+         
+    </dd><dt>See</dt><dd>\PHPCR\removeShare()
+         
+    </dd><dt>See</dt><dd>\PHPCR\Item::remove()
+         
+    </dd><dt>See</dt><dd><a href="../files/
+                         phpcr.src.PHPCR.SessionInterface.html#\PHPCR\SessionInterface::removeItem()">\PHPCR\SessionInterface::removeItem()</a>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\NodeInterface::setPrimaryType()" class="anchor"></a><div class="method public"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png"></img><img src="../images/icons/arrow_down.png" style="display: none;"></img></a><code class="title"><img src="../images/icons/method.png" alt="method" title="method"></img><img src="../images/icons/visibility_public.png" style="margin-right: 5px" alt="public"></img><span class="highlight">setPrimaryType</span><span class="nb-faded-text">(string $nodeTypeName)</span> : void</code><div class="description"><p class="short_description">Changes the primary node type of this node to nodeTypeName.</p></div><div class="code-tabs"><div class="long-description"><p>Also immediately changes this node's jcr:primaryType property
+appropriately. Semantically, the new node type may take effect
+immediately or on dispatch but must take effect on persist. Whichever
+behavior is adopted it must be the same as the behavior adopted for
+addMixin() (see below) and the behavior that occurs when a node is first
+created.</p></div><strong>Parameters</strong><table class="argument-info"><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><th>$nodeTypeName</th><td>string</td><td><em><p>the name of the new node type.</p></em></td></tr></table><strong>Throws</strong><table class="argument-info"><thead><tr><th>Exception</th><th>Description</th></tr></thead><tr><td><a href="../files/phpcr.src.PHPCR.NodeType.ConstraintViolationException.html#\PHPCR\NodeType\ConstraintViolationException">\PHPCR\NodeType\ConstraintViolationException</a></td><td><em>if the specified primary
+     node type creates a type conflict and this implementation performs
+     this validation immediately.</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.NodeType.NoSuchNodeTypeException.html#\PHPCR\NodeType\NoSuchNodeTypeException">\PHPCR\NodeType\NoSuchNodeTypeException</a></td><td><em>if the specified
+     nodeTypeName is not recognized and this implementation performs
+     this validation immediately.</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.Version.VersionException.html#\PHPCR\Version\VersionException">\PHPCR\Version\VersionException</a></td><td><em>if this node is read-only due to
+     a checked-in node and this implementation performs this validation
+     immediately.</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.Lock.LockException.html#\PHPCR\Lock\LockException">\PHPCR\Lock\LockException</a></td><td><em>if a lock prevents the change of the
+     primary node type and this implementation performs this validation
+     immediately.</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.RepositoryException.html#\PHPCR\RepositoryException">\PHPCR\RepositoryException</a></td><td><em>if another error occurs.</em></td></tr></table><strong>Details</strong><dl class="function-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\NodeInterface::setProperty()" class="anchor"></a><div class="method public"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png"></img><img src="../images/icons/arrow_down.png" style="display: none;"></img></a><code class="title"><img src="../images/icons/method.png" alt="method" title="method"></img><img src="../images/icons/visibility_public.png" style="margin-right: 5px" alt="public"></img><span class="highlight">setProperty</span><span class="nb-faded-text">(string $name, mixed $value, integer $type = null)</span> : <a href="../files/phpcr.src.PHPCR.PropertyInterface.html#\PHPCR\PropertyInterface">\PHPCR\PropertyInterface</a></code><div class="description"><p class="short_description">Defines a value for a property identified by its name.</p></div><div class="code-tabs"><div class="long-description"><p>Sets the property of this node called $name to the specified value.
+This method works as factory method to create new properties and as a
+shortcut for PropertyInterface::setValue()</p>
+
+<p>The type detection logic is exactly the same as in
+PropertyInterface::setValue</p>
+
+<p>If the property does not yet exist, it is created and its property type
+determined by the node type of this node. If, based on the name and
+value passed, there is more than one property definition that applies,
+the repository chooses one definition according to some implementation-
+specific criteria.</p>
+
+<p>Once property with name P has been created, the behavior of a subsequent
+setProperty($p,$v) may differ across implementations. Some repositories
+may allow P to be dynamically re-bound to a different property
+definition (based for example, on the new value being of a different
+type than the original value) while other repositories may not allow
+such dynamic re-binding.</p>
+
+<p>Passing a null as the second parameter removes the property. It is
+equivalent to calling remove on the Property object itself. For example,
+$n->setProperty("P", null) would remove property called "P" of the
+node $n.</p>
+
+<p>This is a session-write method, meaning that changes made through this
+method are dispatched on SessionInterface::save().</p>
+
+<p>If $type is given:
+The behavior of this method is identical to that of setProperty($name,
+$value) except that the intended property type is explicitly specified.</p>
+
+<p><b>Note:</b>
+Have a look at the JSR-283 spec and/or API documentation for more details
+on what is supposed to happen for different types of values being passed
+to this method.</p></div><strong>Parameters</strong><table class="argument-info"><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><th>$name</th><td>string</td><td><em><p>The name of a property of this node</p></em></td></tr><tr><th>$value</th><td>mixed</td><td><em><p>The value to be assigned</p></em></td></tr><tr><th>$type</th><td>integer</td><td><em><p>The type to set for the property, optional. Must be a constant from {@link PropertyType}</p>
+</em></td></tr></table><strong>Returns</strong><table class="argument-info"><thead><tr><th>Type</th><th>Description</th></tr></thead><tr><td><a href="../files/phpcr.src.PHPCR.PropertyInterface.html#\PHPCR\PropertyInterface">\PHPCR\PropertyInterface</a></td><td>The new resp. updated Property object</td></tr></table><strong>Throws</strong><table class="argument-info"><thead><tr><th>Exception</th><th>Description</th></tr></thead><tr><td><a href="../files/phpcr.src.PHPCR.ValueFormatException.html#\PHPCR\ValueFormatException">\PHPCR\ValueFormatException</a></td><td><em>if the specified property is a DATE
+     but the value cannot be expressed in the ISO 8601-based format
+     defined in the JCR 2.0 specification and the implementation does
+     not support dates incompatible with that format or if value cannot
+     be converted to the type of the specified property or if the
+     property already exists and is multi-valued.</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.Version.VersionException.html#\PHPCR\Version\VersionException">\PHPCR\Version\VersionException</a></td><td><em>if this node is versionable and
+     checked-in or is non-versionable but its nearest versionable
+     ancestor is checked-in and this implementation performs this
+     validation immediately instead of waiting until save.</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.Lock.LockException.html#\PHPCR\Lock\LockException">\PHPCR\Lock\LockException</a></td><td><em>if a lock prevents the setting of the
+     property and this implementation performs this validation
+     immediately instead of waiting until save.</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.NodeType.ConstraintViolationException.html#\PHPCR\NodeType\ConstraintViolationException">\PHPCR\NodeType\ConstraintViolationException</a></td><td><em>if the change would violate
+     a node-type or other constraint and this implementation performs
+     this validation immediately instead of waiting until save.</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.UnsupportedRepositoryOperationException.html#\PHPCR\UnsupportedRepositoryOperationException">\PHPCR\UnsupportedRepositoryOperationException</a></td><td><em>if the type
+     parameter is set and different from the current type and this
+     implementation does not support dynamic re-binding</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.RepositoryException.html#\PHPCR\RepositoryException">\PHPCR\RepositoryException</a></td><td><em>if another error occurs.</em></td></tr></table><strong>Details</strong><dl class="function-info"><dt>Api</dt><dd>
+         
+    </dd><dt>See</dt><dd><a href="../files/
+                         phpcr.src.PHPCR.PropertyInterface.html#\PHPCR\PropertyInterface::setValue()">\PHPCR\PropertyInterface::setValue()</a>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\NodeInterface::update()" class="anchor"></a><div class="method public"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png"></img><img src="../images/icons/arrow_down.png" style="display: none;"></img></a><code class="title"><img src="../images/icons/method.png" alt="method" title="method"></img><img src="../images/icons/visibility_public.png" style="margin-right: 5px" alt="public"></img><span class="highlight">update</span><span class="nb-faded-text">(string $srcWorkspace)</span> : void</code><div class="description"><p class="short_description">Updates a node corresponding to the current one in the given workspace.</p></div><div class="code-tabs"><div class="long-description"><p>If this node does have a corresponding node in the workspace
+srcWorkspace, then this replaces this node and its subgraph with a clone
+of the corresponding node and its subgraph.
+If this node does not have a corresponding node in the workspace
+srcWorkspace, then the update method has no effect.</p>
+
+<p>If the update succeeds the changes made are persisted immediately, there
+is no need to call save.</p>
+
+<p>Note that update does not respect the checked-in status of nodes. An
+update may change a node even if it is currently checked-in (This fact
+is only relevant in an implementation that supports versioning).</p></div><strong>Parameters</strong><table class="argument-info"><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><th>$srcWorkspace</th><td>string</td><td><em><p>the name of the source workspace.</p></em></td></tr></table><strong>Throws</strong><table class="argument-info"><thead><tr><th>Exception</th><th>Description</th></tr></thead><tr><td><a href="../files/phpcr.src.PHPCR.NoSuchWorkspaceException.html#\PHPCR\NoSuchWorkspaceException">\PHPCR\NoSuchWorkspaceException</a></td><td><em>if srcWorkspace does not exist.</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.InvalidItemStateException.html#\PHPCR\InvalidItemStateException">\PHPCR\InvalidItemStateException</a></td><td><em>if this Session (not
+     necessarily this Node) has pending unsaved changes.</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.AccessDeniedException.html#\PHPCR\AccessDeniedException">\PHPCR\AccessDeniedException</a></td><td><em>if the current session does not
+     have sufficient access to perform the operation.</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.Lock.LockException.html#\PHPCR\Lock\LockException">\PHPCR\Lock\LockException</a></td><td><em>if a lock prevents the update.</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.RepositoryException.html#\PHPCR\RepositoryException">\PHPCR\RepositoryException</a></td><td><em>if another error occurs.</em></td></tr></table><strong>Details</strong><dl class="function-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div></div></div></div><small class="footer">
+            Documentation was generated by
+            <a href="http://phpdoc.org">phpDocumentor
+                2.0.0a10</a>.
+        </small></body></html>

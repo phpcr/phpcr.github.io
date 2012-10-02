@@ -1,0 +1,2627 @@
+<html xmlns="http://www.w3.org/1999/xhtml"><head><title>PHPCR API doc including the PHPCR utils</title><meta http-equiv="Content-Type" content="text/html; charset=utf-8"></meta><link rel="stylesheet" href="css/black-tie/jquery-ui-1.8.2.custom.css" type="text/css"></link><link rel="stylesheet" href="css/jquery.treeview.css" type="text/css"></link><link rel="stylesheet" href="css/default.css" type="text/css"></link><script type="text/javascript" src="js/jquery-1.4.2.min.js"></script><script type="text/javascript" src="js/jquery-ui-1.8.2.custom.min.js"></script><script type="text/javascript" src="js/jquery.cookie.js"></script><script type="text/javascript" src="js/jquery.treeview.js"></script></head><body><script type="text/javascript">
+          $(document).ready(function()
+          {
+            $(".filetree").treeview({
+              animated: "fast",
+              collapsed: true,
+              persist: "cookie"
+            });
+          });
+
+          function jq_escape(myid)
+          {
+            return '#' + myid.replace(/(#|\$|:|\.|\(|\))/g, '\\$1');
+          }
+
+          function applySearchHash()
+          {
+            hashes = document.location.hash.substr(1, document.location.hash.length);
+            if (hashes != "")
+            {
+              hashes = hashes.split('/');
+              $.each(hashes, function(index, hash)
+              {
+                node = $(jq_escape(hash));
+                switch (node[0].nodeName)
+                {
+                  case 'DIV':
+                    tabs = node.parents('.tabs');
+                    $(tabs[0]).tabs('select', '#' + hash)
+                    break;
+                  case 'A':
+                    window.scrollTo(0, node.offset().top);
+                    break;
+                }
+              });
+            }
+          }
+
+          jQuery(function()
+          {
+            jQuery(".tabs").tabs();
+            applySearchHash();
+          });
+        </script><div id="maincontainer"><div id="header"><h1>PHPCR API doc including the PHPCR utils<img src="images/top-stopper.png"></img></h1></div><ul xmlns="" id="menu">
+<li><a href="graph.html">Class diagram</a></li>
+<li><a href="markers.html">TODO / Markers</a></li>
+<li><a href="parse_markers.html">Errors</a></li>
+</ul>
+<div id="content_container"><div xmlns="" id="content">
+<h1>phpcr/src/PHPCR/PropertyInterface.php</h1>
+<div class="file_menu"><a href="#interfaces">Interfaces</a></div>
+<div class="properties">
+<h1>Properties</h1>
+<label class="property-key">license</label><div class="property-value"></div>
+<label class="property-key">link</label><div class="property-value"></div>
+</div>
+<h2>Description</h2>This file is part of the PHPCR API and was originally ported from the Java
+JCR API to PHP by Karsten Dambekalns for the FLOW3 project.<br><br><p>Copyright 2008-2011 Karsten Dambekalns <a href="&#109;&#x61;&#x69;&#108;&#116;&#x6f;&#58;&#107;&#x61;&#114;&#115;&#x74;e&#110;&#x40;&#x74;&#121;&#x70;&#x6f;&#51;&#46;&#x6f;&#114;&#103;">&#107;&#x61;&#114;&#115;&#x74;e&#110;&#x40;&#x74;&#121;&#x70;&#x6f;&#51;&#46;&#x6f;&#114;&#103;</a></p>
+
+<p>Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at</p>
+
+<pre><code>http://www.apache.org/licenses/LICENSE-2.0
+</code></pre>
+
+<p>Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.</p><br><a name="interfaces"></a><h2>Interfaces</h2>
+<div id="PropertyInterface" class="interface">
+<h3>PropertyInterface</h3>
+<div class="properties">
+<h1>Properties</h1>
+<label class="property-key">Extends</label><div class="property-value">
+<a href="phpcr.src.PHPCR.ItemInterface.html#%5CPHPCR%5CItemInterface">\PHPCR\ItemInterface</a>
+         </div>
+<label class="property-key">Implements</label><div class="property-value"> 
+      </div>
+<label class="property-key">api</label><div class="property-value">
+<a title=""></a>
+             
+        </div>
+<label class="property-key">package</label><div class="property-value">
+<a title="">phpcr</a>
+             
+        </div>
+<label class="property-key">subpackage</label><div class="property-value">
+<a title="">interfaces</a>
+             
+        </div>
+<label class="property-key">Abstract</label><div class="property-value"> 
+      </div>
+<label class="property-key">Final</label><div class="property-value"> 
+      </div>
+</div>
+<h4>Description</h4>
+<em>The property interface describes how an item property shall look like.</em><br><p>A Property object represents the smallest granularity of content storage.
+It has a single parent node and no children. A property consists of a name
+and a value, or in the case of multi-value properties, a set of values all
+of the same type.</p>
+
+<p>The \Traversable interface enables the implementation to be addressed with
+<b>foreach</b>. Properties have to implement either \IteratorAggregate or
+\Iterator.
+The iterator is equivalent to <b>getValue()</b> returning an iterator
+of all values of this property (which is exactly one except for multi-valued
+properties). The iterator keys have no significant meaning.</p>
+
+<p><b>PHPCR Note:</b>
+We removed the Value interface and consequently the getValue() and
+getValues() methods. If you just want the property value in its native type,
+use getValue, or just NodeInterface::getPropertyValue.
+The PropertyInterface::getXX methods also work for multi-valued properties.
+They return arrays in case of multi-valued.
+PropertyInterface::setValue completely replaces the
+ValueFactory::createValue method.</p><br><div id="methods_PropertyInterface">
+<h4>Methods</h4>
+<a style="font-style: italic;" href="#PropertyInterface::accept()">accept</a>,
+      <a style="font-style: italic;" href="#PropertyInterface::addValue()">addValue</a>,
+      <a style="font-style: italic;" href="#PropertyInterface::getAncestor()">getAncestor</a>,
+      <a style="font-style: italic;" href="#PropertyInterface::getBinary()">getBinary</a>,
+      <a style="font-style: italic;" href="#PropertyInterface::getBoolean()">getBoolean</a>,
+      <a style="font-style: italic;" href="#PropertyInterface::getDate()">getDate</a>,
+      <a style="font-style: italic;" href="#PropertyInterface::getDecimal()">getDecimal</a>,
+      <a style="font-style: italic;" href="#PropertyInterface::getDefinition()">getDefinition</a>,
+      <a style="font-style: italic;" href="#PropertyInterface::getDepth()">getDepth</a>,
+      <a style="font-style: italic;" href="#PropertyInterface::getDouble()">getDouble</a>,
+      <a style="font-style: italic;" href="#PropertyInterface::getLength()">getLength</a>,
+      <a style="font-style: italic;" href="#PropertyInterface::getLong()">getLong</a>,
+      <a style="font-style: italic;" href="#PropertyInterface::getName()">getName</a>,
+      <a style="font-style: italic;" href="#PropertyInterface::getNode()">getNode</a>,
+      <a style="font-style: italic;" href="#PropertyInterface::getParent()">getParent</a>,
+      <a style="font-style: italic;" href="#PropertyInterface::getPath()">getPath</a>,
+      <a style="font-style: italic;" href="#PropertyInterface::getProperty()">getProperty</a>,
+      <a style="font-style: italic;" href="#PropertyInterface::getSession()">getSession</a>,
+      <a style="font-style: italic;" href="#PropertyInterface::getString()">getString</a>,
+      <a style="font-style: italic;" href="#PropertyInterface::getType()">getType</a>,
+      <a style="font-style: italic;" href="#PropertyInterface::getValue()">getValue</a>,
+      <a style="font-style: italic;" href="#PropertyInterface::isModified()">isModified</a>,
+      <a style="font-style: italic;" href="#PropertyInterface::isMultiple()">isMultiple</a>,
+      <a style="font-style: italic;" href="#PropertyInterface::isNew()">isNew</a>,
+      <a style="font-style: italic;" href="#PropertyInterface::isNode()">isNode</a>,
+      <a style="font-style: italic;" href="#PropertyInterface::isSame()">isSame</a>,
+      <a style="font-style: italic;" href="#PropertyInterface::refresh()">refresh</a>,
+      <a style="font-style: italic;" href="#PropertyInterface::remove()">remove</a>,
+      <a style="font-style: italic;" href="#PropertyInterface::setValue()">setValue</a>,
+      <div class="method">
+<a id="PropertyInterface::accept()"></a><h3>accept<span class="nb-faded-text">(
+          <a href="phpcr.src.PHPCR.ItemVisitorInterface.html#%5CPHPCR%5CItemVisitorInterface">\PHPCR\ItemVisitorInterface</a>
+             
+            $visitor,
+          
+          )
+        </span>
+        :
+        <span class="nb-faded-text">n/a</span>
+</h3>
+<h4>Description</h4>
+<em>Call the ItemVisitor::visit() method.</em><br><small><p>This is less relevant in PHP (Java had it to avoid typecasting in the
+visitor). We leave it here, to allow sanity checks or other operations
+an implementation might wants to do.</p></small><br><h4>Arguments</h4>
+<table>
+<thead><tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr></thead>
+<tbody><tr>
+<td>$visitor</td>
+<td style="white-space: normal;"><a href="phpcr.src.PHPCR.ItemVisitorInterface.html#%5CPHPCR%5CItemVisitorInterface">\PHPCR\ItemVisitorInterface</a></td>
+<td><p>The ItemVisitor to be accepted.</p></td>
+<td></td>
+</tr></tbody>
+</table>
+<h4>Return value</h4>
+<table>
+<thead><tr>
+<th>Type</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr>
+<td>n/a</td>
+<td>n/a</td>
+</tr></tbody>
+</table>
+<h4>Tags</h4>
+<table>
+<thead><tr>
+<th>Name</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>throws</td>
+<td>if an error occurs.</td>
+</tr>
+<tr>
+<td>api</td>
+<td></td>
+</tr>
+<tr>
+<td>inherited_from</td>
+<td><a href="phpcr.src.PHPCR.ItemInterface.html#%5CPHPCR%5CItemInterface::accept()"><small>\PHPCR\ItemInterface::accept()</small></a></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="method">
+<a id="PropertyInterface::addValue()"></a><h3>addValue<span class="nb-faded-text">(
+          mixed
+             
+            $value,
+          
+          )
+        </span>
+        :
+        <span class="nb-faded-text">n/a</span>
+</h3>
+<h4>Description</h4>
+<em>Appends a value to a multi-value property.</em><br><small><p>It is added at the end of the
+list.</p>
+
+<p><strong>PHPCR Note:</strong> This is a new method not found in Java JCR.
+In PHP appending to strings is easy and this is more convenient than
+getting the property and appending to the array and setting again.</p></small><br><h4>Arguments</h4>
+<table>
+<thead><tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr></thead>
+<tbody><tr>
+<td>$value</td>
+<td style="white-space: normal;">mixed</td>
+<td></td>
+<td></td>
+</tr></tbody>
+</table>
+<h4>Return value</h4>
+<table>
+<thead><tr>
+<th>Type</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr>
+<td>n/a</td>
+<td>n/a</td>
+</tr></tbody>
+</table>
+<h4>Tags</h4>
+<table>
+<thead><tr>
+<th>Name</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr>
+<td>throws</td>
+<td>if the property is not multi-value.</td>
+</tr></tbody>
+</table>
+</div>
+<div class="method">
+<a id="PropertyInterface::getAncestor()"></a><h3>getAncestor<span class="nb-faded-text">(
+          integer
+             
+            $depth,
+          
+          )
+        </span>
+        :
+        <span class="nb-faded-text">\PHPCR\ItemInterface</span>
+</h3>
+<h4>Description</h4>
+<em>Returns the ancestor of this Item at the specified depth.</em><br><small><p>An ancestor of depth x is the Item that is x levels down along the path
+from the root node to this Item.</p>
+
+<ul>
+<li>depth = 0 returns the root node of a workspace.</li>
+<li>depth = 1 returns the child of the root node along the path to this
+ Item.</li>
+<li>depth = 2 returns the grandchild of the root node along the path to
+ this Item.</li>
+<li>And so on to depth = n, where n is the depth of this Item, which
+ returns this Item itself.</li>
+</ul>
+
+<p>If this node has more than one path (i.e., if it is a descendant of a
+shared node) then the path used to define the ancestor is implementaion-
+dependent.</p></small><br><h4>Arguments</h4>
+<table>
+<thead><tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr></thead>
+<tbody><tr>
+<td>$depth</td>
+<td style="white-space: normal;">integer</td>
+<td><p>An integer, 0 <= depth <= n where n is the depth of this Item.</p>
+</td>
+<td></td>
+</tr></tbody>
+</table>
+<h4>Return value</h4>
+<table>
+<thead><tr>
+<th>Type</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr>
+<td>\PHPCR\ItemInterface</td>
+<td>The ancestor of this Item at the specified
+     depth.</td>
+</tr></tbody>
+</table>
+<h4>Tags</h4>
+<table>
+<thead><tr>
+<th>Name</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>throws</td>
+<td>if depth &lt; 0 or depth &gt; n
+     where n is the depth of this item.</td>
+</tr>
+<tr>
+<td>throws</td>
+<td>if the current session does not
+     have sufficient access to retrieve the specified node.</td>
+</tr>
+<tr>
+<td>throws</td>
+<td>if another error occurs.</td>
+</tr>
+<tr>
+<td>api</td>
+<td></td>
+</tr>
+<tr>
+<td>inherited_from</td>
+<td><a href="phpcr.src.PHPCR.ItemInterface.html#%5CPHPCR%5CItemInterface::getAncestor()"><small>\PHPCR\ItemInterface::getAncestor()</small></a></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="method">
+<a id="PropertyInterface::getBinary()"></a><h3>getBinary<span class="nb-faded-text">(
+          
+          )
+        </span>
+        :
+        <span class="nb-faded-text">resource|array</span>
+</h3>
+<h4>Description</h4>
+<em>Returns a Binary representation of the value of this property.</em><br><small><p>The Binary object in turn provides methods to access the binary data
+itself. Uses the standard conversion to binary (see JCR specification).</p></small><br><h4>Return value</h4>
+<table>
+<thead><tr>
+<th>Type</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr>
+<td>resource|array</td>
+<td>A stream resource if the underlying binary</td>
+</tr></tbody>
+</table>
+<h4>Tags</h4>
+<table>
+<thead><tr>
+<th>Name</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>throws</td>
+<td>if another error occurs</td>
+</tr>
+<tr>
+<td>api</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="method">
+<a id="PropertyInterface::getBoolean()"></a><h3>getBoolean<span class="nb-faded-text">(
+          
+          )
+        </span>
+        :
+        <span class="nb-faded-text">boolean|array</span>
+</h3>
+<h4>Description</h4>
+<em>Returns a boolean representation of the value of this property.</em><br><small><p><b>PHP Note:</b>Keep in mind that according to the specification, not
+all property types can be converted to boolean. Most actually can not
+be converted - see PropertyType::convertType().
+If you want to know if a value is empty in the PHP sense, use
+getString() and do your checks on the string.</p></small><br><h4>Return value</h4>
+<table>
+<thead><tr>
+<th>Type</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr>
+<td>boolean|array</td>
+<td>A boolean representation of the value of this property,
+     or an array of boolean for multi-valued properties.</td>
+</tr></tbody>
+</table>
+<h4>Tags</h4>
+<table>
+<thead><tr>
+<th>Name</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>throws</td>
+<td>if conversion to a boolean is not
+     possible</td>
+</tr>
+<tr>
+<td>throws</td>
+<td>if another error occurs</td>
+</tr>
+<tr>
+<td>api</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="method">
+<a id="PropertyInterface::getDate()"></a><h3>getDate<span class="nb-faded-text">(
+          
+          )
+        </span>
+        :
+        <span class="nb-faded-text">\DateTime|array</span>
+</h3>
+<h4>Description</h4>
+<em>Returns a \DateTime representation of the value of this property.</em><br><small><p>The object returned is a copy of the stored value, so changes to it are
+not reflected in internal storage.</p></small><br><h4>Return value</h4>
+<table>
+<thead><tr>
+<th>Type</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr>
+<td>\DateTime|array</td>
+<td>A date representation of the value of this property,
+     or an array of DateTime for multi-valued properties.</td>
+</tr></tbody>
+</table>
+<h4>Tags</h4>
+<table>
+<thead><tr>
+<th>Name</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>throws</td>
+<td>if conversion to \DateTime is not
+     possible</td>
+</tr>
+<tr>
+<td>throws</td>
+<td>if another error occurs</td>
+</tr>
+<tr>
+<td>api</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="method">
+<a id="PropertyInterface::getDecimal()"></a><h3>getDecimal<span class="nb-faded-text">(
+          
+          )
+        </span>
+        :
+        <span class="nb-faded-text">string|array</span>
+</h3>
+<h4>Description</h4>
+<em>Returns an arbitrary precision number (encoded as string) representation
+of this value (a BigDecimal in Java).</em><br><small><p>The string must be encoded with the C locale because of
+http://bugs.php.net/bug.php?id=16532</p></small><br><h4>Return value</h4>
+<table>
+<thead><tr>
+<th>Type</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr>
+<td>string|array</td>
+<td>A string representation of the value of this property, or
+     an array of strings for multi-valued properties.</td>
+</tr></tbody>
+</table>
+<h4>Tags</h4>
+<table>
+<thead><tr>
+<th>Name</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>throws</td>
+<td>if conversion to a number string is
+     not possible</td>
+</tr>
+<tr>
+<td>throws</td>
+<td>if another error occurs</td>
+</tr>
+<tr>
+<td>api</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="method">
+<a id="PropertyInterface::getDefinition()"></a><h3>getDefinition<span class="nb-faded-text">(
+          
+          )
+        </span>
+        :
+        <span class="nb-faded-text">\PHPCR\NodeType\PropertyDefinitionInterface</span>
+</h3>
+<h4>Description</h4>
+<em>Returns the property definition that applies to this property.</em><br><small><p>In some cases there may appear to be more than one definition that could
+apply to this node. However, it is assumed that upon creation or change
+of this property, a single particular definition is chosen by the
+implementation. It is that definition that this method returns. How this
+governing definition is selected upon property creation or change from
+among others which may have been applicable is an implementation issue
+and is not covered by this specification.</p></small><br><h4>Return value</h4>
+<table>
+<thead><tr>
+<th>Type</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr>
+<td>\PHPCR\NodeType\PropertyDefinitionInterface</td>
+<td>a PropertyDefinition
+     object.</td>
+</tr></tbody>
+</table>
+<h4>Tags</h4>
+<table>
+<thead><tr>
+<th>Name</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>throws</td>
+<td>if an error occurs.</td>
+</tr>
+<tr>
+<td>api</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="method">
+<a id="PropertyInterface::getDepth()"></a><h3>getDepth<span class="nb-faded-text">(
+          
+          )
+        </span>
+        :
+        <span class="nb-faded-text">integer</span>
+</h3>
+<h4>Description</h4>
+<em>Returns the depth of this Item in the workspace item graph.</em><br><small><ul>
+<li>The root node returns 0.</li>
+<li>A property or child node of the root node returns 1.</li>
+<li>A property or child node of a child node of the root returns 2.</li>
+<li>And so on to this Item.</li>
+</ul></small><br><h4>Return value</h4>
+<table>
+<thead><tr>
+<th>Type</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr>
+<td>integer</td>
+<td>The depth of this Item in the workspace item graph.</td>
+</tr></tbody>
+</table>
+<h4>Tags</h4>
+<table>
+<thead><tr>
+<th>Name</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>throws</td>
+<td>if an error occurs.</td>
+</tr>
+<tr>
+<td>api</td>
+<td></td>
+</tr>
+<tr>
+<td>inherited_from</td>
+<td><a href="phpcr.src.PHPCR.ItemInterface.html#%5CPHPCR%5CItemInterface::getDepth()"><small>\PHPCR\ItemInterface::getDepth()</small></a></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="method">
+<a id="PropertyInterface::getDouble()"></a><h3>getDouble<span class="nb-faded-text">(
+          
+          )
+        </span>
+        :
+        <span class="nb-faded-text">float|array</span>
+</h3>
+<h4>Description</h4>
+<em>Returns a float representation of the value of this property.</em><br><h4>Return value</h4>
+<table>
+<thead><tr>
+<th>Type</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr>
+<td>float|array</td>
+<td>A float representation of the value of this property, or
+     an array of float for multi-valued properties.</td>
+</tr></tbody>
+</table>
+<h4>Tags</h4>
+<table>
+<thead><tr>
+<th>Name</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>throws</td>
+<td>if conversion to a double is not possible</td>
+</tr>
+<tr>
+<td>throws</td>
+<td>if another error occurs</td>
+</tr>
+<tr>
+<td>api</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="method">
+<a id="PropertyInterface::getLength()"></a><h3>getLength<span class="nb-faded-text">(
+          
+          )
+        </span>
+        :
+        <span class="nb-faded-text">integer|array</span>
+</h3>
+<h4>Description</h4>
+<em>Returns the length(s) of the value(s) of this property.</em><br><small><p>For a BINARY property, getLength returns the number of bytes.
+For other property types, getLength returns the same value that would be
+returned by calling strlen() on the value when it has been converted to
+a STRING according to standard JCR propety type conversion.</p>
+
+<p>Returns -1 if the implementation cannot determine the length.</p>
+
+<p>For multi-valuedproperties, the same rules apply, but returns an array of
+lengths with the same order as the values have in getValue.</p></small><br><h4>Return value</h4>
+<table>
+<thead><tr>
+<th>Type</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr>
+<td>integer|array</td>
+<td>the length of this value, or an array of lengths
+     for multi-valued properties</td>
+</tr></tbody>
+</table>
+<h4>Tags</h4>
+<table>
+<thead><tr>
+<th>Name</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>throws</td>
+<td>if an error occurs.</td>
+</tr>
+<tr>
+<td>api</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="method">
+<a id="PropertyInterface::getLong()"></a><h3>getLong<span class="nb-faded-text">(
+          
+          )
+        </span>
+        :
+        <span class="nb-faded-text">integer|array</span>
+</h3>
+<h4>Description</h4>
+<em>Returns an integer representation of the value of this property.</em><br><h4>Return value</h4>
+<table>
+<thead><tr>
+<th>Type</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr>
+<td>integer|array</td>
+<td>An integer representation of the value of this property,
+     or an array of integer for multi-valued properties.</td>
+</tr></tbody>
+</table>
+<h4>Tags</h4>
+<table>
+<thead><tr>
+<th>Name</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>throws</td>
+<td>if conversion to integer is not
+     possible</td>
+</tr>
+<tr>
+<td>throws</td>
+<td>if another error occurs</td>
+</tr>
+<tr>
+<td>api</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="method">
+<a id="PropertyInterface::getName()"></a><h3>getName<span class="nb-faded-text">(
+          
+          )
+        </span>
+        :
+        <span class="nb-faded-text">string</span>
+</h3>
+<h4>Description</h4>
+<em>Returns the name of this Item in qualified form.</em><br><small><p>If this Item is the root node of the workspace, an empty string is returned.</p></small><br><h4>Return value</h4>
+<table>
+<thead><tr>
+<th>Type</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr>
+<td>string</td>
+<td>the name of this Item in qualified form or an empty
+     string if this Item is the root node of a workspace.</td>
+</tr></tbody>
+</table>
+<h4>Tags</h4>
+<table>
+<thead><tr>
+<th>Name</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>throws</td>
+<td>if an error occurs.</td>
+</tr>
+<tr>
+<td>api</td>
+<td></td>
+</tr>
+<tr>
+<td>inherited_from</td>
+<td><a href="phpcr.src.PHPCR.ItemInterface.html#%5CPHPCR%5CItemInterface::getName()"><small>\PHPCR\ItemInterface::getName()</small></a></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="method">
+<a id="PropertyInterface::getNode()"></a><h3>getNode<span class="nb-faded-text">(
+          
+          )
+        </span>
+        :
+        <span class="nb-faded-text">\PHPCR\NodeInterface|array</span>
+</h3>
+<h4>Description</h4>
+<em>Gets the node the property refers to by its type.</em><br><small><p>If this property is of type REFERENCE, WEAKREFERENCE or PATH (or
+convertible to one of these types) this method returns the Node to
+which this property refers.
+If this property is of type PATH and it contains a relative path, it is
+interpreted relative to the parent node of this property. For example "."
+refers to the parent node itself, ".." to the parent of the parent node
+and "foo" to a sibling node of this property.</p>
+
+<p>If you do not want to dereference the nodes yet, you can use getString
+to get the unique ids and use the SessionInterface::getNodeByIdentifier
+as all referenced nodes are referenciable and thus must have a uuid.
+If its a PATH property, you will need the node of this property and use
+getNodes to get the nodes with relative or absolute path.</p></small><br><h4>Return value</h4>
+<table>
+<thead><tr>
+<th>Type</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr>
+<td>\PHPCR\NodeInterface|array</td>
+<td>the referenced Node, or an array of Nodes
+     for multi-valued properties.</td>
+</tr></tbody>
+</table>
+<h4>Tags</h4>
+<table>
+<thead><tr>
+<th>Name</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>throws</td>
+<td>if this property cannot be converted
+     to a referring type (REFERENCE, WEAKREFERENCE or PATH) or if this
+     property is a referring type but is currently part of the frozen
+     state of a version in version storage.</td>
+</tr>
+<tr>
+<td>throws</td>
+<td>If this property is of type PATH or
+     WEAKREFERENCE and no target node accessible by the current Session
+     exists in this workspace. Note that this applies even if the
+     property is a PATH and a property exists at the specified location.
+     To dereference to a target property (as opposed to a target node),
+     the method PropertyInterface::getProperty() is used.</td>
+</tr>
+<tr>
+<td>throws</td>
+<td>if another error occurs.</td>
+</tr>
+<tr>
+<td>api</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="method">
+<a id="PropertyInterface::getParent()"></a><h3>getParent<span class="nb-faded-text">(
+          
+          )
+        </span>
+        :
+        <span class="nb-faded-text">\PHPCR\NodeInterface</span>
+</h3>
+<h4>Description</h4>
+<em>Returns the parent of this Item.</em><br><h4>Return value</h4>
+<table>
+<thead><tr>
+<th>Type</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr>
+<td>\PHPCR\NodeInterface</td>
+<td>The parent of this Item.</td>
+</tr></tbody>
+</table>
+<h4>Tags</h4>
+<table>
+<thead><tr>
+<th>Name</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>throws</td>
+<td>if this Item is the root node of a
+     workspace.</td>
+</tr>
+<tr>
+<td>throws</td>
+<td>if the current session does not
+     have sufficent access to retrieve the parent of this item.</td>
+</tr>
+<tr>
+<td>throws</td>
+<td>if another error occurs.</td>
+</tr>
+<tr>
+<td>api</td>
+<td></td>
+</tr>
+<tr>
+<td>inherited_from</td>
+<td><a href="phpcr.src.PHPCR.ItemInterface.html#%5CPHPCR%5CItemInterface::getParent()"><small>\PHPCR\ItemInterface::getParent()</small></a></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="method">
+<a id="PropertyInterface::getPath()"></a><h3>getPath<span class="nb-faded-text">(
+          
+          )
+        </span>
+        :
+        <span class="nb-faded-text">string</span>
+</h3>
+<h4>Description</h4>
+<em>Returns the normalized absolute path to this item.</em><br><h4>Return value</h4>
+<table>
+<thead><tr>
+<th>Type</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr>
+<td>string</td>
+<td>the normalized absolute path of this Item.</td>
+</tr></tbody>
+</table>
+<h4>Tags</h4>
+<table>
+<thead><tr>
+<th>Name</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>throws</td>
+<td>if an error occurs.</td>
+</tr>
+<tr>
+<td>api</td>
+<td></td>
+</tr>
+<tr>
+<td>inherited_from</td>
+<td><a href="phpcr.src.PHPCR.ItemInterface.html#%5CPHPCR%5CItemInterface::getPath()"><small>\PHPCR\ItemInterface::getPath()</small></a></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="method">
+<a id="PropertyInterface::getProperty()"></a><h3>getProperty<span class="nb-faded-text">(
+          
+          )
+        </span>
+        :
+        <span class="nb-faded-text">\PHPCR\PropertyInterface|array</span>
+</h3>
+<h4>Description</h4>
+<em>Gets the property the property refers to by its type.</em><br><small><p>If this property is of type PATH (or convertible to this type) this
+method returns the Property to which this property refers.
+If this property contains a relative path, it is interpreted relative
+to the parent node of this property. Therefore, when resolving such a
+relative path, the segment "." refers to the parent node itself, ".." to
+the parent of the parent node and "foo" to a sibling property of this
+property or this property itself.</p>
+
+<p>For example, if this property is located at /a/b/c and it has a value of
+"../d" then this method will return the property at /a/d if such exists.</p></small><br><h4>Return value</h4>
+<table>
+<thead><tr>
+<th>Type</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr>
+<td>\PHPCR\PropertyInterface|array</td>
+<td>the referenced property, or an array of
+     properties for multi-valued properties.</td>
+</tr></tbody>
+</table>
+<h4>Tags</h4>
+<table>
+<thead><tr>
+<th>Name</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>throws</td>
+<td>if this property cannot be converted
+     to a PATH or if this property is a referring type but is currently
+     part of the frozen state of a version in version storage.</td>
+</tr>
+<tr>
+<td>throws</td>
+<td>If no property accessible by the
+     current Session exists in this workspace at the specified path.
+     Note that this applies even if a node exists at the specified
+     location. To dereference to a target node, the method
+     PropertyInterface::getNode() is used.</td>
+</tr>
+<tr>
+<td>throws</td>
+<td>if another error occurs</td>
+</tr>
+<tr>
+<td>api</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="method">
+<a id="PropertyInterface::getSession()"></a><h3>getSession<span class="nb-faded-text">(
+          
+          )
+        </span>
+        :
+        <span class="nb-faded-text">\PHPCR\SessionInterface</span>
+</h3>
+<h4>Description</h4>
+<em>Returns the Session through which this Item was acquired.</em><br><h4>Return value</h4>
+<table>
+<thead><tr>
+<th>Type</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr>
+<td>\PHPCR\SessionInterface</td>
+<td>the Session through which this Item was
+     acquired.</td>
+</tr></tbody>
+</table>
+<h4>Tags</h4>
+<table>
+<thead><tr>
+<th>Name</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>throws</td>
+<td>if an error occurs.</td>
+</tr>
+<tr>
+<td>api</td>
+<td></td>
+</tr>
+<tr>
+<td>inherited_from</td>
+<td><a href="phpcr.src.PHPCR.ItemInterface.html#%5CPHPCR%5CItemInterface::getSession()"><small>\PHPCR\ItemInterface::getSession()</small></a></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="method">
+<a id="PropertyInterface::getString()"></a><h3>getString<span class="nb-faded-text">(
+          
+          )
+        </span>
+        :
+        <span class="nb-faded-text">\PHPCR\string\array</span>
+</h3>
+<h4>Description</h4>
+<em>Returns a String representation of the value of this property.</em><br><h4>Return value</h4>
+<table>
+<thead><tr>
+<th>Type</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr>
+<td>\PHPCR\string\array</td>
+<td>A string representation of the value of this property, or
+     an array of string for multi-valued properties.</td>
+</tr></tbody>
+</table>
+<h4>Tags</h4>
+<table>
+<thead><tr>
+<th>Name</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>throws</td>
+<td>if conversion to a String is not possible</td>
+</tr>
+<tr>
+<td>throws</td>
+<td>if another error occurs.</td>
+</tr>
+<tr>
+<td>api</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="method">
+<a id="PropertyInterface::getType()"></a><h3>getType<span class="nb-faded-text">(
+          
+          )
+        </span>
+        :
+        <span class="nb-faded-text">integer</span>
+</h3>
+<h4>Description</h4>
+<em>Returns the type of this Property.</em><br><small><p>Following property types are available:</p>
+
+<ul>
+<li>PropertyType::STRING</li>
+<li>PropertyType::BINARY</li>
+<li>PropertyType::DATE</li>
+<li>PropertyType::DOUBLE</li>
+<li>PropertyType::LONG</li>
+<li>PropertyType::BOOLEAN</li>
+<li>PropertyType::NAME</li>
+<li>PropertyType::PATH</li>
+<li>PropertyType::REFERENCE</li>
+<li>PropertyType::WEAKREFERENCE</li>
+<li>PropertyType::URI</li>
+</ul>
+
+<p>The type returned is that which was set at property creation. Note that
+for some property p, the type returned by $p->getType() will differ from
+the type returned by $p->getDefinition()->getRequiredType() only in the
+case where the latter returns UNDEFINED. The type of a property instance
+is never UNDEFINED (it must always have some actual type).</p></small><br><h4>Return value</h4>
+<table>
+<thead><tr>
+<th>Type</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr>
+<td>integer</td>
+<td>The numerical representation of a property type.</td>
+</tr></tbody>
+</table>
+<h4>Tags</h4>
+<table>
+<thead><tr>
+<th>Name</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>throws</td>
+<td>if an error occurs</td>
+</tr>
+<tr>
+<td>see</td>
+<td><a href="phpcr.src.PHPCR.PropertyType.html#%5CPHPCR%5CPropertyType"><small>\PHPCR\PropertyType</small></a></td>
+</tr>
+<tr>
+<td>api</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="method">
+<a id="PropertyInterface::getValue()"></a><h3>getValue<span class="nb-faded-text">(
+          
+          )
+        </span>
+        :
+        <span class="nb-faded-text">mixed</span>
+</h3>
+<h4>Description</h4>
+<em>Get the value in format default for the PropertyType of this property.</em><br><small><p>In case of a (WEAK)REFERENCE, the node is dereferenced and returned. For
+all other cases including PATH, the value is returned as is. If you want
+to dereference a PATH to a property or node, you need to explicitly call
+getNode() resp. getProperty().</p>
+
+<p><b>PHPCR Note:</b> We dropped the Value interface as its unnecessary
+with weak typing.</p></small><br><h4>Return value</h4>
+<table>
+<thead><tr>
+<th>Type</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr>
+<td>mixed</td>
+<td>value of this property, or array in case of multi-value.</td>
+</tr></tbody>
+</table>
+</div>
+<div class="method">
+<a id="PropertyInterface::isModified()"></a><h3>isModified<span class="nb-faded-text">(
+          
+          )
+        </span>
+        :
+        <span class="nb-faded-text">boolean</span>
+</h3>
+<h4>Description</h4>
+<em>Indicates if the current item has been modified.</em><br><small><p>Returns true if this Item has been saved but has subsequently been
+modified through the current session and therefore the state of this
+item as recorded in the session differs from the state of this item as
+saved. Within a transaction, isModified on an Item may return false
+(because the Item has been saved since the modification) even if the
+modification in question is not in persistent storage (because the
+transaction has not yet been committed).</p>
+
+<p>Note that in read-only implementations, this method will always return
+false.</p></small><br><h4>Return value</h4>
+<table>
+<thead><tr>
+<th>Type</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr>
+<td>boolean</td>
+<td>true if this item is modified; false otherwise.</td>
+</tr></tbody>
+</table>
+<h4>Tags</h4>
+<table>
+<thead><tr>
+<th>Name</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>api</td>
+<td></td>
+</tr>
+<tr>
+<td>inherited_from</td>
+<td><a href="phpcr.src.PHPCR.ItemInterface.html#%5CPHPCR%5CItemInterface::isModified()"><small>\PHPCR\ItemInterface::isModified()</small></a></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="method">
+<a id="PropertyInterface::isMultiple()"></a><h3>isMultiple<span class="nb-faded-text">(
+          
+          )
+        </span>
+        :
+        <span class="nb-faded-text">boolean</span>
+</h3>
+<h4>Description</h4>
+<em>Determines if the current property is multi-valued.</em><br><small><p>Returns true if this property is multi-valued and false if this property
+is single-valued.</p></small><br><h4>Return value</h4>
+<table>
+<thead><tr>
+<th>Type</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr>
+<td>boolean</td>
+<td>true if this property is multi-valued; false otherwise.</td>
+</tr></tbody>
+</table>
+<h4>Tags</h4>
+<table>
+<thead><tr>
+<th>Name</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>throws</td>
+<td>if an error occurs.</td>
+</tr>
+<tr>
+<td>api</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="method">
+<a id="PropertyInterface::isNew()"></a><h3>isNew<span class="nb-faded-text">(
+          
+          )
+        </span>
+        :
+        <span class="nb-faded-text">boolean</span>
+</h3>
+<h4>Description</h4>
+<em>Determines if the current item is a new one.</em><br><small><p>Returns true if this is a new item, meaning that it exists only in
+transient storage on the Session and has not yet been saved. Within a
+transaction, isNew on an Item may return false (because the item has
+been saved) even if that Item is not in persistent storage (because the
+transaction has not yet been committed).</p>
+
+<p>Note that if an item returns true on isNew, then by definition is parent
+will return true on isModified.</p>
+
+<p>Note that in read-only implementations, this method will always return
+false.</p></small><br><h4>Return value</h4>
+<table>
+<thead><tr>
+<th>Type</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr>
+<td>boolean</td>
+<td>true if this item is new; false otherwise.</td>
+</tr></tbody>
+</table>
+<h4>Tags</h4>
+<table>
+<thead><tr>
+<th>Name</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>api</td>
+<td></td>
+</tr>
+<tr>
+<td>inherited_from</td>
+<td><a href="phpcr.src.PHPCR.ItemInterface.html#%5CPHPCR%5CItemInterface::isNew()"><small>\PHPCR\ItemInterface::isNew()</small></a></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="method">
+<a id="PropertyInterface::isNode()"></a><h3>isNode<span class="nb-faded-text">(
+          
+          )
+        </span>
+        :
+        <span class="nb-faded-text">boolean</span>
+</h3>
+<h4>Description</h4>
+<em>Indicates whether this Item is a Node or a Property.</em><br><small><p>Returns true if this Item is a Node; Returns false if this Item is a
+Property.</p></small><br><h4>Return value</h4>
+<table>
+<thead><tr>
+<th>Type</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr>
+<td>boolean</td>
+<td>true if this Item is a Node, false if it is a Property.</td>
+</tr></tbody>
+</table>
+<h4>Tags</h4>
+<table>
+<thead><tr>
+<th>Name</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>api</td>
+<td></td>
+</tr>
+<tr>
+<td>inherited_from</td>
+<td><a href="phpcr.src.PHPCR.ItemInterface.html#%5CPHPCR%5CItemInterface::isNode()"><small>\PHPCR\ItemInterface::isNode()</small></a></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="method">
+<a id="PropertyInterface::isSame()"></a><h3>isSame<span class="nb-faded-text">(
+          <a href="phpcr.src.PHPCR.ItemInterface.html#%5CPHPCR%5CItemInterface">\PHPCR\ItemInterface</a>
+             
+            $otherItem,
+          
+          )
+        </span>
+        :
+        <span class="nb-faded-text">boolean</span>
+</h3>
+<h4>Description</h4>
+<em>Determines if this Item object represents the same actual workspace item
+as the object otherItem.</em><br><small><p>Two Item objects represent the same workspace item if all the following
+are true:</p>
+
+<ul>
+<li>Both objects were acquired through Session objects that were created
+by the same Repository object.</li>
+<li>Both objects were acquired through Session objects bound to the same
+repository workspace.</li>
+<li>The objects are either both Node objects or both Property
+objects.</li>
+<li>If they are Node objects, they have the same identifier.</li>
+<li>If they are Property objects they have identical names and
+isSame() is true of their parent nodes.</li>
+</ul>
+
+<p>This method does not compare the states of the two items. For example, if
+two Item objects representing the same actual workspace item have been
+retrieved through two different sessions and one has been modified, then
+this method will still return true when comparing these two objects.
+Note that if two Item objects representing the same workspace item are
+retrieved through the same session they will always reflect the same
+state.</p></small><br><h4>Arguments</h4>
+<table>
+<thead><tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr></thead>
+<tbody><tr>
+<td>$otherItem</td>
+<td style="white-space: normal;"><a href="phpcr.src.PHPCR.ItemInterface.html#%5CPHPCR%5CItemInterface">\PHPCR\ItemInterface</a></td>
+<td><p>the Item object to be tested for identity with this Item.</p></td>
+<td></td>
+</tr></tbody>
+</table>
+<h4>Return value</h4>
+<table>
+<thead><tr>
+<th>Type</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr>
+<td>boolean</td>
+<td>true if this Item object and otherItem represent the
+     same actual repository item; false otherwise.</td>
+</tr></tbody>
+</table>
+<h4>Tags</h4>
+<table>
+<thead><tr>
+<th>Name</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>throws</td>
+<td>if an error occurs.</td>
+</tr>
+<tr>
+<td>api</td>
+<td></td>
+</tr>
+<tr>
+<td>inherited_from</td>
+<td><a href="phpcr.src.PHPCR.ItemInterface.html#%5CPHPCR%5CItemInterface::isSame()"><small>\PHPCR\ItemInterface::isSame()</small></a></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="method">
+<a id="PropertyInterface::refresh()"></a><h3>refresh<span class="nb-faded-text">(
+          boolean
+             
+            $keepChanges,
+          
+          )
+        </span>
+        :
+        <span class="nb-faded-text">void</span>
+</h3>
+<h4>Description</h4>
+<em>Updates the state of the current item.</em><br><small><p>If keepChanges is false, this method discards all pending changes
+currently recorded in this Session that apply to this Item or any
+of its descendants (that is, the subgraph rooted at this Item) and
+returns all items to reflect the current saved state. Outside a
+transaction this state is simple the current state of persistent
+storage. Within a transaction, this state will reflect persistent
+storage as modified by changes that have been saved but not yet
+committed.</p>
+
+<p>If keepChanges is true then pending change are not discarded but
+items that do not have changes pending have their state refreshed
+to reflect the current saved state, thus revealing changes made by
+other sessions.</p></small><br><h4>Arguments</h4>
+<table>
+<thead><tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr></thead>
+<tbody><tr>
+<td>$keepChanges</td>
+<td style="white-space: normal;">boolean</td>
+<td><p>a boolean</p></td>
+<td></td>
+</tr></tbody>
+</table>
+<h4>Return value</h4>
+<table>
+<thead><tr>
+<th>Type</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr>
+<td>void</td>
+<td></td>
+</tr></tbody>
+</table>
+<h4>Tags</h4>
+<table>
+<thead><tr>
+<th>Name</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>throws</td>
+<td>if this Item object represents
+     a workspace item that has been removed (either by this session or
+     another).</td>
+</tr>
+<tr>
+<td>throws</td>
+<td>if another error occurs.</td>
+</tr>
+<tr>
+<td>api</td>
+<td></td>
+</tr>
+<tr>
+<td>inherited_from</td>
+<td><a href="phpcr.src.PHPCR.ItemInterface.html#%5CPHPCR%5CItemInterface::refresh()"><small>\PHPCR\ItemInterface::refresh()</small></a></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="method">
+<a id="PropertyInterface::remove()"></a><h3>remove<span class="nb-faded-text">(
+          
+          )
+        </span>
+        :
+        <span class="nb-faded-text">void</span>
+</h3>
+<h4>Description</h4>
+<em>Removes this item (and its subgraph).</em><br><small><p>To persist a removal, a save must be performed that includes the (former)
+parent of the removed item within its scope.</p>
+
+<p>If a node with same-name siblings is removed, this decrements by one the
+indices of all the siblings with indices greater than that of the removed
+node. In other words, a removal compacts the array of same-name siblings
+and causes the minimal re-numbering required to maintain the original
+order but leave no gaps in the numbering.</p></small><br><h4>Return value</h4>
+<table>
+<thead><tr>
+<th>Type</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr>
+<td>void</td>
+<td></td>
+</tr></tbody>
+</table>
+<h4>Tags</h4>
+<table>
+<thead><tr>
+<th>Name</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>throws</td>
+<td>if the parent node of this item
+     is versionable and checked-in or is non-versionable but its nearest
+     versionable ancestor is checked-in and this implementation performs
+     this validation immediately instead of waiting until save.</td>
+</tr>
+<tr>
+<td>throws</td>
+<td>if a lock prevents the removal of this
+     item and this implementation performs this validation immediately
+     instead of waiting until save.</td>
+</tr>
+<tr>
+<td>throws</td>
+<td>if removing the
+     specified item would violate a node type or implementation-specific
+     constraint and this implementation performs this validation
+     immediately instead of waiting until save.</td>
+</tr>
+<tr>
+<td>throws</td>
+<td>if this item or an item in its
+     subgraph is currently the target of a REFERENCE property located in
+     this workspace but outside this item's subgraph and the current
+     Session does not have read access to that REFERENCE property or if
+     the current Session does not have sufficent privileges to remove
+     the item.</td>
+</tr>
+<tr>
+<td>throws</td>
+<td>if another error occurs.</td>
+</tr>
+<tr>
+<td>see</td>
+<td><a href="phpcr.src.PHPCR.SessionInterface.html#%5CPHPCR%5CSessionInterface::removeItem(String)"><small>\PHPCR\SessionInterface::removeItem(String)</small></a></td>
+</tr>
+<tr>
+<td>api</td>
+<td></td>
+</tr>
+<tr>
+<td>inherited_from</td>
+<td><a href="phpcr.src.PHPCR.ItemInterface.html#%5CPHPCR%5CItemInterface::remove()"><small>\PHPCR\ItemInterface::remove()</small></a></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="method">
+<a id="PropertyInterface::setValue()"></a><h3>setValue<span class="nb-faded-text">(
+          mixed
+             
+            $value,
+          integer
+             
+            $type
+            = null,
+          
+          )
+        </span>
+        :
+        <span class="nb-faded-text">void</span>
+</h3>
+<h4>Description</h4>
+<em>Sets the value of this property to the value.</em><br><small><p>If the type parameter is present and this implementation supports
+dynamic re-binding of properties, this property changes its type.
+First, a conversion of value into that type is attempted with
+PropertyType::convertType() and if there is no ValueFormatException,
+the property type changes to the new type.
+If the node type does not allow the requested type, a
+ConstraintViolationException is thrown.
+If the implementation does not support dynamic re-binding, an
+UnsupportedRepositoryException is thrown if the type parameter is
+present and different from the current type.</p>
+
+<p>If no explicit type is given, then the type is derived from the value.
+(First value in case of multi-valuedproperty.)
+If the node type allows the type of the parameter, this property changes
+its type to the type of the value. Otherwise, a conversion of the value
+into the required type is attempted with PropertyType::convertType()</p>
+
+<p>If value is of type PropertyInterface, the value of the property is
+copied into this property. (If type is set, the property value is
+converted into this type, otherwise the type of the property is used
+as in the case of no explicit type).
+This can be used to copy a binary from one property into another without
+getting the stream. The implemenation should take care to detect the
+case and copy the binary data directly in the backend for optimal
+performance.</p>
+
+<p>The type detection follows PropertyType::determineType. Thus, passing a
+Node object without an explicit type (REFERENCE or WEAKREFERENCE) will
+create a REFERENCE property. If the specified node is not referenceable,
+a ValueFormatException is thrown.</p>
+
+<p>To create a PATH property with a reference to an other property, you can
+call setValue with the return value of getPath called on the other
+property and the PATH type constant. Passing the property itself and the
+PATH type will convert the <em>value</em> of the property to a path.</p>
+
+<p>When assigning a stream resource to write a binary property, the client
+application must leave the stream alone afterwards. The PHPCR
+implementation is responsible for closing it after saving.</p>
+
+<p>This method is a session-write and therefore requires a</p>
+
+<pre><code>save</code></pre>
+
+<p>to dispatch the change.</p>
+
+<p>If value is an array:
+If this property is not multi-valued then a ValueFormatException is
+thrown immediately.</p>
+
+<p><strong>PHPCR Note:</strong> The Java API defines this method with
+     multiple differing signatures.
+<strong>PHPCR Note:</strong> Because we removed the Value interface,
+     this method replaces ValueFactory::createValue.</p></small><br><h4>Arguments</h4>
+<table>
+<thead><tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>$value</td>
+<td style="white-space: normal;">mixed</td>
+<td><p>The value to set</p></td>
+<td></td>
+</tr>
+<tr>
+<td>$type</td>
+<td style="white-space: normal;">integer</td>
+<td><p>Type request for the property, optional. Must be a constant from PropertyType</p></td>
+<td>null</td>
+</tr>
+</tbody>
+</table>
+<h4>Return value</h4>
+<table>
+<thead><tr>
+<th>Type</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr>
+<td>void</td>
+<td></td>
+</tr></tbody>
+</table>
+<h4>Tags</h4>
+<table>
+<thead><tr>
+<th>Name</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>throws</td>
+<td>if the type or format of the
+     specified value is incompatible with the type of this property.</td>
+</tr>
+<tr>
+<td>throws</td>
+<td>if this property belongs to a
+     node that is read-only due to a checked-in node and this
+     implementation performs this validation immediately.</td>
+</tr>
+<tr>
+<td>throws</td>
+<td>if a lock prevents the setting of the
+     value and this implementation performs this validation immediately.</td>
+</tr>
+<tr>
+<td>throws</td>
+<td>if the change would
+     violate a node-type or other constraint and this implementation
+     performs this validation immediately.</td>
+</tr>
+<tr>
+<td>throws</td>
+<td>if the type
+     parameter is set and different from the current type and this
+     implementation does not support dynamic re-binding</td>
+</tr>
+<tr>
+<td>throws</td>
+<td>if the specified DateTime value
+     cannot be expressed in the ISO 8601-based format defined in the JCR
+     2.0 specification and the implementation does not support dates
+     incompatible with that format.</td>
+</tr>
+<tr>
+<td>throws</td>
+<td>if another error occurs.</td>
+</tr>
+<tr>
+<td>api</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="constants_PropertyInterface">
+<h4>Constants</h4>
+<a id="PropertyInterface::JCR_ACTIVITY"></a><div class="constant">
+<h3>
+<span class="nb-faded-text"> 
+        </span>JCR_ACTIVITY<span class="nb-faded-text">
+         = "{http://www.jcp.org/jcr/1.0}activity"</span>
+</h3>
+<em>A constant for the property name jcr:activity (in extended form),
+declared in node types mix:versionable and nt:version.</em><br><small></small><br><br>
+</div>
+<a id="PropertyInterface::JCR_AUTOCREATED"></a><div class="constant">
+<h3>
+<span class="nb-faded-text"> 
+        </span>JCR_AUTOCREATED<span class="nb-faded-text">
+         = "{http://www.jcp.org/jcr/1.0}autoCreated"</span>
+</h3>
+<em>A constant for the property name jcr:autoCreated (in extended form),
+declared in node types nt:propertyDefinition and nt:childNodeDefinition.</em><br><small></small><br><br>
+</div>
+<a id="PropertyInterface::JCR_BASE_VERSION"></a><div class="constant">
+<h3>
+<span class="nb-faded-text"> 
+        </span>JCR_BASE_VERSION<span class="nb-faded-text">
+         = "{http://www.jcp.org/jcr/1.0}baseVersion"</span>
+</h3>
+<em>A constant for the property name jcr:baseVersion (in extended form),
+declared in node type mix:versionable.</em><br><small></small><br><br>
+</div>
+<a id="PropertyInterface::JCR_CHILD_VERSION_HISTORY"></a><div class="constant">
+<h3>
+<span class="nb-faded-text"> 
+        </span>JCR_CHILD_VERSION_HISTORY<span class="nb-faded-text">
+         = "{http://www.jcp.org/jcr/1.0}childVersionHistory"</span>
+</h3>
+<em>A constant for the property name jcr:childVersionHistory (in extended form),
+declared in node type nt:versionedChild.</em><br><small></small><br><br>
+</div>
+<a id="PropertyInterface::JCR_CONFIGURATION"></a><div class="constant">
+<h3>
+<span class="nb-faded-text"> 
+        </span>JCR_CONFIGURATION<span class="nb-faded-text">
+         = "{http://www.jcp.org/jcr/1.0}configuration"</span>
+</h3>
+<em>A constant for the property name jcr:configuration (in extended form),
+declared in node type mix:versionable.</em><br><small></small><br><br>
+</div>
+<a id="PropertyInterface::JCR_CONTENT"></a><div class="constant">
+<h3>
+<span class="nb-faded-text"> 
+        </span>JCR_CONTENT<span class="nb-faded-text">
+         = "{http://www.jcp.org/jcr/1.0}content"</span>
+</h3>
+<em>A constant for the property name jcr:content (in extended form),
+declared in node type nt:linkedFile.</em><br><small>&lt;p&gt;&lt;b&gt;Note:&lt;/b&gt; jcr:content is also the name of a child node declared in nt:file.&lt;/p&gt;</small><br><br>
+</div>
+<a id="PropertyInterface::JCR_COPIED_FROM"></a><div class="constant">
+<h3>
+<span class="nb-faded-text"> 
+        </span>JCR_COPIED_FROM<span class="nb-faded-text">
+         = "{http://www.jcp.org/jcr/1.0}copiedFrom"</span>
+</h3>
+<em>A constant for the property name jcr:copiedFrom (in extended form),
+declared in node type nt:version.</em><br><small></small><br><br>
+</div>
+<a id="PropertyInterface::JCR_CREATED"></a><div class="constant">
+<h3>
+<span class="nb-faded-text"> 
+        </span>JCR_CREATED<span class="nb-faded-text">
+         = "{http://www.jcp.org/jcr/1.0}created"</span>
+</h3>
+<em>A constant for the property name jcr:created (in extended form),
+declared in node types mix:created and nt:version.</em><br><small></small><br><br>
+</div>
+<a id="PropertyInterface::JCR_CREATED_BY"></a><div class="constant">
+<h3>
+<span class="nb-faded-text"> 
+        </span>JCR_CREATED_BY<span class="nb-faded-text">
+         = "{http://www.jcp.org/jcr/1.0}createdBy"</span>
+</h3>
+<em>A constant for the property name jcr:createdBy (in extended form),
+declared in node type mix:created.</em><br><small></small><br><br>
+</div>
+<a id="PropertyInterface::JCR_CURRENT_LIFECYCLE_STATE"></a><div class="constant">
+<h3>
+<span class="nb-faded-text"> 
+        </span>JCR_CURRENT_LIFECYCLE_STATE<span class="nb-faded-text">
+         = "{http://www.jcp.org/jcr/1.0}currentLifecycleState"</span>
+</h3>
+<em>A constant for the property name jcr:currentLifecycleState (in extended form),
+declared in node type mix:lifecycle.</em><br><small></small><br><br>
+</div>
+<a id="PropertyInterface::JCR_DATA"></a><div class="constant">
+<h3>
+<span class="nb-faded-text"> 
+        </span>JCR_DATA<span class="nb-faded-text">
+         = "{http://www.jcp.org/jcr/1.0}data"</span>
+</h3>
+<em>A constant for the property name jcr:data (in extended form),
+declared in node type nt:resource.</em><br><small></small><br><br>
+</div>
+<a id="PropertyInterface::JCR_DEFAULT_PRIMARY_TYPE"></a><div class="constant">
+<h3>
+<span class="nb-faded-text"> 
+        </span>JCR_DEFAULT_PRIMARY_TYPE<span class="nb-faded-text">
+         = "{http://www.jcp.org/jcr/1.0}defaultPrimaryType"</span>
+</h3>
+<em>A constant for the property name jcr:defaultPrimaryType (in extended form),
+declared in node type nt:childNodeDefinition.</em><br><small></small><br><br>
+</div>
+<a id="PropertyInterface::JCR_DEFAULT_VALUES"></a><div class="constant">
+<h3>
+<span class="nb-faded-text"> 
+        </span>JCR_DEFAULT_VALUES<span class="nb-faded-text">
+         = "{http://www.jcp.org/jcr/1.0}defaultValues"</span>
+</h3>
+<em>A constant for the property name jcr:defaultValues (in extended form),
+declared in node type nt:propertyDefinition.</em><br><small></small><br><br>
+</div>
+<a id="PropertyInterface::JCR_DESCRIPTION"></a><div class="constant">
+<h3>
+<span class="nb-faded-text"> 
+        </span>JCR_DESCRIPTION<span class="nb-faded-text">
+         = "{http://www.jcp.org/jcr/1.0}description"</span>
+</h3>
+<em>A constant for the property name jcr:description (in extended form),
+declared in node type mix:title.</em><br><small></small><br><br>
+</div>
+<a id="PropertyInterface::JCR_ENCODING"></a><div class="constant">
+<h3>
+<span class="nb-faded-text"> 
+        </span>JCR_ENCODING<span class="nb-faded-text">
+         = "{http://www.jcp.org/jcr/1.0}encoding"</span>
+</h3>
+<em>A constant for the property name jcr:encoding (in extended form),
+declared in node type mix:mimeType.</em><br><small></small><br><br>
+</div>
+<a id="PropertyInterface::JCR_FROZEN_MIXIN_TYPES"></a><div class="constant">
+<h3>
+<span class="nb-faded-text"> 
+        </span>JCR_FROZEN_MIXIN_TYPES<span class="nb-faded-text">
+         = "{http://www.jcp.org/jcr/1.0}frozenMixinTypes"</span>
+</h3>
+<em>A constant for the property name jcr:frozenMixinTypes (in extended form),
+declared in node type nt:frozenNode.</em><br><small></small><br><br>
+</div>
+<a id="PropertyInterface::JCR_FROZEN_PRIMARY_TYPE"></a><div class="constant">
+<h3>
+<span class="nb-faded-text"> 
+        </span>JCR_FROZEN_PRIMARY_TYPE<span class="nb-faded-text">
+         = "{http://www.jcp.org/jcr/1.0}frozenPrimaryType"</span>
+</h3>
+<em>A constant for the property name jcr:frozenPrimaryType (in extended form),
+declared in node type nt:frozenNode.</em><br><small></small><br><br>
+</div>
+<a id="PropertyInterface::JCR_FROZEN_UUID"></a><div class="constant">
+<h3>
+<span class="nb-faded-text"> 
+        </span>JCR_FROZEN_UUID<span class="nb-faded-text">
+         = "{http://www.jcp.org/jcr/1.0}frozenUuid"</span>
+</h3>
+<em>A constant for the property name jcr:frozenUuid (in extended form),
+declared in node type nt:frozenNode.</em><br><small></small><br><br>
+</div>
+<a id="PropertyInterface::JCR_HAS_ORDERABLE_CHILD_NODES"></a><div class="constant">
+<h3>
+<span class="nb-faded-text"> 
+        </span>JCR_HAS_ORDERABLE_CHILD_NODES<span class="nb-faded-text">
+         = "{http://www.jcp.org/jcr/1.0}hasOrderableChildNodes"</span>
+</h3>
+<em>A constant for the property name jcr:hasOrderableChildNodes (in extended form),
+declared in node type nt:nodeType.</em><br><small></small><br><br>
+</div>
+<a id="PropertyInterface::JCR_HOST"></a><div class="constant">
+<h3>
+<span class="nb-faded-text"> 
+        </span>JCR_HOST<span class="nb-faded-text">
+         = "{http://www.jcp.org/jcr/1.0}host"</span>
+</h3>
+<em>A constant for the property name jcr:host (in extended form),
+declared in node type nt:address.</em><br><small></small><br><br>
+</div>
+<a id="PropertyInterface::JCR_ID"></a><div class="constant">
+<h3>
+<span class="nb-faded-text"> 
+        </span>JCR_ID<span class="nb-faded-text">
+         = "{http://www.jcp.org/jcr/1.0}id"</span>
+</h3>
+<em>A constant for the property name jcr:id (in extended form),
+declared in node type nt:address.</em><br><small></small><br><br>
+</div>
+<a id="PropertyInterface::JCR_IS_ABSTRACT"></a><div class="constant">
+<h3>
+<span class="nb-faded-text"> 
+        </span>JCR_IS_ABSTRACT<span class="nb-faded-text">
+         = "{http://www.jcp.org/jcr/1.0}isAbstract"</span>
+</h3>
+<em>A constant for the property name jcr:isAbstract (in extended form),
+declared in node type nt:nodeType.</em><br><small></small><br><br>
+</div>
+<a id="PropertyInterface::JCR_IS_CHECKED_OUT"></a><div class="constant">
+<h3>
+<span class="nb-faded-text"> 
+        </span>JCR_IS_CHECKED_OUT<span class="nb-faded-text">
+         = "{http://www.jcp.org/jcr/1.0}isCheckedOut"</span>
+</h3>
+<em>A constant for the property name jcr:isCheckedOut (in extended form),
+declared in node type mix:simpleVersionable.</em><br><small></small><br><br>
+</div>
+<a id="PropertyInterface::JCR_IS_MIXIN"></a><div class="constant">
+<h3>
+<span class="nb-faded-text"> 
+        </span>JCR_IS_MIXIN<span class="nb-faded-text">
+         = "{http://www.jcp.org/jcr/1.0}isMixin"</span>
+</h3>
+<em>A constant for the property name jcr:isMixin (in extended form),
+declared in node type nt:nodeType.</em><br><small></small><br><br>
+</div>
+<a id="PropertyInterface::JCR_LANGUAGE"></a><div class="constant">
+<h3>
+<span class="nb-faded-text"> 
+        </span>JCR_LANGUAGE<span class="nb-faded-text">
+         = "{http://www.jcp.org/jcr/1.0}language"</span>
+</h3>
+<em>A constant for the property name jcr:language (in extended form),
+declared in node types mix:language and nt:query.</em><br><small></small><br><br>
+</div>
+<a id="PropertyInterface::JCR_LAST_MODIFIED"></a><div class="constant">
+<h3>
+<span class="nb-faded-text"> 
+        </span>JCR_LAST_MODIFIED<span class="nb-faded-text">
+         = "{http://www.jcp.org/jcr/1.0}lastModified"</span>
+</h3>
+<em>A constant for the property name jcr:lastModified (in extended form),
+declared in node type mix:lastModified.</em><br><small></small><br><br>
+</div>
+<a id="PropertyInterface::JCR_LAST_MODIFIED_BY"></a><div class="constant">
+<h3>
+<span class="nb-faded-text"> 
+        </span>JCR_LAST_MODIFIED_BY<span class="nb-faded-text">
+         = "{http://www.jcp.org/jcr/1.0}lastModifiedBy"</span>
+</h3>
+<em>A constant for the property name jcr:lastModifiedBy (in extended form),
+declared in node type mix:lastModified.</em><br><small></small><br><br>
+</div>
+<a id="PropertyInterface::JCR_LIFECYCLE_POLICY"></a><div class="constant">
+<h3>
+<span class="nb-faded-text"> 
+        </span>JCR_LIFECYCLE_POLICY<span class="nb-faded-text">
+         = "{http://www.jcp.org/jcr/1.0}lifecyclePolicy"</span>
+</h3>
+<em>A constant for the property name jcr:lifecyclePolicy (in extended form),
+declared in node type mix:lifecycle.</em><br><small></small><br><br>
+</div>
+<a id="PropertyInterface::JCR_LOCK_IS_DEEP"></a><div class="constant">
+<h3>
+<span class="nb-faded-text"> 
+        </span>JCR_LOCK_IS_DEEP<span class="nb-faded-text">
+         = "{http://www.jcp.org/jcr/1.0}lockIsDeep"</span>
+</h3>
+<em>A constant for the property name jcr:lockIsDeep (in extended form),
+declared in node type mix:lockable.</em><br><small></small><br><br>
+</div>
+<a id="PropertyInterface::JCR_LOCK_OWNER"></a><div class="constant">
+<h3>
+<span class="nb-faded-text"> 
+        </span>JCR_LOCK_OWNER<span class="nb-faded-text">
+         = "{http://www.jcp.org/jcr/1.0}lockOwner"</span>
+</h3>
+<em>A constant for the property name jcr:lockOwner (in extended form),
+declared in node type mix:lockable.</em><br><small></small><br><br>
+</div>
+<a id="PropertyInterface::JCR_MANDATORY"></a><div class="constant">
+<h3>
+<span class="nb-faded-text"> 
+        </span>JCR_MANDATORY<span class="nb-faded-text">
+         = "{http://www.jcp.org/jcr/1.0}mandatory"</span>
+</h3>
+<em>A constant for the property name jcr:mandatory (in extended form),
+declared in node types nt:propertyDefinition and nt:childNodeDefinition.</em><br><small></small><br><br>
+</div>
+<a id="PropertyInterface::JCR_MERGE_FAILED"></a><div class="constant">
+<h3>
+<span class="nb-faded-text"> 
+        </span>JCR_MERGE_FAILED<span class="nb-faded-text">
+         = "{http://www.jcp.org/jcr/1.0}mergeFailed"</span>
+</h3>
+<em>A constant for the property name jcr:mergeFailed (in extended form),
+declared in node type mix:versionable.</em><br><small></small><br><br>
+</div>
+<a id="PropertyInterface::JCR_MIMETYPE"></a><div class="constant">
+<h3>
+<span class="nb-faded-text"> 
+        </span>JCR_MIMETYPE<span class="nb-faded-text">
+         = "{http://www.jcp.org/jcr/1.0}mimeType"</span>
+</h3>
+<em>A constant for the property name jcr:mimeType (in extended form),
+declared in node type mix:mimeType.</em><br><small></small><br><br>
+</div>
+<a id="PropertyInterface::JCR_MIXIN_TYPES"></a><div class="constant">
+<h3>
+<span class="nb-faded-text"> 
+        </span>JCR_MIXIN_TYPES<span class="nb-faded-text">
+         = "{http://www.jcp.org/jcr/1.0}mixinTypes"</span>
+</h3>
+<em>A constant for the property name jcr:mixinTypes (in extended form),
+declared in node type nt:base.</em><br><small></small><br><br>
+</div>
+<a id="PropertyInterface::JCR_MULTIPLE"></a><div class="constant">
+<h3>
+<span class="nb-faded-text"> 
+        </span>JCR_MULTIPLE<span class="nb-faded-text">
+         = "{http://www.jcp.org/jcr/1.0}multiple"</span>
+</h3>
+<em>A constant for the property name jcr:multiple (in extended form),
+declared in node type nt:propertyDefinition.</em><br><small></small><br><br>
+</div>
+<a id="PropertyInterface::JCR_NAME"></a><div class="constant">
+<h3>
+<span class="nb-faded-text"> 
+        </span>JCR_NAME<span class="nb-faded-text">
+         = "{http://www.jcp.org/jcr/1.0}name"</span>
+</h3>
+<em>A constant for the property name jcr:name (in extended form),
+declared in node types nt:propertyDefinition and nt:childNodeDefinition.</em><br><small></small><br><br>
+</div>
+<a id="PropertyInterface::JCR_NODE_TYPE_NAME"></a><div class="constant">
+<h3>
+<span class="nb-faded-text"> 
+        </span>JCR_NODE_TYPE_NAME<span class="nb-faded-text">
+         = "{http://www.jcp.org/jcr/1.0}nodeTypeName"</span>
+</h3>
+<em>A constant for the property name jcr:nodeTypeName (in extended form),
+declared in node type nt:nodeType.</em><br><small></small><br><br>
+</div>
+<a id="PropertyInterface::JCR_ON_PARENT_VERSION"></a><div class="constant">
+<h3>
+<span class="nb-faded-text"> 
+        </span>JCR_ON_PARENT_VERSION<span class="nb-faded-text">
+         = "{http://www.jcp.org/jcr/1.0}onParentVersion"</span>
+</h3>
+<em>A constant for the property name jcr:onParentVersion (in extended form),
+declared in node types nt:propertyDefinition and nt:childNodeDefinition.</em><br><small></small><br><br>
+</div>
+<a id="PropertyInterface::JCR_PATH"></a><div class="constant">
+<h3>
+<span class="nb-faded-text"> 
+        </span>JCR_PATH<span class="nb-faded-text">
+         = "{http://www.jcp.org/jcr/1.0}path"</span>
+</h3>
+<em>A constant for the property name jcr:path (in extended form),
+declared in node type nt:address.</em><br><small></small><br><br>
+</div>
+<a id="PropertyInterface::JCR_PORT"></a><div class="constant">
+<h3>
+<span class="nb-faded-text"> 
+        </span>JCR_PORT<span class="nb-faded-text">
+         = "{http://www.jcp.org/jcr/1.0}port"</span>
+</h3>
+<em>A constant for the property name jcr:port (in extended form),
+declared in node type nt:address.</em><br><small></small><br><br>
+</div>
+<a id="PropertyInterface::JCR_PREDECESSORS"></a><div class="constant">
+<h3>
+<span class="nb-faded-text"> 
+        </span>JCR_PREDECESSORS<span class="nb-faded-text">
+         = "{http://www.jcp.org/jcr/1.0}predecessors"</span>
+</h3>
+<em>A constant for the property name jcr:predecessors (in extended form),
+declared in node types mix:versionable and nt:version.</em><br><small></small><br><br>
+</div>
+<a id="PropertyInterface::JCR_PRIMARY_ITEM_NAME"></a><div class="constant">
+<h3>
+<span class="nb-faded-text"> 
+        </span>JCR_PRIMARY_ITEM_NAME<span class="nb-faded-text">
+         = "{http://www.jcp.org/jcr/1.0}primaryItemName"</span>
+</h3>
+<em>A constant for the property name jcr:primaryItemName (in extended form),
+declared in node type nt:nodeType.</em><br><small></small><br><br>
+</div>
+<a id="PropertyInterface::JCR_PRIMARY_TYPE"></a><div class="constant">
+<h3>
+<span class="nb-faded-text"> 
+        </span>JCR_PRIMARY_TYPE<span class="nb-faded-text">
+         = "{http://www.jcp.org/jcr/1.0}primaryType"</span>
+</h3>
+<em>A constant for the property name jcr:primaryType (in extended form),
+declared in node type nt:base.</em><br><small></small><br><br>
+</div>
+<a id="PropertyInterface::JCR_PROTECTED"></a><div class="constant">
+<h3>
+<span class="nb-faded-text"> 
+        </span>JCR_PROTECTED<span class="nb-faded-text">
+         = "{http://www.jcp.org/jcr/1.0}protected"</span>
+</h3>
+<em>A constant for the property name jcr:protected (in extended form),
+declared in node types nt:propertyDefinition and nt:childNodeDefinition.</em><br><small></small><br><br>
+</div>
+<a id="PropertyInterface::JCR_PROTOCOL"></a><div class="constant">
+<h3>
+<span class="nb-faded-text"> 
+        </span>JCR_PROTOCOL<span class="nb-faded-text">
+         = "{http://www.jcp.org/jcr/1.0}protocol"</span>
+</h3>
+<em>A constant for the property name jcr:protocol (in extended form),
+declared in node type nt:address.</em><br><small></small><br><br>
+</div>
+<a id="PropertyInterface::JCR_REPOSITORY"></a><div class="constant">
+<h3>
+<span class="nb-faded-text"> 
+        </span>JCR_REPOSITORY<span class="nb-faded-text">
+         = "{http://www.jcp.org/jcr/1.0repository"</span>
+</h3>
+<em>A constant for the property name jcr:repository (in extended form),
+declared in node type nt:address.</em><br><small></small><br><br>
+</div>
+<a id="PropertyInterface::JCR_REQUIRED_PRIMARY_TYPES"></a><div class="constant">
+<h3>
+<span class="nb-faded-text"> 
+        </span>JCR_REQUIRED_PRIMARY_TYPES<span class="nb-faded-text">
+         = "{http://www.jcp.org/jcr/1.0}requiredPrimaryTypes"</span>
+</h3>
+<em>A constant for the property name jcr:requiredPrimaryTypes (in extended form),
+declared in node type nt:childNodeDefinition.</em><br><small></small><br><br>
+</div>
+<a id="PropertyInterface::JCR_REQUIRED_TYPE"></a><div class="constant">
+<h3>
+<span class="nb-faded-text"> 
+        </span>JCR_REQUIRED_TYPE<span class="nb-faded-text">
+         = "{http://www.jcp.org/jcr/1.0}requiredType"</span>
+</h3>
+<em>A constant for the property name jcr:requiredType (in extended form),
+declared in node type nt:propertyDefinition.</em><br><small></small><br><br>
+</div>
+<a id="PropertyInterface::JCR_ROOT"></a><div class="constant">
+<h3>
+<span class="nb-faded-text"> 
+        </span>JCR_ROOT<span class="nb-faded-text">
+         = "{http://www.jcp.org/jcr/1.0}root"</span>
+</h3>
+<em>A constant for the property name jcr:root (in extended form),
+declared in node type nt:configuration.</em><br><small></small><br><br>
+</div>
+<a id="PropertyInterface::JCR_SAME_NAME_SIBLINGS"></a><div class="constant">
+<h3>
+<span class="nb-faded-text"> 
+        </span>JCR_SAME_NAME_SIBLINGS<span class="nb-faded-text">
+         = "{http://www.jcp.org/jcr/1.0}sameNameSiblings"</span>
+</h3>
+<em>A constant for the property name jcr:sameNameSiblings (in extended form),
+declared in node type nt:childNodeDefinition.</em><br><small></small><br><br>
+</div>
+<a id="PropertyInterface::JCR_STATEMENT"></a><div class="constant">
+<h3>
+<span class="nb-faded-text"> 
+        </span>JCR_STATEMENT<span class="nb-faded-text">
+         = "{http://www.jcp.org/jcr/1.0}statement"</span>
+</h3>
+<em>A constant for the property name jcr:statement (in extended form),
+declared in node type nt:query.</em><br><small></small><br><br>
+</div>
+<a id="PropertyInterface::JCR_SUCCESSORS"></a><div class="constant">
+<h3>
+<span class="nb-faded-text"> 
+        </span>JCR_SUCCESSORS<span class="nb-faded-text">
+         = "{http://www.jcp.org/jcr/1.0}successors"</span>
+</h3>
+<em>A constant for the property name jcr:successors (in extended form),
+declared in node type nt:version.</em><br><small></small><br><br>
+</div>
+<a id="PropertyInterface::JCR_SUPERTYPES"></a><div class="constant">
+<h3>
+<span class="nb-faded-text"> 
+        </span>JCR_SUPERTYPES<span class="nb-faded-text">
+         = "{http://www.jcp.org/jcr/1.0}supertypes"</span>
+</h3>
+<em>A constant for the property name jcr:supertypes (in extended form),
+declared in node type nt:nodeType.</em><br><small></small><br><br>
+</div>
+<a id="PropertyInterface::JCR_TITLE"></a><div class="constant">
+<h3>
+<span class="nb-faded-text"> 
+        </span>JCR_TITLE<span class="nb-faded-text">
+         = "{http://www.jcp.org/jcr/1.0}title"</span>
+</h3>
+<em>A constant for the property name jcr:title (in extended form),
+declared in node types mix:title and nt:activity.</em><br><small></small><br><br>
+</div>
+<a id="PropertyInterface::JCR_UUID"></a><div class="constant">
+<h3>
+<span class="nb-faded-text"> 
+        </span>JCR_UUID<span class="nb-faded-text">
+         = "{http://www.jcp.org/jcr/1.0}uuid"</span>
+</h3>
+<em>A constant for the property name jcr:uuid (in extended form),
+declared in node type mix:referenceable.</em><br><small></small><br><br>
+</div>
+<a id="PropertyInterface::JCR_VALUE_CONSTRAINTS"></a><div class="constant">
+<h3>
+<span class="nb-faded-text"> 
+        </span>JCR_VALUE_CONSTRAINTS<span class="nb-faded-text">
+         = "{http://www.jcp.org/jcr/1.0}valueConstraints"</span>
+</h3>
+<em>A constant for the property name jcr:valueConstraints (in extended form),
+declared in node type nt:propertyDefinition.</em><br><small></small><br><br>
+</div>
+<a id="PropertyInterface::JCR_VERSIONABLE_UUID"></a><div class="constant">
+<h3>
+<span class="nb-faded-text"> 
+        </span>JCR_VERSIONABLE_UUID<span class="nb-faded-text">
+         = "{http://www.jcp.org/jcr/1.0}versionableUuid"</span>
+</h3>
+<em>A constant for the property name jcr:versionableUuid (in extended form),
+declared in node type nt:version.</em><br><small></small><br><br>
+</div>
+<a id="PropertyInterface::JCR_VERSION_HISTORY"></a><div class="constant">
+<h3>
+<span class="nb-faded-text"> 
+        </span>JCR_VERSION_HISTORY<span class="nb-faded-text">
+         = "{http://www.jcp.org/jcr/1.0}versionHistory"</span>
+</h3>
+<em>A constant for the property name jcr:versionHistory (in extended form),
+declared in node type mix:versionable.</em><br><small></small><br><br>
+</div>
+<a id="PropertyInterface::JCR_WORKSPACE"></a><div class="constant">
+<h3>
+<span class="nb-faded-text"> 
+        </span>JCR_WORKSPACE<span class="nb-faded-text">
+         = "{http://www.jcp.org/jcr/1.0}workspace"</span>
+</h3>
+<em>A constant for the property name jcr:workspace (in extended form),
+declared in node type nt:address.</em><br><small></small><br><br>
+</div>
+</div>
+<div style="clear: both"></div>
+</div>
+</div>
+<small xmlns="" class="footer">Documentation was generated by <a href="http://www.phpdoc.org">phpDocumentor 2.0.0a10</a>.</small></div><div id="index"><div class="padder"><script xmlns="" type="text/javascript">
+      $(function() {
+
+        var is_chrome = /chrome/.test( navigator.userAgent.toLowerCase() );
+        var is_local = /file:\/\//.test(document.location.href);
+        if (is_chrome && is_local)
+        {
+          // search is disabled on chrome with local files due to http://code.google.com/p/chromium/issues/detail?id=40787
+          return;
+        }
+
+        $("#search_box").show();
+        var search_index = {};
+        $.ajax({
+          url: "search_index.xml",
+          dataType: ($.browser.msie) ? "text" : "xml",
+          error: function(data) {
+            alert('An error occurred using the search data');
+          },
+          success: function( data ) {
+            var xml;
+            if (typeof data == "string") {
+              xml = new ActiveXObject("Microsoft.XMLDOM");
+              xml.async = false;
+              xml.loadXML(data);
+            } else {
+              xml = data;
+            }
+
+            search_index = $("node", xml).map(function() {
+              type = $("type", this).text();
+              return {
+                value: $("value", this).text(),
+                label: '<img src="images/icons/'+type+'.png" align="absmiddle">'+$("value", this).text(),
+                id: $("id", this).text(),
+              };
+            }).get();
+
+            $("#search_box").autocomplete({
+              source: search_index,
+              select: function(event, ui) {
+                // redirect to the documentation
+                if ((parent) && (parent.content))
+                {
+                  parent.content.document.location = ''+ui.item.id;
+                }
+                else
+                {
+                  jQuery(document).location = ''+ui.item.id;
+                }
+                applySearchHash();
+              }
+            });
+          }
+        });
+      });
+    </script><input id="search_box"></input><div class="section">
+<h1>Namespaces</h1>
+<ul id="namespaces-" class="filetree"><li class="closed">
+<span class="folder">PHPCR</span><ul>
+<li><span class="class"><a href="phpcr.src.PHPCR.AccessDeniedException.html#AccessDeniedException">AccessDeniedException</a><br><small>Exception to be thrown by access-related methods.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.CredentialsInterface.html#CredentialsInterface">CredentialsInterface</a><br><small>Interface for all credentials that may be passed to the Repository::login()
+method.</small></span></li>
+<li><span class="class"><a href="phpcr.src.PHPCR.GuestCredentials.html#GuestCredentials">GuestCredentials</a><br><small>GuestCredentials is used to obtain a "guest", "public" or "anonymous" session.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.ImportUUIDBehaviorInterface.html#ImportUUIDBehaviorInterface">ImportUUIDBehaviorInterface</a><br><small>The possible actions specified by the uuidBehavior parameter in</small></span></li>
+<li><span class="class"><a href="phpcr.src.PHPCR.InvalidItemStateException.html#InvalidItemStateException">InvalidItemStateException</a><br><small>This exception shall be thrown in case of an issue of a state of an element.</small></span></li>
+<li><span class="class"><a href="phpcr.src.PHPCR.InvalidLifecycleTransitionException.html#InvalidLifecycleTransitionException">InvalidLifecycleTransitionException</a><br><small>Exception thrown by Lifecycle management-related methods.</small></span></li>
+<li><span class="class"><a href="phpcr.src.PHPCR.InvalidSerializedDataException.html#InvalidSerializedDataException">InvalidSerializedDataException</a><br><small>Exception to be thrown by the deserialization methods of Session.</small></span></li>
+<li><span class="class"><a href="phpcr.src.PHPCR.ItemExistsException.html#ItemExistsException">ItemExistsException</a><br><small>An exception thrown when an attempt is made to place an item in a position
+where another item already exists.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.ItemInterface.html#ItemInterface">ItemInterface</a><br><small>The Item is the base interface of Node and Property.</small></span></li>
+<li><span class="class"><a href="phpcr.src.PHPCR.ItemNotFoundException.html#ItemNotFoundException">ItemNotFoundException</a><br><small>Exception thrown by methods of Item, Node and Workspace when an item is not found.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.ItemVisitorInterface.html#ItemVisitorInterface">ItemVisitorInterface</a><br><small>Interface to define a visitor on an item.</small></span></li>
+<li><span class="class"><a href="phpcr.src.PHPCR.LoginException.html#LoginException">LoginException</a><br><small>Shall be thrown in case of invalid login credentials.</small></span></li>
+<li><span class="class"><a href="phpcr.src.PHPCR.MergeException.html#MergeException">MergeException</a><br><small>Exception thrown by NodeInterface::merge()</small></span></li>
+<li><span class="class"><a href="phpcr.src.PHPCR.NamespaceException.html#NamespaceException">NamespaceException</a><br><small>Definition of an Exception to be thrown in case of a namespace issue within
+a session.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.NamespaceRegistryInterface.html#NamespaceRegistryInterface">NamespaceRegistryInterface</a><br><small>Defines an interface to implement a single namespace registry.</small></span></li>
+<li><span class="class"><a href="phpcr.src.PHPCR.NoSuchWorkspaceException.html#NoSuchWorkspaceException">NoSuchWorkspaceException</a><br><small>Exception thrown by RepositoryInterface::login() when a specific workspace
+is not found.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.NodeInterface.html#NodeInterface">NodeInterface</a><br><small>The Node interface represents a node in a workspace.</small></span></li>
+<li><span class="class"><a href="phpcr.src.PHPCR.PathNotFoundException.html#PathNotFoundException">PathNotFoundException</a><br><small>Exception thrown when no Item exists at the specified path or when the
+specified path implies intermediary Nodes that do not exist.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.PropertyInterface.html#PropertyInterface">PropertyInterface</a><br><small>The property interface describes how an item property shall look like.</small></span></li>
+<li><span class="class"><a href="phpcr.src.PHPCR.PropertyType.html#PropertyType">PropertyType</a><br><small>The property types supported by the JCR standard.</small></span></li>
+<li><span class="class"><a href="phpcr.src.PHPCR.ReferentialIntegrityException.html#ReferentialIntegrityException">ReferentialIntegrityException</a><br><small>Exception thrown on referential integrity violation.</small></span></li>
+<li><span class="class"><a href="phpcr.src.PHPCR.RepositoryException.html#RepositoryException">RepositoryException</a><br><small>Main exception thrown by classes in this package.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.RepositoryFactoryInterface.html#RepositoryFactoryInterface">RepositoryFactoryInterface</a><br><small>RepositoryFactory is an interface for factory class implementations for
+Repositories.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.RepositoryInterface.html#RepositoryInterface">RepositoryInterface</a><br><small>The entry point into the content repository.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.SessionInterface.html#SessionInterface">SessionInterface</a><br><small>Describes the implementation of a session class.</small></span></li>
+<li><span class="class"><a href="phpcr.src.PHPCR.SimpleCredentials.html#SimpleCredentials">SimpleCredentials</a><br><small>SimpleCredentials implements the Credentials interface and represents simple
+user ID/password credentials.</small></span></li>
+<li><span class="class"><a href="phpcr.src.PHPCR.UnsupportedRepositoryOperationException.html#UnsupportedRepositoryOperationException">UnsupportedRepositoryOperationException</a><br><small>Thrown by methods that are not supported by a particular implementation.</small></span></li>
+<li><span class="class"><a href="phpcr.src.PHPCR.ValueFormatException.html#ValueFormatException">ValueFormatException</a><br><small>Exception thrown when an attempt is made to assign a value to a property
+that has an invalid format, given the type of the property.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.WorkspaceInterface.html#WorkspaceInterface">WorkspaceInterface</a><br><small>Interface representing a view onto a persistent workspace within a repository.</small></span></li>
+<li class="closed">
+<span class="folder">Lock</span><ul>
+<li><span class="class"><a href="phpcr.src.PHPCR.Lock.LockException.html#LockException">LockException</a><br><small>Exception thrown when a lock-related error occurs.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.Lock.LockInterface.html#LockInterface">LockInterface</a><br><small>Represents a lock placed on an item.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.Lock.LockManagerInterface.html#LockManagerInterface">LockManagerInterface</a><br><small>This interface encapsulates methods for the management of locks.</small></span></li>
+</ul>
+</li>
+<li class="closed">
+<span class="folder">NodeType</span><ul>
+<li><span class="class"><a href="phpcr.src.PHPCR.NodeType.ConstraintViolationException.html#ConstraintViolationException">ConstraintViolationException</a><br><small>Exception thrown when an action would violate a constraint on repository
+structure.</small></span></li>
+<li><span class="class"><a href="phpcr.src.PHPCR.NodeType.InvalidNodeTypeDefinitionException.html#InvalidNodeTypeDefinitionException">InvalidNodeTypeDefinitionException</a><br><small>Exception thrown when an attempt is made to register an invalid node
+type definition template.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.NodeType.ItemDefinitionInterface.html#ItemDefinitionInterface">ItemDefinitionInterface</a><br><small>Superclass of NodeDefinition and PropertyDefinition.</small></span></li>
+<li><span class="class"><a href="phpcr.src.PHPCR.NodeType.NoSuchNodeTypeException.html#NoSuchNodeTypeException">NoSuchNodeTypeException</a><br><small>Exception thrown by node type-related methods.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.NodeType.NodeDefinitionInterface.html#NodeDefinitionInterface">NodeDefinitionInterface</a><br><small>A node definition.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.NodeType.NodeDefinitionTemplateInterface.html#NodeDefinitionTemplateInterface">NodeDefinitionTemplateInterface</a><br><small>The NodeDefinitionTemplate interface extends NodeDefinition with the addition
+of write methods, enabling the characteristics of a child node definition to
+be set, after which the NodeDefinitionTemplate is added to a NodeTypeTemplate.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.NodeType.NodeTypeDefinitionInterface.html#NodeTypeDefinitionInterface">NodeTypeDefinitionInterface</a><br><small>The NodeTypeDefinition interface provides methods for discovering the
+static definition of a node type.</small></span></li>
+<li><span class="class"><a href="phpcr.src.PHPCR.NodeType.NodeTypeExistsException.html#NodeTypeExistsException">NodeTypeExistsException</a><br><small>Exception thrown when an attempt is made to register a node type that
+already exists, and allowUpdate has not been set to true.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.NodeType.NodeTypeInterface.html#NodeTypeInterface">NodeTypeInterface</a><br><small>A NodeType object represents a "live" node type that is registered in the
+repository.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.NodeType.NodeTypeManagerInterface.html#NodeTypeManagerInterface">NodeTypeManagerInterface</a><br><small>Allows for the retrieval and (in implementations that support it) the
+registration of node types.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.NodeType.NodeTypeTemplateInterface.html#NodeTypeTemplateInterface">NodeTypeTemplateInterface</a><br><small>The NodeTypeTemplate interface represents a simple container structure used
+to define node types which are then registered through the
+NodeTypeManagerInterface::registerNodeType() method.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.NodeType.PropertyDefinitionInterface.html#PropertyDefinitionInterface">PropertyDefinitionInterface</a><br><small>A property definition.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.NodeType.PropertyDefinitionTemplateInterface.html#PropertyDefinitionTemplateInterface">PropertyDefinitionTemplateInterface</a><br><small>The PropertyDefinitionTemplate interface extends PropertyDefinition with the
+addition of write methods, enabling the characteristics of a child property
+definition to be set, after which the PropertyDefinitionTemplate is added to
+a NodeTypeTemplate.</small></span></li>
+</ul>
+</li>
+<li class="closed">
+<span class="folder">Observation</span><ul>
+<li><span class="interface"><a href="phpcr.src.PHPCR.Observation.EventInterface.html#EventInterface">EventInterface</a><br><small>An event fired by the observation mechanism.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.Observation.EventJournalInterface.html#EventJournalInterface">EventJournalInterface</a><br><small>An EventJournal is an extended Iterator that provides the additional
+method skipTo().</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.Observation.EventListenerInterface.html#EventListenerInterface">EventListenerInterface</a><br><small>An event listener.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.Observation.ObservationManagerInterface.html#ObservationManagerInterface">ObservationManagerInterface</a><br><small>The ObservationManager object.</small></span></li>
+</ul>
+</li>
+<li class="closed">
+<span class="folder">Query</span><ul>
+<li><span class="class"><a href="phpcr.src.PHPCR.Query.InvalidQueryException.html#InvalidQueryException">InvalidQueryException</a><br><small>Thrown by methods of Query.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.Query.QueryInterface.html#QueryInterface">QueryInterface</a><br><small>A Query object.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.Query.QueryManagerInterface.html#QueryManagerInterface">QueryManagerInterface</a><br><small>This interface encapsulates methods for the management of search queries.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.Query.QueryResultInterface.html#QueryResultInterface">QueryResultInterface</a><br><small>A QueryResult object.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.Query.RowInterface.html#RowInterface">RowInterface</a><br><small>A row in the query result table.</small></span></li>
+<li class="closed">
+<span class="folder">QOM</span><ul>
+<li><span class="interface"><a href="phpcr.src.PHPCR.Query.QOM.AndInterface.html#AndInterface">AndInterface</a><br><small>Performs a logical conjunction of two other constraints.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.Query.QOM.BindVariableValueInterface.html#BindVariableValueInterface">BindVariableValueInterface</a><br><small>Evaluates to the value of a bind variable.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.Query.QOM.ChildNodeInterface.html#ChildNodeInterface">ChildNodeInterface</a><br><small>Tests whether the selector node is a child of a node reachable by absolute
+path path.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.Query.QOM.ChildNodeJoinConditionInterface.html#ChildNodeJoinConditionInterface">ChildNodeJoinConditionInterface</a><br><small>Tests whether the childSelector node is a child of the parentSelector node.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.Query.QOM.ColumnInterface.html#ColumnInterface">ColumnInterface</a><br><small>Defines a column to include in the tabular view of query results.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.Query.QOM.ComparisonInterface.html#ComparisonInterface">ComparisonInterface</a><br><small>Filters node-tuples based on the outcome of a binary operation.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.Query.QOM.ConstraintInterface.html#ConstraintInterface">ConstraintInterface</a><br><small>Filters the set of node-tuples formed by evaluating the query&#39;s selectors and
+the joins between them.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.Query.QOM.DescendantNodeInterface.html#DescendantNodeInterface">DescendantNodeInterface</a><br><small>Tests whether the selector node is a descendant of a node reachable by
+absolute path path.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.Query.QOM.DescendantNodeJoinConditionInterface.html#DescendantNodeJoinConditionInterface">DescendantNodeJoinConditionInterface</a><br><small>Tests whether the descendantSelector node is a descendant of the
+ancestorSelector node.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.Query.QOM.DynamicOperandInterface.html#DynamicOperandInterface">DynamicOperandInterface</a><br><small>An operand whose value can only be determined in evaluating the query.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.Query.QOM.EquiJoinConditionInterface.html#EquiJoinConditionInterface">EquiJoinConditionInterface</a><br><small>Tests whether the value of a property in a first selector is equal to the
+value of a property in a second selector.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.Query.QOM.FullTextSearchInterface.html#FullTextSearchInterface">FullTextSearchInterface</a><br><small>Performs a full-text search.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.Query.QOM.FullTextSearchScoreInterface.html#FullTextSearchScoreInterface">FullTextSearchScoreInterface</a><br><small>Evaluates to a DOUBLE value equal to the full-text search score of a node.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.Query.QOM.JoinConditionInterface.html#JoinConditionInterface">JoinConditionInterface</a><br><small>Filters the set of node-tuples formed from a join.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.Query.QOM.JoinInterface.html#JoinInterface">JoinInterface</a><br><small>Performs a join between two node-tuple sources.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.Query.QOM.LengthInterface.html#LengthInterface">LengthInterface</a><br><small>Evaluates to the length (or lengths, if multi-valued) of a property.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.Query.QOM.LiteralInterface.html#LiteralInterface">LiteralInterface</a><br><small>Evaluates to a literal value.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.Query.QOM.LowerCaseInterface.html#LowerCaseInterface">LowerCaseInterface</a><br><small>Evaluates to the lower-case string value (or values, if multi-valued) of
+operand.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.Query.QOM.NodeLocalNameInterface.html#NodeLocalNameInterface">NodeLocalNameInterface</a><br><small>Evaluates to a NAME value equal to the local (unprefixed) name of a node.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.Query.QOM.NodeNameInterface.html#NodeNameInterface">NodeNameInterface</a><br><small>Evaluates to a NAME value equal to the namespace-qualified name of a node.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.Query.QOM.NotInterface.html#NotInterface">NotInterface</a><br><small>Performs a logical negation of another constraint.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.Query.QOM.OperandInterface.html#OperandInterface">OperandInterface</a><br><small>An operand to a binary operation specified by a Comparison.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.Query.QOM.OrInterface.html#OrInterface">OrInterface</a><br><small>Performs a logical disjunction of two other constraints.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.Query.QOM.OrderingInterface.html#OrderingInterface">OrderingInterface</a><br><small>Determines the relative order of two node-tuples by evaluating operand for
+each.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.Query.QOM.PropertyExistenceInterface.html#PropertyExistenceInterface">PropertyExistenceInterface</a><br><small>Tests the existence of a property.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.Query.QOM.PropertyValueInterface.html#PropertyValueInterface">PropertyValueInterface</a><br><small>Evaluates to the value (or values, if multi-valued) of a property.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.Query.QOM.QueryObjectModelConstantsInterface.html#QueryObjectModelConstantsInterface">QueryObjectModelConstantsInterface</a><br><small>Defines constants used in the query object model.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.Query.QOM.QueryObjectModelFactoryInterface.html#QueryObjectModelFactoryInterface">QueryObjectModelFactoryInterface</a><br><small>A QueryObjectModelFactory creates instances of the JCR query object model.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.Query.QOM.QueryObjectModelInterface.html#QueryObjectModelInterface">QueryObjectModelInterface</a><br><small>A query in the JCR/PHPCR query object model.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.Query.QOM.SameNodeInterface.html#SameNodeInterface">SameNodeInterface</a><br><small>Tests whether the selector node is reachable by absolute path path.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.Query.QOM.SameNodeJoinConditionInterface.html#SameNodeJoinConditionInterface">SameNodeJoinConditionInterface</a><br><small>Tests whether two nodes are "the same" according to
+\PHPCR\ItemInterface::isSame()</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.Query.QOM.SelectorInterface.html#SelectorInterface">SelectorInterface</a><br><small>Selects a subset of the nodes in the repository based on node type.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.Query.QOM.SourceInterface.html#SourceInterface">SourceInterface</a><br><small>Evaluates to a set of node-tuples.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.Query.QOM.StaticOperandInterface.html#StaticOperandInterface">StaticOperandInterface</a><br><small>An operand whose value can be determined from static analysis of the query,
+prior to its evaluation.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.Query.QOM.UpperCaseInterface.html#UpperCaseInterface">UpperCaseInterface</a><br><small>Evaluates to the upper-case string value (or values, if multi-valued) of
+operand.</small></span></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="closed">
+<span class="folder">Retention</span><ul>
+<li><span class="interface"><a href="phpcr.src.PHPCR.Retention.HoldInterface.html#HoldInterface">HoldInterface</a><br><small>Hold represents a hold that can be applied to an existing node in order to
+prevent the node from being modified or removed.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.Retention.RetentionManagerInterface.html#RetentionManagerInterface">RetentionManagerInterface</a><br><small>The RetentionManager object is accessed via SessionInterface::getRetentionManager().</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.Retention.RetentionPolicyInterface.html#RetentionPolicyInterface">RetentionPolicyInterface</a><br><small>A RetentionPolicy is an object with a name and an optional description.</small></span></li>
+</ul>
+</li>
+<li class="closed">
+<span class="folder">Security</span><ul>
+<li><span class="interface"><a href="phpcr.src.PHPCR.Security.AccessControlEntryInterface.html#AccessControlEntryInterface">AccessControlEntryInterface</a><br><small>An AccessControlEntryInterface represents the association of one or more
+PrivilegeInterface objects with a specific principal.</small></span></li>
+<li><span class="class"><a href="phpcr.src.PHPCR.Security.AccessControlException.html#AccessControlException">AccessControlException</a><br><small>Exception thrown by access control related methods of AccessControlManager.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.Security.AccessControlListInterface.html#AccessControlListInterface">AccessControlListInterface</a><br><small>The AccessControlListInterface is an AccessControlPolicyInterface
+representing a list of access control entries.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.Security.AccessControlManagerInterface.html#AccessControlManagerInterface">AccessControlManagerInterface</a><br><small>The AccessControlManager object is accessed via
+SessionInterface::getAccessControlManager().</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.Security.AccessControlPolicyInterface.html#AccessControlPolicyInterface">AccessControlPolicyInterface</a><br><small>The AccessControlPolicyInterface is a marker interface for all kind of
+access control policies.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.Security.NamedAccessControlPolicyInterface.html#NamedAccessControlPolicyInterface">NamedAccessControlPolicyInterface</a><br><small>A NamedAccessControlPolicy is an opaque access control policy that is
+described by a JCR name and optionally a description.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.Security.PrincipalInterface.html#PrincipalInterface">PrincipalInterface</a><br><small>As there are no ACL standard interfaces in PHP this interface provides the
+Principal interface similar to the java.security.Principal</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.Security.PrivilegeInterface.html#PrivilegeInterface">PrivilegeInterface</a><br><small>A privilege represents the capability of performing a particular set of
+operations on items in the JCR repository.</small></span></li>
+</ul>
+</li>
+<li class="closed">
+<span class="folder">Transaction</span><ul>
+<li><span class="class"><a href="phpcr.src.PHPCR.Transaction.RollbackException.html#RollbackException">RollbackException</a><br><small>RollbackException exception is thrown when the transaction has been rolled back instead of committed.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.Transaction.UserTransactionInterface.html#UserTransactionInterface">UserTransactionInterface</a><br><small>As there is no transaction standard in PHP this interface provides a
+transaction interface similar to the
+&lt;a href="http://en.wikipedia.org/wiki/Java_Transaction_API"&gt;Java Transaction
+API (JTA)&lt;/a&gt;</small></span></li>
+</ul>
+</li>
+<li class="closed">
+<span class="folder">Util</span><ul>
+<li><span class="class"><a href="phpcr-utils.src.PHPCR.Util.NodeHelper.html#NodeHelper">NodeHelper</a><br><small>Helper with only static methods to work with PHPCR nodes</small></span></li>
+<li><span class="class"><a href="phpcr-utils.src.PHPCR.Util.TraversingItemVisitor.html#TraversingItemVisitor">TraversingItemVisitor</a><br><small>An implementation of ItemVisitor.</small></span></li>
+<li><span class="class"><a href="phpcr-utils.src.PHPCR.Util.TreeWalker.html#TreeWalker">TreeWalker</a><br><small>TODO: this should base on the TraversingItemVisitor</small></span></li>
+<li><span class="interface"><a href="phpcr-utils.src.PHPCR.Util.TreeWalkerFilterInterface.html#TreeWalkerFilterInterface">TreeWalkerFilterInterface</a><br><small></small></span></li>
+<li><span class="class"><a href="phpcr-utils.src.PHPCR.Util.UUIDHelper.html#UUIDHelper">UUIDHelper</a><br><small>static helper functions to deal with UUID&#39;s</small></span></li>
+<li class="closed">
+<span class="folder">Console</span><ul>
+<li class="closed">
+<span class="folder">Command</span><ul>
+<li><span class="class"><a href="phpcr-utils.src.PHPCR.Util.Console.Command.CreateWorkspaceCommand.html#CreateWorkspaceCommand">CreateWorkspaceCommand</a><br><small>A command to create a workspace in the phcpr repository</small></span></li>
+<li><span class="class"><a href="phpcr-utils.src.PHPCR.Util.Console.Command.DumpCommand.html#DumpCommand">DumpCommand</a><br><small></small></span></li>
+<li><span class="class"><a href="phpcr-utils.src.PHPCR.Util.Console.Command.ImportXmlCommand.html#ImportXmlCommand">ImportXmlCommand</a><br><small></small></span></li>
+<li><span class="class"><a href="phpcr-utils.src.PHPCR.Util.Console.Command.PurgeCommand.html#PurgeCommand">PurgeCommand</a><br><small></small></span></li>
+<li><span class="class"><a href="phpcr-utils.src.PHPCR.Util.Console.Command.QueryCommand.html#QueryCommand">QueryCommand</a><br><small></small></span></li>
+<li><span class="class"><a href="phpcr-utils.src.PHPCR.Util.Console.Command.RegisterNodeTypesCommand.html#RegisterNodeTypesCommand">RegisterNodeTypesCommand</a><br><small>Command to load and register a node type defined in a CND file.</small></span></li>
+</ul>
+</li>
+<li class="closed">
+<span class="folder">Helper</span><ul>
+<li><span class="class"><a href="phpcr-utils.src.PHPCR.Util.Console.Helper.ConsoleParametersParser.html#ConsoleParametersParser">ConsoleParametersParser</a><br><small></small></span></li>
+<li><span class="class"><a href="phpcr-utils.src.PHPCR.Util.Console.Helper.PhpcrHelper.html#PhpcrHelper">PhpcrHelper</a><br><small>Helper class to make the session instance available to console command</small></span></li>
+<li class="closed">
+<span class="folder">TreeDumper</span><ul>
+<li><span class="class"><a href="phpcr-utils.src.PHPCR.Util.Console.Helper.TreeDumper.ConsoleDumperNodeVisitor.html#ConsoleDumperNodeVisitor">ConsoleDumperNodeVisitor</a><br><small>TODO: this should base on the TraversingItemVisitor</small></span></li>
+<li><span class="class"><a href="phpcr-utils.src.PHPCR.Util.Console.Helper.TreeDumper.ConsoleDumperPropertyVisitor.html#ConsoleDumperPropertyVisitor">ConsoleDumperPropertyVisitor</a><br><small>TODO: this should base on the TraversingItemVisitor</small></span></li>
+<li><span class="class"><a href="phpcr-utils.src.PHPCR.Util.Console.Helper.TreeDumper.SystemNodeFilter.html#SystemNodeFilter">SystemNodeFilter</a><br><small>Filter system properties and nodes based on their name.</small></span></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="closed">
+<span class="folder">QOM</span><ul>
+<li><span class="class"><a href="phpcr-utils.src.PHPCR.Util.QOM.BaseQomToSqlQueryConverter.html#BaseQomToSqlQueryConverter">BaseQomToSqlQueryConverter</a><br><small></small></span></li>
+<li><span class="class"><a href="phpcr-utils.src.PHPCR.Util.QOM.BaseSqlGenerator.html#BaseSqlGenerator">BaseSqlGenerator</a><br><small></small></span></li>
+<li><span class="class"><a href="phpcr-utils.src.PHPCR.Util.QOM.NotSupportedConstraintException.html#NotSupportedConstraintException">NotSupportedConstraintException</a><br><small></small></span></li>
+<li><span class="class"><a href="phpcr-utils.src.PHPCR.Util.QOM.NotSupportedOperandException.html#NotSupportedOperandException">NotSupportedOperandException</a><br><small></small></span></li>
+<li><span class="class"><a href="phpcr-utils.src.PHPCR.Util.QOM.QomToSql1QueryConverter.html#QomToSql1QueryConverter">QomToSql1QueryConverter</a><br><small>Convert a QOM query into an SQL2 statement</small></span></li>
+<li><span class="class"><a href="phpcr-utils.src.PHPCR.Util.QOM.QomToSql2QueryConverter.html#QomToSql2QueryConverter">QomToSql2QueryConverter</a><br><small>Convert a QOM query into an SQL2 statement</small></span></li>
+<li><span class="class"><a href="phpcr-utils.src.PHPCR.Util.QOM.QueryBuilder.html#QueryBuilder">QueryBuilder</a><br><small>QueryBuilder class is responsible for dynamically create QOM queries.</small></span></li>
+<li><span class="class"><a href="phpcr-utils.src.PHPCR.Util.QOM.Sql1Generator.html#Sql1Generator">Sql1Generator</a><br><small>Generate SQL1 statements</small></span></li>
+<li><span class="class"><a href="phpcr-utils.src.PHPCR.Util.QOM.Sql2Generator.html#Sql2Generator">Sql2Generator</a><br><small>Generate SQL2 statements</small></span></li>
+<li><span class="class"><a href="phpcr-utils.src.PHPCR.Util.QOM.Sql2Scanner.html#Sql2Scanner">Sql2Scanner</a><br><small>Split an SQL2 statement into string tokens.</small></span></li>
+<li><span class="class"><a href="phpcr-utils.src.PHPCR.Util.QOM.Sql2ToQomQueryConverter.html#Sql2ToQomQueryConverter">Sql2ToQomQueryConverter</a><br><small>Parse SQL2 statements and output a corresponding QOM objects tree</small></span></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="closed">
+<span class="folder">Version</span><ul>
+<li><span class="class"><a href="phpcr.src.PHPCR.Version.ActivityViolationException.html#ActivityViolationException">ActivityViolationException</a><br><small>Exception will be thrown by NodeInterface::checkout() and
+NodeInterface::checkpoint() if an activity A is present on the current
+session and any of the following conditions is met:</small></span></li>
+<li><span class="class"><a href="phpcr.src.PHPCR.Version.LabelExistsVersionException.html#LabelExistsVersionException">LabelExistsVersionException</a><br><small>Exception thrown by VersionHistoryInterface::addVersionLabel() if moveLabel
+is set to false and an attempt is made to add a label that already exists in
+the VersionHistory.</small></span></li>
+<li><span class="class"><a href="phpcr.src.PHPCR.Version.OnParentVersionAction.html#OnParentVersionAction">OnParentVersionAction</a><br><small>The possible actions specified by the onParentVersion attribute in a
+property definition within a node type definition.</small></span></li>
+<li><span class="class"><a href="phpcr.src.PHPCR.Version.VersionException.html#VersionException">VersionException</a><br><small>Exception thrown by VersionInterface::addSuccessor() if an invalid version
+graph operation is attempted.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.Version.VersionHistoryInterface.html#VersionHistoryInterface">VersionHistoryInterface</a><br><small>A VersionHistory object wraps an nt:versionHistory node.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.Version.VersionInterface.html#VersionInterface">VersionInterface</a><br><small>A Version object wraps an nt:version node.</small></span></li>
+<li><span class="interface"><a href="phpcr.src.PHPCR.Version.VersionManagerInterface.html#VersionManagerInterface">VersionManagerInterface</a><br><small>The VersionManager object is accessed via
+WorkspaceInterface::getVersionManager().</small></span></li>
+</ul>
+</li>
+</ul>
+</li></ul>
+</div><div class="section">
+<h1>Packages</h1>
+<ul id="packages-" class="filetree">
+<li class="closed">
+<span class="folder">Default</span><ul id="packages_Default" class="filetree"></ul>
+</li>
+<li class="closed">
+<span class="folder">phpcr</span><ul id="packages_phpcr" class="filetree"><li class="closed"><span class="class"><a href="phpcr.src.PHPCR.PropertyType.html#PropertyType">PropertyType</a><br><small>The property types supported by the JCR standard.</small></span></li></ul>
+</li>
+</ul>
+</div>
+</div></div><div id="footer"><div class="padder"></div></div></div></body></html>

@@ -1,0 +1,525 @@
+<!DOCTYPE html><html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+<meta charset="utf-8">
+<title>PHPCR API and PHPCR-Utils » \PHPCR\NodeType\NodeTypeManagerInterface</title>
+<meta name="author" content="Mike van Riel">
+<meta name="description" content="">
+<link href="../css/template.css" rel="stylesheet" media="all">
+<script src="../js/jquery-1.7.1.min.js" type="text/javascript"></script><script src="../js/jquery-ui-1.8.2.custom.min.js" type="text/javascript"></script><script src="../js/jquery.mousewheel.min.js" type="text/javascript"></script><script src="../js/bootstrap.js" type="text/javascript"></script><script src="../js/template.js" type="text/javascript"></script><script src="../js/prettify/prettify.min.js" type="text/javascript"></script><link rel="shortcut icon" href="../img/favicon.ico">
+<link rel="apple-touch-icon" href="../img/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="72x72" href="../img/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="114x114" href="../img/apple-touch-icon-114x114.png">
+</head>
+<body>
+<div class="navbar navbar-fixed-top">
+<div class="navbar-inner"><div class="container">
+<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a><a class="brand" href="../index.html">PHPCR API and PHPCR-Utils</a><div class="nav-collapse"><ul class="nav">
+<li class="dropdown">
+<a href="#api" class="dropdown-toggle" data-toggle="dropdown">
+                                    API Documentation <b class="caret"></b></a><ul class="dropdown-menu">
+<li><a>Namespaces</a></li>
+<li><a href="../namespaces/PHPCR.html"><i class="icon-th"></i> PHPCR</a></li>
+<li><a>Packages</a></li>
+<li><a href="../packages/Default.html"><i class="icon-folder-open"></i> Default</a></li>
+<li><a href="../packages/phpcr.html"><i class="icon-folder-open"></i> phpcr</a></li>
+</ul>
+</li>
+<li class="dropdown" id="charts-menu">
+<a href="#charts" class="dropdown-toggle" data-toggle="dropdown">
+                                    Charts <b class="caret"></b></a><ul class="dropdown-menu"><li><a href="../graph_class.html"><i class="icon-list-alt"></i> Class hierarchy diagram</a></li></ul>
+</li>
+<li class="dropdown" id="reports-menu">
+<a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
+                                    Reports <b class="caret"></b></a><ul class="dropdown-menu">
+<li><a href="../errors.html"><i class="icon-remove-sign"></i> Errors 
+                <span class="label label-info">123</span></a></li>
+<li><a href="../markers.html"><i class="icon-map-marker"></i> Markers 
+                <ul><li>todo 
+                <span class="label label-info">12</span>
+</li></ul></a></li>
+<li><a href="../deprecated.html"><i class="icon-stop"></i> Deprecated elements 
+                <span class="label label-info">0</span></a></li>
+</ul>
+</li>
+</ul></div>
+</div></div>
+<div class="go_to_top"><a href="#___" style="color: inherit">Back to top  <i class="icon-upload icon-white"></i></a></div>
+</div>
+<div id="___" class="container">
+<noscript><div class="alert alert-warning">
+                            Javascript is disabled; several features are only available
+                            if Javascript is enabled.
+                        </div></noscript>
+<div class="row">
+<div class="span4">
+<span class="btn-group visibility" data-toggle="buttons-checkbox"><button class="btn public active" title="Show public elements">Public</button><button class="btn protected" title="Show protected elements">Protected</button><button class="btn private" title="Show private elements">Private</button><button class="btn inherited active" title="Show inherited elements">Inherited</button></span><div class="btn-group view pull-right" data-toggle="buttons-radio">
+<button class="btn details" title="Show descriptions and method names"><i class="icon-list"></i></button><button class="btn simple" title="Show only method names"><i class="icon-align-justify"></i></button>
+</div>
+<ul class="side-nav nav nav-list"><li class="nav-header">
+<i class="icon-custom icon-method"></i> Methods
+                    <ul>
+<li class="method public "><a href="#method_createNodeDefinitionTemplate" title="createNodeDefinitionTemplate :: Returns an empty NodeDefinitionTemplate which can then be used to create
+a child node definition and attached to a NodeTypeTemplate."><span class="description">Returns an empty NodeDefinitionTemplate which can then be used to create
+a child node definition and attached to a NodeTypeTemplate.</span><pre>createNodeDefinitionTemplate()</pre></a></li>
+<li class="method public "><a href="#method_createNodeTypeTemplate" title="createNodeTypeTemplate :: Returns an empty NodeTypeTemplateInterface which can then be used to
+define a node type and passed to
+NodeTypeManagerInterface::registerNodeType()."><span class="description">Returns an empty NodeTypeTemplateInterface which can then be used to
+define a node type and passed to
+NodeTypeManagerInterface::registerNodeType().</span><pre>createNodeTypeTemplate()</pre></a></li>
+<li class="method public "><a href="#method_createPropertyDefinitionTemplate" title="createPropertyDefinitionTemplate :: Returns an empty PropertyDefinitionTemplateInterface which can then be
+used to create a property definition and attached to a
+NodeTypeTemplateInterface."><span class="description">Returns an empty PropertyDefinitionTemplateInterface which can then be
+used to create a property definition and attached to a
+NodeTypeTemplateInterface.</span><pre>createPropertyDefinitionTemplate()</pre></a></li>
+<li class="method public "><a href="#method_getAllNodeTypes" title="getAllNodeTypes :: Returns an iterator over all available node types (primary and mixin)."><span class="description">Returns an iterator over all available node types (primary and mixin).</span><pre>getAllNodeTypes()</pre></a></li>
+<li class="method public "><a href="#method_getMixinNodeTypes" title="getMixinNodeTypes :: Returns an iterator over all available mixin node types."><span class="description">Returns an iterator over all available mixin node types.</span><pre>getMixinNodeTypes()</pre></a></li>
+<li class="method public "><a href="#method_getNodeType" title="getNodeType :: Returns the named node type."><span class="description">Returns the named node type.</span><pre>getNodeType()</pre></a></li>
+<li class="method public "><a href="#method_getPrimaryNodeTypes" title="getPrimaryNodeTypes :: Returns an iterator over all available primary node types."><span class="description">Returns an iterator over all available primary node types.</span><pre>getPrimaryNodeTypes()</pre></a></li>
+<li class="method public "><a href="#method_hasNodeType" title="hasNodeType :: Determines if the given node type is registered."><span class="description">Determines if the given node type is registered.</span><pre>hasNodeType()</pre></a></li>
+<li class="method public "><a href="#method_registerNodeType" title="registerNodeType :: Registers a new node type or updates an existing node type using the
+specified definition and returns the resulting NodeTypeInterface object."><span class="description">Registers a new node type or updates an existing node type using the
+specified definition and returns the resulting NodeTypeInterface object.</span><pre>registerNodeType()</pre></a></li>
+<li class="method public "><a href="#method_registerNodeTypes" title="registerNodeTypes :: Registers or updates the specified array of NodeTypeDefinition objects."><span class="description">Registers or updates the specified array of NodeTypeDefinition objects.</span><pre>registerNodeTypes()</pre></a></li>
+<li class="method public "><a href="#method_unregisterNodeType" title="unregisterNodeType :: Unregisters the specified node type."><span class="description">Unregisters the specified node type.</span><pre>unregisterNodeType()</pre></a></li>
+<li class="method public "><a href="#method_unregisterNodeTypes" title="unregisterNodeTypes :: Unregisters the specified set of node types."><span class="description">Unregisters the specified set of node types.</span><pre>unregisterNodeTypes()</pre></a></li>
+</ul>
+</li></ul>
+</div>
+<div class="span8">
+<a id="\PHPCR\NodeType\NodeTypeManagerInterface"></a><ul class="breadcrumb">
+<li>
+<a href="../index.html"><i class="icon-custom icon-class"></i></a><span class="divider">\</span>
+</li>
+<li><a href="../namespaces/PHPCR.html">PHPCR</a></li>
+<li>
+<span class="divider">\</span><a href="../namespaces/PHPCR.NodeType.html">NodeType</a>
+</li>
+<li class="active">
+<span class="divider">\</span><a href="../classes/PHPCR.NodeType.NodeTypeManagerInterface.html">NodeTypeManagerInterface</a>
+</li>
+</ul>
+<div class="element interface">
+<p class="short_description">Allows for the retrieval and (in implementations that support it) the
+registration of node types.</p>
+<div class="details">
+<div class="long_description"><p>Accessed via WorkspaceInterface::getNodeTypeManager().</p>
+
+<p>The \Traversable interface enables the implementation to be addressed with
+<b>foreach</b>. NodeTypeManager has to implement either \RecursiveIterator
+or \Iterator.
+The iterator is equivalent to <b>getAllNodeTypes()</b> returning a list of
+all node types. The iterator keys have no significant meaning.</p></div>
+<table class="table table-bordered">
+<tr>
+<th>package</th>
+<td><a href="../packages/phpcr.interfaces.html">phpcr</a></td>
+</tr>
+<tr>
+<th>subpackage</th>
+<td>interfaces</td>
+</tr>
+<tr>
+<th>api</th>
+<td></td>
+</tr>
+</table>
+<h3>
+<i class="icon-custom icon-method"></i> Methods</h3>
+<a id="method_createNodeDefinitionTemplate"></a><div class="element clickable method public method_createNodeDefinitionTemplate" data-toggle="collapse" data-target=".method_createNodeDefinitionTemplate .collapse">
+<h2>Returns an empty NodeDefinitionTemplate which can then be used to create
+a child node definition and attached to a NodeTypeTemplate.</h2>
+<pre>createNodeDefinitionTemplate() : <a href="../classes/PHPCR.NodeType.NodeDefinitionTemplateInterface.html">\PHPCR\NodeType\NodeDefinitionTemplateInterface</a></pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+<h3>Exceptions</h3>
+<table class="table table-bordered">
+<tr>
+<th><code><a href="../classes/PHPCR.UnsupportedRepositoryOperationException.html">\PHPCR\UnsupportedRepositoryOperationException</a></code></th>
+<td>if this
+     implementation does not support node type registration.</td>
+</tr>
+<tr>
+<th><code><a href="../classes/PHPCR.RepositoryException.html">\PHPCR\RepositoryException</a></code></th>
+<td>if another error occurs.</td>
+</tr>
+</table>
+<h3>Returns</h3>
+<div class="subelement response">
+<code><a href="../classes/PHPCR.NodeType.NodeDefinitionTemplateInterface.html">\PHPCR\NodeType\NodeDefinitionTemplateInterface</a></code>A
+     NodeDefinitionTemplate.</div>
+</div></div>
+</div>
+<a id="method_createNodeTypeTemplate"></a><div class="element clickable method public method_createNodeTypeTemplate" data-toggle="collapse" data-target=".method_createNodeTypeTemplate .collapse">
+<h2>Returns an empty NodeTypeTemplateInterface which can then be used to
+define a node type and passed to
+NodeTypeManagerInterface::registerNodeType().</h2>
+<pre>createNodeTypeTemplate(<a href="../classes/PHPCR.NodeType.NodeTypeDefinitionInterface.html">\PHPCR\NodeType\NodeTypeDefinitionInterface</a> $ntd) : <a href="../classes/PHPCR.NodeType.NodeTypeTemplateInterface.html">\PHPCR\NodeType\NodeTypeTemplateInterface</a></pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>If <b>$ntd</b> is given: Returns a NodeTypeTemplateInterface holding the
+specified node type definition. This template can then be altered and
+passed to NodeTypeManagerInterface::registerNodeType().</p></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$ntd</h4>
+<code><a href="../classes/PHPCR.NodeType.NodeTypeDefinitionInterface.html">\PHPCR\NodeType\NodeTypeDefinitionInterface</a></code><p>a NodeTypeDefinition.</p></div>
+<h3>Exceptions</h3>
+<table class="table table-bordered">
+<tr>
+<th><code><a href="../classes/PHPCR.UnsupportedRepositoryOperationException.html">\PHPCR\UnsupportedRepositoryOperationException</a></code></th>
+<td>if this
+     implementation does not support node type registration.</td>
+</tr>
+<tr>
+<th><code><a href="../classes/PHPCR.RepositoryException.html">\PHPCR\RepositoryException</a></code></th>
+<td>if another error occurs.</td>
+</tr>
+</table>
+<h3>Returns</h3>
+<div class="subelement response">
+<code><a href="../classes/PHPCR.NodeType.NodeTypeTemplateInterface.html">\PHPCR\NodeType\NodeTypeTemplateInterface</a></code>A NodeTypeTemplate.</div>
+</div></div>
+</div>
+<a id="method_createPropertyDefinitionTemplate"></a><div class="element clickable method public method_createPropertyDefinitionTemplate" data-toggle="collapse" data-target=".method_createPropertyDefinitionTemplate .collapse">
+<h2>Returns an empty PropertyDefinitionTemplateInterface which can then be
+used to create a property definition and attached to a
+NodeTypeTemplateInterface.</h2>
+<pre>createPropertyDefinitionTemplate() : <a href="../classes/PHPCR.NodeType.PropertyDefinitionTemplateInterface.html">\PHPCR\NodeType\PropertyDefinitionTemplateInterface</a></pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+<h3>Exceptions</h3>
+<table class="table table-bordered">
+<tr>
+<th><code><a href="../classes/PHPCR.UnsupportedRepositoryOperationException.html">\PHPCR\UnsupportedRepositoryOperationException</a></code></th>
+<td>if this
+     implementation does not support node type registration.</td>
+</tr>
+<tr>
+<th><code><a href="../classes/PHPCR.RepositoryException.html">\PHPCR\RepositoryException</a></code></th>
+<td>if another error occurs.</td>
+</tr>
+</table>
+<h3>Returns</h3>
+<div class="subelement response">
+<code><a href="../classes/PHPCR.NodeType.PropertyDefinitionTemplateInterface.html">\PHPCR\NodeType\PropertyDefinitionTemplateInterface</a></code>An empty
+     PropertyDefinitionTemplateInterface instance.</div>
+</div></div>
+</div>
+<a id="method_getAllNodeTypes"></a><div class="element clickable method public method_getAllNodeTypes" data-toggle="collapse" data-target=".method_getAllNodeTypes .collapse">
+<h2>Returns an iterator over all available node types (primary and mixin).</h2>
+<pre>getAllNodeTypes() : \PHPCR\NodeType\Iterator</pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+<h3>Exceptions</h3>
+<table class="table table-bordered"><tr>
+<th><code><a href="../classes/PHPCR.RepositoryException.html">\PHPCR\RepositoryException</a></code></th>
+<td>if an error occurs.</td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>\PHPCR\NodeType\Iterator</code>implementing <b>SeekableIterator</b> and <b>Countable</b>.
+     Keys are the node type names, values the corresponding
+     NodeTypeInterface instances.</div>
+</div></div>
+</div>
+<a id="method_getMixinNodeTypes"></a><div class="element clickable method public method_getMixinNodeTypes" data-toggle="collapse" data-target=".method_getMixinNodeTypes .collapse">
+<h2>Returns an iterator over all available mixin node types.</h2>
+<pre>getMixinNodeTypes() : \PHPCR\NodeType\Iterator</pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>If none are available, an empty iterator is returned.</p></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+<h3>Exceptions</h3>
+<table class="table table-bordered"><tr>
+<th><code><a href="../classes/PHPCR.RepositoryException.html">\PHPCR\RepositoryException</a></code></th>
+<td>if an error occurs.</td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>\PHPCR\NodeType\Iterator</code>implementing <b>SeekableIterator</b> and <b>Countable</b>.
+     Keys are the node type names, values the corresponding
+     NodeTypeInterface instances.</div>
+</div></div>
+</div>
+<a id="method_getNodeType"></a><div class="element clickable method public method_getNodeType" data-toggle="collapse" data-target=".method_getNodeType .collapse">
+<h2>Returns the named node type.</h2>
+<pre>getNodeType(string $nodeTypeName) : <a href="../classes/PHPCR.NodeType.NodeTypeInterface.html">\PHPCR\NodeType\NodeTypeInterface</a></pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$nodeTypeName</h4>
+<code>string</code><p>the name of an existing node type.</p></div>
+<h3>Exceptions</h3>
+<table class="table table-bordered">
+<tr>
+<th><code><a href="../classes/PHPCR.NodeType.NoSuchNodeTypeException.html">\PHPCR\NodeType\NoSuchNodeTypeException</a></code></th>
+<td>if no node type of the
+     given name exists.</td>
+</tr>
+<tr>
+<th><code><a href="../classes/PHPCR.RepositoryException.html">\PHPCR\RepositoryException</a></code></th>
+<td>if another error occurs.</td>
+</tr>
+</table>
+<h3>Returns</h3>
+<div class="subelement response">
+<code><a href="../classes/PHPCR.NodeType.NodeTypeInterface.html">\PHPCR\NodeType\NodeTypeInterface</a></code>A NodeType object.</div>
+</div></div>
+</div>
+<a id="method_getPrimaryNodeTypes"></a><div class="element clickable method public method_getPrimaryNodeTypes" data-toggle="collapse" data-target=".method_getPrimaryNodeTypes .collapse">
+<h2>Returns an iterator over all available primary node types.</h2>
+<pre>getPrimaryNodeTypes() : \PHPCR\NodeType\Iterator</pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+<h3>Exceptions</h3>
+<table class="table table-bordered"><tr>
+<th><code><a href="../classes/PHPCR.RepositoryException.html">\PHPCR\RepositoryException</a></code></th>
+<td>if an error occurs.</td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>\PHPCR\NodeType\Iterator</code>implementing <b>SeekableIterator</b> and <b>Countable</b>.
+     Keys are the node type names, values the corresponding
+     NodeTypeInterface instances.</div>
+</div></div>
+</div>
+<a id="method_hasNodeType"></a><div class="element clickable method public method_hasNodeType" data-toggle="collapse" data-target=".method_hasNodeType .collapse">
+<h2>Determines if the given node type is registered.</h2>
+<pre>hasNodeType(string $name) : boolean</pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>Returns true if a node type with the specified name is registered.
+Returns false otherwise.</p></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$name</h4>
+<code>string</code><p>The name of node type.</p></div>
+<h3>Exceptions</h3>
+<table class="table table-bordered"><tr>
+<th><code><a href="../classes/PHPCR.RepositoryException.html">\PHPCR\RepositoryException</a></code></th>
+<td>if an error occurs.</td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>boolean</code>True, if the node type identified by its name is
+     registered, else false.</div>
+</div></div>
+</div>
+<a id="method_registerNodeType"></a><div class="element clickable method public method_registerNodeType" data-toggle="collapse" data-target=".method_registerNodeType .collapse">
+<h2>Registers a new node type or updates an existing node type using the
+specified definition and returns the resulting NodeTypeInterface object.</h2>
+<pre>registerNodeType(\PHPCR\NodeType\NodeTypeDefinitionInterface $ntd, boolean $allowUpdate) : <a href="../classes/PHPCR.NodeType.NodeTypeInterface.html">\PHPCR\NodeType\NodeTypeInterface</a></pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>Typically, the object passed to this method will be a
+NodeTypeTemplateInterface (a subclass of NodeTypeDefinitionInterface)
+acquired from NodeTypeManagerInterface::createNodeTypeTemplate()
+and then filled-in with definition information.</p></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$ntd</h4>
+<code><a href="../classes/PHPCR.NodeType.NodeTypeDefinitionInterface.html">\PHPCR\NodeType\NodeTypeDefinitionInterface</a></code><p>a NodeTypeDefinitionInterface instance.</p></div>
+<div class="subelement argument">
+<h4>$allowUpdate</h4>
+<code>boolean</code><p>whether to fail if node already exists or to update it.</p></div>
+<h3>Exceptions</h3>
+<table class="table table-bordered">
+<tr>
+<th><code>\PHPCR\InvalidNodeTypeDefinitionException</code></th>
+<td>if the
+     NodeTypeDefinitionInterface is invalid.</td>
+</tr>
+<tr>
+<th><code><a href="../classes/PHPCR.NodeType.NodeTypeExistsException.html">\PHPCR\NodeType\NodeTypeExistsException</a></code></th>
+<td>if allowUpdate is false
+     and the NodeTypeDefinition specifies a node type name that is
+     already registered.</td>
+</tr>
+<tr>
+<th><code><a href="../classes/PHPCR.UnsupportedRepositoryOperationException.html">\PHPCR\UnsupportedRepositoryOperationException</a></code></th>
+<td>if this
+     implementation does not support node type registration.</td>
+</tr>
+<tr>
+<th><code><a href="../classes/PHPCR.RepositoryException.html">\PHPCR\RepositoryException</a></code></th>
+<td>if another error occurs.</td>
+</tr>
+</table>
+<h3>Returns</h3>
+<div class="subelement response">
+<code><a href="../classes/PHPCR.NodeType.NodeTypeInterface.html">\PHPCR\NodeType\NodeTypeInterface</a></code>the registered node type.</div>
+</div></div>
+</div>
+<a id="method_registerNodeTypes"></a><div class="element clickable method public method_registerNodeTypes" data-toggle="collapse" data-target=".method_registerNodeTypes .collapse">
+<h2>Registers or updates the specified array of NodeTypeDefinition objects.</h2>
+<pre>registerNodeTypes(array $definitions, boolean $allowUpdate) : \PHPCR\NodeType\Iterator</pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>This method is used to register or update a set of node types with mutual
+dependencies. Returns an iterator over the resulting NodeType objects.
+The effect of the method is "all or nothing"; if an error occurs, no node
+types are registered or updated.</p></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$definitions</h4>
+<code>array</code><p>an array of NodeTypeDefinitions.</p></div>
+<div class="subelement argument">
+<h4>$allowUpdate</h4>
+<code>boolean</code><p>whether to fail if node already exists or to update it.</p></div>
+<h3>Exceptions</h3>
+<table class="table table-bordered">
+<tr>
+<th><code>\PHPCR\InvalidNodeTypeDefinitionException</code></th>
+<td>if a
+     NodeTypeDefinitionInterface within the Collection is invalid or if
+     the Collection contains an object of a type other than
+     NodeTypeDefinitionInterface.</td>
+</tr>
+<tr>
+<th><code><a href="../classes/PHPCR.NodeType.NodeTypeExistsException.html">\PHPCR\NodeType\NodeTypeExistsException</a></code></th>
+<td>if allowUpdate is false
+     and a NodeTypeDefinition within the Collection specifies a node
+     type name that is already registered.</td>
+</tr>
+<tr>
+<th><code><a href="../classes/PHPCR.UnsupportedRepositoryOperationException.html">\PHPCR\UnsupportedRepositoryOperationException</a></code></th>
+<td>if this
+     implementation does not support node type registration.</td>
+</tr>
+<tr>
+<th><code><a href="../classes/PHPCR.RepositoryException.html">\PHPCR\RepositoryException</a></code></th>
+<td>if another error occurs.</td>
+</tr>
+</table>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>\PHPCR\NodeType\Iterator</code>over the registered node types implementing
+     <b>SeekableIterator</b> and <b>Countable</b>. Keys are the node
+     type names, values the corresponding NodeTypeInterface instances.</div>
+</div></div>
+</div>
+<a id="method_unregisterNodeType"></a><div class="element clickable method public method_unregisterNodeType" data-toggle="collapse" data-target=".method_unregisterNodeType .collapse">
+<h2>Unregisters the specified node type.</h2>
+<pre>unregisterNodeType(string $name) : void</pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$name</h4>
+<code>string</code><p>The name of the node type to be removed from the registry.</p></div>
+<h3>Exceptions</h3>
+<table class="table table-bordered">
+<tr>
+<th><code><a href="../classes/PHPCR.UnsupportedRepositoryOperationException.html">\PHPCR\UnsupportedRepositoryOperationException</a></code></th>
+<td>if this
+     implementation does not support node type registration.</td>
+</tr>
+<tr>
+<th><code><a href="../classes/PHPCR.NodeType.NoSuchNodeTypeException.html">\PHPCR\NodeType\NoSuchNodeTypeException</a></code></th>
+<td>if no registered node
+     type exists with the specified name.</td>
+</tr>
+<tr>
+<th><code><a href="../classes/PHPCR.RepositoryException.html">\PHPCR\RepositoryException</a></code></th>
+<td>if another error occurs.</td>
+</tr>
+</table>
+</div></div>
+</div>
+<a id="method_unregisterNodeTypes"></a><div class="element clickable method public method_unregisterNodeTypes" data-toggle="collapse" data-target=".method_unregisterNodeTypes .collapse">
+<h2>Unregisters the specified set of node types.</h2>
+<pre>unregisterNodeTypes(array $names) : void</pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>Used to unregister a set of
+node types with mutual dependencies.</p></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$names</h4>
+<code>array</code><p>List of node type names to be removed from the registry.</p></div>
+<h3>Exceptions</h3>
+<table class="table table-bordered">
+<tr>
+<th><code><a href="../classes/PHPCR.UnsupportedRepositoryOperationException.html">\PHPCR\UnsupportedRepositoryOperationException</a></code></th>
+<td>if this
+     implementation does not support node type registration.</td>
+</tr>
+<tr>
+<th><code><a href="../classes/PHPCR.NodeType.NoSuchNodeTypeException.html">\PHPCR\NodeType\NoSuchNodeTypeException</a></code></th>
+<td>if one of the names
+     listed is not a registered node type.</td>
+</tr>
+<tr>
+<th><code><a href="../classes/PHPCR.RepositoryException.html">\PHPCR\RepositoryException</a></code></th>
+<td>if another error occurs.</td>
+</tr>
+</table>
+</div></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="row"><footer class="span12">
+            Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
+            Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a10</a> and<br>
+            generated on 2012-10-02T11:32:34+02:00.<br></footer></div>
+</div>
+</body>
+</html>

@@ -1,0 +1,313 @@
+<!DOCTYPE html><html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+<meta charset="utf-8">
+<title>PHPCR API and PHPCR-Utils » \PHPCR\Observation\ObservationManagerInterface</title>
+<meta name="author" content="Mike van Riel">
+<meta name="description" content="">
+<link href="../css/template.css" rel="stylesheet" media="all">
+<script src="../js/jquery-1.7.1.min.js" type="text/javascript"></script><script src="../js/jquery-ui-1.8.2.custom.min.js" type="text/javascript"></script><script src="../js/jquery.mousewheel.min.js" type="text/javascript"></script><script src="../js/bootstrap.js" type="text/javascript"></script><script src="../js/template.js" type="text/javascript"></script><script src="../js/prettify/prettify.min.js" type="text/javascript"></script><link rel="shortcut icon" href="../img/favicon.ico">
+<link rel="apple-touch-icon" href="../img/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="72x72" href="../img/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="114x114" href="../img/apple-touch-icon-114x114.png">
+</head>
+<body>
+<div class="navbar navbar-fixed-top">
+<div class="navbar-inner"><div class="container">
+<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a><a class="brand" href="../index.html">PHPCR API and PHPCR-Utils</a><div class="nav-collapse"><ul class="nav">
+<li class="dropdown">
+<a href="#api" class="dropdown-toggle" data-toggle="dropdown">
+                                    API Documentation <b class="caret"></b></a><ul class="dropdown-menu">
+<li><a>Namespaces</a></li>
+<li><a href="../namespaces/PHPCR.html"><i class="icon-th"></i> PHPCR</a></li>
+<li><a>Packages</a></li>
+<li><a href="../packages/Default.html"><i class="icon-folder-open"></i> Default</a></li>
+<li><a href="../packages/phpcr.html"><i class="icon-folder-open"></i> phpcr</a></li>
+</ul>
+</li>
+<li class="dropdown" id="charts-menu">
+<a href="#charts" class="dropdown-toggle" data-toggle="dropdown">
+                                    Charts <b class="caret"></b></a><ul class="dropdown-menu"><li><a href="../graph_class.html"><i class="icon-list-alt"></i> Class hierarchy diagram</a></li></ul>
+</li>
+<li class="dropdown" id="reports-menu">
+<a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
+                                    Reports <b class="caret"></b></a><ul class="dropdown-menu">
+<li><a href="../errors.html"><i class="icon-remove-sign"></i> Errors 
+                <span class="label label-info">123</span></a></li>
+<li><a href="../markers.html"><i class="icon-map-marker"></i> Markers 
+                <ul><li>todo 
+                <span class="label label-info">12</span>
+</li></ul></a></li>
+<li><a href="../deprecated.html"><i class="icon-stop"></i> Deprecated elements 
+                <span class="label label-info">0</span></a></li>
+</ul>
+</li>
+</ul></div>
+</div></div>
+<div class="go_to_top"><a href="#___" style="color: inherit">Back to top  <i class="icon-upload icon-white"></i></a></div>
+</div>
+<div id="___" class="container">
+<noscript><div class="alert alert-warning">
+                            Javascript is disabled; several features are only available
+                            if Javascript is enabled.
+                        </div></noscript>
+<div class="row">
+<div class="span4">
+<span class="btn-group visibility" data-toggle="buttons-checkbox"><button class="btn public active" title="Show public elements">Public</button><button class="btn protected" title="Show protected elements">Protected</button><button class="btn private" title="Show private elements">Private</button><button class="btn inherited active" title="Show inherited elements">Inherited</button></span><div class="btn-group view pull-right" data-toggle="buttons-radio">
+<button class="btn details" title="Show descriptions and method names"><i class="icon-list"></i></button><button class="btn simple" title="Show only method names"><i class="icon-align-justify"></i></button>
+</div>
+<ul class="side-nav nav nav-list"><li class="nav-header">
+<i class="icon-custom icon-method"></i> Methods
+                    <ul>
+<li class="method public "><a href="#method_addEventListener" title="addEventListener :: Adds an event listener that listens for the specified eventTypes (a
+combination of one or more event types encoded as a bit mask value)."><span class="description">Adds an event listener that listens for the specified eventTypes (a
+combination of one or more event types encoded as a bit mask value).</span><pre>addEventListener()</pre></a></li>
+<li class="method public "><a href="#method_getEventJournal" title="getEventJournal :: Retrieves the event journal for this workspace."><span class="description">Retrieves the event journal for this workspace.</span><pre>getEventJournal()</pre></a></li>
+<li class="method public "><a href="#method_getRegisteredEventListeners" title="getRegisteredEventListeners :: Returns all event listeners that have been registered through this session."><span class="description">Returns all event listeners that have been registered through this session.</span><pre>getRegisteredEventListeners()</pre></a></li>
+<li class="method public "><a href="#method_removeEventListener" title="removeEventListener :: Deregisters an event listener."><span class="description">Deregisters an event listener.</span><pre>removeEventListener()</pre></a></li>
+<li class="method public "><a href="#method_setUserData" title="setUserData :: Sets the user data information that will be returned by EventInterface::getUserData()."><span class="description">Sets the user data information that will be returned by EventInterface::getUserData().</span><pre>setUserData()</pre></a></li>
+</ul>
+</li></ul>
+</div>
+<div class="span8">
+<a id="\PHPCR\Observation\ObservationManagerInterface"></a><ul class="breadcrumb">
+<li>
+<a href="../index.html"><i class="icon-custom icon-class"></i></a><span class="divider">\</span>
+</li>
+<li><a href="../namespaces/PHPCR.html">PHPCR</a></li>
+<li>
+<span class="divider">\</span><a href="../namespaces/PHPCR.Observation.html">Observation</a>
+</li>
+<li class="active">
+<span class="divider">\</span><a href="../classes/PHPCR.Observation.ObservationManagerInterface.html">ObservationManagerInterface</a>
+</li>
+</ul>
+<div class="element interface">
+<p class="short_description">The ObservationManager object.</p>
+<div class="details">
+<div class="long_description"><p>Acquired via WorkspaceInterface::getObservationManager(). Allows for the
+registration and deregistration of event listeners.</p>
+
+<p>The \Traversable interface enables the implementation to be addressed with
+<b>foreach</b>. ObservationManager has to implement either \IteratorAggregate
+or \Iterator.
+The iterator is equivalent to <b>getRegisteredEventListeners()</b> returning
+a list of all registered event listeners. The iterator keys have no
+significant meaning.</p></div>
+<table class="table table-bordered">
+<tr>
+<th>package</th>
+<td><a href="../packages/phpcr.interfaces.html">phpcr</a></td>
+</tr>
+<tr>
+<th>subpackage</th>
+<td>interfaces</td>
+</tr>
+<tr>
+<th>api</th>
+<td></td>
+</tr>
+</table>
+<h3>
+<i class="icon-custom icon-method"></i> Methods</h3>
+<a id="method_addEventListener"></a><div class="element clickable method public method_addEventListener" data-toggle="collapse" data-target=".method_addEventListener .collapse">
+<h2>Adds an event listener that listens for the specified eventTypes (a
+combination of one or more event types encoded as a bit mask value).</h2>
+<pre>addEventListener(\PHPCR\Observation\EventListenerInterface $listener, integer $eventTypes, string $absPath, boolean $isDeep, array $uuid, array $nodeTypeName, boolean $noLocal) : void</pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>The set of events will be further filtered by the access rights of the c
+urrent Session as well as the restrictions specified by the parameters of
+this method. These restrictions are stated in terms of characteristics of the
+associated parent node of the event.</p>
+
+<p>The associated parent node of an event is the parent node of the item at (or
+formerly at) the path returned by EventInterface::getPath(). The following
+restrictions are available:
+- <b>absPath</b>, <b>isDeep</b>: Only events whose associated parent node is at absPath (or
+  within its subgraph, if isDeep is true) will be received. It is permissible
+  to register a listener for a path where no node currently exists.
+- <b>uuid</b>: Only events whose associated parent node has one of the identifiers in
+  this list will be received. If his parameter is null then no identifier-
+  related restriction is placed on events received. Note that specifying an
+  empty array instead of null would result in no nodes being listened to. The
+  term "UUID" is used for compatibility with JCR 1.0.
+- <b>nodeTypeName</b>: Only events whose associated parent node has one of the node
+  types (or a subtype of one of the node types) in this list will be received.
+  If his parameter is null then no node type-related restriction is placed on
+  events received. Note that specifying an empty array instead of null would
+  result in no nodes types being listened to.</p>
+
+<p>The restrictions are "ANDed" together. In other words, for a particular node
+to be "listened to" it must meet all the restrictions.
+Additionally, if noLocal is true, then events generated by the session
+through which the listener was registered are ignored. Otherwise, they are
+not ignored.</p>
+
+<p>The filters of an already-registered EventListener can be changed at runtime
+by re-registering the same EventListener object (i.e. the same actual object)
+with a new set of filter arguments. The implementation must ensure that no
+events are lost during the changeover.</p>
+
+<p>In addition to the filters placed on a listener above, the scope of
+observation support, in terms of which subgraphs are observable, may also be
+subject to implementation-specific restrictions. For example, in some
+repositories observation of changes in the jcr:system subgraph may not be
+supported</p></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$listener</h4>
+<code><a href="../classes/PHPCR.Observation.EventListenerInterface.html">\PHPCR\Observation\EventListenerInterface</a></code><p>An EventListener object.</p></div>
+<div class="subelement argument">
+<h4>$eventTypes</h4>
+<code>integer</code><p>A combination of one or more event type constants encoded as a bitmask.</p></div>
+<div class="subelement argument">
+<h4>$absPath</h4>
+<code>string</code><p>The absolute path identifying the node to be observed.</p></div>
+<div class="subelement argument">
+<h4>$isDeep</h4>
+<code>boolean</code><p>Switch to define the given path as a reference to a child node.</p></div>
+<div class="subelement argument">
+<h4>$uuid</h4>
+<code>array</code><p>List of identifiers of events to be recieved.</p></div>
+<div class="subelement argument">
+<h4>$nodeTypeName</h4>
+<code>array</code><p>List of node type names to identify the events to be recieved.</p></div>
+<div class="subelement argument">
+<h4>$noLocal</h4>
+<code>boolean</code><p>switch to handle local events.</p></div>
+<h3>Exceptions</h3>
+<table class="table table-bordered"><tr>
+<th><code><a href="../classes/PHPCR.RepositoryException.html">\PHPCR\RepositoryException</a></code></th>
+<td>if an error occurs.</td>
+</tr></table>
+</div></div>
+</div>
+<a id="method_getEventJournal"></a><div class="element clickable method public method_getEventJournal" data-toggle="collapse" data-target=".method_getEventJournal .collapse">
+<h2>Retrieves the event journal for this workspace.</h2>
+<pre>getEventJournal(integer $eventTypes, string $absPath, boolean $isDeep, array $uuid, array $nodeTypeName) : <a href="../classes/PHPCR.Observation.EventJournalInterface.html">\PHPCR\Observation\EventJournalInterface</a></pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>If journaled observation is not supported for this workspace, null is
+returned.</p>
+
+<p>Events returned in the EventJournal instance will be filtered according
+to the parameters of this method, the current session's access
+restrictions as well as any additional restrictions specified through
+implemention-specific configuration.</p>
+
+<p>The parameters of this method filter the event set in the same way as
+they do in addEventListener().</p></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$eventTypes</h4>
+<code>integer</code><p>A combination of one or more event type constants encoded as a bitmask.</p></div>
+<div class="subelement argument">
+<h4>$absPath</h4>
+<code>string</code><p>an absolute path.</p></div>
+<div class="subelement argument">
+<h4>$isDeep</h4>
+<code>boolean</code><p>Switch to define the given path as a reference to a child node.</p></div>
+<div class="subelement argument">
+<h4>$uuid</h4>
+<code>array</code><p>array of identifiers.</p></div>
+<div class="subelement argument">
+<h4>$nodeTypeName</h4>
+<code>array</code><p>array of node type names.</p></div>
+<h3>Exceptions</h3>
+<table class="table table-bordered"><tr>
+<th><code><a href="../classes/PHPCR.RepositoryException.html">\PHPCR\RepositoryException</a></code></th>
+<td>if an error occurs</td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response">
+<code><a href="../classes/PHPCR.Observation.EventJournalInterface.html">\PHPCR\Observation\EventJournalInterface</a></code>an EventJournal (or null).</div>
+</div></div>
+</div>
+<a id="method_getRegisteredEventListeners"></a><div class="element clickable method public method_getRegisteredEventListeners" data-toggle="collapse" data-target=".method_getRegisteredEventListeners .collapse">
+<h2>Returns all event listeners that have been registered through this session.</h2>
+<pre>getRegisteredEventListeners() : \PHPCR\Observation\Iterator</pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>If no listeners have been registered, an empty iterator is returned.</p></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+<h3>Exceptions</h3>
+<table class="table table-bordered"><tr>
+<th><code><a href="../classes/PHPCR.RepositoryException.html">\PHPCR\RepositoryException</a></code></th>
+<td>if an error occurs</td>
+</tr></table>
+<h3>Returns</h3>
+<div class="subelement response">
+<code>\PHPCR\Observation\Iterator</code>implementing <b>SeekableIterator</b> and <b>Countable</b>.
+                 Values are the EventListenerInterface instances. Keys have no meaning.</div>
+</div></div>
+</div>
+<a id="method_removeEventListener"></a><div class="element clickable method public method_removeEventListener" data-toggle="collapse" data-target=".method_removeEventListener .collapse">
+<h2>Deregisters an event listener.</h2>
+<pre>removeEventListener(\PHPCR\Observation\EventListenerInterface $listener) : void</pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"><p>A listener may be deregistered while it is being executed. The deregistration
+method will block until the listener has completed executing. An exception to
+this rule is a listener which deregisters itself from within the onEvent
+method. In this case, the deregistration method returns immediately, but
+deregistration will effectively be delayed until the listener completes.</p></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$listener</h4>
+<code><a href="../classes/PHPCR.Observation.EventListenerInterface.html">\PHPCR\Observation\EventListenerInterface</a></code><p>The listener to deregister.</p></div>
+<h3>Exceptions</h3>
+<table class="table table-bordered"><tr>
+<th><code><a href="../classes/PHPCR.RepositoryException.html">\PHPCR\RepositoryException</a></code></th>
+<td>if an error occurs.</td>
+</tr></table>
+</div></div>
+</div>
+<a id="method_setUserData"></a><div class="element clickable method public method_setUserData" data-toggle="collapse" data-target=".method_setUserData .collapse">
+<h2>Sets the user data information that will be returned by EventInterface::getUserData().</h2>
+<pre>setUserData(string $userData) : void</pre>
+<div class="labels"><span class="label label-info">API</span></div>
+<div class="row collapse"><div class="detail-description">
+<div class="long_description"></div>
+<table class="table table-bordered"><tr>
+<th>api</th>
+<td></td>
+</tr></table>
+<h3>Parameters</h3>
+<div class="subelement argument">
+<h4>$userData</h4>
+<code>string</code><p>the user data</p></div>
+<h3>Exceptions</h3>
+<table class="table table-bordered"><tr>
+<th><code><a href="../classes/PHPCR.RepositoryException.html">\PHPCR\RepositoryException</a></code></th>
+<td>if an error occurs</td>
+</tr></table>
+</div></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="row"><footer class="span12">
+            Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
+            Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a10</a> and<br>
+            generated on 2012-10-02T11:24:44+02:00.<br></footer></div>
+</div>
+</body>
+</html>
