@@ -1,0 +1,10 @@
+{
+    "name": "phpcr/phpcr-github-com",
+    "description": "PHPCR website",
+    "keywords": ["documentation", "phpcr"],
+    "homepage": "http://phpcr.github.com",
+    "license": "MIT",
+    "require": {
+        "phpdocumentor/template-phpcr": "dev-master@dev"
+    }
+}
