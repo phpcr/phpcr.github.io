@@ -9,7 +9,7 @@
         <target>../html-all/</target>
     </transformer>
     <transformations>
-        <template>new-black</template>
+        <template name="../../data/templates/phpcr" />
     </transformations>
     <files>
         <directory>../../../phpcr/src</directory>
