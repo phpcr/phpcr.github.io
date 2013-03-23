@@ -1,1 +1,14 @@
-See phpcr doc/config/ directory for information how to generate the configuration
+This is using the phpDocumentor2, see phpdoc.org
+
+To generate the doc, you currently need to run phpdoc as root (see https://github.com/phpDocumentor/phpDocumentor2/pull/728)
+
+1. Run composer to get the phpDocumentor templates and the source code to be documented
+
+    php composer.phar update
+
+(You want to genrate the latest doc, so update and not install)
+
+2. Generate the doc
+
+    sudo phpdoc -c phpdoc.dist.xml
+    sudo phpdoc -c phpdoc-all.dist.xml

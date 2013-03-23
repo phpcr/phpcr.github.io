@@ -5,6 +5,8 @@
     "homepage": "http://phpcr.github.com",
     "license": "MIT",
     "require": {
-        "phpdocumentor/template-phpcr": "dev-master@dev"
+        "phpdocumentor/template-phpcr": "dev-master@dev",
+        "phpcr/phpcr": "dev-master@dev",
+        "phpcr/phpcr-utils": "dev-master@dev"
     }
 }

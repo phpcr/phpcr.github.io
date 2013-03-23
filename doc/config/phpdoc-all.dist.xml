@@ -3,15 +3,16 @@
 <phpdoc>
     <title>PHPCR API and PHPCR-Utils</title>
     <parser>
-        <target>../html/</target>
+        <target>../html-all/</target>
     </parser>
     <transformer>
-        <target>../html/</target>
+        <target>../html-all/</target>
     </transformer>
     <transformations>
         <template name="../../data/templates/phpcr" />
     </transformations>
     <files>
         <directory>../../vendor/phpcr/phpcr/src</directory>
+        <directory>../../vendor/phpcr/phpcr-utils/src</directory>
     </files>
 </phpdoc>
