@@ -21,7 +21,7 @@ limitations under the License.</p></div></div><dl class="file-info"><dt>License<
          
     </dd><dt>Link</dt><dd><a href="http://phpcr.github.com/">http://phpcr.github.com/</a>
          
-    </dd></dl><a name="interfaces" class="anchor"></a><a id="\PHPCR\Observation\ObservationManagerInterface" class="anchor"></a><h2 class="interface">\PHPCR\Observation\ObservationManagerInterface<div class="to-top"><a href="#top">jump to top</a></div></h2><div class="class"><small class="package"><b>Package: </b>phpcr\interfaces</small><div class="short-description">The ObservationManager object.</div><div class="long-description"><p>Acquired via WorkspaceInterface::getObservationManager(). Allows for the
+    </dd></dl><a name="interfaces" class="anchor"></a><a id="\PHPCR\Observation\ObservationManagerInterface" class="anchor"></a><h2 class="interface">\PHPCR\Observation\ObservationManagerInterface<div class="to-top"><a href="#top">jump to top</a></div></h2><div class="class"><small class="package"><b>Package: </b>Default</small><div class="short-description">The ObservationManager object.</div><div class="long-description"><p>Acquired via WorkspaceInterface::getObservationManager(). Allows for the
 registration and deregistration of event listeners.</p>
 
 <p>The \Traversable interface enables the implementation to be addressed with
@@ -31,58 +31,44 @@ The iterator is equivalent to <b>getRegisteredEventListeners()</b> returning
 a list of all registered event listeners. The iterator keys have no
 significant meaning.</p></div><dl class="class-info"><dt>Parent(s)</dt><dd>\Traversable</dd><dt>Api</dt><dd>
          
-    </dd></dl><h3>Methods</h3><div><a id="\PHPCR\Observation\ObservationManagerInterface::addEventListener()" class="anchor"></a><div class="method public"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png"></img><img src="../images/icons/arrow_down.png" style="display: none;"></img></a><code class="title"><img src="../images/icons/method.png" alt="method" title="method"></img><img src="../images/icons/visibility_public.png" style="margin-right: 5px" alt="public"></img><span class="highlight">addEventListener</span><span class="nb-faded-text">(<a href="../files/phpcr.src.PHPCR.Observation.EventListenerInterface.html#\PHPCR\Observation\EventListenerInterface">\PHPCR\Observation\EventListenerInterface</a> $listener, integer $eventTypes, string $absPath, boolean $isDeep, array $uuid, array $nodeTypeName, boolean $noLocal)</span> : void</code><div class="description"><p class="short_description">Adds an event listener that listens for the specified eventTypes (a
-combination of one or more event types encoded as a bit mask value).</p></div><div class="code-tabs"><div class="long-description"><p>The set of events will be further filtered by the access rights of the c
-urrent Session as well as the restrictions specified by the parameters of
-this method. These restrictions are stated in terms of characteristics of the
-associated parent node of the event.</p>
+    </dd></dl><h3>Methods</h3><div><a id="\PHPCR\Observation\ObservationManagerInterface::addEventListener()" class="anchor"></a><div class="method public"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png"></img><img src="../images/icons/arrow_down.png" style="display: none;"></img></a><code class="title"><img src="../images/icons/method.png" alt="method" title="method"></img><img src="../images/icons/visibility_public.png" style="margin-right: 5px" alt="public"></img><span class="highlight">addEventListener</span><span class="nb-faded-text">(<a href="../files/phpcr.src.PHPCR.Observation.EventListenerInterface.html#\PHPCR\Observation\EventListenerInterface">\PHPCR\Observation\EventListenerInterface</a> $listener, <a href="../files/phpcr.src.PHPCR.Observation.EventFilterInterface.html#\PHPCR\Observation\EventFilterInterface">\PHPCR\Observation\EventFilterInterface</a> $filter)</span> : void</code><div class="description"><p class="short_description">Adds an event listener that listens for the events specified by the
+passed {@link EventFilterInterface}.</p></div><div class="code-tabs"><div class="long-description"><p>In addition to the EventFilter, the set of events reported will be
+further filtered by the access rights of the current Session.</p>
 
-<p>The associated parent node of an event is the parent node of the item at (or
-formerly at) the path returned by EventInterface::getPath(). The following
-restrictions are available:
-- <b>absPath</b>, <b>isDeep</b>: Only events whose associated parent node is at absPath (or
-  within its subgraph, if isDeep is true) will be received. It is permissible
-  to register a listener for a path where no node currently exists.
-- <b>uuid</b>: Only events whose associated parent node has one of the identifiers in
-  this list will be received. If his parameter is null then no identifier-
-  related restriction is placed on events received. Note that specifying an
-  empty array instead of null would result in no nodes being listened to. The
-  term "UUID" is used for compatibility with JCR 1.0.
-- <b>nodeTypeName</b>: Only events whose associated parent node has one of the node
-  types (or a subtype of one of the node types) in this list will be received.
-  If his parameter is null then no node type-related restriction is placed on
-  events received. Note that specifying an empty array instead of null would
-  result in no nodes types being listened to.</p>
+<p>See <a href="EventFilter">EventFilter</a> for a description of the filtering parameters
+available.</p>
 
-<p>The restrictions are "ANDed" together. In other words, for a particular node
-to be "listened to" it must meet all the restrictions.
-Additionally, if noLocal is true, then events generated by the session
-through which the listener was registered are ignored. Otherwise, they are
-not ignored.</p>
-
-<p>The filters of an already-registered EventListener can be changed at runtime
-by re-registering the same EventListener object (i.e. the same actual object)
-with a new set of filter arguments. The implementation must ensure that no
-events are lost during the changeover.</p>
+<p>The filter of an already-registered EventListener can be changed at
+runtime by re-registering the same EventListener object (i.e. the same
+actual Java object) with a new filter. The implementation must ensure
+that no events are lost during the changeover.</p>
 
 <p>In addition to the filters placed on a listener above, the scope of
-observation support, in terms of which subgraphs are observable, may also be
-subject to implementation-specific restrictions. For example, in some
-repositories observation of changes in the jcr:system subgraph may not be
-supported</p></div><strong>Parameters</strong><table class="argument-info"><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><th>$listener</th><td><a href="../files/phpcr.src.PHPCR.Observation.EventListenerInterface.html#\PHPCR\Observation\EventListenerInterface">\PHPCR\Observation\EventListenerInterface</a></td><td><em><p>An EventListener object.</p></em></td></tr><tr><th>$eventTypes</th><td>integer</td><td><em><p>A combination of one or more event type constants encoded as a bitmask.</p></em></td></tr><tr><th>$absPath</th><td>string</td><td><em><p>The absolute path identifying the node to be observed.</p></em></td></tr><tr><th>$isDeep</th><td>boolean</td><td><em><p>Switch to define the given path as a reference to a child node.</p></em></td></tr><tr><th>$uuid</th><td>array</td><td><em><p>List of identifiers of events to be recieved.</p></em></td></tr><tr><th>$nodeTypeName</th><td>array</td><td><em><p>List of node type names to identify the events to be recieved.</p></em></td></tr><tr><th>$noLocal</th><td>boolean</td><td><em><p>switch to handle local events.</p></em></td></tr></table><strong>Throws</strong><table class="argument-info"><thead><tr><th>Exception</th><th>Description</th></tr></thead><tr><td><a href="../files/phpcr.src.PHPCR.RepositoryException.html#\PHPCR\RepositoryException">\PHPCR\RepositoryException</a></td><td><em>if an error occurs.</em></td></tr></table><strong>Details</strong><dl class="function-info"><dt>Api</dt><dd>
+observation support, in terms of which parts of a workspace are
+observable, may also be subject to implementation-specific restrictions.
+For example, in some repositories observation of changes in the
+jcr:system subgraph may not be supported.</p></div><strong>Parameters</strong><table class="argument-info"><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><th>$listener</th><td><a href="../files/phpcr.src.PHPCR.Observation.EventListenerInterface.html#\PHPCR\Observation\EventListenerInterface">\PHPCR\Observation\EventListenerInterface</a></td><td><em></em></td></tr><tr><th>$filter</th><td><a href="../files/phpcr.src.PHPCR.Observation.EventFilterInterface.html#\PHPCR\Observation\EventFilterInterface">\PHPCR\Observation\EventFilterInterface</a></td><td><em></em></td></tr></table><strong>Throws</strong><table class="argument-info"><thead><tr><th>Exception</th><th>Description</th></tr></thead><tr><td>\PHPCR\Observation\RepositoryException</td><td><em>If an error occurs.</em></td></tr></table><strong>Details</strong><dl class="function-info"><dt>Api</dt><dd>
          
-    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\Observation\ObservationManagerInterface::getEventJournal()" class="anchor"></a><div class="method public"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png"></img><img src="../images/icons/arrow_down.png" style="display: none;"></img></a><code class="title"><img src="../images/icons/method.png" alt="method" title="method"></img><img src="../images/icons/visibility_public.png" style="margin-right: 5px" alt="public"></img><span class="highlight">getEventJournal</span><span class="nb-faded-text">(integer $eventTypes = null, string $absPath = null, boolean $isDeep = null, array $uuid = null, array $nodeTypeName = null)</span> : <a href="../files/phpcr.src.PHPCR.Observation.EventJournalInterface.html#\PHPCR\Observation\EventJournalInterface">\PHPCR\Observation\EventJournalInterface</a></code><div class="description"><p class="short_description">Retrieves the event journal for this workspace.</p></div><div class="code-tabs"><div class="long-description"><p>If journaled observation is not supported for this workspace, null is
+    </dd><dt>Since</dt><dd>JCR 2.1
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\Observation\ObservationManagerInterface::createEventFilter()" class="anchor"></a><div class="method public"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png"></img><img src="../images/icons/arrow_down.png" style="display: none;"></img></a><code class="title"><img src="../images/icons/method.png" alt="method" title="method"></img><img src="../images/icons/visibility_public.png" style="margin-right: 5px" alt="public"></img><span class="highlight">createEventFilter</span><span class="nb-faded-text">()</span> : <a href="../files/phpcr.src.PHPCR.Observation.EventFilterInterface.html#\PHPCR\Observation\EventFilterInterface">\PHPCR\Observation\EventFilterInterface</a></code><div class="description"><p class="short_description">Creates an EventFilter that can then be configured and passed to the
+method addEventListener.</p></div><div class="code-tabs"><div class="long-description"></div><strong>Returns</strong><table class="argument-info"><thead><tr><th>Type</th><th>Description</th></tr></thead><tr><td><a href="../files/phpcr.src.PHPCR.Observation.EventFilterInterface.html#\PHPCR\Observation\EventFilterInterface">\PHPCR\Observation\EventFilterInterface</a></td><td></td></tr></table><strong>Details</strong><dl class="function-info"><dt>Api</dt><dd>
+         
+    </dd><dt>Since</dt><dd>JCR 2.1
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\Observation\ObservationManagerInterface::getEventJournal()" class="anchor"></a><div class="method public"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png"></img><img src="../images/icons/arrow_down.png" style="display: none;"></img></a><code class="title"><img src="../images/icons/method.png" alt="method" title="method"></img><img src="../images/icons/visibility_public.png" style="margin-right: 5px" alt="public"></img><span class="highlight">getEventJournal</span><span class="nb-faded-text">(<a href="../files/phpcr.src.PHPCR.Observation.EventFilterInterface.html#\PHPCR\Observation\EventFilterInterface">\PHPCR\Observation\EventFilterInterface</a> $filter)</span> : <a href="../files/phpcr.src.PHPCR.Observation.EventJournalInterface.html#\PHPCR\Observation\EventJournalInterface">\PHPCR\Observation\EventJournalInterface</a></code><div class="description"><p class="short_description">Retrieves the event journal for this workspace.</p></div><div class="code-tabs"><div class="long-description"><p>If journaled observation is not supported for this workspace, null is
 returned.</p>
 
 <p>Events returned in the EventJournal instance will be filtered according
-to the parameters of this method, the current session's access
-restrictions as well as any additional restrictions specified through
-implemention-specific configuration.</p>
+to the parameters set on the EventFilter that is passed to this method.</p>
 
-<p>The parameters of this method filter the event set in the same way as
-they do in addEventListener().</p></div><strong>Parameters</strong><table class="argument-info"><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><th>$eventTypes</th><td>integer</td><td><em><p>A combination of one or more event type constants encoded as a bitmask.</p></em></td></tr><tr><th>$absPath</th><td>string</td><td><em><p>an absolute path.</p></em></td></tr><tr><th>$isDeep</th><td>boolean</td><td><em><p>Switch to define the given path as a reference to a child node.</p></em></td></tr><tr><th>$uuid</th><td>array</td><td><em><p>array of identifiers.</p></em></td></tr><tr><th>$nodeTypeName</th><td>array</td><td><em><p>array of node type names.</p></em></td></tr></table><strong>Returns</strong><table class="argument-info"><thead><tr><th>Type</th><th>Description</th></tr></thead><tr><td><a href="../files/phpcr.src.PHPCR.Observation.EventJournalInterface.html#\PHPCR\Observation\EventJournalInterface">\PHPCR\Observation\EventJournalInterface</a></td><td>an EventJournal (or null).</td></tr></table><strong>Throws</strong><table class="argument-info"><thead><tr><th>Exception</th><th>Description</th></tr></thead><tr><td><a href="../files/phpcr.src.PHPCR.RepositoryException.html#\PHPCR\RepositoryException">\PHPCR\RepositoryException</a></td><td><em>if an error occurs</em></td></tr></table><strong>Details</strong><dl class="function-info"><dt>Api</dt><dd>
+<p>Additionally, the current session's access restrictions as well as any
+additional restrictions specified through implementation-specific
+configuration will also affect the set of returned events.</p></div><strong>Parameters</strong><table class="argument-info"><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><th>$filter</th><td><a href="../files/phpcr.src.PHPCR.Observation.EventFilterInterface.html#\PHPCR\Observation\EventFilterInterface">\PHPCR\Observation\EventFilterInterface</a></td><td><em></em></td></tr></table><strong>Returns</strong><table class="argument-info"><thead><tr><th>Type</th><th>Description</th></tr></thead><tr><td><a href="../files/phpcr.src.PHPCR.Observation.EventJournalInterface.html#\PHPCR\Observation\EventJournalInterface">\PHPCR\Observation\EventJournalInterface</a></td><td>an EventJournal (or null).</td></tr></table><strong>Throws</strong><table class="argument-info"><thead><tr><th>Exception</th><th>Description</th></tr></thead><tr><td><a href="../files/phpcr.src.PHPCR.RepositoryException.html#\PHPCR\RepositoryException">\PHPCR\RepositoryException</a></td><td><em>if an error occurs</em></td></tr></table><strong>Details</strong><dl class="function-info"><dt>Api</dt><dd>
          
-    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\Observation\ObservationManagerInterface::getRegisteredEventListeners()" class="anchor"></a><div class="method public"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png"></img><img src="../images/icons/arrow_down.png" style="display: none;"></img></a><code class="title"><img src="../images/icons/method.png" alt="method" title="method"></img><img src="../images/icons/visibility_public.png" style="margin-right: 5px" alt="public"></img><span class="highlight">getRegisteredEventListeners</span><span class="nb-faded-text">()</span> : \PHPCR\Observation\Iterator</code><div class="description"><p class="short_description">Returns all event listeners that have been registered through this session.</p></div><div class="code-tabs"><div class="long-description"><p>If no listeners have been registered, an empty iterator is returned.</p></div><strong>Returns</strong><table class="argument-info"><thead><tr><th>Type</th><th>Description</th></tr></thead><tr><td>\PHPCR\Observation\Iterator</td><td>implementing &lt;b&gt;SeekableIterator&lt;/b&gt; and &lt;b&gt;Countable&lt;/b&gt;.
+    </dd><dt>Since</dt><dd>JCR 2.1
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\Observation\ObservationManagerInterface::getRegisteredEventListeners()" class="anchor"></a><div class="method public"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png"></img><img src="../images/icons/arrow_down.png" style="display: none;"></img></a><code class="title"><img src="../images/icons/method.png" alt="method" title="method"></img><img src="../images/icons/visibility_public.png" style="margin-right: 5px" alt="public"></img><span class="highlight">getRegisteredEventListeners</span><span class="nb-faded-text">()</span> : \Iterator</code><div class="description"><p class="short_description">Returns all event listeners that have been registered through this session.</p></div><div class="code-tabs"><div class="long-description"><p>If no listeners have been registered, an empty iterator is returned.</p></div><strong>Returns</strong><table class="argument-info"><thead><tr><th>Type</th><th>Description</th></tr></thead><tr><td>\Iterator</td><td>implementing &lt;b&gt;SeekableIterator&lt;/b&gt; and &lt;b&gt;Countable&lt;/b&gt;.
                  Values are the EventListenerInterface instances. Keys have no meaning.</td></tr></table><strong>Throws</strong><table class="argument-info"><thead><tr><th>Exception</th><th>Description</th></tr></thead><tr><td><a href="../files/phpcr.src.PHPCR.RepositoryException.html#\PHPCR\RepositoryException">\PHPCR\RepositoryException</a></td><td><em>if an error occurs</em></td></tr></table><strong>Details</strong><dl class="function-info"><dt>Api</dt><dd>
          
     </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\Observation\ObservationManagerInterface::removeEventListener()" class="anchor"></a><div class="method public"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png"></img><img src="../images/icons/arrow_down.png" style="display: none;"></img></a><code class="title"><img src="../images/icons/method.png" alt="method" title="method"></img><img src="../images/icons/visibility_public.png" style="margin-right: 5px" alt="public"></img><span class="highlight">removeEventListener</span><span class="nb-faded-text">(<a href="../files/phpcr.src.PHPCR.Observation.EventListenerInterface.html#\PHPCR\Observation\EventListenerInterface">\PHPCR\Observation\EventListenerInterface</a> $listener)</span> : void</code><div class="description"><p class="short_description">Deregisters an event listener.</p></div><div class="code-tabs"><div class="long-description"><p>A listener may be deregistered while it is being executed. The deregistration
@@ -96,5 +82,5 @@ deregistration will effectively be delayed until the listener completes.</p></di
     </dd></dl></div><div class="clear"></div></div></div></div></div><small class="footer">
             Documentation was generated by
             <a href="http://phpdoc.org">phpDocumentor
-                2.0.0a10</a>.
+                2.0.0a12</a>.
         </small></body></html>

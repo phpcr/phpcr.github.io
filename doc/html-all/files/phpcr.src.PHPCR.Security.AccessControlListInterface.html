@@ -21,7 +21,7 @@ limitations under the License.</p></div></div><dl class="file-info"><dt>License<
          
     </dd><dt>Link</dt><dd><a href="http://phpcr.github.com/">http://phpcr.github.com/</a>
          
-    </dd></dl><a name="interfaces" class="anchor"></a><a id="\PHPCR\Security\AccessControlListInterface" class="anchor"></a><h2 class="interface">\PHPCR\Security\AccessControlListInterface<div class="to-top"><a href="#top">jump to top</a></div></h2><div class="class"><small class="package"><b>Package: </b>phpcr\interfaces</small><div class="short-description">The AccessControlListInterface is an AccessControlPolicyInterface
+    </dd></dl><a name="interfaces" class="anchor"></a><a id="\PHPCR\Security\AccessControlListInterface" class="anchor"></a><h2 class="interface">\PHPCR\Security\AccessControlListInterface<div class="to-top"><a href="#top">jump to top</a></div></h2><div class="class"><small class="package"><b>Package: </b>Default</small><div class="short-description">The AccessControlListInterface is an AccessControlPolicyInterface
 representing a list of access control entries.</div><div class="long-description"><p>It is mutable before being set to the AccessControlManagerInterface and
 consequently defines methods to read and mutate the list i.e. to get, add or
 remove individual AccessControlEntryInterface instances.</p>
@@ -45,7 +45,8 @@ Principal can never remove a Privilege added by a previous call.</p>
 
 <p>The modification does not take effect until this policy has been set to
 a node by calling AccessControlManagerInterface::setPolicy() and
-Session::save is performed.</p></div><strong>Parameters</strong><table class="argument-info"><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><th>$principal</th><td><a href="../files/phpcr.src.PHPCR.Security.PrincipalInterface.html#\PHPCR\Security\PrincipalInterface">\PHPCR\Security\PrincipalInterface</a></td><td><em><p>the entity that should have this privilege</p></em></td></tr><tr><th>$privileges</th><td>array</td><td><em><ul>
+Session::save is performed.</p></div><strong>Parameters</strong><table class="argument-info"><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><th>$principal</th><td><a href="../files/phpcr.src.PHPCR.Security.PrincipalInterface.html#\PHPCR\Security\PrincipalInterface">\PHPCR\Security\PrincipalInterface</a></td><td><em><p>the entity that should have this
+     privilege</p></em></td></tr><tr><th>$privileges</th><td>array</td><td><em><ul>
 <li>an array of Privileges.</li>
 </ul>
 </em></td></tr></table><strong>Returns</strong><table class="argument-info"><thead><tr><th>Type</th><th>Description</th></tr></thead><tr><td>boolean</td><td>true if this policy was modify; false otherwise.</td></tr></table><strong>Throws</strong><table class="argument-info"><thead><tr><th>Exception</th><th>Description</th></tr></thead><tr><td><a href="../files/phpcr.src.PHPCR.Security.AccessControlException.html#\PHPCR\Security\AccessControlException">\PHPCR\Security\AccessControlException</a></td><td><em>if the specified
@@ -58,11 +59,12 @@ if that access control entry object has been assigned through this API.</p></div
     </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\Security\AccessControlListInterface::removeAccessControlEntry()" class="anchor"></a><div class="method public"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png"></img><img src="../images/icons/arrow_down.png" style="display: none;"></img></a><code class="title"><img src="../images/icons/method.png" alt="method" title="method"></img><img src="../images/icons/visibility_public.png" style="margin-right: 5px" alt="public"></img><span class="highlight">removeAccessControlEntry</span><span class="nb-faded-text">(<a href="../files/phpcr.src.PHPCR.Security.AccessControlEntryInterface.html#\PHPCR\Security\AccessControlEntryInterface">\PHPCR\Security\AccessControlEntryInterface</a> $ace)</span> : void</code><div class="description"><p class="short_description">Removes the specified access control entry object from this policy.</p></div><div class="code-tabs"><div class="long-description"><p>Only exactly those entries obtained through getAccessControlEntries can
 be removed. This method does not take effect until this policy has been
 re-assigned to a node by calling AccessControlManagerInterface::setPolicy()
-and save is performed.</p></div><strong>Parameters</strong><table class="argument-info"><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><th>$ace</th><td><a href="../files/phpcr.src.PHPCR.Security.AccessControlEntryInterface.html#\PHPCR\Security\AccessControlEntryInterface">\PHPCR\Security\AccessControlEntryInterface</a></td><td><em><p>the access control entry to be removed.</p></em></td></tr></table><strong>Throws</strong><table class="argument-info"><thead><tr><th>Exception</th><th>Description</th></tr></thead><tr><td><a href="../files/phpcr.src.PHPCR.Security.AccessControlException.html#\PHPCR\Security\AccessControlException">\PHPCR\Security\AccessControlException</a></td><td><em>if the specified entry is
+and save is performed.</p></div><strong>Parameters</strong><table class="argument-info"><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><th>$ace</th><td><a href="../files/phpcr.src.PHPCR.Security.AccessControlEntryInterface.html#\PHPCR\Security\AccessControlEntryInterface">\PHPCR\Security\AccessControlEntryInterface</a></td><td><em><p>the access
+     control entry to be removed.</p></em></td></tr></table><strong>Throws</strong><table class="argument-info"><thead><tr><th>Exception</th><th>Description</th></tr></thead><tr><td><a href="../files/phpcr.src.PHPCR.Security.AccessControlException.html#\PHPCR\Security\AccessControlException">\PHPCR\Security\AccessControlException</a></td><td><em>if the specified entry is
      not present on the specified node.</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.RepositoryException.html#\PHPCR\RepositoryException">\PHPCR\RepositoryException</a></td><td><em>if another error occurs.</em></td></tr></table><strong>Details</strong><dl class="function-info"><dt>Api</dt><dd>
          
     </dd></dl></div><div class="clear"></div></div></div></div></div><small class="footer">
             Documentation was generated by
             <a href="http://phpdoc.org">phpDocumentor
-                2.0.0a10</a>.
+                2.0.0a12</a>.
         </small></body></html>

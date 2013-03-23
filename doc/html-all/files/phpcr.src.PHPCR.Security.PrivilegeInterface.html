@@ -21,7 +21,7 @@ limitations under the License.</p></div></div><dl class="file-info"><dt>License<
          
     </dd><dt>Link</dt><dd><a href="http://phpcr.github.com/">http://phpcr.github.com/</a>
          
-    </dd></dl><a name="interfaces" class="anchor"></a><a id="\PHPCR\Security\PrivilegeInterface" class="anchor"></a><h2 class="interface">\PHPCR\Security\PrivilegeInterface<div class="to-top"><a href="#top">jump to top</a></div></h2><div class="class"><small class="package"><b>Package: </b>phpcr\interfaces</small><div class="short-description">A privilege represents the capability of performing a particular set of
+    </dd></dl><a name="interfaces" class="anchor"></a><a id="\PHPCR\Security\PrivilegeInterface" class="anchor"></a><h2 class="interface">\PHPCR\Security\PrivilegeInterface<div class="to-top"><a href="#top">jump to top</a></div></h2><div class="class"><small class="package"><b>Package: </b>Default</small><div class="short-description">A privilege represents the capability of performing a particular set of
 operations on items in the JCR repository.</div><div class="long-description"><p>Each privilege is identified by a JCR name. JCR defines a set of standard
 privileges in the jcr namespace. Implementations may add additional
 privileges in namespaces other than jcr.</p>
@@ -123,7 +123,17 @@ privilege to perform retention management operations on a node.</div></div><div 
                 = "{http://www.jcp.org/jcr/1.0}lifecycleManagement"</code><div class="description"><div class="short-description">A constant representing jcr:lifecycleManagement (in extended form), the
 privilege to perform lifecycle operations on a node.</div></div><div class="code-tabs"><div class="long-description"></div><dl class="constant-info"><dt>Api</dt><dd>
          
-    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\Security\PrivilegeInterface::JCR_ALL" class="anchor"></a><div class="constant publicC"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png" alt="&gt;"></img><img src="../images/icons/arrow_down.png" alt="V" style="display: none;"></img></a><code class="title"><img src="../images/icons/constant.png" alt="Constant"></img> 
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\Security\PrivilegeInterface::JCR_WORKSPACE_MANAGEMENT" class="anchor"></a><div class="constant publicC"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png" alt="&gt;"></img><img src="../images/icons/arrow_down.png" alt="V" style="display: none;"></img></a><code class="title"><img src="../images/icons/constant.png" alt="Constant"></img> 
+                <span class="highlight">JCR_WORKSPACE_MANAGEMENT</span>
+                = "{http://www.jcp.org/jcr/1.0}workspaceManagement"</code><div class="description"><div class="short-description">A constant representing <code>jcr:workspaceManagement</code> (in expanded
+form), the privilege to create and remove workspaces in the repository.</div></div><div class="code-tabs"><div class="long-description"></div></div><div class="clear"></div></div><a id="\PHPCR\Security\PrivilegeInterface::JCR_NODE_TYPE_DEFINITION_MANAGEMENT" class="anchor"></a><div class="constant publicC"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png" alt="&gt;"></img><img src="../images/icons/arrow_down.png" alt="V" style="display: none;"></img></a><code class="title"><img src="../images/icons/constant.png" alt="Constant"></img> 
+                <span class="highlight">JCR_NODE_TYPE_DEFINITION_MANAGEMENT</span>
+                = "{http://www.jcp.org/jcr/1.0}nodeTypeDefinitionManagement"</code><div class="description"><div class="short-description">A constant representing <code>jcr:nodeTypeDefinitionManagement</code> (in expanded
+form), the privilege to register, unregister and change the definitions
+of node type in the repository.</div></div><div class="code-tabs"><div class="long-description"></div></div><div class="clear"></div></div><a id="\PHPCR\Security\PrivilegeInterface::JCR_NAMESPACE_MANAGEMENT" class="anchor"></a><div class="constant publicC"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png" alt="&gt;"></img><img src="../images/icons/arrow_down.png" alt="V" style="display: none;"></img></a><code class="title"><img src="../images/icons/constant.png" alt="Constant"></img> 
+                <span class="highlight">JCR_NAMESPACE_MANAGEMENT</span>
+                = "{http://www.jcp.org/jcr/1.0}namespaceManagement"</code><div class="description"><div class="short-description">A constant representing <code>jcr:namespaceManagement</code> (in expanded
+form), the privilege to register, unregister and modify namespace definitions.</div></div><div class="code-tabs"><div class="long-description"></div></div><div class="clear"></div></div><a id="\PHPCR\Security\PrivilegeInterface::JCR_ALL" class="anchor"></a><div class="constant publicC"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png" alt="&gt;"></img><img src="../images/icons/arrow_down.png" alt="V" style="display: none;"></img></a><code class="title"><img src="../images/icons/constant.png" alt="Constant"></img> 
                 <span class="highlight">JCR_ALL</span>
                 = "{http://www.jcp.org/jcr/1.0}all"</code><div class="description"><div class="short-description">A constant representing jcr:all (in extended form), an aggregate
 privilege that contains all predefined privileges.</div></div><div class="code-tabs"><div class="long-description"><ul>
@@ -136,6 +146,9 @@ privilege that contains all predefined privileges.</div></div><div class="code-t
 <li>jcr:nodeTypeManagement</li>
 <li>jcr:retentionManagement</li>
 <li>jcr:lifecycleManagement</li>
+<li>jcr:workspaceManagement</li>
+<li>jcr:nodeTypeDefinitionManagement</li>
+<li>jcr:namespaceManagement</li>
 </ul>
 
 <p>It should, in addition, include all implementation-defined privileges.</p></div><dl class="constant-info"><dt>Api</dt><dd>
@@ -160,5 +173,5 @@ array.</p></div><strong>Returns</strong><table class="argument-info"><thead><tr>
     </dd></dl></div><div class="clear"></div></div></div></div></div><small class="footer">
             Documentation was generated by
             <a href="http://phpdoc.org">phpDocumentor
-                2.0.0a10</a>.
+                2.0.0a12</a>.
         </small></body></html>

@@ -37,3 +37,24 @@ td#sidebar
   width: 200px;
   padding: 0px;
 }
+
+/* new stuff */
+
+#file-description .long-description,
+.file-info
+{
+    display: none
+}
+
+#sidebar-header a {
+    color: #FFFFFF;
+    text-decoration: none;
+}
+
+.introduction h2 {
+    padding-top: 10px;
+}
+.introduction p {
+    margin-bottom: 6px;
+    margin-right: 12px;
+}

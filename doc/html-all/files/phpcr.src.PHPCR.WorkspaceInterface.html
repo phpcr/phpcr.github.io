@@ -21,7 +21,7 @@ limitations under the License.</p></div></div><dl class="file-info"><dt>License<
          
     </dd><dt>Link</dt><dd><a href="http://phpcr.github.com/">http://phpcr.github.com/</a>
          
-    </dd></dl><a name="interfaces" class="anchor"></a><a id="\PHPCR\WorkspaceInterface" class="anchor"></a><h2 class="interface">\PHPCR\WorkspaceInterface<div class="to-top"><a href="#top">jump to top</a></div></h2><div class="class"><small class="package"><b>Package: </b>phpcr\interfaces</small><div class="short-description">Interface representing a view onto a persistent workspace within a repository.</div><div class="long-description"><p>A Workspace object represents a view onto a persistent workspace within a
+    </dd></dl><a name="interfaces" class="anchor"></a><a id="\PHPCR\WorkspaceInterface" class="anchor"></a><h2 class="interface">\PHPCR\WorkspaceInterface<div class="to-top"><a href="#top">jump to top</a></div></h2><div class="class"><small class="package"><b>Package: </b>Default</small><div class="short-description">Interface representing a view onto a persistent workspace within a repository.</div><div class="long-description"><p>A Workspace object represents a view onto a persistent workspace within a
 repository. This view is defined by the authorization settings of the Session
 object associated with the Workspace object. Each Workspace object is
 associated one-to-one with a Session object. The Workspace object can be
@@ -127,7 +127,14 @@ child node list.</p>
 clones a node and its subgraph.</p>
 
 <p>PHP Notice: The JCR method is called clone, but that is a reserved
-keyword in PHP, thus we named the method cloneFrom.</p></div><strong>Parameters</strong><table class="argument-info"><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><th>$srcWorkspace</th><td>string</td><td><em><p>The name of the workspace from which the node is to be copied.</p></em></td></tr><tr><th>$srcAbsPath</th><td>string</td><td><em><p>The path of the node to be copied in srcWorkspace.</p></em></td></tr><tr><th>$destAbsPath</th><td>string</td><td><em><p>The location to which the node at srcAbsPath is to be copied in this workspace.</p></em></td></tr><tr><th>$removeExisting</th><td>boolean</td><td><em><p>if false then this method throws an ItemExistsException on identifier conflict with an incoming node. If true then a identifier conflict is resolved by removing the existing node from its location in this workspace and cloning (copying in) the one from srcWorkspace.</p>
+keyword in PHP, thus we named the method cloneFrom.</p></div><strong>Parameters</strong><table class="argument-info"><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><th>$srcWorkspace</th><td>string</td><td><em><p>The name of the workspace from which the
+     node is to be copied.</p></em></td></tr><tr><th>$srcAbsPath</th><td>string</td><td><em><p>The path of the node to be copied in
+     srcWorkspace.</p></em></td></tr><tr><th>$destAbsPath</th><td>string</td><td><em><p>The location to which the node at srcAbsPath
+     is to be copied in this workspace.</p></em></td></tr><tr><th>$removeExisting</th><td>boolean</td><td><em><p>if false then this method throws an
+     ItemExistsException on identifier conflict with an incoming node.
+     If true then a identifier conflict is resolved by removing the
+     existing node from its location in this workspace and cloning
+     (copying in) the one from srcWorkspace.</p>
 </em></td></tr></table><strong>Throws</strong><table class="argument-info"><thead><tr><th>Exception</th><th>Description</th></tr></thead><tr><td><a href="../files/phpcr.src.PHPCR.NoSuchWorkspaceException.html#\PHPCR\NoSuchWorkspaceException">\PHPCR\NoSuchWorkspaceException</a></td><td><em>if destWorkspace does not exist.</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.NodeType.ConstraintViolationException.html#\PHPCR\NodeType\ConstraintViolationException">\PHPCR\NodeType\ConstraintViolationException</a></td><td><em>if the operation
      would violate a node-type or other implementation-specific
      constraint.</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.Version.VersionException.html#\PHPCR\Version\VersionException">\PHPCR\Version\VersionException</a></td><td><em>if the parent node of
@@ -202,7 +209,9 @@ the new copy of the node is appended to the end of the child node list.</p>
 
 <p>This method cannot be used to copy an individual property by itself. It
 copies an entire node and its subgraph (including, of course, any
-properties contained therein).</p></div><strong>Parameters</strong><table class="argument-info"><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><th>$srcAbsPath</th><td>string</td><td><em><p>the path of the node to be copied.</p></em></td></tr><tr><th>$destAbsPath</th><td>string</td><td><em><p>the location to which the node at srcAbsPath is to be copied in this workspace.</p></em></td></tr><tr><th>$srcWorkspace</th><td>string</td><td><em><p>the name of the workspace from which the copy is to be made.</p></em></td></tr></table><strong>Throws</strong><table class="argument-info"><thead><tr><th>Exception</th><th>Description</th></tr></thead><tr><td><a href="../files/phpcr.src.PHPCR.NoSuchWorkspaceException.html#\PHPCR\NoSuchWorkspaceException">\PHPCR\NoSuchWorkspaceException</a></td><td><em>if srcWorkspace does not exist
+properties contained therein).</p></div><strong>Parameters</strong><table class="argument-info"><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><th>$srcAbsPath</th><td>string</td><td><em><p>the path of the node to be copied.</p></em></td></tr><tr><th>$destAbsPath</th><td>string</td><td><em><p>the location to which the node at srcAbsPath
+     is to be copied in this workspace.</p></em></td></tr><tr><th>$srcWorkspace</th><td>string</td><td><em><p>the name of the workspace from which the
+     copy is to be made.</p></em></td></tr></table><strong>Throws</strong><table class="argument-info"><thead><tr><th>Exception</th><th>Description</th></tr></thead><tr><td><a href="../files/phpcr.src.PHPCR.NoSuchWorkspaceException.html#\PHPCR\NoSuchWorkspaceException">\PHPCR\NoSuchWorkspaceException</a></td><td><em>if srcWorkspace does not exist
      or if the current Session does not have permission to access it.</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.NodeType.ConstraintViolationException.html#\PHPCR\NodeType\ConstraintViolationException">\PHPCR\NodeType\ConstraintViolationException</a></td><td><em>if the operation
      would violate a node-type or other implementation-specific
      constraint.</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.Version.VersionException.html#\PHPCR\Version\VersionException">\PHPCR\Version\VersionException</a></td><td><em>if the parent node of
@@ -226,7 +235,8 @@ cloning srcWorkspace to it; however, this method may assist some
 implementations in optimizing subsequent NodeInterface::update() and
 NodeInterface::merge() calls between the new workspace and its source.</p>
 
-<p>The new workspace can be accessed through a login specifying its name.</p></div><strong>Parameters</strong><table class="argument-info"><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><th>$name</th><td>string</td><td><em><p>A String, the name of the new workspace.</p></em></td></tr><tr><th>$srcWorkspace</th><td>string</td><td><em><p>The name of the workspace from which the new workspace is to be cloned.</p></em></td></tr></table><strong>Throws</strong><table class="argument-info"><thead><tr><th>Exception</th><th>Description</th></tr></thead><tr><td><a href="../files/phpcr.src.PHPCR.AccessDeniedException.html#\PHPCR\AccessDeniedException">\PHPCR\AccessDeniedException</a></td><td><em>if the session through which this
+<p>The new workspace can be accessed through a login specifying its name.</p></div><strong>Parameters</strong><table class="argument-info"><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><th>$name</th><td>string</td><td><em><p>A String, the name of the new workspace.</p></em></td></tr><tr><th>$srcWorkspace</th><td>string</td><td><em><p>The name of the workspace from which the new
+     workspace is to be cloned.</p></em></td></tr></table><strong>Throws</strong><table class="argument-info"><thead><tr><th>Exception</th><th>Description</th></tr></thead><tr><td><a href="../files/phpcr.src.PHPCR.AccessDeniedException.html#\PHPCR\AccessDeniedException">\PHPCR\AccessDeniedException</a></td><td><em>if the session through which this
      Workspace object was acquired does not have sufficient access to
      create the new workspace.</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.UnsupportedRepositoryOperationException.html#\PHPCR\UnsupportedRepositoryOperationException">\PHPCR\UnsupportedRepositoryOperationException</a></td><td><em>if the repository
      does not support the creation of workspaces.</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.NoSuchWorkspaceException.html#\PHPCR\NoSuchWorkspaceException">\PHPCR\NoSuchWorkspaceException</a></td><td><em>if $srcWorkspace does not exist.</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.RepositoryException.html#\PHPCR\RepositoryException">\PHPCR\RepositoryException</a></td><td><em>if another error occurs.</em></td></tr></table><strong>Details</strong><dl class="function-info"><dt>Api</dt><dd>
@@ -264,6 +274,10 @@ the NodeTypeManager can also be used to register new node types.</p></div><stron
      implementation does not support observation.</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.RepositoryException.html#\PHPCR\RepositoryException">\PHPCR\RepositoryException</a></td><td><em>if an error occurs.</em></td></tr></table><strong>Details</strong><dl class="function-info"><dt>Api</dt><dd>
          
     </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\WorkspaceInterface::getQueryManager()" class="anchor"></a><div class="method public"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png"></img><img src="../images/icons/arrow_down.png" style="display: none;"></img></a><code class="title"><img src="../images/icons/method.png" alt="method" title="method"></img><img src="../images/icons/visibility_public.png" style="margin-right: 5px" alt="public"></img><span class="highlight">getQueryManager</span><span class="nb-faded-text">()</span> : <a href="../files/phpcr.src.PHPCR.Query.QueryManagerInterface.html#\PHPCR\Query\QueryManagerInterface">\PHPCR\Query\QueryManagerInterface</a></code><div class="description"><p class="short_description">Returns the QueryManager object, through search methods are accessed.</p></div><div class="code-tabs"><div class="long-description"></div><strong>Returns</strong><table class="argument-info"><thead><tr><th>Type</th><th>Description</th></tr></thead><tr><td><a href="../files/phpcr.src.PHPCR.Query.QueryManagerInterface.html#\PHPCR\Query\QueryManagerInterface">\PHPCR\Query\QueryManagerInterface</a></td><td>the QueryManager object.</td></tr></table><strong>Throws</strong><table class="argument-info"><thead><tr><th>Exception</th><th>Description</th></tr></thead><tr><td><a href="../files/phpcr.src.PHPCR.RepositoryException.html#\PHPCR\RepositoryException">\PHPCR\RepositoryException</a></td><td><em>if an error occurs.</em></td></tr></table><strong>Details</strong><dl class="function-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\WorkspaceInterface::getRepositoryManager()" class="anchor"></a><div class="method public"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png"></img><img src="../images/icons/arrow_down.png" style="display: none;"></img></a><code class="title"><img src="../images/icons/method.png" alt="method" title="method"></img><img src="../images/icons/visibility_public.png" style="margin-right: 5px" alt="public"></img><span class="highlight">getRepositoryManager</span><span class="nb-faded-text">()</span> : <a href="../files/phpcr.src.PHPCR.RepositoryManagerInterface.html#\PHPCR\RepositoryManagerInterface">\PHPCR\RepositoryManagerInterface</a></code><div class="description"><p class="short_description">Return a RepositoryManager that can be used to administer the repository
+instance through which this workspace's session was acquired.</p></div><div class="code-tabs"><div class="long-description"></div><strong>Returns</strong><table class="argument-info"><thead><tr><th>Type</th><th>Description</th></tr></thead><tr><td><a href="../files/phpcr.src.PHPCR.RepositoryManagerInterface.html#\PHPCR\RepositoryManagerInterface">\PHPCR\RepositoryManagerInterface</a></td><td></td></tr></table><strong>Throws</strong><table class="argument-info"><thead><tr><th>Exception</th><th>Description</th></tr></thead><tr><td><a href="../files/phpcr.src.PHPCR.AccessDeniedException.html#\PHPCR\AccessDeniedException">\PHPCR\AccessDeniedException</a></td><td><em>if the caller does not have authorization
+     to obtain the manager.</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.RepositoryException.html#\PHPCR\RepositoryException">\PHPCR\RepositoryException</a></td><td><em>if another error occurred.</em></td></tr></table><strong>Details</strong><dl class="function-info"><dt>Since</dt><dd>JCR 2.1
          
     </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\WorkspaceInterface::getSession()" class="anchor"></a><div class="method public"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png"></img><img src="../images/icons/arrow_down.png" style="display: none;"></img></a><code class="title"><img src="../images/icons/method.png" alt="method" title="method"></img><img src="../images/icons/visibility_public.png" style="margin-right: 5px" alt="public"></img><span class="highlight">getSession</span><span class="nb-faded-text">()</span> : <a href="../files/phpcr.src.PHPCR.SessionInterface.html#\PHPCR\SessionInterface">\PHPCR\SessionInterface</a></code><div class="description"><p class="short_description">Returns the Session object through which this Workspace object was acquired.</p></div><div class="code-tabs"><div class="long-description"></div><strong>Returns</strong><table class="argument-info"><thead><tr><th>Type</th><th>Description</th></tr></thead><tr><td><a href="../files/phpcr.src.PHPCR.SessionInterface.html#\PHPCR\SessionInterface">\PHPCR\SessionInterface</a></td><td>a Session object.</td></tr></table><strong>Details</strong><dl class="function-info"><dt>Api</dt><dd>
          
@@ -314,7 +328,10 @@ workspace.</li>
 <li>ImportUUIDBehavior::IMPORT_UUID_COLLISION_THROW: If an incoming node has the
 same identifier as a node already existing in the workspace then an
 ItemExistsException is thrown.</li>
-</ul></div><strong>Parameters</strong><table class="argument-info"><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><th>$parentAbsPath</th><td>string</td><td><em><p>the absolute path of the node below which the deserialized subgraph is added.</p></em></td></tr><tr><th>$uri</th><td>string</td><td><em><p>Source location for the XML to be read, Can be anything that works with fopen.</p></em></td></tr><tr><th>$uuidBehavior</th><td>integer</td><td><em><p>a four-value flag that governs how incoming identifiers are handled.</p>
+</ul></div><strong>Parameters</strong><table class="argument-info"><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><th>$parentAbsPath</th><td>string</td><td><em><p>the absolute path of the node below which
+     the deserialized subgraph is added.</p></em></td></tr><tr><th>$uri</th><td>string</td><td><em><p>Source location for the XML to be read, Can be
+     anything that works with fopen.</p></em></td></tr><tr><th>$uuidBehavior</th><td>integer</td><td><em><p>a four-value flag that governs how incoming
+     identifiers are handled.</p>
 </em></td></tr></table><strong>Throws</strong><table class="argument-info"><thead><tr><th>Exception</th><th>Description</th></tr></thead><tr><td><a href="../files/http://php.net/manual/en/class.runtimeexception.php">\RuntimeException</a></td><td><em>if an error during an I/O operation occurs.</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.PathNotFoundException.html#\PHPCR\PathNotFoundException">\PHPCR\PathNotFoundException</a></td><td><em>if no node exists at parentAbsPath.</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.NodeType.ConstraintViolationException.html#\PHPCR\NodeType\ConstraintViolationException">\PHPCR\NodeType\ConstraintViolationException</a></td><td><em>if node-type or
      other implementation-specific constraints prevent the addition of
      the subgraph or if uuidBehavior is set to
@@ -353,7 +370,8 @@ It moves an entire node and its subgraph (including, of course, any
 properties contained therein).</p>
 
 <p>The identifiers of referenceable nodes must not be changed by a move. The
-identifiers of non-referenceable nodes may change.</p></div><strong>Parameters</strong><table class="argument-info"><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><th>$srcAbsPath</th><td>string</td><td><em><p>the path of the node to be moved.</p></em></td></tr><tr><th>$destAbsPath</th><td>string</td><td><em><p>the location to which the node at srcAbsPath is to be moved.</p></em></td></tr></table><strong>Throws</strong><table class="argument-info"><thead><tr><th>Exception</th><th>Description</th></tr></thead><tr><td><a href="../files/phpcr.src.PHPCR.NodeType.ConstraintViolationException.html#\PHPCR\NodeType\ConstraintViolationException">\PHPCR\NodeType\ConstraintViolationException</a></td><td><em>if the operation
+identifiers of non-referenceable nodes may change.</p></div><strong>Parameters</strong><table class="argument-info"><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><th>$srcAbsPath</th><td>string</td><td><em><p>the path of the node to be moved.</p></em></td></tr><tr><th>$destAbsPath</th><td>string</td><td><em><p>the location to which the node at srcAbsPath
+     is to be moved.</p></em></td></tr></table><strong>Throws</strong><table class="argument-info"><thead><tr><th>Exception</th><th>Description</th></tr></thead><tr><td><a href="../files/phpcr.src.PHPCR.NodeType.ConstraintViolationException.html#\PHPCR\NodeType\ConstraintViolationException">\PHPCR\NodeType\ConstraintViolationException</a></td><td><em>if the operation
      would violate a node-type or other implementation-specific
      constraint.</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.Version.VersionException.html#\PHPCR\Version\VersionException">\PHPCR\Version\VersionException</a></td><td><em>if the parent node of
      destAbsPath is read-only due to a checked-in node.</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.AccessDeniedException.html#\PHPCR\AccessDeniedException">\PHPCR\AccessDeniedException</a></td><td><em>if the current session (i.e. the
@@ -363,8 +381,63 @@ identifiers of non-referenceable nodes may change.</p></div><strong>Parameters</
      destAbsPath and same-name siblings are not allowed.</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.Lock.LockException.html#\PHPCR\Lock\LockException">\PHPCR\Lock\LockException</a></td><td><em>if a lock prevents the move.</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.RepositoryException.html#\PHPCR\RepositoryException">\PHPCR\RepositoryException</a></td><td><em>if the last element of destAbsPath
      has an index or if another error occurs.</em></td></tr></table><strong>Details</strong><dl class="function-info"><dt>Api</dt><dd>
          
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\WorkspaceInterface::removeItem()" class="anchor"></a><div class="method public"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png"></img><img src="../images/icons/arrow_down.png" style="display: none;"></img></a><code class="title"><img src="../images/icons/method.png" alt="method" title="method"></img><img src="../images/icons/visibility_public.png" style="margin-right: 5px" alt="public"></img><span class="highlight">removeItem</span><span class="nb-faded-text">(string $absPath)</span> : void</code><div class="description"><p class="short_description">Removes the specified item and its subgraph.</p></div><div class="code-tabs"><div class="long-description"><p>This is a workspace-write method and therefore is dispatched immediately.
+A save is not required. In the absence of a transaction, the changes made
+by this method will also be persisted immediately. In the presence of a
+transaction the changes will be persisted upon commit of the transaction.</p>
+
+<p>If a node with same-name siblings is removed, this decrements by one the
+indices of all the siblings with indices greater than that of the removed
+node. In other words, a removal compacts the array of same-name siblings
+and causes the minimal re-numbering required to maintain the original
+order but leave no gaps in the numbering.</p>
+
+<p>A ReferentialIntegrityException will be thrown if the specified item or
+an item in its subgraph is currently the target of a REFERENCE property
+located in this workspace but outside the specified item's subgraph and
+the current Session has read access to that REFERENCE property.</p>
+
+<p>A ConstraintViolationException will be thrown either on dispatch or on
+persist, if removing the specified item would violate a node type or
+implementation-specific constraint. Implementations may differ on when
+this validation is performed.</p>
+
+<p>A VersionException will be thrown either on dispatch or on persist, if
+the parent node of the specified item is read-only due to a checked-in
+node. Implementations may differ on when this validation is performed.</p>
+
+<p>A LockException will be thrown either on dispatch or on persist, if a
+lock prevents the removal of the specified item. Implementations may
+differ on when this validation is performed.</p>
+
+<p>A PathNotFoundException will be thrown either on dispatch or on persist,
+if no accessible item is found at at $absPath.</p>
+
+<p>A AccessDeniedException will be thrown either on dispatch or on persist,
+if the specified item or an item in its subgraph is currently the target
+of a REFERENCE property located in this workspace but outside the
+specified item's subgraph and the current Session <i>does not</i> have
+read access to that REFERENCE property.</p></div><strong>Parameters</strong><table class="argument-info"><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><th>$absPath</th><td>string</td><td><em><p>the absolute path of the item to be removed.</p></em></td></tr></table><strong>Throws</strong><table class="argument-info"><thead><tr><th>Exception</th><th>Description</th></tr></thead><tr><td><a href="../files/phpcr.src.PHPCR.Version.VersionException.html#\PHPCR\Version\VersionException">\PHPCR\Version\VersionException</a></td><td><em>if the parent node of the item
+     at $absPath is read-only due to a checked-in node and this
+     implementation performs this validation immediately.</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.Lock.LockException.html#\PHPCR\Lock\LockException">\PHPCR\Lock\LockException</a></td><td><em>if a lock prevents the removal of the
+     specified item and this implementation performs this validation
+     immediately.</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.NodeType.ConstraintViolationException.html#\PHPCR\NodeType\ConstraintViolationException">\PHPCR\NodeType\ConstraintViolationException</a></td><td><em>if removing the
+     specified item would violate a node type or implementation-specific
+     constraint and this implementation performs this validation
+     immediately.</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.PathNotFoundException.html#\PHPCR\PathNotFoundException">\PHPCR\PathNotFoundException</a></td><td><em>if no accessible item is found at $absPath
+     and this implementation performs this validation immediately.</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.AccessDeniedException.html#\PHPCR\AccessDeniedException">\PHPCR\AccessDeniedException</a></td><td><em>if the specified item or an item in its
+     subgraph is currently the target of a REFERENCE property located in
+     this workspace but outside the specified item's subgraph and the
+     current Session <i>does not</i> have read access to that REFERENCE
+     property and this implementation performs this validation
+     immediately.</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.RepositoryException.html#\PHPCR\RepositoryException">\PHPCR\RepositoryException</a></td><td><em>if another error occurs.</em></td></tr></table><strong>Details</strong><dl class="function-info"><dt>Api</dt><dd>
+         
+    </dd><dt>See</dt><dd>\PHPCR\Session::removeItem()
+         
+    </dd><dt>Since</dt><dd>JCR 2.1
+         
     </dd></dl></div><div class="clear"></div></div></div></div></div><small class="footer">
             Documentation was generated by
             <a href="http://phpdoc.org">phpDocumentor
-                2.0.0a10</a>.
+                2.0.0a12</a>.
         </small></body></html>

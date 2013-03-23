@@ -1,0 +1,164 @@
+{
+    "hash": "914d61466e64717bfc7e72710413f04e",
+    "packages": [
+        {
+            "name": "phpdocumentor/template-abstract",
+            "version": "1.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/phpDocumentor/template.abstract",
+                "reference": "1.0.2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/phpDocumentor/template.abstract/zipball/1.0.2",
+                "reference": "1.0.2",
+                "shasum": ""
+            },
+            "require": {
+                "ext-xsl": "*",
+                "phpdocumentor/unified-asset-installer": "1.*"
+            },
+            "type": "phpdocumentor-template",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Simple bright template for phpDocumentor",
+            "homepage": "http://www.phpdoc.org",
+            "keywords": [
+                "documentation",
+                "phpdoc",
+                "template"
+            ],
+            "time": "2012-08-14 12:55:19"
+        },
+        {
+            "name": "phpdocumentor/template-new-black",
+            "version": "1.0.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/phpDocumentor/template.new_black",
+                "reference": "1.0.4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/phpDocumentor/template.new_black/archive/1.0.4.zip",
+                "reference": "1.0.4",
+                "shasum": ""
+            },
+            "require": {
+                "ext-xsl": "*",
+                "phpdocumentor/template-abstract": "1.*",
+                "phpdocumentor/unified-asset-installer": "1.*"
+            },
+            "type": "phpdocumentor-template",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Web 2.0 template with dark sidebar for phpDocumentor",
+            "homepage": "http://www.phpdoc.org",
+            "keywords": [
+                "documentation",
+                "phpdoc",
+                "template"
+            ],
+            "time": "2012-09-16 07:11:08"
+        },
+        {
+            "name": "phpdocumentor/template-phpcr",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/phpcr/phpdocumentor-template-phpcr.git",
+                "reference": "39990836574003a07a900a5c9a65279e4c1b79bd"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/phpcr/phpdocumentor-template-phpcr/zipball/39990836574003a07a900a5c9a65279e4c1b79bd",
+                "reference": "39990836574003a07a900a5c9a65279e4c1b79bd",
+                "shasum": ""
+            },
+            "require": {
+                "ext-xsl": "*",
+                "phpdocumentor/template-new-black": "1.*",
+                "phpdocumentor/unified-asset-installer": "1.*"
+            },
+            "type": "phpdocumentor-template",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "phpDocumentor template for PHPCR, extending the new-black template",
+            "homepage": "http://www.phpdoc.org",
+            "keywords": [
+                "documentation",
+                "phpcr",
+                "phpdoc",
+                "template"
+            ],
+            "time": "2013-03-23 14:47:25"
+        },
+        {
+            "name": "phpdocumentor/unified-asset-installer",
+            "version": "1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/phpDocumentor/UnifiedAssetInstaller",
+                "reference": "1.0.1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/phpDocumentor/UnifiedAssetInstaller/archive/1.0.1.zip",
+                "reference": "1.0.1",
+                "shasum": ""
+            },
+            "require-dev": {
+                "composer/composer": "1.*@dev",
+                "phpunit/phpunit": "3.7.*@stable"
+            },
+            "type": "composer-installer",
+            "extra": {
+                "class": "\\phpDocumentor\\Composer\\UnifiedAssetInstaller"
+            },
+            "autoload": {
+                "psr-0": {
+                    "phpDocumentor\\Composer": [
+                        "src/",
+                        "test/unit/"
+                    ]
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Asset installer for phpDocumentor",
+            "homepage": "http://www.phpdoc.org",
+            "keywords": [
+                "assets",
+                "installer",
+                "plugins",
+                "templates"
+            ],
+            "time": "2013-01-28 20:44:42"
+        }
+    ],
+    "packages-dev": [
+
+    ],
+    "aliases": [
+
+    ],
+    "minimum-stability": "stable",
+    "stability-flags": {
+        "phpdocumentor/template-phpcr": 20
+    },
+    "platform": [
+
+    ],
+    "platform-dev": [
+
+    ]
+}

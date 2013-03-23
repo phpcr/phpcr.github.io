@@ -21,7 +21,7 @@ limitations under the License.</p></div></div><dl class="file-info"><dt>License<
          
     </dd><dt>Link</dt><dd><a href="http://phpcr.github.com/">http://phpcr.github.com/</a>
          
-    </dd></dl><a name="interfaces" class="anchor"></a><a id="\PHPCR\NamespaceRegistryInterface" class="anchor"></a><h2 class="interface">\PHPCR\NamespaceRegistryInterface<div class="to-top"><a href="#top">jump to top</a></div></h2><div class="class"><small class="package"><b>Package: </b>phpcr\interfaces</small><div class="short-description">Defines an interface to implement a single namespace registry.</div><div class="long-description"><p>Each repository has a single, persistent namespace registry represented by
+    </dd></dl><a name="interfaces" class="anchor"></a><a id="\PHPCR\NamespaceRegistryInterface" class="anchor"></a><h2 class="interface">\PHPCR\NamespaceRegistryInterface<div class="to-top"><a href="#top">jump to top</a></div></h2><div class="class"><small class="package"><b>Package: </b>Default</small><div class="short-description">Defines an interface to implement a single namespace registry.</div><div class="long-description"><p>Each repository has a single, persistent namespace registry represented by
 the NamespaceRegistry object, accessed via WorkspaceInterface::getNamespaceRegistry().
 The namespace registry contains the default prefixes of the registered
 namespaces. The namespace registry may contain namespaces that are not used
@@ -121,7 +121,7 @@ NamespaceException.</li>
      repository does not support namespace registry changes.</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.AccessDeniedException.html#\PHPCR\AccessDeniedException">\PHPCR\AccessDeniedException</a></td><td><em>if the current session does not
      have sufficient access to register the namespace.</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.RepositoryException.html#\PHPCR\RepositoryException">\PHPCR\RepositoryException</a></td><td><em>if another error occurs.</em></td></tr></table><strong>Details</strong><dl class="function-info"><dt>Api</dt><dd>
          
-    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\NamespaceRegistryInterface::unregisterNamespace()" class="anchor"></a><div class="method public"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png"></img><img src="../images/icons/arrow_down.png" style="display: none;"></img></a><code class="title"><img src="../images/icons/method.png" alt="method" title="method"></img><img src="../images/icons/visibility_public.png" style="margin-right: 5px" alt="public"></img><span class="highlight">unregisterNamespace</span><span class="nb-faded-text">(string $prefix)</span> : void</code><div class="description"><p class="short_description">Removes a namespace mapping from the registry.</p></div><div class="code-tabs"><div class="long-description"><p>The following restrictions apply:</p>
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\NamespaceRegistryInterface::unregisterNamespaceByURI()" class="anchor"></a><div class="method public"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png"></img><img src="../images/icons/arrow_down.png" style="display: none;"></img></a><code class="title"><img src="../images/icons/method.png" alt="method" title="method"></img><img src="../images/icons/visibility_public.png" style="margin-right: 5px" alt="public"></img><span class="highlight">unregisterNamespaceByURI</span><span class="nb-faded-text">(string $uri)</span> : void</code><div class="description"><p class="short_description">Removes the specified namespace URI from namespace registry.</p></div><div class="code-tabs"><div class="long-description"><p>The following restrictions apply:</p>
 
 <ul>
 <li>Attempting to unregister a built-in namespace (jcr, nt, mix, sv, xml or
@@ -131,7 +131,7 @@ will throw a NamespaceException.</li>
 <li>An implementation may prevent the unregistering of any other namespace
 for implementation-specific reasons by throwing a
 NamespaceException.</li>
-</ul></div><strong>Parameters</strong><table class="argument-info"><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><th>$prefix</th><td>string</td><td><em><p>The prefix of the mapping to be removed.</p></em></td></tr></table><strong>Throws</strong><table class="argument-info"><thead><tr><th>Exception</th><th>Description</th></tr></thead><tr><td><a href="../files/phpcr.src.PHPCR.NamespaceException.html#\PHPCR\NamespaceException">\PHPCR\NamespaceException</a></td><td><em>unregister a built-in namespace or a
+</ul></div><strong>Parameters</strong><table class="argument-info"><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><th>$uri</th><td>string</td><td><em><p>The URI to be removed.</p></em></td></tr></table><strong>Throws</strong><table class="argument-info"><thead><tr><th>Exception</th><th>Description</th></tr></thead><tr><td><a href="../files/phpcr.src.PHPCR.NamespaceException.html#\PHPCR\NamespaceException">\PHPCR\NamespaceException</a></td><td><em>unregister a built-in namespace or a
      namespace that is not currently registered or a namespace whose
      unregistration is forbidden for implementation-specific reasons.</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.UnsupportedRepositoryOperationException.html#\PHPCR\UnsupportedRepositoryOperationException">\PHPCR\UnsupportedRepositoryOperationException</a></td><td><em>if this
      repository does not support namespace registry changes.</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.AccessDeniedException.html#\PHPCR\AccessDeniedException">\PHPCR\AccessDeniedException</a></td><td><em>if the current session does not
@@ -140,5 +140,5 @@ NamespaceException.</li>
     </dd></dl></div><div class="clear"></div></div></div></div></div><small class="footer">
             Documentation was generated by
             <a href="http://phpdoc.org">phpDocumentor
-                2.0.0a10</a>.
+                2.0.0a12</a>.
         </small></body></html>

@@ -3,7 +3,27 @@
               Show:
               <img src="../images/icons/visibility_public.png" alt="Public" id="show-public"></img><img src="../images/icons/visibility_protected.png" alt="Protected" id="show-protected"></img><img src="../images/icons/visibility_private.png" alt="Private" id="show-private"></img><span class="attribute" id="show-inherited">inherited</span></div><div id="file-nav-container"><ul id="file-nav"></ul><div style="clear: left;"></div></div><div id="file-nav-tab">
               Table of Contents
-          </div></div><a name="top" class="anchor"></a><a name="interfaces" class="anchor"></a><a id="\PHPCR\Transaction\UserTransactionInterface" class="anchor"></a><h2 class="interface">\PHPCR\Transaction\UserTransactionInterface<div class="to-top"><a href="#top">jump to top</a></div></h2><div class="class"><small class="package"><b>Package: </b>Default</small><div class="short-description">As there is no transaction standard in PHP this interface provides a
+          </div></div><a name="top" class="anchor"></a><div id="file-description"><div class="short-description">This file is part of the PHPCR API.</div><div class="long-description"><p>This file in particular is derived from the Java UserTransaction Interface
+of the package javax.transaction. For more information about the Java
+interface have a look at
+http://download.oracle.com/javaee/6/api/javax/transaction/package-summary.html</p>
+
+<p>Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at</p>
+
+<pre><code>http://www.apache.org/licenses/LICENSE-2.0
+</code></pre>
+
+<p>Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.</p></div></div><dl class="file-info"><dt>License</dt><dd><a href="http://www.apache.org/licenses/LICENSE-2.0">Apache Software License 2.0</a>
+         
+    </dd><dt>Link</dt><dd><a href="http://phpcr.github.com/">http://phpcr.github.com/</a>
+         
+    </dd></dl><a name="interfaces" class="anchor"></a><a id="\PHPCR\Transaction\UserTransactionInterface" class="anchor"></a><h2 class="interface">\PHPCR\Transaction\UserTransactionInterface<div class="to-top"><a href="#top">jump to top</a></div></h2><div class="class"><small class="package"><b>Package: </b>Default</small><div class="short-description">As there is no transaction standard in PHP this interface provides a
 transaction interface similar to the
 <a href="http://en.wikipedia.org/wiki/Java_Transaction_API">Java Transaction
 API (JTA)</a></div><div class="long-description"><p>You can acquire the transaction manager from a session supporting
@@ -39,7 +59,7 @@ to rollback over more than one save operation.</p>
 call begin() repeatedly without commit() in between (but have to commit
 every transaction you started).</p>
 
-<p>Remember that in the context of phpcr, the rollback operation will only
+<p>Remember that in the context of PHPCR, the rollback operation will only
 reset the transaction but keep the current session changes. If you want to
 get rid of them too, use \PHPCR\SessionInterface::refresh()</p></div><dl class="class-info"><dt>See</dt><dd><a href="../files/
                          phpcr.src.PHPCR.SessionInterface.html#\PHPCR\SessionInterface::getTransactionManager()">\PHPCR\SessionInterface::getTransactionManager()</a>
@@ -66,9 +86,11 @@ not.</p></div><div class="code-tabs"><div class="long-description"></div><strong
      implementation encounters an unexpected error condition.</em></td></tr></table></div><div class="clear"></div></div><a id="\PHPCR\Transaction\UserTransactionInterface::setTransactionTimeout()" class="anchor"></a><div class="method public"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png"></img><img src="../images/icons/arrow_down.png" style="display: none;"></img></a><code class="title"><img src="../images/icons/method.png" alt="method" title="method"></img><img src="../images/icons/visibility_public.png" style="margin-right: 5px" alt="public"></img><span class="highlight">setTransactionTimeout</span><span class="nb-faded-text">(int $seconds = 0)</span> : void</code><div class="description"><p class="short_description">Set a timeout for the transaction.</p></div><div class="code-tabs"><div class="long-description"><p>Modify the timeout value that is associated with transactions started by
 the current application with the begin() method. If not explicitly set,
 the transaction service uses some default value for the transaction
-timeout.</p></div><strong>Parameters</strong><table class="argument-info"><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><th>$seconds</th><td>int</td><td><em><p>The value of the timeout in seconds. If the value is zero, the transaction service restores the default value. If the value is negative a RepositoryException is thrown.</p></em></td></tr></table><strong>Throws</strong><table class="argument-info"><thead><tr><th>Exception</th><th>Description</th></tr></thead><tr><td><a href="../files/phpcr.src.PHPCR.RepositoryException.html#\PHPCR\RepositoryException">\PHPCR\RepositoryException</a></td><td><em>Thrown if the transaction
+timeout.</p></div><strong>Parameters</strong><table class="argument-info"><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><th>$seconds</th><td>int</td><td><em><p>The value of the timeout in seconds. If the value is
+     zero, the transaction service restores the default value. If the
+     value is negative a RepositoryException is thrown.</p></em></td></tr></table><strong>Throws</strong><table class="argument-info"><thead><tr><th>Exception</th><th>Description</th></tr></thead><tr><td><a href="../files/phpcr.src.PHPCR.RepositoryException.html#\PHPCR\RepositoryException">\PHPCR\RepositoryException</a></td><td><em>Thrown if the transaction
      implementation encounters an unexpected error condition.</em></td></tr></table></div><div class="clear"></div></div></div></div></div><small class="footer">
             Documentation was generated by
             <a href="http://phpdoc.org">phpDocumentor
-                2.0.0a10</a>.
+                2.0.0a12</a>.
         </small></body></html>

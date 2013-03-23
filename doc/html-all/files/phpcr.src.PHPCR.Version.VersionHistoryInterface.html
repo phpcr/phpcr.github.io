@@ -21,7 +21,7 @@ limitations under the License.</p></div></div><dl class="file-info"><dt>License<
          
     </dd><dt>Link</dt><dd><a href="http://phpcr.github.com/">http://phpcr.github.com/</a>
          
-    </dd></dl><a name="interfaces" class="anchor"></a><a id="\PHPCR\Version\VersionHistoryInterface" class="anchor"></a><h2 class="interface">\PHPCR\Version\VersionHistoryInterface<div class="to-top"><a href="#top">jump to top</a></div></h2><div class="class"><small class="package"><b>Package: </b>phpcr\interfaces</small><div class="short-description">A VersionHistory object wraps an nt:versionHistory node.</div><div class="long-description"><p>It provides
+    </dd></dl><a name="interfaces" class="anchor"></a><a id="\PHPCR\Version\VersionHistoryInterface" class="anchor"></a><h2 class="interface">\PHPCR\Version\VersionHistoryInterface<div class="to-top"><a href="#top">jump to top</a></div></h2><div class="class"><small class="package"><b>Package: </b>Default</small><div class="short-description">A VersionHistory object wraps an nt:versionHistory node.</div><div class="long-description"><p>It provides
 convenient access to version history information.</p>
 
 <p>Note: As this extends NodeInterface, foreach still iterates over the
@@ -84,7 +84,8 @@ nt:linkedFile.</p></div><dl class="constant-info"><dt>Api</dt><dd>
     </dd></dl></div><div class="clear"></div></div></div><h3>Methods</h3><div><a id="\PHPCR\Version\VersionHistoryInterface::accept()" class="anchor"></a><div class="method public inherited_from "><a href="#" class="gripper"><img src="../images/icons/arrow_right.png"></img><img src="../images/icons/arrow_down.png" style="display: none;"></img></a><code class="title"><img src="../images/icons/method.png" alt="method" title="method"></img><img src="../images/icons/visibility_public.png" style="margin-right: 5px" alt="public"></img><span class="highlight">accept</span><span class="nb-faded-text">(<a href="../files/phpcr.src.PHPCR.ItemVisitorInterface.html#\PHPCR\ItemVisitorInterface">\PHPCR\ItemVisitorInterface</a> $visitor)</span> : void</code><div class="description"><span class="attribute">inherited</span><p class="short_description">Call the ItemVisitor::visit() method.</p><small class="inherited_from">Inherited from:
                     <a href="../files/phpcr.src.PHPCR.ItemInterface.html#\PHPCR\ItemInterface::accept()">\PHPCR\ItemInterface::accept()</a><a href="../files/phpcr.src.PHPCR.NodeInterface.html#\PHPCR\NodeInterface::accept()">\PHPCR\NodeInterface::accept()</a></small></div><div class="code-tabs"><div class="long-description"><p>This is less relevant in PHP (Java had it to avoid typecasting in the
 visitor). We leave it here, to allow sanity checks or other operations
-an implementation might wants to do.</p></div><strong>Parameters</strong><table class="argument-info"><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><th>$visitor</th><td><a href="../files/phpcr.src.PHPCR.ItemVisitorInterface.html#\PHPCR\ItemVisitorInterface">\PHPCR\ItemVisitorInterface</a></td><td><em><p>The ItemVisitor to be accepted.</p></em></td></tr></table><strong>Throws</strong><table class="argument-info"><thead><tr><th>Exception</th><th>Description</th></tr></thead><tr><td><a href="../files/phpcr.src.PHPCR.RepositoryException.html#\PHPCR\RepositoryException">\PHPCR\RepositoryException</a></td><td><em>if an error occurs.</em></td></tr></table><strong>Details</strong><dl class="function-info"><dt>Api</dt><dd>
+an implementation might wants to do.</p></div><strong>Parameters</strong><table class="argument-info"><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><th>$visitor</th><td><a href="../files/phpcr.src.PHPCR.ItemVisitorInterface.html#\PHPCR\ItemVisitorInterface">\PHPCR\ItemVisitorInterface</a></td><td><em><p>The ItemVisitor to be
+     accepted.</p></em></td></tr></table><strong>Throws</strong><table class="argument-info"><thead><tr><th>Exception</th><th>Description</th></tr></thead><tr><td><a href="../files/phpcr.src.PHPCR.RepositoryException.html#\PHPCR\RepositoryException">\PHPCR\RepositoryException</a></td><td><em>if an error occurs.</em></td></tr></table><strong>Details</strong><dl class="function-info"><dt>Api</dt><dd>
          
     </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\Version\VersionHistoryInterface::addMixin()" class="anchor"></a><div class="method public inherited_from "><a href="#" class="gripper"><img src="../images/icons/arrow_right.png"></img><img src="../images/icons/arrow_down.png" style="display: none;"></img></a><code class="title"><img src="../images/icons/method.png" alt="method" title="method"></img><img src="../images/icons/visibility_public.png" style="margin-right: 5px" alt="public"></img><span class="highlight">addMixin</span><span class="nb-faded-text">(string $mixinName)</span> : void</code><div class="description"><span class="attribute">inherited</span><p class="short_description">Adds the mixin node type named $mixinName to this node.</p><small class="inherited_from">Inherited from:
                     <a href="../files/phpcr.src.PHPCR.NodeInterface.html#\PHPCR\NodeInterface::addMixin()">\PHPCR\NodeInterface::addMixin()</a></small></div><div class="code-tabs"><div class="long-description"><p>If this node is already of type $mixinName (either due to a previously
@@ -98,9 +99,9 @@ adopted for NodeInterface::setPrimaryType() and the behavior that
 occurs when a node is first created.</p>
 
 <p>A ConstraintViolationException is thrown either immediately or on save
-if a conflict with another assigned mixin or the primary node type or
-for an implementation-specific reason. Implementations may differ on
-when this validation is done.</p>
+if a conflict with another assigned mixin or the primary node type
+occurs or for an implementation-specific reason. Implementations may
+differ on when this validation is done.</p>
 
 <p>In some implementations it may only be possible to add mixin types
 before a a node is persisted for the first time. In such cases any
@@ -131,7 +132,8 @@ Otherwise the new node's primary node type will be determined by the
 child node definitions in the node types of its parent. This may occur
 either immediately, on dispatch (save, whether within or without
 transactions) or on persist (save without transactions, commit within
-a transaction), depending on the implementation.</p></div><strong>Parameters</strong><table class="argument-info"><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><th>$relPath</th><td>string</td><td><em><p>The path of the new node to be created.</p></em></td></tr><tr><th>$primaryNodeTypeName</th><td>string</td><td><em><p>The name of the primary node type of the new node. Optional.</p></em></td></tr></table><strong>Returns</strong><table class="argument-info"><thead><tr><th>Type</th><th>Description</th></tr></thead><tr><td><a href="../files/phpcr.src.PHPCR.NodeInterface.html#\PHPCR\NodeInterface">\PHPCR\NodeInterface</a></td><td>The node that was added.</td></tr></table><strong>Throws</strong><table class="argument-info"><thead><tr><th>Exception</th><th>Description</th></tr></thead><tr><td><a href="../files/phpcr.src.PHPCR.ItemExistsException.html#\PHPCR\ItemExistsException">\PHPCR\ItemExistsException</a></td><td><em>if an item at the specified path
+a transaction), depending on the implementation.</p></div><strong>Parameters</strong><table class="argument-info"><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><th>$relPath</th><td>string</td><td><em><p>The path of the new node to be created.</p></em></td></tr><tr><th>$primaryNodeTypeName</th><td>string</td><td><em><p>The name of the primary node type of
+     the new node. Optional.</p></em></td></tr></table><strong>Returns</strong><table class="argument-info"><thead><tr><th>Type</th><th>Description</th></tr></thead><tr><td><a href="../files/phpcr.src.PHPCR.NodeInterface.html#\PHPCR\NodeInterface">\PHPCR\NodeInterface</a></td><td>The node that was added.</td></tr></table><strong>Throws</strong><table class="argument-info"><thead><tr><th>Exception</th><th>Description</th></tr></thead><tr><td><a href="../files/phpcr.src.PHPCR.ItemExistsException.html#\PHPCR\ItemExistsException">\PHPCR\ItemExistsException</a></td><td><em>if an item at the specified path
      already exists, same-name siblings are not allowed and this
      implementation performs this validation immediately.</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.PathNotFoundException.html#\PHPCR\PathNotFoundException">\PHPCR\PathNotFoundException</a></td><td><em>if the specified path implies
      intermediary Nodes that do not exist or the last element of relPath
@@ -145,6 +147,94 @@ a transaction), depending on the implementation.</p></div><strong>Parameters</st
      node and this implementation performs this validation immediately
      instead of waiting until save.</em></td></tr><tr><td><a href="../files/http://php.net/manual/en/class.invalidargumentexception.php">\InvalidArgumentException</a></td><td><em>if $relPath is an absolute path</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.RepositoryException.html#\PHPCR\RepositoryException">\PHPCR\RepositoryException</a></td><td><em>if the last element of relPath has an
      index or if another error occurs.</em></td></tr></table><strong>Details</strong><dl class="function-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\Version\VersionHistoryInterface::addNodeAutoNamed()" class="anchor"></a><div class="method public inherited_from "><a href="#" class="gripper"><img src="../images/icons/arrow_right.png"></img><img src="../images/icons/arrow_down.png" style="display: none;"></img></a><code class="title"><img src="../images/icons/method.png" alt="method" title="method"></img><img src="../images/icons/visibility_public.png" style="margin-right: 5px" alt="public"></img><span class="highlight">addNodeAutoNamed</span><span class="nb-faded-text">(string $nameHint = null, string $primaryNodeTypeName = null)</span> : <a href="../files/phpcr.src.PHPCR.NodeInterface.html#\PHPCR\NodeInterface">\PHPCR\NodeInterface</a></code><div class="description"><span class="attribute">inherited</span><p class="short_description">Adds a new node with a system-generated name as a direct child of this
+node and returns the new node.</p><small class="inherited_from">Inherited from:
+                    <a href="../files/phpcr.src.PHPCR.NodeInterface.html#\PHPCR\NodeInterface::addNodeAutoNamed()">\PHPCR\NodeInterface::addNodeAutoNamed()</a></small></div><div class="code-tabs"><div class="long-description"><p>The name of the new node is a
+system-created JCR name that differs from the names of all currently
+persisted child nodes and properties of this node. If present, the
+nameHint is used as the basis for the name of the new node.</p>
+
+<p>This is a session-write method, meaning that the addition of the new
+node is dispatched upon Session::save</p>
+
+<p>For the method to successfully add the new child node, the effective
+node type of this node must permit <i>residual child nodes</i> (see
+section 3.7.2.1 of the JCR 2.1 specification). If this condition is not
+met, a ConstraintViolationException will be thrown either immediately,
+on dispatch (save, whether within or without transactions) or on persist
+(save without transactions, commit within a transaction).
+Implementations may differ on when this validation is performed.</p>
+
+<p>A VersionException will be thrown either immediately, on dispatch (save,
+whether within or without transactions) or on persist (save without
+transactions, commit within a transaction), if the node to which the new
+child is being added is read-only due to a checked-in node.
+Implementations may differ on when this validation is performed.</p>
+
+<p>A LockException will be thrown either immediately, on dispatch (save,
+whether within or without transactions) or on persist (save without
+transactions, commit within a transaction), if a lock prevents the
+addition of the node. Implementations may differ on when this validation
+is performed.</p>
+
+<p>The new node's primary node type will be determined by the residual
+child node definitions in the node type of this node. This may occur
+either immediately, on dispatch (save, whether within or without
+transactions) or on persist (save without transactions, commit within a
+transaction), depending on the implementation.</p>
+
+<p>If ordering is supported by the node type of this node then the new node
+is appended to the end of the child node list.</p>
+
+<p>The behavior of name generation for the new node depends on the form of the
+$nameHint parameter. If $nameHint is:</p>
+
+<ol>
+<li>null: The new node name will be generated entirely by the repository.
+The namespace used for the new name may depend on implementation-specific
+configuration.</li>
+<li>"" (the empty string), ":" (colon) or "{}": The new node name will
+be in the empty namespace and the local part of the name will be
+generated by the repository.</li>
+<li>"<i>somePrefix</i>:" where <i>somePrefix</i> is a syntactically
+valid namespace prefix: The repository will attempt to create a name in
+the namespace represented by that prefix. If the prefix specified does
+not exist, then a NameSpaceException is thrown either immediately, on
+dispatch (save, whether within or without transactions) or on persist
+(save without transactions, commit within a transaction).
+If the prefix does exist then the local part of the name is generated by
+the repository.</li>
+<li>"{<i>someURI</i>}" where <i>someURI</i> is a syntactically valid
+namespace URI: The repository will attempt to create a name in the
+namespace specified. If that namespace has no existing local mapping to
+a prefix then one is automatically created (as per section 3.5.2 of the
+JCR specification). The local part of the name is generated by the
+repository.</li>
+<li>"<i>somePrefix</i>:<i>localNameHint</i>" where <i>somePrefix</i> is
+a syntactically valid namespace prefix and <i>localNameHint</i> is
+syntactically valid local name: The repository will attempt to create a
+name in the namespace represented by that prefix as described in (3),
+above. The local part of the name is generated by the repository using
+<i>localNameHint</i> as a basis. The way in which the local name is
+constructed from the hint may vary across implementations.</li>
+<li>"{<i>someURI</i>}<i>localNameHint</i>" where <i>someURI</i> is a
+syntactically valid namespace URI and <i>localNameHint</i> is
+syntactically valid local name: The repository will attempt to create a
+name in the namespace specified as described in (4), above. The local
+part of the name is generated by the repository using <i>localNameHint</i>
+as a basis. The way in which the local name is constructed from the hint
+may vary across implementations.</li>
+</ol></div><strong>Parameters</strong><table class="argument-info"><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><th>$nameHint</th><td>string</td><td><em><p>A string to be used as the basis for the created
+     name or null.</p></em></td></tr><tr><th>$primaryNodeTypeName</th><td>string</td><td><em><p>The primary node type of the new node
+     or null to have the type guessed.</p></em></td></tr></table><strong>Returns</strong><table class="argument-info"><thead><tr><th>Type</th><th>Description</th></tr></thead><tr><td><a href="../files/phpcr.src.PHPCR.NodeInterface.html#\PHPCR\NodeInterface">\PHPCR\NodeInterface</a></td><td>The newly created node.</td></tr></table><strong>Throws</strong><table class="argument-info"><thead><tr><th>Exception</th><th>Description</th></tr></thead><tr><td><a href="../files/phpcr.src.PHPCR.NodeType.ConstraintViolationException.html#\PHPCR\NodeType\ConstraintViolationException">\PHPCR\NodeType\ConstraintViolationException</a></td><td><em>if this node does
+     not allow residual child nodes and this implementation performs
+     this validation immediately.</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.Version.VersionException.html#\PHPCR\Version\VersionException">\PHPCR\Version\VersionException</a></td><td><em>if this node is read-only due to
+     a checked-in node and this implementation performs this validation
+     immediately.</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.Lock.LockException.html#\PHPCR\Lock\LockException">\PHPCR\Lock\LockException</a></td><td><em>if a lock prevents the addition of the
+     node and this implementation performs this validation immediately.</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.NamespaceException.html#\PHPCR\NamespaceException">\PHPCR\NamespaceException</a></td><td><em>if a namespace prefix is provided in the
+     $nameHint which does not exist and this implementation performs
+     this validation immediately.</em></td></tr></table><strong>Details</strong><dl class="function-info"><dt>Since</dt><dd>JCR 2.1
          
     </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\Version\VersionHistoryInterface::addVersionLabel()" class="anchor"></a><div class="method public"><a href="#" class="gripper"><img src="../images/icons/arrow_right.png"></img><img src="../images/icons/arrow_down.png" style="display: none;"></img></a><code class="title"><img src="../images/icons/method.png" alt="method" title="method"></img><img src="../images/icons/visibility_public.png" style="margin-right: 5px" alt="public"></img><span class="highlight">addVersionLabel</span><span class="nb-faded-text">(string $versionName, string $label, boolean $moveLabel)</span> : void</code><div class="description"><p class="short_description">Adds the specified label to the specified version.</p></div><div class="code-tabs"><div class="long-description"><p>The label must be a JCR name in either qualified or extended form
 and therefore must conform to the syntax restriction that apply to
@@ -169,7 +259,12 @@ will fail.</p>
 
 <p>A VersionException is thrown if the named version is not in this
 VersionHistory or if it is the root version (jcr:rootVersion) or if the
-label specified is not a valid JCR NAME.</p></div><strong>Parameters</strong><table class="argument-info"><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><th>$versionName</th><td>string</td><td><em><p>the name of the version to which the label is to be added.</p></em></td></tr><tr><th>$label</th><td>string</td><td><em><p>the label to be added, a JCR name in either extended or qualified form.</p></em></td></tr><tr><th>$moveLabel</th><td>boolean</td><td><em><p>if true, then if label is already assigned to a version in this version history, it is moved to the new version specified; if false, then attempting to assign an already used label will throw a LabelExistsVersionException.</p></em></td></tr></table><strong>Throws</strong><table class="argument-info"><thead><tr><th>Exception</th><th>Description</th></tr></thead><tr><td><a href="../files/phpcr.src.PHPCR.Version.LabelExistsVersionException.html#\PHPCR\Version\LabelExistsVersionException">\PHPCR\Version\LabelExistsVersionException</a></td><td><em>if moveLabel is
+label specified is not a valid JCR NAME.</p></div><strong>Parameters</strong><table class="argument-info"><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><th>$versionName</th><td>string</td><td><em><p>the name of the version to which the label is
+     to be added.</p></em></td></tr><tr><th>$label</th><td>string</td><td><em><p>the label to be added, a JCR name in either
+     extended or qualified form.</p></em></td></tr><tr><th>$moveLabel</th><td>boolean</td><td><em><p>if true, then if label is already assigned to
+     a version in this version history, it is moved to the new version
+     specified; if false, then attempting to assign an already used
+     label will throw a LabelExistsVersionException.</p></em></td></tr></table><strong>Throws</strong><table class="argument-info"><thead><tr><th>Exception</th><th>Description</th></tr></thead><tr><td><a href="../files/phpcr.src.PHPCR.Version.LabelExistsVersionException.html#\PHPCR\Version\LabelExistsVersionException">\PHPCR\Version\LabelExistsVersionException</a></td><td><em>if moveLabel is
      false, and an attempt is made to add a label that already exists in
      this version history</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.Version.VersionException.html#\PHPCR\Version\VersionException">\PHPCR\Version\VersionException</a></td><td><em>if the specified version does
      not exist in this version history or if the specified version is
@@ -265,7 +360,8 @@ from the root node to this Item.</p>
 
 <p>If this node has more than one path (i.e., if it is a descendant of a
 shared node) then the path used to define the ancestor is implementaion-
-dependent.</p></div><strong>Parameters</strong><table class="argument-info"><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><th>$depth</th><td>integer</td><td><em><p>An integer, 0 <= depth <= n where n is the depth of this Item.</p>
+dependent.</p></div><strong>Parameters</strong><table class="argument-info"><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><th>$depth</th><td>integer</td><td><em><p>An integer, 0 <= depth <= n where n is the depth
+     of this Item.</p>
 </em></td></tr></table><strong>Returns</strong><table class="argument-info"><thead><tr><th>Type</th><th>Description</th></tr></thead><tr><td><a href="../files/phpcr.src.PHPCR.ItemInterface.html#\PHPCR\ItemInterface">\PHPCR\ItemInterface</a></td><td>The ancestor of this Item at the specified
      depth.</td></tr></table><strong>Throws</strong><table class="argument-info"><thead><tr><th>Exception</th><th>Description</th></tr></thead><tr><td><a href="../files/phpcr.src.PHPCR.ItemNotFoundException.html#\PHPCR\ItemNotFoundException">\PHPCR\ItemNotFoundException</a></td><td><em>if depth < 0 or depth > n
      where n is the depth of this item.</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.AccessDeniedException.html#\PHPCR\AccessDeniedException">\PHPCR\AccessDeniedException</a></td><td><em>if the current session does not
@@ -333,8 +429,22 @@ simply one wrapping the same state, is up to the implementation.</p></div><stron
      path or the current Session does not read access to the node at
      the specified path, or if $relPath is an absolute path</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.RepositoryException.html#\PHPCR\RepositoryException">\PHPCR\RepositoryException</a></td><td><em>if another error occurs.</em></td></tr></table><strong>Details</strong><dl class="function-info"><dt>Api</dt><dd>
          
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\Version\VersionHistoryInterface::getNodeNames()" class="anchor"></a><div class="method public inherited_from "><a href="#" class="gripper"><img src="../images/icons/arrow_right.png"></img><img src="../images/icons/arrow_down.png" style="display: none;"></img></a><code class="title"><img src="../images/icons/method.png" alt="method" title="method"></img><img src="../images/icons/visibility_public.png" style="margin-right: 5px" alt="public"></img><span class="highlight">getNodeNames</span><span class="nb-faded-text">()</span> : \Iterator</code><div class="description"><span class="attribute">inherited</span><p class="short_description">Returns the names of all child nodes of this node accessible through the
+current <code>Session</code>.</p><small class="inherited_from">Inherited from:
+                    <a href="../files/phpcr.src.PHPCR.NodeInterface.html#\PHPCR\NodeInterface::getNodeNames()">\PHPCR\NodeInterface::getNodeNames()</a></small></div><div class="code-tabs"><div class="long-description"><p>Does <i>not</i> include the names of the
+properties of this</p>
+
+<pre><code>Node</code></pre>
+
+<p>. If the child nodes of this node
+have an order then the names are returned in that order, otherwise the
+order is undefined.</p>
+
+<p>If this node has no accessible child nodes, then an empty iterator is
+returned.</p></div><strong>Returns</strong><table class="argument-info"><thead><tr><th>Type</th><th>Description</th></tr></thead><tr><td>\Iterator</td><td>over all child node names</td></tr></table><strong>Throws</strong><table class="argument-info"><thead><tr><th>Exception</th><th>Description</th></tr></thead><tr><td><a href="../files/phpcr.src.PHPCR.RepositoryException.html#\PHPCR\RepositoryException">\PHPCR\RepositoryException</a></td><td><em>if an error occurs.</em></td></tr></table><strong>Details</strong><dl class="function-info"><dt>Since</dt><dd>JCR 2.1
+         
     </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\Version\VersionHistoryInterface::getNodes()" class="anchor"></a><div class="method public inherited_from "><a href="#" class="gripper"><img src="../images/icons/arrow_right.png"></img><img src="../images/icons/arrow_down.png" style="display: none;"></img></a><code class="title"><img src="../images/icons/method.png" alt="method" title="method"></img><img src="../images/icons/visibility_public.png" style="margin-right: 5px" alt="public"></img><span class="highlight">getNodes</span><span class="nb-faded-text">(string | array $filter = null)</span> : \Iterator</code><div class="description"><span class="attribute">inherited</span><p class="short_description">Get a set of nodes gathered by the definition of a filter.</p><small class="inherited_from">Inherited from:
-                    <a href="../files/phpcr.src.PHPCR.NodeInterface.html#\PHPCR\NodeInterface::getNodes()">\PHPCR\NodeInterface::getNodes()</a></small></div><div class="code-tabs"><div class="long-description"><p>If $filter is a string:
+                    <a href="../files/phpcr.src.PHPCR.NodeInterface.html#\PHPCR\NodeInterface::getNodes()">\PHPCR\NodeInterface::getNodes()</a></small></div><div class="code-tabs"><div class="long-description"><p><strong>If $filter is a string:</strong>
 Gets all child nodes of this node accessible through the current Session
 that match namePattern (if no pattern is given, all accessible child
 nodes are returned). Does not include properties of this Node. The
@@ -355,7 +465,7 @@ and which may contain wildcard characters ("*") are called "globs".</p>
 <p>Note that leading and trailing whitespace around a glob is ignored, but
 whitespace within a disjunct forms part of the pattern to be matched.</p>
 
-<p>If $filter is an array:
+<p><strong>If $filter is an array:</strong>
 Gets all child nodes of this node accessible through the current
 Session that match one or more of the $filter strings in the passed
 array.</p>
@@ -373,17 +483,21 @@ trailing whitespace around a glob is not ignored.</p>
 <p>The pattern is matched against the names (not the paths) of the
 immediate child nodes of this node.</p>
 
+<p>If the child nodes of this node have an order then the names are
+returned in that order, otherwise the order is undefined.</p>
+
 <p>If this node has no accessible matching child nodes, then an empty
 iterator is returned.</p>
 
-<p>The same reacquisition semantics apply as with getNode($relPath).</p></div><strong>Parameters</strong><table class="argument-info"><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><th>$filter</th><td>string | array</td><td><em><p>a name pattern or an array of globbing strings.</p></em></td></tr></table><strong>Returns</strong><table class="argument-info"><thead><tr><th>Type</th><th>Description</th></tr></thead><tr><td>\Iterator</td><td>over all (matching) child Nodes implementing
+<p>The same reacquisition semantics apply as with getNode($relPath).</p></div><strong>Parameters</strong><table class="argument-info"><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><th>$filter</th><td>string | array</td><td><em><p>a name pattern or an array of globbing
+     strings.</p></em></td></tr></table><strong>Returns</strong><table class="argument-info"><thead><tr><th>Type</th><th>Description</th></tr></thead><tr><td>\Iterator</td><td>over all (matching) child Nodes implementing
      &lt;b&gt;SeekableIterator&lt;/b&gt; and &lt;b&gt;Countable&lt;/b&gt;. Keys are the Node
      names, values the corresponding NodeInterface instances.</td></tr></table><strong>Throws</strong><table class="argument-info"><thead><tr><th>Exception</th><th>Description</th></tr></thead><tr><td><a href="../files/phpcr.src.PHPCR.RepositoryException.html#\PHPCR\RepositoryException">\PHPCR\RepositoryException</a></td><td><em>if an error occurs.</em></td></tr></table><strong>Details</strong><dl class="function-info"><dt>Api</dt><dd>
          
     </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\Version\VersionHistoryInterface::getParent()" class="anchor"></a><div class="method public inherited_from "><a href="#" class="gripper"><img src="../images/icons/arrow_right.png"></img><img src="../images/icons/arrow_down.png" style="display: none;"></img></a><code class="title"><img src="../images/icons/method.png" alt="method" title="method"></img><img src="../images/icons/visibility_public.png" style="margin-right: 5px" alt="public"></img><span class="highlight">getParent</span><span class="nb-faded-text">()</span> : <a href="../files/phpcr.src.PHPCR.NodeInterface.html#\PHPCR\NodeInterface">\PHPCR\NodeInterface</a></code><div class="description"><span class="attribute">inherited</span><p class="short_description">Returns the parent of this Item.</p><small class="inherited_from">Inherited from:
                     <a href="../files/phpcr.src.PHPCR.ItemInterface.html#\PHPCR\ItemInterface::getParent()">\PHPCR\ItemInterface::getParent()</a><a href="../files/phpcr.src.PHPCR.NodeInterface.html#\PHPCR\NodeInterface::getParent()">\PHPCR\NodeInterface::getParent()</a></small></div><div class="code-tabs"><div class="long-description"></div><strong>Returns</strong><table class="argument-info"><thead><tr><th>Type</th><th>Description</th></tr></thead><tr><td><a href="../files/phpcr.src.PHPCR.NodeInterface.html#\PHPCR\NodeInterface">\PHPCR\NodeInterface</a></td><td>The parent of this Item.</td></tr></table><strong>Throws</strong><table class="argument-info"><thead><tr><th>Exception</th><th>Description</th></tr></thead><tr><td><a href="../files/phpcr.src.PHPCR.ItemNotFoundException.html#\PHPCR\ItemNotFoundException">\PHPCR\ItemNotFoundException</a></td><td><em>if this Item is the root node of a
      workspace.</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.AccessDeniedException.html#\PHPCR\AccessDeniedException">\PHPCR\AccessDeniedException</a></td><td><em>if the current session does not
-     have sufficent access to retrieve the parent of this item.</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.RepositoryException.html#\PHPCR\RepositoryException">\PHPCR\RepositoryException</a></td><td><em>if another error occurs.</em></td></tr></table><strong>Details</strong><dl class="function-info"><dt>Api</dt><dd>
+     have sufficient access to retrieve the parent of this item.</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.RepositoryException.html#\PHPCR\RepositoryException">\PHPCR\RepositoryException</a></td><td><em>if another error occurs.</em></td></tr></table><strong>Details</strong><dl class="function-info"><dt>Api</dt><dd>
          
     </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\Version\VersionHistoryInterface::getPath()" class="anchor"></a><div class="method public inherited_from "><a href="#" class="gripper"><img src="../images/icons/arrow_right.png"></img><img src="../images/icons/arrow_down.png" style="display: none;"></img></a><code class="title"><img src="../images/icons/method.png" alt="method" title="method"></img><img src="../images/icons/visibility_public.png" style="margin-right: 5px" alt="public"></img><span class="highlight">getPath</span><span class="nb-faded-text">()</span> : string</code><div class="description"><span class="attribute">inherited</span><p class="short_description">Returns the normalized absolute path to this item.</p><small class="inherited_from">Inherited from:
                     <a href="../files/phpcr.src.PHPCR.ItemInterface.html#\PHPCR\ItemInterface::getPath()">\PHPCR\ItemInterface::getPath()</a><a href="../files/phpcr.src.PHPCR.NodeInterface.html#\PHPCR\NodeInterface::getPath()">\PHPCR\NodeInterface::getPath()</a></small></div><div class="code-tabs"><div class="long-description"></div><strong>Returns</strong><table class="argument-info"><thead><tr><th>Type</th><th>Description</th></tr></thead><tr><td>string</td><td>the normalized absolute path of this Item.</td></tr></table><strong>Throws</strong><table class="argument-info"><thead><tr><th>Exception</th><th>Description</th></tr></thead><tr><td><a href="../files/phpcr.src.PHPCR.RepositoryException.html#\PHPCR\RepositoryException">\PHPCR\RepositoryException</a></td><td><em>if an error occurs.</em></td></tr></table><strong>Details</strong><dl class="function-info"><dt>Api</dt><dd>
@@ -457,7 +571,8 @@ iterator is returned.</p>
 method has the same semantics as getProperties()</p>
 
 <p>To improve performance, implementations should avoid instantiating the
-property objects for this method</p></div><strong>Parameters</strong><table class="argument-info"><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><th>$filter</th><td>string | array</td><td><em><p>a name pattern</p></em></td></tr><tr><th>$dereference</th><td>boolean</td><td><em><p>whether to dereference REFERENCE, WEAKREFERENCE and PATH properties or just return id/path strings</p>
+property objects for this method</p></div><strong>Parameters</strong><table class="argument-info"><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><th>$filter</th><td>string | array</td><td><em><p>a name pattern</p></em></td></tr><tr><th>$dereference</th><td>boolean</td><td><em><p>whether to dereference REFERENCE,
+     WEAKREFERENCE and PATH properties or just return id/path strings</p>
 </em></td></tr></table><strong>Returns</strong><table class="argument-info"><thead><tr><th>Type</th><th>Description</th></tr></thead><tr><td>array</td><td>Keys are the property names, values the corresponding
   property value (or array of values in case of multi-valued properties)
   If $dereference is false, reference properties are uuid strings and
@@ -473,11 +588,20 @@ property objects for this method</p></div><strong>Parameters</strong><table clas
          
     </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\Version\VersionHistoryInterface::getPropertyValue()" class="anchor"></a><div class="method public inherited_from "><a href="#" class="gripper"><img src="../images/icons/arrow_right.png"></img><img src="../images/icons/arrow_down.png" style="display: none;"></img></a><code class="title"><img src="../images/icons/method.png" alt="method" title="method"></img><img src="../images/icons/visibility_public.png" style="margin-right: 5px" alt="public"></img><span class="highlight">getPropertyValue</span><span class="nb-faded-text">(string $name, integer $type = null)</span> : mixed</code><div class="description"><span class="attribute">inherited</span><p class="short_description">Returns the property of this node with name $name.</p><small class="inherited_from">Inherited from:
                     <a href="../files/phpcr.src.PHPCR.NodeInterface.html#\PHPCR\NodeInterface::getPropertyValue()">\PHPCR\NodeInterface::getPropertyValue()</a></small></div><div class="code-tabs"><div class="long-description"><p>If $type is set, attempts to convert the value to the specified type.
-This is a shortcut for getProperty()->getXX()</p></div><strong>Parameters</strong><table class="argument-info"><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><th>$name</th><td>string</td><td><em><p>Name of this property</p></em></td></tr><tr><th>$type</th><td>integer</td><td><em><p>Type conversion request, optional. Must be a constant from {@link PropertyType}</p>
+This is a shortcut for getProperty()->getXX()</p></div><strong>Parameters</strong><table class="argument-info"><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><th>$name</th><td>string</td><td><em><p>Name of this property</p></em></td></tr><tr><th>$type</th><td>integer</td><td><em><p>Type conversion request, optional. Must be a
+     constant from {@link PropertyType}</p>
 </em></td></tr></table><strong>Returns</strong><table class="argument-info"><thead><tr><th>Type</th><th>Description</th></tr></thead><tr><td>mixed</td><td>The value of the property with $name.</td></tr></table><strong>Throws</strong><table class="argument-info"><thead><tr><th>Exception</th><th>Description</th></tr></thead><tr><td><a href="../files/phpcr.src.PHPCR.PathNotFoundException.html#\PHPCR\PathNotFoundException">\PHPCR\PathNotFoundException</a></td><td><em>if no property exists at the
      specified path or if the current Session does not have read access
      to the specified property.</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.ValueFormatException.html#\PHPCR\ValueFormatException">\PHPCR\ValueFormatException</a></td><td><em>if the type or format of the
      property can not be converted to the specified type.</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.RepositoryException.html#\PHPCR\RepositoryException">\PHPCR\RepositoryException</a></td><td><em>if another error occurs.</em></td></tr></table><strong>Details</strong><dl class="function-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\Version\VersionHistoryInterface::getPropertyValueWithDefault()" class="anchor"></a><div class="method public inherited_from "><a href="#" class="gripper"><img src="../images/icons/arrow_right.png"></img><img src="../images/icons/arrow_down.png" style="display: none;"></img></a><code class="title"><img src="../images/icons/method.png" alt="method" title="method"></img><img src="../images/icons/visibility_public.png" style="margin-right: 5px" alt="public"></img><span class="highlight">getPropertyValueWithDefault</span><span class="nb-faded-text">(string $relPath, mixed $defaultValue)</span> : mixed</code><div class="description"><span class="attribute">inherited</span><p class="short_description">If there is a property at $relPath, this method behaves exactly as
+getPropertyValue with no specified type.</p><small class="inherited_from">Inherited from:
+                    <a href="../files/phpcr.src.PHPCR.NodeInterface.html#\PHPCR\NodeInterface::getPropertyValueWithDefault()">\PHPCR\NodeInterface::getPropertyValueWithDefault()</a></small></div><div class="code-tabs"><div class="long-description"><p>If no property is found at the specified $relPath,
+then $defaultValue is returned.</p>
+
+<p>The same reacquisition semantics apply as with getProperty()</p></div><strong>Parameters</strong><table class="argument-info"><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><th>$relPath</th><td>string</td><td><em><p>the relative path to the desired property</p></em></td></tr><tr><th>$defaultValue</th><td>mixed</td><td><em><p>the default value if no property $name exists</p>
+</em></td></tr></table><strong>Returns</strong><table class="argument-info"><thead><tr><th>Type</th><th>Description</th></tr></thead><tr><td>mixed</td><td>the value of the property at $relPath or $defaultValue</td></tr></table><strong>Throws</strong><table class="argument-info"><thead><tr><th>Exception</th><th>Description</th></tr></thead><tr><td><a href="../files/phpcr.src.PHPCR.RepositoryException.html#\PHPCR\RepositoryException">\PHPCR\RepositoryException</a></td><td><em>if an unexpected error occurs.</em></td></tr></table><strong>Details</strong><dl class="function-info"><dt>Since</dt><dd>JCR 2.1
          
     </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\Version\VersionHistoryInterface::getReferences()" class="anchor"></a><div class="method public inherited_from "><a href="#" class="gripper"><img src="../images/icons/arrow_right.png"></img><img src="../images/icons/arrow_down.png" style="display: none;"></img></a><code class="title"><img src="../images/icons/method.png" alt="method" title="method"></img><img src="../images/icons/visibility_public.png" style="margin-right: 5px" alt="public"></img><span class="highlight">getReferences</span><span class="nb-faded-text">(string $name = null)</span> : \Iterator</code><div class="description"><span class="attribute">inherited</span><p class="short_description">This method returns all REFERENCE properties that refer to this node,
 have the specified name and that are accessible through the current
@@ -497,7 +621,8 @@ properties that are part of the frozen state of a version in version
 storage.</p>
 
 <p>If this node has no referring properties with the specified name, an
-empty iterator is returned.</p></div><strong>Parameters</strong><table class="argument-info"><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><th>$name</th><td>string</td><td><em><p>Name of referring REFERENCE properties to be returned; if null then all referring REFERENCEs are returned.</p></em></td></tr></table><strong>Returns</strong><table class="argument-info"><thead><tr><th>Type</th><th>Description</th></tr></thead><tr><td>\Iterator</td><td>implementing &lt;b&gt;SeekableIterator&lt;/b&gt; and
+empty iterator is returned.</p></div><strong>Parameters</strong><table class="argument-info"><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><th>$name</th><td>string</td><td><em><p>Name of referring REFERENCE properties to be
+     returned; if null then all referring REFERENCEs are returned.</p></em></td></tr></table><strong>Returns</strong><table class="argument-info"><thead><tr><th>Type</th><th>Description</th></tr></thead><tr><td>\Iterator</td><td>implementing &lt;b&gt;SeekableIterator&lt;/b&gt; and
      &lt;b&gt;Countable&lt;/b&gt;. Keys are the property names, values the
      corresponding PropertyInterface instances.</td></tr></table><strong>Throws</strong><table class="argument-info"><thead><tr><th>Exception</th><th>Description</th></tr></thead><tr><td><a href="../files/phpcr.src.PHPCR.RepositoryException.html#\PHPCR\RepositoryException">\PHPCR\RepositoryException</a></td><td><em>if an error occurs</em></td></tr></table><strong>Details</strong><dl class="function-info"><dt>Api</dt><dd>
          
@@ -552,7 +677,8 @@ properties that are part of the frozen state of a version in version
 storage.</p>
 
 <p>If this node has no referring properties with the specified name, an
-empty iterator is returned.</p></div><strong>Parameters</strong><table class="argument-info"><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><th>$name</th><td>string</td><td><em><p>name of referring WEAKREFERENCE properties to be returned; if null then all referring WEAKREFERENCEs are returned</p></em></td></tr></table><strong>Returns</strong><table class="argument-info"><thead><tr><th>Type</th><th>Description</th></tr></thead><tr><td>\Iterator</td><td>implementing &lt;b&gt;SeekableIterator&lt;/b&gt; and
+empty iterator is returned.</p></div><strong>Parameters</strong><table class="argument-info"><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><th>$name</th><td>string</td><td><em><p>name of referring WEAKREFERENCE properties to be
+     returned; if null then all referring WEAKREFERENCEs are returned</p></em></td></tr></table><strong>Returns</strong><table class="argument-info"><thead><tr><th>Type</th><th>Description</th></tr></thead><tr><td>\Iterator</td><td>implementing &lt;b&gt;SeekableIterator&lt;/b&gt; and
      &lt;b&gt;Countable&lt;/b&gt;. Keys are the property names, values the
      corresponding PropertyInterface instances.</td></tr></table><strong>Throws</strong><table class="argument-info"><thead><tr><th>Exception</th><th>Description</th></tr></thead><tr><td><a href="../files/phpcr.src.PHPCR.RepositoryException.html#\PHPCR\RepositoryException">\PHPCR\RepositoryException</a></td><td><em>if an error occurs</em></td></tr></table><strong>Details</strong><dl class="function-info"><dt>Api</dt><dd>
          
@@ -582,7 +708,8 @@ given returns true if any version in the history has the given label.</p>
 <p>The label must be a JCR name in either qualified or extended form.</p>
 
 <p><b>PHPCR Note:</b> The Java API defines this with multiple differing
-signatures.</p></div><strong>Parameters</strong><table class="argument-info"><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><th>$label</th><td>string</td><td><em><p>a version label. A JCR name in either extended or qualified form.</p></em></td></tr><tr><th>$version</th><td><a href="../files/phpcr.src.PHPCR.Version.VersionInterface.html#\PHPCR\Version\VersionInterface">\PHPCR\Version\VersionInterface</a></td><td><em><p>a Version object</p></em></td></tr></table><strong>Returns</strong><table class="argument-info"><thead><tr><th>Type</th><th>Description</th></tr></thead><tr><td>boolean</td><td>a boolean.</td></tr></table><strong>Throws</strong><table class="argument-info"><thead><tr><th>Exception</th><th>Description</th></tr></thead><tr><td><a href="../files/phpcr.src.PHPCR.Version.VersionException.html#\PHPCR\Version\VersionException">\PHPCR\Version\VersionException</a></td><td><em>if the specified version is not
+signatures.</p></div><strong>Parameters</strong><table class="argument-info"><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><th>$label</th><td>string</td><td><em><p>a version label. A JCR name in either extended or
+     qualified form.</p></em></td></tr><tr><th>$version</th><td><a href="../files/phpcr.src.PHPCR.Version.VersionInterface.html#\PHPCR\Version\VersionInterface">\PHPCR\Version\VersionInterface</a></td><td><em><p>a Version object</p></em></td></tr></table><strong>Returns</strong><table class="argument-info"><thead><tr><th>Type</th><th>Description</th></tr></thead><tr><td>boolean</td><td>a boolean.</td></tr></table><strong>Throws</strong><table class="argument-info"><thead><tr><th>Exception</th><th>Description</th></tr></thead><tr><td><a href="../files/phpcr.src.PHPCR.Version.VersionException.html#\PHPCR\Version\VersionException">\PHPCR\Version\VersionException</a></td><td><em>if the specified version is not
      of this version history.</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.RepositoryException.html#\PHPCR\RepositoryException">\PHPCR\RepositoryException</a></td><td><em>if another error occurs.</em></td></tr></table><strong>Details</strong><dl class="function-info"><dt>Api</dt><dd>
          
     </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\Version\VersionHistoryInterface::isCheckedOut()" class="anchor"></a><div class="method public inherited_from "><a href="#" class="gripper"><img src="../images/icons/arrow_right.png"></img><img src="../images/icons/arrow_down.png" style="display: none;"></img></a><code class="title"><img src="../images/icons/method.png" alt="method" title="method"></img><img src="../images/icons/visibility_public.png" style="margin-right: 5px" alt="public"></img><span class="highlight">isCheckedOut</span><span class="nb-faded-text">()</span> : boolean</code><div class="description"><span class="attribute">inherited</span><p class="short_description">Determine if the current node is currently checked out.</p><small class="inherited_from">Inherited from:
@@ -657,7 +784,8 @@ retrieved through two different sessions and one has been modified, then
 this method will still return true when comparing these two objects.
 Note that if two Item objects representing the same workspace item are
 retrieved through the same session they will always reflect the same
-state.</p></div><strong>Parameters</strong><table class="argument-info"><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><th>$otherItem</th><td><a href="../files/phpcr.src.PHPCR.ItemInterface.html#\PHPCR\ItemInterface">\PHPCR\ItemInterface</a></td><td><em><p>the Item object to be tested for identity with this Item.</p></em></td></tr></table><strong>Returns</strong><table class="argument-info"><thead><tr><th>Type</th><th>Description</th></tr></thead><tr><td>boolean</td><td>true if this Item object and otherItem represent the
+state.</p></div><strong>Parameters</strong><table class="argument-info"><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><th>$otherItem</th><td><a href="../files/phpcr.src.PHPCR.ItemInterface.html#\PHPCR\ItemInterface">\PHPCR\ItemInterface</a></td><td><em><p>the Item object to be tested for
+     identity with this Item.</p></em></td></tr></table><strong>Returns</strong><table class="argument-info"><thead><tr><th>Type</th><th>Description</th></tr></thead><tr><td>boolean</td><td>true if this Item object and otherItem represent the
      same actual repository item; false otherwise.</td></tr></table><strong>Throws</strong><table class="argument-info"><thead><tr><th>Exception</th><th>Description</th></tr></thead><tr><td><a href="../files/phpcr.src.PHPCR.RepositoryException.html#\PHPCR\RepositoryException">\PHPCR\RepositoryException</a></td><td><em>if an error occurs.</em></td></tr></table><strong>Details</strong><dl class="function-info"><dt>Api</dt><dd>
          
     </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\Version\VersionHistoryInterface::orderBefore()" class="anchor"></a><div class="method public inherited_from "><a href="#" class="gripper"><img src="../images/icons/arrow_right.png"></img><img src="../images/icons/arrow_down.png" style="display: none;"></img></a><code class="title"><img src="../images/icons/method.png" alt="method" title="method"></img><img src="../images/icons/visibility_public.png" style="margin-right: 5px" alt="public"></img><span class="highlight">orderBefore</span><span class="nb-faded-text">(string $srcChildRelPath, string $destChildRelPath)</span> : void</code><div class="description"><span class="attribute">inherited</span><p class="short_description">Insert a child node before another child identified by its path.</p><small class="inherited_from">Inherited from:
@@ -676,8 +804,11 @@ are the names of the child nodes, possibly suffixed with an index.</p>
 made.</p>
 
 <p>This is session-write method, meaning that a change made by this method
-is dispatched on save.</p></div><strong>Parameters</strong><table class="argument-info"><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><th>$srcChildRelPath</th><td>string</td><td><em><p>the relative path to the child node (that is, name plus possible index) to be moved in the ordering</p>
-</em></td></tr><tr><th>$destChildRelPath</th><td>string</td><td><em><p>the the relative path to the child node (that is, name plus possible index) before which the node srcChildRelPath will be placed.</p>
+is dispatched on save.</p></div><strong>Parameters</strong><table class="argument-info"><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><th>$srcChildRelPath</th><td>string</td><td><em><p>the relative path to the child node (that
+     is, name plus possible index) to be moved in the ordering</p>
+</em></td></tr><tr><th>$destChildRelPath</th><td>string</td><td><em><p>the the relative path to the child node
+     (that is, name plus possible index) before which the node
+     srcChildRelPath will be placed.</p>
 </em></td></tr></table><strong>Throws</strong><table class="argument-info"><thead><tr><th>Exception</th><th>Description</th></tr></thead><tr><td><a href="../files/phpcr.src.PHPCR.UnsupportedRepositoryOperationException.html#\PHPCR\UnsupportedRepositoryOperationException">\PHPCR\UnsupportedRepositoryOperationException</a></td><td><em>if ordering is
      not supported on this node.</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.NodeType.ConstraintViolationException.html#\PHPCR\NodeType\ConstraintViolationException">\PHPCR\NodeType\ConstraintViolationException</a></td><td><em>if an implementation-
      specific ordering restriction is violated and this implementation
@@ -688,23 +819,6 @@ is dispatched on save.</p></div><strong>Parameters</strong><table class="argumen
      this implementation performs this validation immediately.</em></td></tr><tr><td><a href="../files/http://php.net/manual/en/class.invalidargumentexception.php">\InvalidArgumentException</a></td><td><em>if $srcChildRelPath is an absolute path
      or $destChildRelPath is non-null and any of the two paths is of
      depth more than 1.</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.RepositoryException.html#\PHPCR\RepositoryException">\PHPCR\RepositoryException</a></td><td><em>if another error occurs.</em></td></tr></table><strong>Details</strong><dl class="function-info"><dt>Api</dt><dd>
-         
-    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\Version\VersionHistoryInterface::refresh()" class="anchor"></a><div class="method public inherited_from "><a href="#" class="gripper"><img src="../images/icons/arrow_right.png"></img><img src="../images/icons/arrow_down.png" style="display: none;"></img></a><code class="title"><img src="../images/icons/method.png" alt="method" title="method"></img><img src="../images/icons/visibility_public.png" style="margin-right: 5px" alt="public"></img><span class="highlight">refresh</span><span class="nb-faded-text">(boolean $keepChanges)</span> : void</code><div class="description"><span class="attribute">inherited</span><p class="short_description">Updates the state of the current item.</p><small class="inherited_from">Inherited from:
-                    <a href="../files/phpcr.src.PHPCR.ItemInterface.html#\PHPCR\ItemInterface::refresh()">\PHPCR\ItemInterface::refresh()</a><a href="../files/phpcr.src.PHPCR.NodeInterface.html#\PHPCR\NodeInterface::refresh()">\PHPCR\NodeInterface::refresh()</a></small></div><div class="code-tabs"><div class="long-description"><p>If keepChanges is false, this method discards all pending changes
-currently recorded in this Session that apply to this Item or any
-of its descendants (that is, the subgraph rooted at this Item) and
-returns all items to reflect the current saved state. Outside a
-transaction this state is simple the current state of persistent
-storage. Within a transaction, this state will reflect persistent
-storage as modified by changes that have been saved but not yet
-committed.</p>
-
-<p>If keepChanges is true then pending change are not discarded but
-items that do not have changes pending have their state refreshed
-to reflect the current saved state, thus revealing changes made by
-other sessions.</p></div><strong>Parameters</strong><table class="argument-info"><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><th>$keepChanges</th><td>boolean</td><td><em><p>a boolean</p></em></td></tr></table><strong>Throws</strong><table class="argument-info"><thead><tr><th>Exception</th><th>Description</th></tr></thead><tr><td><a href="../files/phpcr.src.PHPCR.InvalidItemStateException.html#\PHPCR\InvalidItemStateException">\PHPCR\InvalidItemStateException</a></td><td><em>if this Item object represents
-     a workspace item that has been removed (either by this session or
-     another).</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.RepositoryException.html#\PHPCR\RepositoryException">\PHPCR\RepositoryException</a></td><td><em>if another error occurs.</em></td></tr></table><strong>Details</strong><dl class="function-info"><dt>Api</dt><dd>
          
     </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\Version\VersionHistoryInterface::remove()" class="anchor"></a><div class="method public inherited_from "><a href="#" class="gripper"><img src="../images/icons/arrow_right.png"></img><img src="../images/icons/arrow_down.png" style="display: none;"></img></a><code class="title"><img src="../images/icons/method.png" alt="method" title="method"></img><img src="../images/icons/visibility_public.png" style="margin-right: 5px" alt="public"></img><span class="highlight">remove</span><span class="nb-faded-text">()</span> : void</code><div class="description"><span class="attribute">inherited</span><p class="short_description">Removes this item (and its subgraph).</p><small class="inherited_from">Inherited from:
                     <a href="../files/phpcr.src.PHPCR.ItemInterface.html#\PHPCR\ItemInterface::remove()">\PHPCR\ItemInterface::remove()</a><a href="../files/phpcr.src.PHPCR.NodeInterface.html#\PHPCR\NodeInterface::remove()">\PHPCR\NodeInterface::remove()</a></small></div><div class="code-tabs"><div class="long-description"><p>To persist a removal, a save must be performed that includes the (former)
@@ -726,7 +840,7 @@ order but leave no gaps in the numbering.</p></div><strong>Throws</strong><table
      subgraph is currently the target of a REFERENCE property located in
      this workspace but outside this item's subgraph and the current
      Session does not have read access to that REFERENCE property or if
-     the current Session does not have sufficent privileges to remove
+     the current Session does not have sufficient privileges to remove
      the item.</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.RepositoryException.html#\PHPCR\RepositoryException">\PHPCR\RepositoryException</a></td><td><em>if another error occurs.</em></td></tr></table><strong>Details</strong><dl class="function-info"><dt>Api</dt><dd>
          
     </dd><dt>See</dt><dd><a href="../files/
@@ -816,8 +930,116 @@ This corresponds to removing a property from the jcr:versionLabels child
 node of the nt:versionHistory node that represents this version history.</p>
 
 <p>This is a workspace-write method and therefore the change is made
-immediately.</p></div><strong>Parameters</strong><table class="argument-info"><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><th>$label</th><td>string</td><td><em><p>a version label. A JCR name in either extended or qualified form.</p></em></td></tr></table><strong>Throws</strong><table class="argument-info"><thead><tr><th>Exception</th><th>Description</th></tr></thead><tr><td><a href="../files/phpcr.src.PHPCR.Version.VersionException.html#\PHPCR\Version\VersionException">\PHPCR\Version\VersionException</a></td><td><em>if the name label does not exist
+immediately.</p></div><strong>Parameters</strong><table class="argument-info"><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><th>$label</th><td>string</td><td><em><p>a version label. A JCR name in either extended or
+     qualified form.</p></em></td></tr></table><strong>Throws</strong><table class="argument-info"><thead><tr><th>Exception</th><th>Description</th></tr></thead><tr><td><a href="../files/phpcr.src.PHPCR.Version.VersionException.html#\PHPCR\Version\VersionException">\PHPCR\Version\VersionException</a></td><td><em>if the name label does not exist
      in this version history.</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.RepositoryException.html#\PHPCR\RepositoryException">\PHPCR\RepositoryException</a></td><td><em>if another error occurs.</em></td></tr></table><strong>Details</strong><dl class="function-info"><dt>Api</dt><dd>
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\Version\VersionHistoryInterface::rename()" class="anchor"></a><div class="method public inherited_from "><a href="#" class="gripper"><img src="../images/icons/arrow_right.png"></img><img src="../images/icons/arrow_down.png" style="display: none;"></img></a><code class="title"><img src="../images/icons/method.png" alt="method" title="method"></img><img src="../images/icons/visibility_public.png" style="margin-right: 5px" alt="public"></img><span class="highlight">rename</span><span class="nb-faded-text">(string $newName)</span> : void</code><div class="description"><span class="attribute">inherited</span><p class="short_description">Renames this node to the specified newName.</p><small class="inherited_from">Inherited from:
+                    <a href="../files/phpcr.src.PHPCR.NodeInterface.html#\PHPCR\NodeInterface::rename()">\PHPCR\NodeInterface::rename()</a></small></div><div class="code-tabs"><div class="long-description"><p>The ordering (if any) of
+this node among it siblings remains unchanged.</p>
+
+<p>This is a session-write method, meaning that the name change is
+dispatched upon Session::save.</p>
+
+<p>The $newName provided must not have an index, otherwise a
+RepositoryException is thrown.</p>
+
+<p>An ItemExistsException will be thrown either immediately, on dispatch
+(save, whether within or without transactions) or on persist (save
+without transactions, commit within a transaction), if there already
+exists a sibling item of this node with the specified name and
+same-name-siblings are not allowed. Implementations may differ on when
+this validation is performed.</p>
+
+<p>A ConstraintViolationException will be thrown either immediately, on
+dispatch (save, whether within or without transactions) or on persist
+(save without transactions, commit within a transaction), if changing
+the name would violate a node type or implementation-specific
+constraint. Implementations may differ on when this validation is
+performed.</p>
+
+<p>A VersionException will be thrown either immediately, on dispatch (save,
+whether within or without transactions) or on persist (save without
+transactions, commit within a transaction), if this node is read-only
+due to a checked-in node. Implementations may differ on when this
+validation is performed.</p>
+
+<p>A LockException will be thrown either immediately, on dispatch (save,
+whether within or without transactions) or on persist (save without
+transactions, commit within a transaction), if a lock prevents the name
+change of the node. Implementations may differ on when this validation
+is performed.</p></div><strong>Parameters</strong><table class="argument-info"><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><th>$newName</th><td>string</td><td><em><p>The new name of this node.</p></em></td></tr></table><strong>Throws</strong><table class="argument-info"><thead><tr><th>Exception</th><th>Description</th></tr></thead><tr><td><a href="../files/phpcr.src.PHPCR.ItemExistsException.html#\PHPCR\ItemExistsException">\PHPCR\ItemExistsException</a></td><td><em>if there already exists a sibling item of
+     this node with the specified name, same-name siblings are not
+     allowed and this implementation performs this validation immediately.</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.NodeType.ConstraintViolationException.html#\PHPCR\NodeType\ConstraintViolationException">\PHPCR\NodeType\ConstraintViolationException</a></td><td><em>if a node type or
+     implementation-specific constraint is violated and this
+     implementation performs this validation immediately.</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.Version.VersionException.html#\PHPCR\Version\VersionException">\PHPCR\Version\VersionException</a></td><td><em>if this node is read-only due to
+     a checked-in node and this implementation performs this validation
+     immediately.</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.Lock.LockException.html#\PHPCR\Lock\LockException">\PHPCR\Lock\LockException</a></td><td><em>if a lock prevents the name change and
+     this implementation performs this validation immediately.</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.RepositoryException.html#\PHPCR\RepositoryException">\PHPCR\RepositoryException</a></td><td><em>If $newName has an index or if another error
+     occurs.</em></td></tr></table><strong>Details</strong><dl class="function-info"><dt>Since</dt><dd>JCR 2.1
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\Version\VersionHistoryInterface::revert()" class="anchor"></a><div class="method public inherited_from "><a href="#" class="gripper"><img src="../images/icons/arrow_right.png"></img><img src="../images/icons/arrow_down.png" style="display: none;"></img></a><code class="title"><img src="../images/icons/method.png" alt="method" title="method"></img><img src="../images/icons/visibility_public.png" style="margin-right: 5px" alt="public"></img><span class="highlight">revert</span><span class="nb-faded-text">()</span> : void</code><div class="description"><span class="attribute">inherited</span><p class="short_description">Discard all pending changes on this item and its children.</p><small class="inherited_from">Inherited from:
+                    <a href="../files/phpcr.src.PHPCR.ItemInterface.html#\PHPCR\ItemInterface::revert()">\PHPCR\ItemInterface::revert()</a><a href="../files/phpcr.src.PHPCR.NodeInterface.html#\PHPCR\NodeInterface::revert()">\PHPCR\NodeInterface::revert()</a></small></div><div class="code-tabs"><div class="long-description"><p>This method discards all pending changes currently recorded in this</p>
+
+<pre><code>Session</code></pre>
+
+<p>that apply to this Item or any of its child nodes
+and properties and returns these items to reflect the current saved
+state. Outside a transaction this state is simply the current state of
+persistent storage. Within a transaction, this state will reflect
+persistent storage as modified by changes that have been saved but not
+yet committed.</p></div><strong>Throws</strong><table class="argument-info"><thead><tr><th>Exception</th><th>Description</th></tr></thead><tr><td><a href="../files/phpcr.src.PHPCR.InvalidItemStateException.html#\PHPCR\InvalidItemStateException">\PHPCR\InvalidItemStateException</a></td><td><em>if this <code>Item</code> object
+     represents a workspace item that has been removed (either by this
+     session or another).</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.RepositoryException.html#\PHPCR\RepositoryException">\PHPCR\RepositoryException</a></td><td><em>if another error occurs.</em></td></tr></table><strong>Details</strong><dl class="function-info"><dt>Since</dt><dd>JCR 2.1
+         
+    </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\Version\VersionHistoryInterface::setMixins()" class="anchor"></a><div class="method public inherited_from "><a href="#" class="gripper"><img src="../images/icons/arrow_right.png"></img><img src="../images/icons/arrow_down.png" style="display: none;"></img></a><code class="title"><img src="../images/icons/method.png" alt="method" title="method"></img><img src="../images/icons/visibility_public.png" style="margin-right: 5px" alt="public"></img><span class="highlight">setMixins</span><span class="nb-faded-text">(array $mixinNames)</span> : void</code><div class="description"><span class="attribute">inherited</span><p class="short_description">Sets this node's mixin node types to those named in $mixinNames and sets
+this node's jcr:mixinTypes property accordingly.</p><small class="inherited_from">Inherited from:
+                    <a href="../files/phpcr.src.PHPCR.NodeInterface.html#\PHPCR\NodeInterface::setMixins()">\PHPCR\NodeInterface::setMixins()</a></small></div><div class="code-tabs"><div class="long-description"><p>Any previous mixins are
+removed.</p>
+
+<p>Semantically, the new node type <i>may</i> take effect immediately, on
+dispatch or on persist. The behavior adopted must be the same as the
+behavior adopted for setPrimaryType and the behavior that occurs when a
+node is first created.</p>
+
+<p>This method adds (and if necessary removes) mixins in a single atomic
+step, avoiding constraint violations that might occur if the steps were
+done individually. This can be useful when changing node types while
+preserving existing content.</p>
+
+<p>A</p>
+
+<pre><code>ConstraintViolationException</code></pre>
+
+<p>is thrown either immediately,
+on dispatch or on persist, if a conflict occurs within the set of
+assigned mixins or the primary node type or for an implementation-specific
+reason. Implementations may differ on when this validation is done.</p>
+
+<p>In some implementations it may only be possible to set mixin types before
+a node is persisted <i>for the first time</i>. In such cases any later
+calls to setMixins will throw a ConstraintViolationException
+either immediately, on dispatch or on persist.</p>
+
+<p>A NoSuchNodeTypeException is thrown either immediately, on dispatch or
+on persist, if one or more of the specified $mixinNames are not
+recognized. Implementations may differ on when this validation is done.</p>
+
+<p>A VersionException is thrown either immediately, on dispatch
+or on persist, if this node is read-only due to a checked-in node.
+Implementations may differ on when this validation is done.</p>
+
+<p>A LockException is thrown either immediately, on dispatch or on persist,
+if a lock prevents the assignment of the mixins. Implementations may
+differ on when this validation is done.</p></div><strong>Parameters</strong><table class="argument-info"><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><th>$mixinNames</th><td>array</td><td><em><p>the names of the mixin node types to be set</p></em></td></tr></table><strong>Throws</strong><table class="argument-info"><thead><tr><th>Exception</th><th>Description</th></tr></thead><tr><td><a href="../files/phpcr.src.PHPCR.NodeType.NoSuchNodeTypeException.html#\PHPCR\NodeType\NoSuchNodeTypeException">\PHPCR\NodeType\NoSuchNodeTypeException</a></td><td><em>If one or more of the
+     specified $mixinNames are not recognized and this implementation
+     performs this validation immediately.</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.NodeType.ConstraintViolationException.html#\PHPCR\NodeType\ConstraintViolationException">\PHPCR\NodeType\ConstraintViolationException</a></td><td><em>if the specified
+     mixin node types create a conflict and this implementation performs
+     this validation immediately.</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.Version.VersionException.html#\PHPCR\Version\VersionException">\PHPCR\Version\VersionException</a></td><td><em>if this node is read-only due to
+     a checked-in node and this implementation performs this validation
+     immediately.</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.Lock.LockException.html#\PHPCR\Lock\LockException">\PHPCR\Lock\LockException</a></td><td><em>if a lock prevents the assignment of
+     the mixins and this implementation performs this validation
+     immediately.</em></td></tr><tr><td><a href="../files/phpcr.src.PHPCR.RepositoryException.html#\PHPCR\RepositoryException">\PHPCR\RepositoryException</a></td><td><em>if another error occurs.</em></td></tr></table><strong>Details</strong><dl class="function-info"><dt>Since</dt><dd>JCR 2.1
          
     </dd></dl></div><div class="clear"></div></div><a id="\PHPCR\Version\VersionHistoryInterface::setPrimaryType()" class="anchor"></a><div class="method public inherited_from "><a href="#" class="gripper"><img src="../images/icons/arrow_right.png"></img><img src="../images/icons/arrow_down.png" style="display: none;"></img></a><code class="title"><img src="../images/icons/method.png" alt="method" title="method"></img><img src="../images/icons/visibility_public.png" style="margin-right: 5px" alt="public"></img><span class="highlight">setPrimaryType</span><span class="nb-faded-text">(string $nodeTypeName)</span> : void</code><div class="description"><span class="attribute">inherited</span><p class="short_description">Changes the primary node type of this node to nodeTypeName.</p><small class="inherited_from">Inherited from:
                     <a href="../files/phpcr.src.PHPCR.NodeInterface.html#\PHPCR\NodeInterface::setPrimaryType()">\PHPCR\NodeInterface::setPrimaryType()</a></small></div><div class="code-tabs"><div class="long-description"><p>Also immediately changes this node's jcr:primaryType property
@@ -871,7 +1093,8 @@ $value) except that the intended property type is explicitly specified.</p>
 <p><b>Note:</b>
 Have a look at the JSR-283 spec and/or API documentation for more details
 on what is supposed to happen for different types of values being passed
-to this method.</p></div><strong>Parameters</strong><table class="argument-info"><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><th>$name</th><td>string</td><td><em><p>The name of a property of this node</p></em></td></tr><tr><th>$value</th><td>mixed</td><td><em><p>The value to be assigned</p></em></td></tr><tr><th>$type</th><td>integer</td><td><em><p>The type to set for the property, optional. Must be a constant from {@link PropertyType}</p>
+to this method.</p></div><strong>Parameters</strong><table class="argument-info"><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tr><th>$name</th><td>string</td><td><em><p>The name of a property of this node</p></em></td></tr><tr><th>$value</th><td>mixed</td><td><em><p>The value to be assigned</p></em></td></tr><tr><th>$type</th><td>integer</td><td><em><p>The type to set for the property, optional. Must be
+     a constant from {@link PropertyType}</p>
 </em></td></tr></table><strong>Returns</strong><table class="argument-info"><thead><tr><th>Type</th><th>Description</th></tr></thead><tr><td><a href="../files/phpcr.src.PHPCR.PropertyInterface.html#\PHPCR\PropertyInterface">\PHPCR\PropertyInterface</a></td><td>The new resp. updated Property object</td></tr></table><strong>Throws</strong><table class="argument-info"><thead><tr><th>Exception</th><th>Description</th></tr></thead><tr><td><a href="../files/phpcr.src.PHPCR.ValueFormatException.html#\PHPCR\ValueFormatException">\PHPCR\ValueFormatException</a></td><td><em>if the specified property is a DATE
      but the value cannot be expressed in the ISO 8601-based format
      defined in the JCR 2.0 specification and the implementation does
@@ -910,5 +1133,5 @@ is only relevant in an implementation that supports versioning).</p></div><stron
     </dd></dl></div><div class="clear"></div></div></div></div></div><small class="footer">
             Documentation was generated by
             <a href="http://phpdoc.org">phpDocumentor
-                2.0.0a10</a>.
+                2.0.0a12</a>.
         </small></body></html>
