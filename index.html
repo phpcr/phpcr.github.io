@@ -29,33 +29,35 @@
         </p>
     </div>
 
+    <div class="description">
+        <div>
         <h2>When to use PHPCR</h2>
-
             <ul>
-                <li>You have hierarchical navigation structures</li>
-                <li>You have compound data that belongs together. i.e. a web page with attached files or translations</li>
+                <li>For hierarchical navigation structures</li>
+                <li>For compound data that belongs together. i.e. a web page with attached files or translations</li>
                 <li>You need to version content</li>
                 <li>You want full text search</li>
             </ul>
-
+        </div>
+        <div>
         <h2>When not to use PHPCR</h2>
-        <p>
-            PHPCR is targeted at semi structured content. When you have strict content and need to aggregate the data, PHPCR is not the tool of choice. We recommend using relational databases for this.<br/>
-            For example, when building a web shop, the products could be stored in PHPCR while the orders can be stored in a relational database.
+        <p style="margin:0px">
+            PHPCR is targeted at semi structured content. For strictly structured content and when using aggregation queries, we recommend using relational databases.<br/>
+            For example: A web shop where products are stored in PHPCR, orders are stored in a relational database.
         </p>
-
-        <h2>Resources</h2>
+        </div>
+    </div>
+        <h2 style="clear:both">Resources</h2>
         <ul class="links">
             <li><a href="http://github.com/phpcr/phpcr">Source</a></li>
             <li><a href="doc/html/index.html">API</a></li>
-            <li><a href="doc/html-all/index.html">PHPCR-utils</a></li>
             <li><a href="http://phpcr.github.com/slides.html">Slides</a></li>
             <li><a href="http://phpcr.github.com/slides-odm.html">ODM Slides</a></li>
             <li><a href="https://github.com/phpcr/phpcr-docs/blob/master/tutorial/Tutorial.md">Tutorial</a></li>
             <li><a href="https://github.com/phpcr/phpcr.github.com/wiki">Collaboration</a></li>
         </ul>
 
-        <h2>Implementations</h2>
+        <h2 style="margin-top: 12px;">Implementations</h2>
 
         <p>PHPCR defines the interfaces for content repositories. There are several implementations available that you can use:</p>
 
