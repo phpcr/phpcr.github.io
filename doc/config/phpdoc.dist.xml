@@ -13,5 +13,6 @@
     </transformations>
     <files>
         <directory>../../vendor/phpcr/phpcr/src</directory>
+        <directory>../../vendor/phpcr/phpcr-utils/src</directory>
     </files>
 </phpdoc>
