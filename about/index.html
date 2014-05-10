@@ -1,0 +1,30 @@
+---
+layout: default
+title: About PHPCR
+overview: true
+---
+<div class="content">
+    <h3>What is it?</h3>
+    <p class="description">
+    The PHP Content Repository is an adaption of the Java Content Repository (<a href="http://en.wikipedia.org/wiki/Content_repository_API_for_Java" class="external-link" rel="nofollow">JCR</a>) standard, an open API specification defined in <a href="http://jcp.org/en/jsr/detail?id=283" title="JSR: Java Specification Request" class="external-link" rel="nofollow">JSR-283</a>. <br/>
+    The API defines how to handle hierarchical semi-structured data in a consistent way.
+    </p>
+    <p>
+    The typical use case is content management systems.
+    PHPCR combines the best out of <a href="http://en.wikipedia.org/wiki/Document-oriented_database">document-oriented databases</a> (weak structured data) and of <a href="http://en.wikipedia.org/wiki/XML_database">XML databases</a> (hierarchical trees). On top of that, it adds useful features like searching, versioning, access control and locking on top of it.
+    </p>
+
+    <h3>When to use PHPCR</h3>
+    <ul>
+        <li>For hierarchical navigation structures</li>
+        <li>For compound data that belongs together. i.e. a web page with attached files or translations</li>
+        <li>You need to version content</li>
+        <li>You want full text search</li>
+    </ul>
+
+    <h3>When not to use PHPCR</h3>
+    <p style="margin:0px">
+    PHPCR is targeted at semi structured content. For strictly structured content and when using aggregation queries, we recommend using relational databases.<br/>
+    For example: A web shop where products are stored in PHPCR, orders are stored in a relational database.
+    </p>
+</div>

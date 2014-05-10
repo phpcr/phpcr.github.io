@@ -1,0 +1,106 @@
+- name: Jackalope Doctrine DBAL
+  github: https://github.com/jackalope/jackalope-doctrine-dbal
+  website: http://jackalope.github.io
+  description: |
+      Uses a conventional RDBMS (e.g. MySQL) to store the content repository.
+  stability: stable
+  descriptors:
+    node_type_management_autocreated_definitions_supported: true
+    node_type_management_inheritance: single
+    node_type_management_multiple_binary_properties_supported: true
+    node_type_management_multivalued_properties_supported: true
+    node_type_management_orderable_child_nodes_supported: true
+    node_type_management_overrides_supported: false
+    node_type_management_primary_item_name_supported: true
+    node_type_management_property_types: true
+    node_type_management_residual_definitions_supported: false
+    node_type_management_same_name_siblings_supported: false
+    node_type_management_update_in_use_supported: false
+    node_type_management_value_constraints_supported: false
+    option_access_control_supported: false
+    option_activities_supported: false
+    option_baselines_supported: false
+    option_journaled_observation_supported: false
+    option_lifecycle_supported: false
+    option_locking_supported: false
+    option_node_and_property_with_same_name_supported: true
+    option_node_type_management_supported: true
+    option_observation_supported: false
+    option_retention_supported: false
+    option_shareable_nodes_supported: false
+    option_simple_versioning_supported: false
+    option_transactions_supported: true
+    option_unfiled_content_supported: true
+    option_update_mixin_nodetypes_supported: true
+    option_update_primary_nodetype_supported: true
+    option_versioning_supported: false
+
+- name: Jackalope Jackrabbit
+  github: https://github.com/jackalope/jackalope-jackrabbit
+  website: http://jackalope.github.io
+  description: |
+      Uses <a href="http://jackrabbit.apache.org">Apache Jackrabbit</a> as the storage engine.
+  stability: stable
+  descriptors:
+        node.type.management.autocreated.definitions.supported: true
+        node.type.management.inheritance: multiple
+        node.type.management.multiple.binary.properties.supported: true
+        node.type.management.multivalued.properties.supported: true
+        node.type.management.orderable.child.nodes.supported: true
+        node.type.management.overrides.supported: false
+        node.type.management.primary.item.name.supported: true
+        node.type.management.property.types: 2, 6, 5, 12, 4, 3, 7, 8, 9, 1, 11, 10, 0
+        node.type.management.residual.definitions.supported: true
+        node.type.management.same.name.siblings.supported: false
+        node.type.management.update.in.use.suported: false
+        node.type.management.value.constraints.supported: true
+        option.access.control.supported: false
+        option.activities.supported: true
+        option.baselines.supported: true
+        option.journaled.observation.supported: true
+        option.lifecycle.supported: false
+        option.locking.supported: true
+        option.node.and.property.with.same.name.supported: true
+        option.node.type.management.supported: true
+        option.observation.supported: true
+        option.query.sql.supported: true
+        option.retention.supported: false
+        option.shareable.nodes.supported: false
+        option.simple.versioning.supported: true
+        option.transactions.supported: false
+        option.unfiled.content.supported: false
+        option.update.mixin.node.types.supported: true
+        option.update.primary.node.type.supported: true
+        option.versioning.supported: true
+        option.workspace.management.supported: true
+        option.xml.export.supported: true
+        option.xml.import.supported: true
+        query.full.text.search.supported: true
+        query.joins: query.joins.inner.outer
+        query.languages: javax.jcr.query.JCR-JQOM, javax.jcr.query.JCR-SQL2
+        query.stored.queries.supported: true
+        query.xpath.doc.order: false
+        query.xpath.pos.index: true
+        write.supported: true
+        query.cancel.supported: false
+
+- name: Jackalope Prisimic
+  github: https://github.com/jackalope/jackalope-prismic
+  website: http://jackalope.github.io
+  description: |
+      Work-in-progress - Uses <a href="https://prismic.io">Prismic</a> cloud content system as the storage engine. Currently read-only.
+  stability: unstable/WIP
+
+- name: PHPCR Midguard2
+  github: https://github.com/midguardproject/phpcr-midgard2
+  website: https://github.com/midguardproject/phpcr-midgard2
+  description: |
+      Uses <a href="http://midgard-project.org/midgard2">Midgard2</a> open soruce content repository. Not maintained since 2013
+  stability: unstable/unmaintained
+
+- name: Jackalope MongoDB
+  github: https://github.com/jackalope/jackalope-mongodb
+  website: https://github.com/jackalope/jackalope-mongodb
+  description: |
+      Uses MongoDB to store data. Not maintained since 2012
+  stability: unstable/unmaintained
