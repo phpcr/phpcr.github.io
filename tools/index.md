@@ -14,7 +14,7 @@ The PHPCR Shell aims to provide a complete shell interface to any PHPCR reposito
 
 ### Marmelab PHPCR Browser
 
-Angular JS based PHPCR repository browser. Currently only supports Jackalope-Jackrabbit.
+Angular JS based PHPCR repository browser. Currently only supports Jackalope-Jackrabbit and Jackalope-Doctrine-DBAL.
 
 - **Github**: [https://github.com/marmelab/phpcr-browser](https://github.com/marmelab/phpcr-browser)
 - **Vendor**: Marmelab
