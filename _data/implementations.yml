@@ -91,7 +91,7 @@
       Work-in-progress - Uses <a href="https://prismic.io">Prismic</a> cloud content system as the storage engine. Currently read-only.
   stability: unstable/WIP
 
-- name: PHPCR Midguard2
+- name: PHPCR Midgard2
   github: https://github.com/midguardproject/phpcr-midgard2
   website: https://github.com/midguardproject/phpcr-midgard2
   description: |
