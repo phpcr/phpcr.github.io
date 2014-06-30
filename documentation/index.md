@@ -4,7 +4,7 @@ title: Documentation
 ---
 ### Tutorials
 
-- [General Guide](/documentation/tutorial/phpcr-guide.html)
+- [The Guide](http://phpcr.readthedocs.org/en/latest/)
 - [Integrating with Symfony](/documentation/tutorial/integrating_with_symfony.html)
 
 ### Reference
