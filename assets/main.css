@@ -1,5 +1,5 @@
 body {
-    color: #777;
+    color: #333;
 }
 
 #forkme {
@@ -90,9 +90,10 @@ The `#menu` `<div>` is the parent `<div>` that contains the `.pure-menu` that
 appears on the left side of the page.
 */
 
-#menu .logo {
+
+#menu .logo img {
     text-align: center;
-    margin: 20px 0px;
+    margin: 20px 15px;
 }
 
 #menu {
@@ -257,4 +258,11 @@ Hides the menu at `48em`, but modify this based on your app's needs.
     #layout.active .menu-link {
         left: 200px;
     }
+}
+
+.content h2 {
+    background-color: #1F8DD6;
+    color: white;
+    padding: 12px;
+    border-radius: 5px;
 }
