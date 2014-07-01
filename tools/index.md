@@ -4,6 +4,8 @@ title: Tools
 ---
 This page aims to list all the available PHPCR tools.
 
+## Browsers / Editors
+
 ### PHPCR Shell
 
 The PHPCR Shell aims to provide a complete shell interface to any PHPCR repository.
