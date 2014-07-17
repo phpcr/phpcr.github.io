@@ -9,7 +9,12 @@ title: Documentation
 
 ## Reference
 
+### PHPCR
+
 - [API Reference](/doc/html/index.html) - Online API documentation for the PHPCR project.
+
+### JCR
+
 - [Node Type CND Reference (Jackrabbit)](http://jackrabbit.apache.org/node-type-notation.html) - Detailed definition and
   explanation of the CND node type format.
 - [JCR Query Cheatsheet (Magnolia)](https://wiki.magnolia-cms.com/display/WIKI/JCR+Query+Cheat+Sheet) - Examples of
