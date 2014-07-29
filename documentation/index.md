@@ -14,6 +14,7 @@ title: Documentation
   explanation of the CND node type format.
 - [JCR Query Cheatsheet (Magnolia)](https://wiki.magnolia-cms.com/display/WIKI/JCR+Query+Cheat+Sheet) - Examples of
   the JCR2 query language.
+- [JCR 2.0 SQL-2 Grammer Reference](http://www.h2database.com/jcr/grammar.html#name) - Grammer reference for the JCR-SQL-2 query language.
 
 ## Slides
 
