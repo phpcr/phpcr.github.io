@@ -95,7 +95,7 @@
   github: https://github.com/midguardproject/phpcr-midgard2
   website: https://github.com/midguardproject/phpcr-midgard2
   description: |
-      Uses <a href="http://midgard-project.org/midgard2">Midgard2</a> open soruce content repository. Not maintained since 2013
+      Uses <a href="http://midgard-project.org/midgard2">Midgard2</a> open source content repository. Not maintained since 2013
   stability: unstable/unmaintained
 
 - name: Jackalope MongoDB

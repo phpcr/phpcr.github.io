@@ -14,8 +14,8 @@ This page lists all known PHPCR implementations:
 
 {{ implementation.description }}
 
-- **Website**: [{{ implementation.website }}](implementation.website)
-- **Github**: [{{ implementation.github }}](implementation.github)
+- **Website**: [{{ implementation.website }}]({{ implementation.website }})
+- **Github**: [{{ implementation.github }}]({{ implementation.github }})
 - **Stability**: {{ implementation.stability }}
 
 {% if implementation.descriptors %}
