@@ -6,6 +6,7 @@ title: Documentation
 
 - [The Book](http://phpcr.readthedocs.org/en/latest/)
 - [Integrating with Symfony](/documentation/tutorial/integrating_with_symfony.html)
+- [Integrating with Magnolia CMS](https://documentation.magnolia-cms.com/display/DOCS/Integrating+PHP+Web+applications)
 
 ## Reference
 
