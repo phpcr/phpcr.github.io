@@ -35,6 +35,14 @@ editing concept inspired by the iOS finder.
 * Vendor: [massiveart](http://www.massiveart.com)
 * Github: https://github.com/sulu-cmf/sulu
 
+### Togu
+
+Togu is a new generation CMF built on top of Symfony CMF which allows to easily
+create WYSIWYG websites. It uses PHPCR-ODM as its persistence layer.
+
+* Website: [togu.io](http://togu.io)
+* Github: https://github.com/togucms/ToguCMS
+
 ## Integrations
 
 Hint: This list is not exhaustive. Check if your tools support PHPCR / 
