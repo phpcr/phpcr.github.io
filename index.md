@@ -6,7 +6,7 @@ overview: true
 
 ## Welcome
 
-Welcome the the PHPCR website. See the [About](/about) page to find out what PHPCR is and when
+Welcome to the PHPCR website. See the [About](/about) page to find out what PHPCR is and when
 to use it.
 
 ## News
