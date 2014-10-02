@@ -41,5 +41,5 @@ preparation for the forthcoming 1.2 release.
 
 ### PHPCR-ODM
 
-- **Version 1.2** of the [PHPCR-ODM](https://github.com/doctrine/phpcr-odm) is just around the corner and we ask people to test the latest RC version ([1.2.0-rc4](https://packagist.org/packages/doctrine/phpcr-odm#1.2.0-rc4)) and provid feedback until next week when we hope to release it.
+- **Version 1.2** of the [PHPCR-ODM](https://github.com/doctrine/phpcr-odm) is just around the corner and we ask people to test the latest RC version ([1.2.0-rc4](https://packagist.org/packages/doctrine/phpcr-odm#1.2.0-rc4)) and provide feedback until next week when we hope to release it.
 - Fixed some bugs related to [translation](https://github.com/doctrine/phpcr-odm/pull/566) handling.
