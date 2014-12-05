@@ -6,7 +6,7 @@ title: Update November 2014
 ### Anouncements
 
 - Symfony CMF hackday in Würzburg, Germany on the 12th and 13th. Good place to find out more about
-  PHPCR. See the [doodle](http://doodle.com/8u9aiadta2mvxrpm).
+  PHPCR. See the [wiki page](https://github.com/symfony-cmf/symfony-cmf/wiki/Hackdays-in-Wuerzburg).
 
 ### Development news
 
