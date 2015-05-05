@@ -12,7 +12,7 @@ The PHPCR Shell aims to provide a complete shell interface to any PHPCR reposito
 
 - **Github**: [https://github.com/phpcr/phpcr-shell](https://github.com/phpcr/phpcr-shell)
 - **Vendor**: PHPCR
-- **Documentation**: [here](/documentation/phpcr-shell)
+- **Documentation**: [here](https://phpcr.readthedocs.org/en/latest/phpcr-shell/index.html)
 
 ### Marmelab PHPCR Browser
 
