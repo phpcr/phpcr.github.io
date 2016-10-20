@@ -26,5 +26,6 @@ title: Documentation
 
 ## Articles
 
-- [JCR or RDBMS - Why, when, how?](https://dev.day.com/content/ddc/blog/2009/01/jcrrdbmsreport/_jcr_content/images/jcrrdbmsreport/jcr_rdbms_report_chapuis.pdf)
+- [JCR or RDBMS - Why, when, how?](http://www.scribd.com/doc/11163161/JCR-or-RDBMS-why-when-how)
 - [Davids Model: A guide for content modeling](http://wiki.apache.org/jackrabbit/DavidsModel)
+- [Article collection for jackrabbit](http://jackrabbit.apache.org/jcr/articles.html)
